@@ -1,0 +1,9 @@
+version: 1
+update_configs:
+  # TODO https://dependabot.com/docs/config-file/#target_branch set up distinct branches for LTS lines
+  - package_manager: java:maven
+    directory: /
+    update_schedule: weekly
+    dependency_type: development
+    default_reviewers:
+      - jglick
