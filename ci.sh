@@ -2,30 +2,30 @@
 set -euxo pipefail
 cd $(dirname $0)
 
-mvn -B -ntp -Dmaven.test.failure.ignore install
+# TODO add -ntp everywhere after INFRA-2129 / Maven 3.6.1
 
-mvn -B -ntp -f sample-plugin custom-war-packager:custom-war
+mvn -B -Dmaven.test.failure.ignore install
+
+cd sample-plugin/target
+cp -r jenkins-for-test megawar
+rm -rfv megawar/WEB-INF/detached-plugins megawar/META-INF/*.{RSA,SF}
+mkdir megawar/WEB-INF/plugins
+cp -rv test-classes/test-dependencies/*.hpi megawar/WEB-INF/plugins
+(cd megawar && jar c0Mf ../megawar.war *)
 
 version=0.1.0
 pct=$HOME/.m2/repository/org/jenkins-ci/tests/plugins-compat-tester-cli/$version/plugins-compat-tester-cli-$version.jar
-if [ \! -f $pct ]
-then
-    echo $pct not found, downloading
-    mvn -B -ntp dependency:get -Dartifact=org.jenkins-ci.tests:plugins-compat-tester-cli:$version:jar -Dtransitive=false
-fi
+[ -f $pct ] || mvn -B dependency:get -Dartifact=org.jenkins-ci.tests:plugins-compat-tester-cli:$version:jar -Dtransitive=false
 
-# https://github.com/jenkinsci/plugin-compat-tester/pull/116#issuecomment-509439409
-plugins=$(cd sample-plugin/tmp/output/target/megawar-*/WEB-INF/plugins; ls *.hpi | sed s/.hpi// | paste -sd,)
-
+# TODO perhaps stash the megawar and split the test runs across nodes in parallel? (use label `maven` for quick startup)
 java -jar $pct \
-     -war sample-plugin/tmp/output/target/megawar-*.war \
-     -includePlugins $plugins \
-     -workDirectory sample-plugin/target/pct-work \
-     -reportFile sample-plugin/target/pct-report.xml \
+     -war $(pwd)/megawar.war \
+     -workDirectory $(pwd)/pct-work \
+     -reportFile $(pwd)/pct-report.xml \
      -mvn $(which mvn) \
      -skipTestCache true
 
 # TODO currently failing tests: https://github.com/jenkinsci/workflow-cps-plugin/pull/302 https://github.com/jenkinsci/structs-plugin/pull/50
 rm -fv \
-   sample-plugin/target/pct-work/workflow-cps/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.cps.SnippetizerTest.xml \
-   sample-plugin/target/pct-work/structs-plugin/plugin/target/surefire-reports/TEST-org.jenkinsci.plugins.structs.describable.DescribableModelTest.xml
+   pct-work/workflow-cps/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.cps.SnippetizerTest.xml \
+   pct-work/structs-plugin/plugin/target/surefire-reports/TEST-org.jenkinsci.plugins.structs.describable.DescribableModelTest.xml
