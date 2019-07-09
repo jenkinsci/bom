@@ -1,0 +1,7 @@
+bundle:
+  groupId: io.jenkins.tools.bom
+  artifactId: megawar
+bomIncludeWar: true
+buildSettings:
+  pom: pom.xml
+  pomIgnoreRoot: true

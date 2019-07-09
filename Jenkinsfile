@@ -1,5 +1,5 @@
-node('maven') {
+node('docker') {
     checkout scm
-    sh 'mvn -B -ntp -Dmaven.test.failure.ignore install'
+    sh 'bash ci.sh'
     junit '**/target/surefire-reports/TEST-*.xml'
 }

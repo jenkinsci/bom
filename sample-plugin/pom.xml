@@ -91,5 +91,18 @@
                 </configuration>
             </plugin>
         </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin> <!-- see ../pct.sh -->
+                    <groupId>io.jenkins.tools.custom-war-packager</groupId>
+                    <artifactId>custom-war-packager-maven-plugin</artifactId>
+                    <version>1.7-20190709.014754-3</version> <!-- TODO https://github.com/jenkinsci/custom-war-packager/pull/108 -->
+                    <configuration>
+                        <configFilePath>${project.basedir}/cwp.yaml</configFilePath>
+                        <warVersion>${project.version}</warVersion>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
 </project>
