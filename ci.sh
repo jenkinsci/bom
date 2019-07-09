@@ -25,7 +25,7 @@ java -jar $pct \
      -mvn $(which mvn) \
      -skipTestCache true
 
-# TODO currently failing tests
+# TODO currently failing tests: https://github.com/jenkinsci/workflow-cps-plugin/pull/302 https://github.com/jenkinsci/structs-plugin/pull/50
 rm -fv \
    sample-plugin/target/pct-work/workflow-cps/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.cps.SnippetizerTest.xml \
    sample-plugin/target/pct-work/structs-plugin/plugin/target/surefire-reports/TEST-org.jenkinsci.plugins.structs.describable.DescribableModelTest.xml
