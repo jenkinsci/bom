@@ -32,7 +32,8 @@ java -jar $pct \
      -workDirectory $(pwd)/pct-work \
      -reportFile $(pwd)/pct-report.xml \
      -mvn $(which mvn) \
-     $PCT_S_ARG
+     $PCT_S_ARG \
+     -mavenProperties org.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn \
      -skipTestCache true
 
 # TODO currently failing tests: https://github.com/jenkinsci/workflow-cps-plugin/pull/302 https://github.com/jenkinsci/structs-plugin/pull/50
