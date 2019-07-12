@@ -33,7 +33,9 @@ plugins.each { plugin ->
         mavenEnv {
             unstash 'ci'
             unstash 'pct'
-            sh 'bash ci-2.sh'
+            withEnv(["PLUGIN=$plugin"]) {
+                sh 'bash ci-2.sh'
+            }
             warnError('some plugins could not be run in PCT') {
                 sh 'if fgrep -q "<status>INTERNAL_ERROR</status>" pct-report.xml; then echo PCT failed; exit 1; fi'
             }
