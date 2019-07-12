@@ -2,6 +2,8 @@
 set -euxo pipefail
 cd $(dirname $0)
 
+rm -rf sample-plugin/target
+
 # TODO use -ntp after INFRA-2129 / Maven 3.6.1
 MVN='mvn -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn'
 if [ -v MAVEN_SETTINGS ]
