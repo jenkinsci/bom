@@ -11,26 +11,29 @@ def mavenEnv(body) {
         withEnv(["JAVA_HOME=$javaHome", "PATH+JAVA=$javaHome/bin", "PATH+MAVEN=${tool 'mvn'}/bin", "MAVEN_SETTINGS=$settingsXml"]) {
             body()
         }
-        junit '**/target/surefire-reports/TEST-*.xml'
+        junit testResults: '**/target/surefire-reports/TEST-*.xml', allowEmptyResults: true
     }
 }
 
 def plugins
 
-mavenEnv {
-    checkout scm
-    sh 'bash ci-1.sh'
-    dir('sample-plugin/target') {
-        plugins = readFile('plugins.txt').split(' ')
-        stash name: 'pct', includes: 'megawar.war,pct.jar'
+stage('prep') {
+    mavenEnv {
+        checkout scm
+        sh 'bash ci-1.sh'
+        dir('sample-plugin/target') {
+            plugins = readFile('plugins.txt').split(' ')
+            stash name: 'pct', includes: 'megawar.war,pct.jar'
+        }
+        stash name: 'ci', includes: 'ci-2.sh'
     }
-    stash name: 'ci', includes: 'ci-2.sh'
 }
 
 branches = [failFast: true]
 plugins.each { plugin ->
     branches["pct-$plugin"] = {
         mavenEnv {
+            deleteDir()
             unstash 'ci'
             unstash 'pct'
             withEnv(["PLUGIN=$plugin"]) {
