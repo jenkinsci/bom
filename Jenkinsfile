@@ -24,12 +24,14 @@ mavenEnv {
         plugins = readFile('plugins.txt').split(' ')
         stash name: 'pct', includes: 'megawar.war,pct.jar'
     }
+    stash name: 'ci', includes: 'ci-2.sh'
 }
 
 branches = [failFast: true]
 plugins.each { plugin ->
     branches["pct-$plugin"] = {
         mavenEnv {
+            unstash 'ci'
             unstash 'pct'
             sh 'bash ci-2.sh'
             warnError('some plugins could not be run in PCT') {
