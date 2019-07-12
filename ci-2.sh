@@ -14,7 +14,7 @@ else
 fi
 
 java -jar pct.jar \
-     -war $(pwd)megawar.war \
+     -war $(pwd)/megawar.war \
      -includePlugins $PLUGIN \
      -workDirectory $(pwd)/pct-work \
      -reportFile $(pwd)/pct-report.xml \
