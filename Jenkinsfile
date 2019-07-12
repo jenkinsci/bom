@@ -4,7 +4,7 @@ node('docker') {
     assert ok
     checkout scm
     def javaHome=tool 'jdk8'
-    withEnv(["JAVA_HOME=$javaHome", 'PATH+JAVA=$javaHome/bin', "PATH+MAVEN=${tool 'mvn'}/bin", "MAVEN_SETTINGS=$settingsXml"]) {
+    withEnv(["JAVA_HOME=$javaHome", "PATH+JAVA=$javaHome/bin", "PATH+MAVEN=${tool 'mvn'}/bin", "MAVEN_SETTINGS=$settingsXml"]) {
         sh 'echo $PATH; which java; which jar' // TODO
         sh 'bash ci.sh'
     }
