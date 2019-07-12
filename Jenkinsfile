@@ -3,7 +3,8 @@ node('docker') {
     def ok = infra.retrieveMavenSettingsFile(settingsXml)
     assert ok
     checkout scm
-    withEnv(["JAVA_HOME=${tool 'jdk8'}", 'PATH+JAVA=${JAVA_HOME}/bin', "PATH+MAVEN=${tool 'mvn'}/bin", "MAVEN_SETTINGS=$settingsXml"]) {
+    def javaHome=tool 'jdk8'
+    withEnv(["JAVA_HOME=$javaHome", 'PATH+JAVA=$javaHome/bin', "PATH+MAVEN=${tool 'mvn'}/bin", "MAVEN_SETTINGS=$settingsXml"]) {
         sh 'echo $PATH; which java; which jar' // TODO
         sh 'bash ci.sh'
     }
