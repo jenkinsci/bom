@@ -1,6 +1,8 @@
 def managedDeps = project.dependencyManagement.dependencies*.managementKey
 println "Managed dependencies of $project: $managedDeps"
-def artifactMap = project.artifactMap
+// Cannot use project.artifactMap since this ignores classifiers so has entries like org.jenkins-ci.plugins.workflow:workflow-step-api → org.jenkins-ci.plugins.workflow:workflow-step-api:jar:tests:2.20:test
+def artifactMap = project.artifacts.grep {!it.hasClassifier()}.collectEntries {art -> ["$art.groupId:$art.artifactId".toString(), art]}
+assert artifactMap['junit:junit'] == project.artifactMap['junit:junit']
 
 def managedPluginDeps = managedDeps.collect {stripAllButGA(it)}.grep { ga ->
     def art = artifactMap[ga]
