@@ -4,6 +4,7 @@ node('docker') {
     assert ok
     checkout scm
     withEnv(["JAVA_HOME=${tool 'jdk8'}", 'PATH+JAVA=${JAVA_HOME}/bin', "PATH+MAVEN=${tool 'mvn'}/bin", "MAVEN_SETTINGS=$settingsXml"]) {
+        sh 'echo $PATH; which java; which jar' // TODO
         sh 'bash ci.sh'
     }
     junit '**/target/surefire-reports/TEST-*.xml'
