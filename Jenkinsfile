@@ -12,6 +12,9 @@ def mavenEnv(body) {
             body()
         }
         junit testResults: '**/target/surefire-reports/TEST-*.xml', allowEmptyResults: true
+        if (currentBuild.result == 'UNSTABLE') {
+            error 'Some test failures, not going to continue'
+        }
     }
 }
 
