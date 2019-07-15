@@ -80,6 +80,8 @@ and the specified Jenkins LTS version.
 If there is a PCT failure, fix it in the plugin with the failing test,
 and when that fix is released, try updating the BOM again.
 
+TODO could use a script to run the full build locally with just a single plugin and a single test.
+
 ## LTS lines
 
 The `master` branch should track the current LTS line.
@@ -89,3 +91,9 @@ The CI build (or just `mvn test`) will fail if some managed plugins are too new 
 [This script](https://gist.github.com/jglick/0a85759ea65f60e107ac5a85a5032cae)
 is a handy way to find the most recently released plugin version compatible with a given line,
 according to the `jenkins-infra/update-center2` (which currently maintains releases for the past five lines).
+
+Commits from `master` should be merged into the next older LTS branch,
+and from there into the branch one older, and so on.
+This ensures that CI-related changes propagate to all branches without manual copy-and-paste.
+Merge conflicts should be resolved in favor of the `HEAD`,
+so that the branches differ from `master` only in POMs (and perhaps in sample plugin code).

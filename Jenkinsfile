@@ -12,6 +12,9 @@ def mavenEnv(body) {
             body()
         }
         junit testResults: '**/target/surefire-reports/TEST-*.xml', allowEmptyResults: true
+        if (currentBuild.result == 'UNSTABLE') {
+            error 'Some test failures, not going to continue'
+        }
     }
 }
 
@@ -20,6 +23,7 @@ def plugins
 stage('prep') {
     mavenEnv {
         checkout scm
+        // TODO rename to prep.sh & pct.sh, respectively, for clarity
         sh 'bash ci-1.sh'
         dir('sample-plugin/target') {
             plugins = readFile('plugins.txt').split(' ')

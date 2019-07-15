@@ -15,11 +15,13 @@ $MVN -Dmaven.test.failure.ignore install
 
 cd sample-plugin/target
 cp -r jenkins-for-test megawar
+# TODO check if removing detached-plugins is still necessary, given use of explicit -includePlugins
 rm -rfv megawar/WEB-INF/detached-plugins megawar/META-INF/*.{RSA,SF}
 mkdir megawar/WEB-INF/plugins
 cp -rv test-classes/test-dependencies/*.hpi megawar/WEB-INF/plugins
 (cd megawar && jar c0Mf ../megawar.war *)
 
+# TODO find a way to encode this in some POM so that it can be managed by Dependabot
 version=0.1.0
 pct=$HOME/.m2/repository/org/jenkins-ci/tests/plugins-compat-tester-cli/$version/plugins-compat-tester-cli-$version.jar
 [ -f $pct ] || $MVN dependency:get -Dartifact=org.jenkins-ci.tests:plugins-compat-tester-cli:$version:jar -Dtransitive=false
