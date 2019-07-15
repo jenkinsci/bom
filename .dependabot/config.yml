@@ -3,27 +3,23 @@ update_configs:
   - package_manager: java:maven
     directory: /
     update_schedule: weekly
-    dependency_type: development
     default_reviewers:
       - jglick
   - package_manager: java:maven
     directory: /
     target_branch: 2.164.x
     update_schedule: monthly
-    dependency_type: development
     default_reviewers:
       - jglick
   - package_manager: java:maven
     directory: /
     target_branch: 2.150.x
     update_schedule: monthly
-    dependency_type: development
     default_reviewers:
       - jglick
   - package_manager: java:maven
     directory: /
     target_branch: 2.138.x
     update_schedule: monthly
-    dependency_type: development
     default_reviewers:
       - jglick
