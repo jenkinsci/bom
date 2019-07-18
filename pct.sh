@@ -38,5 +38,7 @@ rm -fv pct-work/structs-plugin/plugin/target/surefire-reports/TEST-InjectedTest.
 rm -fv pct-work/apache-httpcomponents-client-4-api/target/surefire-reports/TEST-InjectedTest.xml
 # TODO https://github.com/jenkinsci/matrix-project-plugin/pull/59
 rm -fv pct-work/matrix-project/target/surefire-reports/TEST-InjectedTest.xml
+# TODO https://github.com/jenkinsci/jenkins/pull/4099 pending backport to 2.176.3
+rm -fv pct-work/command-launcher/target/surefire-reports/TEST-hudson.slaves.CommandLauncher2Test.xml
 
 # produces: pct-report.xml, **/target/surefire-reports/TEST-*.xml
