@@ -73,6 +73,11 @@
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>credentials</artifactId>
+                <version>2.2.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>display-url-api</artifactId>
                 <version>2.3.1</version>
             </dependency>
@@ -80,6 +85,11 @@
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>durable-task</artifactId>
                 <version>1.30</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>jdk-tool</artifactId>
+                <version>1.2</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -105,6 +115,16 @@
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>script-security</artifactId>
                 <version>1.61</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>ssh-credentials</artifactId>
+                <version>1.17.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>ssh-slaves</artifactId>
+                <version>1.29.4</version> <!-- TODO PCT failure from https://github.com/jenkinsci/ssh-slaves-plugin/pull/114 -->
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
