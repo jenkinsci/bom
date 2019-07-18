@@ -35,5 +35,6 @@ rm -fv pct-work/workflow-cps/target/surefire-reports/TEST-org.jenkinsci.plugins.
 rm -fv pct-work/structs-plugin/plugin/target/surefire-reports/TEST-org.jenkinsci.plugins.structs.describable.DescribableModelTest.xml
 # TODO https://github.com/jenkinsci/jenkins/pull/4120 problems with workflow-cps → jquery-detached:
 rm -fv pct-work/structs-plugin/plugin/target/surefire-reports/TEST-InjectedTest.xml
+rm -fv pct-work/apache-httpcomponents-client-4-api/target/surefire-reports/TEST-InjectedTest.xml
 
 # produces: pct-report.xml, **/target/surefire-reports/TEST-*.xml
