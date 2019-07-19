@@ -23,12 +23,19 @@ def plugins
 stage('prep') {
     mavenEnv {
         checkout scm
-        sh 'bash prep.sh'
+        def tmp = pwd tmp: true
+        withEnv(["SAMPLE_PLUGIN_OPTS=-Dmaven.repo.local=$tmp/m2repo -Dset.changelist -Dexpression=changelist -Doutput=$tmp/changelist help:evaluate"]) {
+            sh 'bash prep.sh'
+        }
         dir('sample-plugin/target') {
             plugins = readFile('plugins.txt').split(' ')
             stash name: 'pct', includes: 'megawar.war,pct.jar'
         }
         stash name: 'ci', includes: 'pct.sh'
+        def changelist = readFile("$tmp/changelist")
+        dir("$tmp/m2repo") {
+            archiveArtifacts artifacts: "**/*$changelist/*$changelist*", excludes: '**/sample/'
+        }
     }
 }
 
@@ -50,4 +57,4 @@ plugins.each { plugin ->
 }
 parallel branches
 
-// TODO incrementalify and publish
+infra.maybePublishIncrementals()
