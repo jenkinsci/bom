@@ -1,8 +1,7 @@
 def mavenEnv(body) {
     // TODO use label 'maven' for startup speed and newer Maven
     // (means no Dockerized tests like in durable-task)
-    // but as in aci branch, https://github.com/jenkinsci/jnlp-agents/pull/2 means no git
-    // (try https://github.com/carlossg/docker-maven/issues/110#issuecomment-497693840)
+    // but as in aci branch, need https://github.com/jenkinsci/jnlp-agents/pull/3
     node('docker') {
         def settingsXml = "${pwd tmp: true}/settings-azure.xml"
         def ok = infra.retrieveMavenSettingsFile(settingsXml)
