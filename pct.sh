@@ -36,9 +36,13 @@ rm -fv pct-work/structs-plugin/plugin/target/surefire-reports/TEST-org.jenkinsci
 # TODO https://github.com/jenkinsci/jenkins/pull/4120 problems with workflow-cps → jquery-detached:
 rm -fv pct-work/structs-plugin/plugin/target/surefire-reports/TEST-InjectedTest.xml
 rm -fv pct-work/apache-httpcomponents-client-4-api/target/surefire-reports/TEST-InjectedTest.xml
+rm -fv pct-work/ssh-slaves/target/surefire-reports/TEST-InjectedTest.xml
 # TODO https://github.com/jenkinsci/matrix-project-plugin/pull/59
 rm -fv pct-work/matrix-project/target/surefire-reports/TEST-InjectedTest.xml
 # TODO https://github.com/jenkinsci/jenkins/pull/4099 pending backport to 2.176.3
 rm -fv pct-work/command-launcher/target/surefire-reports/TEST-hudson.slaves.CommandLauncher2Test.xml
+# TODO pending ssh-slaves 1.30.0 with https://github.com/jenkinsci/ssh-slaves-plugin/pull/114 (plus https://github.com/jenkinsci/durable-task-plugin/pull/100):
+rm -fv pct-work/ssh-slaves/target/surefire-reports/TEST-hudson.plugins.sshslaves.verifiers.VerificationStrategyConfigurationTest.xml
+rm -fv pct-work/ssh-slaves/target/surefire-reports/TEST-hudson.plugins.sshslaves.SSHLauncherTest.xml
 
 # produces: pct-report.xml, **/target/surefire-reports/TEST-*.xml
