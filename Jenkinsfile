@@ -12,6 +12,9 @@ def mavenEnv(body) {
             body()
         }
         junit testResults: '**/target/surefire-reports/TEST-*.xml', allowEmptyResults: true
+        if (currentBuild.result == 'UNSTABLE') {
+            error 'Some test failures, not going to continue'
+        }
     }
 }
 
@@ -20,13 +23,12 @@ def plugins
 stage('prep') {
     mavenEnv {
         checkout scm
-        // TODO rename to prep.sh & pct.sh, respectively, for clarity
-        sh 'bash ci-1.sh'
+        sh 'bash prep.sh'
         dir('sample-plugin/target') {
             plugins = readFile('plugins.txt').split(' ')
             stash name: 'pct', includes: 'megawar.war,pct.jar'
         }
-        stash name: 'ci', includes: 'ci-2.sh'
+        stash name: 'ci', includes: 'pct.sh'
     }
 }
 
@@ -37,8 +39,8 @@ plugins.each { plugin ->
             deleteDir()
             unstash 'ci'
             unstash 'pct'
-            withEnv(["PLUGIN=$plugin"]) {
-                sh 'bash ci-2.sh'
+            withEnv(["PLUGINS=$plugin"]) {
+                sh 'bash pct.sh'
             }
             warnError('some plugins could not be run in PCT') {
                 sh 'if fgrep -q "<status>INTERNAL_ERROR</status>" pct-report.xml; then echo PCT failed; exit 1; fi'
@@ -47,3 +49,5 @@ plugins.each { plugin ->
     }
 }
 parallel branches
+
+// TODO incrementalify and publish
