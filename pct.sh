@@ -30,6 +30,8 @@ java -jar pct.jar \
      -mavenProperties "$MAVEN_PROPERTIES" \
      -skipTestCache true
 
+# TODO rather than removing all these, have a text file of known failures and just convert them to “skipped”
+
 # TODO https://github.com/jenkinsci/workflow-cps-plugin/pull/302
 rm -fv pct-work/workflow-cps/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.cps.SnippetizerTest.xml
 # TODO https://github.com/jenkinsci/structs-plugin/pull/50
@@ -42,5 +44,7 @@ rm -fv pct-work/ssh-slaves/target/surefire-reports/TEST-InjectedTest.xml
 rm -fv pct-work/matrix-project/target/surefire-reports/TEST-InjectedTest.xml
 # TODO https://github.com/jenkinsci/jenkins/pull/4099 pending backport to 2.176.3
 rm -fv pct-work/command-launcher/target/surefire-reports/TEST-hudson.slaves.CommandLauncher2Test.xml
+# TODO https://github.com/jenkinsci/durable-task-plugin/pull/101
+rm -fv pct-work/durable-task/target/surefire-reports/TEST-org.jenkinsci.plugins.durabletask.BourneShellScriptTest.xml
 
 # produces: pct-report.xml, **/target/surefire-reports/TEST-*.xml
