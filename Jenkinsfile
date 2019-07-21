@@ -1,13 +1,10 @@
 def mavenEnv(body) {
-    // TODO use label 'maven' for startup speed and newer Maven
-    // (means no Dockerized tests like in durable-task)
-    // but as in aci branch, need https://github.com/jenkinsci/jnlp-agents/pull/3
-    node('docker') {
+    node('maven') { // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
+        sh 'mvn -version'
         def settingsXml = "${pwd tmp: true}/settings-azure.xml"
         def ok = infra.retrieveMavenSettingsFile(settingsXml)
         assert ok
-        def javaHome=tool 'jdk8'
-        withEnv(["JAVA_HOME=$javaHome", "PATH+JAVA=$javaHome/bin", "PATH+MAVEN=${tool 'mvn'}/bin", "MAVEN_SETTINGS=$settingsXml"]) {
+        withEnv(["MAVEN_SETTINGS=$settingsXml"]) {
             body()
         }
         junit testResults: '**/target/surefire-reports/TEST-*.xml', allowEmptyResults: true

@@ -13,6 +13,7 @@ else
     PCT_S_ARG=
 fi
 
+# TODO use -ntp if there is a PCT option to pass Maven options
 MAVEN_PROPERTIES=org.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn:jth.jenkins-war.path=$(pwd)/megawar.war
 if [ -v EXTRA_MAVEN_PROPERTIES ]
 then
@@ -29,6 +30,8 @@ java -jar pct.jar \
      -mavenProperties "$MAVEN_PROPERTIES" \
      -skipTestCache true
 
+# TODO rather than removing all these, have a text file of known failures and just convert them to “skipped”
+
 # TODO https://github.com/jenkinsci/workflow-cps-plugin/pull/302
 rm -fv pct-work/workflow-cps/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.cps.SnippetizerTest.xml
 # TODO https://github.com/jenkinsci/structs-plugin/pull/50
@@ -41,8 +44,7 @@ rm -fv pct-work/ssh-slaves/target/surefire-reports/TEST-InjectedTest.xml
 rm -fv pct-work/matrix-project/target/surefire-reports/TEST-InjectedTest.xml
 # TODO https://github.com/jenkinsci/jenkins/pull/4099 pending backport to 2.176.3
 rm -fv pct-work/command-launcher/target/surefire-reports/TEST-hudson.slaves.CommandLauncher2Test.xml
-# TODO pending ssh-slaves 1.30.0 with https://github.com/jenkinsci/ssh-slaves-plugin/pull/114 (plus https://github.com/jenkinsci/durable-task-plugin/pull/100):
-rm -fv pct-work/ssh-slaves/target/surefire-reports/TEST-hudson.plugins.sshslaves.verifiers.VerificationStrategyConfigurationTest.xml
-rm -fv pct-work/ssh-slaves/target/surefire-reports/TEST-hudson.plugins.sshslaves.SSHLauncherTest.xml
+# TODO https://github.com/jenkinsci/durable-task-plugin/pull/101
+rm -fv pct-work/durable-task/target/surefire-reports/TEST-org.jenkinsci.plugins.durabletask.BourneShellScriptTest.xml
 
 # produces: pct-report.xml, **/target/surefire-reports/TEST-*.xml
