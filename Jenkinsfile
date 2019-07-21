@@ -1,5 +1,5 @@
 def mavenEnv(body) {
-    node('maven') { // https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
+    node('maven') { // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
         sh 'mvn -version'
         def settingsXml = "${pwd tmp: true}/settings-azure.xml"
         def ok = infra.retrieveMavenSettingsFile(settingsXml)
