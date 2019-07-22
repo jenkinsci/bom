@@ -4,13 +4,15 @@
     <parent>
         <groupId>io.jenkins.tools.bom</groupId>
         <artifactId>parent</artifactId>
-        <version>2.138.1-SNAPSHOT</version>
+        <version>${revision}${changelist}</version>
     </parent>
     <artifactId>bom</artifactId>
     <packaging>pom</packaging>
     <properties>
         <structs-plugin.version>1.19</structs-plugin.version>
+        <workflow-cps-plugin.version>2.72</workflow-cps-plugin.version>
         <workflow-step-api-plugin.version>2.20</workflow-step-api-plugin.version>
+        <workflow-support-plugin.version>3.3</workflow-support-plugin.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -28,7 +30,13 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-cps</artifactId>
-                <version>2.72</version>
+                <version>${workflow-cps-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins.workflow</groupId>
+                <artifactId>workflow-cps</artifactId>
+                <classifier>tests</classifier>
+                <version>${workflow-cps-plugin.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
@@ -59,7 +67,13 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-support</artifactId>
-                <version>3.3</version>
+                <version>${workflow-support-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins.workflow</groupId>
+                <artifactId>workflow-support</artifactId>
+                <classifier>tests</classifier>
+                <version>${workflow-support-plugin.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -149,4 +163,20 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>flatten</id>
+                        <configuration>
+                            <flattenMode>bom</flattenMode>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
