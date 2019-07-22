@@ -46,5 +46,8 @@ rm -fv pct-work/matrix-project/target/surefire-reports/TEST-InjectedTest.xml
 rm -fv pct-work/command-launcher/target/surefire-reports/TEST-hudson.slaves.CommandLauncher2Test.xml
 # TODO https://github.com/jenkinsci/durable-task-plugin/pull/101
 rm -fv pct-work/durable-task/target/surefire-reports/TEST-org.jenkinsci.plugins.durabletask.BourneShellScriptTest.xml
+# TODO pending ssh-slaves 1.30.0 with https://github.com/jenkinsci/ssh-slaves-plugin/pull/114 (plus https://github.com/jenkinsci/durable-task-plugin/pull/100):
+rm -fv pct-work/ssh-slaves/target/surefire-reports/TEST-hudson.plugins.sshslaves.verifiers.VerificationStrategyConfigurationTest.xml
+rm -fv pct-work/ssh-slaves/target/surefire-reports/TEST-hudson.plugins.sshslaves.SSHLauncherTest.xml
 
 # produces: pct-report.xml, **/target/surefire-reports/TEST-*.xml
