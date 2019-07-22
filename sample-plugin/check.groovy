@@ -7,13 +7,18 @@ assert artifactMap['junit:junit'] == project.artifactMap['junit:junit']
 def managedPluginDeps = managedDeps.collect {stripAllButGA(it)}.grep { ga ->
     def art = artifactMap[ga]
     if (art == null) {
-        println "Do not see managed dependency $ga"
-        return false
+        if (ga.contains('.plugins:')) { // TODO without an Artifact, we have no reliable way of checking whether it is actually a plugin
+            throw new org.apache.maven.plugin.MojoFailureException("Managed plugin dependency $ga not listed in test classpath of sample plugin")
+        } else {
+            println "Do not see managed dependency $ga"
+            return false
+        }
     }
     pluginName(art) != null
 }
 if (managedPluginDeps != managedPluginDeps.toSorted()) {
     throw new org.apache.maven.plugin.MojoFailureException("Managed plugin dependencies should be sorted: $managedPluginDeps")
+    // TODO also check sorting of sample plugin dependencies
 }
 
 project.artifacts.each { art ->

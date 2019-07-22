@@ -20,14 +20,12 @@
             <url>https://opensource.org/licenses/MIT</url>
         </license>
     </licenses>
-    <!-- TODO
     <scm>
         <connection>scm:git:git@github.com/jenkinsci/${project.artifactId}.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/jenkinsci/${project.artifactId}.git</developerConnection>
         <url>https://github.com/jenkinsci/${project.artifactId}</url>
         <tag>HEAD</tag>
     </scm>
-    -->
     <modules>
         <module>bom</module>
         <module>sample-plugin</module>
