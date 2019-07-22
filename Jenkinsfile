@@ -1,14 +1,10 @@
 def mavenEnv(body) {
-    // TODO use label 'maven' for startup speed and newer Maven
-    // (means no Dockerized tests like in durable-task)
-    // but as in aci branch, https://github.com/jenkinsci/jnlp-agents/pull/2 means no git
-    // (try https://github.com/carlossg/docker-maven/issues/110#issuecomment-497693840)
-    node('docker') {
+    node('maven') { // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
+        sh 'mvn -version'
         def settingsXml = "${pwd tmp: true}/settings-azure.xml"
         def ok = infra.retrieveMavenSettingsFile(settingsXml)
         assert ok
-        def javaHome=tool 'jdk8'
-        withEnv(["JAVA_HOME=$javaHome", "PATH+JAVA=$javaHome/bin", "PATH+MAVEN=${tool 'mvn'}/bin", "MAVEN_SETTINGS=$settingsXml"]) {
+        withEnv(["MAVEN_SETTINGS=$settingsXml"]) {
             body()
         }
         junit testResults: '**/target/surefire-reports/TEST-*.xml', allowEmptyResults: true
@@ -23,13 +19,12 @@ def plugins
 stage('prep') {
     mavenEnv {
         checkout scm
-        // TODO rename to prep.sh & pct.sh, respectively, for clarity
-        sh 'bash ci-1.sh'
+        sh 'bash prep.sh'
         dir('sample-plugin/target') {
             plugins = readFile('plugins.txt').split(' ')
             stash name: 'pct', includes: 'megawar.war,pct.jar'
         }
-        stash name: 'ci', includes: 'ci-2.sh'
+        stash name: 'ci', includes: 'pct.sh'
     }
 }
 
@@ -40,8 +35,8 @@ plugins.each { plugin ->
             deleteDir()
             unstash 'ci'
             unstash 'pct'
-            withEnv(["PLUGIN=$plugin"]) {
-                sh 'bash ci-2.sh'
+            withEnv(["PLUGINS=$plugin"]) {
+                sh 'bash pct.sh'
             }
             warnError('some plugins could not be run in PCT') {
                 sh 'if fgrep -q "<status>INTERNAL_ERROR</status>" pct-report.xml; then echo PCT failed; exit 1; fi'
@@ -50,3 +45,5 @@ plugins.each { plugin ->
     }
 }
 parallel branches
+
+// TODO incrementalify and publish

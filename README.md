@@ -80,7 +80,11 @@ and the specified Jenkins LTS version.
 If there is a PCT failure, fix it in the plugin with the failing test,
 and when that fix is released, try updating the BOM again.
 
-TODO could use a script to run the full build locally with just a single plugin and a single test.
+To reproduce a PCT failure locally, use something like
+
+```sh
+PLUGINS=structs,mailer TEST=InjectedTest bash local-test.sh
+```
 
 ## LTS lines
 
