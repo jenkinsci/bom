@@ -4,18 +4,19 @@ cd $(dirname $0)
 
 rm -rf sample-plugin/target
 
-# TODO use -ntp after INFRA-2129 / Maven 3.6.1
-MVN='mvn -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn'
+MVN='mvn -B -ntp'
 if [ -v MAVEN_SETTINGS ]
 then
     MVN="$MVN -s $MAVEN_SETTINGS"
 fi
 
-$MVN -Dmaven.test.failure.ignore install
+$MVN -Dmaven.test.failure.ignore install ${SAMPLE_PLUGIN_OPTS:-}
 
 cd sample-plugin/target
 cp -r jenkins-for-test megawar
-# TODO check if removing detached-plugins is still necessary, given use of explicit -includePlugins
+mkdir jenkins
+echo '# nothing' > jenkins/split-plugins.txt
+jar uvf megawar/WEB-INF/lib/jenkins-core-*.jar jenkins/split-plugins.txt
 rm -rfv megawar/WEB-INF/detached-plugins megawar/META-INF/*.{RSA,SF}
 mkdir megawar/WEB-INF/plugins
 cp -rv test-classes/test-dependencies/*.hpi megawar/WEB-INF/plugins
