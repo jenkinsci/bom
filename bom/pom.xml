@@ -9,7 +9,9 @@
     <artifactId>bom</artifactId>
     <packaging>pom</packaging>
     <properties>
+        <scm-api-plugin.version>2.6.3</scm-api-plugin.version>
         <structs-plugin.version>1.19</structs-plugin.version>
+        <workflow-api-plugin.version>2.35</workflow-api-plugin.version>
         <workflow-cps-plugin.version>2.72</workflow-cps-plugin.version>
         <workflow-step-api-plugin.version>2.20</workflow-step-api-plugin.version>
         <workflow-support-plugin.version>3.3</workflow-support-plugin.version>
@@ -20,7 +22,13 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-api</artifactId>
-                <version>2.35</version>
+                <version>${workflow-api-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins.workflow</groupId>
+                <artifactId>workflow-api</artifactId>
+                <classifier>tests</classifier>
+                <version>${workflow-api-plugin.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
@@ -123,7 +131,13 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>scm-api</artifactId>
-                <version>2.6.3</version>
+                <version>${scm-api-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>scm-api</artifactId>
+                <classifier>tests</classifier>
+                <version>${scm-api-plugin.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
