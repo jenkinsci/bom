@@ -139,6 +139,10 @@ so that the branches differ from `master` only in POMs (and perhaps in sample pl
 
 ## Releasing
 
+`release:prepare` only runs basic tests about plugin versions, not the full PCT.
+Therefore be sure to check [commit status for the selected branch](https://github.com/jenkinsci/bom/commits/master)
+to ensure that CI builds have passed before cutting a release.
+
 Due to a misconfiguration in Incrementals tooling, currently after every release you must
 
 ```sh
