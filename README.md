@@ -137,6 +137,16 @@ This ensures that CI-related changes propagate to all branches without manual co
 Merge conflicts should be resolved in favor of the `HEAD`,
 so that the branches differ from `master` only in POMs (and perhaps in sample plugin code).
 
+## Releasing
+
+Due to a misconfiguration in Incrementals tooling, currently after every release you must
+
+```sh
+git checkout HEAD^^ -- sample-plugin/pom.xml
+```
+
+and commit the result.
+
 ## Incrementals
 
 This repository is integrated with “Incrementals” [JEP-305](https://jenkins.io/jep/305):
