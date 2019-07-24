@@ -56,6 +56,10 @@ You can try just incrementing plugin versions in `bom/pom.xml`.
 If CI passes, great!
 Dependabot will try doing this as well.
 
+In cases where two or more plugins must be updated as a unit
+([JENKINS-49651](https://issues.jenkins-ci.org/browse/JENKINS-49651)),
+file a PR changing the versions of both.
+
 ## Adding a new plugin
 
 Insert a new `dependency` in _sorted_ order to `bom/pom.xml`.
@@ -85,6 +89,9 @@ To reproduce a PCT failure locally, use something like
 ```sh
 PLUGINS=structs,mailer TEST=InjectedTest bash local-test.sh
 ```
+
+Note that to minimize build time, tests are run only on Linux, against JDK 8, and without Docker support.
+It is unusual but possible for cross-component incompatibilities to only be visible in more specialized environments (such as Windows).
 
 ## LTS lines
 
