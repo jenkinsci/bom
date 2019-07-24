@@ -137,6 +137,21 @@ This ensures that CI-related changes propagate to all branches without manual co
 Merge conflicts should be resolved in favor of the `HEAD`,
 so that the branches differ from `master` only in POMs (and perhaps in sample plugin code).
 
+To be safe, rather than directly pushing merges, prepare them in a PR branch:
+
+```sh
+git checkout -b 2.164.x-merge 2.164.x
+git merge master
+git push fork
+# file a PR from youracct:2.164.x-merge → jenkinsci:2.164.x
+git checkout -b 2.150.x-merge 2.150.x
+git merge 2.164.x-merge
+git push fork
+# etc.
+```
+
+and only merge the PR if CI passes.
+
 ## Releasing
 
 `release:prepare` only runs basic tests about plugin versions, not the full PCT.
