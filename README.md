@@ -143,13 +143,11 @@ so that the branches differ from `master` only in POMs (and perhaps in sample pl
 Therefore be sure to check [commit status for the selected branch](https://github.com/jenkinsci/bom/commits/master)
 to ensure that CI builds have passed before cutting a release.
 
-Due to a misconfiguration in Incrementals tooling, currently after every release you must
-
-```sh
-git checkout HEAD^^ -- sample-plugin/pom.xml
-```
-
-and commit the result.
+Due to a misconfiguration in Incrementals tooling,
+currently after every release you must manually edit `sample-plugin/pom.xml`
+and reset `version` to `${revision}${changelist}`
+and set `revision` to that of the top-level `pom.xml`.
+Commit and push the result to fix the branch build.
 
 ## Incrementals
 
