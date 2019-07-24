@@ -158,7 +158,7 @@ and only merge the PR if CI passes.
 Therefore be sure to check [commit status for the selected branch](https://github.com/jenkinsci/bom/commits/master)
 to ensure that CI builds have passed before cutting a release.
 
-Due to a misconfiguration in Incrementals tooling,
+Due to a misconfiguration in Incrementals tooling (JENKINS-58641),
 currently after every release you must manually edit `sample-plugin/pom.xml`
 and reset `version` to `${revision}${changelist}`
 and set `revision` to that of the top-level `pom.xml`.
