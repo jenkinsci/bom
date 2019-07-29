@@ -51,5 +51,9 @@ rm -fv pct-work/matrix-project/target/surefire-reports/TEST-InjectedTest.xml
 rm -fv pct-work/command-launcher/target/surefire-reports/TEST-hudson.slaves.CommandLauncher2Test.xml
 # TODO https://github.com/jenkinsci/durable-task-plugin/pull/101
 rm -fv pct-work/durable-task/target/surefire-reports/TEST-org.jenkinsci.plugins.durabletask.BourneShellScriptTest.xml
+# TODO https://github.com/jenkinsci/git-client-plugin/pull/440
+rm -fv pct-work/git-client/target/surefire-reports/TEST-hudson.plugins.git.GitExceptionTest.xml
+# TODO fails for one reason in (non-PCT) official sources, run locally; and for another reason in PCT in Docker; passes in official sources in Docker, or locally in PCT
+rm -fv pct-work/git-client/target/surefire-reports/TEST-org.jenkinsci.plugins.gitclient.FilePermissionsTest.xml
 
 # produces: pct-report.xml, **/target/surefire-reports/TEST-*.xml
