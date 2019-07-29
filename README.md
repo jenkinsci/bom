@@ -112,6 +112,14 @@ To reproduce a PCT failure locally, use something like
 PLUGINS=structs,mailer TEST=InjectedTest bash local-test.sh
 ```
 
+optionally also passing
+
+```
+DOCKERIZED=yes
+```
+
+to reproduce image-specific failures.
+
 Note that to minimize build time, tests are run only on Linux, against JDK 8, and without Docker support.
 It is unusual but possible for cross-component incompatibilities to only be visible in more specialized environments (such as Windows).
 
