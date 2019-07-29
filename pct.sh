@@ -30,6 +30,12 @@ java -jar pct.jar \
      -mavenProperties "$MAVEN_PROPERTIES" \
      -skipTestCache true
 
+if fgrep -q "<status>INTERNAL_ERROR</status>" pct-report.xml
+then
+    echo PCT failed
+    exit 1
+fi
+
 # TODO rather than removing all these, have a text file of known failures and just convert them to “skipped”
 
 # TODO https://github.com/jenkinsci/structs-plugin/pull/50
