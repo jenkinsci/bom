@@ -30,7 +30,7 @@ java -jar pct.jar \
      -mavenProperties "$MAVEN_PROPERTIES" \
      -skipTestCache true
 
-if fgrep -q "<status>INTERNAL_ERROR</status>" pct-report.xml
+if fgrep -q '<status>INTERNAL_ERROR</status>' pct-report.xml
 then
     echo PCT failed
     exit 1
@@ -51,5 +51,8 @@ rm -fv pct-work/matrix-project/target/surefire-reports/TEST-InjectedTest.xml
 rm -fv pct-work/command-launcher/target/surefire-reports/TEST-hudson.slaves.CommandLauncher2Test.xml
 # TODO https://github.com/jenkinsci/durable-task-plugin/pull/101
 rm -fv pct-work/durable-task/target/surefire-reports/TEST-org.jenkinsci.plugins.durabletask.BourneShellScriptTest.xml
+# TODO https://github.com/jenkinsci/variant-plugin/pull/5 need an updated POM
+rm -fv pct-work/variant/target/surefire-reports/TEST-InjectedTest.xml
+rm -fv pct-work/variant/target/surefire-reports/TEST-org.jenkinsci.plugins.variant.VariantTest.xml
 
 # produces: pct-report.xml, **/target/surefire-reports/TEST-*.xml
