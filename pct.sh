@@ -38,6 +38,7 @@ rm -fv pct-work/structs-plugin/plugin/target/surefire-reports/TEST-org.jenkinsci
 rm -fv pct-work/structs-plugin/plugin/target/surefire-reports/TEST-InjectedTest.xml
 rm -fv pct-work/apache-httpcomponents-client-4-api/target/surefire-reports/TEST-InjectedTest.xml
 rm -fv pct-work/ssh-slaves/target/surefire-reports/TEST-InjectedTest.xml
+rm -fv pct-work/plain-credentials/target/surefire-reports/TEST-InjectedTest.xml
 # TODO https://github.com/jenkinsci/matrix-project-plugin/pull/59
 rm -fv pct-work/matrix-project/target/surefire-reports/TEST-InjectedTest.xml
 # TODO https://github.com/jenkinsci/jenkins/pull/4099 pending backport to 2.176.3
