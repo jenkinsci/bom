@@ -8,6 +8,7 @@ def mavenEnv(body) {
             body()
         }
         if (junit(testResults: '**/target/surefire-reports/TEST-*.xml', allowEmptyResults: true).failCount > 0) {
+            // TODO JENKINS-27092 throw up UNSTABLE status in this case
             error 'Some test failures, not going to continue'
         }
     }
