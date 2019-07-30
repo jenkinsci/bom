@@ -112,6 +112,14 @@ To reproduce a PCT failure locally, use something like
 PLUGINS=structs,mailer TEST=InjectedTest bash local-test.sh
 ```
 
+optionally also passing
+
+```
+DOCKERIZED=yes
+```
+
+to reproduce image-specific failures.
+
 Note that to minimize build time, tests are run only on Linux, against JDK 8, and without Docker support.
 It is unusual but possible for cross-component incompatibilities to only be visible in more specialized environments (such as Windows).
 
@@ -137,13 +145,28 @@ This ensures that CI-related changes propagate to all branches without manual co
 Merge conflicts should be resolved in favor of the `HEAD`,
 so that the branches differ from `master` only in POMs (and perhaps in sample plugin code).
 
+To be safe, rather than directly pushing merges, prepare them in a PR branch:
+
+```sh
+git checkout -b 2.164.x-merge 2.164.x
+git merge master
+git push fork
+# file a PR from youracct:2.164.x-merge → jenkinsci:2.164.x
+git checkout -b 2.150.x-merge 2.150.x
+git merge 2.164.x-merge
+git push fork
+# etc.
+```
+
+and only merge the PR if CI passes.
+
 ## Releasing
 
 `release:prepare` only runs basic tests about plugin versions, not the full PCT.
 Therefore be sure to check [commit status for the selected branch](https://github.com/jenkinsci/bom/commits/master)
 to ensure that CI builds have passed before cutting a release.
 
-Due to a misconfiguration in Incrementals tooling,
+Due to a misconfiguration in Incrementals tooling (JENKINS-58641),
 currently after every release you must manually edit `sample-plugin/pom.xml`
 and reset `version` to `${revision}${changelist}`
 and set `revision` to that of the top-level `pom.xml`.
@@ -154,6 +177,7 @@ Commit and push the result to fix the branch build.
 This repository is integrated with “Incrementals” [JEP-305](https://jenkins.io/jep/305):
 
 * Individual BOM builds, including from pull requests, are deployed and may be imported on an experimental basis by plugins.
+  (Currently broken, pending JENKINS-58716.)
 * Pull requests to the BOM may specify incremental versions of plugins, including unmerged PRs.
   (These should be resolved to formal release versions before the PR is merged.)
 

@@ -7,8 +7,8 @@ def mavenEnv(body) {
         withEnv(["MAVEN_SETTINGS=$settingsXml"]) {
             body()
         }
-        junit testResults: '**/target/surefire-reports/TEST-*.xml', allowEmptyResults: true
-        if (currentBuild.result == 'UNSTABLE') {
+        if (junit(testResults: '**/target/surefire-reports/TEST-*.xml', allowEmptyResults: true).failCount > 0) {
+            // TODO JENKINS-27092 throw up UNSTABLE status in this case
             error 'Some test failures, not going to continue'
         }
     }
@@ -44,9 +44,6 @@ plugins.each { plugin ->
             unstash 'pct'
             withEnv(["PLUGINS=$plugin"]) {
                 sh 'bash pct.sh'
-            }
-            warnError('some plugins could not be run in PCT') {
-                sh 'if fgrep -q "<status>INTERNAL_ERROR</status>" pct-report.xml; then echo PCT failed; exit 1; fi'
             }
         }
     }
