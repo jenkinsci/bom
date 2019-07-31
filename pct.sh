@@ -38,8 +38,6 @@ fi
 
 # TODO rather than removing all these, have a text file of known failures and just convert them to “skipped”
 
-# TODO https://github.com/jenkinsci/structs-plugin/pull/50
-rm -fv pct-work/structs-plugin/plugin/target/surefire-reports/TEST-org.jenkinsci.plugins.structs.describable.DescribableModelTest.xml
 # TODO https://github.com/jenkinsci/jenkins/pull/4120 problems with workflow-cps → jquery-detached:
 rm -fv pct-work/structs-plugin/plugin/target/surefire-reports/TEST-InjectedTest.xml
 rm -fv pct-work/apache-httpcomponents-client-4-api/target/surefire-reports/TEST-InjectedTest.xml
