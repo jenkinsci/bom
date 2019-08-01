@@ -49,6 +49,11 @@
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
+                <artifactId>workflow-cps-global-lib</artifactId>
+                <version>2.15</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-durable-task-step</artifactId>
                 <version>2.32</version>
             </dependency>
@@ -88,6 +93,11 @@
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>apache-httpcomponents-client-4-api</artifactId>
                 <version>4.5.5-3.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>branch-api</artifactId>
+                <version>2.5.4</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -134,6 +144,11 @@
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>git-client</artifactId>
                 <version>2.8.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>git-server</artifactId>
+                <version>1.8-rc49.303f29958f61</version> <!-- TODO https://github.com/jenkinsci/git-server-plugin/pull/10 -->
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
