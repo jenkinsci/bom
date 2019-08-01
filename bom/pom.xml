@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
     <properties>
         <scm-api-plugin.version>2.6.3</scm-api-plugin.version>
-        <structs-plugin.version>1.19</structs-plugin.version>
+        <structs-plugin.version>1.20</structs-plugin.version>
         <workflow-api-plugin.version>2.35</workflow-api-plugin.version>
         <workflow-cps-plugin.version>2.72</workflow-cps-plugin.version>
         <workflow-step-api-plugin.version>2.20</workflow-step-api-plugin.version>
