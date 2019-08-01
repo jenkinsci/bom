@@ -45,6 +45,8 @@ rm -fv pct-work/ssh-slaves/target/surefire-reports/TEST-InjectedTest.xml
 rm -fv pct-work/plain-credentials/target/surefire-reports/TEST-InjectedTest.xml
 # TODO https://github.com/jenkinsci/matrix-project-plugin/pull/59
 rm -fv pct-work/matrix-project/target/surefire-reports/TEST-InjectedTest.xml
+# TODO pending https://github.com/jenkinsci/git-plugin/pull/738
+rm -fv pct-work/git/target/surefire-reports/TEST-hudson.plugins.git.CredentialsUserRemoteConfigTest.xml
 # TODO https://github.com/jenkinsci/jenkins/pull/4099 pending backport to 2.176.3
 rm -fv pct-work/command-launcher/target/surefire-reports/TEST-hudson.slaves.CommandLauncher2Test.xml
 # TODO https://github.com/jenkinsci/durable-task-plugin/pull/101
