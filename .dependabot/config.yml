@@ -2,24 +2,6 @@ version: 1
 update_configs:
   - package_manager: java:maven
     directory: /
-    update_schedule: weekly
-    default_reviewers:
-      - jglick
-  - package_manager: java:maven
-    directory: /
-    target_branch: 2.164.x
-    update_schedule: monthly
-    default_reviewers:
-      - jglick
-  - package_manager: java:maven
-    directory: /
-    target_branch: 2.150.x
-    update_schedule: monthly
-    default_reviewers:
-      - jglick
-  - package_manager: java:maven
-    directory: /
-    target_branch: 2.138.x
-    update_schedule: monthly
+    update_schedule: daily
     default_reviewers:
       - jglick
