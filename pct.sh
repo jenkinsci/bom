@@ -57,5 +57,7 @@ rm -fv pct-work/durable-task/target/surefire-reports/TEST-org.jenkinsci.plugins.
 rm -fv pct-work/git-client/target/surefire-reports/TEST-hudson.plugins.git.GitExceptionTest.xml
 # TODO fails for one reason in (non-PCT) official sources, run locally; and for another reason in PCT in Docker; passes in official sources in Docker, or locally in PCT
 rm -fv pct-work/git-client/target/surefire-reports/TEST-org.jenkinsci.plugins.gitclient.FilePermissionsTest.xml
+# TODO pending https://github.com/jenkinsci/workflow-api-plugin/pull/99
+rm -fv pct-work/workflow-api/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.log.FileLogStorageTest.xml
 
 # produces: pct-report.xml, **/target/surefire-reports/TEST-*.xml
