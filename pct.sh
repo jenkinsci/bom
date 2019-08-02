@@ -43,6 +43,8 @@ rm -fv pct-work/structs-plugin/plugin/target/surefire-reports/TEST-InjectedTest.
 rm -fv pct-work/apache-httpcomponents-client-4-api/target/surefire-reports/TEST-InjectedTest.xml
 rm -fv pct-work/ssh-slaves/target/surefire-reports/TEST-InjectedTest.xml
 rm -fv pct-work/plain-credentials/target/surefire-reports/TEST-InjectedTest.xml
+# TODO pending https://github.com/jenkinsci/ansicolor-plugin/pull/164
+rm -fv pct-work/ansicolor/target/surefire-reports/TEST-hudson.plugins.ansicolor.AnsiColorBuildWrapperTest.xml
 # TODO https://github.com/jenkinsci/matrix-project-plugin/pull/59
 rm -fv pct-work/matrix-project/target/surefire-reports/TEST-InjectedTest.xml
 # TODO pending https://github.com/jenkinsci/git-plugin/pull/738
