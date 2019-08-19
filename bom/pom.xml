@@ -148,7 +148,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>git-server</artifactId>
-                <version>1.8-rc49.303f29958f61</version> <!-- TODO https://github.com/jenkinsci/git-server-plugin/pull/10 -->
+                <version>1.8</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
