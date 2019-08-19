@@ -59,7 +59,7 @@ rm -fv pct-work/git-client/target/surefire-reports/TEST-hudson.plugins.git.GitEx
 rm -fv pct-work/git-client/target/surefire-reports/TEST-org.jenkinsci.plugins.gitclient.FilePermissionsTest.xml
 # TODO pending https://github.com/jenkinsci/workflow-api-plugin/pull/99
 rm -fv pct-work/workflow-api/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.log.FileLogStorageTest.xml
-# TODO fails with NPE at at org.jenkinsci.plugins.workflow.libs.LibraryMemoryTest.loaderReleased(LibraryMemoryTest.java:85)
+# TODO pending https://github.com/jenkinsci/workflow-durable-task-step-plugin/pull/117
 rm -fv pct-work/workflow-cps-global-lib/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.libs.LibraryMemoryTest.xml
 
 # produces: pct-report.xml, **/target/surefire-reports/TEST-*.xml
