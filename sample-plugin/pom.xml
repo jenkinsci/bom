@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
-        <version>3.47</version>
+        <version>3.48</version>
         <relativePath />
     </parent>
     <groupId>io.jenkins.tools.bom</groupId>
@@ -17,6 +17,18 @@
         <jenkins.version>2.176.2</jenkins.version>
         <java.level>8</java.level>
     </properties>
+    <repositories>
+        <repository>
+            <id>repo.jenkins-ci.org</id>
+            <url>https://repo.jenkins-ci.org/public/</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>repo.jenkins-ci.org</id>
+            <url>https://repo.jenkins-ci.org/public/</url>
+        </pluginRepository>
+    </pluginRepositories>
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -103,6 +115,11 @@
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>ansicolor</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>cloudbees-folder</artifactId>
             <scope>test</scope>
         </dependency>
@@ -129,6 +146,11 @@
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>timestamper</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>variant</artifactId>
             <scope>test</scope>
         </dependency>
@@ -138,7 +160,7 @@
             <plugin>
                 <groupId>org.codehaus.gmaven</groupId>
                 <artifactId>groovy-maven-plugin</artifactId>
-                <version>2.1</version>
+                <version>2.1.1</version>
                 <executions>
                     <execution>
                         <phase>generate-test-sources</phase>

@@ -9,11 +9,11 @@
     <artifactId>bom</artifactId>
     <packaging>pom</packaging>
     <properties>
-        <git-plugin.version>3.11.0</git-plugin.version>
+        <git-plugin.version>3.12.0</git-plugin.version>
         <scm-api-plugin.version>2.6.3</scm-api-plugin.version>
         <structs-plugin.version>1.20</structs-plugin.version>
-        <workflow-api-plugin.version>2.35</workflow-api-plugin.version>
-        <workflow-cps-plugin.version>2.72</workflow-cps-plugin.version>
+        <workflow-api-plugin.version>2.36</workflow-api-plugin.version>
+        <workflow-cps-plugin.version>2.73</workflow-cps-plugin.version>
         <workflow-step-api-plugin.version>2.20</workflow-step-api-plugin.version>
         <workflow-support-plugin.version>3.3</workflow-support-plugin.version>
     </properties>
@@ -55,7 +55,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-durable-task-step</artifactId>
-                <version>2.32</version>
+                <version>2.33</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
@@ -91,6 +91,11 @@
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>ansicolor</artifactId>
+                <version>0.6.2</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>apache-httpcomponents-client-4-api</artifactId>
                 <version>4.5.5-3.0</version>
             </dependency>
@@ -112,17 +117,17 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>credentials</artifactId>
-                <version>2.2.0</version>
+                <version>2.2.1</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>credentials-binding</artifactId>
-                <version>1.19</version>
+                <version>1.20</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>display-url-api</artifactId>
-                <version>2.3.1</version>
+                <version>2.3.2</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -168,7 +173,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>mailer</artifactId>
-                <version>1.23</version>
+                <version>1.24</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -194,7 +199,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>script-security</artifactId>
-                <version>1.61</version>
+                <version>1.62</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -210,6 +215,11 @@
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>structs</artifactId>
                 <version>${structs-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>timestamper</artifactId>
+                <version>1.10</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
