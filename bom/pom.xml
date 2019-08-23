@@ -162,6 +162,11 @@
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>jquery</artifactId>
+                <version>1.12.4-1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>jsch</artifactId>
                 <version>0.1.55.1</version>
             </dependency>
@@ -169,6 +174,11 @@
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>junit</artifactId>
                 <version>1.28</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>junit-attachments</artifactId>
+                <version>1.6</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
