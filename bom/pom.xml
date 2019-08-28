@@ -25,14 +25,12 @@
                 <groupId>io.jenkins</groupId>
                 <artifactId>configuration-as-code</artifactId>
                 <version>${configuration-as-code-plugin.version}</version>
-                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>io.jenkins</groupId>
                 <artifactId>configuration-as-code</artifactId>
                 <version>${configuration-as-code-plugin.version}</version>
                 <classifier>tests</classifier>
-                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
