@@ -89,11 +89,17 @@ Make sure it is used (perhaps transitively) in `sample-plugin/pom.xml`.
 Ideally also update the sample plugin’s tests to actually exercise it,
 as a sanity check.
 
+Avoid adding transitive dependencies to `sample-plugin/pom.xml`. It is supposed
+to look as much as possible like a real plugin, and a real plugin should only
+declare its direct dependencies and not its transitive dependencies.
+
 You can also add a `<classifier>tests</classifier>` entry,
 for a plugin which specifies `<no-test-jar>false</no-test-jar>`.
 You should introduce a POM property so that the version is not repeated.
 
 The build will enforce that all transitive plugin dependencies are also managed.
+If the build fails due to an unmanaged transitive plugin dependency, add it to
+`bom/pom.xml`.
 
 ## PCT
 

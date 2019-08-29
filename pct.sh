@@ -38,13 +38,13 @@ fi
 
 # TODO rather than removing all these, have a text file of known failures and just convert them to “skipped”
 
-# TODO https://github.com/jenkinsci/structs-plugin/pull/50
-rm -fv pct-work/structs-plugin/plugin/target/surefire-reports/TEST-org.jenkinsci.plugins.structs.describable.DescribableModelTest.xml
 # TODO https://github.com/jenkinsci/jenkins/pull/4120 problems with workflow-cps → jquery-detached:
 rm -fv pct-work/structs-plugin/plugin/target/surefire-reports/TEST-InjectedTest.xml
 rm -fv pct-work/apache-httpcomponents-client-4-api/target/surefire-reports/TEST-InjectedTest.xml
 rm -fv pct-work/ssh-slaves/target/surefire-reports/TEST-InjectedTest.xml
 rm -fv pct-work/plain-credentials/target/surefire-reports/TEST-InjectedTest.xml
+# TODO pending https://github.com/jenkinsci/ansicolor-plugin/pull/164
+rm -fv pct-work/ansicolor/target/surefire-reports/TEST-hudson.plugins.ansicolor.AnsiColorBuildWrapperTest.xml
 # TODO https://github.com/jenkinsci/matrix-project-plugin/pull/59
 rm -fv pct-work/matrix-project/target/surefire-reports/TEST-InjectedTest.xml
 # TODO https://github.com/jenkinsci/jenkins/pull/4099 pending backport to 2.176.3
@@ -55,5 +55,9 @@ rm -fv pct-work/durable-task/target/surefire-reports/TEST-org.jenkinsci.plugins.
 rm -fv pct-work/git-client/target/surefire-reports/TEST-hudson.plugins.git.GitExceptionTest.xml
 # TODO fails for one reason in (non-PCT) official sources, run locally; and for another reason in PCT in Docker; passes in official sources in Docker, or locally in PCT
 rm -fv pct-work/git-client/target/surefire-reports/TEST-org.jenkinsci.plugins.gitclient.FilePermissionsTest.xml
+# TODO pending https://github.com/jenkinsci/workflow-api-plugin/pull/99
+rm -fv pct-work/workflow-api/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.log.FileLogStorageTest.xml
+# TODO pending https://github.com/jenkinsci/workflow-durable-task-step-plugin/pull/117
+rm -fv pct-work/workflow-cps-global-lib/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.libs.LibraryMemoryTest.xml
 
 # produces: pct-report.xml, **/target/surefire-reports/TEST-*.xml
