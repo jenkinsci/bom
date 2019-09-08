@@ -9,8 +9,8 @@
     <artifactId>bom</artifactId>
     <packaging>pom</packaging>
     <properties>
+        <configuration-as-code-plugin.version>1.30</configuration-as-code-plugin.version>
         <git-plugin.version>3.12.0</git-plugin.version>
-        <configuration-as-code-plugin.version>1.29</configuration-as-code-plugin.version>
         <scm-api-plugin.version>2.6.3</scm-api-plugin.version>
         <structs-plugin.version>1.20</structs-plugin.version>
         <workflow-api-plugin.version>2.36</workflow-api-plugin.version>
