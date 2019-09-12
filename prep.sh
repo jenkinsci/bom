@@ -23,7 +23,7 @@ cp -rv test-classes/test-dependencies/*.hpi megawar/WEB-INF/plugins
 (cd megawar && jar c0Mf ../megawar.war *)
 
 # TODO find a way to encode this in some POM so that it can be managed by Dependabot
-version=0.1.0
+version=0.2.0
 pct=$HOME/.m2/repository/org/jenkins-ci/tests/plugins-compat-tester-cli/$version/plugins-compat-tester-cli-$version.jar
 [ -f $pct ] || $MVN dependency:get -Dartifact=org.jenkins-ci.tests:plugins-compat-tester-cli:$version:jar -DremoteRepositories=https://repo.jenkins-ci.org/public/ -Dtransitive=false
 
