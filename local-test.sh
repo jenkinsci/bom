@@ -2,6 +2,7 @@
 set -euxo pipefail
 cd $(dirname $0)
 
+# TODO adapt to take a LINE=2.164.x arg
 # expects: $PLUGINS, optionally $TEST
 
 export SAMPLE_PLUGIN_OPTS=-Dtest=InjectedTest

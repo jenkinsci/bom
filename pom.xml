@@ -12,7 +12,7 @@
     <version>${revision}${changelist}</version>
     <packaging>pom</packaging>
     <properties>
-        <revision>2.176.5</revision>
+        <revision>3</revision>
         <changelist>-SNAPSHOT</changelist>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -29,15 +29,45 @@
         <tag>${scmTag}</tag>
     </scm>
     <modules>
-        <module>bom</module>
+        <module>bom-2.176.x</module>
+        <module>bom-2.164.x</module>
+        <!-- TODO 2.150.x, 2.138.x -->
         <module>sample-plugin</module>
     </modules>
     <build>
         <plugins>
             <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>flatten</id>
+                        <configuration>
+                            <flattenMode>bom</flattenMode>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <artifactId>maven-release-plugin</artifactId>
                 <configuration>
                     <tagNameFormat>bom-@{project.version}</tagNameFormat>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <inherited>false</inherited>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <inherited>false</inherited>
+                <configuration>
+                    <skip>true</skip>
                 </configuration>
             </plugin>
         </plugins>

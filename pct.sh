@@ -2,7 +2,7 @@
 set -euxo pipefail
 cd $(dirname $0)
 
-# expects: megawar.war, pct.war, $PLUGINS
+# expects: megawar.war, pct.war, $PLUGINS, $LINE
 
 rm -rf pct-work pct-report.xml
 
@@ -56,4 +56,4 @@ rm -fv pct-work/git-client/target/surefire-reports/TEST-hudson.plugins.git.GitEx
 # TODO fails for one reason in (non-PCT) official sources, run locally; and for another reason in PCT in Docker; passes in official sources in Docker, or locally in PCT
 rm -fv pct-work/git-client/target/surefire-reports/TEST-org.jenkinsci.plugins.gitclient.FilePermissionsTest.xml
 
-# produces: pct-report.xml, **/target/surefire-reports/TEST-*.xml
+# produces: **/target/surefire-reports/TEST-*.xml

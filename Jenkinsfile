@@ -17,35 +17,37 @@ def mavenEnv(body) {
 }
 
 def plugins
+def lines
 
 stage('prep') {
     mavenEnv {
         checkout scm
-        def tmp = pwd tmp: true
-        withEnv(["SAMPLE_PLUGIN_OPTS=-Dmaven.repo.local=$tmp/m2repo -Dset.changelist -Dexpression=changelist -Doutput=$tmp/changelist help:evaluate"]) {
+        withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist']) {
             sh 'bash prep.sh'
         }
-        dir('sample-plugin/target') {
+        dir('target') {
             plugins = readFile('plugins.txt').split(' ')
-            stash name: 'pct', includes: 'megawar.war,pct.jar'
+            lines = readFile('lines.txt').split(' ')
+            stash name: 'pct', includes: 'pct.jar'
+            lines.each {stash name: "megawar-$it", includes: "megawar-${it}.war"}
         }
         stash name: 'ci', includes: 'pct.sh'
-        def changelist = readFile("$tmp/changelist")
-        dir("$tmp/m2repo") {
-            archiveArtifacts artifacts: "**/*$changelist/*$changelist*", excludes: '**/sample/'
-        }
+        infra.prepareToPublishIncrementals()
     }
 }
 
 branches = [failFast: true]
 plugins.each { plugin ->
-    branches["pct-$plugin"] = {
-        mavenEnv {
-            deleteDir()
-            unstash 'ci'
-            unstash 'pct'
-            withEnv(["PLUGINS=$plugin"]) {
-                sh 'bash pct.sh'
+    lines.each {line ->
+        branches["pct-$plugin-$line"] = {
+            mavenEnv {
+                deleteDir()
+                unstash 'ci'
+                unstash 'pct'
+                unstash "megawar-$line"
+                withEnv(["PLUGINS=$plugin", "LINE=$line"]) {
+                    sh 'mv megawar-$LINE.war megawar.war && bash pct.sh'
+                }
             }
         }
     }

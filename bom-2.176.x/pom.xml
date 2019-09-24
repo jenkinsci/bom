@@ -6,7 +6,7 @@
         <artifactId>parent</artifactId>
         <version>${revision}${changelist}</version>
     </parent>
-    <artifactId>bom</artifactId>
+    <artifactId>bom-2.176.x</artifactId>
     <packaging>pom</packaging>
     <properties>
         <configuration-as-code-plugin.version>1.30</configuration-as-code-plugin.version>
@@ -281,20 +281,4 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>flatten-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>flatten</id>
-                        <configuration>
-                            <flattenMode>bom</flattenMode>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
 </project>
