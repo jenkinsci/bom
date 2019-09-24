@@ -18,7 +18,7 @@ for LINE in $LINEZ
 do
     if [ $rebuild = yes ]
     then
-        mvn -f sample-plugin clean package ${SAMPLE_PLUGIN_OPTS:-} -P$LINE
+        $MVN -f sample-plugin clean package ${SAMPLE_PLUGIN_OPTS:-} -P$LINE
     else
         rebuild=yes
         pushd sample-plugin/target/test-classes/test-dependencies
