@@ -136,6 +136,7 @@ When a new LTS line is released (`jenkins-2.nnn.1`),
 the main definition should be moved into its BOM,
 and the the previous BOM made to inherit from it.
 Older BOMs should only specify plugin version overrides compared to the next-newer BOM.
+`sample-plugin` also needs a POM profile for each supported line.
 
 The CI build (or just `mvn test -P2.nnn.x`) will fail if some managed plugins are too new for the LTS line.
 [This script](https://gist.github.com/jglick/0a85759ea65f60e107ac5a85a5032cae)

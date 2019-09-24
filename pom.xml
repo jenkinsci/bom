@@ -31,7 +31,8 @@
     <modules>
         <module>bom-2.176.x</module>
         <module>bom-2.164.x</module>
-        <!-- TODO 2.150.x, 2.138.x -->
+        <module>bom-2.150.x</module>
+        <module>bom-2.138.x</module>
         <module>sample-plugin</module>
     </modules>
     <build>
