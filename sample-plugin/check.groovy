@@ -16,12 +16,14 @@ def managedPluginDeps = managedDeps.collect {stripAllButGA(it)}.grep { ga ->
     }
     pluginName(art) != null
 }
-/* TODO do this only in the main line, perhaps by adding a flag to the POM profile
-if (managedPluginDeps != managedPluginDeps.toSorted()) {
-    throw new org.apache.maven.plugin.MojoFailureException("Managed plugin dependencies should be sorted: $managedPluginDeps")
-    // TODO also check sorting of sample plugin dependencies
+if (settings.activeProfiles.any {it ==~ /^2[.][0-9]+[.]x$/}) {
+    println 'Skipping managed plugin dep sort check on this old LTS line'
+} else {
+    if (managedPluginDeps != managedPluginDeps.toSorted()) {
+        throw new org.apache.maven.plugin.MojoFailureException("Managed plugin dependencies should be sorted: $managedPluginDeps")
+        // TODO also check sorting of sample plugin dependencies
+    }
 }
-*/
 
 project.artifacts.each { art ->
     if (art.type != 'jar') {
