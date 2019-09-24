@@ -20,19 +20,14 @@ just import the [latest BOM](https://github.com/jenkinsci/bom/releases) from tha
     <dependencies>
         <dependency>
             <groupId>io.jenkins.tools.bom</groupId>
-            <artifactId>bom</artifactId>
-            <version>2.138.1</version>
+            <artifactId>bom-2.138.x</artifactId>
+            <version>3</version>
             <scope>import</scope>
             <type>pom</type>
         </dependency>
     </dependencies>
 </dependencyManagement>
 ```
-
-(The patch component of the BOM version, `1` in this example,
-is unrelated to the patch component of the Jenkins LTS version, `4` in this example.
-Generally you should select the latest of each patch component independently.
-The major and minor components, in this example `2` and `138` respectively, must match.)
 
 Now you can declare dependencies on many plugins without needing to specify a version:
 
