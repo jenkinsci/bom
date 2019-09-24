@@ -10,7 +10,8 @@ fi
 
 $MVN clean install ${SAMPLE_PLUGIN_OPTS:-}
 
-LINEZ=$(ls -1d bom-*.x | sort -rn | sed s/bom-//g)
+ALL_LINEZ=$(ls -1d bom-*.x | sort -rn | sed s/bom-//g)
+: "${LINEZ:=$ALL_LINEZ}"
 echo -n $LINEZ > target/lines.txt
 
 rebuild=no
