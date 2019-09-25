@@ -37,7 +37,7 @@ stage('prep') {
 }
 
 branches = [failFast: true]
-plugins.subList(0, 5).each { plugin ->
+plugins.toList().subList(0, 5).each { plugin ->
     lines.each {line ->
         branches["pct-$plugin-$line"] = {
             mavenEnv {
