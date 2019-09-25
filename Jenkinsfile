@@ -37,7 +37,7 @@ stage('prep') {
 }
 
 branches = [failFast: true]
-for (int i = 0; i < 5; i++) {
+for (int i = 0; i < 15; i++) {
     def plugin = plugins[i]
     lines.each {line ->
         branches["pct-$plugin-$line"] = {
