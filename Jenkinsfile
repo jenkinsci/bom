@@ -31,7 +31,7 @@ stage('prep') {
             stash name: 'pct', includes: 'pct.jar'
             lines.each {stash name: "megawar-$it", includes: "megawar-${it}.war"}
         }
-        stash name: 'ci', includes: 'pct.sh'
+        stash name: 'pct.sh', includes: 'pct.sh'
         infra.prepareToPublishIncrementals()
     }
 }
@@ -42,7 +42,7 @@ plugins.each { plugin ->
         branches["pct-$plugin-$line"] = {
             mavenEnv {
                 deleteDir()
-                unstash 'ci'
+                unstash 'pct.sh'
                 unstash 'pct'
                 unstash "megawar-$line"
                 withEnv(["PLUGINS=$plugin", "LINE=$line"]) {
