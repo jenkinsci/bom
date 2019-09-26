@@ -36,9 +36,9 @@ stage('prep') {
     }
 }
 
-branches = [failFast: true]
-plugins.each { plugin ->
-    lines.each {line ->
+lines.each {line ->
+    branches = [failFast: true]
+    plugins.each { plugin ->
         branches["pct-$plugin-$line"] = {
             mavenEnv {
                 deleteDir()
@@ -51,7 +51,7 @@ plugins.each { plugin ->
             }
         }
     }
+    parallel branches
 }
-parallel branches
 
 infra.maybePublishIncrementals()
