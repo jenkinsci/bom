@@ -1,8 +1,3 @@
 _extends: .github
-tag-template: bom-$NEXT_PATCH_VERSION
-version-template: $MAJOR.$MINOR.$PATCH
-branches:
-  - master
-  - 2.164.x
-  - 2.150.x
-  - 2.138.x
+tag-template: bom-$NEXT_MAJOR_VERSION
+version-template: $MAJOR

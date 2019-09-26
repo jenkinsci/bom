@@ -12,8 +12,9 @@
     <version>${revision}${changelist}</version>
     <packaging>hpi</packaging>
     <properties>
-        <revision>2.176.5</revision>
+        <revision>3</revision>
         <changelist>-SNAPSHOT</changelist>
+        <bom>2.176.x</bom>
         <jenkins.version>2.176.3</jenkins.version>
         <java.level>8</java.level>
     </properties>
@@ -33,7 +34,7 @@
         <dependencies>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>bom</artifactId>
+                <artifactId>bom-${bom}</artifactId>
                 <version>${project.version}</version>
                 <scope>import</scope>
                 <type>pom</type>
@@ -213,6 +214,13 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
                 <configuration>
                     <skip>true</skip>
@@ -221,6 +229,27 @@
         </plugins>
     </build>
     <profiles>
+        <profile>
+            <id>2.164.x</id>
+            <properties>
+                <bom>2.164.x</bom>
+                <jenkins.version>2.164.3</jenkins.version>
+            </properties>
+        </profile>
+        <profile>
+            <id>2.150.x</id>
+            <properties>
+                <bom>2.150.x</bom>
+                <jenkins.version>2.150.3</jenkins.version>
+            </properties>
+        </profile>
+        <profile>
+            <id>2.138.x</id>
+            <properties>
+                <bom>2.138.x</bom>
+                <jenkins.version>2.138.4</jenkins.version>
+            </properties>
+        </profile>
         <profile>
             <id>skip-tests-on-release</id>
             <activation>

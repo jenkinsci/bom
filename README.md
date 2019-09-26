@@ -20,19 +20,14 @@ just import the [latest BOM](https://github.com/jenkinsci/bom/releases) from tha
     <dependencies>
         <dependency>
             <groupId>io.jenkins.tools.bom</groupId>
-            <artifactId>bom</artifactId>
-            <version>2.138.1</version>
+            <artifactId>bom-2.138.x</artifactId>
+            <version>3</version>
             <scope>import</scope>
             <type>pom</type>
         </dependency>
     </dependencies>
 </dependencyManagement>
 ```
-
-(The patch component of the BOM version, `1` in this example,
-is unrelated to the patch component of the Jenkins LTS version, `4` in this example.
-Generally you should select the latest of each patch component independently.
-The major and minor components, in this example `2` and `138` respectively, must match.)
 
 Now you can declare dependencies on many plugins without needing to specify a version:
 
@@ -131,51 +126,31 @@ It is unusual but possible for cross-component incompatibilities to only be visi
 
 ## LTS lines
 
-The `master` branch should track the current LTS line.
-A few historical lines are also tracked by branches,
-for use from plugins which are not yet ready to depend on the latest.
-Each line is released independently with `maven-release-plugin`.
-When a new LTS line is released (`jenkins-2.xxx.1`),
-a new BOM branch should be cut from the current `master`,
-and `master` made to track the new line.
+A separate BOM artifact if available for the current LTS line and a few historical lines.
+When a new LTS line is released (`jenkins-2.nnn.1`),
+the main definition should be moved into its BOM,
+and the the previous BOM made to inherit from it.
+Older BOMs should only specify plugin version overrides compared to the next-newer BOM.
+`sample-plugin` also needs a POM profile for each supported line.
 
-The CI build (or just `mvn test`) will fail if some managed plugins are too new for the LTS line.
+The CI build (or just `mvn test -P2.nnn.x`) will fail if some managed plugins are too new for the LTS line.
 [This script](https://gist.github.com/jglick/0a85759ea65f60e107ac5a85a5032cae)
 is a handy way to find the most recently released plugin version compatible with a given line,
 according to the `jenkins-infra/update-center2` (which currently maintains releases for the past five lines).
 
-General changes (such as to CI infrastructure), and most dependency updates, should be done in `master` first.
-Commits from `master` should be merged into the next older LTS branch,
-and from there into the branch one older, and so on.
-This ensures that CI-related changes propagate to all branches without manual copy-and-paste.
-Merge conflicts should be resolved in favor of the `HEAD`,
-so that the branches differ from `master` only in POMs (and perhaps in sample plugin code).
-
-To be safe, rather than directly pushing merges, prepare them in a PR branch:
-
-```sh
-git checkout -b 2.164.x-merge 2.164.x
-git merge master
-git push fork
-# file a PR from youracct:2.164.x-merge → jenkinsci:2.164.x
-git checkout -b 2.150.x-merge 2.150.x
-git merge 2.164.x-merge
-git push fork
-# etc.
-```
-
-and only merge the PR if CI passes.
-
 ## Releasing
 
 `release:prepare` only runs basic tests about plugin versions, not the full PCT.
-Therefore be sure to check [commit status for the selected branch](https://github.com/jenkinsci/bom/commits/master)
+Therefore be sure to check [commit status](https://github.com/jenkinsci/bom/commits/master)
 to ensure that CI builds have passed before cutting a release.
 
 Due to a misconfiguration in Incrementals tooling (JENKINS-58641),
-currently after every release you must manually edit `sample-plugin/pom.xml`
-and reset `version` to `${revision}${changelist}`
-and set `revision` to that of the top-level `pom.xml`.
+currently after every release you must manually run
+
+```bash
+mvn -f sample-plugin incrementals:reincrementalify
+```
+
 Commit and push the result to fix the branch build.
 
 ## Incrementals

@@ -2,33 +2,48 @@
 set -euxo pipefail
 cd $(dirname $0)
 
-rm -rf sample-plugin/target
-
 MVN='mvn -B -ntp'
 if [ -v MAVEN_SETTINGS ]
 then
     MVN="$MVN -s $MAVEN_SETTINGS"
 fi
 
-$MVN -Dmaven.test.failure.ignore install ${SAMPLE_PLUGIN_OPTS:-}
+$MVN clean install ${SAMPLE_PLUGIN_OPTS:-}
 
-cd sample-plugin/target
-cp -r jenkins-for-test megawar
-mkdir jenkins
-echo '# nothing' > jenkins/split-plugins.txt
-jar uvf megawar/WEB-INF/lib/jenkins-core-*.jar jenkins/split-plugins.txt
-rm -rfv megawar/WEB-INF/detached-plugins megawar/META-INF/*.{RSA,SF}
-mkdir megawar/WEB-INF/plugins
-cp -rv test-classes/test-dependencies/*.hpi megawar/WEB-INF/plugins
-(cd megawar && jar c0Mf ../megawar.war *)
+ALL_LINEZ=$(ls -1d bom-*.x | sort -rn | sed s/bom-//g)
+: "${LINEZ:=$ALL_LINEZ}"
+echo -n $LINEZ > target/lines.txt
+
+rebuild=no
+for LINE in $LINEZ
+do
+    if [ $rebuild = yes ]
+    then
+        $MVN -f sample-plugin clean package ${SAMPLE_PLUGIN_OPTS:-} -P$LINE
+    else
+        rebuild=yes
+        pushd sample-plugin/target/test-classes/test-dependencies
+        echo -n *.hpi | sed s/.hpi//g > ../../../../target/plugins.txt
+        popd
+    fi
+    pushd sample-plugin/target
+    mkdir jenkins
+    echo '# nothing' > jenkins/split-plugins.txt
+    cp -r jenkins-for-test megawar-$LINE
+    jar uvf megawar-$LINE/WEB-INF/lib/jenkins-core-*.jar jenkins/split-plugins.txt
+    rm -rfv megawar-$LINE/WEB-INF/detached-plugins megawar-$LINE/META-INF/*.{RSA,SF}
+    mkdir megawar-$LINE/WEB-INF/plugins
+    cp -rv test-classes/test-dependencies/*.hpi megawar-$LINE/WEB-INF/plugins
+    cd megawar-$LINE
+    jar c0Mf ../../../target/megawar-$LINE.war *
+    popd
+done
 
 # TODO find a way to encode this in some POM so that it can be managed by Dependabot
-version=0.2.0
-pct=$HOME/.m2/repository/org/jenkins-ci/tests/plugins-compat-tester-cli/$version/plugins-compat-tester-cli-$version.jar
-[ -f $pct ] || $MVN dependency:get -Dartifact=org.jenkins-ci.tests:plugins-compat-tester-cli:$version:jar -DremoteRepositories=https://repo.jenkins-ci.org/public/ -Dtransitive=false
+version=0.2.1
+timestamp=20190926.172941-2 # TODO https://github.com/jenkinsci/plugin-compat-tester/pull/198
+pct=$HOME/.m2/repository/org/jenkins-ci/tests/plugins-compat-tester-cli/${version}-SNAPSHOT/plugins-compat-tester-cli-${version}-${timestamp}.jar
+[ -f $pct ] || $MVN dependency:get -Dartifact=org.jenkins-ci.tests:plugins-compat-tester-cli:${version}-${timestamp}:jar -DremoteRepositories=https://repo.jenkins-ci.org/public/ -Dtransitive=false
+cp $pct target/pct.jar
 
-cp $pct pct.jar
-cd megawar/WEB-INF/plugins
-echo -n *.hpi | sed s/.hpi//g > ../../../plugins.txt
-
-# produces: sample-plugin/target/{megawar.war,pct.jar,plugins.txt}
+# produces: target/{megawar-*.war,pct.jar,plugins.txt,lines.txt}

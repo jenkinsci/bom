@@ -17,35 +17,49 @@ def mavenEnv(body) {
 }
 
 def plugins
+def lines
 
 stage('prep') {
     mavenEnv {
         checkout scm
-        def tmp = pwd tmp: true
-        withEnv(["SAMPLE_PLUGIN_OPTS=-Dmaven.repo.local=$tmp/m2repo -Dset.changelist -Dexpression=changelist -Doutput=$tmp/changelist help:evaluate"]) {
+        withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist']) {
             sh 'bash prep.sh'
         }
-        dir('sample-plugin/target') {
+        dir('target') {
             plugins = readFile('plugins.txt').split(' ')
-            stash name: 'pct', includes: 'megawar.war,pct.jar'
+            lines = readFile('lines.txt').split(' ')
+            lines = [lines[0], lines[-1]] // run PCT only on newest and oldest lines, to save resources
+            stash name: 'pct', includes: 'pct.jar'
+            lines.each {stash name: "megawar-$it", includes: "megawar-${it}.war"}
         }
-        stash name: 'ci', includes: 'pct.sh'
-        def changelist = readFile("$tmp/changelist")
-        dir("$tmp/m2repo") {
-            archiveArtifacts artifacts: "**/*$changelist/*$changelist*", excludes: '**/sample/'
-        }
+        stash name: 'pct.sh', includes: 'pct.sh'
+        infra.prepareToPublishIncrementals()
     }
 }
 
+// TODO would much rather parallelize *all* PCT tests, but (INFRA-2283) ci.jenkins.io just falls over when we try.
+// Running in parallel by plugin but serially by line works, albeit slowly, since workflow-cps is a bottleneck.
+// So we try to manually constrain parallelism.
+def semaphore = 30 // 50× parallelism usually works; 84× seems to fail reliably.
 branches = [failFast: true]
-plugins.each { plugin ->
-    branches["pct-$plugin"] = {
-        mavenEnv {
-            deleteDir()
-            unstash 'ci'
-            unstash 'pct'
-            withEnv(["PLUGINS=$plugin"]) {
-                sh 'bash pct.sh'
+lines.each {line ->
+    plugins.each { plugin ->
+        branches["pct-$plugin-$line"] = {
+            // TODO JENKINS-29037 would be useful here to wait with a longer period
+            waitUntil {if (semaphore > 0) {semaphore--; true} else {false}} // see JENKINS-27127
+            assert semaphore >= 0
+            try {
+                mavenEnv {
+                    deleteDir()
+                    unstash 'pct.sh'
+                    unstash 'pct'
+                    unstash "megawar-$line"
+                    withEnv(["PLUGINS=$plugin", "LINE=$line"]) {
+                        sh 'mv megawar-$LINE.war megawar.war && bash pct.sh'
+                    }
+                }
+            } finally {
+                semaphore++
             }
         }
     }
