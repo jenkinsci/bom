@@ -28,6 +28,7 @@ stage('prep') {
         dir('target') {
             plugins = readFile('plugins.txt').split(' ')
             lines = readFile('lines.txt').split(' ')
+            lines = [lines[0], lines[-1]] // run PCT only on newest and oldest lines, to save resources
             stash name: 'pct', includes: 'pct.jar'
             lines.each {stash name: "megawar-$it", includes: "megawar-${it}.war"}
         }
@@ -39,11 +40,12 @@ stage('prep') {
 // TODO would much rather parallelize *all* PCT tests, but (INFRA-2283) ci.jenkins.io just falls over when we try.
 // Running in parallel by plugin but serially by line works, albeit slowly, since workflow-cps is a bottleneck.
 // So we try to manually constrain parallelism.
-def semaphore = 50 // 50× parallelism seems to work reliably; 84× seems to fail reliably.
+def semaphore = 30 // 50× parallelism usually works; 84× seems to fail reliably.
 branches = [failFast: true]
 lines.each {line ->
     plugins.each { plugin ->
         branches["pct-$plugin-$line"] = {
+            // TODO JENKINS-29037 would be useful here to wait with a longer period
             waitUntil {if (semaphore > 0) {semaphore--; true} else {false}} // see JENKINS-27127
             assert semaphore >= 0
             try {
