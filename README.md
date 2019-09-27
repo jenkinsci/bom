@@ -126,17 +126,20 @@ It is unusual but possible for cross-component incompatibilities to only be visi
 
 ## LTS lines
 
-A separate BOM artifact if available for the current LTS line and a few historical lines.
+A separate BOM artifact is available for the current LTS line and a few historical lines.
 When a new LTS line is released (`jenkins-2.nnn.1`),
-the main definition should be moved into its BOM,
+the main definition should be moved into its BOM (added to the aggregator POM),
 and the the previous BOM made to inherit from it.
 Older BOMs should only specify plugin version overrides compared to the next-newer BOM.
-`sample-plugin` also needs a POM profile for each supported line.
+`sample-plugin` should be updated to use the latest line by default,
+and get a new POM profile for the penultimate.
 
 The CI build (or just `mvn test -P2.nnn.x`) will fail if some managed plugins are too new for the LTS line.
 [This script](https://gist.github.com/jglick/0a85759ea65f60e107ac5a85a5032cae)
 is a handy way to find the most recently released plugin version compatible with a given line,
-according to the `jenkins-infra/update-center2` (which currently maintains releases for the past five lines).
+according to the `jenkins-infra/update-center2`.
+The UC currently maintains releases for the past five lines,
+so it is reasonable to retire BOMs for lines older than that.
 
 ## Releasing
 
