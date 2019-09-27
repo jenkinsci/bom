@@ -14,8 +14,8 @@
     <properties>
         <revision>4</revision>
         <changelist>-SNAPSHOT</changelist>
-        <bom>2.176.x</bom>
-        <jenkins.version>2.176.3</jenkins.version>
+        <bom>2.190.x</bom>
+        <jenkins.version>2.190.1</jenkins.version>
         <java.level>8</java.level>
     </properties>
     <repositories>
@@ -229,6 +229,13 @@
         </plugins>
     </build>
     <profiles>
+        <profile>
+            <id>2.176.x</id>
+            <properties>
+                <bom>2.176.x</bom>
+                <jenkins.version>2.176.4</jenkins.version>
+            </properties>
+        </profile>
         <profile>
             <id>2.164.x</id>
             <properties>
