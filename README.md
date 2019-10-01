@@ -133,6 +133,7 @@ and the the previous BOM made to inherit from it.
 Older BOMs should only specify plugin version overrides compared to the next-newer BOM.
 `sample-plugin` should be updated to use the latest line by default,
 and get a new POM profile for the penultimate.
+To get ahead of problems, prepare the draft PR for a line as soon as its baseline is announced.
 
 The CI build (or just `mvn test -P2.nnn.x`) will fail if some managed plugins are too new for the LTS line.
 [This script](https://gist.github.com/jglick/0a85759ea65f60e107ac5a85a5032cae)
