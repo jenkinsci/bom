@@ -29,7 +29,7 @@
         <tag>${scmTag}</tag>
     </scm>
     <modules>
-        <module>bom-2.176.x</module>
+        <module>bom-latest</module>
         <module>bom-2.164.x</module>
         <module>bom-2.150.x</module>
         <module>bom-2.138.x</module>
