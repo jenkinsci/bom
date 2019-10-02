@@ -42,6 +42,8 @@ if [ $LINE = 2.190.x ]
 then
     # TODO https://github.com/jenkinsci/branch-api-plugin/pull/167
     rm -fv pct-work/branch-api/target/surefire-reports/TEST-jenkins.branch.BuildRetentionBranchPropertyTest.xml
+    # TODO https://github.com/jenkinsci/ssh-credentials-plugin/pull/47 would allow org.jenkins-ci.plugins:trilead-api:1.0.5 to be managed
+    rm -fv pct-work/ssh-slaves/target/surefire-reports/TEST-InjectedTest.xml
 fi
 if [ $LINE != 2.190.x ]
 then
