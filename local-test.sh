@@ -4,7 +4,7 @@ cd $(dirname $0)
 
 # expects: $PLUGINS, optionally $TEST, $LINE
 
-LATEST_LINE=$(ls -1d bom-*.x | sort -rn | head -1 | sed s/bom-//g)
+LATEST_LINE=$(fgrep '<bom>' sample-plugin/pom.xml | sed -E 's, *<bom>(.+)</bom>,\1,g' | sort -rn | head -1)
 : "${LINE:=$LATEST_LINE}"
 
 export SAMPLE_PLUGIN_OPTS=-Dtest=InjectedTest
