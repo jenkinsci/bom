@@ -38,17 +38,25 @@ fi
 
 # TODO rather than removing all these, have a text file of known failures and just convert them to “skipped”
 
-# TODO https://github.com/jenkinsci/jenkins/pull/4120 problems with workflow-cps → jquery-detached:
-rm -fv pct-work/structs-plugin/plugin/target/surefire-reports/TEST-InjectedTest.xml
-rm -fv pct-work/apache-httpcomponents-client-4-api/target/surefire-reports/TEST-InjectedTest.xml
-rm -fv pct-work/ssh-slaves/target/surefire-reports/TEST-InjectedTest.xml
-rm -fv pct-work/plain-credentials/target/surefire-reports/TEST-InjectedTest.xml
+if [ $LINE = 2.190.x ]
+then
+    # TODO https://github.com/jenkinsci/branch-api-plugin/pull/167
+    rm -fv pct-work/branch-api/target/surefire-reports/TEST-jenkins.branch.BuildRetentionBranchPropertyTest.xml
+fi
+if [ $LINE != 2.190.x ]
+then
+    # TODO https://github.com/jenkinsci/jenkins/pull/4120 problems with workflow-cps → jquery-detached:
+    rm -fv pct-work/structs-plugin/plugin/target/surefire-reports/TEST-InjectedTest.xml
+    rm -fv pct-work/apache-httpcomponents-client-4-api/target/surefire-reports/TEST-InjectedTest.xml
+    rm -fv pct-work/ssh-slaves/target/surefire-reports/TEST-InjectedTest.xml
+    rm -fv pct-work/plain-credentials/target/surefire-reports/TEST-InjectedTest.xml
+    # TODO https://github.com/jenkinsci/jenkins/pull/4099
+    rm -fv pct-work/command-launcher/target/surefire-reports/TEST-hudson.slaves.CommandLauncher2Test.xml
+fi
 # TODO pending https://github.com/jenkinsci/ansicolor-plugin/pull/164
 rm -fv pct-work/ansicolor/target/surefire-reports/TEST-hudson.plugins.ansicolor.AnsiColorBuildWrapperTest.xml
 # TODO https://github.com/jenkinsci/matrix-project-plugin/pull/59
 rm -fv pct-work/matrix-project/target/surefire-reports/TEST-InjectedTest.xml
-# TODO https://github.com/jenkinsci/jenkins/pull/4099 pending backport to 2.176.3
-rm -fv pct-work/command-launcher/target/surefire-reports/TEST-hudson.slaves.CommandLauncher2Test.xml
 # TODO https://github.com/jenkinsci/durable-task-plugin/pull/101
 rm -fv pct-work/durable-task/target/surefire-reports/TEST-org.jenkinsci.plugins.durabletask.BourneShellScriptTest.xml
 # TODO https://github.com/jenkinsci/git-client-plugin/pull/440
