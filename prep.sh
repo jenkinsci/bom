@@ -28,6 +28,7 @@ do
     fi
     pushd sample-plugin/target
     mkdir jenkins
+    # TODO keep managed splits, overriding version with the managed one
     echo '# nothing' > jenkins/split-plugins.txt
     cp -r jenkins-for-test megawar-$LINE
     jar uvf megawar-$LINE/WEB-INF/lib/jenkins-core-*.jar jenkins/split-plugins.txt
