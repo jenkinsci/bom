@@ -44,6 +44,7 @@ then
     rm -fv pct-work/branch-api/target/surefire-reports/TEST-jenkins.branch.BuildRetentionBranchPropertyTest.xml
     # TODO https://github.com/jenkinsci/ssh-credentials-plugin/pull/47 would allow org.jenkins-ci.plugins:trilead-api:1.0.5 to be managed
     rm -fv pct-work/ssh-slaves/target/surefire-reports/TEST-InjectedTest.xml
+    # TODO instead readd to managed list, override to version 0, readd 2.190.x profile, fix prep.sh to prepare line × plugin combos
 fi
 if [ $LINE != 2.190.x ]
 then
