@@ -41,7 +41,7 @@ done
 
 # TODO find a way to encode this in some POM so that it can be managed by Dependabot
 version=0.3.0
-pct=$HOME/.m2/repository/org/jenkins-ci/tests/plugins-compat-tester-cli/${version}-SNAPSHOT/plugins-compat-tester-cli-${version}.jar
+pct=$HOME/.m2/repository/org/jenkins-ci/tests/plugins-compat-tester-cli/${version}/plugins-compat-tester-cli-${version}.jar
 [ -f $pct ] || $MVN dependency:get -Dartifact=org.jenkins-ci.tests:plugins-compat-tester-cli:${version}-${timestamp}:jar -DremoteRepositories=https://repo.jenkins-ci.org/public/ -Dtransitive=false
 cp $pct target/pct.jar
 
