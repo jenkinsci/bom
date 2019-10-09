@@ -2,16 +2,18 @@ def buildNumber = BUILD_NUMBER as int; if (buildNumber > 1) milestone(buildNumbe
 
 def mavenEnv(body) {
     node('maven') { // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
-        sh 'mvn -version'
-        def settingsXml = "${pwd tmp: true}/settings-azure.xml"
-        def ok = infra.retrieveMavenSettingsFile(settingsXml)
-        assert ok
-        withEnv(["MAVEN_SETTINGS=$settingsXml"]) {
-            body()
-        }
-        if (junit(testResults: '**/target/surefire-reports/TEST-*.xml', allowEmptyResults: true).failCount > 0) {
-            // TODO JENKINS-27092 throw up UNSTABLE status in this case
-            error 'Some test failures, not going to continue'
+        timeout(60) {
+            sh 'mvn -version'
+            def settingsXml = "${pwd tmp: true}/settings-azure.xml"
+            def ok = infra.retrieveMavenSettingsFile(settingsXml)
+            assert ok
+            withEnv(["MAVEN_SETTINGS=$settingsXml"]) {
+                body()
+            }
+            if (junit(testResults: '**/target/surefire-reports/TEST-*.xml', allowEmptyResults: true).failCount > 0) {
+                // TODO JENKINS-27092 throw up UNSTABLE status in this case
+                error 'Some test failures, not going to continue'
+            }
         }
     }
 }
