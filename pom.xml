@@ -32,7 +32,6 @@
         <module>bom-latest</module>
         <module>bom-2.164.x</module>
         <module>bom-2.150.x</module>
-        <module>bom-2.138.x</module>
         <module>sample-plugin</module>
     </modules>
     <build>
