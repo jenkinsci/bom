@@ -56,6 +56,6 @@ rm -fv pct-work/git-client/target/surefire-reports/TEST-org.jenkinsci.plugins.gi
 # TODO pending non-beta release of https://github.com/jenkinsci/git-client-plugin/pull/478 (or #479 backport)
 rm -fv pct-work/git-client/target/surefire-reports/TEST-org.jenkinsci.plugins.gitclient.{CliGitAPIImplTest,JGitAPIImplTest,JGitApacheAPIImplTest}.xml
 # TODO https://github.com/jenkinsci/configuration-as-code-plugin/pull/1243
-rm -fv pct-work/configuration-as-code/target/surefire-reports/TEST-io.jenkins.plugins.casc.ConfigurationAsCodeTest.xml
+rm -fv pct-work/configuration-as-code-plugin/plugin/target/surefire-reports/TEST-io.jenkins.plugins.casc.ConfigurationAsCodeTest.xml
 
 # produces: **/target/surefire-reports/TEST-*.xml
