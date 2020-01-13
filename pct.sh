@@ -25,7 +25,6 @@ java -jar pct.jar \
      -includePlugins $PLUGINS \
      -workDirectory $(pwd)/pct-work \
      -reportFile $(pwd)/pct-report.xml \
-     -mvn $(which mvn) \
      $PCT_S_ARG \
      -mavenProperties "$MAVEN_PROPERTIES" \
      -skipTestCache true
