@@ -29,9 +29,10 @@ java -jar pct.jar \
      -mavenProperties "$MAVEN_PROPERTIES" \
      -skipTestCache true
 
-if fgrep -q '<status>INTERNAL_ERROR</status>' pct-report.xml
+if grep -q -F -e '<status>INTERNAL_ERROR</status>' -e '<status>TEST_FAILURES</status>' pct-report.xml
 then
     echo PCT failed
+    cat pct-report.xml
     exit 1
 fi
 
