@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
     <properties>
         <configuration-as-code-plugin.version>1.35</configuration-as-code-plugin.version>
-        <git-plugin.version>4.1.0-SNAPSHOT</git-plugin.version>
+        <git-plugin.version>4.1.0</git-plugin.version>
         <scm-api-plugin.version>2.6.3</scm-api-plugin.version>
         <structs-plugin.version>1.20</structs-plugin.version>
         <workflow-api-plugin.version>2.38</workflow-api-plugin.version>
@@ -159,7 +159,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>git-client</artifactId>
-                <version>3.1.0-SNAPSHOT</version>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
