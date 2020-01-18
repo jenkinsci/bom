@@ -230,7 +230,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>script-security</artifactId>
-                <version>1.69-SNAPSHOT</version>
+                <version>1.68</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
