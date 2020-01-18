@@ -10,7 +10,7 @@ This is important because version management is a [common annoyance](https://jen
 After selecting your plugin’s LTS baseline:
 
 ```xml
-<jenkins.version>2.138.4</jenkins.version>
+<jenkins.version>2.164.3</jenkins.version>
 ```
 
 just import the [latest BOM](https://github.com/jenkinsci/bom/releases) from that line:
@@ -20,8 +20,8 @@ just import the [latest BOM](https://github.com/jenkinsci/bom/releases) from tha
     <dependencies>
         <dependency>
             <groupId>io.jenkins.tools.bom</groupId>
-            <artifactId>bom-2.138.x</artifactId>
-            <version>3</version>
+            <artifactId>bom-2.164.x</artifactId>
+            <version>4</version>
             <scope>import</scope>
             <type>pom</type>
         </dependency>

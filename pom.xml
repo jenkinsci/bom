@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.jenkins-ci</groupId>
         <artifactId>jenkins</artifactId>
-        <version>1.52</version>
+        <version>1.53</version>
         <relativePath />
     </parent>
     <groupId>io.jenkins.tools.bom</groupId>
@@ -12,7 +12,7 @@
     <version>${revision}${changelist}</version>
     <packaging>pom</packaging>
     <properties>
-        <revision>4</revision>
+        <revision>6</revision>
         <changelist>-SNAPSHOT</changelist>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -33,7 +33,6 @@
         <module>bom-2.176.x</module>
         <module>bom-2.164.x</module>
         <module>bom-2.150.x</module>
-        <module>bom-2.138.x</module>
         <module>sample-plugin</module>
     </modules>
     <build>

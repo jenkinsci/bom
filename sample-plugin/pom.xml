@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
-        <version>3.50</version>
+        <version>3.55</version>
         <relativePath />
     </parent>
     <groupId>io.jenkins.tools.bom</groupId>
@@ -12,7 +12,7 @@
     <version>${revision}${changelist}</version>
     <packaging>hpi</packaging>
     <properties>
-        <revision>4</revision>
+        <revision>6</revision>
         <changelist>-SNAPSHOT</changelist>
         <bom>2.190.x</bom>
         <jenkins.version>2.190.1</jenkins.version>
@@ -209,7 +209,7 @@
                       <dependency>
                           <groupId>org.codehaus.groovy</groupId>
                           <artifactId>groovy-all</artifactId>
-                          <version>2.4.17</version>
+                          <version>2.4.18</version>
                       </dependency>
                   </dependencies>
             </plugin>
@@ -249,13 +249,6 @@
             <properties>
                 <bom>2.150.x</bom>
                 <jenkins.version>2.150.3</jenkins.version>
-            </properties>
-        </profile>
-        <profile>
-            <id>2.138.x</id>
-            <properties>
-                <bom>2.138.x</bom>
-                <jenkins.version>2.138.4</jenkins.version>
             </properties>
         </profile>
         <profile>
