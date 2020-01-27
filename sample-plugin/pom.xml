@@ -187,6 +187,11 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.jenkinsci.plugins</groupId>
+            <artifactId>pipeline-model-definition</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>timestamper</artifactId>
             <scope>test</scope>

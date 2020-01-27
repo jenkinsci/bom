@@ -11,6 +11,7 @@
     <properties>
         <configuration-as-code-plugin.version>1.41</configuration-as-code-plugin.version>
         <git-plugin.version>4.3.0</git-plugin.version>
+        <pipeline-model-definition-plugin.version>1.6.0</pipeline-model-definition-plugin.version>
         <scm-api-plugin.version>2.6.3</scm-api-plugin.version>
         <structs-plugin.version>1.20</structs-plugin.version>
         <workflow-api-plugin.version>2.40</workflow-api-plugin.version>
@@ -80,6 +81,11 @@
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
+                <artifactId>workflow-multibranch</artifactId>
+                <version>2.16</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-scm-step</artifactId>
                 <version>2.11</version>
             </dependency>
@@ -117,6 +123,11 @@
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>authentication-tokens</artifactId>
+                <version>1.4</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>branch-api</artifactId>
                 <version>2.5.6</version>
             </dependency>
@@ -147,6 +158,16 @@
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>docker-commons</artifactId>
+                <version>1.14</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>docker-workflow</artifactId>
+                <version>1.22</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>durable-task</artifactId>
                 <version>1.34</version>
             </dependency>
@@ -170,6 +191,11 @@
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>git-server</artifactId>
                 <version>1.9</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>jackson2-api</artifactId>
+                <version>2.10.2</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -215,6 +241,11 @@
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>pipeline-input-step</artifactId>
                 <version>2.11</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>pipeline-stage-step</artifactId>
+                <version>2.3</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -281,6 +312,31 @@
                 <groupId>org.jenkins-ci.ui</groupId>
                 <artifactId>jquery-detached</artifactId>
                 <version>1.2.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkinsci.plugins</groupId>
+                <artifactId>pipeline-model-api</artifactId>
+                <version>${pipeline-model-definition-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkinsci.plugins</groupId>
+                <artifactId>pipeline-model-declarative-agent</artifactId>
+                <version>1.1.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkinsci.plugins</groupId>
+                <artifactId>pipeline-model-definition</artifactId>
+                <version>${pipeline-model-definition-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkinsci.plugins</groupId>
+                <artifactId>pipeline-model-extensions</artifactId>
+                <version>${pipeline-model-definition-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkinsci.plugins</groupId>
+                <artifactId>pipeline-stage-tags-metadata</artifactId>
+                <version>${pipeline-model-definition-plugin.version}</version>
             </dependency>
             <!-- Non-plugins: -->
             <dependency>
