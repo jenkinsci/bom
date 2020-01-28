@@ -20,10 +20,12 @@ def mavenEnv(body) {
 
 def plugins
 def lines
+def failFast
 
 stage('prep') {
     mavenEnv {
         checkout scm
+        failFast = Boolean.parseBoolean(readFile('failFast').trim())
         withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist']) {
             sh 'bash prep.sh'
         }
@@ -43,7 +45,7 @@ stage('prep') {
 // Running in parallel by plugin but serially by line works, albeit slowly, since workflow-cps is a bottleneck.
 // So we try to manually constrain parallelism.
 def semaphore = 30 // 50× parallelism usually works; 84× seems to fail reliably.
-branches = [failFast: true]
+branches = [failFast: failFast]
 lines.each {line ->
     plugins.each { plugin ->
         branches["pct-$plugin-$line"] = {
