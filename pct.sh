@@ -1,6 +1,6 @@
 #!/bin/bash
 set -euxo pipefail
-cd $(dirname $0)
+cd "$(dirname "$0")"
 
 # expects: megawar.war, pct.war, $PLUGINS, $LINE
 
@@ -21,22 +21,22 @@ then
 fi
 
 java -jar pct.jar \
-     -war $(pwd)/megawar.war \
-     -includePlugins $PLUGINS \
-     -workDirectory $(pwd)/pct-work \
-     -reportFile $(pwd)/pct-report.xml \
+     -war "$(pwd)/megawar.war" \
+     -includePlugins "${PLUGINS}" \
+     -workDirectory "$(pwd)/pct-work" \
+     -reportFile "$(pwd)/pct-report.xml" \
      $PCT_S_ARG \
-     -mavenProperties "$MAVEN_PROPERTIES" \
+     -mavenProperties "${MAVEN_PROPERTIES}" \
      -skipTestCache true
 
-if fgrep -q '<status>INTERNAL_ERROR</status>' pct-report.xml
+if grep -F -q '<status>INTERNAL_ERROR</status>' pct-report.xml
 then
     echo PCT failed
     exit 1
 fi
 
 # TODO rather than removing all these, have a text file of known failures and just convert them to “skipped”
-if [ $LINE != 2.190.x ]
+if [ "$LINE" != 2.190.x ]
 then
     # TODO https://github.com/jenkinsci/jenkins/pull/4120 problems with workflow-cps → jquery-detached:
     rm -fv pct-work/structs-plugin/plugin/target/surefire-reports/TEST-InjectedTest.xml
