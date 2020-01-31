@@ -13,7 +13,7 @@
         <git-plugin.version>4.0.0</git-plugin.version>
         <scm-api-plugin.version>2.6.3</scm-api-plugin.version>
         <structs-plugin.version>1.20</structs-plugin.version>
-        <workflow-api-plugin.version>2.38</workflow-api-plugin.version>
+        <workflow-api-plugin.version>2.39</workflow-api-plugin.version>
         <workflow-cps-plugin.version>2.78</workflow-cps-plugin.version>
         <workflow-step-api-plugin.version>2.22</workflow-step-api-plugin.version>
         <workflow-support-plugin.version>3.4</workflow-support-plugin.version>
