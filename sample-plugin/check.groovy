@@ -19,14 +19,10 @@ def managedPluginDeps = managedDeps.collect {stripAllButGA(it)}.grep { ga ->
 if (settings.activeProfiles.any {it ==~ /^2[.][0-9]+[.]x$/}) {
     println 'Skipping managed plugin dep sort check on this old LTS line'
 } else {
-    // ignore structs from sorting as it needs to be first
-    // so as the correct version gets picked up and not 1.7 from when it was split
-    managedPluginDeps.remove('org.jenkins-ci.plugins:structs')
-
-    if (managedPluginDeps != managedPluginDeps.toSorted()) {
-        throw new org.apache.maven.plugin.MojoFailureException("Managed plugin dependencies should be sorted: $managedPluginDeps")
-        // TODO also check sorting of sample plugin dependencies
-    }
+//    if (managedPluginDeps != managedPluginDeps.toSorted()) {
+//        throw new org.apache.maven.plugin.MojoFailureException("Managed plugin dependencies should be sorted: $managedPluginDeps")
+//        // TODO also check sorting of sample plugin dependencies
+//    }
 }
 
 project.artifacts.each { art ->

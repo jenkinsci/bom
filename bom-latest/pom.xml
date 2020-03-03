@@ -20,7 +20,7 @@
     </properties>
     <dependencyManagement>
         <dependencies>
-            <!-- Force our version of structs and not the detached version (1.7) -->
+            <!-- Trying to see if loading a detached plugin first works -->
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>structs</artifactId>
