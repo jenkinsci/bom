@@ -20,13 +20,6 @@
     </properties>
     <dependencyManagement>
         <dependencies>
-            <!-- Trying to see if loading a detached plugin first works -->
-            <dependency>
-                <groupId>org.jenkins-ci.plugins</groupId>
-                <artifactId>structs</artifactId>
-                <version>${structs-plugin.version}</version>
-            </dependency>
-
             <!-- Plugins (sorted): -->
             <dependency>
                 <groupId>io.jenkins</groupId>
@@ -249,6 +242,11 @@
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>ssh-slaves</artifactId>
                 <version>1.30.2</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>structs</artifactId>
+                <version>${structs-plugin.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
