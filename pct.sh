@@ -45,6 +45,9 @@ then
     rm -fv pct-work/plain-credentials/target/surefire-reports/TEST-InjectedTest.xml
     # TODO https://github.com/jenkinsci/jenkins/pull/4099
     rm -fv pct-work/command-launcher/target/surefire-reports/TEST-hudson.slaves.CommandLauncher2Test.xml
+
+    ls -lash pct-work/trilead-api/target/surefire-reports/
+    rm -fv pct-work/trilead-api/target/surefire-reports/TEST-org.jvnet.hudson.test.PluginAutomaticTestBuilder.xml
 fi
 # TODO pending https://github.com/jenkinsci/ansicolor-plugin/pull/164
 rm -fv pct-work/ansicolor/target/surefire-reports/TEST-hudson.plugins.ansicolor.AnsiColorBuildWrapperTest.xml
