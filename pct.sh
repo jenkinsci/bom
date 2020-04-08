@@ -63,6 +63,7 @@ rm -fv pct-work/cloudbees-folder/target/surefire-reports/TEST-InjectedTest.xml
 # https://github.com/jenkinsci/workflow-support-plugin/pull/105
 # https://github.com/jenkinsci/workflow-durable-task-step-plugin/pull/130
 # https://github.com/jenkinsci/workflow-basic-steps-plugin/pull/110
+rm -fv pct-work/workflow-basic-steps/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.steps.CatchErrorStepTest.xml
 rm -fv pct-work/workflow-basic-steps/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.steps.WaitForConditionStepTest.xml
 rm -fv pct-work/workflow-basic-steps/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.support.steps.stash.StashTest.xml
 rm -fv pct-work/workflow-support/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.support.pickles.serialization.SerializationSecurityTest.xml
