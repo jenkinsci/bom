@@ -12,7 +12,7 @@
     <version>${revision}${changelist}</version>
     <packaging>hpi</packaging>
     <properties>
-        <revision>6</revision>
+        <revision>7</revision>
         <changelist>-SNAPSHOT</changelist>
         <bom>2.190.x</bom>
         <jenkins.version>2.190.3</jenkins.version>
@@ -49,9 +49,8 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>io.jenkins</groupId>
-            <artifactId>configuration-as-code</artifactId>
-            <classifier>tests</classifier>
+            <groupId>io.jenkins.configuration-as-code</groupId>
+            <artifactId>test-harness</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -214,7 +213,7 @@
                       <dependency>
                           <groupId>org.codehaus.groovy</groupId>
                           <artifactId>groovy-all</artifactId>
-                          <version>2.4.18</version>
+                          <version>2.4.19</version>
                       </dependency>
                   </dependencies>
             </plugin>
