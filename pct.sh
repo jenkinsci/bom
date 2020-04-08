@@ -29,13 +29,19 @@ java -jar pct.jar \
      -mavenProperties "$MAVEN_PROPERTIES" \
      -skipTestCache true
 
-if fgrep -q '<status>INTERNAL_ERROR</status>' pct-report.xml
+if grep -q -F -e '<status>INTERNAL_ERROR</status>' pct-report.xml
 then
     echo PCT failed
+    cat pct-report.xml
     exit 1
 fi
 
 # TODO rather than removing all these, have a text file of known failures and just convert them to “skipped”
+
+# TODO wrong detached plugin is being picked up
+# Structs Plugin version 1.7 is older than required. To fix, install version 1.20 or later.
+# we have 1.20 managed currently
+rm -fv pct-work/cloudbees-folder/target/surefire-reports/TEST-InjectedTest.xml
 
 # TODO https://github.com/jenkinsci/jenkins/pull/4120 problems with workflow-cps → jquery-detached:
 rm -fv pct-work/structs-plugin/plugin/target/surefire-reports/TEST-InjectedTest.xml
