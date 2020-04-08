@@ -67,6 +67,7 @@ rm -fv pct-work/workflow-basic-steps/target/surefire-reports/TEST-org.jenkinsci.
 rm -fv pct-work/workflow-basic-steps/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.steps.WaitForConditionStepTest.xml
 rm -fv pct-work/workflow-basic-steps/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.support.steps.stash.StashTest.xml
 rm -fv pct-work/workflow-support/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.support.pickles.serialization.SerializationSecurityTest.xml
+rm -fv pct-work/workflow-durable-task-step/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.steps.durable_task.ShellStepTest.xml
 rm -fv pct-work/workflow-durable-task-step/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.support.steps.ExecutorStepTest.xml
 rm -fv pct-work/workflow-cps/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.cps.FlowDurabilityTest.xml
 rm -fv pct-work/junit/target/surefire-reports/TEST-hudson.tasks.junit.pipeline.JUnitResultsStepTest.xml
