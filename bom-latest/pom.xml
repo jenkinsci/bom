@@ -6,7 +6,7 @@
         <artifactId>parent</artifactId>
         <version>${revision}${changelist}</version>
     </parent>
-    <artifactId>bom-2.176.x</artifactId>
+    <artifactId>bom-2.190.x</artifactId>
     <packaging>pom</packaging>
     <properties>
         <configuration-as-code-plugin.version>1.35</configuration-as-code-plugin.version>
@@ -179,7 +179,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>jsch</artifactId>
-                <version>0.1.55.1</version>
+                <version>0.1.55.2</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -235,7 +235,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>ssh-credentials</artifactId>
-                <version>1.17.4</version>
+                <version>1.18.1</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -256,6 +256,11 @@
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>token-macro</artifactId>
                 <version>2.12</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>trilead-api</artifactId>
+                <version>1.0.5</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
