@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
-        <version>3.55</version>
+        <version>4.0-beta-6</version>
         <relativePath />
     </parent>
     <groupId>io.jenkins.tools.bom</groupId>
@@ -17,7 +17,6 @@
         <bom>2.190.x</bom>
         <jenkins.version>2.190.3</jenkins.version>
         <java.level>8</java.level>
-        <slf4jVersion>1.7.26</slf4jVersion> <!-- TODO pending https://github.com/jenkinsci/plugin-pom/pull/229 -->
     </properties>
     <repositories>
         <repository>
@@ -77,6 +76,12 @@
             <groupId>org.jenkins-ci.plugins.workflow</groupId>
             <artifactId>workflow-cps-global-lib</artifactId>
             <scope>test</scope>
+            <exclusions>
+                <exclusion> <!-- TODO clashes with jenkins-test-harness » jenkins-test-harness-htmlunit; one or the other should be shaded -->
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>commons-lang3</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins.workflow</groupId>
