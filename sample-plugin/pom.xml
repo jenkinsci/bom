@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
-        <version>3.55</version>
+        <version>4.0-beta-6</version>
         <relativePath />
     </parent>
     <groupId>io.jenkins.tools.bom</groupId>
@@ -14,10 +14,9 @@
     <properties>
         <revision>7</revision>
         <changelist>-SNAPSHOT</changelist>
-        <bom>2.190.x</bom>
-        <jenkins.version>2.190.3</jenkins.version>
+        <bom>2.222.x</bom>
+        <jenkins.version>2.222.1</jenkins.version>
         <java.level>8</java.level>
-        <slf4jVersion>1.7.26</slf4jVersion> <!-- TODO when dropping 2.150.x, reapply 77183ce09cce0e75e5509b211e7cd8ae2774a292 to get 4.x parent -->
     </properties>
     <repositories>
         <repository>
@@ -235,6 +234,13 @@
     </build>
     <profiles>
         <profile>
+            <id>2.190.x</id>
+            <properties>
+                <bom>2.190.x</bom>
+                <jenkins.version>2.190.3</jenkins.version>
+            </properties>
+        </profile>
+        <profile>
             <id>2.176.x</id>
             <properties>
                 <bom>2.176.x</bom>
@@ -246,13 +252,6 @@
             <properties>
                 <bom>2.164.x</bom>
                 <jenkins.version>2.164.3</jenkins.version>
-            </properties>
-        </profile>
-        <profile>
-            <id>2.150.x</id>
-            <properties>
-                <bom>2.150.x</bom>
-                <jenkins.version>2.150.3</jenkins.version>
             </properties>
         </profile>
         <profile>
