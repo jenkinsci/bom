@@ -28,6 +28,7 @@ do
     fi
     pushd sample-plugin/target
     mkdir jenkins
+    # TODO keep managed splits, overriding version with the managed one
     echo '# nothing' > jenkins/split-plugins.txt
     cp -r jenkins-for-test megawar-$LINE
     jar uvf megawar-$LINE/WEB-INF/lib/jenkins-core-*.jar jenkins/split-plugins.txt
@@ -40,9 +41,10 @@ do
 done
 
 # TODO find a way to encode this in some POM so that it can be managed by Dependabot
-version=0.5.0
-pct=$HOME/.m2/repository/org/jenkins-ci/tests/plugins-compat-tester-cli/${version}/plugins-compat-tester-cli-${version}.jar
-[ -f $pct ] || $MVN dependency:get -Dartifact=org.jenkins-ci.tests:plugins-compat-tester-cli:${version}:jar -DremoteRepositories=https://repo.jenkins-ci.org/public/ -Dtransitive=false
+version=0.5.1
+timestamp=20200409.141743-1 # TODO https://github.com/jenkinsci/plugin-compat-tester/pull/228
+pct=$HOME/.m2/repository/org/jenkins-ci/tests/plugins-compat-tester-cli/${version}-SNAPSHOT/plugins-compat-tester-cli-${version}-${timestamp}.jar
+[ -f $pct ] || $MVN dependency:get -Dartifact=org.jenkins-ci.tests:plugins-compat-tester-cli:${version}-${timestamp}:jar -DremoteRepositories=https://repo.jenkins-ci.org/public/ -Dtransitive=false
 cp $pct target/pct.jar
 
 # produces: target/{megawar-*.war,pct.jar,plugins.txt,lines.txt}
