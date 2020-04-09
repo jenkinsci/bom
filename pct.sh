@@ -71,6 +71,8 @@ rm -fv pct-work/workflow-durable-task-step/target/surefire-reports/TEST-org.jenk
 rm -fv pct-work/workflow-durable-task-step/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.support.steps.ExecutorStepTest.xml
 rm -fv pct-work/workflow-cps/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.cps.FlowDurabilityTest.xml
 rm -fv pct-work/junit/target/surefire-reports/TEST-hudson.tasks.junit.pipeline.JUnitResultsStepTest.xml
+# https://github.com/jenkinsci/workflow-job-plugin/pull/158
+rm -fv pct-work/workflow-job/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.job.WorkflowRunRestartTest.xml
 
 # TODO pending https://github.com/jenkinsci/ansicolor-plugin/pull/164
 rm -fv pct-work/ansicolor/target/surefire-reports/TEST-hudson.plugins.ansicolor.AnsiColorBuildWrapperTest.xml
