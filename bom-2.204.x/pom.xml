@@ -17,11 +17,6 @@
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
-            <dependency>
-                <groupId>io.jenkins</groupId>
-                <artifactId>configuration-as-code</artifactId>
-                <version>1.36</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>

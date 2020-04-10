@@ -9,7 +9,7 @@
     <artifactId>bom-2.222.x</artifactId>
     <packaging>pom</packaging>
     <properties>
-        <configuration-as-code-plugin.version>1.38</configuration-as-code-plugin.version>
+        <configuration-as-code-plugin.version>1.36</configuration-as-code-plugin.version>
         <git-plugin.version>4.1.0</git-plugin.version>
         <scm-api-plugin.version>2.6.3</scm-api-plugin.version>
         <structs-plugin.version>1.20</structs-plugin.version>
@@ -21,11 +21,6 @@
     <dependencyManagement>
         <dependencies>
             <!-- Plugins (sorted): -->
-            <dependency>
-                <groupId>io.jenkins.plugins</groupId>
-                <artifactId>snakeyaml-api</artifactId>
-                <version>1.26.2</version>
-            </dependency>
             <dependency>
                 <groupId>io.jenkins</groupId>
                 <artifactId>configuration-as-code</artifactId>
