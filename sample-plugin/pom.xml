@@ -234,6 +234,13 @@
     </build>
     <profiles>
         <profile>
+            <id>2.204.x</id>
+            <properties>
+                <bom>2.204.x</bom>
+                <jenkins.version>2.204.6</jenkins.version>
+            </properties>
+        </profile>
+        <profile>
             <id>2.190.x</id>
             <properties>
                 <bom>2.190.x</bom>
