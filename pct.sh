@@ -54,7 +54,7 @@ then
 fi
 
 # TODO Merged, but needs a release: https://github.com/jenkinsci/git-plugin/pull/857
-rm -fv pct-work/git/target/target/surefire-reports/TEST-hudson.plugins.git.GitStatusCrumbExclusionTest.xml
+rm -fv pct-work/git/target/surefire-reports/TEST-hudson.plugins.git.GitStatusCrumbExclusionTest.xml
 
 # TODO wrong detached plugin is being picked up
 # Structs Plugin version 1.7 is older than required. To fix, install version 1.20 or later.
