@@ -53,6 +53,9 @@ then
     rm -fv pct-work/trilead-api/target/surefire-reports/TEST-InjectedTest.xml
 fi
 
+# TODO pending https://github.com/jenkinsci/jdk-tool-plugin/pull/12
+rm -rf pct-work/jdk-tool/target/surefire-reports/TEST-hudson.tools.JDKInstallerTest.xml
+
 # TODO pending https://github.com/jenkinsci/workflow-cps-global-lib-plugin/pull/96
 rm -rf pct-work/workflow-cps-global-lib/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.libs.GlobalLibrariesTest.xml
 
