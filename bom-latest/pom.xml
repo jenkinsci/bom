@@ -9,7 +9,7 @@
     <artifactId>bom-2.222.x</artifactId>
     <packaging>pom</packaging>
     <properties>
-        <configuration-as-code-plugin.version>1.36</configuration-as-code-plugin.version>
+        <configuration-as-code-plugin.version>1.39</configuration-as-code-plugin.version>
         <git-plugin.version>4.1.0</git-plugin.version>
         <scm-api-plugin.version>2.6.3</scm-api-plugin.version>
         <structs-plugin.version>1.20</structs-plugin.version>
