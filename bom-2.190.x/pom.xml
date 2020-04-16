@@ -17,6 +17,11 @@
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
+            <dependency>
+                <groupId>io.jenkins.plugins</groupId>
+                <artifactId>snakeyaml-api</artifactId>
+                <version>1.26.3</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>
