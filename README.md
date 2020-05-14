@@ -1,9 +1,11 @@
-# Introduction
+# Bill of Materials for Jenkins plugins
 
-As proposed in [JENKINS-47498](https://issues.jenkins-ci.org/browse/JENKINS-47498),
-this repository implements a [Maven BOM](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Importing_Dependencies)
+This repository implements a [Maven BOM](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Importing_Dependencies)
 which can be used in a plugin POM to more easily manage dependencies on other common plugins.
 This is important because version management is a [common annoyance](https://jenkins.io/doc/developer/plugin-development/updating-parent/#understanding-requireupperbounddeps-failures-and-fixes).
+See [JENKINS-47498](https://issues.jenkins-ci.org/browse/JENKINS-47498) for the background.
+
+If you are interested in a Bill of Materials for Jenkins core components, see [this page](https://jenkins.io/doc/developer/plugin-development/dependency-management/#jenkins-core-bom).
 
 # Usage
 
