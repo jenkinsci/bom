@@ -42,7 +42,7 @@ done
 
 # TODO find a way to encode this in some POM so that it can be managed by Dependabot
 version=0.5.1
-timestamp=20200512.100129-2 # TODO pending release > 0.5.1
+timestamp=20200512.100129-2 # https://github.com/jenkinsci/plugin-compat-tester/pull/239
 pct=$HOME/.m2/repository/org/jenkins-ci/tests/plugins-compat-tester-cli/${version}-SNAPSHOT/plugins-compat-tester-cli-${version}-${timestamp}.jar
 [ -f $pct ] || $MVN dependency:get -Dartifact=org.jenkins-ci.tests:plugins-compat-tester-cli:${version}-${timestamp}:jar -DremoteRepositories=https://repo.jenkins-ci.org/public/ -Dtransitive=false
 cp $pct target/pct.jar

@@ -67,6 +67,15 @@ rm -fv pct-work/git/target/surefire-reports/TEST-hudson.plugins.git.GitStatusCru
 # we have 1.20 managed currently
 rm -fv pct-work/cloudbees-folder/target/surefire-reports/TEST-InjectedTest.xml
 
+
+# resolved in cloudbees-folder but fix is only released on >= 2.176.x baselines
+# https://github.com/jenkinsci/cloudbees-folder-plugin/pull/149
+if [ "$LINE" == 2.164.x ]
+then
+  rm -fv pct-work/cloudbees-folder/target/surefire-reports/TEST-com.cloudbees.hudson.plugins.folder.FolderTest.xml
+  rm -fv pct-work/cloudbees-folder/target/surefire-reports/TEST-com.cloudbees.hudson.plugins.folder.config.AbstractFolderConfigurationTest.xml
+fi
+
 # TODO flakey tests related to workflow-job saying it's finished but it still hasn't finished updating the log
 # ref: https://github.com/jenkinsci/workflow-job-plugin/pull/131/files#r291657569
 # https://github.com/jenkinsci/workflow-support-plugin/pull/105
