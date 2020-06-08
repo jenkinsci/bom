@@ -4,7 +4,7 @@
     <parent>
         <groupId>io.jenkins.tools.bom</groupId>
         <artifactId>parent</artifactId>
-        <version>${revision}${changelist}</version>
+        <version>10</version>
     </parent>
     <artifactId>bom-2.164.x</artifactId>
     <packaging>pom</packaging>
