@@ -9,7 +9,7 @@
     <artifactId>bom-2.235.x</artifactId>
     <packaging>pom</packaging>
     <properties>
-        <configuration-as-code-plugin.version>1.36</configuration-as-code-plugin.version>
+        <configuration-as-code-plugin.version>1.41</configuration-as-code-plugin.version>
         <git-plugin.version>4.1.0</git-plugin.version>
         <scm-api-plugin.version>2.6.3</scm-api-plugin.version>
         <structs-plugin.version>1.20</structs-plugin.version>
@@ -21,6 +21,11 @@
     <dependencyManagement>
         <dependencies>
             <!-- Plugins (sorted): -->
+            <dependency>
+                <groupId>io.jenkins.plugins</groupId>
+                <artifactId>snakeyaml-api</artifactId>
+                <version>1.26.4</version>
+            </dependency>
             <dependency>
                 <groupId>io.jenkins</groupId>
                 <artifactId>configuration-as-code</artifactId>
@@ -103,7 +108,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>ansicolor</artifactId>
-                <version>0.6.3</version>
+                <version>0.7.0</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -118,7 +123,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>cloudbees-folder</artifactId>
-                <version>6.12</version>
+                <version>6.13</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -133,7 +138,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>credentials-binding</artifactId>
-                <version>1.22</version>
+                <version>1.23</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -230,7 +235,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>script-security</artifactId>
-                <version>1.72</version>
+                <version>1.73</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -260,7 +265,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>trilead-api</artifactId>
-                <version>1.0.6</version>
+                <version>1.0.8</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
