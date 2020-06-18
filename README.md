@@ -22,8 +22,8 @@ just import the [latest BOM](https://github.com/jenkinsci/bom/releases) from tha
     <dependencies>
         <dependency>
             <groupId>io.jenkins.tools.bom</groupId>
-            <artifactId>bom-2.164.x</artifactId>
-            <version>4</version>
+            <artifactId>bom-2.222.x</artifactId>
+            <version>10</version>
             <scope>import</scope>
             <type>pom</type>
         </dependency>

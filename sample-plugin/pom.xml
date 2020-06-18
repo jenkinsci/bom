@@ -278,13 +278,6 @@
             </properties>
         </profile>
         <profile>
-            <id>2.164.x</id>
-            <properties>
-                <bom>2.164.x</bom>
-                <jenkins.version>2.164.3</jenkins.version>
-            </properties>
-        </profile>
-        <profile>
             <id>skip-tests-on-release</id>
             <activation>
                 <property>
