@@ -34,7 +34,6 @@
         <module>bom-2.204.x</module>
         <module>bom-2.190.x</module>
         <module>bom-2.176.x</module>
-        <module>bom-2.164.x</module>
         <module>sample-plugin</module>
     </modules>
     <build>
