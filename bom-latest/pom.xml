@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
     <properties>
         <configuration-as-code-plugin.version>1.41</configuration-as-code-plugin.version>
-        <git-plugin.version>4.1.0</git-plugin.version>
+        <git-plugin.version>4.2.2</git-plugin.version>
         <scm-api-plugin.version>2.6.3</scm-api-plugin.version>
         <structs-plugin.version>1.20</structs-plugin.version>
         <workflow-api-plugin.version>2.40</workflow-api-plugin.version>
