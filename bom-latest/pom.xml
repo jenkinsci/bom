@@ -11,7 +11,7 @@
     <properties>
         <configuration-as-code-plugin.version>1.41</configuration-as-code-plugin.version>
         <git-plugin.version>4.3.0</git-plugin.version>
-        <pipeline-model-definition-plugin.version>1.6.0</pipeline-model-definition-plugin.version>
+        <pipeline-model-definition-plugin.version>1.7.0</pipeline-model-definition-plugin.version>
         <scm-api-plugin.version>2.6.3</scm-api-plugin.version>
         <structs-plugin.version>1.20</structs-plugin.version>
         <workflow-api-plugin.version>2.40</workflow-api-plugin.version>
@@ -123,11 +123,6 @@
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
-                <artifactId>authentication-tokens</artifactId>
-                <version>1.4</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>branch-api</artifactId>
                 <version>2.5.6</version>
             </dependency>
@@ -155,16 +150,6 @@
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>display-url-api</artifactId>
                 <version>2.3.2</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkins-ci.plugins</groupId>
-                <artifactId>docker-commons</artifactId>
-                <version>1.14</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkins-ci.plugins</groupId>
-                <artifactId>docker-workflow</artifactId>
-                <version>1.22</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
