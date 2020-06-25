@@ -99,4 +99,7 @@ rm -fv pct-work/git-client/target/surefire-reports/TEST-org.jenkinsci.plugins.gi
 # TODO https://github.com/jenkinsci/configuration-as-code-plugin/pull/1243
 rm -fv pct-work/configuration-as-code-plugin/plugin/target/surefire-reports/TEST-io.jenkins.plugins.casc.ConfigurationAsCodeTest.xml
 
+# TODO https://github.com/jenkinsci/workflow-basic-steps-plugin/pull/120
+rm -fv pct-work/workflow-basic-steps/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.steps.TimeoutStepTest.xml
+
 # produces: **/target/surefire-reports/TEST-*.xml
