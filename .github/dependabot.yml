@@ -1,0 +1,16 @@
+# https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+
+version: 2
+updates:
+  - package-ecosystem: "maven"
+    directory: "/sample-plugin"
+    reviewers:
+      - "jglick"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "maven"
+    directory: "/bom-latest"
+    reviewers:
+      - "jglick"
+    schedule:
+      interval: "daily"
