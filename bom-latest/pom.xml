@@ -11,14 +11,15 @@
     <properties>
         <configuration-as-code-plugin.version>1.41</configuration-as-code-plugin.version>
         <git-plugin.version>4.3.0</git-plugin.version>
-        <pipeline-model-definition-plugin.version>1.7.0</pipeline-model-definition-plugin.version>
+        <pipeline-model-definition-plugin.version>1.7.1</pipeline-model-definition-plugin.version>
         <scm-api-plugin.version>2.6.3</scm-api-plugin.version>
         <structs-plugin.version>1.20</structs-plugin.version>
         <workflow-api-plugin.version>2.40</workflow-api-plugin.version>
-        <workflow-cps-plugin.version>2.80</workflow-cps-plugin.version>
+        <workflow-cps-plugin.version>2.81</workflow-cps-plugin.version>
+        <workflow-job-plugin.version>2.39</workflow-job-plugin.version>
+        <workflow-multibranch-plugin.version>2.16</workflow-multibranch-plugin.version>
         <workflow-step-api-plugin.version>2.22</workflow-step-api-plugin.version>
         <workflow-support-plugin.version>3.5</workflow-support-plugin.version>
-        <workflow-multibranch.version>2.16</workflow-multibranch.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -78,18 +79,24 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-job</artifactId>
-                <version>2.39</version>
+                <version>${workflow-job-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins.workflow</groupId>
+                <artifactId>workflow-job</artifactId>
+                <classifier>tests</classifier>
+                <version>${workflow-job-plugin.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-multibranch</artifactId>
-                <version>${workflow-multibranch.version}</version>
+                <version>${workflow-multibranch-plugin.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-multibranch</artifactId>
                 <classifier>tests</classifier>
-                <version>${workflow-multibranch.version}</version>
+                <version>${workflow-multibranch-plugin.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
@@ -146,7 +153,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>credentials</artifactId>
-                <version>2.3.10</version>
+                <version>2.3.11</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -177,7 +184,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>git-client</artifactId>
-                <version>3.3.0</version>
+                <version>3.3.1</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -242,7 +249,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>plain-credentials</artifactId>
-                <version>1.6</version>
+                <version>1.7</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -258,7 +265,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>script-security</artifactId>
-                <version>1.73</version>
+                <version>1.74</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
