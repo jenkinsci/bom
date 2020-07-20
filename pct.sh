@@ -34,6 +34,25 @@ then
     echo PCT failed
     cat pct-report.xml
     exit 1
+elif grep -q -F -e '<status>TEST_FAILURES</status>' pct-report.xml
+then
+    echo PCT test failures, making sure at least one is reported
+    candidates=
+    for t in pct-work/*/target
+    do
+        if [ \! -d $t/surefire-reports ]
+        then
+            candidates="$candidates $t"
+        fi
+    done
+    mkdir -p pct-work/target/surefire-reports
+    cat > pct-work/target/surefire-reports/TEST-pct.xml <<EOF
+<testsuite name="pct">
+  <testcase classname="pct" name="overall">
+    <error message="some sort of PCT failure; take a look at$candidates"/>
+  </testcase>
+</testsuite>
+EOF
 fi
 
 # TODO rather than removing all these, have a text file of known failures and just convert them to “skipped”
