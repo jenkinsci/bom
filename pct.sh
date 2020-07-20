@@ -39,9 +39,9 @@ then
     echo PCT marked failed, checking to see if that is due to a failure to run tests at all
     for t in pct-work/*/{,*/}target
     do
-        if [ -f $t/test-classes/the.hpl -a \! -d $t/surefire-reports ]
+        if [ -f $t/test-classes/InjectedTest.class -a \! -f $t/surefire-reports/TEST-InjectedTest.xml ]
         then
-            mkdir $t/surefire-reports
+            mkdir -p $t/surefire-reports
             cat > $t/surefire-reports/TEST-pct.xml <<'EOF'
 <testsuite name="pct">
   <testcase classname="pct" name="overall">
