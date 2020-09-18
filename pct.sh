@@ -55,6 +55,7 @@ fi
 
 # TODO rather than removing all these, have a text file of known failures and just convert them to “skipped”
 # or add surefire.excludesFile to MAVEN_PROPERTIES so we do not waste time even running these
+# TODO this should probably now read `= 2.176.x`, though CommandLauncher2Test now fails with a new error
 if [ "$LINE" != 2.190.x ]
 then
     # TODO https://github.com/jenkinsci/jenkins/pull/4120 problems with workflow-cps → jquery-detached:
