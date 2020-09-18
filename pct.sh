@@ -123,4 +123,7 @@ rm -fv pct-work/workflow-basic-steps/target/surefire-reports/TEST-org.jenkinsci.
 # TODO cryptic PCT-only errors: https://github.com/jenkinsci/bom/pull/251#issuecomment-645012427
 rm -fv pct-work/matrix-project/target/surefire-reports/TEST-hudson.matrix.AxisTest.xml
 
+# TODO https://github.com/jenkinsci/branch-api-plugin/pull/211
+rm -fv pct-work/branch-api/target/surefire-reports/TEST-jenkins.branch.RateLimitBranchPropertyTest.xml
+
 # produces: **/target/surefire-reports/TEST-*.xml
