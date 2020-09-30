@@ -165,7 +165,7 @@ Commit and push the result to fix the branch build.
 This repository is integrated with “Incrementals” [JEP-305](https://jenkins.io/jep/305):
 
 * Individual BOM builds, including from pull requests, are deployed and may be imported on an experimental basis by plugins.
-  (Currently broken, pending JENKINS-58716.)
+  (The plugin’s POM must use the `gitHubRepo` property as shown in [workflow-step-api-plugin #58](https://github.com/jenkinsci/workflow-step-api-plugin/pull/58/files).)
 * Pull requests to the BOM may specify incremental versions of plugins, including unmerged PRs.
   (These should be resolved to formal release versions before the PR is merged.)
 

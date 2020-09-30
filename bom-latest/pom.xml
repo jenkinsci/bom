@@ -6,18 +6,18 @@
         <artifactId>parent</artifactId>
         <version>${revision}${changelist}</version>
     </parent>
-    <artifactId>bom-2.235.x</artifactId>
+    <artifactId>bom-2.249.x</artifactId>
     <packaging>pom</packaging>
     <properties>
-        <configuration-as-code-plugin.version>1.41</configuration-as-code-plugin.version>
+        <configuration-as-code-plugin.version>1.43</configuration-as-code-plugin.version>
         <git-plugin.version>4.3.0</git-plugin.version>
         <pipeline-model-definition-plugin.version>1.7.1</pipeline-model-definition-plugin.version>
         <scm-api-plugin.version>2.6.3</scm-api-plugin.version>
         <structs-plugin.version>1.20</structs-plugin.version>
         <workflow-api-plugin.version>2.40</workflow-api-plugin.version>
-        <workflow-cps-plugin.version>2.81</workflow-cps-plugin.version>
+        <workflow-cps-plugin.version>2.83</workflow-cps-plugin.version>
         <workflow-job-plugin.version>2.39</workflow-job-plugin.version>
-        <workflow-multibranch-plugin.version>2.16</workflow-multibranch-plugin.version>
+        <workflow-multibranch-plugin.version>2.22</workflow-multibranch-plugin.version>
         <workflow-step-api-plugin.version>2.22</workflow-step-api-plugin.version>
         <workflow-support-plugin.version>3.5</workflow-support-plugin.version>
     </properties>
@@ -69,7 +69,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-cps-global-lib</artifactId>
-                <version>2.16</version>
+                <version>2.17</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
@@ -128,7 +128,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>ansicolor</artifactId>
-                <version>0.7.1</version>
+                <version>0.7.3</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -153,7 +153,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>credentials</artifactId>
-                <version>2.3.12</version>
+                <version>2.3.13</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -184,7 +184,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>git-client</artifactId>
-                <version>3.3.1</version>
+                <version>3.3.2</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -199,7 +199,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>jackson2-api</artifactId>
-                <version>2.10.2</version>
+                <version>2.11.0</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -234,17 +234,17 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>matrix-project</artifactId>
-                <version>1.14</version>
+                <version>1.17</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>pipeline-build-step</artifactId>
-                <version>2.12</version>
+                <version>2.13</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>pipeline-input-step</artifactId>
-                <version>2.11</version>
+                <version>2.12</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -300,7 +300,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>trilead-api</artifactId>
-                <version>1.0.8</version>
+                <version>1.0.10</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
