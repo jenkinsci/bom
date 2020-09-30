@@ -11,6 +11,7 @@
     <properties>
         <configuration-as-code-plugin.version>1.43</configuration-as-code-plugin.version>
         <git-plugin.version>4.3.0</git-plugin.version>
+        <pipeline-model-definition-plugin.version>1.7.2</pipeline-model-definition-plugin.version>
         <scm-api-plugin.version>2.6.3</scm-api-plugin.version>
         <structs-plugin.version>1.20</structs-plugin.version>
         <workflow-api-plugin.version>2.40</workflow-api-plugin.version>
@@ -315,6 +316,32 @@
                 <groupId>org.jenkins-ci.ui</groupId>
                 <artifactId>jquery-detached</artifactId>
                 <version>1.2.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkinsci.plugins</groupId>
+                <artifactId>pipeline-model-api</artifactId>
+                <version>${pipeline-model-definition-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkinsci.plugins</groupId>
+                <artifactId>pipeline-model-definition</artifactId>
+                <version>${pipeline-model-definition-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkinsci.plugins</groupId>
+                <artifactId>pipeline-model-definition</artifactId>
+                <classifier>tests</classifier>
+                <version>${pipeline-model-definition-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkinsci.plugins</groupId>
+                <artifactId>pipeline-model-extensions</artifactId>
+                <version>${pipeline-model-definition-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkinsci.plugins</groupId>
+                <artifactId>pipeline-stage-tags-metadata</artifactId>
+                <version>${pipeline-model-definition-plugin.version}</version>
             </dependency>
             <!-- Non-plugins: -->
             <dependency>
