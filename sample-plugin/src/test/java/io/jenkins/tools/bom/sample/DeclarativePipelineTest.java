@@ -24,14 +24,14 @@ public class DeclarativePipelineTest {
                 "  stages {",
                 "    stage('Example') {",
                 "      steps {",
-                "        echo 'Hello world'",
+                "        example(x: 'foobar')",
                 "      }",
                 "    }",
                 "  }",
                 "}"));
 
         r.assertBuildStatusSuccess(run);
-        r.assertLogContains("Hello world", run);
+        r.assertLogContains("Ran on foobar!", run);
     }
 
     /**
