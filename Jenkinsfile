@@ -58,7 +58,7 @@ lines.each {line ->
                     unstash 'pct.sh'
                     unstash 'pct'
                     unstash "megawar-$line"
-                    withEnv(["PLUGINS=$plugin", "LINE=$line"]) {
+                    withEnv(["PLUGINS=$plugin", "LINE=$line", 'EXTRA_MAVEN_PROPERTIES=surefire.rerunFailingTestsCount=4']) {
                         sh 'mv megawar-$LINE.war megawar.war && bash pct.sh'
                     }
                 }
