@@ -32,6 +32,11 @@
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>jackson2-api</artifactId>
+                <version>2.11.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>credentials</artifactId>
                 <version>2.3.11</version>
             </dependency>
