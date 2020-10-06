@@ -6,16 +6,18 @@
         <artifactId>parent</artifactId>
         <version>${revision}${changelist}</version>
     </parent>
-    <artifactId>bom-2.235.x</artifactId>
+    <artifactId>bom-2.249.x</artifactId>
     <packaging>pom</packaging>
     <properties>
         <configuration-as-code-plugin.version>1.44-rc1119.cd35dbd9d8e8</configuration-as-code-plugin.version>
-        <git-plugin.version>4.3.0</git-plugin.version>
+        <git-plugin.version>4.4.4</git-plugin.version>
+        <pipeline-model-definition-plugin.version>1.7.2</pipeline-model-definition-plugin.version>
         <scm-api-plugin.version>2.6.3</scm-api-plugin.version>
         <structs-plugin.version>1.20</structs-plugin.version>
         <workflow-api-plugin.version>2.40</workflow-api-plugin.version>
-        <workflow-cps-plugin.version>2.82</workflow-cps-plugin.version>
+        <workflow-cps-plugin.version>2.83</workflow-cps-plugin.version>
         <workflow-job-plugin.version>2.39</workflow-job-plugin.version>
+        <workflow-multibranch-plugin.version>2.22</workflow-multibranch-plugin.version>
         <workflow-step-api-plugin.version>2.22</workflow-step-api-plugin.version>
         <workflow-support-plugin.version>3.5</workflow-support-plugin.version>
     </properties>
@@ -87,6 +89,17 @@
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
+                <artifactId>workflow-multibranch</artifactId>
+                <version>${workflow-multibranch-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins.workflow</groupId>
+                <artifactId>workflow-multibranch</artifactId>
+                <classifier>tests</classifier>
+                <version>${workflow-multibranch-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-scm-step</artifactId>
                 <version>2.11</version>
             </dependency>
@@ -115,7 +128,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>ansicolor</artifactId>
-                <version>0.7.1</version>
+                <version>0.7.3</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -140,7 +153,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>credentials</artifactId>
-                <version>2.3.12</version>
+                <version>2.3.13</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -171,7 +184,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>git-client</artifactId>
-                <version>3.3.2</version>
+                <version>3.5.1</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -216,7 +229,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>mailer</artifactId>
-                <version>1.32</version>
+                <version>1.32.1</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -226,12 +239,12 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>pipeline-build-step</artifactId>
-                <version>2.12</version>
+                <version>2.13</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>pipeline-input-step</artifactId>
-                <version>2.11</version>
+                <version>2.12</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -287,7 +300,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>trilead-api</artifactId>
-                <version>1.0.8</version>
+                <version>1.0.10</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -303,6 +316,32 @@
                 <groupId>org.jenkins-ci.ui</groupId>
                 <artifactId>jquery-detached</artifactId>
                 <version>1.2.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkinsci.plugins</groupId>
+                <artifactId>pipeline-model-api</artifactId>
+                <version>${pipeline-model-definition-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkinsci.plugins</groupId>
+                <artifactId>pipeline-model-definition</artifactId>
+                <version>${pipeline-model-definition-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkinsci.plugins</groupId>
+                <artifactId>pipeline-model-definition</artifactId>
+                <classifier>tests</classifier>
+                <version>${pipeline-model-definition-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkinsci.plugins</groupId>
+                <artifactId>pipeline-model-extensions</artifactId>
+                <version>${pipeline-model-definition-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkinsci.plugins</groupId>
+                <artifactId>pipeline-stage-tags-metadata</artifactId>
+                <version>${pipeline-model-definition-plugin.version}</version>
             </dependency>
             <!-- Non-plugins: -->
             <dependency>

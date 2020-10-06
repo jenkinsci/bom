@@ -12,7 +12,7 @@
     <version>${revision}${changelist}</version>
     <packaging>pom</packaging>
     <properties>
-        <revision>12</revision>
+        <revision>14</revision>
         <changelist>-SNAPSHOT</changelist>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -30,6 +30,7 @@
     </scm>
     <modules>
         <module>bom-latest</module>
+        <module>bom-2.235.x</module>
         <module>bom-2.222.x</module>
         <module>bom-2.204.x</module>
         <module>bom-2.190.x</module>

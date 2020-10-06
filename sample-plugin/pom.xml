@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
-        <version>4.4</version>
+        <version>4.9</version>
         <relativePath />
     </parent>
     <groupId>io.jenkins.tools.bom</groupId>
@@ -12,10 +12,10 @@
     <version>${revision}${changelist}</version>
     <packaging>hpi</packaging>
     <properties>
-        <revision>12</revision>
+        <revision>14</revision>
         <changelist>-SNAPSHOT</changelist>
-        <bom>2.235.x</bom>
-        <jenkins.version>2.235.1</jenkins.version>
+        <bom>2.249.x</bom>
+        <jenkins.version>2.249.1</jenkins.version>
         <java.level>8</java.level>
     </properties>
     <repositories>
@@ -75,11 +75,6 @@
         <dependency>
             <groupId>org.jenkins-ci.plugins.workflow</groupId>
             <artifactId>workflow-cps</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins.workflow</groupId>
-            <artifactId>workflow-cps</artifactId>
             <classifier>tests</classifier>
             <scope>test</scope>
         </dependency>
@@ -96,11 +91,17 @@
         <dependency>
             <groupId>org.jenkins-ci.plugins.workflow</groupId>
             <artifactId>workflow-job</artifactId>
+            <classifier>tests</classifier>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins.workflow</groupId>
-            <artifactId>workflow-job</artifactId>
+            <artifactId>workflow-multibranch</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins.workflow</groupId>
+            <artifactId>workflow-multibranch</artifactId>
             <classifier>tests</classifier>
             <scope>test</scope>
         </dependency>
@@ -198,6 +199,11 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.jenkinsci.plugins</groupId>
+            <artifactId>pipeline-model-definition</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>pipeline-stage-step</artifactId>
             <scope>test</scope>
@@ -265,6 +271,13 @@
         </plugins>
     </build>
     <profiles>
+        <profile>
+            <id>2.235.x</id>
+            <properties>
+                <bom>2.235.x</bom>
+                <jenkins.version>2.235.5</jenkins.version>
+            </properties>
+        </profile>
         <profile>
             <id>2.222.x</id>
             <properties>
