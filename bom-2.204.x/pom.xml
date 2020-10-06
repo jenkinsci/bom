@@ -9,7 +9,7 @@
     <artifactId>bom-2.204.x</artifactId>
     <packaging>pom</packaging>
     <properties>
-        <configuration-as-code-plugin.version>1.36</configuration-as-code-plugin.version>
+        <configuration-as-code-plugin.version>1.37-20201006.192214-1</configuration-as-code-plugin.version>
     </properties>
     <dependencyManagement>
         <dependencies>
