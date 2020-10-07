@@ -41,35 +41,22 @@ stage('prep') {
     }
 }
 
-// TODO would much rather parallelize *all* PCT tests, but (INFRA-2283) ci.jenkins.io just falls over when we try.
-// Running in parallel by plugin but serially by line works, albeit slowly, since workflow-cps is a bottleneck.
-// So we try to manually constrain parallelism.
-def semaphore = 30 // 50× parallelism usually works; 84× seems to fail reliably.
 branches = [failFast: failFast]
 lines.each {line ->
     plugins.each { plugin ->
         branches["pct-$plugin-$line"] = {
-            // TODO JENKINS-29037 would be useful here to wait with a longer period
-            waitUntil {if (semaphore > 0) {semaphore--; true} else {false}} // see JENKINS-27127
-            assert semaphore >= 0
-            try {
-                mavenEnv {
-                    deleteDir()
-                    unstash 'pct.sh'
-                    unstash 'pct'
-                    unstash "megawar-$line"
-                    withEnv(["PLUGINS=$plugin", "LINE=$line", 'EXTRA_MAVEN_PROPERTIES=surefire.rerunFailingTestsCount=4']) {
-                        sh 'mv megawar-$LINE.war megawar.war && bash pct.sh'
-                    }
+            mavenEnv {
+                deleteDir()
+                unstash 'pct.sh'
+                unstash 'pct'
+                unstash "megawar-$line"
+                withEnv(["PLUGINS=$plugin", "LINE=$line", 'EXTRA_MAVEN_PROPERTIES=surefire.rerunFailingTestsCount=4']) {
+                    sh 'mv megawar-$LINE.war megawar.war && bash pct.sh'
                 }
-            } finally {
-                semaphore++
             }
         }
     }
 }
 parallel branches
 
-/* TODO INFRA-2548 + INFRA-2544
 infra.maybePublishIncrementals()
-*/
