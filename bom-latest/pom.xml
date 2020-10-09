@@ -12,7 +12,7 @@
         <configuration-as-code-plugin.version>1.44</configuration-as-code-plugin.version>
         <git-plugin.version>4.4.4</git-plugin.version>
         <pipeline-model-definition-plugin.version>1.7.2</pipeline-model-definition-plugin.version>
-        <scm-api-plugin.version>2.6.3</scm-api-plugin.version>
+        <scm-api-plugin.version>2.6.4</scm-api-plugin.version>
         <structs-plugin.version>1.20</structs-plugin.version>
         <workflow-api-plugin.version>2.40</workflow-api-plugin.version>
         <workflow-cps-plugin.version>2.83</workflow-cps-plugin.version>
@@ -53,7 +53,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-basic-steps</artifactId>
-                <version>2.20</version>
+                <version>2.22</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
@@ -234,7 +234,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>matrix-project</artifactId>
-                <version>1.17</version>
+                <version>1.18</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
