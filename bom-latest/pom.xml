@@ -18,7 +18,7 @@
         <workflow-cps-plugin.version>2.83</workflow-cps-plugin.version>
         <workflow-job-plugin.version>2.40</workflow-job-plugin.version>
         <workflow-multibranch-plugin.version>2.22</workflow-multibranch-plugin.version>
-        <workflow-step-api-plugin.version>2.22</workflow-step-api-plugin.version>
+        <workflow-step-api-plugin.version>2.23</workflow-step-api-plugin.version>
         <workflow-support-plugin.version>3.5</workflow-support-plugin.version>
     </properties>
     <dependencyManagement>
