@@ -41,8 +41,9 @@ do
 done
 
 # TODO find a way to encode this in some POM so that it can be managed by Dependabot
-version=0.5.1-rc1021.e0af2a047ff6 # TODO https://github.com/jenkinsci/plugin-compat-tester/pull/256
-pct=$HOME/.m2/repository/org/jenkins-ci/tests/plugins-compat-tester-cli/${version}/plugins-compat-tester-cli-${version}.jar
+SNAPSHOT_VERSION=0.5.1-SNAPSHOT # TODO incrementals broken till https://github.com/jenkinsci/plugin-compat-tester/pull/260 is merged
+version=0.5.1-20201017.070523-3 # TODO https://github.com/jenkinsci/plugin-compat-tester/pull/261
+pct=$HOME/.m2/repository/org/jenkins-ci/tests/plugins-compat-tester-cli/${SNAPSHOT_VERSION}/plugins-compat-tester-cli-${version}.jar
 [ -f $pct ] || $MVN dependency:get -Dartifact=org.jenkins-ci.tests:plugins-compat-tester-cli:${version}:jar -DremoteRepositories=https://repo.jenkins-ci.org/public/,https://repo.jenkins-ci.org/incrementals/ -Dtransitive=false
 cp $pct target/pct.jar
 
