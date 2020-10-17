@@ -127,4 +127,7 @@ rm -fv pct-work/matrix-project/target/surefire-reports/TEST-hudson.matrix.AxisTe
 # TODO https://github.com/jenkinsci/branch-api-plugin/pull/211
 rm -fv pct-work/branch-api/target/surefire-reports/TEST-jenkins.branch.RateLimitBranchPropertyTest.xml
 
+# TODO remove after timestamper upgrades to next bom https://github.com/jenkinsci/bom/pull/294#issuecomment-710770375
+rm -fv pct-work/timestamper/target/surefire-reports/TEST-hudson.plugins.timestamper.ConfigurationAsCodeTest.xml
+
 # produces: **/target/surefire-reports/TEST-*.xml
