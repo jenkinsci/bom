@@ -9,7 +9,7 @@
     <artifactId>bom-2.204.x</artifactId>
     <packaging>pom</packaging>
     <properties>
-        <configuration-as-code-plugin.version>1.36</configuration-as-code-plugin.version>
+        <configuration-as-code-plugin.version>1.36.2</configuration-as-code-plugin.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -29,6 +29,11 @@
                 <groupId>io.jenkins.configuration-as-code</groupId>
                 <artifactId>test-harness</artifactId>
                 <version>${configuration-as-code-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>jackson2-api</artifactId>
+                <version>2.11.1</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
