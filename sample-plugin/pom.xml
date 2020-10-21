@@ -322,20 +322,6 @@
             </properties>
         </profile>
         <profile>
-            <id>2.190.x</id>
-            <properties>
-                <bom>2.190.x</bom>
-                <jenkins.version>2.190.3</jenkins.version>
-            </properties>
-        </profile>
-        <profile>
-            <id>2.176.x</id>
-            <properties>
-                <bom>2.176.x</bom>
-                <jenkins.version>2.176.4</jenkins.version>
-            </properties>
-        </profile>
-        <profile>
             <id>skip-tests-on-release</id>
             <activation>
                 <property>
