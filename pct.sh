@@ -133,4 +133,7 @@ rm -fv pct-work/timestamper/target/surefire-reports/TEST-hudson.plugins.timestam
 # TODO https://github.com/jenkinsci/workflow-basic-steps-plugin/pull/134
 rm -fv pct-work/workflow-basic-steps/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.steps.CoreWrapperStepTest.xml
 
+# TODO https://github.com/jenkinsci/branch-api-plugin/pull/222
+rm -fv pct-work/branch-api/target/surefire-reports/TEST-jenkins.branch.OrganizationFolderTest.xml
+
 # produces: **/target/surefire-reports/TEST-*.xml
