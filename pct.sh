@@ -136,4 +136,7 @@ rm -fv pct-work/workflow-basic-steps/target/surefire-reports/TEST-org.jenkinsci.
 # TODO https://github.com/jenkinsci/branch-api-plugin/pull/222
 rm -fv pct-work/branch-api/target/surefire-reports/TEST-jenkins.branch.OrganizationFolderTest.xml
 
+# TODO https://github.com/jenkinsci/workflow-multibranch-plugin/pull/102
+rm -fv pct-work/workflow-multibranch/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProjectTest.xml
+
 # produces: **/target/surefire-reports/TEST-*.xml
