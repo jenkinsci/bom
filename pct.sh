@@ -130,4 +130,13 @@ rm -fv pct-work/branch-api/target/surefire-reports/TEST-jenkins.branch.RateLimit
 # TODO remove after timestamper upgrades to next bom https://github.com/jenkinsci/bom/pull/294#issuecomment-710770375
 rm -fv pct-work/timestamper/target/surefire-reports/TEST-hudson.plugins.timestamper.ConfigurationAsCodeTest.xml
 
+# TODO https://github.com/jenkinsci/workflow-basic-steps-plugin/pull/134
+rm -fv pct-work/workflow-basic-steps/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.steps.CoreWrapperStepTest.xml
+
+# TODO https://github.com/jenkinsci/branch-api-plugin/pull/222
+rm -fv pct-work/branch-api/target/surefire-reports/TEST-jenkins.branch.OrganizationFolderTest.xml
+
+# TODO https://github.com/jenkinsci/workflow-multibranch-plugin/pull/102
+rm -fv pct-work/workflow-multibranch/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProjectTest.xml
+
 # produces: **/target/surefire-reports/TEST-*.xml
