@@ -6,7 +6,7 @@
         <artifactId>parent</artifactId>
         <version>${revision}${changelist}</version>
     </parent>
-    <artifactId>bom-2.249.x</artifactId>
+    <artifactId>bom-2.263.x</artifactId>
     <packaging>pom</packaging>
     <properties>
         <configuration-as-code-plugin.version>1.44</configuration-as-code-plugin.version>
