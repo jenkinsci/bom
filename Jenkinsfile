@@ -45,6 +45,7 @@ branches = [failFast: failFast]
 lines.each {line ->
     plugins.each { plugin ->
         branches["pct-$plugin-$line"] = {
+          retry(2) { // in case of transient node outages
             mavenEnv {
                 deleteDir()
                 unstash 'pct.sh'
@@ -54,6 +55,7 @@ lines.each {line ->
                     sh 'mv megawar-$LINE.war megawar.war && bash pct.sh'
                 }
             }
+          }
         }
     }
 }
