@@ -58,10 +58,10 @@ fi
 
 # TODO various problems with PCT itself (e.g. https://github.com/jenkinsci/bom/pull/338#issuecomment-715256727)
 # and anyway the tests in PluginAutomaticTestBuilder are generally uninteresting in a PCT context
-rm -fv pct-work/*/target/surefire-reports/TEST-InjectedTest.xml
+rm -fv pct-work/*/{,*/}target/surefire-reports/TEST-InjectedTest.xml
 
 # TODO https://github.com/jenkinsci/jenkins/pull/4099 in 2.176.x
-# TODO strange NPE from net.sourceforge.htmlunit.corejs.javascript.ScriptRuntime.hasTopCall in 2.263.x; recheck after https://github.com/jenkinsci/command-launcher-plugin/pull/14
+# TODO unrelated failure in 2.263.x until 1.5 update
 rm -fv pct-work/command-launcher/target/surefire-reports/TEST-hudson.slaves.CommandLauncher2Test.xml
 
 # TODO pending https://github.com/jenkinsci/jdk-tool-plugin/pull/12
