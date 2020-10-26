@@ -9,7 +9,7 @@
     <artifactId>bom-2.263.x</artifactId>
     <packaging>pom</packaging>
     <properties>
-        <configuration-as-code-plugin.version>1.44</configuration-as-code-plugin.version>
+        <configuration-as-code-plugin.version>1.45</configuration-as-code-plugin.version>
         <git-plugin.version>4.4.5</git-plugin.version>
         <pipeline-model-definition-plugin.version>1.7.2</pipeline-model-definition-plugin.version>
         <scm-api-plugin.version>2.6.4</scm-api-plugin.version>
@@ -24,6 +24,41 @@
     <dependencyManagement>
         <dependencies>
             <!-- Plugins (sorted): -->
+            <dependency>
+                <groupId>io.jenkins.plugins</groupId>
+                <artifactId>bootstrap4-api</artifactId>
+                <version>4.5.3-1</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jenkins.plugins</groupId>
+                <artifactId>checks-api</artifactId>
+                <version>1.0.3</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jenkins.plugins</groupId>
+                <artifactId>echarts-api</artifactId>
+                <version>4.9.0-2</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jenkins.plugins</groupId>
+                <artifactId>font-awesome-api</artifactId>
+                <version>5.15.1-1</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jenkins.plugins</groupId>
+                <artifactId>jquery3-api</artifactId>
+                <version>3.5.1-2</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jenkins.plugins</groupId>
+                <artifactId>plugin-util-api</artifactId>
+                <version>1.4.0</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jenkins.plugins</groupId>
+                <artifactId>popper-api</artifactId>
+                <version>1.16.0-7</version>
+            </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>snakeyaml-api</artifactId>
@@ -219,7 +254,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>junit</artifactId>
-                <version>1.29</version>
+                <version>1.43</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>

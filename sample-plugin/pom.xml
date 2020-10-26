@@ -44,6 +44,41 @@
     <dependencies>
         <dependency>
             <groupId>io.jenkins.plugins</groupId>
+            <artifactId>bootstrap4-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins</groupId>
+            <artifactId>checks-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins</groupId>
+            <artifactId>echarts-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins</groupId>
+            <artifactId>font-awesome-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins</groupId>
+            <artifactId>jquery3-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins</groupId>
+            <artifactId>plugin-util-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins</groupId>
+            <artifactId>popper-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins</groupId>
             <artifactId>snakeyaml-api</artifactId>
             <scope>test</scope>
         </dependency>
@@ -291,20 +326,6 @@
             <properties>
                 <bom>2.204.x</bom>
                 <jenkins.version>2.204.6</jenkins.version>
-            </properties>
-        </profile>
-        <profile>
-            <id>2.190.x</id>
-            <properties>
-                <bom>2.190.x</bom>
-                <jenkins.version>2.190.3</jenkins.version>
-            </properties>
-        </profile>
-        <profile>
-            <id>2.176.x</id>
-            <properties>
-                <bom>2.176.x</bom>
-                <jenkins.version>2.176.4</jenkins.version>
             </properties>
         </profile>
         <profile>
