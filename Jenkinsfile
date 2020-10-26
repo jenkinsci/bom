@@ -2,7 +2,7 @@ def buildNumber = BUILD_NUMBER as int; if (buildNumber > 1) milestone(buildNumbe
 
 def mavenEnv(body) {
     node('maven') { // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
-        timeout(60) {
+        timeout(90) {
             sh 'mvn -version'
             def settingsXml = "${pwd tmp: true}/settings-azure.xml"
             def ok = infra.retrieveMavenSettingsFile(settingsXml)
