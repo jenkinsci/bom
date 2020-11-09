@@ -73,10 +73,6 @@ rm -fv pct-work/git/target/surefire-reports/TEST-hudson.plugins.git.GitStatusCru
 # ref: https://github.com/jenkinsci/workflow-job-plugin/pull/131/files#r291657569
 # https://github.com/jenkinsci/workflow-support-plugin/pull/105
 # https://github.com/jenkinsci/workflow-durable-task-step-plugin/pull/130
-# https://github.com/jenkinsci/workflow-basic-steps-plugin/pull/110
-rm -fv pct-work/workflow-basic-steps/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.steps.CatchErrorStepTest.xml
-rm -fv pct-work/workflow-basic-steps/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.steps.WaitForConditionStepTest.xml
-rm -fv pct-work/workflow-basic-steps/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.support.steps.stash.StashTest.xml
 rm -fv pct-work/workflow-support/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.support.pickles.serialization.SerializationSecurityTest.xml
 rm -fv pct-work/workflow-durable-task-step/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.steps.durable_task.ShellStepTest.xml
 rm -fv pct-work/workflow-durable-task-step/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.support.steps.ExecutorStepTest.xml
@@ -98,17 +94,11 @@ rm -fv pct-work/git-client/target/surefire-reports/TEST-org.jenkinsci.plugins.gi
 # TODO https://github.com/jenkinsci/configuration-as-code-plugin/pull/1243
 rm -fv pct-work/configuration-as-code-plugin/plugin/target/surefire-reports/TEST-io.jenkins.plugins.casc.ConfigurationAsCodeTest.xml
 
-# TODO https://github.com/jenkinsci/workflow-basic-steps-plugin/pull/120
-rm -fv pct-work/workflow-basic-steps/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.steps.TimeoutStepTest.xml
-
 # TODO cryptic PCT-only errors: https://github.com/jenkinsci/bom/pull/251#issuecomment-645012427
 rm -fv pct-work/matrix-project/target/surefire-reports/TEST-hudson.matrix.AxisTest.xml
 
 # TODO remove after timestamper upgrades to next bom https://github.com/jenkinsci/bom/pull/294#issuecomment-710770375
 rm -fv pct-work/timestamper/target/surefire-reports/TEST-hudson.plugins.timestamper.ConfigurationAsCodeTest.xml
-
-# TODO https://github.com/jenkinsci/workflow-basic-steps-plugin/pull/134
-rm -fv pct-work/workflow-basic-steps/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.steps.CoreWrapperStepTest.xml
 
 # TODO https://github.com/jenkinsci/workflow-multibranch-plugin/pull/102
 rm -fv pct-work/workflow-multibranch/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProjectTest.xml
