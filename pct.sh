@@ -73,6 +73,8 @@ rm -fv pct-work/git/target/surefire-reports/TEST-hudson.plugins.git.GitStatusCru
 # ref: https://github.com/jenkinsci/workflow-job-plugin/pull/131/files#r291657569
 # https://github.com/jenkinsci/workflow-support-plugin/pull/105
 # https://github.com/jenkinsci/workflow-durable-task-step-plugin/pull/130
+# https://github.com/jenkinsci/workflow-basic-steps-plugin/pull/110 analogue for CatchErrorStepTest
+rm -fv pct-work/workflow-basic-steps/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.steps.CatchErrorStepTest.xml
 rm -fv pct-work/workflow-support/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.support.pickles.serialization.SerializationSecurityTest.xml
 rm -fv pct-work/workflow-durable-task-step/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.steps.durable_task.ShellStepTest.xml
 rm -fv pct-work/workflow-durable-task-step/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.support.steps.ExecutorStepTest.xml
