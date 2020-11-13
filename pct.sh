@@ -105,4 +105,7 @@ rm -fv pct-work/timestamper/target/surefire-reports/TEST-hudson.plugins.timestam
 # TODO https://github.com/jenkinsci/workflow-multibranch-plugin/pull/102
 rm -fv pct-work/workflow-multibranch/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProjectTest.xml
 
+# TODO https://github.com/jenkinsci/matrix-auth-plugin/pull/93
+rm -fv pct-work/matrix-auth/target/surefire-reports/TEST-org.jenkinsci.plugins.matrixauth.PermissionAdderTest.xml
+
 # produces: **/target/surefire-reports/TEST-*.xml
