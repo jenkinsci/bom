@@ -32,7 +32,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>checks-api</artifactId>
-                <version>1.1.0</version>
+                <version>1.1.1</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -259,7 +259,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>junit</artifactId>
-                <version>1.43</version>
+                <version>1.44</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
