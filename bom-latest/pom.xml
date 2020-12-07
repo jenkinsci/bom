@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
     <properties>
         <configuration-as-code-plugin.version>1.46</configuration-as-code-plugin.version>
-        <git-plugin.version>4.4.5</git-plugin.version>
+        <git-plugin.version>4.5.0</git-plugin.version>
         <pipeline-model-definition-plugin.version>1.7.2</pipeline-model-definition-plugin.version>
         <scm-api-plugin.version>2.6.4</scm-api-plugin.version>
         <structs-plugin.version>1.20</structs-plugin.version>
