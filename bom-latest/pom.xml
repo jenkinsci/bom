@@ -39,7 +39,6 @@
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>checks-api</artifactId>
                 <version>${checks-api.version}</version>
-                <scope>test</scope>
                 <classifier>tests</classifier>
             </dependency>
             <dependency>
