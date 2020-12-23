@@ -15,7 +15,7 @@
         <revision>21</revision>
         <changelist>-SNAPSHOT</changelist>
         <bom>2.263.x</bom>
-        <jenkins.version>2.263</jenkins.version>
+        <jenkins.version>2.271-rc30636.e38c20f22969</jenkins.version>
         <java.level>8</java.level>
     </properties>
     <repositories>
