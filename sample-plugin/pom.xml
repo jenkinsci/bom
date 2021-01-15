@@ -9,10 +9,10 @@
     </parent>
     <groupId>io.jenkins.tools.bom</groupId>
     <artifactId>sample</artifactId>
-    <version>22-SNAPSHOT</version>
+    <version>${revision}${changelist}</version>
     <packaging>hpi</packaging>
     <properties>
-        <revision>21</revision>
+        <revision>22</revision>
         <changelist>-SNAPSHOT</changelist>
         <bom>2.263.x</bom>
         <jenkins.version>2.263.2</jenkins.version>
