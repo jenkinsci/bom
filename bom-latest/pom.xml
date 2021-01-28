@@ -9,7 +9,7 @@
     <artifactId>bom-2.263.x</artifactId>
     <packaging>pom</packaging>
     <properties>
-        <checks-api.version>1.2.0</checks-api.version>
+        <checks-api.version>1.3.0</checks-api.version>
         <configuration-as-code-plugin.version>1.46</configuration-as-code-plugin.version>
         <git-plugin.version>4.5.2</git-plugin.version>
         <pipeline-model-definition-plugin.version>1.7.2</pipeline-model-definition-plugin.version>
