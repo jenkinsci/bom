@@ -64,7 +64,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>popper-api</artifactId>
-                <version>1.16.0-7</version>
+                <version>1.16.1-1</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
