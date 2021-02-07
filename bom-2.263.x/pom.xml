@@ -8,6 +8,10 @@
     </parent>
     <artifactId>bom-2.263.x</artifactId>
     <packaging>pom</packaging>
+    <properties>
+        <workflow-api-plugin.version>2.41</workflow-api-plugin.version>
+        <workflow-support-plugin.version>3.7</workflow-support-plugin.version>
+    </properties>
     <dependencyManagement>
         <dependencies>
             <dependency>

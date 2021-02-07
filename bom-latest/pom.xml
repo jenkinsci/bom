@@ -15,12 +15,12 @@
         <pipeline-model-definition-plugin.version>1.8.3</pipeline-model-definition-plugin.version>
         <scm-api-plugin.version>2.6.4</scm-api-plugin.version>
         <structs-plugin.version>1.21</structs-plugin.version>
-        <workflow-api-plugin.version>2.41</workflow-api-plugin.version>
+        <workflow-api-plugin.version>2.42-rc1048.8d974b8c4ed5</workflow-api-plugin.version> <!-- TODO https://github.com/jenkinsci/workflow-api-plugin/pull/135 -->
         <workflow-cps-plugin.version>2.87</workflow-cps-plugin.version>
         <workflow-job-plugin.version>2.40</workflow-job-plugin.version>
         <workflow-multibranch-plugin.version>2.22</workflow-multibranch-plugin.version>
         <workflow-step-api-plugin.version>2.23</workflow-step-api-plugin.version>
-        <workflow-support-plugin.version>3.7</workflow-support-plugin.version>
+        <workflow-support-plugin.version>3.8-rc775.902967c53b37</workflow-support-plugin.version> <!-- TODO https://github.com/jenkinsci/workflow-support-plugin/pull/114 -->
     </properties>
     <dependencyManagement>
         <dependencies>
