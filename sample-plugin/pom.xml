@@ -15,7 +15,7 @@
         <revision>24</revision>
         <changelist>-SNAPSHOT</changelist>
         <bom>2.277.x</bom>
-        <jenkins.version>2.279-rc30875.816b8deac73a</jenkins.version> <!-- TODO https://github.com/jenkinsci/jenkins/pull/5059 -->
+        <jenkins.version>2.279-rc30881.64d2d0984498</jenkins.version> <!-- TODO https://github.com/jenkinsci/jenkins/pull/5059 -->
         <java.level>8</java.level>
     </properties>
     <repositories>
