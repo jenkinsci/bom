@@ -314,7 +314,7 @@
             <id>2.263.x</id>
             <properties>
                 <bom>2.263.x</bom>
-                <jenkins.version>2.263.3</jenkins.version>
+                <jenkins.version>2.263.4</jenkins.version>
             </properties>
         </profile>
         <profile>
