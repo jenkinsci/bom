@@ -18,6 +18,11 @@
                 <type>pom</type>
             </dependency>
             <dependency>
+                <groupId>io.jenkins.plugins</groupId>
+                <artifactId>plugin-util-api</artifactId>
+                <version>1.7.1</version>
+            </dependency>
+            <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-basic-steps</artifactId>
                 <version>2.20</version>
