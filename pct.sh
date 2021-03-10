@@ -13,7 +13,7 @@ else
     PCT_S_ARG=
 fi
 
-MAVEN_PROPERTIES=jth.jenkins-war.path=$(pwd)/megawar.war:forkCount=.5C
+MAVEN_PROPERTIES=jth.jenkins-war.path=$(pwd)/megawar.war:forkCount=1C
 if [ -v EXTRA_MAVEN_PROPERTIES ]
 then
     MAVEN_PROPERTIES="$MAVEN_PROPERTIES:$EXTRA_MAVEN_PROPERTIES"
