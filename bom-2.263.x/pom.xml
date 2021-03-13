@@ -10,7 +10,6 @@
     <packaging>pom</packaging>
     <properties>
         <workflow-api-plugin.version>2.41</workflow-api-plugin.version>
-        <workflow-support-plugin.version>3.7</workflow-support-plugin.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -41,17 +40,6 @@
                 <artifactId>workflow-api</artifactId>
                 <classifier>tests</classifier>
                 <version>${workflow-api-plugin.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkins-ci.plugins.workflow</groupId>
-                <artifactId>workflow-support</artifactId>
-                <version>${workflow-support-plugin.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkins-ci.plugins.workflow</groupId>
-                <artifactId>workflow-support</artifactId>
-                <classifier>tests</classifier>
-                <version>${workflow-support-plugin.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
