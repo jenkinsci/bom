@@ -11,8 +11,9 @@
     <artifactId>parent</artifactId>
     <version>${revision}${changelist}</version>
     <packaging>pom</packaging>
+    <url>https://github.com/jenkinsci/bom</url>
     <properties>
-        <revision>24</revision>
+        <revision>27</revision>
         <changelist>-SNAPSHOT</changelist>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
