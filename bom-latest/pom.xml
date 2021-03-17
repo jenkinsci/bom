@@ -15,7 +15,7 @@
         <pipeline-model-definition-plugin.version>1.8.4</pipeline-model-definition-plugin.version>
         <scm-api-plugin.version>2.6.4</scm-api-plugin.version>
         <structs-plugin.version>1.22</structs-plugin.version>
-        <workflow-api-plugin.version>2.41</workflow-api-plugin.version>
+        <workflow-api-plugin.version>2.42</workflow-api-plugin.version>
         <workflow-cps-plugin.version>2.90</workflow-cps-plugin.version>
         <workflow-job-plugin.version>2.40</workflow-job-plugin.version>
         <workflow-multibranch-plugin.version>2.22</workflow-multibranch-plugin.version>
