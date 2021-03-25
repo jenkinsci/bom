@@ -17,7 +17,7 @@
         <structs-plugin.version>1.22</structs-plugin.version>
         <workflow-api-plugin.version>2.42</workflow-api-plugin.version>
         <workflow-cps-plugin.version>2.90</workflow-cps-plugin.version>
-        <workflow-job-plugin.version>2.41-rc1112.91a865190a8</workflow-job-plugin.version>
+        <workflow-job-plugin.version>2.41-rc1112.91a865190a8b</workflow-job-plugin.version>
         <workflow-multibranch-plugin.version>2.22</workflow-multibranch-plugin.version>
         <workflow-step-api-plugin.version>2.23</workflow-step-api-plugin.version>
         <workflow-support-plugin.version>3.8</workflow-support-plugin.version>
