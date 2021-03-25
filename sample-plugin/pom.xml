@@ -43,6 +43,11 @@
     </dependencyManagement>
     <dependencies>
         <dependency>
+            <groupId>com.sonyericsson.hudson.plugins.rebuild</groupId>
+            <artifactId>rebuild</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>io.jenkins.plugins</groupId>
             <artifactId>bootstrap4-api</artifactId>
             <scope>test</scope>
