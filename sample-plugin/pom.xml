@@ -9,7 +9,7 @@
     </parent>
     <groupId>io.jenkins.tools.bom</groupId>
     <artifactId>sample</artifactId>
-    <version>27</version>
+    <version>28-SNAPSHOT</version>
     <packaging>hpi</packaging>
     <properties>
         <revision>27</revision>
@@ -351,8 +351,4 @@
             </properties>
         </profile>
     </profiles>
-
-  <scm>
-    <tag>bom-27</tag>
-  </scm>
 </project>
