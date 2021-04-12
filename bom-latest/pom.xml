@@ -332,7 +332,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>ssh-slaves</artifactId>
-                <version>1.31.5</version>
+                <version>1.31.7</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
