@@ -9,11 +9,11 @@
     </parent>
     <groupId>io.jenkins.tools.bom</groupId>
     <artifactId>parent</artifactId>
-    <version>29</version>
+    <version>${revision}${changelist}</version>
     <packaging>pom</packaging>
     <url>https://github.com/jenkinsci/bom</url>
     <properties>
-        <revision>29</revision>
+        <revision>30</revision>
         <changelist>-SNAPSHOT</changelist>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -27,7 +27,7 @@
         <connection>scm:git:git@github.com/jenkinsci/bom.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/jenkinsci/bom.git</developerConnection>
         <url>https://github.com/jenkinsci/bom</url>
-        <tag>bom-29</tag>
+        <tag>${scmTag}</tag>
     </scm>
     <modules>
         <module>bom-latest</module>
