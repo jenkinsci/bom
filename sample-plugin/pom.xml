@@ -9,11 +9,10 @@
     </parent>
     <groupId>io.jenkins.tools.bom</groupId>
     <artifactId>sample</artifactId>
-    <version>${revision}${changelist}</version>
+    <version>${changelist}</version>
     <packaging>hpi</packaging>
     <properties>
-        <revision>30</revision>
-        <changelist>-SNAPSHOT</changelist>
+        <changelist>999999-SNAPSHOT</changelist>
         <bom>2.277.x</bom>
         <jenkins.version>2.277.4</jenkins.version>
         <java.level>8</java.level>
@@ -336,18 +335,6 @@
             <properties>
                 <bom>2.222.x</bom>
                 <jenkins.version>2.222.4</jenkins.version>
-            </properties>
-        </profile>
-        <profile>
-            <id>skip-tests-on-release</id>
-            <activation>
-                <property>
-                    <name>performRelease</name>
-                    <value>true</value>
-                </property>
-            </activation>
-            <properties>
-                <skipTests>true</skipTests>
             </properties>
         </profile>
     </profiles>
