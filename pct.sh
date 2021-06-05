@@ -88,4 +88,7 @@ rm -fv pct-work/workflow-basic-steps/target/surefire-reports/TEST-org.jenkinsci.
 # TODO https://github.com/jenkinsci/pipeline-model-definition-plugin/pull/417
 rm -fv pct-work/pipeline-model-definition/pipeline-model-definition/target/surefire-reports/TEST-org.jenkinsci.plugins.pipeline.modeldefinition.parser.ASTParserUtilsTest.xml
 
+# TODO https://github.com/jenkinsci/pipeline-model-definition-plugin/pull/421
+rm -fv pct-work/pipeline-model-definition/pipeline-model-definition/target/surefire-reports/TEST-org.jenkinsci.plugins.pipeline.modeldefinition.steps.CredentialWrapperStepTest.xml
+
 # produces: **/target/surefire-reports/TEST-*.xml
