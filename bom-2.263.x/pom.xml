@@ -27,6 +27,11 @@
                 <artifactId>token-macro</artifactId>
                 <version>2.13</version>
             </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>dashboard-view</artifactId>
+                <version>2.16</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>
