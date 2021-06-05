@@ -6,18 +6,18 @@
         <artifactId>parent</artifactId>
         <version>${changelist}</version>
     </parent>
-    <artifactId>bom-2.277.x</artifactId>
+    <artifactId>bom-2.289.x</artifactId>
     <packaging>pom</packaging>
     <properties>
         <checks-api.version>1.7.0</checks-api.version>
         <configuration-as-code-plugin.version>1.51</configuration-as-code-plugin.version>
-        <git-plugin.version>4.7.1</git-plugin.version>
-        <pipeline-model-definition-plugin.version>1.8.4</pipeline-model-definition-plugin.version>
+        <git-plugin.version>4.7.2</git-plugin.version>
+        <pipeline-model-definition-plugin.version>1.8.5</pipeline-model-definition-plugin.version>
         <scm-api-plugin.version>2.6.4</scm-api-plugin.version>
         <structs-plugin.version>1.23</structs-plugin.version>
         <workflow-api-plugin.version>2.42</workflow-api-plugin.version>
         <workflow-cps-plugin.version>2.92</workflow-cps-plugin.version>
-        <workflow-job-plugin.version>2.40</workflow-job-plugin.version>
+        <workflow-job-plugin.version>2.41</workflow-job-plugin.version>
         <workflow-multibranch-plugin.version>2.24</workflow-multibranch-plugin.version>
         <workflow-step-api-plugin.version>2.23</workflow-step-api-plugin.version>
         <workflow-support-plugin.version>3.8</workflow-support-plugin.version>
@@ -332,12 +332,12 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>ssh-credentials</artifactId>
-                <version>1.18.1</version>
+                <version>1.18.2</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>ssh-slaves</artifactId>
-                <version>1.31.5</version>
+                <version>1.31.7</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
