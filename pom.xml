@@ -4,18 +4,18 @@
     <parent>
         <groupId>org.jenkins-ci</groupId>
         <artifactId>jenkins</artifactId>
-        <version>1.63</version>
+        <version>1.64</version>
         <relativePath />
     </parent>
     <groupId>io.jenkins.tools.bom</groupId>
     <artifactId>parent</artifactId>
-    <version>${revision}${changelist}</version>
+    <version>${changelist}</version>
     <packaging>pom</packaging>
     <url>https://github.com/jenkinsci/bom</url>
     <properties>
-        <revision>27</revision>
-        <changelist>-SNAPSHOT</changelist>
+        <changelist>999999-SNAPSHOT</changelist>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <gitHubRepo>jenkinsci/bom</gitHubRepo>
     </properties>
     <licenses>
         <license>
@@ -24,13 +24,14 @@
         </license>
     </licenses>
     <scm>
-        <connection>scm:git:git@github.com/jenkinsci/bom.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/jenkinsci/bom.git</developerConnection>
-        <url>https://github.com/jenkinsci/bom</url>
+        <connection>scm:git:git@github.com/${gitHubRepo}.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/${gitHubRepo}.git</developerConnection>
+        <url>https://github.com/${gitHubRepo}</url>
         <tag>${scmTag}</tag>
     </scm>
     <modules>
         <module>bom-latest</module>
+        <module>bom-2.277.x</module>
         <module>bom-2.263.x</module>
         <module>bom-2.249.x</module>
         <module>bom-2.235.x</module>
@@ -50,12 +51,6 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <artifactId>maven-release-plugin</artifactId>
-                <configuration>
-                    <tagNameFormat>bom-@{project.version}</tagNameFormat>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
