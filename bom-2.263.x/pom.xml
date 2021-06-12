@@ -4,7 +4,7 @@
     <parent>
         <groupId>io.jenkins.tools.bom</groupId>
         <artifactId>parent</artifactId>
-        <version>${revision}${changelist}</version>
+        <version>${changelist}</version>
     </parent>
     <artifactId>bom-2.263.x</artifactId>
     <packaging>pom</packaging>
@@ -26,6 +26,11 @@
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>token-macro</artifactId>
                 <version>2.13</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>dashboard-view</artifactId>
+                <version>2.16</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
