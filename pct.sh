@@ -94,4 +94,7 @@ rm -fv pct-work/pipeline-model-definition/pipeline-model-definition/target/suref
 # TODO https://github.com/jenkinsci/git-plugin/pull/1093
 rm -fv pct-work/git/target/surefire-reports/TEST-jenkins.plugins.git.ModernScmTest.xml
 
+# TODO https://github.com/jenkinsci/workflow-multibranch-plugin/pull/128
+rm -fv pct-work/workflow-multibranch/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.multibranch.JobPropertyStepTest.xml
+
 # produces: **/target/surefire-reports/TEST-*.xml
