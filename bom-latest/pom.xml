@@ -15,6 +15,7 @@
         <pipeline-model-definition-plugin.version>1.8.5</pipeline-model-definition-plugin.version>
         <scm-api-plugin.version>2.6.4</scm-api-plugin.version>
         <structs-plugin.version>1.23</structs-plugin.version>
+        <subversion-plugin.version>2.14.3</subversion-plugin.version>
         <workflow-api-plugin.version>2.44</workflow-api-plugin.version>
         <workflow-cps-plugin.version>2.92</workflow-cps-plugin.version>
         <workflow-job-plugin.version>2.41</workflow-job-plugin.version>
@@ -25,6 +26,11 @@
     <dependencyManagement>
         <dependencies>
             <!-- Plugins (sorted): -->
+            <dependency>
+                <groupId>com.sonyericsson.hudson.plugins.rebuild</groupId>
+                <artifactId>rebuild</artifactId>
+                <version>1.32</version>
+            </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>bootstrap4-api</artifactId>
@@ -352,7 +358,13 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>subversion</artifactId>
-                <version>2.14.3</version>
+                <version>${subversion-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>subversion</artifactId>
+                <classifier>tests</classifier>
+                <version>${subversion-plugin.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
