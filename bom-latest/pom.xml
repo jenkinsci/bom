@@ -33,8 +33,8 @@
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
-                <artifactId>bootstrap4-api</artifactId>
-                <version>4.6.0-3</version>
+                <artifactId>bootstrap5-api</artifactId>
+                <version>5.0.1-2</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -54,8 +54,13 @@
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
+                <artifactId>data-tables-api</artifactId>
+                <version>1.10.25-1</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jenkins.plugins</groupId>
                 <artifactId>echarts-api</artifactId>
-                <version>5.0.2-1</version>
+                <version>5.1.2-2</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -74,8 +79,8 @@
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
-                <artifactId>popper-api</artifactId>
-                <version>1.16.1-2</version>
+                <artifactId>popper2-api</artifactId>
+                <version>2.5.4-2</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
