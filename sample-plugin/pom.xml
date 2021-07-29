@@ -343,7 +343,7 @@
             <id>2.289.x</id>
             <properties>
                 <bom>2.289.x</bom>
-                <jenkins.version>2.289.2</jenkins.version>
+                <jenkins.version>2.289.3</jenkins.version>
             </properties>
         </profile>
         <profile>
