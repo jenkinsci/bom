@@ -27,32 +27,6 @@
                 <artifactId>credentials-binding</artifactId>
                 <version>1.24</version>
             </dependency>
-            <dependency>
-                <groupId>org.jenkinsci.plugins</groupId>
-                <artifactId>pipeline-model-api</artifactId>
-                <version>1.8.5</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkinsci.plugins</groupId>
-                <artifactId>pipeline-model-definition</artifactId>
-                <version>1.8.5</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkinsci.plugins</groupId>
-                <artifactId>pipeline-model-definition</artifactId>
-                <classifier>tests</classifier>
-                <version>1.8.5</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkinsci.plugins</groupId>
-                <artifactId>pipeline-model-extensions</artifactId>
-                <version>1.8.5</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkinsci.plugins</groupId>
-                <artifactId>pipeline-stage-tags-metadata</artifactId>
-                <version>1.8.5</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>
