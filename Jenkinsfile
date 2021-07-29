@@ -1,6 +1,6 @@
 def buildNumber = BUILD_NUMBER as int; if (buildNumber > 1) milestone(buildNumber - 1); milestone(buildNumber) // JENKINS-43353 / JENKINS-58625
 
-def mavenEnv(body) {
+def mavenEnv(Map params = [:], Closure body) {
     node('maven') { // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
         timeout(90) {
             sh 'mvn -version'
@@ -10,7 +10,7 @@ def mavenEnv(body) {
             withEnv(["MAVEN_SETTINGS=$settingsXml"]) {
                 body()
             }
-            if (junit(testResults: '**/target/surefire-reports/TEST-*.xml', allowEmptyResults: true).failCount > 0) {
+            if (junit(testResults: '**/target/surefire-reports/TEST-*.xml', allowEmptyResults: true, skipMarkingBuildUnstable: !!params['skipMarkingBuildUnstable']).failCount > 0) {
                 // TODO JENKINS-27092 throw up UNSTABLE status in this case
                 error 'Some test failures, not going to continue'
             }
@@ -46,7 +46,7 @@ lines.each {line ->
     plugins.each { plugin ->
         branches["pct-$plugin-$line"] = {
           retry(2) { // in case of transient node outages
-            mavenEnv {
+            mavenEnv(skipMarkingBuildUnstable: plugin == 'pipeline-model-definition') { // TODO re-enable once pipeline-model-definition tests are stable
                 deleteDir()
                 unstash 'pct.sh'
                 unstash 'pct'
