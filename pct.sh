@@ -91,6 +91,12 @@ rm -fv pct-work/pipeline-model-definition/pipeline-model-definition/target/suref
 # TODO https://github.com/jenkinsci/pipeline-model-definition-plugin/pull/421
 rm -fv pct-work/pipeline-model-definition/pipeline-model-definition/target/surefire-reports/TEST-org.jenkinsci.plugins.pipeline.modeldefinition.steps.CredentialWrapperStepTest.xml
 
+# TODO https://github.com/jenkinsci/pipeline-model-definition-plugin/pull/429
+rm -fv pct-work/pipeline-model-definition/pipeline-model-definition/target/surefire-reports/TEST-org.jenkinsci.plugins.pipeline.modeldefinition.ToolsTest.xml
+
+# TODO https://github.com/jenkinsci/pipeline-model-definition-plugin/pull/441
+rm -fv pct-work/pipeline-model-definition/pipeline-model-definition/target/surefire-reports/TEST-org.jenkinsci.plugins.pipeline.modeldefinition.AgentTest.xml
+
 # TODO https://github.com/jenkinsci/git-plugin/pull/1093
 rm -fv pct-work/git/target/surefire-reports/TEST-jenkins.plugins.git.ModernScmTest.xml
 
