@@ -32,36 +32,6 @@
                 <artifactId>ssh-slaves</artifactId>
                 <version>1.31.5</version>
             </dependency>
-            <!--
-              TODO pipeline-model-definition 1.9.0 does not work on Jenkins 2.277 LTS (see JENKINS-66247).
-              When that issue is resolved, the below can be removed.
-            -->
-            <dependency>
-                <groupId>org.jenkinsci.plugins</groupId>
-                <artifactId>pipeline-model-api</artifactId>
-                <version>1.8.5</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkinsci.plugins</groupId>
-                <artifactId>pipeline-model-definition</artifactId>
-                <version>1.8.5</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkinsci.plugins</groupId>
-                <artifactId>pipeline-model-definition</artifactId>
-                <classifier>tests</classifier>
-                <version>1.8.5</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkinsci.plugins</groupId>
-                <artifactId>pipeline-model-extensions</artifactId>
-                <version>1.8.5</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkinsci.plugins</groupId>
-                <artifactId>pipeline-stage-tags-metadata</artifactId>
-                <version>1.8.5</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>
