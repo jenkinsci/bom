@@ -45,7 +45,10 @@ branches = [failFast: failFast]
 lines.each {line ->
     plugins.each { plugin ->
         branches["pct-$plugin-$line"] = {
-          retry(2) { // in case of transient node outages
+          def attempt = 0
+          def attempts = 2
+          retry(attempts) { // in case of transient node outages
+            echo 'Attempt ' + attempt++ + ' of ' + attempts
             mavenEnv {
                 deleteDir()
                 unstash 'pct.sh'
