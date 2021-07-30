@@ -44,6 +44,7 @@ stage('prep') {
 branches = [failFast: failFast]
 lines.each {line ->
     plugins.each { plugin ->
+      if (plugin != 'pipeline-model-definition') { // TODO re-enable once pipeline-model-definition tests are stable
         branches["pct-$plugin-$line"] = {
           retry(2) { // in case of transient node outages
             mavenEnv {
@@ -57,6 +58,7 @@ lines.each {line ->
             }
           }
         }
+      }
     }
 }
 parallel branches
