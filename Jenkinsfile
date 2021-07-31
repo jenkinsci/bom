@@ -37,6 +37,7 @@ stage('prep') {
             lines.each {stash name: "megawar-$it", includes: "megawar-${it}.war"}
         }
         stash name: 'pct.sh', includes: 'pct.sh'
+        stash name: 'excludes.txt', includes: 'excludes.txt'
         infra.prepareToPublishIncrementals()
     }
 }
@@ -52,6 +53,7 @@ lines.each {line ->
             mavenEnv(skipMarkingBuildUnstable: attempt < attempts) {
                 deleteDir()
                 unstash 'pct.sh'
+                unstash 'excludes.txt'
                 unstash 'pct'
                 unstash "megawar-$line"
                 withEnv(["PLUGINS=$plugin", "LINE=$line", 'EXTRA_MAVEN_PROPERTIES=surefire.rerunFailingTestsCount=4']) {
