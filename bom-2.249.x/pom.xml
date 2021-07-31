@@ -48,6 +48,11 @@
                 <artifactId>checks-api</artifactId>
                 <version>1.7.0</version>
             </dependency>
+            <dependency>
+                <groupId>io.jenkins.plugins</groupId>
+                <artifactId>jquery3-api</artifactId>
+                <version>3.6.0-1</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>
