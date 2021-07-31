@@ -6,7 +6,7 @@
         <artifactId>parent</artifactId>
         <version>${changelist}</version>
     </parent>
-    <artifactId>bom-2.289.x</artifactId>
+    <artifactId>bom-2.302.x</artifactId>
     <packaging>pom</packaging>
     <properties>
         <checks-api.version>1.7.0</checks-api.version>
@@ -17,7 +17,7 @@
         <structs-plugin.version>1.23</structs-plugin.version>
         <subversion-plugin.version>2.14.4</subversion-plugin.version>
         <workflow-api-plugin.version>2.46</workflow-api-plugin.version>
-        <workflow-cps-plugin.version>2.92</workflow-cps-plugin.version>
+        <workflow-cps-plugin.version>2.93</workflow-cps-plugin.version>
         <workflow-job-plugin.version>2.41</workflow-job-plugin.version>
         <workflow-multibranch-plugin.version>2.26</workflow-multibranch-plugin.version>
         <workflow-step-api-plugin.version>2.23</workflow-step-api-plugin.version>
@@ -191,7 +191,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>bouncycastle-api</artifactId>
-                <version>2.20</version>
+                <version>2.21</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -282,7 +282,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>junit</artifactId>
-                <version>1.50</version>
+                <version>1.51</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>

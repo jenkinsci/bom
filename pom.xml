@@ -31,6 +31,7 @@
     </scm>
     <modules>
         <module>bom-latest</module>
+        <module>bom-2.289.x</module>
         <module>bom-2.277.x</module>
         <module>bom-2.263.x</module>
         <module>bom-2.249.x</module>
