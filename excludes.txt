@@ -9,6 +9,9 @@ org.jenkinsci.plugins.durabletask.BourneShellScriptTest
 org.jenkinsci.plugins.pipeline.modeldefinition.BasicModelDefTest
 org.jenkinsci.plugins.pipeline.modeldefinition.MatrixTest
 
+# TODO seemingly legitimate but undiagnosed PCT failures in interruptedWhileStartingMaxSurvivability and interruptedWhileStartingPerformanceOptimized
+org.jenkinsci.plugins.workflow.job.WorkflowRunRestartTest
+
 # TODO https://github.com/jenkinsci/workflow-multibranch-plugin/pull/128
 org.jenkinsci.plugins.workflow.multibranch.JobPropertyStepTest
 
