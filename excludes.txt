@@ -1,6 +1,9 @@
 # TODO cryptic PCT-only errors: https://github.com/jenkinsci/bom/pull/251#issuecomment-645012427
 hudson.matrix.AxisTest
 
+# TODO until we drop support for 2.249.x, work around https://github.com/jenkinsci/git-plugin/pull/1093
+jenkins.plugins.git.ModernScmTest
+
 # TODO fails for one reason in (non-PCT) official sources, run locally; and for another reason in PCT in Docker; passes in official sources in Docker, or locally in PCT
 org.jenkinsci.plugins.gitclient.FilePermissionsTest
 
