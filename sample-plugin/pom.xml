@@ -367,12 +367,5 @@
                 <jenkins.version>2.249.3</jenkins.version>
             </properties>
         </profile>
-        <profile>
-            <id>2.235.x</id>
-            <properties>
-                <bom>2.235.x</bom>
-                <jenkins.version>2.235.5</jenkins.version>
-            </properties>
-        </profile>
     </profiles>
 </project>

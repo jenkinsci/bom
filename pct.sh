@@ -82,9 +82,6 @@ rm -fv pct-work/matrix-project/target/surefire-reports/TEST-hudson.matrix.AxisTe
 # TODO https://github.com/jenkinsci/workflow-basic-steps-plugin/pull/137
 rm -fv pct-work/workflow-basic-steps/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.support.steps.stash.StashTest.xml
 
-# TODO until dropping 2.235.x so can rely on https://github.com/jenkinsci/workflow-basic-steps-plugin/pull/120
-rm -fv pct-work/workflow-basic-steps/target/surefire-reports/TEST-org.jenkinsci.plugins.workflow.steps.TimeoutStepTest.xml
-
 # TODO https://github.com/jenkinsci/pipeline-model-definition-plugin/pull/417
 rm -fv pct-work/pipeline-model-definition/pipeline-model-definition/target/surefire-reports/TEST-org.jenkinsci.plugins.pipeline.modeldefinition.parser.ASTParserUtilsTest.xml
 
