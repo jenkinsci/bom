@@ -18,8 +18,5 @@ org.jenkinsci.plugins.workflow.job.WorkflowRunRestartTest
 # TODO https://github.com/jenkinsci/workflow-multibranch-plugin/pull/128
 org.jenkinsci.plugins.workflow.multibranch.JobPropertyStepTest
 
-# TODO until dropping 2.235.x so can rely on https://github.com/jenkinsci/workflow-basic-steps-plugin/pull/120
-org.jenkinsci.plugins.workflow.steps.TimeoutStepTest
-
 # TODO https://github.com/jenkinsci/workflow-basic-steps-plugin/pull/137
 org.jenkinsci.plugins.workflow.support.steps.stash.StashTest
