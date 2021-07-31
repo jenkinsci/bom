@@ -1,6 +1,6 @@
 def buildNumber = BUILD_NUMBER as int; if (buildNumber > 1) milestone(buildNumber - 1); milestone(buildNumber) // JENKINS-43353 / JENKINS-58625
 
-def mavenEnv(Map params = [:], Closure body) {
+def mavenEnv(body) {
     node('maven') { // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
         timeout(90) {
             sh 'mvn -version'
@@ -10,7 +10,7 @@ def mavenEnv(Map params = [:], Closure body) {
             withEnv(["MAVEN_SETTINGS=$settingsXml"]) {
                 body()
             }
-            if (junit(testResults: '**/target/surefire-reports/TEST-*.xml', allowEmptyResults: true, skipMarkingBuildUnstable: !!params['skipMarkingBuildUnstable']).failCount > 0) {
+            if (junit(testResults: '**/target/surefire-reports/TEST-*.xml', allowEmptyResults: true).failCount > 0) {
                 // TODO JENKINS-27092 throw up UNSTABLE status in this case
                 error 'Some test failures, not going to continue'
             }
@@ -50,7 +50,7 @@ lines.each {line ->
           def attempts = 2
           retry(attempts) { // in case of transient node outages
             echo 'Attempt ' + ++attempt + ' of ' + attempts
-            mavenEnv(skipMarkingBuildUnstable: attempt < attempts) {
+            mavenEnv {
                 deleteDir()
                 unstash 'pct.sh'
                 unstash 'excludes.txt'
