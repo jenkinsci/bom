@@ -38,6 +38,11 @@
                 <classifier>tests</classifier>
                 <version>4.6.0</version>
             </dependency>
+            <dependency>
+                <groupId>io.jenkins.plugins</groupId>
+                <artifactId>plugin-util-api</artifactId>
+                <version>2.3.0</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>
