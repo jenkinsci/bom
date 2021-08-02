@@ -4,7 +4,7 @@
     <parent>
         <groupId>io.jenkins.tools.bom</groupId>
         <artifactId>parent</artifactId>
-        <version>${revision}${changelist}</version>
+        <version>${changelist}</version>
     </parent>
     <artifactId>bom-2.263.x</artifactId>
     <packaging>pom</packaging>
@@ -18,6 +18,17 @@
                 <type>pom</type>
             </dependency>
             <dependency>
+                <groupId>org.jenkins-ci.plugins.workflow</groupId>
+                <artifactId>workflow-multibranch</artifactId>
+                <version>2.24</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins.workflow</groupId>
+                <artifactId>workflow-multibranch</artifactId>
+                <classifier>tests</classifier>
+                <version>2.24</version>
+            </dependency>
+            <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>branch-api</artifactId>
                 <version>2.6.2</version>
@@ -26,6 +37,21 @@
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>token-macro</artifactId>
                 <version>2.13</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>dashboard-view</artifactId>
+                <version>2.16</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins.workflow</groupId>
+                <artifactId>workflow-cps-global-lib</artifactId>
+                <version>2.19</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>durable-task</artifactId>
+                <version>1.37</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

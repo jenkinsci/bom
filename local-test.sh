@@ -16,7 +16,7 @@ LINEZ=$LINE bash prep.sh
 
 rm -rf target/local-test
 mkdir target/local-test
-cp -v target/pct.jar pct.sh target/local-test
+cp -v target/pct.jar pct.sh excludes.txt target/local-test
 cp -v target/megawar-$LINE.war target/local-test/megawar.war
 
 if [ -v TEST ]

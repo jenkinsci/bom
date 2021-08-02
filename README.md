@@ -12,7 +12,7 @@ If you are interested in a Bill of Materials for Jenkins core components, see [t
 After selecting your plugin’s LTS baseline:
 
 ```xml
-<jenkins.version>2.222.3</jenkins.version>
+<jenkins.version>2.289.3</jenkins.version>
 ```
 
 just import the [latest BOM](https://github.com/jenkinsci/bom/releases) from that line:
@@ -22,8 +22,8 @@ just import the [latest BOM](https://github.com/jenkinsci/bom/releases) from tha
     <dependencies>
         <dependency>
             <groupId>io.jenkins.tools.bom</groupId>
-            <artifactId>bom-2.222.x</artifactId>
-            <version>10</version>
+            <artifactId>bom-2.289.x</artifactId>
+            <version>…</version>
             <scope>import</scope>
             <type>pom</type>
         </dependency>
@@ -147,18 +147,9 @@ so it is reasonable to retire BOMs for lines older than that.
 
 ## Releasing
 
-`release:prepare` only runs basic tests about plugin versions, not the full PCT.
-Therefore be sure to check [commit status](https://github.com/jenkinsci/bom/commits/master)
-to ensure that CI builds have passed before cutting a release.
-
-Due to a misconfiguration in Incrementals tooling (JENKINS-58641),
-currently after every release you must manually run
-
-```bash
-mvn -f sample-plugin incrementals:reincrementalify
-```
-
-Commit and push the result to fix the branch build.
+Automatic given [JEP-229](https://jenkins.io/jep/229) when PRs matching certain label patterns are merged.
+For the common case that only lots of `dependencies` PRs have been merged,
+can be triggered manually from the **Actions** tab after a `master` build has succeeded.
 
 ## Incrementals
 
