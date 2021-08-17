@@ -13,7 +13,7 @@
     <packaging>hpi</packaging>
     <properties>
         <changelist>999999-SNAPSHOT</changelist>
-        <bom>2.302.x</bom>
+        <bom>2.303.x</bom>
         <jenkins.version>2.305-rc31395.08e114ca17a1</jenkins.version> <!-- TODO https://github.com/jenkinsci/jenkins/pull/5646 -->
         <java.level>8</java.level>
     </properties>
