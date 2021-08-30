@@ -271,11 +271,6 @@
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
-                <artifactId>jquery</artifactId>
-                <version>1.12.4-1</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>jsch</artifactId>
                 <version>0.1.55.2</version>
             </dependency>
@@ -415,11 +410,6 @@
                 <groupId>org.jenkins-ci.ui</groupId>
                 <artifactId>ace-editor</artifactId>
                 <version>1.1</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkins-ci.ui</groupId>
-                <artifactId>jquery-detached</artifactId>
-                <version>1.2.1</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkinsci.plugins</groupId>
