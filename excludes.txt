@@ -4,6 +4,11 @@ hudson.matrix.AxisTest
 # TODO until we drop support for 2.249.x, work around https://github.com/jenkinsci/git-plugin/pull/1093
 jenkins.plugins.git.ModernScmTest
 
+# TODO until we drop support for 2.249.x, work around https://github.com/jenkinsci/git-client-plugin/pull/675 not available in git client plugin 3.6.0
+org.jenkinsci.plugins.gitclient.CliGitAPIImplTest.test_list_branches
+org.jenkinsci.plugins.gitclient.JGitAPIImplTest.test_list_branches
+org.jenkinsci.plugins.gitclient.JGitApacheAPIImplTest.test_list_branches
+
 # TODO fails for one reason in (non-PCT) official sources, run locally; and for another reason in PCT in Docker; passes in official sources in Docker, or locally in PCT
 org.jenkinsci.plugins.gitclient.FilePermissionsTest
 
