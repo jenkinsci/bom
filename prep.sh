@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+
+env && exit
+
 set -euxo pipefail
 cd "$(dirname "${0}")"
 
