@@ -6,7 +6,7 @@
         <artifactId>parent</artifactId>
         <version>${changelist}</version>
     </parent>
-    <artifactId>bom-2.303.x</artifactId>
+    <artifactId>bom-weekly</artifactId>
     <packaging>pom</packaging>
     <properties>
         <checks-api.version>1.7.2</checks-api.version>

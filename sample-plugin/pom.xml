@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
-        <version>4.27</version>
+        <version>4.28</version>
         <relativePath />
     </parent>
     <groupId>io.jenkins.tools.bom</groupId>
@@ -13,8 +13,8 @@
     <packaging>hpi</packaging>
     <properties>
         <changelist>999999-SNAPSHOT</changelist>
-        <bom>2.303.x</bom>
-        <jenkins.version>2.303.1</jenkins.version>
+        <bom>weekly</bom>
+        <jenkins.version>2.314</jenkins.version>
         <java.level>8</java.level>
     </properties>
     <repositories>
@@ -344,6 +344,13 @@
         </plugins>
     </build>
     <profiles>
+        <profile>
+            <id>2.303.x</id>
+            <properties>
+                <bom>2.303.x</bom>
+                <jenkins.version>2.303.1</jenkins.version>
+            </properties>
+        </profile>
         <profile>
             <id>2.289.x</id>
             <properties>
