@@ -22,6 +22,7 @@ org.jenkinsci.plugins.pipeline.modeldefinition.MatrixTest
 org.jenkinsci.plugins.pipeline.modeldefinition.WhenStageTest
 org.jenkinsci.plugins.pipeline.modeldefinition.WhenStageMultibranchTest
 org.jenkinsci.plugins.pipeline.modeldefinition.PostStageTest
+org.jenkinsci.plugins.pipeline.modeldefinition.ToolsTest
 
 # TODO seemingly legitimate but undiagnosed PCT failures in interruptedWhileStartingMaxSurvivability and interruptedWhileStartingPerformanceOptimized
 org.jenkinsci.plugins.workflow.job.WorkflowRunRestartTest
