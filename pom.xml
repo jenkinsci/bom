@@ -30,7 +30,7 @@
         <tag>${scmTag}</tag>
     </scm>
     <modules>
-        <module>bom-latest</module>
+        <module>bom-weekly</module>
         <module>bom-2.303.x</module>
         <module>bom-2.289.x</module>
         <module>bom-2.277.x</module>
