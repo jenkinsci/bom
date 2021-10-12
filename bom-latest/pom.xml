@@ -16,7 +16,7 @@
         <scm-api-plugin.version>2.6.5</scm-api-plugin.version>
         <structs-plugin.version>1.23</structs-plugin.version>
         <subversion-plugin.version>2.14.5</subversion-plugin.version>
-        <workflow-api-plugin.version>2.46</workflow-api-plugin.version>
+        <workflow-api-plugin.version>2.47</workflow-api-plugin.version>
         <workflow-cps-plugin.version>2.94</workflow-cps-plugin.version>
         <workflow-job-plugin.version>2.41</workflow-job-plugin.version>
         <workflow-multibranch-plugin.version>2.26</workflow-multibranch-plugin.version>
