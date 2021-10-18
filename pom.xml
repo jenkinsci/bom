@@ -36,6 +36,7 @@
         <module>bom-2.263.x</module>
         <module>bom-2.249.x</module>
         <module>sample-plugin</module>
+        <module>its</module>
     </modules>
     <build>
         <plugins>
