@@ -11,7 +11,7 @@ updates:
       interval: "daily"
   - package-ecosystem: "maven"
     open-pull-requests-limit: 10
-    directory: "/bom-latest"
+    directory: "/bom-weekly"
     reviewers:
       - "jglick"
     schedule:

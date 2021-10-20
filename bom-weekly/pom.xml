@@ -6,12 +6,12 @@
         <artifactId>parent</artifactId>
         <version>${changelist}</version>
     </parent>
-    <artifactId>bom-2.303.x</artifactId>
+    <artifactId>bom-weekly</artifactId>
     <packaging>pom</packaging>
     <properties>
         <checks-api.version>1.7.2</checks-api.version>
         <configuration-as-code-plugin.version>1.54</configuration-as-code-plugin.version>
-        <git-plugin.version>4.8.3</git-plugin.version>
+        <git-plugin.version>4.9.0</git-plugin.version>
         <pipeline-model-definition-plugin.version>1.9.2</pipeline-model-definition-plugin.version>
         <scm-api-plugin.version>2.6.5</scm-api-plugin.version>
         <structs-plugin.version>1.23</structs-plugin.version>
@@ -91,6 +91,11 @@
                 <groupId>io.jenkins.configuration-as-code</groupId>
                 <artifactId>test-harness</artifactId>
                 <version>${configuration-as-code-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.modules</groupId>
+                <artifactId>sshd</artifactId>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
@@ -252,7 +257,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>git-server</artifactId>
-                <version>1.9</version>
+                <version>1.10</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
