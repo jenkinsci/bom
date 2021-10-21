@@ -1,0 +1,5 @@
+github:
+  user: "Jenkins dependency updater"
+  email: "81680575+jenkins-dependency-updater[bot]@users.noreply.github.com"
+  username: "jenkins-dependency-updater"
+  token: "UPDATECLI_GITHUB_TOKEN"

@@ -1,0 +1,19 @@
+sources:
+  newVersion:
+    name: Get Jenkins Version
+    kind: maven
+    spec:
+      owner: "maven"
+      url: "repo.jenkins-ci.org"
+      repository: "releases"
+      groupID: "org.jenkins-ci.main"
+      artifactID: "jenkins-war"
+
+targets:
+  default:
+    name: setWeeklyVersion
+    sourceID: newVersion
+    kind: shell
+    spec:
+      command: bash ./updatecli/updatecli.d/weekly-apply.sh
+
