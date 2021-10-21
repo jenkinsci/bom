@@ -14,23 +14,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - uses: tibdex/github-app-token@v1
-        id: generate-token
-        with:
-          app_id: ${{ secrets.JENKINS_DEPENDENCY_UPDATER_APP_ID }}
-          private_key: ${{ secrets.JENKINS_DEPENDENCY_UPDATER_PRIVATE_KEY }}
-
-      - name: Diff
-        uses: updatecli/updatecli-action@v1
-        with:
-          command: diff
-          flags: "--config updatecli/updatecli.d --values updatecli/values.yaml"
-        env:
-          UPDATECLI_GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
-
       - name: Apply
         uses: updatecli/updatecli-action@v1
         with:
           flags: "--config updatecli/updatecli.d --values updatecli/values.yaml"
         env:
-          UPDATECLI_GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
+          UPDATECLI_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

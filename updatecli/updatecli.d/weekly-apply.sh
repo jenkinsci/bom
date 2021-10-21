@@ -1,4 +1,7 @@
 #!/bin/bash
+
+set -eux -o pipefail
+
 # Script "weekly-apply.sh"
 # The script checks the current weekly version in the sample plugin
 # - if different than $1 and DRY_RUN is set to:
