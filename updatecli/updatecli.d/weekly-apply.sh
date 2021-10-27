@@ -10,6 +10,7 @@ set -eux -o pipefail
 # - otherwise it exits without any value reported
 
 if ! command -v mvn &> /dev/null
+then
   apt -y openjdk-11-jre-headless mvn
 fi
 
