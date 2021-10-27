@@ -8,13 +8,6 @@ set -eux -o pipefail
 #   - "false" then it updates it with the value of $1
 #   - "true" then it only reports the value of $1
 # - otherwise it exits without any value reported
-
-if ! command -v mvn &> /dev/null
-then
-  apt-get update
-  apt-get install -y openjdk-11-jre-headless mvn
-fi
-
 existing_version=$(mvn help:evaluate -f sample-plugin -Dexpression=jenkins.version -q -DforceStdout)
 
 if test "$1" == "$(echo "${existing_version}")"

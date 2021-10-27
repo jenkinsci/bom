@@ -15,18 +15,27 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+
+      - name: Install updatecli # Until https://github.com/updatecli/updatecli/pull/336
+        run: |
+          curl -sSL https://github.com/updatecli/updatecli/releases/download/v0.11.1/updatecli_Linux_x86_64.tar.gz -o updatecli.tgz
+          tar xzf updatecli.tgz -C /usr/local/bin
+          updatecli version
+          rm -f updatecli.tgz
       
       - name: Diff
         continue-on-error: true
-        uses: updatecli/updatecli-action@v1
-        with:
-          command: diff
-          flags: "--config updatecli/updatecli.d --values updatecli/values.yaml"
+        run: |
+          updatecli diff --config updatecli/updatecli.d --values updatecli/values.yaml
 
       - name: Apply
         if: github.ref == 'refs/heads/master'
-        uses: updatecli/updatecli-action@v1
-        with:
-          flags: "--config updatecli/updatecli.d --values updatecli/values.yaml"
+        run: |
+          updatecli apply --config updatecli/updatecli.d --values updatecli/values.yaml
         env:
           UPDATECLI_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
