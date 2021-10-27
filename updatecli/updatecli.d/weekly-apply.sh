@@ -8,6 +8,7 @@ set -eux -o pipefail
 #   - "false" then it updates it with the value of $1
 #   - "true" then it only reports the value of $1
 # - otherwise it exits without any value reported
+mvn install -ntp -P quick-build > /dev/null 2> /dev/null
 existing_version=$(mvn help:evaluate -f sample-plugin -Dexpression=jenkins.version -q -DforceStdout)
 
 if test "$1" == "$(echo "${existing_version}")"
