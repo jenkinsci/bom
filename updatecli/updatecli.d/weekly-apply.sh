@@ -11,7 +11,8 @@ set -eux -o pipefail
 
 if ! command -v mvn &> /dev/null
 then
-  apt -y openjdk-11-jre-headless mvn
+  apt-get update
+  apt-get install -y openjdk-11-jre-headless mvn
 fi
 
 existing_version=$(mvn help:evaluate -f sample-plugin -Dexpression=jenkins.version -q -DforceStdout)
