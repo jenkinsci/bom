@@ -399,7 +399,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>token-macro</artifactId>
-                <version>2.15</version>
+                <version>267.vcdaea6462991</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
