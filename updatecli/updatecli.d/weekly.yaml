@@ -11,7 +11,7 @@ sources:
 
 targets:
   default:
-    name: setWeeklyVersion
+    name: 'Update weekly version'
     sourceID: newVersion
     kind: shell
     spec:
