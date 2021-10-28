@@ -23,7 +23,7 @@ jobs:
 
       - name: Install updatecli # Until https://github.com/updatecli/updatecli/pull/336
         run: |
-          curl -sSL https://github.com/updatecli/updatecli/releases/download/v0.11.1/updatecli_Linux_x86_64.tar.gz -o updatecli.tgz
+          curl -sSL https://github.com/updatecli/updatecli/releases/download/v0.12.0/updatecli_Linux_x86_64.tar.gz -o updatecli.tgz
           tar xzf updatecli.tgz -C /usr/local/bin
           updatecli version
           rm -f updatecli.tgz
