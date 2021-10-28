@@ -32,6 +32,8 @@ jobs:
         continue-on-error: true
         run: |
           updatecli diff --config updatecli/updatecli.d --values updatecli/values.yaml
+        env:
+          UPDATECLI_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Apply
         if: github.ref == 'refs/heads/master'
