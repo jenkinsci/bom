@@ -16,4 +16,12 @@ targets:
     kind: shell
     spec:
       command: bash ./updatecli/updatecli.d/weekly-apply.sh
-
+    scm:
+      github:
+        user: "{{ .github.user }}"
+        email: "{{ .github.email }}"
+        owner: "{{ .github.owner }}"
+        repository: "{{ .github.repository }}"
+        token: "{{ requiredEnv .github.token }}"
+        username: "{{ .github.username }}"
+        branch: "{{ .github.branch }}"
