@@ -11,7 +11,7 @@
     <properties>
         <checks-api.version>1.7.2</checks-api.version>
         <configuration-as-code-plugin.version>1.54</configuration-as-code-plugin.version>
-        <git-plugin.version>4.9.0</git-plugin.version>
+        <git-plugin.version>4.10.0</git-plugin.version>
         <pipeline-model-definition-plugin.version>1.9.2</pipeline-model-definition-plugin.version>
         <scm-api-plugin.version>2.6.5</scm-api-plugin.version>
         <structs-plugin.version>1.23</structs-plugin.version>
