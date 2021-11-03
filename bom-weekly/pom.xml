@@ -6,7 +6,7 @@
         <artifactId>parent</artifactId>
         <version>${changelist}</version>
     </parent>
-    <artifactId>bom-2.303.x</artifactId>
+    <artifactId>bom-weekly</artifactId>
     <packaging>pom</packaging>
     <properties>
         <checks-api.version>1.7.2</checks-api.version>
@@ -15,8 +15,8 @@
         <pipeline-model-definition-plugin.version>1.9.2</pipeline-model-definition-plugin.version>
         <scm-api-plugin.version>2.6.5</scm-api-plugin.version>
         <structs-plugin.version>1.23</structs-plugin.version>
-        <subversion-plugin.version>2.14.5</subversion-plugin.version>
-        <workflow-api-plugin.version>2.46</workflow-api-plugin.version>
+        <subversion-plugin.version>2.15.0</subversion-plugin.version>
+        <workflow-api-plugin.version>2.47</workflow-api-plugin.version>
         <workflow-cps-plugin.version>2.94</workflow-cps-plugin.version>
         <workflow-job-plugin.version>2.41</workflow-job-plugin.version>
         <workflow-multibranch-plugin.version>2.26</workflow-multibranch-plugin.version>
@@ -70,7 +70,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>plugin-util-api</artifactId>
-                <version>2.5.0</version>
+                <version>2.5.1</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -91,6 +91,11 @@
                 <groupId>io.jenkins.configuration-as-code</groupId>
                 <artifactId>test-harness</artifactId>
                 <version>${configuration-as-code-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.modules</groupId>
+                <artifactId>sshd</artifactId>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
@@ -211,7 +216,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>credentials</artifactId>
-                <version>2.6.1</version>
+                <version>2.6.2</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -221,7 +226,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>dashboard-view</artifactId>
-                <version>2.17</version>
+                <version>2.18</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -252,17 +257,17 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>git-server</artifactId>
-                <version>1.9</version>
+                <version>1.10</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>htmlpublisher</artifactId>
-                <version>1.26</version>
+                <version>1.27</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>jackson2-api</artifactId>
-                <version>2.13.0-226.v0c5dd2d2fd2a</version>
+                <version>2.13.0-230.v59243c64b0a5</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -394,7 +399,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>token-macro</artifactId>
-                <version>2.15</version>
+                <version>267.vcdaea6462991</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
