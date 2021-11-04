@@ -348,7 +348,7 @@
             <id>2.303.x</id>
             <properties>
                 <bom>2.303.x</bom>
-                <jenkins.version>2.303.2</jenkins.version>
+                <jenkins.version>2.303.3</jenkins.version>
             </properties>
         </profile>
         <profile>
