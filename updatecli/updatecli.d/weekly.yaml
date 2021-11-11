@@ -34,3 +34,6 @@ targets:
         token: "{{ requiredEnv .github.token }}"
         username: "{{ .github.username }}"
         branch: "{{ .github.branch }}"
+        pullRequest:
+          labels:
+            - dependencies
