@@ -345,6 +345,13 @@
     </build>
     <profiles>
         <profile>
+            <id>2.319.x</id>
+            <properties>
+                <bom>2.319.x</bom>
+                <jenkins.version>2.319.1</jenkins.version>
+            </properties>
+        </profile>
+        <profile>
             <id>2.303.x</id>
             <properties>
                 <bom>2.303.x</bom>
