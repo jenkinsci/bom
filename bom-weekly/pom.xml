@@ -266,6 +266,11 @@
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>http_request</artifactId>
+                <version>1.12</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>jackson2-api</artifactId>
                 <version>2.13.0-230.v59243c64b0a5</version>
             </dependency>
