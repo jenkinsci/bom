@@ -29,7 +29,7 @@
             <dependency>
                 <groupId>com.sonyericsson.hudson.plugins.rebuild</groupId>
                 <artifactId>rebuild</artifactId>
-                <version>1.32</version>
+                <version>1.33-rc301.26b50723a749</version><!-- TODO https://github.com/jenkinsci/rebuild-plugin/pull/67 -->
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
