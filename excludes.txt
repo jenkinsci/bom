@@ -1,3 +1,6 @@
+# TODO https://github.com/jenkinsci/rebuild-plugin/pull/67
+com.sonyericsson.rebuild.RebuildValidatorTest
+
 # TODO cryptic PCT-only errors: https://github.com/jenkinsci/bom/pull/251#issuecomment-645012427
 hudson.matrix.AxisTest
 
