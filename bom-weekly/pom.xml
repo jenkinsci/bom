@@ -12,7 +12,7 @@
         <checks-api.version>1.7.2</checks-api.version>
         <configuration-as-code-plugin.version>1.54</configuration-as-code-plugin.version>
         <git-plugin.version>4.10.0</git-plugin.version>
-        <pipeline-model-definition-plugin.version>1.9.3-rc2022.056b51a3099b</pipeline-model-definition-plugin.version><!-- TODO https://github.com/jenkinsci/pipeline-model-definition-plugin/pull/464 -->
+        <pipeline-model-definition-plugin.version>1.9.3</pipeline-model-definition-plugin.version>
         <scm-api-plugin.version>2.6.5</scm-api-plugin.version>
         <structs-plugin.version>1.23</structs-plugin.version>
         <subversion-plugin.version>2.15.1</subversion-plugin.version>
@@ -29,7 +29,7 @@
             <dependency>
                 <groupId>com.sonyericsson.hudson.plugins.rebuild</groupId>
                 <artifactId>rebuild</artifactId>
-                <version>1.33-rc303.b82b27cdaa90</version><!-- TODO https://github.com/jenkinsci/rebuild-plugin/pull/67 -->
+                <version>1.32</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
