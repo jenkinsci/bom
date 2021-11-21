@@ -17,7 +17,7 @@
         <structs-plugin.version>1.23</structs-plugin.version>
         <subversion-plugin.version>2.15.1</subversion-plugin.version>
         <workflow-api-plugin.version>2.47</workflow-api-plugin.version>
-        <workflow-cps-plugin.version>2.94</workflow-cps-plugin.version>
+        <workflow-cps-plugin.version>2640.v9c8dd8c9129c</workflow-cps-plugin.version> <!-- TODO https://github.com/jenkinsci/workflow-cps-plugin/pull/485 -->
         <workflow-job-plugin.version>2.41</workflow-job-plugin.version>
         <workflow-multibranch-plugin.version>2.26</workflow-multibranch-plugin.version>
         <workflow-step-api-plugin.version>2.24</workflow-step-api-plugin.version>
@@ -363,7 +363,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>script-security</artifactId>
-                <version>1.78</version>
+                <version>1.79-rc1116.6507eb466442</version> <!-- TODO https://github.com/jenkinsci/script-security-plugin/pull/372 -->
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
