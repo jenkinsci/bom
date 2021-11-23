@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
-        <version>4.30</version>
+        <version>4.31</version>
         <relativePath />
     </parent>
     <groupId>io.jenkins.tools.bom</groupId>
@@ -14,7 +14,7 @@
     <properties>
         <changelist>999999-SNAPSHOT</changelist>
         <bom>weekly</bom>
-        <jenkins.version>2.319</jenkins.version>
+        <jenkins.version>2.321</jenkins.version>
         <java.level>8</java.level>
     </properties>
     <repositories>
@@ -182,6 +182,11 @@
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>http_request</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>jackson2-api</artifactId>
             <scope>test</scope>
         </dependency>
@@ -273,6 +278,11 @@
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>text-finder</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>throttle-concurrents</artifactId>
             <scope>test</scope>
         </dependency>
@@ -344,6 +354,13 @@
         </plugins>
     </build>
     <profiles>
+        <profile>
+            <id>2.319.x</id>
+            <properties>
+                <bom>2.319.x</bom>
+                <jenkins.version>2.319</jenkins.version>
+            </properties>
+        </profile>
         <profile>
             <id>2.303.x</id>
             <properties>
