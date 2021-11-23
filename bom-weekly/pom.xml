@@ -13,7 +13,7 @@
         <configuration-as-code-plugin.version>1.54</configuration-as-code-plugin.version>
         <git-plugin.version>4.10.0</git-plugin.version>
         <pipeline-model-definition-plugin.version>1.9.3</pipeline-model-definition-plugin.version>
-        <scm-api-plugin.version>2.6.5</scm-api-plugin.version>
+        <scm-api-plugin.version>2.6.6-rc574.a199b2e5246c</scm-api-plugin.version> <!-- https://github.com/jenkinsci/scm-api-plugin/pull/102 -->
         <structs-plugin.version>1.23</structs-plugin.version>
         <subversion-plugin.version>2.15.1</subversion-plugin.version>
         <workflow-api-plugin.version>2.47</workflow-api-plugin.version>
