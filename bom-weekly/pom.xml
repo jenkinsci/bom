@@ -69,6 +69,11 @@
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
+                <artifactId>okhttp-api</artifactId>
+                <version>4.9.2-20211102</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jenkins.plugins</groupId>
                 <artifactId>plugin-util-api</artifactId>
                 <version>2.5.1</version>
             </dependency>
@@ -263,6 +268,11 @@
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>git-server</artifactId>
                 <version>1.10</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>github-api</artifactId>
+                <version>1.133</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
