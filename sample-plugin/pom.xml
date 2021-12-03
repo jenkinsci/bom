@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
-        <version>4.29</version>
+        <version>4.31</version>
         <relativePath />
     </parent>
     <groupId>io.jenkins.tools.bom</groupId>
@@ -14,7 +14,7 @@
     <properties>
         <changelist>999999-SNAPSHOT</changelist>
         <bom>weekly</bom>
-        <jenkins.version>2.317</jenkins.version>
+        <jenkins.version>2.322</jenkins.version>
         <java.level>8</java.level>
     </properties>
     <repositories>
@@ -58,6 +58,11 @@
         </dependency>
         <dependency>
             <groupId>io.jenkins.plugins</groupId>
+            <artifactId>dark-theme</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins</groupId>
             <artifactId>echarts-api</artifactId>
             <scope>test</scope>
         </dependency>
@@ -68,7 +73,17 @@
         </dependency>
         <dependency>
             <groupId>io.jenkins.plugins</groupId>
+            <artifactId>jaxb</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins</groupId>
             <artifactId>jquery3-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins</groupId>
+            <artifactId>okhttp-api</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -84,6 +99,11 @@
         <dependency>
             <groupId>io.jenkins.plugins</groupId>
             <artifactId>snakeyaml-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins</groupId>
+            <artifactId>theme-manager</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -152,6 +172,11 @@
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>antisamy-markup-formatter</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>bouncycastle-api</artifactId>
             <scope>test</scope>
         </dependency>
@@ -182,6 +207,11 @@
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>http_request</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>jackson2-api</artifactId>
             <scope>test</scope>
         </dependency>
@@ -193,6 +223,11 @@
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>ansicolor</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>ant</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -223,12 +258,27 @@
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>github-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>gitlab-oauth</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>junit-attachments</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>ldap</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -269,6 +319,11 @@
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>subversion</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>text-finder</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -345,10 +400,17 @@
     </build>
     <profiles>
         <profile>
+            <id>2.319.x</id>
+            <properties>
+                <bom>2.319.x</bom>
+                <jenkins.version>2.319.1</jenkins.version>
+            </properties>
+        </profile>
+        <profile>
             <id>2.303.x</id>
             <properties>
                 <bom>2.303.x</bom>
-                <jenkins.version>2.303.2</jenkins.version>
+                <jenkins.version>2.303.3</jenkins.version>
             </properties>
         </profile>
         <profile>
