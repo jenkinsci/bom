@@ -6,31 +6,21 @@
         <artifactId>parent</artifactId>
         <version>${changelist}</version>
     </parent>
-    <artifactId>bom-2.277.x</artifactId>
+    <artifactId>bom-2.303.x</artifactId>
     <packaging>pom</packaging>
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>bom-2.289.x</artifactId>
+                <artifactId>bom-2.319.x</artifactId>
                 <version>${project.version}</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
-                <artifactId>matrix-project</artifactId>
-                <version>1.18</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkins-ci.plugins</groupId>
-                <artifactId>ssh-credentials</artifactId>
-                <version>1.18.1</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkins-ci.plugins</groupId>
-                <artifactId>ssh-slaves</artifactId>
-                <version>1.31.5</version>
+                <artifactId>credentials</artifactId>
+                <version>2.6.1</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

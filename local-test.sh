@@ -1,10 +1,10 @@
 #!/bin/bash
 set -euxo pipefail
-cd $(dirname $0)
+cd "$(dirname $0)"
 
 # expects: $PLUGINS, optionally $TEST, $LINE
 
-LATEST_LINE=$(fgrep '<bom>' sample-plugin/pom.xml | sed -E 's, *<bom>(.+)</bom>,\1,g' | sort -rn | head -1)
+LATEST_LINE=weekly
 : "${LINE:=$LATEST_LINE}"
 
 export SAMPLE_PLUGIN_OPTS=-Dtest=InjectedTest
@@ -33,10 +33,10 @@ then
            -v ~/.m2:/var/maven/.m2 \
            --rm \
            --name bom-pct \
-           -v $(pwd)/target/local-test:/pct \
+           -v "$(pwd)"/target/local-test:/pct \
            -e MAVEN_OPTS=-Duser.home=/var/maven \
            -e MAVEN_CONFIG=/var/maven/.m2 \
-           -e PLUGINS=$PLUGINS \
+           -e PLUGINS="$PLUGINS" \
            -e LINE=$LINE \
            -e EXTRA_MAVEN_PROPERTIES=$EXTRA_MAVEN_PROPERTIES \
            --entrypoint bash \

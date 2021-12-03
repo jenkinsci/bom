@@ -1,8 +1,14 @@
+# TODO https://github.com/jenkinsci/rebuild-plugin/pull/67
+com.sonyericsson.rebuild.RebuildValidatorTest
+
 # TODO cryptic PCT-only errors: https://github.com/jenkinsci/bom/pull/251#issuecomment-645012427
 hudson.matrix.AxisTest
 
 # TODO until we drop support for 2.249.x, work around https://github.com/jenkinsci/git-plugin/pull/1093
 jenkins.plugins.git.ModernScmTest
+
+# TODO until we update to a git plugin version after 4.8.2, work around https://github.com/jenkinsci/git-plugin/pull/1144
+hudson.plugins.git.browser.AssemblaWebDoCheckURLTest
 
 # TODO until we drop support for 2.249.x, work around https://github.com/jenkinsci/git-client-plugin/pull/675 not available in git client plugin 3.6.0
 org.jenkinsci.plugins.gitclient.CliGitAPIImplTest
@@ -16,6 +22,10 @@ org.jenkinsci.plugins.gitclient.FilePermissionsTest
 org.jenkinsci.plugins.durabletask.BourneShellScriptTest
 org.jenkinsci.plugins.pipeline.modeldefinition.BasicModelDefTest
 org.jenkinsci.plugins.pipeline.modeldefinition.MatrixTest
+org.jenkinsci.plugins.pipeline.modeldefinition.WhenStageTest
+org.jenkinsci.plugins.pipeline.modeldefinition.WhenStageMultibranchTest
+org.jenkinsci.plugins.pipeline.modeldefinition.PostStageTest
+org.jenkinsci.plugins.pipeline.modeldefinition.ToolsTest
 
 # TODO seemingly legitimate but undiagnosed PCT failures in interruptedWhileStartingMaxSurvivability and interruptedWhileStartingPerformanceOptimized
 org.jenkinsci.plugins.workflow.job.WorkflowRunRestartTest
