@@ -35,3 +35,6 @@ org.jenkinsci.plugins.workflow.multibranch.JobPropertyStepTest
 
 # TODO https://github.com/jenkinsci/workflow-basic-steps-plugin/pull/137
 org.jenkinsci.plugins.workflow.support.steps.stash.StashTest
+
+# TODO https://github.com/jenkinsci/ansicolor-plugin/pull/236
+hudson.plugins.ansicolor.action.ShortlogActionCreatorIntegrationTest
