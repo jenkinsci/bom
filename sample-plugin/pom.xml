@@ -403,7 +403,7 @@
             <id>2.319.x</id>
             <properties>
                 <bom>2.319.x</bom>
-                <jenkins.version>2.323</jenkins.version>
+                <jenkins.version>2.319.1</jenkins.version>
             </properties>
         </profile>
         <profile>
