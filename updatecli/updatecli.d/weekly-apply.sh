@@ -21,7 +21,7 @@ else
   if test "$DRY_RUN" == "false"
   then
     ## Value changed to $1" - NO dry run
-    sed -i -e "17s#<jenkins.version>[0-9]\+.[0-9]\+</jenkins.version>#<jenkins.version>$1</jenkins.version>#" ./sample-plugin/pom.xml
+    sed -i -e "17s#<jenkins.version>[0-9.]\+</jenkins.version>#<jenkins.version>$1</jenkins.version>#" ./sample-plugin/pom.xml
   fi
   # Report on stdout
   echo "$1"
