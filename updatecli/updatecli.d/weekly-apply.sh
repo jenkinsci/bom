@@ -12,7 +12,7 @@ set -eux -o pipefail
 # if the parent pom is already built no need to rebuild the whole project (faster build time)
 existing_version=$(awk -F "[><]" '/jenkins.version/{print $3;exit}' ./sample-plugin/pom.xml)
 
-if test "$1" == "$(echo "${existing_version}")"
+if test "$1" == "${existing_version}"
 then
   ## No change
   # early return with no output
