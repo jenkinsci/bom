@@ -16,6 +16,7 @@
         <bom>weekly</bom>
         <jenkins.version>2.327-rc31888.4eb53675ff0a</jenkins.version> <!-- https://github.com/jenkinsci/jenkins/pull/6089 -->
         <java.level>8</java.level>
+        <enforcer.skip>true</enforcer.skip>
     </properties>
     <repositories>
         <repository>
