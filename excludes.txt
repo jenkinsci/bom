@@ -18,6 +18,9 @@ org.jenkinsci.plugins.gitclient.JGitApacheAPIImplTest
 # TODO fails for one reason in (non-PCT) official sources, run locally; and for another reason in PCT in Docker; passes in official sources in Docker, or locally in PCT
 org.jenkinsci.plugins.gitclient.FilePermissionsTest
 
+# TODO https://github.com/jenkinsci/git-client-plugin/pull/771
+org.jenkinsci.plugins.gitclient.RemotingTest
+
 # TODO flakes on CI for inscrutable reasons
 org.jenkinsci.plugins.durabletask.BourneShellScriptTest
 org.jenkinsci.plugins.pipeline.modeldefinition.BasicModelDefTest
