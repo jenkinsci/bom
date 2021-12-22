@@ -75,6 +75,12 @@
             <groupId>io.jenkins.plugins</groupId>
             <artifactId>jaxb</artifactId>
             <scope>test</scope>
+            <exclusions>
+                <exclusion> <!-- TODO https://github.com/jenkinsci/jaxb-plugin/pull/15 -->
+                    <groupId>javax.xml.bind</groupId>
+                    <artifactId>jaxb-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>io.jenkins.plugins</groupId>
