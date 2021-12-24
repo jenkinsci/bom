@@ -21,7 +21,7 @@
         <workflow-job-plugin.version>1145.v7f2433caa07f</workflow-job-plugin.version>
         <workflow-multibranch-plugin.version>2.26</workflow-multibranch-plugin.version>
         <workflow-step-api-plugin.version>615.vb09dac339255</workflow-step-api-plugin.version>
-        <workflow-support-plugin.version>3.8</workflow-support-plugin.version>
+        <workflow-support-plugin.version>804.vba10a18a1476</workflow-support-plugin.version>
     </properties>
     <dependencyManagement>
         <dependencies>
