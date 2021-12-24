@@ -377,7 +377,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>pipeline-input-step</artifactId>
-                <version>427.va6441fa17010</version>
+                <version>430.va2e184a060be</version> <!-- TODO https://github.com/jenkinsci/pipeline-input-step-plugin/pull/64 -->
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
