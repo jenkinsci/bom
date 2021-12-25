@@ -372,7 +372,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>pipeline-graph-analysis</artifactId>
-                <version>1.12</version>
+                <version>188.v3a01e7973f2c</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
