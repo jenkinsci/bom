@@ -18,7 +18,7 @@
         <workflow-api-plugin.version>1108.v57edf648f5d4</workflow-api-plugin.version>
         <workflow-cps-plugin.version>2648.va9433432b33c</workflow-cps-plugin.version>
         <workflow-job-plugin.version>1145.v7f2433caa07f</workflow-job-plugin.version>
-        <workflow-multibranch-plugin.version>2.26</workflow-multibranch-plugin.version>
+        <workflow-multibranch-plugin.version>696.v52535c46f4c9</workflow-multibranch-plugin.version>
         <workflow-step-api-plugin.version>615.vb09dac339255</workflow-step-api-plugin.version>
         <workflow-support-plugin.version>804.vba10a18a1476</workflow-support-plugin.version>
     </properties>
@@ -448,7 +448,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>throttle-concurrents</artifactId>
-                <version>2.6-rc412.6aa51f6a7bac</version> <!-- https://github.com/jenkinsci/throttle-concurrent-builds-plugin/pull/154 -->
+                <version>2.6</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
