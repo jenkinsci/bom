@@ -381,7 +381,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>pipeline-stage-step</artifactId>
-                <version>2.5</version>
+                <version>291.vf0a8a7aeeb50</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
