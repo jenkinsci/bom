@@ -448,7 +448,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>throttle-concurrents</artifactId>
-                <version>2.5</version>
+                <version>2.6-rc412.6aa51f6a7bac</version> <!-- https://github.com/jenkinsci/throttle-concurrent-builds-plugin/pull/154 -->
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
