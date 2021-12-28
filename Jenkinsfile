@@ -1,7 +1,7 @@
 properties([disableConcurrentBuilds(abortPrevious: true)])
 
 def mavenEnv(Map params = [:], Closure body) {
-    node('maven') { // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
+    node('maven-11') { // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
         timeout(90) {
             sh 'mvn -version'
             def settingsXml = "${pwd tmp: true}/settings-azure.xml"
