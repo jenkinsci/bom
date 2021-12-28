@@ -17,26 +17,14 @@
         <jenkins.version>2.326</jenkins.version>
         <java.level>8</java.level>
     </properties>
-    <repositories>
-        <repository>
-            <id>repo.jenkins-ci.org</id>
-            <url>https://repo.jenkins-ci.org/public/</url>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>repo.jenkins-ci.org</id>
-            <url>https://repo.jenkins-ci.org/public/</url>
-        </pluginRepository>
-    </pluginRepositories>
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>bom-${bom}</artifactId>
                 <version>${project.version}</version>
-                <scope>import</scope>
                 <type>pom</type>
+                <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -82,7 +70,8 @@
             <artifactId>jaxb</artifactId>
             <scope>test</scope>
             <exclusions>
-                <exclusion> <!-- TODO https://github.com/jenkinsci/jaxb-plugin/pull/15 -->
+                <exclusion>
+                    <!-- TODO https://github.com/jenkinsci/jaxb-plugin/pull/15 -->
                     <groupId>javax.xml.bind</groupId>
                     <artifactId>jaxb-api</artifactId>
                 </exclusion>
@@ -222,7 +211,8 @@
             <artifactId>htmlpublisher</artifactId>
             <scope>test</scope>
             <exclusions>
-                <exclusion> <!-- TODO https://github.com/jenkinsci/htmlpublisher-plugin/pull/153 -->
+                <exclusion>
+                    <!-- TODO https://github.com/jenkinsci/htmlpublisher-plugin/pull/153 -->
                     <groupId>org.jenkins-ci</groupId>
                     <artifactId>annotation-indexer</artifactId>
                 </exclusion>
@@ -380,23 +370,24 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    <repositories>
+        <repository>
+            <id>repo.jenkins-ci.org</id>
+            <url>https://repo.jenkins-ci.org/public/</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>repo.jenkins-ci.org</id>
+            <url>https://repo.jenkins-ci.org/public/</url>
+        </pluginRepository>
+    </pluginRepositories>
     <build>
         <plugins>
             <plugin>
                 <groupId>org.codehaus.gmaven</groupId>
                 <artifactId>groovy-maven-plugin</artifactId>
                 <version>2.1.1</version>
-                <executions>
-                    <execution>
-                        <phase>generate-test-sources</phase>
-                        <goals>
-                            <goal>execute</goal>
-                        </goals>
-                        <configuration>
-                            <source>${project.basedir}/check.groovy</source>
-                        </configuration>
-                    </execution>
-                </executions>
                 <dependencies>
                     <dependency>
                         <groupId>org.codehaus.groovy</groupId>
@@ -404,6 +395,17 @@
                         <version>2.4.21</version>
                     </dependency>
                 </dependencies>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>execute</goal>
+                        </goals>
+                        <phase>generate-test-sources</phase>
+                        <configuration>
+                            <source>${project.basedir}/check.groovy</source>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

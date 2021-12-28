@@ -12,23 +12,12 @@
     <version>${changelist}</version>
     <packaging>pom</packaging>
     <url>https://github.com/jenkinsci/bom</url>
-    <properties>
-        <changelist>999999-SNAPSHOT</changelist>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <gitHubRepo>jenkinsci/bom</gitHubRepo>
-    </properties>
     <licenses>
         <license>
             <name>MIT License</name>
             <url>https://opensource.org/licenses/MIT</url>
         </license>
     </licenses>
-    <scm>
-        <connection>scm:git:git@github.com/${gitHubRepo}.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/${gitHubRepo}.git</developerConnection>
-        <url>https://github.com/${gitHubRepo}</url>
-        <tag>${scmTag}</tag>
-    </scm>
     <modules>
         <module>bom-weekly</module>
         <module>bom-2.319.x</module>
@@ -36,6 +25,29 @@
         <module>bom-2.289.x</module>
         <module>sample-plugin</module>
     </modules>
+    <scm>
+        <connection>scm:git:git@github.com/${gitHubRepo}.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/${gitHubRepo}.git</developerConnection>
+        <tag>${scmTag}</tag>
+        <url>https://github.com/${gitHubRepo}</url>
+    </scm>
+    <properties>
+        <changelist>999999-SNAPSHOT</changelist>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <gitHubRepo>jenkinsci/bom</gitHubRepo>
+    </properties>
+    <repositories>
+        <repository>
+            <id>repo.jenkins-ci.org</id>
+            <url>https://repo.jenkins-ci.org/public/</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>repo.jenkins-ci.org</id>
+            <url>https://repo.jenkins-ci.org/public/</url>
+        </pluginRepository>
+    </pluginRepositories>
     <build>
         <plugins>
             <plugin>
@@ -68,16 +80,4 @@
             </plugin>
         </plugins>
     </build>
-    <repositories>
-        <repository>
-            <id>repo.jenkins-ci.org</id>
-            <url>https://repo.jenkins-ci.org/public/</url>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>repo.jenkins-ci.org</id>
-            <url>https://repo.jenkins-ci.org/public/</url>
-        </pluginRepository>
-    </pluginRepositories>
 </project>
