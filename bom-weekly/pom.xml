@@ -31,6 +31,16 @@
                 <version>1.32</version>
             </dependency>
             <dependency>
+                <groupId>io.jenkins</groupId>
+                <artifactId>configuration-as-code</artifactId>
+                <version>${configuration-as-code-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jenkins.configuration-as-code</groupId>
+                <artifactId>test-harness</artifactId>
+                <version>${configuration-as-code-plugin.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>bootstrap4-api</artifactId>
                 <version>4.6.0-3</version>
@@ -102,16 +112,6 @@
                 <version>0.6</version>
             </dependency>
             <dependency>
-                <groupId>io.jenkins</groupId>
-                <artifactId>configuration-as-code</artifactId>
-                <version>${configuration-as-code-plugin.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.jenkins.configuration-as-code</groupId>
-                <artifactId>test-harness</artifactId>
-                <version>${configuration-as-code-plugin.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>org.6wind.jenkins</groupId>
                 <artifactId>lockable-resources</artifactId>
                 <version>2.13</version>
@@ -120,92 +120,6 @@
                 <groupId>org.jenkins-ci.modules</groupId>
                 <artifactId>sshd</artifactId>
                 <version>3.1.0</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkins-ci.plugins.workflow</groupId>
-                <artifactId>workflow-api</artifactId>
-                <version>${workflow-api-plugin.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkins-ci.plugins.workflow</groupId>
-                <artifactId>workflow-api</artifactId>
-                <version>${workflow-api-plugin.version}</version>
-                <classifier>tests</classifier>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkins-ci.plugins.workflow</groupId>
-                <artifactId>workflow-basic-steps</artifactId>
-                <version>2.24</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkins-ci.plugins.workflow</groupId>
-                <artifactId>workflow-cps</artifactId>
-                <version>${workflow-cps-plugin.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkins-ci.plugins.workflow</groupId>
-                <artifactId>workflow-cps</artifactId>
-                <version>${workflow-cps-plugin.version}</version>
-                <classifier>tests</classifier>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkins-ci.plugins.workflow</groupId>
-                <artifactId>workflow-cps-global-lib</artifactId>
-                <version>552.vd9cc05b8a2e1</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkins-ci.plugins.workflow</groupId>
-                <artifactId>workflow-durable-task-step</artifactId>
-                <version>1112.vda00e6febcc1</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkins-ci.plugins.workflow</groupId>
-                <artifactId>workflow-job</artifactId>
-                <version>${workflow-job-plugin.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkins-ci.plugins.workflow</groupId>
-                <artifactId>workflow-job</artifactId>
-                <version>${workflow-job-plugin.version}</version>
-                <classifier>tests</classifier>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkins-ci.plugins.workflow</groupId>
-                <artifactId>workflow-multibranch</artifactId>
-                <version>${workflow-multibranch-plugin.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkins-ci.plugins.workflow</groupId>
-                <artifactId>workflow-multibranch</artifactId>
-                <version>${workflow-multibranch-plugin.version}</version>
-                <classifier>tests</classifier>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkins-ci.plugins.workflow</groupId>
-                <artifactId>workflow-scm-step</artifactId>
-                <version>2.13</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkins-ci.plugins.workflow</groupId>
-                <artifactId>workflow-step-api</artifactId>
-                <version>${workflow-step-api-plugin.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkins-ci.plugins.workflow</groupId>
-                <artifactId>workflow-step-api</artifactId>
-                <version>${workflow-step-api-plugin.version}</version>
-                <classifier>tests</classifier>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkins-ci.plugins.workflow</groupId>
-                <artifactId>workflow-support</artifactId>
-                <version>${workflow-support-plugin.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkins-ci.plugins.workflow</groupId>
-                <artifactId>workflow-support</artifactId>
-                <version>${workflow-support-plugin.version}</version>
-                <classifier>tests</classifier>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -474,6 +388,92 @@
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>ws-cleanup</artifactId>
                 <version>0.40</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins.workflow</groupId>
+                <artifactId>workflow-api</artifactId>
+                <version>${workflow-api-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins.workflow</groupId>
+                <artifactId>workflow-api</artifactId>
+                <version>${workflow-api-plugin.version}</version>
+                <classifier>tests</classifier>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins.workflow</groupId>
+                <artifactId>workflow-basic-steps</artifactId>
+                <version>2.24</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins.workflow</groupId>
+                <artifactId>workflow-cps</artifactId>
+                <version>${workflow-cps-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins.workflow</groupId>
+                <artifactId>workflow-cps</artifactId>
+                <version>${workflow-cps-plugin.version}</version>
+                <classifier>tests</classifier>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins.workflow</groupId>
+                <artifactId>workflow-cps-global-lib</artifactId>
+                <version>552.vd9cc05b8a2e1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins.workflow</groupId>
+                <artifactId>workflow-durable-task-step</artifactId>
+                <version>1112.vda00e6febcc1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins.workflow</groupId>
+                <artifactId>workflow-job</artifactId>
+                <version>${workflow-job-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins.workflow</groupId>
+                <artifactId>workflow-job</artifactId>
+                <version>${workflow-job-plugin.version}</version>
+                <classifier>tests</classifier>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins.workflow</groupId>
+                <artifactId>workflow-multibranch</artifactId>
+                <version>${workflow-multibranch-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins.workflow</groupId>
+                <artifactId>workflow-multibranch</artifactId>
+                <version>${workflow-multibranch-plugin.version}</version>
+                <classifier>tests</classifier>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins.workflow</groupId>
+                <artifactId>workflow-scm-step</artifactId>
+                <version>2.13</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins.workflow</groupId>
+                <artifactId>workflow-step-api</artifactId>
+                <version>${workflow-step-api-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins.workflow</groupId>
+                <artifactId>workflow-step-api</artifactId>
+                <version>${workflow-step-api-plugin.version}</version>
+                <classifier>tests</classifier>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins.workflow</groupId>
+                <artifactId>workflow-support</artifactId>
+                <version>${workflow-support-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins.workflow</groupId>
+                <artifactId>workflow-support</artifactId>
+                <version>${workflow-support-plugin.version}</version>
+                <classifier>tests</classifier>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.ui</groupId>
