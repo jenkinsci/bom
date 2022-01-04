@@ -4,22 +4,8 @@ com.sonyericsson.rebuild.RebuildValidatorTest
 # TODO cryptic PCT-only errors: https://github.com/jenkinsci/bom/pull/251#issuecomment-645012427
 hudson.matrix.AxisTest
 
-# TODO until we drop support for 2.249.x, work around https://github.com/jenkinsci/git-plugin/pull/1093
-jenkins.plugins.git.ModernScmTest
-
-# TODO until we update to a git plugin version after 4.8.2, work around https://github.com/jenkinsci/git-plugin/pull/1144
-hudson.plugins.git.browser.AssemblaWebDoCheckURLTest
-
-# TODO until we drop support for 2.249.x, work around https://github.com/jenkinsci/git-client-plugin/pull/675 not available in git client plugin 3.6.0
-org.jenkinsci.plugins.gitclient.CliGitAPIImplTest
-org.jenkinsci.plugins.gitclient.JGitAPIImplTest
-org.jenkinsci.plugins.gitclient.JGitApacheAPIImplTest
-
 # TODO fails for one reason in (non-PCT) official sources, run locally; and for another reason in PCT in Docker; passes in official sources in Docker, or locally in PCT
 org.jenkinsci.plugins.gitclient.FilePermissionsTest
-
-# TODO https://github.com/jenkinsci/git-client-plugin/pull/771
-org.jenkinsci.plugins.gitclient.RemotingTest
 
 # TODO flakes on CI for inscrutable reasons
 org.jenkinsci.plugins.durabletask.BourneShellScriptTest
@@ -32,12 +18,6 @@ org.jenkinsci.plugins.pipeline.modeldefinition.ToolsTest
 
 # TODO seemingly legitimate but undiagnosed PCT failures in interruptedWhileStartingMaxSurvivability and interruptedWhileStartingPerformanceOptimized
 org.jenkinsci.plugins.workflow.job.WorkflowRunRestartTest
-
-# TODO https://github.com/jenkinsci/workflow-multibranch-plugin/pull/128
-org.jenkinsci.plugins.workflow.multibranch.JobPropertyStepTest
-
-# TODO https://github.com/jenkinsci/workflow-basic-steps-plugin/pull/137
-org.jenkinsci.plugins.workflow.support.steps.stash.StashTest
 
 # TODO https://github.com/jenkinsci/ansicolor-plugin/pull/236
 hudson.plugins.ansicolor.action.ShortlogActionCreatorIntegrationTest
