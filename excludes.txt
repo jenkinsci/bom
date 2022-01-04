@@ -19,5 +19,8 @@ org.jenkinsci.plugins.pipeline.modeldefinition.ToolsTest
 # TODO seemingly legitimate but undiagnosed PCT failures in interruptedWhileStartingMaxSurvivability and interruptedWhileStartingPerformanceOptimized
 org.jenkinsci.plugins.workflow.job.WorkflowRunRestartTest
 
+# TODO https://github.com/jenkinsci/bom/issues/811
+org.jenkinsci.plugins.workflow.multibranch.JobPropertyStepTest
+
 # TODO https://github.com/jenkinsci/ansicolor-plugin/pull/236
 hudson.plugins.ansicolor.action.ShortlogActionCreatorIntegrationTest
