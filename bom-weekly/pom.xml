@@ -21,7 +21,7 @@
         <workflow-multibranch-plugin.version>696.v52535c46f4c9</workflow-multibranch-plugin.version>
         <workflow-step-api-plugin.version>622.vb_8e7c15b_c95a_</workflow-step-api-plugin.version>
         <workflow-support-plugin.version>804.vba10a18a1476</workflow-support-plugin.version>
-        <plugin-util-api.version>2.10.0</plugin-util-api.version>
+        <plugin-util-api.version>2.12.0</plugin-util-api.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -81,6 +81,11 @@
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>jaxb</artifactId>
                 <version>2.3.0.1</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jenkins.plugins</groupId>
+                <artifactId>jersey2-api</artifactId>
+                <version>2.35-1</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -171,7 +176,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>credentials</artifactId>
-                <version>1055.v1346ba467ba1</version>
+                <version>1061.vb_1fceb_58fa_18</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -237,7 +242,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>jackson2-api</artifactId>
-                <version>2.13.1-244.v773c36c5b330</version>
+                <version>2.13.1-246.va8a9f3eaf46a</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
