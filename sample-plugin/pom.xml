@@ -26,6 +26,18 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!-- Require upper bound dependencies error between configuration-as-code-test-harness and pipeline-model-definition -->
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>2.10.5</version>
+            </dependency>
+            <!-- Require upper bound dependencies error between jenkins-test-harness and pipeline-model-definition -->
+            <dependency>
+                <groupId>net.sf.jopt-simple</groupId>
+                <artifactId>jopt-simple</artifactId>
+                <version>5.0.4</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <dependencies>
