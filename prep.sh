@@ -41,10 +41,9 @@ do
 done
 
 # TODO find a way to encode this in some POM so that it can be managed by Dependabot
-version=0.5.1-SNAPSHOT # TODO https://github.com/jenkinsci/plugin-compat-tester/pull/276
-timestamp=0.5.1-20220130.152941-4
-pct=$HOME/.m2/repository/org/jenkins-ci/tests/plugins-compat-tester-cli/${version}/plugins-compat-tester-cli-${timestamp}.jar
-[ -f $pct ] || $MVN dependency:get -Dartifact=org.jenkins-ci.tests:plugins-compat-tester-cli:${timestamp}:jar -DremoteRepositories=https://repo.jenkins-ci.org/public/,https://repo.jenkins-ci.org/incrementals/ -Dtransitive=false
+version=1152.vafc19b26d5aa # TODO https://github.com/jenkinsci/plugin-compat-tester/pull/345
+pct=$HOME/.m2/repository/org/jenkins-ci/tests/plugins-compat-tester-cli/${version}/plugins-compat-tester-cli-${version}.jar
+[ -f $pct ] || $MVN dependency:get -Dartifact=org.jenkins-ci.tests:plugins-compat-tester-cli:${version}:jar -DremoteRepositories=https://repo.jenkins-ci.org/public/,https://repo.jenkins-ci.org/incrementals/ -Dtransitive=false
 cp $pct target/pct.jar
 
 # produces: target/{megawar-*.war,pct.jar,plugins.txt,lines.txt}
