@@ -10,9 +10,9 @@
     <packaging>pom</packaging>
     <properties>
         <checks-api.version>1.7.2</checks-api.version>
-        <configuration-as-code-plugin.version>1.55.1</configuration-as-code-plugin.version>
+        <configuration-as-code-plugin.version>1346.ve8cfa_3473c94</configuration-as-code-plugin.version>
         <git-plugin.version>4.10.3</git-plugin.version>
-        <pipeline-model-definition-plugin.version>1.9.3</pipeline-model-definition-plugin.version>
+        <pipeline-model-definition-plugin.version>2.2064.v5eef7d0982b_e</pipeline-model-definition-plugin.version>
         <scm-api-plugin.version>595.vd5a_df5eb_0e39</scm-api-plugin.version>
         <subversion-plugin.version>2.15.2</subversion-plugin.version>
         <workflow-api-plugin.version>1136.v7f5f1759dc16</workflow-api-plugin.version>
@@ -21,7 +21,7 @@
         <workflow-multibranch-plugin.version>706.vd43c65dec013</workflow-multibranch-plugin.version>
         <workflow-step-api-plugin.version>622.vb_8e7c15b_c95a_</workflow-step-api-plugin.version>
         <workflow-support-plugin.version>813.vb_d7c3d2984a_0</workflow-support-plugin.version>
-        <plugin-util-api.version>2.12.0</plugin-util-api.version>
+        <plugin-util-api.version>2.13.0</plugin-util-api.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -242,12 +242,12 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>htmlpublisher</artifactId>
-                <version>1.28</version>
+                <version>1.29</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>http_request</artifactId>
-                <version>1.13</version>
+                <version>1.14</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -327,7 +327,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>plain-credentials</artifactId>
-                <version>1.7</version>
+                <version>1.8</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -394,7 +394,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>timestamper</artifactId>
-                <version>1.16</version>
+                <version>1.17</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
