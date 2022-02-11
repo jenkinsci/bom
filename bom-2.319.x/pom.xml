@@ -6,7 +6,7 @@
         <artifactId>parent</artifactId>
         <version>${changelist}</version>
     </parent>
-    <artifactId>bom-2.332.x</artifactId>
+    <artifactId>bom-2.319.x</artifactId>
     <packaging>pom</packaging>
     <dependencyManagement>
         <dependencies>
