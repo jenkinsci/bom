@@ -16,13 +16,13 @@
         <pipeline-stage-view-plugin.version>2.21</pipeline-stage-view-plugin.version>
         <scm-api-plugin.version>595.vd5a_df5eb_0e39</scm-api-plugin.version>
         <subversion-plugin.version>2.15.2</subversion-plugin.version>
-        <workflow-api-plugin.version>1136.v7f5f1759dc16</workflow-api-plugin.version>
-        <workflow-cps-plugin.version>2648.va9433432b33c</workflow-cps-plugin.version>
+        <workflow-api-plugin.version>1138.v619fd5201b_2f</workflow-api-plugin.version>
+        <workflow-cps-plugin.version>2659.v52d3de6044d0</workflow-cps-plugin.version>
         <workflow-job-plugin.version>1167.v8fe861b_09ef9</workflow-job-plugin.version>
-        <workflow-multibranch-plugin.version>706.vd43c65dec013</workflow-multibranch-plugin.version>
+        <workflow-multibranch-plugin.version>711.vdfef37cda_816</workflow-multibranch-plugin.version>
         <workflow-step-api-plugin.version>622.vb_8e7c15b_c95a_</workflow-step-api-plugin.version>
         <workflow-support-plugin.version>813.vb_d7c3d2984a_0</workflow-support-plugin.version>
-        <plugin-util-api.version>2.13.0</plugin-util-api.version>
+        <plugin-util-api.version>2.14.0</plugin-util-api.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -76,7 +76,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>font-awesome-api</artifactId>
-                <version>5.15.4-4</version>
+                <version>6.0.0-1</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -177,7 +177,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>cloudbees-folder</artifactId>
-                <version>6.17</version>
+                <version>6.708.ve61636eb_65a_5</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -283,7 +283,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>ldap</artifactId>
-                <version>2.7</version>
+                <version>2.8</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -308,7 +308,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>pipeline-build-step</artifactId>
-                <version>2.15</version>
+                <version>2.16</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -410,7 +410,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>token-macro</artifactId>
-                <version>267.vcdaea6462991</version>
+                <version>277.v7c8f82a_d66b_3</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -467,7 +467,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-cps-global-lib</artifactId>
-                <version>552.vd9cc05b8a2e1</version>
+                <version>564.ve62a_4eb_b_e039</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
