@@ -14,8 +14,8 @@
                 <groupId>${project.groupId}</groupId>
                 <artifactId>bom-2.303.x</artifactId>
                 <version>${project.version}</version>
-                <scope>import</scope>
                 <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -23,14 +23,24 @@
                 <version>0.0.12</version>
             </dependency>
             <dependency>
-                <groupId>org.jenkins-ci.plugins.workflow</groupId>
-                <artifactId>workflow-durable-task-step</artifactId>
-                <version>2.40</version>
-            </dependency>
-            <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>pipeline-graph-analysis</artifactId>
                 <version>1.11</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>saml</artifactId>
+                <version>2.0.9</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins.workflow</groupId>
+                <artifactId>workflow-cps-global-lib</artifactId>
+                <version>2.21</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins.workflow</groupId>
+                <artifactId>workflow-durable-task-step</artifactId>
+                <version>2.40</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
