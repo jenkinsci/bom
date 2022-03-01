@@ -132,7 +132,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>theme-manager</artifactId>
-                <version>0.6</version>
+                <version>1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.6wind.jenkins</groupId>
