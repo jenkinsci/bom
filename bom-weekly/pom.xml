@@ -308,7 +308,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>metrics</artifactId>
-                <version>4.0.2.8</version>
+                <version>4.1.6.1</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -400,7 +400,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>support-core</artifactId>
-                <version>2.75</version>
+                <version>2.81</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
