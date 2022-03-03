@@ -13,7 +13,7 @@
         <configuration-as-code-plugin.version>1414.v878271fc496f</configuration-as-code-plugin.version>
         <git-plugin.version>4.10.3</git-plugin.version>
         <pipeline-model-definition-plugin.version>2.2064.v5eef7d0982b_e</pipeline-model-definition-plugin.version>
-        <pipeline-stage-view-plugin.version>2.22</pipeline-stage-view-plugin.version>
+        <pipeline-stage-view-plugin.version>2.23</pipeline-stage-view-plugin.version>
         <scm-api-plugin.version>595.vd5a_df5eb_0e39</scm-api-plugin.version>
         <subversion-plugin.version>2.15.2</subversion-plugin.version>
         <workflow-api-plugin.version>1138.v619fd5201b_2f</workflow-api-plugin.version>
