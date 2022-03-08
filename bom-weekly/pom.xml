@@ -405,7 +405,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>support-core</artifactId>
-                <version>1124.vb_16439f088b_4</version>
+                <version>1130.vb_eef6015fc37</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
