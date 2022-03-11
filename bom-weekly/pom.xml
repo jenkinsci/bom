@@ -75,6 +75,11 @@
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
+                <artifactId>file-parameters</artifactId>
+                <version>191.v35851c9e7a_5a_</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jenkins.plugins</groupId>
                 <artifactId>font-awesome-api</artifactId>
                 <version>6.0.0-1</version>
             </dependency>
