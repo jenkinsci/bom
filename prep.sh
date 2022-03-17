@@ -10,7 +10,7 @@ fi
 
 $MVN clean install ${SAMPLE_PLUGIN_OPTS:-}
 
-ALL_LINEZ=$(fgrep '<bom>' sample-plugin/pom.xml | sed -E 's, *<bom>(.+)</bom>,\1,g' | sort -rn)
+ALL_LINEZ=$(echo weekly; fgrep '.x</bom>' sample-plugin/pom.xml | sed -E 's, *<bom>(.+)</bom>,\1,g' | sort -rn)
 : "${LINEZ:=$ALL_LINEZ}"
 echo -n $LINEZ > target/lines.txt
 
