@@ -14,7 +14,7 @@ ALL_LINEZ=$(
 	grep -F '.x</bom>' sample-plugin/pom.xml | sed -E 's, *<bom>(.+)</bom>,\1,g' | sort -rn
 )
 : "${LINEZ:=$ALL_LINEZ}"
-echo -n "${LINEZ}" >target/lines.txt
+echo "${LINEZ}" >target/lines.txt
 
 rebuild=no
 for LINE in $LINEZ; do
@@ -23,7 +23,7 @@ for LINE in $LINEZ; do
 	else
 		rebuild=yes
 		pushd sample-plugin/target/test-classes/test-dependencies
-		echo -n *.hpi | sed s/.hpi//g >../../../../target/plugins.txt
+		ls -1 *.hpi | sed s/.hpi//g >../../../../target/plugins.txt
 		popd
 	fi
 	pushd sample-plugin/target

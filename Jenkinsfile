@@ -30,8 +30,8 @@ stage('prep') {
             sh 'bash prep.sh'
         }
         dir('target') {
-            plugins = readFile('plugins.txt').split(' ')
-            lines = readFile('lines.txt').split(' ')
+            plugins = readFile('plugins.txt').split('\n')
+            lines = readFile('lines.txt').split('\n')
             lines = [lines[0], lines[-1]] // run PCT only on newest and oldest lines, to save resources
             stash name: 'pct', includes: 'pct.jar'
             lines.each {stash name: "megawar-$it", includes: "megawar-${it}.war"}
