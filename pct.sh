@@ -35,13 +35,13 @@ elif grep -q -F -e '<status>TEST_FAILURES</status>' pct-report.xml; then
 	for t in pct-work/*/{,*/}target; do
 		if [ -f "${t}/test-classes/InjectedTest.class" ] && [ ! -f "${t}/surefire-reports/TEST-InjectedTest.xml" ]; then
 			mkdir -p "${t}/surefire-reports"
-			cat >"${t}/surefire-reports/TEST-pct.xml" <<'EOF'
-<testsuite name="pct">
-  <testcase classname="pct" name="overall">
-    <error message="some sort of PCT problem; look at logs"/>
-  </testcase>
-</testsuite>
-EOF
+			cat >"${t}/surefire-reports/TEST-pct.xml" <<-'EOF'
+				<testsuite name="pct">
+				  <testcase classname="pct" name="overall">
+				    <error message="some sort of PCT problem; look at logs"/>
+				  </testcase>
+				</testsuite>
+			EOF
 		fi
 	done
 fi
