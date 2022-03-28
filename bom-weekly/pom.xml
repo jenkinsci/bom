@@ -11,13 +11,13 @@
     <properties>
         <checks-api.version>1.7.2</checks-api.version>
         <configuration-as-code-plugin.version>1414.v878271fc496f</configuration-as-code-plugin.version>
-        <git-plugin.version>4.10.3</git-plugin.version>
+        <git-plugin.version>4.11.0</git-plugin.version>
         <pipeline-model-definition-plugin.version>2.2064.v5eef7d0982b_e</pipeline-model-definition-plugin.version>
         <pipeline-stage-view-plugin.version>2.23</pipeline-stage-view-plugin.version>
         <scm-api-plugin.version>595.vd5a_df5eb_0e39</scm-api-plugin.version>
         <subversion-plugin.version>2.15.3</subversion-plugin.version>
         <workflow-api-plugin.version>1143.v2d42f1e9dea_5</workflow-api-plugin.version>
-        <workflow-cps-plugin.version>2682.va_473dcddc941</workflow-cps-plugin.version>
+        <workflow-cps-plugin.version>2683.vd0a_8f6a_1c263</workflow-cps-plugin.version>
         <workflow-job-plugin.version>1174.vdcb_d054cf74a_</workflow-job-plugin.version>
         <workflow-multibranch-plugin.version>711.vdfef37cda_816</workflow-multibranch-plugin.version>
         <workflow-step-api-plugin.version>622.vb_8e7c15b_c95a_</workflow-step-api-plugin.version>
@@ -248,7 +248,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>gitlab-oauth</artifactId>
-                <version>1.14</version>
+                <version>1.15</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -420,7 +420,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>throttle-concurrents</artifactId>
-                <version>2.6</version>
+                <version>2.7</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
