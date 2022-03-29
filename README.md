@@ -118,7 +118,7 @@ PLUGINS=structs,mailer TEST=InjectedTest bash local-test.sh
 optionally also passing
 
 ```
-DOCKERIZED=yes
+DOCKERIZED=true
 ```
 
 to reproduce image-specific failures.
