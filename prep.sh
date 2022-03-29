@@ -3,7 +3,7 @@ set -euxo pipefail
 cd "$(dirname "${0}")"
 
 MVN='mvn -B -ntp'
-if [ -v MAVEN_SETTINGS ]; then
+if [[ -v MAVEN_SETTINGS ]]; then
 	MVN="${MVN} -s ${MAVEN_SETTINGS}"
 fi
 
@@ -16,12 +16,12 @@ ALL_LINEZ=$(
 : "${LINEZ:=$ALL_LINEZ}"
 echo "${LINEZ}" >target/lines.txt
 
-rebuild=no
+rebuild=false
 for LINE in $LINEZ; do
-	if [ $rebuild = yes ]; then
+	if $rebuild; then
 		$MVN -f sample-plugin clean package ${SAMPLE_PLUGIN_OPTS:-} "-P${LINE}"
 	else
-		rebuild=yes
+		rebuild=true
 		pushd sample-plugin/target/test-classes/test-dependencies
 		ls -1 *.hpi | sed s/.hpi//g >../../../../target/plugins.txt
 		popd

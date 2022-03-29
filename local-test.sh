@@ -7,10 +7,11 @@ cd "$(dirname "$0")"
 LATEST_LINE=weekly
 : "${LINE:=$LATEST_LINE}"
 
-export SAMPLE_PLUGIN_OPTS=-Dtest=InjectedTest
-if [ $LINE \!= $LATEST_LINE ]; then
-	export SAMPLE_PLUGIN_OPTS="${SAMPLE_PLUGIN_OPTS} -P${LINE}"
+SAMPLE_PLUGIN_OPTS=-Dtest=InjectedTest
+if [[ $LINE != "${LATEST_LINE}" ]]; then
+	SAMPLE_PLUGIN_OPTS+=" -P${LINE}"
 fi
+export SAMPLE_PLUGIN_OPTS
 LINEZ=$LINE bash prep.sh
 
 rm -rf target/local-test
@@ -18,13 +19,13 @@ mkdir target/local-test
 cp -v target/pct.jar pct.sh excludes.txt target/local-test
 cp -v target/megawar-$LINE.war target/local-test/megawar.war
 
-if [ -v TEST ]; then
+if [[ -v TEST ]]; then
 	EXTRA_MAVEN_PROPERTIES="test=${TEST}"
 else
 	EXTRA_MAVEN_PROPERTIES=
 fi
 
-if [ -v DOCKERIZED ]; then
+if [[ -v DOCKERIZED ]]; then
 	docker volume inspect m2repo || docker volume create m2repo
 	docker run \
 		-v ~/.m2:/var/maven/.m2 \
