@@ -1,8 +1,3 @@
-# TODO https://github.com/jenkinsci/support-core-plugin/pull/353
-com.cloudbees.jenkins.support.actions.SupportAbstractItemActionTest
-com.cloudbees.jenkins.support.actions.SupportComputerActionTest
-com.cloudbees.jenkins.support.actions.SupportRunActionTest
-
 # TODO cryptic PCT-only errors: https://github.com/jenkinsci/bom/pull/251#issuecomment-645012427
 hudson.matrix.AxisTest
 
