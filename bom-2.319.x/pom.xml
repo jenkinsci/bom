@@ -101,6 +101,32 @@
                 <artifactId>support-core</artifactId>
                 <version>2.80</version>
             </dependency>
+            <dependency>
+                <groupId>org.jenkinsci.plugins</groupId>
+                <artifactId>pipeline-model-api</artifactId>
+                <version>1.9.3</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkinsci.plugins</groupId>
+                <artifactId>pipeline-model-definition</artifactId>
+                <version>1.9.3</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkinsci.plugins</groupId>
+                <artifactId>pipeline-model-definition</artifactId>
+                <version>1.9.3</version>
+                <classifier>tests</classifier>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkinsci.plugins</groupId>
+                <artifactId>pipeline-model-extensions</artifactId>
+                <version>1.9.3</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkinsci.plugins</groupId>
+                <artifactId>pipeline-stage-tags-metadata</artifactId>
+                <version>1.9.3</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>
