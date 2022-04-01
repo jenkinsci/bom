@@ -81,7 +81,7 @@ file a PR changing the versions of both.
 
 ## Adding a new plugin
 
-Insert a new `dependency` in _sorted_ order to `bom/pom.xml`.
+Insert a new `dependency` in _sorted_ order to `bom-weekly/pom.xml`.
 Make sure it is used (perhaps transitively) in `sample-plugin/pom.xml`.
 Ideally also update the sample plugin’s tests to actually exercise it,
 as a sanity check.
@@ -96,7 +96,7 @@ You should introduce a POM property so that the version is not repeated.
 
 The build will enforce that all transitive plugin dependencies are also managed.
 If the build fails due to an unmanaged transitive plugin dependency, add it to
-`bom/pom.xml`.
+`bom-weekly/pom.xml`.
 
 ## PCT
 
