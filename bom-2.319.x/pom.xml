@@ -18,6 +18,26 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>display-url-api</artifactId>
+                <version>2.3.5</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>junit</artifactId>
+                <version>1.53</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>script-security</artifactId>
+                <version>1138.v8e727069a_025</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>support-core</artifactId>
+                <version>2.80</version>
+            </dependency>
+            <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-basic-steps</artifactId>
                 <version>2.24</version>
@@ -54,52 +74,6 @@
                 <artifactId>workflow-support</artifactId>
                 <version>813.vb_d7c3d2984a_0</version>
                 <classifier>tests</classifier>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkins-ci.plugins</groupId>
-                <artifactId>display-url-api</artifactId>
-                <version>2.3.5</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkins-ci.plugins</groupId>
-                <artifactId>junit</artifactId>
-                <version>1.53</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkinsci.plugins</groupId>
-                <artifactId>pipeline-model-api</artifactId>
-                <version>1.9.3</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkinsci.plugins</groupId>
-                <artifactId>pipeline-model-definition</artifactId>
-                <version>1.9.3</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkinsci.plugins</groupId>
-                <artifactId>pipeline-model-definition</artifactId>
-                <version>1.9.3</version>
-                <classifier>tests</classifier>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkinsci.plugins</groupId>
-                <artifactId>pipeline-model-extensions</artifactId>
-                <version>1.9.3</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkinsci.plugins</groupId>
-                <artifactId>pipeline-stage-tags-metadata</artifactId>
-                <version>1.9.3</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkins-ci.plugins</groupId>
-                <artifactId>script-security</artifactId>
-                <version>1138.v8e727069a_025</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkins-ci.plugins</groupId>
-                <artifactId>support-core</artifactId>
-                <version>2.80</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkinsci.plugins</groupId>
