@@ -492,7 +492,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-cps-global-lib</artifactId>
-                <version>564.ve62a_4eb_b_e039</version>
+                <version>566.vd0a_a_3334a_555</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
