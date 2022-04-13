@@ -17,11 +17,11 @@
         <scm-api-plugin.version>595.vd5a_df5eb_0e39</scm-api-plugin.version>
         <subversion-plugin.version>2.15.3</subversion-plugin.version>
         <workflow-api-plugin.version>1143.v2d42f1e9dea_5</workflow-api-plugin.version>
-        <workflow-cps-plugin.version>2683.vd0a_8f6a_1c263</workflow-cps-plugin.version>
+        <workflow-cps-plugin.version>2686.v7c37e0578401</workflow-cps-plugin.version>
         <workflow-job-plugin.version>1174.vdcb_d054cf74a_</workflow-job-plugin.version>
         <workflow-multibranch-plugin.version>711.vdfef37cda_816</workflow-multibranch-plugin.version>
         <workflow-step-api-plugin.version>622.vb_8e7c15b_c95a_</workflow-step-api-plugin.version>
-        <workflow-support-plugin.version>815.vd60466279fc8</workflow-support-plugin.version>
+        <workflow-support-plugin.version>817.v58126df57338</workflow-support-plugin.version>
         <plugin-util-api.version>2.16.0</plugin-util-api.version>
     </properties>
     <dependencyManagement>
@@ -66,7 +66,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>dark-theme</artifactId>
-                <version>161.vff584deff779</version>
+                <version>165.vb_9cb_da_25112e</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -101,7 +101,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>jersey2-api</artifactId>
-                <version>2.35-4</version>
+                <version>2.35-5</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -142,7 +142,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>theme-manager</artifactId>
-                <version>1.1</version>
+                <version>1.2</version>
             </dependency>
             <dependency>
                 <groupId>org.6wind.jenkins</groupId>
@@ -152,7 +152,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.modules</groupId>
                 <artifactId>sshd</artifactId>
-                <version>3.1.0</version>
+                <version>3.228.v4c9f9e652c86</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -197,7 +197,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>credentials</artifactId>
-                <version>1111.v35a_307992395</version>
+                <version>1118.v320cd028cb_a_0</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -207,7 +207,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>dashboard-view</artifactId>
-                <version>2.19</version>
+                <version>2.426.vb_93dcdb_b_0eb_0</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -323,7 +323,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>pipeline-build-step</artifactId>
-                <version>2.16</version>
+                <version>2.17</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -333,7 +333,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>pipeline-input-step</artifactId>
-                <version>446.vf27b_0b_83500e</version>
+                <version>447.v95e5a_6e3502a_</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -440,7 +440,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>trilead-api</artifactId>
-                <version>1.0.13</version>
+                <version>1.57.v6e90e07157e1</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -492,7 +492,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-cps-global-lib</artifactId>
-                <version>564.ve62a_4eb_b_e039</version>
+                <version>566.vd0a_a_3334a_555</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
