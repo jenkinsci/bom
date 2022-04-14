@@ -137,7 +137,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>snakeyaml-api</artifactId>
-                <version>1.29.1</version>
+                <version>1.30.1</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
