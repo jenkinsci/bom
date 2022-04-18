@@ -207,7 +207,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>dashboard-view</artifactId>
-                <version>2.426.vb_93dcdb_b_0eb_0</version>
+                <version>2.430.vfb_a_dc7e3687b_</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
