@@ -318,7 +318,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>metrics</artifactId>
-                <version>4.1.6.1</version>
+                <version>4.1.6.2-rc355.fa_fe367a_f14c</version> <!-- TODO https://github.com/jenkinsci/metrics-plugin/pull/153 -->
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -411,6 +411,11 @@
                 <artifactId>subversion</artifactId>
                 <version>${subversion-plugin.version}</version>
                 <classifier>tests</classifier>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>support-core</artifactId>
+                <version>1153.vf5dc75a_1a_42e</version> <!-- TODO https://github.com/jenkinsci/support-core-plugin/pull/360 -->
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
