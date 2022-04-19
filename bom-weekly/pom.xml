@@ -21,7 +21,7 @@
         <workflow-job-plugin.version>1174.vdcb_d054cf74a_</workflow-job-plugin.version>
         <workflow-multibranch-plugin.version>711.vdfef37cda_816</workflow-multibranch-plugin.version>
         <workflow-step-api-plugin.version>622.vb_8e7c15b_c95a_</workflow-step-api-plugin.version>
-        <workflow-support-plugin.version>817.v58126df57338</workflow-support-plugin.version>
+        <workflow-support-plugin.version>818.v4eb_969241b_c7</workflow-support-plugin.version>
         <plugin-util-api.version>2.16.0</plugin-util-api.version>
     </properties>
     <dependencyManagement>
@@ -101,7 +101,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>jersey2-api</artifactId>
-                <version>2.35-5</version>
+                <version>2.35-7</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -283,7 +283,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>junit</artifactId>
-                <version>1.58</version>
+                <version>1.59</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -411,11 +411,6 @@
                 <artifactId>subversion</artifactId>
                 <version>${subversion-plugin.version}</version>
                 <classifier>tests</classifier>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkins-ci.plugins</groupId>
-                <artifactId>support-core</artifactId>
-                <version>1148.vedff8cb_56a_da_</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>

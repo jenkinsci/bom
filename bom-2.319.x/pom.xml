@@ -33,11 +33,6 @@
                 <version>1138.v8e727069a_025</version>
             </dependency>
             <dependency>
-                <groupId>org.jenkins-ci.plugins</groupId>
-                <artifactId>support-core</artifactId>
-                <version>2.80</version>
-            </dependency>
-            <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-basic-steps</artifactId>
                 <version>2.24</version>
