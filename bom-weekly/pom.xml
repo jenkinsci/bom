@@ -197,7 +197,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>credentials</artifactId>
-                <version>1118.v320cd028cb_a_0</version>
+                <version>1126.ve05618c41e62</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
