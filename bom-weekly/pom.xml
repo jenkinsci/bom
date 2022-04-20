@@ -318,7 +318,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>metrics</artifactId>
-                <version>4.1.6.1</version>
+                <version>4.1.6.2</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -411,6 +411,11 @@
                 <artifactId>subversion</artifactId>
                 <version>${subversion-plugin.version}</version>
                 <classifier>tests</classifier>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>support-core</artifactId>
+                <version>1158.v9189f64fec8c</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
