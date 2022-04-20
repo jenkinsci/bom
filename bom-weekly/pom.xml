@@ -439,6 +439,11 @@
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>swarm</artifactId>
+                <version>3.32</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>text-finder</artifactId>
                 <version>1.18</version>
             </dependency>
