@@ -12,3 +12,6 @@ org.jenkinsci.plugins.durabletask.BourneShellScriptTest
 
 # TODO fails for one reason in (non-PCT) official sources, run locally; and for another reason in PCT in Docker; passes in official sources in Docker, or locally in PCT
 org.jenkinsci.plugins.gitclient.FilePermissionsTest
+
+# TODO pending https://github.com/jenkinsci/github-branch-source-plugin/pull/486
+org.jenkinsci.plugins.github_branch_source.GitHubSCMFileSystemTest
