@@ -29,6 +29,11 @@
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>metrics</artifactId>
+                <version>4.1.6.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>script-security</artifactId>
                 <version>1138.v8e727069a_025</version>
             </dependency>
