@@ -19,7 +19,15 @@ def managedPluginDeps = managedDeps.collect {stripAllButGA(it)}.grep { ga ->
 if (settings.activeProfiles.any {it ==~ /^2[.][0-9]+[.]x$/}) {
     println 'Skipping managed plugin dep sort check on this old LTS line'
 } else {
-    def sortedDeps = managedPluginDeps.toSorted()
+    def sortedDeps = managedPluginDeps.toSorted { a, b ->
+        def aSplit = a.split(':')
+        def bSplit = b.split(':')
+        def result = aSplit[0] <=> bSplit[0]
+        if (result == 0) {
+            result = aSplit[1] <=> bSplit[1]
+        }
+        result
+    }
     if (managedPluginDeps != sortedDeps) {
         throw new org.apache.maven.plugin.MojoFailureException("""Managed plugin dependencies should be sorted: $managedPluginDeps, 
 

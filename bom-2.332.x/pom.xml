@@ -6,13 +6,13 @@
         <artifactId>parent</artifactId>
         <version>${changelist}</version>
     </parent>
-    <artifactId>bom-2.289.x</artifactId>
+    <artifactId>bom-2.332.x</artifactId>
     <packaging>pom</packaging>
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>bom-2.303.x</artifactId>
+                <artifactId>bom-weekly</artifactId>
                 <version>${project.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
@@ -20,27 +20,17 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>dark-theme</artifactId>
-                <version>0.0.12</version>
+                <version>156.v6cf16af6f9ef</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jenkins.plugins</groupId>
+                <artifactId>theme-manager</artifactId>
+                <version>0.6</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
-                <artifactId>pipeline-graph-analysis</artifactId>
-                <version>1.11</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkins-ci.plugins</groupId>
-                <artifactId>saml</artifactId>
-                <version>2.0.9</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkins-ci.plugins.workflow</groupId>
-                <artifactId>workflow-cps-global-lib</artifactId>
-                <version>2.21</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkins-ci.plugins.workflow</groupId>
-                <artifactId>workflow-durable-task-step</artifactId>
-                <version>2.40</version>
+                <artifactId>credentials</artifactId>
+                <version>1087.v16065d268466</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

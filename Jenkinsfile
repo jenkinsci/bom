@@ -1,7 +1,7 @@
-def buildNumber = BUILD_NUMBER as int; if (buildNumber > 1) milestone(buildNumber - 1); milestone(buildNumber) // JENKINS-43353 / JENKINS-58625
+properties([disableConcurrentBuilds(abortPrevious: true)])
 
 def mavenEnv(Map params = [:], Closure body) {
-    node('maven') { // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
+    node('maven-11') { // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
         timeout(90) {
             sh 'mvn -version'
             def settingsXml = "${pwd tmp: true}/settings-azure.xml"
@@ -30,8 +30,8 @@ stage('prep') {
             sh 'bash prep.sh'
         }
         dir('target') {
-            plugins = readFile('plugins.txt').split(' ')
-            lines = readFile('lines.txt').split(' ')
+            plugins = readFile('plugins.txt').split('\n')
+            lines = readFile('lines.txt').split('\n')
             lines = [lines[0], lines[-1]] // run PCT only on newest and oldest lines, to save resources
             stash name: 'pct', includes: 'pct.jar'
             lines.each {stash name: "megawar-$it", includes: "megawar-${it}.war"}
