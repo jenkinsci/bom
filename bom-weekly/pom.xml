@@ -172,7 +172,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>ant</artifactId>
-                <version>1.13</version>
+                <version>473.vcfd6b_16ca_581</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
