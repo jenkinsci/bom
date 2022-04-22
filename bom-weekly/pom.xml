@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
     <properties>
         <checks-api.version>1.7.2</checks-api.version>
-        <configuration-as-code-plugin.version>1414.v878271fc496f</configuration-as-code-plugin.version>
+        <configuration-as-code-plugin.version>1429.v09b_044a_c93de</configuration-as-code-plugin.version>
         <git-plugin.version>4.11.0</git-plugin.version>
         <pipeline-model-definition-plugin.version>2.2077.vc78ec45162f1</pipeline-model-definition-plugin.version>
         <pipeline-stage-view-plugin.version>2.23</pipeline-stage-view-plugin.version>
