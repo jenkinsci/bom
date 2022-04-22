@@ -21,7 +21,7 @@
         <workflow-job-plugin.version>1174.vdcb_d054cf74a_</workflow-job-plugin.version>
         <workflow-multibranch-plugin.version>712.vc169a_1387405</workflow-multibranch-plugin.version>
         <workflow-step-api-plugin.version>625.vd896b_f445a_f8</workflow-step-api-plugin.version>
-        <workflow-support-plugin.version>818.v4eb_969241b_c7</workflow-support-plugin.version>
+        <workflow-support-plugin.version>819.v37d707a_71d9b_</workflow-support-plugin.version>
         <plugin-util-api.version>2.16.0</plugin-util-api.version>
     </properties>
     <dependencyManagement>
@@ -363,7 +363,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>pipeline-stage-step</artifactId>
-                <version>291.vf0a8a7aeeb50</version>
+                <version>293.v200037eefcd5</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
