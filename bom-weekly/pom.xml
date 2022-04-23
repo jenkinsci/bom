@@ -91,7 +91,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>gitlab-branch-source</artifactId>
-                <version>623.vcc98dc4b_0ce4</version>
+                <version>625.v85cf3a_400cfe</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
