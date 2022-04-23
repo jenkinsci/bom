@@ -32,10 +32,13 @@ foreach ($dependency in $dependencies) {
     # credentials (2.6.1) has an available update: 2.6.1.1
 
     # Grab the version number at the end of the line
-    $newVersion = ($output | Select-String -Pattern 'update: (.+)').matches.Groups[1].Value
+    $newVersion = $output.Trim().Split(' ')[-1]
     Write-Output "Changed $artifact from $oldVersion to $newVersion"
     $dependency.version = $newVersion
   }
 }
 
-$pom.Save($pomPath)
+$utf8WithoutBom = New-Object System.Text.UTF8Encoding($false)
+$streamWriter = New-Object System.IO.StreamWriter($pomPath, $false, $utf8WithoutBom)
+$pom.Save($streamWriter)
+$streamWriter.Close()
