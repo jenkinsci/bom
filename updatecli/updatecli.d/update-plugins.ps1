@@ -5,6 +5,14 @@ param(
 
 $JenkinsVersionX = $JenkinsVersion -replace '\d+$', 'x'
 
+if (Get-Command 'java' -ErrorAction SilentlyContinue) {
+  $java = 'java'
+} elseif ($IsLinux) {
+  $java = '/usr/bin/java'
+} else {
+  $java = 'java'
+}
+
 $pomPath = "bom-${JenkinsVersionX}/pom.xml"
 $pom = New-Object System.Xml.XmlDocument
 $pom.PreserveWhitespace = $true
@@ -17,7 +25,7 @@ foreach ($dependency in $dependencies) {
   $artifact = $dependency.artifactId
   $oldVersion = $dependency.version
   $plugin = "${artifact}:${oldVersion}"
-  [string] $output = & java -jar "$PluginManagerJar" --no-download --available-updates --jenkins-version "$JenkinsVersion" --plugins $plugin
+  [string] $output = & $java -jar "$PluginManagerJar" --no-download --available-updates --jenkins-version "$JenkinsVersion" --plugins $plugin
   if ($null -ne $output -and $output -inotlike '*No available updates*') {
     # Exaple output:
     # Available updates:
