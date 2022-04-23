@@ -126,3 +126,18 @@ targets:
     spec:
       command: bash ./updatecli/updatecli.d/update-plugins.sh
     scmid: github
+pullrequests:
+  default:
+    title: 'Bump pinned plugins'
+    kind: github
+    scmid: github
+    targets:
+      - jenkins2.289.x
+      - jenkins2.303.x
+      - jenkins2.319.x
+      - jenkins2.332.x
+    spec:
+      labels:
+        - dependencies
+      automerge: true
+      mergemethod: squash
