@@ -24,9 +24,9 @@ foreach ($dependency in $dependencies) {
     # credentials (2.6.1) has an available update: 2.6.1.1
 
     # Grab the version number at the end of the line
-    $version = $output.Trim().Split(' ')[-1]
-    Write-Output "Changed $artifact from $oldVersion to $version"
-    $dependency.version = $version
+    $newVersion = ($output | Select-String -Pattern 'update: (.+)').matches.Groups[1].Value
+    Write-Output "Changed $artifact from $oldVersion to $newVersion"
+    $dependency.version = $newVersion
   }
 }
 

@@ -25,7 +25,7 @@ jobs:
 
       - name: Install Jenkins Plugin Installation Manager Tool
         run: |
-          curl -sSL https://github.com/jenkinsci/plugin-installation-manager-tool/releases/download/2.12.3/jenkins-plugin-manager-2.12.3.jar -o "$GITHUB_WORKSPACE/plugin-manager.jar"
+          curl -sSL https://github.com/jenkinsci/plugin-installation-manager-tool/releases/download/2.12.3/jenkins-plugin-manager-2.12.3.jar -o "${GITHUB_WORKSPACE:-.}/plugin-manager.jar"
           echo "PLUGIN_MANAGER_JAR_PATH=$GITHUB_WORKSPACE/plugin-manager.jar" >> $GITHUB_ENV
 
       - name: Diff
