@@ -3,6 +3,6 @@ github:
   email: "41898282+github-actions[bot]@users.noreply.github.com"
   username: "github-actions"
   token: "UPDATECLI_GITHUB_TOKEN"
-  owner: "jenkinsci"
-  repository: "bom"
-  branch: "master"
+  owner: "jetersen"
+  repository: "jenkins-bom"
+  branch: "fix/bomPlugins" # TODO revert before merge
