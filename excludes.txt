@@ -4,9 +4,6 @@ hudson.matrix.AxisTest
 # TODO https://github.com/jenkinsci/ansicolor-plugin/pull/236
 hudson.plugins.ansicolor.action.ShortlogActionCreatorIntegrationTest
 
-# TODO https://github.com/jenkinsci/matrix-auth-plugin/pull/115
-hudson.security.ProjectMatrixAuthorizationStrategyTest
-
 # TODO flakes on CI for inscrutable reasons
 org.jenkinsci.plugins.durabletask.BourneShellScriptTest
 
