@@ -419,7 +419,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>structs</artifactId>
-                <version>308.v852b473a2b8c</version>
+                <version>318.va_f3ccb_729b_71</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
