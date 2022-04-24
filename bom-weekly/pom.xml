@@ -192,7 +192,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>branch-api</artifactId>
-                <version>2.1045.v4ec3ed07b_e4f</version>
+                <version>2.1046.v0ca_37783ecc5</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
