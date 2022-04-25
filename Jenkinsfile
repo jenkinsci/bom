@@ -1,7 +1,8 @@
 properties([disableConcurrentBuilds(abortPrevious: true)])
 
 def mavenEnv(Map params = [:], Closure body) {
-    node('maven-11') { // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
+    def agentContainerLabel = params['jdk'] == 8 ? 'maven' : 'maven-' + params['jdk']
+    node(agentContainerLabel) { // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
         timeout(90) {
             sh 'mvn -version'
             def settingsXml = "${pwd tmp: true}/settings-azure.xml"
@@ -23,7 +24,7 @@ def lines
 def failFast
 
 stage('prep') {
-    mavenEnv {
+    mavenEnv(jdk: 11) {
         checkout scm
         failFast = Boolean.parseBoolean(readFile('failFast').trim())
         withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist']) {
@@ -50,7 +51,7 @@ lines.each {line ->
           def attempts = 2
           retry(attempts) { // in case of transient node outages
             echo 'Attempt ' + ++attempt + ' of ' + attempts
-            mavenEnv(skipMarkingBuildUnstable: attempt < attempts) {
+            mavenEnv(jdk: line == 'weekly' ? 17 : 11, skipMarkingBuildUnstable: attempt < attempts) {
                 deleteDir()
                 unstash 'pct.sh'
                 unstash 'excludes.txt'

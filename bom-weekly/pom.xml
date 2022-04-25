@@ -232,7 +232,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>email-ext</artifactId>
-                <version>2.87</version>
+                <version>2.88</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -414,7 +414,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>ssh-slaves</artifactId>
-                <version>1.806.v2253cedd3295</version>
+                <version>1.814.vc82988f54b_10</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>

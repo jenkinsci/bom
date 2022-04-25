@@ -39,6 +39,11 @@
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>ssh-slaves</artifactId>
+                <version>1.806.v2253cedd3295</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>trilead-api</artifactId>
                 <version>1.0.13</version>
             </dependency>
