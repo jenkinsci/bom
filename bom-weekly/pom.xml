@@ -9,11 +9,11 @@
     <artifactId>bom-weekly</artifactId>
     <packaging>pom</packaging>
     <properties>
-        <checks-api.version>1.7.2</checks-api.version>
+        <checks-api.version>1.7.3</checks-api.version>
         <configuration-as-code-plugin.version>1429.v09b_044a_c93de</configuration-as-code-plugin.version>
-        <git-plugin.version>4.11.0</git-plugin.version>
+        <git-plugin.version>4.11.1</git-plugin.version>
         <pipeline-model-definition-plugin.version>2.2077.vc78ec45162f1</pipeline-model-definition-plugin.version>
-        <pipeline-stage-view-plugin.version>2.23</pipeline-stage-view-plugin.version>
+        <pipeline-stage-view-plugin.version>2.24</pipeline-stage-view-plugin.version>
         <scm-api-plugin.version>602.v6a_81757a_31d2</scm-api-plugin.version>
         <subversion-plugin.version>2.15.4</subversion-plugin.version>
         <workflow-api-plugin.version>1144.v61c3180fa_03f</workflow-api-plugin.version>
@@ -45,7 +45,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>bootstrap4-api</artifactId>
-                <version>4.6.0-3</version>
+                <version>4.6.0-4</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -76,7 +76,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>file-parameters</artifactId>
-                <version>191.v35851c9e7a_5a_</version>
+                <version>205.vf6ce13b_e5dee</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -91,7 +91,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>gitlab-branch-source</artifactId>
-                <version>623.vcc98dc4b_0ce4</version>
+                <version>625.v85cf3a_400cfe</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -121,7 +121,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>jquery3-api</artifactId>
-                <version>3.6.0-2</version>
+                <version>3.6.0-3</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -142,7 +142,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>popper-api</artifactId>
-                <version>1.16.1-2</version>
+                <version>1.16.1-3</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -187,12 +187,12 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>bouncycastle-api</artifactId>
-                <version>2.25</version>
+                <version>2.26</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>branch-api</artifactId>
-                <version>2.1045.v4ec3ed07b_e4f</version>
+                <version>2.1046.v0ca_37783ecc5</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -227,7 +227,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>durable-task</artifactId>
-                <version>495.v29cd95ec10f2</version>
+                <version>496.va67c6f9eefa7</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -278,7 +278,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>htmlpublisher</artifactId>
-                <version>1.29</version>
+                <version>1.30</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -308,12 +308,12 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>junit-attachments</artifactId>
-                <version>92.v46b_185115f82</version>
+                <version>95.v69691d523620</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>ldap</artifactId>
-                <version>2.8</version>
+                <version>2.9</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -343,7 +343,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>pipeline-build-step</artifactId>
-                <version>2.17</version>
+                <version>2.18</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -409,7 +409,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>ssh-credentials</artifactId>
-                <version>1.19</version>
+                <version>277.v95c2fec1c047</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -419,7 +419,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>structs</artifactId>
-                <version>308.v852b473a2b8c</version>
+                <version>318.va_f3ccb_729b_71</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -435,7 +435,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>support-core</artifactId>
-                <version>1158.v9189f64fec8c</version>
+                <version>1162.vb_b_e5198c6b_22</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -544,7 +544,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-scm-step</artifactId>
-                <version>2.13</version>
+                <version>399.v9b_8f4da_65061</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>

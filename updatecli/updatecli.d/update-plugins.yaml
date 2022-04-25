@@ -1,0 +1,143 @@
+---
+scms:
+  github:
+    kind: github
+    spec:
+      user: "{{ .github.user }}"
+      email: "{{ .github.email }}"
+      owner: "{{ .github.owner }}"
+      repository: "{{ .github.repository }}"
+      token: "{{ requiredEnv .github.token }}"
+      username: "{{ .github.username }}"
+      branch: "{{ .github.branch }}"
+
+sources:
+  jenkins2.289.x:
+    name: Get Last Jenkins Stable Version
+    kind: githubrelease
+    spec:
+      owner: "jenkinsci"
+      repository: "jenkins"
+      token: "{{ requiredEnv .github.token }}"
+      versionfilter:
+        kind: regex
+        pattern: 'jenkins-2.289.\d+$'
+    transformers:
+      - trimPrefix: "jenkins-"
+  jenkins2.303.x:
+    name: Get Last Jenkins Stable Version
+    kind: githubrelease
+    spec:
+      owner: "jenkinsci"
+      repository: "jenkins"
+      token: "{{ requiredEnv .github.token }}"
+      versionfilter:
+        kind: regex
+        pattern: 'jenkins-2.303.\d+$'
+    transformers:
+      - trimPrefix: "jenkins-"
+  jenkins2.319.x:
+    name: Get Last Jenkins Stable Version
+    kind: githubrelease
+    spec:
+      owner: "jenkinsci"
+      repository: "jenkins"
+      token: "{{ requiredEnv .github.token }}"
+      versionfilter:
+        kind: regex
+        pattern: 'jenkins-2.319.\d+$'
+    transformers:
+      - trimPrefix: "jenkins-"
+  jenkins2.332.x:
+    name: Get Last Jenkins Stable Version
+    kind: githubrelease
+    spec:
+      owner: "jenkinsci"
+      repository: "jenkins"
+      token: "{{ requiredEnv .github.token }}"
+      versionfilter:
+        kind: regex
+        pattern: 'jenkins-2.332.\d+$'
+    transformers:
+      - trimPrefix: "jenkins-"
+conditions:
+  jenkins2.289.x:
+    name: Test if Jenkins stable published
+    kind: maven
+    sourceid: jenkins2.289.x
+    spec:
+      url: "repo.jenkins-ci.org"
+      repository: "releases"
+      groupid: "org.jenkins-ci.main"
+      artifactid: "jenkins-war"
+  jenkins2.303.x:
+    name: Test if Jenkins stable published
+    kind: maven
+    sourceid: jenkins2.303.x
+    spec:
+      url: "repo.jenkins-ci.org"
+      repository: "releases"
+      groupid: "org.jenkins-ci.main"
+      artifactid: "jenkins-war"
+  jenkins2.319.x:
+    name: Test if Jenkins stable published
+    kind: maven
+    sourceid: jenkins2.319.x
+    spec:
+      url: "repo.jenkins-ci.org"
+      repository: "releases"
+      groupid: "org.jenkins-ci.main"
+      artifactid: "jenkins-war"
+  jenkins2.332.x:
+    name: Test if Jenkins stable published
+    kind: maven
+    sourceid: jenkins2.332.x
+    spec:
+      url: "repo.jenkins-ci.org"
+      repository: "releases"
+      groupid: "org.jenkins-ci.main"
+      artifactid: "jenkins-war"
+targets:
+  jenkins2.289.x:
+    name: 'Update 2.289.x plugins'
+    sourceid: jenkins2.289.x
+    kind: shell
+    spec:
+      command: bash ./updatecli/updatecli.d/update-plugins.sh
+    scmid: github
+  jenkins2.303.x:
+    name: 'Update 2.303.x plugins'
+    sourceid: jenkins2.303.x
+    kind: shell
+    spec:
+      command: bash ./updatecli/updatecli.d/update-plugins.sh
+    scmid: github
+  jenkins2.319.x:
+    name: 'Update 2.319.x plugins'
+    sourceid: jenkins2.319.x
+    kind: shell
+    spec:
+      command: bash ./updatecli/updatecli.d/update-plugins.sh
+    scmid: github
+  jenkins2.332.x:
+    name: 'Update 2.332.x plugins'
+    sourceid: jenkins2.332.x
+    kind: shell
+    spec:
+      command: bash ./updatecli/updatecli.d/update-plugins.sh
+    scmid: github
+pullrequests:
+  default:
+    title: 'Bump pinned plugins'
+    kind: github
+    scmid: github
+    targets:
+      - jenkins2.289.x
+      - jenkins2.303.x
+      - jenkins2.319.x
+      - jenkins2.332.x
+    spec:
+      labels:
+        - dependencies
+      automerge: true
+      mergemethod: squash

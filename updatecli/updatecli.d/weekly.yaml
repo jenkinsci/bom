@@ -1,4 +1,16 @@
 ---
+scms:
+  github:
+    kind: github
+    spec:
+      user: "{{ .github.user }}"
+      email: "{{ .github.email }}"
+      owner: "{{ .github.owner }}"
+      repository: "{{ .github.repository }}"
+      token: "{{ requiredEnv .github.token }}"
+      username: "{{ .github.username }}"
+      branch: "{{ .github.branch }}"
+
 sources:
   jenkinsWeekly:
     name: Get Last Jenkins Weekly Version
@@ -13,27 +25,15 @@ conditions:
     name: Test if Jenkins weekly published
     kind: maven
     spec:
-      owner: "maven"
       url: "repo.jenkins-ci.org"
       repository: "releases"
-      groupID: "org.jenkins-ci.main"
-      artifactID: "jenkins-war"
+      groupid: "org.jenkins-ci.main"
+      artifactid: "jenkins-war"
 targets:
   default:
     name: 'Update weekly version'
-    sourceID: jenkinsWeekly
+    sourceid: jenkinsWeekly
     kind: shell
     spec:
       command: bash ./updatecli/updatecli.d/weekly-apply.sh
-    scm:
-      github:
-        user: "{{ .github.user }}"
-        email: "{{ .github.email }}"
-        owner: "{{ .github.owner }}"
-        repository: "{{ .github.repository }}"
-        token: "{{ requiredEnv .github.token }}"
-        username: "{{ .github.username }}"
-        branch: "{{ .github.branch }}"
-        pullRequest:
-          labels:
-            - dependencies
+    scmid: github
