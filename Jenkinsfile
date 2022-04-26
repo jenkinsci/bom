@@ -52,7 +52,7 @@ lines.each {line ->
           retry(attempts) { // in case of transient node outages
             echo 'Attempt ' + ++attempt + ' of ' + attempts
             def jdk = line == 'weekly' ? 17 : 11
-            if (plugin == 'cloudbees-folder' || plugin == 'rebuild' || plugin == 'pipeline-utility-steps') {
+            if (plugin == 'ansicolor' || plugin == 'cloudbees-folder' || plugin == 'rebuild' || plugin == 'pipeline-utility-steps') {
                 // TODO plugin-pom 4.40+
                 jdk = 11
             }
