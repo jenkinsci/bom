@@ -17,7 +17,18 @@ if [[ -v EXTRA_MAVEN_PROPERTIES ]]; then
 	MAVEN_PROPERTIES="${MAVEN_PROPERTIES}:${EXTRA_MAVEN_PROPERTIES}"
 fi
 
-java -jar pct.jar \
+#
+# Plugin Compatibility Tester (PCT) requires custom --add-opens directives when running on Java 17.
+# As a temporary workaround, we pass in these directives when invoking PCT. When
+# jenkinsci/plugin-compat-tester#352 is merged and released, and when this repository has upgraded
+# to that release, this workaround can be deleted.
+#
+java \
+	--add-opens java.base/java.lang.reflect=ALL-UNNAMED \
+	--add-opens java.base/java.text=ALL-UNNAMED \
+	--add-opens java.base/java.util=ALL-UNNAMED \
+	--add-opens java.desktop/java.awt.font=ALL-UNNAMED \
+	-jar pct.jar \
 	-war "$(pwd)/megawar.war" \
 	-includePlugins "${PLUGINS}" \
 	-workDirectory "$(pwd)/pct-work" \
