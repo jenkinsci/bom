@@ -14,7 +14,7 @@
         <git-plugin.version>4.11.1</git-plugin.version>
         <pipeline-model-definition-plugin.version>2.2077.vc78ec45162f1</pipeline-model-definition-plugin.version>
         <pipeline-stage-view-plugin.version>2.24</pipeline-stage-view-plugin.version>
-        <scm-api-plugin.version>602.v6a_81757a_31d2</scm-api-plugin.version>
+        <scm-api-plugin.version>608.vfa_f971c5a_a_e9</scm-api-plugin.version>
         <subversion-plugin.version>2.15.4</subversion-plugin.version>
         <workflow-api-plugin.version>1144.v61c3180fa_03f</workflow-api-plugin.version>
         <workflow-cps-plugin.version>2689.v434009a_31b_f1</workflow-cps-plugin.version>
