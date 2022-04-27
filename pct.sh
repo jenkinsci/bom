@@ -44,8 +44,20 @@ if grep -q -F -e '<status>INTERNAL_ERROR</status>' pct-report.xml; then
 elif grep -q -F -e '<status>TEST_FAILURES</status>' pct-report.xml; then
 	echo PCT marked failed, checking to see if that is due to a failure to run tests at all
 	for t in pct-work/*/{,*/}target; do
-		SHORT_NAME=$(echo "$t" | tr / '\n' | grep -v ^target$ | tail -1)
-		if [[ $PLUGINS =~ $SHORT_NAME ]] && [[ -f "${t}/test-classes/InjectedTest.class" ]] && [[ ! -f "${t}/surefire-reports/TEST-InjectedTest.xml" ]] && [[ ! -f "${t}/failsafe-reports/TEST-InjectedTest.xml" ]]; then
+		check=false
+		levels=$(echo "$t" | tr / '\n' | wc -l)
+		short_name=$(echo "$t" | tr / '\n' | grep -v ^target$ | tail -1)
+		if [[ $levels -lt 4 ]]; then
+			# Single-module project or root module of multi-module
+			# project: always check.
+			check=true
+		elif [[ $PLUGINS =~ $short_name ]]; then
+			# Submodule of multi-module project: only check if the
+			# directory name of the submodule is a substring of the
+			# list of plugins we are testing.
+			check=true
+		fi
+		if $check && [[ -f "${t}/test-classes/InjectedTest.class" ]] && [[ ! -f "${t}/surefire-reports/TEST-InjectedTest.xml" ]] && [[ ! -f "${t}/failsafe-reports/TEST-InjectedTest.xml" ]]; then
 			mkdir -p "${t}/surefire-reports"
 			cat >"${t}/surefire-reports/TEST-pct.xml" <<-'EOF'
 				<testsuite name="pct">
