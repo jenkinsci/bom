@@ -81,7 +81,7 @@ file a PR changing the versions of both.
 
 ## Adding a new plugin
 
-Insert a new `dependency` in _sorted_ order to `bom/pom.xml`.
+Insert a new `dependency` in _sorted_ order to `bom-weekly/pom.xml`.
 Make sure it is used (perhaps transitively) in `sample-plugin/pom.xml`.
 Ideally also update the sample plugin’s tests to actually exercise it,
 as a sanity check.
@@ -96,7 +96,7 @@ You should introduce a POM property so that the version is not repeated.
 
 The build will enforce that all transitive plugin dependencies are also managed.
 If the build fails due to an unmanaged transitive plugin dependency, add it to
-`bom/pom.xml`.
+`bom-weekly/pom.xml`.
 
 ## PCT
 
@@ -118,7 +118,7 @@ PLUGINS=structs,mailer TEST=InjectedTest bash local-test.sh
 optionally also passing
 
 ```
-DOCKERIZED=yes
+DOCKERIZED=true
 ```
 
 to reproduce image-specific failures.
@@ -128,15 +128,11 @@ It is unusual but possible for cross-component incompatibilities to only be visi
 
 ## LTS lines
 
-A separate BOM artifact is available for the current LTS line and a few historical lines.
-When a new LTS line is released (`jenkins-2.nnn.1`),
-the main definition should be moved into its BOM (added to the aggregator POM),
-and the the previous BOM made to inherit from it.
-Older BOMs should only specify plugin version overrides compared to the next-newer BOM.
-`sample-plugin` should be updated to use the latest line by default,
-and get a new POM profile for the penultimate.
+A separate BOM artifact is available for the latest weekly, current LTS line and a few historical lines.
+BOMs should only specify plugin version overrides compared to the next-newer BOM.
+`sample-plugin` will use the weekly line by default,
+and get a new POM profile for the others.
 To get ahead of problems, prepare the draft PR for a line as soon as its baseline is announced.
-Remember to file a patch to update: https://github.com/jenkins-infra/repository-permissions-updater/blob/master/permissions/pom-bom.yml
 
 The CI build (or just `mvn test -P2.nnn.x`) will fail if some managed plugins are too new for the LTS line.
 [This script](https://gist.github.com/jglick/0a85759ea65f60e107ac5a85a5032cae)
