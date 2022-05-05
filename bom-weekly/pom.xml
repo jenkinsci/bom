@@ -222,7 +222,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>config-file-provider</artifactId>
-                <version>3.10.0-rc855.d773fd29143a_</version> <!-- TODO https://github.com/jenkinsci/config-file-provider-plugin/pull/200 -->
+                <version>3.10.0</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
