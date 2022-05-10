@@ -428,6 +428,11 @@
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>ssh-agent</artifactId>
+                <version>295.v9ca_a_1c7cc3a_a_</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>ssh-credentials</artifactId>
                 <version>277.v95c2fec1c047</version>
             </dependency>
