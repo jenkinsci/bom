@@ -429,7 +429,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>ssh-agent</artifactId>
-                <version>1.24.1</version>
+                <version>295.v9ca_a_1c7cc3a_a_</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
