@@ -16,9 +16,9 @@
         <pipeline-stage-view-plugin.version>2.24</pipeline-stage-view-plugin.version>
         <scm-api-plugin.version>608.vfa_f971c5a_a_e9</scm-api-plugin.version>
         <subversion-plugin.version>2.15.5</subversion-plugin.version>
-        <workflow-api-plugin.version>1153.vb_912c0e47fb_a_</workflow-api-plugin.version>
-        <workflow-cps-plugin.version>2689.v434009a_31b_f1</workflow-cps-plugin.version>
-        <workflow-job-plugin.version>1180.v04c4e75dce43</workflow-job-plugin.version>
+        <workflow-api-plugin.version>1154.v8fb_a_08707266</workflow-api-plugin.version> <!-- TODO https://github.com/jenkinsci/workflow-api-plugin/pull/221 -->
+        <workflow-cps-plugin.version>2691.va_688a_c3d8fd0</workflow-cps-plugin.version> <!-- TODO https://github.com/jenkinsci/workflow-cps-plugin/pull/534 -->
+        <workflow-job-plugin.version>1181.vcea_0362753c3</workflow-job-plugin.version> <!-- TODO https://github.com/jenkinsci/workflow-job-plugin/pull/260 -->
         <workflow-multibranch-plugin.version>712.vc169a_1387405</workflow-multibranch-plugin.version>
         <workflow-step-api-plugin.version>625.vd896b_f445a_f8</workflow-step-api-plugin.version>
         <workflow-support-plugin.version>819.v37d707a_71d9b_</workflow-support-plugin.version>
@@ -542,7 +542,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-durable-task-step</artifactId>
-                <version>1130.v8fd69d0b_8857</version>
+                <version>1142.v26610ff83145</version> <!-- TODO https://github.com/jenkinsci/workflow-durable-task-step-plugin/pull/226 -->
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
