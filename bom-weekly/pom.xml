@@ -460,7 +460,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>support-core</artifactId>
-                <version>1162.vb_b_e5198c6b_22</version>
+                <version>1172.va_1fcf85806d0</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
