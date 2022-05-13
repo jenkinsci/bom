@@ -504,7 +504,7 @@
             <id>2.346.x</id>
             <properties>
                 <bom>2.346.x</bom>
-                <jenkins.version>2.346.x</jenkins.version>
+                <jenkins.version>2.346</jenkins.version>
             </properties>
         </profile>
         <profile>
