@@ -37,3 +37,16 @@ targets:
     spec:
       command: bash ./updatecli/updatecli.d/weekly-apply.sh
     scmid: github
+
+pullrequests:
+  default:
+    title: 'Update weekly version'
+    kind: github
+    scmid: github
+    targets:
+      - default
+    spec:
+      labels:
+        - dependencies
+      automerge: true
+      mergemethod: squash
