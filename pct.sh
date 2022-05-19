@@ -6,14 +6,14 @@ cd "$(dirname "$0")"
 
 rm -rf pct-work pct-report.xml
 
-if [[ -v MAVEN_SETTINGS ]]; then
+if [[ -n ${MAVEN_SETTINGS-} ]]; then
 	PCT_S_ARG="-m2SettingsFile ${MAVEN_SETTINGS}"
 else
 	PCT_S_ARG=
 fi
 
 MAVEN_PROPERTIES=jth.jenkins-war.path=$(pwd)/megawar.war:forkCount=.75C:surefire.excludesFile=$(pwd)/excludes.txt
-if [[ -v EXTRA_MAVEN_PROPERTIES ]]; then
+if [[ -n ${EXTRA_MAVEN_PROPERTIES-} ]]; then
 	MAVEN_PROPERTIES="${MAVEN_PROPERTIES}:${EXTRA_MAVEN_PROPERTIES}"
 fi
 
