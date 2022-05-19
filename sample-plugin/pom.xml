@@ -500,6 +500,7 @@
         </plugins>
     </build>
     <profiles>
+        <!-- Use .1 of most recent active line, and .3 (or later) of previous lines: https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/#choosing-a-version -->
         <profile>
             <id>2.346.x</id>
             <properties>
@@ -511,14 +512,14 @@
             <id>2.332.x</id>
             <properties>
                 <bom>2.332.x</bom>
-                <jenkins.version>2.332.3</jenkins.version>
+                <jenkins.version>2.332.1</jenkins.version>
             </properties>
         </profile>
         <profile>
             <id>2.319.x</id>
             <properties>
                 <bom>2.319.x</bom>
-                <jenkins.version>2.319.1</jenkins.version>
+                <jenkins.version>2.319.3</jenkins.version>
             </properties>
         </profile>
         <profile>
