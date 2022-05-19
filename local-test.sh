@@ -19,13 +19,13 @@ mkdir target/local-test
 cp -v target/pct.jar pct.sh excludes.txt target/local-test
 cp -v target/megawar-$LINE.war target/local-test/megawar.war
 
-if [[ -v TEST ]]; then
+if [[ -n ${TEST-} ]]; then
 	EXTRA_MAVEN_PROPERTIES="test=${TEST}"
 else
 	EXTRA_MAVEN_PROPERTIES=
 fi
 
-if [[ -v DOCKERIZED ]]; then
+if [[ -n ${DOCKERIZED-} ]]; then
 	docker volume inspect m2repo || docker volume create m2repo
 	docker run \
 		-v ~/.m2:/var/maven/.m2 \
