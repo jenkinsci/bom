@@ -12,7 +12,7 @@
         <checks-api.version>1.7.4</checks-api.version>
         <configuration-as-code-plugin.version>1429.v09b_044a_c93de</configuration-as-code-plugin.version>
         <git-plugin.version>4.11.3</git-plugin.version>
-        <pipeline-model-definition-plugin.version>2.2081.v3919681ffc1e</pipeline-model-definition-plugin.version>
+        <pipeline-model-definition-plugin.version>2.2084.v1d2999534103</pipeline-model-definition-plugin.version> <!-- TODO need https://github.com/jenkinsci/pipeline-model-definition-plugin/pull/531 for full testing -->
         <pipeline-stage-view-plugin.version>2.24</pipeline-stage-view-plugin.version>
         <scm-api-plugin.version>608.vfa_f971c5a_a_e9</scm-api-plugin.version>
         <subversion-plugin.version>2.15.5</subversion-plugin.version>
@@ -137,6 +137,11 @@
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>okhttp-api</artifactId>
                 <version>4.9.2-20211102</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jenkins.plugins</groupId>
+                <artifactId>pipeline-groovy-lib</artifactId>
+                <version>589.vb_a_b_4a_a_8c443c</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -537,7 +542,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-cps-global-lib</artifactId>
-                <version>583.vf3b_454e43966</version>
+                <version>588.v576c103a_ff86</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
