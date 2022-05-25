@@ -12,7 +12,7 @@ If you are interested in a Bill of Materials for Jenkins core components, see [t
 After selecting your plugin’s LTS baseline:
 
 ```xml
-<jenkins.version>2.319.3</jenkins.version>
+<jenkins.version>2.289.3</jenkins.version>
 ```
 
 just import the [latest BOM](https://github.com/jenkinsci/bom/releases) from that line:
@@ -22,7 +22,7 @@ just import the [latest BOM](https://github.com/jenkinsci/bom/releases) from tha
     <dependencies>
         <dependency>
             <groupId>io.jenkins.tools.bom</groupId>
-            <artifactId>bom-2.319.x</artifactId>
+            <artifactId>bom-2.289.x</artifactId>
             <version>…</version>
             <scope>import</scope>
             <type>pom</type>
