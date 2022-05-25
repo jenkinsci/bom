@@ -12,7 +12,7 @@
         <checks-api.version>1.7.4</checks-api.version>
         <configuration-as-code-plugin.version>1429.v09b_044a_c93de</configuration-as-code-plugin.version>
         <git-plugin.version>4.11.3</git-plugin.version>
-        <pipeline-model-definition-plugin.version>2.2081.v3919681ffc1e</pipeline-model-definition-plugin.version>
+        <pipeline-model-definition-plugin.version>2.2086.v12b_420f036e5</pipeline-model-definition-plugin.version>
         <pipeline-stage-view-plugin.version>2.24</pipeline-stage-view-plugin.version>
         <scm-api-plugin.version>608.vfa_f971c5a_a_e9</scm-api-plugin.version>
         <subversion-plugin.version>2.15.5</subversion-plugin.version>
