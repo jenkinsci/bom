@@ -217,7 +217,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>command-launcher</artifactId>
-                <version>81.v9c2cb_cb_db_392</version>
+                <version>84.v4a_97f2027398</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
