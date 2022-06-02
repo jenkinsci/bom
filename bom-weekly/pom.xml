@@ -12,14 +12,14 @@
         <checks-api.version>1.7.4</checks-api.version>
         <configuration-as-code-plugin.version>1429.v09b_044a_c93de</configuration-as-code-plugin.version>
         <git-plugin.version>4.11.3</git-plugin.version>
-        <pipeline-model-definition-plugin.version>2.2081.v3919681ffc1e</pipeline-model-definition-plugin.version>
+        <pipeline-model-definition-plugin.version>2.2086.v12b_420f036e5</pipeline-model-definition-plugin.version>
         <pipeline-stage-view-plugin.version>2.24</pipeline-stage-view-plugin.version>
         <scm-api-plugin.version>608.vfa_f971c5a_a_e9</scm-api-plugin.version>
         <subversion-plugin.version>2.15.5</subversion-plugin.version>
         <workflow-api-plugin.version>1153.vb_912c0e47fb_a_</workflow-api-plugin.version>
-        <workflow-cps-plugin.version>2692.v76b_089ccd026</workflow-cps-plugin.version>
-        <workflow-job-plugin.version>1181.va_25d15548158</workflow-job-plugin.version>
-        <workflow-multibranch-plugin.version>712.vc169a_1387405</workflow-multibranch-plugin.version>
+        <workflow-cps-plugin.version>2706.v71dd22b_c5a_a_2</workflow-cps-plugin.version>
+        <workflow-job-plugin.version>1182.v60a_e6279b_579</workflow-job-plugin.version>
+        <workflow-multibranch-plugin.version>716.vc692a_e52371b_</workflow-multibranch-plugin.version>
         <workflow-step-api-plugin.version>625.vd896b_f445a_f8</workflow-step-api-plugin.version>
         <workflow-support-plugin.version>820.vd1a_6cc65ef33</workflow-support-plugin.version>
         <plugin-util-api.version>2.16.0</plugin-util-api.version>
@@ -71,7 +71,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>dark-theme</artifactId>
-                <version>180.vff872db_1b_de6</version>
+                <version>183.vcf51f72075b_8</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -137,6 +137,11 @@
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>okhttp-api</artifactId>
                 <version>4.9.2-20211102</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jenkins.plugins</groupId>
+                <artifactId>pipeline-groovy-lib</artifactId>
+                <version>591.v3a_7f422b_d058</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -217,7 +222,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>command-launcher</artifactId>
-                <version>81.v9c2cb_cb_db_392</version>
+                <version>84.v4a_97f2027398</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -227,7 +232,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>credentials</artifactId>
-                <version>1126.ve05618c41e62</version>
+                <version>1129.vef26f5df883c</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -288,7 +293,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>gitlab-plugin</artifactId>
-                <version>1.5.32</version>
+                <version>1.5.33</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -328,7 +333,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>junit-attachments</artifactId>
-                <version>95.v69691d523620</version>
+                <version>101.v82f494a_00e9e</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -419,7 +424,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>script-security</artifactId>
-                <version>1172.v35f6a_0b_8207e</version>
+                <version>1175.v4b_d517d6db_f0</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -537,7 +542,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-cps-global-lib</artifactId>
-                <version>581.ve633085a_8a_87</version>
+                <version>588.v576c103a_ff86</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
