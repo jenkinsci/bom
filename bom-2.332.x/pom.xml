@@ -35,7 +35,7 @@
             <dependency> <!-- TODO pending 2.332.3 in sample-plugin (once 2.346.1 released), or baseline reverted to 2.332.1 -->
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>junit-attachments</artifactId>
-                <version>97.v93b_02b_575a_dd</version>
+                <version>101.v82f494a_00e9e</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
