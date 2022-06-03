@@ -126,7 +126,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>jjwt-api</artifactId>
-                <version>0.11.2-71.v2722b_b_06a_2a_f</version>
+                <version>0.11.5-77.v646c772fddb_0</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
