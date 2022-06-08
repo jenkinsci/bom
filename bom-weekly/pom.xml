@@ -16,9 +16,9 @@
         <pipeline-stage-view-plugin.version>2.24</pipeline-stage-view-plugin.version>
         <scm-api-plugin.version>608.vfa_f971c5a_a_e9</scm-api-plugin.version>
         <subversion-plugin.version>2.15.5</subversion-plugin.version>
-        <workflow-api-plugin.version>1153.vb_912c0e47fb_a_</workflow-api-plugin.version>
-        <workflow-cps-plugin.version>2706.v71dd22b_c5a_a_2</workflow-cps-plugin.version>
-        <workflow-job-plugin.version>1182.v60a_e6279b_579</workflow-job-plugin.version>
+        <workflow-api-plugin.version>1164.v760c223ddb_32</workflow-api-plugin.version>
+        <workflow-cps-plugin.version>2725.v7b_c717eb_12ce</workflow-cps-plugin.version>
+        <workflow-job-plugin.version>1186.v8def1a_5f3944</workflow-job-plugin.version>
         <workflow-multibranch-plugin.version>716.vc692a_e52371b_</workflow-multibranch-plugin.version>
         <workflow-step-api-plugin.version>625.vd896b_f445a_f8</workflow-step-api-plugin.version>
         <workflow-support-plugin.version>820.vd1a_6cc65ef33</workflow-support-plugin.version>
@@ -71,7 +71,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>dark-theme</artifactId>
-                <version>183.vcf51f72075b_8</version>
+                <version>185.v276b_5a_8966a_e</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -126,7 +126,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>jjwt-api</artifactId>
-                <version>0.11.2-71.v2722b_b_06a_2a_f</version>
+                <version>0.11.5-77.v646c772fddb_0</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -141,7 +141,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>pipeline-groovy-lib</artifactId>
-                <version>591.v3a_7f422b_d058</version>
+                <version>593.va_a_fc25d520e9</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -172,7 +172,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>theme-manager</artifactId>
-                <version>1.2</version>
+                <version>1.4</version>
             </dependency>
             <dependency>
                 <groupId>org.6wind.jenkins</groupId>
@@ -217,7 +217,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>cloudbees-folder</artifactId>
-                <version>6.722.v8165b_a_cf25e9</version>
+                <version>6.729.v2b_9d1a_74d673</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -328,7 +328,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>junit</artifactId>
-                <version>1.63</version>
+                <version>1119.va_a_5e9068da_d7</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -393,7 +393,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>pipeline-utility-steps</artifactId>
-                <version>2.12.1</version>
+                <version>2.12.2</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -408,7 +408,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>saml</artifactId>
-                <version>2.297.v1a_dff8e51f90</version>
+                <version>2.298.vc7a_2b_3958628</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -547,7 +547,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-durable-task-step</artifactId>
-                <version>1139.v252a_e12e8463</version>
+                <version>1144.vd77b_57189936</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
