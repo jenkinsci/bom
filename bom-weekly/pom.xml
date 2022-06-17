@@ -11,9 +11,11 @@
     <properties>
         <checks-api.version>1.7.4</checks-api.version>
         <configuration-as-code-plugin.version>1429.v09b_044a_c93de</configuration-as-code-plugin.version>
+        <forensics-api.version>1.15.1</forensics-api.version>
         <git-plugin.version>4.11.3</git-plugin.version>
         <pipeline-model-definition-plugin.version>2.2097.v33db_b_de764b_e</pipeline-model-definition-plugin.version>
         <pipeline-stage-view-plugin.version>2.24</pipeline-stage-view-plugin.version>
+        <plugin-util-api.version>2.16.0</plugin-util-api.version>
         <scm-api-plugin.version>608.vfa_f971c5a_a_e9</scm-api-plugin.version>
         <subversion-plugin.version>2.15.5</subversion-plugin.version>
         <workflow-api-plugin.version>1164.v760c223ddb_32</workflow-api-plugin.version>
@@ -22,7 +24,6 @@
         <workflow-multibranch-plugin.version>716.vc692a_e52371b_</workflow-multibranch-plugin.version>
         <workflow-step-api-plugin.version>625.vd896b_f445a_f8</workflow-step-api-plugin.version>
         <workflow-support-plugin.version>820.vd1a_6cc65ef33</workflow-support-plugin.version>
-        <plugin-util-api.version>2.17.0</plugin-util-api.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -92,6 +93,17 @@
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>font-awesome-api</artifactId>
                 <version>6.1.1-1</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jenkins.plugins</groupId>
+                <artifactId>forensics-api</artifactId>
+                <version>${forensics-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jenkins.plugins</groupId>
+                <artifactId>forensics-api</artifactId>
+                <version>${forensics-api.version}</version>
+                <classifier>tests</classifier>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
