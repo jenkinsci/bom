@@ -34,6 +34,11 @@
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>junit-attachments</artifactId>
+                <version>95.v69691d523620</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>ldap</artifactId>
                 <version>2.9</version>
             </dependency>
@@ -54,11 +59,6 @@
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
-                <artifactId>workflow-basic-steps</artifactId>
-                <version>2.24</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-api</artifactId>
                 <version>1153.vb_912c0e47fb_a_</version>
             </dependency>
@@ -67,6 +67,11 @@
                 <artifactId>workflow-api</artifactId>
                 <version>1153.vb_912c0e47fb_a_</version>
                 <classifier>tests</classifier>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins.workflow</groupId>
+                <artifactId>workflow-basic-steps</artifactId>
+                <version>2.24</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
@@ -131,11 +136,6 @@
                 <groupId>org.jenkinsci.plugins</groupId>
                 <artifactId>pipeline-stage-tags-metadata</artifactId>
                 <version>1.9.3</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkins-ci.plugins</groupId>
-                <artifactId>junit-attachments</artifactId>
-                <version>95.v69691d523620</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
