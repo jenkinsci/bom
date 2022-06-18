@@ -11,6 +11,7 @@
     <properties>
         <checks-api.version>1.7.4</checks-api.version>
         <configuration-as-code-plugin.version>1429.v09b_044a_c93de</configuration-as-code-plugin.version>
+        <data-tables-api.version>1.12.1-1</data-tables-api.version>
         <forensics-api.version>1.15.1</forensics-api.version>
         <git-plugin.version>4.11.3</git-plugin.version>
         <pipeline-model-definition-plugin.version>2.2097.v33db_b_de764b_e</pipeline-model-definition-plugin.version>
@@ -77,7 +78,13 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>data-tables-api</artifactId>
-                <version>1.11.4-4</version>
+                <version>${data-tables-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jenkins.plugins</groupId>
+                <artifactId>data-tables-api</artifactId>
+                <version>${data-tables-api.version}</version>
+                <classifier>tests</classifier>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
