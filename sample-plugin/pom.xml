@@ -165,6 +165,11 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>io.jenkins.plugins.mina-sshd-api</groupId>
+            <artifactId>mina-sshd-api-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.6wind.jenkins</groupId>
             <artifactId>lockable-resources</artifactId>
             <scope>test</scope>
