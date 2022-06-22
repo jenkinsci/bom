@@ -120,7 +120,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>gitlab-branch-source</artifactId>
-                <version>625.v85cf3a_400cfe</version>
+                <version>628.ve99e3d4df4b_8</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
