@@ -515,14 +515,14 @@
             <id>2.346.x</id>
             <properties>
                 <bom>2.346.x</bom>
-                <jenkins.version>2.346</jenkins.version>
+                <jenkins.version>2.346.1</jenkins.version>
             </properties>
         </profile>
         <profile>
             <id>2.332.x</id>
             <properties>
                 <bom>2.332.x</bom>
-                <jenkins.version>2.332.1</jenkins.version>
+                <jenkins.version>2.332.4</jenkins.version>
             </properties>
         </profile>
         <profile>
