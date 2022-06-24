@@ -101,6 +101,11 @@
         </dependency>
         <dependency>
             <groupId>io.jenkins.plugins</groupId>
+            <artifactId>forensics-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins</groupId>
             <artifactId>gitlab-branch-source</artifactId>
             <scope>test</scope>
         </dependency>
@@ -131,6 +136,11 @@
         </dependency>
         <dependency>
             <groupId>io.jenkins.plugins</groupId>
+            <artifactId>pipeline-groovy-lib</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins</groupId>
             <artifactId>plugin-util-api</artifactId>
             <scope>test</scope>
         </dependency>
@@ -152,6 +162,11 @@
         <dependency>
             <groupId>io.jenkins.plugins</groupId>
             <artifactId>theme-manager</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins.mina-sshd-api</groupId>
+            <artifactId>mina-sshd-api-core</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -505,14 +520,14 @@
             <id>2.346.x</id>
             <properties>
                 <bom>2.346.x</bom>
-                <jenkins.version>2.346</jenkins.version>
+                <jenkins.version>2.346.1</jenkins.version>
             </properties>
         </profile>
         <profile>
             <id>2.332.x</id>
             <properties>
                 <bom>2.332.x</bom>
-                <jenkins.version>2.332.1</jenkins.version>
+                <jenkins.version>2.332.4</jenkins.version>
             </properties>
         </profile>
         <profile>

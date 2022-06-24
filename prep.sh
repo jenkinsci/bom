@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -euxo pipefail
 cd "$(dirname "${0}")"
 
 MVN='mvn -B -ntp'
-if [[ -v MAVEN_SETTINGS ]]; then
+if [[ -n ${MAVEN_SETTINGS-} ]]; then
 	MVN="${MVN} -s ${MAVEN_SETTINGS}"
 fi
 
