@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
-        <version>4.40</version>
+        <version>4.41</version>
         <relativePath />
     </parent>
     <groupId>io.jenkins.tools.bom</groupId>
@@ -14,7 +14,7 @@
     <properties>
         <changelist>999999-SNAPSHOT</changelist>
         <bom>weekly</bom>
-        <jenkins.version>2.349-rc32398.3b_263b_c6b_8a_3</jenkins.version> <!-- TODO https://github.com/jenkinsci/jenkins/pull/6585; update to 2.354-rc32446.83fb_e36dca_6d when deployed -->
+        <jenkins.version>2.357-rc32482.91b_c3f7a_2763</jenkins.version> <!-- TODO https://github.com/jenkinsci/jenkins/pull/6585 -->
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -101,6 +101,11 @@
         </dependency>
         <dependency>
             <groupId>io.jenkins.plugins</groupId>
+            <artifactId>forensics-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins</groupId>
             <artifactId>gitlab-branch-source</artifactId>
             <scope>test</scope>
         </dependency>
@@ -157,6 +162,11 @@
         <dependency>
             <groupId>io.jenkins.plugins</groupId>
             <artifactId>theme-manager</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins.mina-sshd-api</groupId>
+            <artifactId>mina-sshd-api-core</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -510,14 +520,14 @@
             <id>2.346.x</id>
             <properties>
                 <bom>2.346.x</bom>
-                <jenkins.version>2.346</jenkins.version>
+                <jenkins.version>2.346.1</jenkins.version>
             </properties>
         </profile>
         <profile>
             <id>2.332.x</id>
             <properties>
                 <bom>2.332.x</bom>
-                <jenkins.version>2.332.1</jenkins.version>
+                <jenkins.version>2.332.4</jenkins.version>
             </properties>
         </profile>
         <profile>
