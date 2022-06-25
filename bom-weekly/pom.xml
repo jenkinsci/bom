@@ -73,6 +73,16 @@
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
+                <artifactId>commons-lang3-api</artifactId>
+                <version>3.12.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jenkins.plugins</groupId>
+                <artifactId>commons-text-api</artifactId>
+                <version>1.9-5.v7ea_44fe6061c</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jenkins.plugins</groupId>
                 <artifactId>dark-theme</artifactId>
                 <version>185.v276b_5a_8966a_e</version>
             </dependency>
