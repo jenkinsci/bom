@@ -11,7 +11,7 @@
     <properties>
         <checks-api.version>1.7.4</checks-api.version>
         <configuration-as-code-plugin.version>1429.v09b_044a_c93de</configuration-as-code-plugin.version>
-        <data-tables-api.version>1.12.1-1</data-tables-api.version>
+        <data-tables-api.version>1.12.1-2</data-tables-api.version>
         <forensics-api.version>1.15.1</forensics-api.version>
         <git-plugin.version>4.11.3</git-plugin.version>
         <mina-sshd-api.version>2.8.0-21.v493b_6b_db_22c6</mina-sshd-api.version>
