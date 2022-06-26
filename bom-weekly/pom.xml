@@ -10,8 +10,8 @@
     <packaging>pom</packaging>
     <properties>
         <checks-api.version>1.7.4</checks-api.version>
-        <configuration-as-code-plugin.version>1429.v09b_044a_c93de</configuration-as-code-plugin.version>
-        <data-tables-api.version>1.12.1-1</data-tables-api.version>
+        <configuration-as-code-plugin.version>1462.v069a_b_57ff5c8</configuration-as-code-plugin.version>
+        <data-tables-api.version>1.12.1-2</data-tables-api.version>
         <forensics-api.version>1.15.1</forensics-api.version>
         <git-plugin.version>4.11.3</git-plugin.version>
         <mina-sshd-api.version>2.8.0-21.v493b_6b_db_22c6</mina-sshd-api.version>
@@ -22,7 +22,7 @@
         <subversion-plugin.version>2.15.5</subversion-plugin.version>
         <workflow-api-plugin.version>1164.v760c223ddb_32</workflow-api-plugin.version>
         <workflow-cps-plugin.version>2725.v7b_c717eb_12ce</workflow-cps-plugin.version>
-        <workflow-job-plugin.version>1186.v8def1a_5f3944</workflow-job-plugin.version>
+        <workflow-job-plugin.version>1189.va_d37a_e9e4eda_</workflow-job-plugin.version>
         <workflow-multibranch-plugin.version>716.vc692a_e52371b_</workflow-multibranch-plugin.version>
         <workflow-step-api-plugin.version>625.vd896b_f445a_f8</workflow-step-api-plugin.version>
         <workflow-support-plugin.version>820.vd1a_6cc65ef33</workflow-support-plugin.version>
@@ -70,6 +70,16 @@
                 <artifactId>checks-api</artifactId>
                 <version>${checks-api.version}</version>
                 <classifier>tests</classifier>
+            </dependency>
+            <dependency>
+                <groupId>io.jenkins.plugins</groupId>
+                <artifactId>commons-lang3-api</artifactId>
+                <version>3.12.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jenkins.plugins</groupId>
+                <artifactId>commons-text-api</artifactId>
+                <version>1.9-9.v39a_53e2e0343</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -459,7 +469,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>slack</artifactId>
-                <version>608.v19e3b_44b_b_9ff</version>
+                <version>616.v03b_1e98d13dd</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
