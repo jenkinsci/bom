@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
     <properties>
         <checks-api.version>1.7.4</checks-api.version>
-        <configuration-as-code-plugin.version>1429.v09b_044a_c93de</configuration-as-code-plugin.version>
+        <configuration-as-code-plugin.version>1462.v069a_b_57ff5c8</configuration-as-code-plugin.version>
         <data-tables-api.version>1.12.1-2</data-tables-api.version>
         <forensics-api.version>1.15.1</forensics-api.version>
         <git-plugin.version>4.11.3</git-plugin.version>
@@ -70,6 +70,16 @@
                 <artifactId>checks-api</artifactId>
                 <version>${checks-api.version}</version>
                 <classifier>tests</classifier>
+            </dependency>
+            <dependency>
+                <groupId>io.jenkins.plugins</groupId>
+                <artifactId>commons-lang3-api</artifactId>
+                <version>3.12.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jenkins.plugins</groupId>
+                <artifactId>commons-text-api</artifactId>
+                <version>1.9-9.v39a_53e2e0343</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
