@@ -14,7 +14,8 @@
     <properties>
         <changelist>999999-SNAPSHOT</changelist>
         <bom>weekly</bom>
-        <jenkins.version>2.357</jenkins.version>
+        <!-- TODO https://github.com/jenkinsci/jenkins/pull/6694 -->
+        <jenkins.version>2.358-rc32507.d2eed6015972</jenkins.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -494,6 +495,22 @@
                         <phase>generate-test-sources</phase>
                         <configuration>
                             <source>${project.basedir}/check.groovy</source>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- TODO When JENKINS-68568 is closed, this can be deleted. -->
+            <plugin>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>display-info</id>
+                        <configuration>
+                            <rules>
+                                <enforceBytecodeVersion>
+                                    <maxJdkVersion>11</maxJdkVersion>
+                                </enforceBytecodeVersion>
+                            </rules>
                         </configuration>
                     </execution>
                 </executions>
