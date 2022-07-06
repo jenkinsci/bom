@@ -1,6 +1,10 @@
 properties([disableConcurrentBuilds(abortPrevious: true)])
 
 def mavenEnv(Map params = [:], Closure body) {
+  def attempt = 0
+  def attempts = 2
+  retry(count: attempts, conditions: [kubernetesAgent(), nonresumable()]) {
+    echo 'Attempt ' + ++attempt + ' of ' + attempts
     node("maven-$params.jdk") { // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
         timeout(90) {
             sh 'mvn -version'
@@ -10,12 +14,13 @@ def mavenEnv(Map params = [:], Closure body) {
             withEnv(["MAVEN_SETTINGS=$settingsXml"]) {
                 body()
             }
-            if (junit(testResults: '**/target/surefire-reports/TEST-*.xml', allowEmptyResults: true, skipMarkingBuildUnstable: !!params['skipMarkingBuildUnstable']).failCount > 0) {
+            if (junit(testResults: '**/target/surefire-reports/TEST-*.xml', allowEmptyResults: true).failCount > 0) {
                 // TODO JENKINS-27092 throw up UNSTABLE status in this case
                 error 'Some test failures, not going to continue'
             }
         }
     }
+  }
 }
 
 def plugins
@@ -46,16 +51,12 @@ branches = [failFast: failFast]
 lines.each {line ->
     plugins.each { plugin ->
         branches["pct-$plugin-$line"] = {
-          def attempt = 0
-          def attempts = 2
-          retry(attempts) { // in case of transient node outages
-            echo 'Attempt ' + ++attempt + ' of ' + attempts
             def jdk = line == 'weekly' ? 17 : 11
             if (plugin == 'ansicolor') {
                 // TODO plugin-pom 4.40+
                 jdk = 11
             }
-            mavenEnv(jdk: jdk, skipMarkingBuildUnstable: attempt < attempts) {
+            mavenEnv(jdk: jdk) {
                 deleteDir()
                 unstash 'pct.sh'
                 unstash 'excludes.txt'
@@ -65,7 +66,6 @@ lines.each {line ->
                     sh 'mv megawar-$LINE.war megawar.war && bash pct.sh'
                 }
             }
-          }
         }
     }
 }
