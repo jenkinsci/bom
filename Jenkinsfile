@@ -66,7 +66,6 @@ lines.each {line ->
                     sh 'mv megawar-$LINE.war megawar.war && bash pct.sh'
                 }
             }
-          }
         }
     }
 }
