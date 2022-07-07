@@ -20,7 +20,7 @@
         <plugin-util-api.version>2.16.0</plugin-util-api.version>
         <scm-api-plugin.version>608.vfa_f971c5a_a_e9</scm-api-plugin.version>
         <subversion-plugin.version>2.15.5</subversion-plugin.version>
-        <workflow-api-plugin.version>1165.v02c3db_a_6b_e36</workflow-api-plugin.version>
+        <workflow-api-plugin.version>1182.v41475e53ea_43</workflow-api-plugin.version>
         <workflow-cps-plugin.version>2729.vea_17b_79ed57a_</workflow-cps-plugin.version>
         <workflow-job-plugin.version>1189.va_d37a_e9e4eda_</workflow-job-plugin.version>
         <workflow-multibranch-plugin.version>716.vc692a_e52371b_</workflow-multibranch-plugin.version>
@@ -566,7 +566,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-basic-steps</artifactId>
-                <version>948.v2c72a_091b_b_68</version>
+                <version>969.vc4ec3e4854b_f</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
@@ -587,7 +587,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-durable-task-step</artifactId>
-                <version>1155.v79567b_e0a_2de</version>
+                <version>1164.v2334ddcf48d0</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
