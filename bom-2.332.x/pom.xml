@@ -37,6 +37,17 @@
                 <artifactId>ssh-credentials</artifactId>
                 <version>277.v95c2fec1c047</version>
             </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins.workflow</groupId>
+                <artifactId>workflow-cps</artifactId>
+                <version>2729.vea_17b_79ed57a_</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins.workflow</groupId>
+                <artifactId>workflow-cps</artifactId>
+                <version>2729.vea_17b_79ed57a_</version>
+                <classifier>tests</classifier>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>
