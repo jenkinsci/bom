@@ -614,7 +614,8 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-scm-step</artifactId>
-                <version>400.v6b_89a_1317c9a_</version>
+                <!-- TODO https://github.com/jenkinsci/workflow-scm-step-plugin/pull/94 -->
+                <version>406.vb_b_3846d95168</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>

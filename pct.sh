@@ -12,10 +12,12 @@ else
 	PCT_S_ARG=
 fi
 
-MAVEN_PROPERTIES=jth.jenkins-war.path=$(pwd)/megawar.war:forkCount=.75C:surefire.excludesFile=$(pwd)/excludes.txt
+MAVEN_PROPERTIES=jth.jenkins-war.path=$(pwd)/megawar.war:forkCount=.75C:surefire.excludesFile=$(pwd)/excludes.txt:enforcer.skip=true:jenkins-test-harness.version=1799.v371410da_63fb_
 if [[ -n ${EXTRA_MAVEN_PROPERTIES-} ]]; then
 	MAVEN_PROPERTIES="${MAVEN_PROPERTIES}:${EXTRA_MAVEN_PROPERTIES}"
 fi
+
+echo 'maven.test.dependency.excludes=javax.servlet:javax.servlet-api' >"$(pwd)/maven.properties"
 
 #
 # Plugin Compatibility Tester (PCT) requires custom --add-opens directives when running on Java 17.
@@ -35,6 +37,7 @@ java \
 	-reportFile "$(pwd)/pct-report.xml" \
 	$PCT_S_ARG \
 	-mavenProperties "${MAVEN_PROPERTIES}" \
+	-mavenPropertiesFile "$(pwd)/maven.properties" \
 	-skipTestCache true
 
 if grep -q -F -e '<status>INTERNAL_ERROR</status>' pct-report.xml; then
