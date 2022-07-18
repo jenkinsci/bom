@@ -65,6 +65,20 @@ can offer clues about unused plugin dependencies,
 though you must evaluate each carefully since it only understands Java binary dependencies
 (what is required for compilation, more or less).
 
+
+## Depending on `bom-weekly`
+
+The `bom-weekly` line is a special artifact that follows the weekly release of Jenkins core.
+You would only depend on it when you are actively tracking the weekly release line.
+
+Some examples of when you would use it:
+- You run tests in your plugin against the weekly version of Jenkins
+- You depend on the Jenkins core weekly line and update it regularly, ([example](https://github.com/jenkins-infra/pipeline-steps-doc-generator))
+
+You would not use it:
+- When you are temporarily depending on the weekly line but do not plan to update it on every release
+  - This would cause dependabot build failures when a plugin is updated only on the weekly line (if you depend on it)
+
 # Development
 
 For people potentially working on the BOM itself, not just consuming it.
