@@ -530,7 +530,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>trilead-api</artifactId>
-                <version>1.66.v49c6758b_b_360</version>
+                <version>1.67.vc3938a_35172f</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
