@@ -566,7 +566,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-basic-steps</artifactId>
-                <version>969.vc4ec3e4854b_f</version>
+                <version>980.v82219a_ed188e</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
