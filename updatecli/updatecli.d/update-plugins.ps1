@@ -5,8 +5,8 @@ param(
 
 $JenkinsVersionX = $JenkinsVersion -replace '\d+$', 'x'
 
-$pluginManagerJar = $ENV:PLUGIN_MANAGER_JAR_PATH ?? "./plugin-manager.jar"
-$pluginManagerVersion = $ENV:PLUGIN_MANAGER_VERSION ?? "2.12.8"
+$pluginManagerJar = $ENV:PLUGIN_MANAGER_JAR_PATH ?? './plugin-manager.jar'
+$pluginManagerVersion = $ENV:PLUGIN_MANAGER_VERSION ?? '2.12.8'
 
 # check if jar does not exist, download it - useful for testing
 if ([System.IO.File]::Exists($pluginManagerJar) -eq $false) {
@@ -39,7 +39,7 @@ foreach ($dependency in $dependencies) {
     # credentials:2.6.1.1
 
     # Grab the version number
-    $newVersion = $output.split(':')[-1]
+    $newVersion = $output.Split(':')[-1]
     Write-Output "Changed $artifact from $oldVersion to $newVersion"
     $dependency.version = $newVersion
   }
