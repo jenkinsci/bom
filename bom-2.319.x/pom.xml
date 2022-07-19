@@ -20,132 +20,132 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>command-launcher</artifactId>
-                <version>81.v9c2cb_cb_db_392</version>
+                <version></version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>display-url-api</artifactId>
-                <version>2.3.5</version>
+                <version></version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>email-ext</artifactId>
-                <version>2.89</version>
+                <version></version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>junit</artifactId>
-                <version>1.54</version>
+                <version></version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>junit-attachments</artifactId>
-                <version>95.v69691d523620</version>
+                <version></version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>ldap</artifactId>
-                <version>2.9</version>
+                <version></version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>mailer</artifactId>
-                <version>414.vcc4c33714601</version>
+                <version></version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>metrics</artifactId>
-                <version>4.1.6.1</version>
+                <version></version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>script-security</artifactId>
-                <version>1138.v8e727069a_025</version>
+                <version></version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>support-core</artifactId>
-                <version>2.80</version>
+                <version></version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-api</artifactId>
-                <version>1153.vb_912c0e47fb_a_</version>
+                <version></version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-api</artifactId>
-                <version>1153.vb_912c0e47fb_a_</version>
+                <version></version>
                 <classifier>tests</classifier>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-basic-steps</artifactId>
-                <version>2.24</version>
+                <version></version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-cps</artifactId>
-                <version>2660.vb_c0412dc4e6d</version>
+                <version></version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-cps</artifactId>
-                <version>2660.vb_c0412dc4e6d</version>
+                <version></version>
                 <classifier>tests</classifier>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-durable-task-step</artifactId>
-                <version>1139.v252a_e12e8463</version>
+                <version></version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-job</artifactId>
-                <version>1145.v7f2433caa07f</version>
+                <version></version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-job</artifactId>
-                <version>1145.v7f2433caa07f</version>
+                <version></version>
                 <classifier>tests</classifier>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-support</artifactId>
-                <version>813.vb_d7c3d2984a_0</version>
+                <version></version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-support</artifactId>
-                <version>813.vb_d7c3d2984a_0</version>
+                <version></version>
                 <classifier>tests</classifier>
             </dependency>
             <dependency>
                 <groupId>org.jenkinsci.plugins</groupId>
                 <artifactId>pipeline-model-api</artifactId>
-                <version>1.9.3</version>
+                <version></version>
             </dependency>
             <dependency>
                 <groupId>org.jenkinsci.plugins</groupId>
                 <artifactId>pipeline-model-definition</artifactId>
-                <version>1.9.3</version>
+                <version></version>
             </dependency>
             <dependency>
                 <groupId>org.jenkinsci.plugins</groupId>
                 <artifactId>pipeline-model-definition</artifactId>
-                <version>1.9.3</version>
+                <version></version>
                 <classifier>tests</classifier>
             </dependency>
             <dependency>
                 <groupId>org.jenkinsci.plugins</groupId>
                 <artifactId>pipeline-model-extensions</artifactId>
-                <version>1.9.3</version>
+                <version></version>
             </dependency>
             <dependency>
                 <groupId>org.jenkinsci.plugins</groupId>
                 <artifactId>pipeline-stage-tags-metadata</artifactId>
-                <version>1.9.3</version>
+                <version></version>
             </dependency>
         </dependencies>
     </dependencyManagement>
