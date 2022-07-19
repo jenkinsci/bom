@@ -3,6 +3,7 @@ param(
   [string] $JenkinsVersion
 )
 
+Write-Host "Jenkins version: $JenkinsVersion"
 $JenkinsVersionX = $JenkinsVersion -replace '\d+$', 'x'
 
 $pluginManagerJar = $ENV:PLUGIN_MANAGER_JAR_PATH ?? './plugin-manager.jar'
