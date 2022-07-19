@@ -34,7 +34,7 @@ foreach ($dependency in $dependencies) {
   $oldVersion = $dependency.version
   $plugin = "${artifact}:${oldVersion}"
   [string] $output = & $java -jar "$pluginManagerJar" --no-download --available-updates --output txt --jenkins-version "$JenkinsVersion" --plugins $plugin
-  if ($output -ilike "${artifact}:*") {
+  if ($output -ne $plugin) {
     # Example output:
     # credentials:2.6.1.1
 
