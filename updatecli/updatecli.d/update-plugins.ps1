@@ -45,6 +45,8 @@ foreach ($dependency in $dependencies) {
     Write-Output "Changed $artifact from $oldVersion to $newVersion"
     $dependency.version = $newVersion
     $changed = $true
+  } else {
+    Write-Host "No change for $plugin"
   }
 }
 
