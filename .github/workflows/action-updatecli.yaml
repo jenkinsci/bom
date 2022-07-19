@@ -9,6 +9,9 @@ on:
     # Run once a day
     - cron: '0 0 * * *'
 
+env:
+  PLUGIN_MANAGER_VERSION: '2.12.8'
+
 jobs:
   updatecli:
     runs-on: ubuntu-latest
@@ -18,15 +21,17 @@ jobs:
 
       - name: Install updatecli # Until https://github.com/updatecli/updatecli/pull/336
         run: |
-          curl -sSL https://github.com/updatecli/updatecli/releases/download/v0.23.2/updatecli_Linux_x86_64.tar.gz -o updatecli.tgz
+          curl -sSL https://github.com/updatecli/updatecli/releases/download/v0.27.0/updatecli_Linux_x86_64.tar.gz -o updatecli.tgz
           tar xzf updatecli.tgz -C /usr/local/bin
           updatecli version
           rm -f updatecli.tgz
 
       - name: Install Jenkins Plugin Installation Manager Tool
         run: |
-          curl -sSL https://github.com/jenkinsci/plugin-installation-manager-tool/releases/download/2.12.3/jenkins-plugin-manager-2.12.3.jar -o "${GITHUB_WORKSPACE:-.}/plugin-manager.jar"
-          echo "PLUGIN_MANAGER_JAR_PATH=$GITHUB_WORKSPACE/plugin-manager.jar" >> $GITHUB_ENV
+          url="https://github.com/jenkinsci/plugin-installation-manager-tool/releases/download/$PLUGIN_MANAGER_VERSION/jenkins-plugin-manager-$PLUGIN_MANAGER_VERSION.jar"
+          path="${GITHUB_WORKSPACE:-.}/plugin-manager.jar"
+          curl -sSL "$url" -o "$path"
+          echo "PLUGIN_MANAGER_JAR_PATH=$path" >> $GITHUB_ENV
 
       - name: Diff
         continue-on-error: true

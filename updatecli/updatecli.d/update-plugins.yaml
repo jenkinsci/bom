@@ -23,7 +23,7 @@ sources:
         kind: regex
         pattern: 'jenkins-2.289.\d+$'
     transformers:
-      - trimPrefix: "jenkins-"
+      - trimprefix: "jenkins-"
   jenkins2.303.x:
     name: Get Last Jenkins Stable Version
     kind: githubrelease
@@ -35,7 +35,7 @@ sources:
         kind: regex
         pattern: 'jenkins-2.303.\d+$'
     transformers:
-      - trimPrefix: "jenkins-"
+      - trimprefix: "jenkins-"
   jenkins2.319.x:
     name: Get Last Jenkins Stable Version
     kind: githubrelease
@@ -47,7 +47,7 @@ sources:
         kind: regex
         pattern: 'jenkins-2.319.\d+$'
     transformers:
-      - trimPrefix: "jenkins-"
+      - trimprefix: "jenkins-"
   jenkins2.332.x:
     name: Get Last Jenkins Stable Version
     kind: githubrelease
@@ -59,7 +59,19 @@ sources:
         kind: regex
         pattern: 'jenkins-2.332.\d+$'
     transformers:
-      - trimPrefix: "jenkins-"
+      - trimprefix: "jenkins-"
+  jenkins2.346.x:
+    name: Get Last Jenkins Stable Version
+    kind: githubrelease
+    spec:
+      owner: "jenkinsci"
+      repository: "jenkins"
+      token: "{{ requiredEnv .github.token }}"
+      versionfilter:
+        kind: regex
+        pattern: 'jenkins-2.346.1$' # fix to x.x.1 until the next stable minor release
+    transformers:
+      - trimprefix: "jenkins-"
 conditions:
   jenkins2.289.x:
     name: Test if Jenkins stable published
@@ -97,34 +109,50 @@ conditions:
       repository: "releases"
       groupid: "org.jenkins-ci.main"
       artifactid: "jenkins-war"
+  jenkins2.346.x:
+    name: Test if Jenkins stable published
+    kind: maven
+    sourceid: jenkins2.346.x
+    spec:
+      url: "repo.jenkins-ci.org"
+      repository: "releases"
+      groupid: "org.jenkins-ci.main"
+      artifactid: "jenkins-war"
 targets:
   jenkins2.289.x:
     name: 'Update 2.289.x plugins'
     sourceid: jenkins2.289.x
     kind: shell
     spec:
-      command: bash ./updatecli/updatecli.d/update-plugins.sh
+      command: pwsh -NoProfile -File ./updatecli/updatecli.d/update-plugins.ps1
     scmid: github
   jenkins2.303.x:
     name: 'Update 2.303.x plugins'
     sourceid: jenkins2.303.x
     kind: shell
     spec:
-      command: bash ./updatecli/updatecli.d/update-plugins.sh
+      command: pwsh -NoProfile -File ./updatecli/updatecli.d/update-plugins.ps1
     scmid: github
   jenkins2.319.x:
     name: 'Update 2.319.x plugins'
     sourceid: jenkins2.319.x
     kind: shell
     spec:
-      command: bash ./updatecli/updatecli.d/update-plugins.sh
+      command: pwsh -NoProfile -File ./updatecli/updatecli.d/update-plugins.ps1
     scmid: github
   jenkins2.332.x:
     name: 'Update 2.332.x plugins'
     sourceid: jenkins2.332.x
     kind: shell
     spec:
-      command: bash ./updatecli/updatecli.d/update-plugins.sh
+      command: pwsh -NoProfile -File ./updatecli/updatecli.d/update-plugins.ps1
+    scmid: github
+  jenkins2.346.x:
+    name: 'Update 2.346.x plugins'
+    sourceid: jenkins2.346.x
+    kind: shell
+    spec:
+      command: pwsh -NoProfile -File ./updatecli/updatecli.d/update-plugins.ps1
     scmid: github
 pullrequests:
   default:
@@ -136,6 +164,7 @@ pullrequests:
       - jenkins2.303.x
       - jenkins2.319.x
       - jenkins2.332.x
+      - jenkins2.346.x
     spec:
       labels:
         - dependencies
