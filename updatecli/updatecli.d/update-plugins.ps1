@@ -1,9 +1,17 @@
 param(
-  [string] $JenkinsVersion,
-  [string] $PluginManagerJar = './plugin-manager.jar'
+  [Parameter(Position=0)]
+  [string] $JenkinsVersion
 )
 
 $JenkinsVersionX = $JenkinsVersion -replace '\d+$', 'x'
+
+$pluginManagerJar = $ENV:PLUGIN_MANAGER_JAR_PATH ?? "./plugin-manager.jar"
+$pluginManagerVersion = $ENV:PLUGIN_MANAGER_VERSION ?? "2.12.8"
+
+# check if jar does not exist, download it - useful for testing
+if ([System.IO.File]::Exists($pluginManagerJar) -eq $false) {
+  curl -sSL "https://github.com/jenkinsci/plugin-installation-manager-tool/releases/download/$pluginManagerVersion/jenkins-plugin-manager-$pluginManagerVersion.jar" -o "$jar"
+}
 
 if (Get-Command 'java' -ErrorAction SilentlyContinue) {
   $java = 'java'
