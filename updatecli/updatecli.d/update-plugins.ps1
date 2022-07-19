@@ -34,7 +34,7 @@ foreach ($dependency in $dependencies) {
   $oldVersion = $dependency.version
   $plugin = "${artifact}:${oldVersion}"
   [string] $output = & $java -jar "$pluginManagerJar" --no-download --available-updates --jenkins-version "$JenkinsVersion" --plugins $plugin
-  if ($null -ne $output -and $output -inotlike '*No available updates*') {
+  if ($output -ilike '*has an available update*') {
     # Example output:
     # Available updates:
     # credentials (2.6.1) has an available update: 2.6.1.1
