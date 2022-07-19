@@ -29,12 +29,13 @@ $pom.Load($pomPath)
 # Select Dependencies and Skip BOM
 $dependencies = $pom.Project.DependencyManagement.Dependencies.Dependency | Select-Object -Skip 1
 
+$changed = $false
 foreach ($dependency in $dependencies) {
   $artifact = $dependency.artifactId
   $oldVersion = $dependency.version
   $plugin = "${artifact}:${oldVersion}"
   [string] $output = & $java -jar "$pluginManagerJar" --no-download --available-updates --output txt --jenkins-version "$JenkinsVersion" --plugins $plugin
-  if ($output -ne $plugin) {
+  if ($null -ne $output -and $output -ne $plugin) {
     # Example output:
     # credentials:2.6.1.1
 
@@ -42,10 +43,13 @@ foreach ($dependency in $dependencies) {
     $newVersion = $output.Split(':')[-1]
     Write-Output "Changed $artifact from $oldVersion to $newVersion"
     $dependency.version = $newVersion
+    $changed = $true
   }
 }
 
-$utf8WithoutBom = New-Object System.Text.UTF8Encoding($false)
-$streamWriter = New-Object System.IO.StreamWriter($pomPath, $false, $utf8WithoutBom)
-$pom.Save($streamWriter)
-$streamWriter.Close()
+if ($changed) {
+  $utf8WithoutBom = New-Object System.Text.UTF8Encoding($false)
+  $streamWriter = New-Object System.IO.StreamWriter($pomPath, $false, $utf8WithoutBom)
+  $pom.Save($streamWriter)
+  $streamWriter.Close()
+}
