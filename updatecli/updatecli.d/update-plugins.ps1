@@ -3,7 +3,6 @@ param(
   [string] $JenkinsVersion
 )
 
-Write-Host "Jenkins version: $JenkinsVersion"
 $JenkinsVersionX = $JenkinsVersion -replace '\d+$', 'x'
 
 $pluginManagerJar = $ENV:PLUGIN_MANAGER_JAR_PATH ?? './plugin-manager.jar'
@@ -45,8 +44,6 @@ foreach ($dependency in $dependencies) {
     Write-Output "Changed $artifact from $oldVersion to $newVersion"
     $dependency.version = $newVersion
     $changed = $true
-  } else {
-    Write-Host "No change for $plugin"
   }
 }
 
