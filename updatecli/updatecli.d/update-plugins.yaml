@@ -69,7 +69,7 @@ sources:
       token: "{{ requiredEnv .github.token }}"
       versionfilter:
         kind: regex
-        pattern: 'jenkins-2.346.1$' # fix to x.x.1 until the next weekly minor release
+        pattern: 'jenkins-2.346.1$' # fix to x.x.1 until the next stable minor release
     transformers:
       - trimprefix: "jenkins-"
 conditions:
