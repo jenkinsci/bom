@@ -23,7 +23,7 @@ sources:
         kind: regex
         pattern: 'jenkins-2.289.\d+$'
     transformers:
-      - trimPrefix: "jenkins-"
+      - trimprefix: "jenkins-"
   jenkins2.303.x:
     name: Get Last Jenkins Stable Version
     kind: githubrelease
@@ -35,7 +35,7 @@ sources:
         kind: regex
         pattern: 'jenkins-2.303.\d+$'
     transformers:
-      - trimPrefix: "jenkins-"
+      - trimprefix: "jenkins-"
   jenkins2.319.x:
     name: Get Last Jenkins Stable Version
     kind: githubrelease
@@ -47,7 +47,7 @@ sources:
         kind: regex
         pattern: 'jenkins-2.319.\d+$'
     transformers:
-      - trimPrefix: "jenkins-"
+      - trimprefix: "jenkins-"
   jenkins2.332.x:
     name: Get Last Jenkins Stable Version
     kind: githubrelease
@@ -59,7 +59,7 @@ sources:
         kind: regex
         pattern: 'jenkins-2.332.\d+$'
     transformers:
-      - trimPrefix: "jenkins-"
+      - trimprefix: "jenkins-"
   jenkins2.346.x:
     name: Get Last Jenkins Stable Version
     kind: githubrelease
@@ -71,7 +71,7 @@ sources:
         kind: regex
         pattern: 'jenkins-2.346.1$' # fix to x.x.1 until the next weekly minor release
     transformers:
-      - trimPrefix: "jenkins-"
+      - trimprefix: "jenkins-"
 conditions:
   jenkins2.289.x:
     name: Test if Jenkins stable published
