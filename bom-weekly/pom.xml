@@ -393,7 +393,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>mailer</artifactId>
-                <version>435.v79ef3972b_5c7</version>
+                <version>438.v02c7f0a_12fa_4</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
