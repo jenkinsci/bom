@@ -6,4 +6,3 @@ github:
   owner: "jenkinsci"
   repository: "bom"
   branch: "master"
-  jar: "PLUGIN_MANAGER_JAR_PATH"

@@ -21,10 +21,12 @@ jobs:
 
       - name: Install updatecli # Until https://github.com/updatecli/updatecli/pull/336
         run: |
-          curl -sSL https://github.com/updatecli/updatecli/releases/download/v0.27.0/updatecli_Linux_x86_64.tar.gz -o updatecli.tgz
-          tar xzf updatecli.tgz -C /usr/local/bin
+          # curl -sSL https://github.com/updatecli/updatecli/releases/download/v0.27.0/updatecli_Linux_x86_64.tar.gz -o updatecli.tgz
+          # tar xzf updatecli.tgz -C /usr/local/bin
+          # rm -f updatecli.tgz
+          # go install untill https://github.com/updatecli/updatecli/pull/754 is released
+          go install github.com/updatecli/updatecli@7ca5e2a4bf76967809baea8f75a9a72228f70c2b
           updatecli version
-          rm -f updatecli.tgz
 
       - name: Install Jenkins Plugin Installation Manager Tool
         run: |
