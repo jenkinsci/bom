@@ -393,7 +393,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>mailer</artifactId>
-                <version>435.v79ef3972b_5c7</version>
+                <version>438.v02c7f0a_12fa_4</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -597,7 +597,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-durable-task-step</artifactId>
-                <version>1174.v73a_9a_17edce0</version>
+                <version>1190.vc93d7d457042</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>

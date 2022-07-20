@@ -83,6 +83,10 @@ targets:
     kind: shell
     spec:
       command: pwsh -NoProfile -File ./updatecli/updatecli.d/update-plugins.ps1
+      environments:
+        - name: PATH
+        - name: PLUGIN_MANAGER_JAR_PATH
+        - name: PLUGIN_MANAGER_VERSION
     scmid: github
   jenkins2.332.x:
     name: 'Update 2.332.x plugins'
@@ -90,6 +94,10 @@ targets:
     kind: shell
     spec:
       command: pwsh -NoProfile -File ./updatecli/updatecli.d/update-plugins.ps1
+      environments:
+        - name: PATH
+        - name: PLUGIN_MANAGER_JAR_PATH
+        - name: PLUGIN_MANAGER_VERSION
     scmid: github
   jenkins2.346.x:
     name: 'Update 2.346.x plugins'
@@ -97,6 +105,10 @@ targets:
     kind: shell
     spec:
       command: pwsh -NoProfile -File ./updatecli/updatecli.d/update-plugins.ps1
+      environments:
+        - name: PATH
+        - name: PLUGIN_MANAGER_JAR_PATH
+        - name: PLUGIN_MANAGER_VERSION
     scmid: github
 pullrequests:
   default:
