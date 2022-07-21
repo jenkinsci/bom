@@ -14,7 +14,7 @@
         <data-tables-api.version>1.12.1-2</data-tables-api.version>
         <forensics-api.version>1.15.1</forensics-api.version>
         <git-plugin.version>4.11.3</git-plugin.version>
-        <mina-sshd-api.version>2.8.0-21.v493b_6b_db_22c6</mina-sshd-api.version>
+        <mina-sshd-api.version>2.8.0-30.vf9df64641cb_d</mina-sshd-api.version>
         <pipeline-model-definition-plugin.version>2.2114.v2654ca_721309</pipeline-model-definition-plugin.version>
         <pipeline-stage-view-plugin.version>2.24</pipeline-stage-view-plugin.version>
         <plugin-util-api.version>2.16.0</plugin-util-api.version>
