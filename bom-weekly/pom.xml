@@ -292,7 +292,8 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>dashboard-view</artifactId>
-                <version>2.432.va_712ce35862d</version>
+                <!-- TODO https://github.com/jenkinsci/dashboard-view-plugin/pull/184 -->
+                <version>2.446.v52ceb_571c4cd</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
