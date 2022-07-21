@@ -12,30 +12,6 @@ scms:
       branch: "{{ .github.branch }}"
 
 sources:
-  jenkins2.289.x:
-    name: Get Last Jenkins Stable Version
-    kind: githubrelease
-    spec:
-      owner: "jenkinsci"
-      repository: "jenkins"
-      token: "{{ requiredEnv .github.token }}"
-      versionfilter:
-        kind: regex
-        pattern: 'jenkins-2.289.\d+$'
-    transformers:
-      - trimprefix: "jenkins-"
-  jenkins2.303.x:
-    name: Get Last Jenkins Stable Version
-    kind: githubrelease
-    spec:
-      owner: "jenkinsci"
-      repository: "jenkins"
-      token: "{{ requiredEnv .github.token }}"
-      versionfilter:
-        kind: regex
-        pattern: 'jenkins-2.303.\d+$'
-    transformers:
-      - trimprefix: "jenkins-"
   jenkins2.319.x:
     name: Get Last Jenkins Stable Version
     kind: githubrelease
@@ -73,24 +49,6 @@ sources:
     transformers:
       - trimprefix: "jenkins-"
 conditions:
-  jenkins2.289.x:
-    name: Test if Jenkins stable published
-    kind: maven
-    sourceid: jenkins2.289.x
-    spec:
-      url: "repo.jenkins-ci.org"
-      repository: "releases"
-      groupid: "org.jenkins-ci.main"
-      artifactid: "jenkins-war"
-  jenkins2.303.x:
-    name: Test if Jenkins stable published
-    kind: maven
-    sourceid: jenkins2.303.x
-    spec:
-      url: "repo.jenkins-ci.org"
-      repository: "releases"
-      groupid: "org.jenkins-ci.main"
-      artifactid: "jenkins-war"
   jenkins2.319.x:
     name: Test if Jenkins stable published
     kind: maven
@@ -119,28 +77,6 @@ conditions:
       groupid: "org.jenkins-ci.main"
       artifactid: "jenkins-war"
 targets:
-  jenkins2.289.x:
-    name: 'Update 2.289.x plugins'
-    sourceid: jenkins2.289.x
-    kind: shell
-    spec:
-      command: pwsh -NoProfile -File ./updatecli/updatecli.d/update-plugins.ps1
-      environments:
-        - name: PATH
-        - name: PLUGIN_MANAGER_JAR_PATH
-        - name: PLUGIN_MANAGER_VERSION
-    scmid: github
-  jenkins2.303.x:
-    name: 'Update 2.303.x plugins'
-    sourceid: jenkins2.303.x
-    kind: shell
-    spec:
-      command: pwsh -NoProfile -File ./updatecli/updatecli.d/update-plugins.ps1
-      environments:
-        - name: PATH
-        - name: PLUGIN_MANAGER_JAR_PATH
-        - name: PLUGIN_MANAGER_VERSION
-    scmid: github
   jenkins2.319.x:
     name: 'Update 2.319.x plugins'
     sourceid: jenkins2.319.x
@@ -180,8 +116,6 @@ pullrequests:
     kind: github
     scmid: github
     targets:
-      - jenkins2.289.x
-      - jenkins2.303.x
       - jenkins2.319.x
       - jenkins2.332.x
       - jenkins2.346.x

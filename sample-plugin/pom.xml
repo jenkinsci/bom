@@ -562,19 +562,5 @@
                 <jenkins.version>2.319.3</jenkins.version>
             </properties>
         </profile>
-        <profile>
-            <id>2.303.x</id>
-            <properties>
-                <bom>2.303.x</bom>
-                <jenkins.version>2.303.3</jenkins.version>
-            </properties>
-        </profile>
-        <profile>
-            <id>2.289.x</id>
-            <properties>
-                <bom>2.289.x</bom>
-                <jenkins.version>2.289.3</jenkins.version>
-            </properties>
-        </profile>
     </profiles>
 </project>
