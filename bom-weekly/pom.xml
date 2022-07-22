@@ -18,8 +18,7 @@
         <pipeline-model-definition-plugin.version>2.2114.v2654ca_721309</pipeline-model-definition-plugin.version>
         <pipeline-stage-view-plugin.version>2.24</pipeline-stage-view-plugin.version>
         <plugin-util-api.version>2.16.0</plugin-util-api.version>
-        <!-- TODO https://github.com/jenkinsci/scm-api-plugin/pull/157 -->
-        <scm-api-plugin.version>615.v0a_129c64a_3b_7</scm-api-plugin.version>
+        <scm-api-plugin.version>616.ve67136f6c77d</scm-api-plugin.version>
         <subversion-plugin.version>2.15.5</subversion-plugin.version>
         <workflow-api-plugin.version>1188.v0016b_4f29881</workflow-api-plugin.version>
         <workflow-cps-plugin.version>2746.v0da_83a_332669</workflow-cps-plugin.version>
