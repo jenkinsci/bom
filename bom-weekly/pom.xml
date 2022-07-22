@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
     <properties>
         <checks-api.version>1.7.4</checks-api.version>
-        <configuration-as-code-plugin.version>1511.vb_f985b_894e40</configuration-as-code-plugin.version>
+        <configuration-as-code-plugin.version>1512.vb_79d418d5fc8</configuration-as-code-plugin.version>
         <data-tables-api.version>1.12.1-2</data-tables-api.version>
         <forensics-api.version>1.15.1</forensics-api.version>
         <git-plugin.version>4.11.3</git-plugin.version>
@@ -277,7 +277,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>config-file-provider</artifactId>
-                <version>3.11</version>
+                <version>3.11.1</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -500,7 +500,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>structs</artifactId>
-                <version>318.va_f3ccb_729b_71</version>
+                <version>324.va_f5d6774f3a_d</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
