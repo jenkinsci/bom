@@ -50,7 +50,8 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>email-ext</artifactId>
-                <version>2.89</version>
+                <!-- TODO https://github.com/jenkinsci/email-ext-plugin/pull/382 -->
+                <version>2.89.1-rc1613.0d62b_a_3ee0e4</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
