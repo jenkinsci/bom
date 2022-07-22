@@ -86,7 +86,7 @@
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>support-core</artifactId>
                 <!-- TODO https://github.com/jenkinsci/support-core-plugin/pull/389 -->
-                <version>2.80.2-rc1105.53e0cc2e1e0e</version>
+                <version>2.80.2-rc1106.e1fa_a_a_549494</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
