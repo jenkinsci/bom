@@ -29,9 +29,7 @@ $plugin | ForEach-Object {
   $_.version = $NewVersion
 }
 
-if ($ENV:DRY_RUN -eq $false) {
-  $utf8WithoutBom = New-Object System.Text.UTF8Encoding($false)
-  $streamWriter = New-Object System.IO.StreamWriter($PomPath, $false, $utf8WithoutBom)
-  $pom.Save($streamWriter)
-  $streamWriter.Close()
-}
+$utf8WithoutBom = New-Object System.Text.UTF8Encoding($false)
+$streamWriter = New-Object System.IO.StreamWriter($PomPath, $false, $utf8WithoutBom)
+$pom.Save($streamWriter)
+$streamWriter.Close()
