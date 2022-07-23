@@ -33,7 +33,9 @@ jobs:
 
       - name: Generate updatecli manifests for plugins
         shell: pwsh
-        run: ./updatecli/generate-manifests.ps1
+        run: |
+          Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
+          ./updatecli/generate-manifests.ps1
 
       - name: Diff
         continue-on-error: true
