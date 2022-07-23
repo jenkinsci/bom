@@ -2,7 +2,7 @@
 $root = "$PSScriptRoot/.." | Resolve-Path
 
 function EnsureModuleInstalled ($name) {
-  $module = Get-InstalledModule -Name $name
+  $module = Get-InstalledModule -Name $name -ErrorAction SilentlyContinue
   if ($null -eq $module) {
     Install-Module -Name $name -Scope CurrentUser -AllowClobber
   } else {
