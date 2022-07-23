@@ -17,7 +17,7 @@ $updateJenkinsManifestPath = "$manifestDirectory/update-jenkins.yaml"
 $updatePluginsManifestPath = "$manifestDirectory/update-plugins.yaml"
 
 if ([System.IO.Directory]::Exists($manifestDirectory) -eq $false) {
-  New-Item -Force -ItemType Directory -Path $manifestDirectory
+  New-Item -Force -ItemType Directory -Path $manifestDirectory | Out-Null
 }
 
 # For testing locally, you can set $GITHUB_WORKSPACE to the root of the repository ie. $PWD
