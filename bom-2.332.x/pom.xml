@@ -61,6 +61,11 @@
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
+                <artifactId>workflow-durable-task-step</artifactId>
+                <version>1190.vc93d7d457042</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-job</artifactId>
                 <version>1189.va_d37a_e9e4eda_</version>
             </dependency>
