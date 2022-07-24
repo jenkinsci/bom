@@ -36,7 +36,7 @@ if ($JenkinsVersion -imatch "^\d+\.\d+\.\d+$") {
   exit 1
 }
 
-if ($changed -and $ENV:DRY_RUN -eq $false) {
+if ($changed) {
   $utf8WithoutBom = New-Object System.Text.UTF8Encoding($false)
   $streamWriter = New-Object System.IO.StreamWriter($pomPath, $false, $utf8WithoutBom)
   $pom.Save($streamWriter)
