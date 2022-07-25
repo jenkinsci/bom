@@ -52,10 +52,6 @@ lines.each {line ->
     plugins.each { plugin ->
         branches["pct-$plugin-$line"] = {
             def jdk = line == 'weekly' ? 17 : 11
-            if (plugin == 'ansicolor') {
-                // TODO plugin-pom 4.40+
-                jdk = 11
-            }
             mavenEnv(jdk: jdk) {
                 deleteDir()
                 unstash 'pct.sh'
