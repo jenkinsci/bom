@@ -130,6 +130,11 @@ foreach ($bom in $bills) {
 
   ConvertTo-Yaml -Data $updateJenkinsManifest -OutFile $updateJenkinsManifestPath -Force
 
+  if ($bom -eq "bom-weekly") {
+    # weekly bom is handled by dependabot
+    continue
+  }
+
   $pomPath = "$bom/pom.xml"
   $pom = New-Object System.Xml.XmlDocument
   $pom.PreserveWhitespace = $true
@@ -142,6 +147,11 @@ foreach ($bom in $bills) {
     $artifact = $dependency.artifactId
     $groupId = $dependency.groupId
     $version = $dependency.version
+    if ($version.StartsWith("$")) {
+      # remove the dollar sign and curly braces
+      $version = $version -replace '^\${(.+?)}$', '$1'
+      $version = $pom.project.properties."$version"
+    }
 
     $updatePluginsManifestPath = "$manifestDirectory/update-plugin-$jenkinsVersion-$artifact-$version.yaml"
 
