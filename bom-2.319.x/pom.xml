@@ -50,13 +50,12 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>email-ext</artifactId>
-                <!-- TODO https://github.com/jenkinsci/email-ext-plugin/pull/382 -->
-                <version>2.89.1-rc1613.0d62b_a_3ee0e4</version>
+                <version>2.89.1</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>junit</artifactId>
-                <version>1.54.1</version>
+                <version>1.54.2</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -78,6 +77,11 @@
                 <artifactId>metrics</artifactId>
                 <!-- TODO https://github.com/jenkinsci/metrics-plugin/pull/175 -->
                 <version>4.1.6.1-356.vb_86149e80430</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>saml</artifactId>
+                <version>2.298.vc7a_2b_3958628</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
