@@ -28,6 +28,8 @@ $pom.Load($pomPath)
 
 $jenkinsVersions = @{}
 
+$jenkinsVersions["weekly"] = $pom.project.properties."jenkins.version"
+
 $pom.project.profiles.profile | ForEach-Object {
   $jenkinsVersions[$_.id] = $_.properties."jenkins.version"
 }
@@ -125,6 +127,7 @@ foreach ($bom in $bills) {
       labels      = @("dependencies")
       automerge   = $true
       mergemethod = "squash"
+      usetitleforautomerge = $true
     }
   }
 
@@ -224,6 +227,7 @@ foreach ($bom in $bills) {
         labels      = @("dependencies")
         automerge   = $true
         mergemethod = "squash"
+        usetitleforautomerge = $true
       }
     }
 

@@ -75,8 +75,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>metrics</artifactId>
-                <!-- TODO https://github.com/jenkinsci/metrics-plugin/pull/175 -->
-                <version>4.1.6.1-356.vb_86149e80430</version>
+                <version>4.1.6.1-358.vf46b_95ea_d2b_3</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
