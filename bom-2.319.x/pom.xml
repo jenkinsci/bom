@@ -75,7 +75,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>metrics</artifactId>
-                <version>4.1.6.1</version>
+                <version>4.1.6.1-358.vf46b_95ea_d2b_3</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
