@@ -15,7 +15,7 @@
         <forensics-api.version>1.15.1</forensics-api.version>
         <git-plugin.version>4.11.3</git-plugin.version>
         <!-- TODO https://github.com/jenkinsci/mina-sshd-api-plugin/pull/20 -->
-        <mina-sshd-api.version>2.8.0-32.vdb_a_8581a_b_1a_b_</mina-sshd-api.version>
+        <mina-sshd-api.version>2.8.0-33.v6c9c28385c90</mina-sshd-api.version>
         <pipeline-model-definition-plugin.version>2.2114.v2654ca_721309</pipeline-model-definition-plugin.version>
         <pipeline-stage-view-plugin.version>2.24</pipeline-stage-view-plugin.version>
         <plugin-util-api.version>2.16.0</plugin-util-api.version>
