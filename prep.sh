@@ -32,7 +32,7 @@ for LINE in $LINEZ; do
 	echo '# nothing' >jenkins/split-plugins.txt
 	cp -r jenkins-for-test "megawar-${LINE}"
 	jar uvf megawar-$LINE/WEB-INF/lib/jenkins-core-*.jar jenkins/split-plugins.txt
-	rm -rfv megawar-$LINE/META-INF/*.{RSA,SF}
+	rm -rfv megawar-$LINE/WEB-INF/detached-plugins megawar-$LINE/META-INF/*.{RSA,SF}
 	mkdir "megawar-${LINE}/WEB-INF/plugins"
 	cp -rv test-classes/test-dependencies/*.hpi "megawar-${LINE}/WEB-INF/plugins"
 	cd "megawar-${LINE}"
