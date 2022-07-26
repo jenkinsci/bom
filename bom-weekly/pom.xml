@@ -545,7 +545,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>variant</artifactId>
-                <version>1.4</version>
+                <version>59.vf075fe829ccb</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
