@@ -60,7 +60,7 @@ if [[ $LINE == '2.319.x' ]]; then
 	# class path of some plugin and triggers an upper bounds violation. JENKINS-68696 tracks the
 	# removal of this trick.
 	#
-	echo upperBoundsExcludes=com.sun.mail:jakarta.mail,javax.servlet:servlet-api >"$(pwd)/maven.properties"
+	echo upperBoundsExcludes=com.sun.mail:jakarta.mail,javax.servlet:servlet-api >maven.properties
 else
 	#
 	# javax.servlet:servlet-api comes from core at version 0, which is an intentional trick to
