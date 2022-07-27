@@ -212,7 +212,8 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>theme-manager</artifactId>
-                <version>1.4</version>
+                <!-- TODO https://github.com/jenkinsci/theme-manager-plugin/pull/109 -->
+                <version>1.5-rc129.781a_4080c3a_a</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins.mina-sshd-api</groupId>
