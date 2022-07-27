@@ -27,7 +27,7 @@ fi
 mkdir pct-work
 pushd pct-work
 jar xf ../megawar.war META-INF/MANIFEST.MF
-JENKINS_VERSION=$(grep Jenkins-Version META-INF/MANIFEST.MF | awk '{print $2}')
+JENKINS_VERSION=$(perl -w -p -0777 -e 's/\r?\n //g' META-INF/MANIFEST.MF | grep Jenkins-Version | awk '{print $2}')
 popd
 rm -rf pct-work
 MAVEN_PROPERTIES+=":jenkins.version=${JENKINS_VERSION}:overrideWar=$(pwd)/megawar.war:useUpperBounds=true"
