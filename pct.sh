@@ -54,12 +54,6 @@ if [[ $LINE == '2.319.x' ]]; then
 	# imports (which is not a realistic test scenario) just because the Jakarta Mail API plugin
 	# happens to be on the class path and triggers an upper bounds violation.
 	#
-	# javax.servlet:servlet-api comes from core at version 0, which is an intentional trick to
-	# prevent this library from being used, and we do not want it to be upgraded to a nonzero
-	# version (which is not a realistic test scenario) just because it happens to be on the
-	# class path of some plugin and triggers an upper bounds violation. JENKINS-68696 tracks the
-	# removal of this trick.
-	#
 	echo upperBoundsExcludes=com.sun.mail:jakarta.mail,javax.servlet:servlet-api >maven.properties
 else
 	#
