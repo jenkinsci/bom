@@ -41,7 +41,7 @@ MAVEN_PROPERTIES+=":jenkins.version=${JENKINS_VERSION}:overrideWar=$(pwd)/megawa
 # later (i.e., plugin parent POM 4.44 or later), this can be deleted.
 #
 # TODO https://github.com/jenkinsci/maven-hpi-plugin/pull/368
-MAVEN_PROPERTIES+=:hpi-plugin.version=3.31-rc1289.8ccff91f4e1a
+MAVEN_PROPERTIES+=:hpi-plugin.version=3.31
 
 #
 # Define the excludes for upper bounds checking. We define these excludes in a separate file and
