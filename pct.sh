@@ -63,7 +63,7 @@ else
 	# class path of some plugin and triggers an upper bounds violation. JENKINS-68696 tracks the
 	# removal of this trick.
 	#
-	echo upperBoundsExcludes=javax.servlet:servlet-api >"$(pwd)/maven.properties"
+	echo upperBoundsExcludes=javax.servlet:servlet-api >maven.properties
 fi
 
 #
