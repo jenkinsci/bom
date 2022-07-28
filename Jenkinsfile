@@ -52,6 +52,9 @@ lines.each {line ->
     plugins.each { plugin ->
         branches["pct-$plugin-$line"] = {
             def jdk = line == 'weekly' ? 17 : 11
+            if (plugin == 'git-client') {
+                jdk = 11
+            }
             mavenEnv(jdk: jdk) {
                 deleteDir()
                 unstash 'pct.sh'
