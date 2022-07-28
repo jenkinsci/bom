@@ -7,6 +7,11 @@ param(
   [string] $NewVersion
 )
 
+$changed = $false
+if ($null -eq $ENV:DRY_RUN) {
+  $ENV:DRY_RUN = $false
+}
+
 $pom = New-Object System.Xml.XmlDocument
 $pom.PreserveWhitespace = $true
 $pom.Load($PomPath)
@@ -14,23 +19,29 @@ $pom.Load($PomPath)
 # Select Dependencies and Skip BOM
 $dependencies = $pom.Project.DependencyManagement.Dependencies.Dependency | Select-Object -Skip 1
 
-$plugin = @($dependencies | Where-Object { $_.artifactid -eq $Artifact })
+$plugins = @($dependencies | Where-Object { $_.artifactid -eq $Artifact })
+$property = $pom.project.properties."$Artifact"
 
-if ($plugin.Count -eq 0) {
-  Write-Host "Plugin not found"
-  exit 1
+if ($null -ne $property -and $property -ne $NewVersion) {
+  Write-Host "1 Updating $Artifact to $NewVersion"
+  $changed = $true
+  $pom.project.properties."$Artifact" = $NewVersion
 }
 
-if ($plugin[0].version -eq $NewVersion) {
-  exit 0
+if ($plugins.Count -ne 0 -and $plugins[0].version -ne $NewVersion) {
+  $changed = $true
+  $plugins | ForEach-Object {
+    $_.version = $NewVersion
+  }
 }
 
-$plugin | ForEach-Object {
-  $_.version = $NewVersion
-}
-Write-Output $NewVersion
+if ($changed) {
+  Write-Output $NewVersion
 
-$utf8WithoutBom = New-Object System.Text.UTF8Encoding($false)
-$streamWriter = New-Object System.IO.StreamWriter($PomPath, $false, $utf8WithoutBom)
-$pom.Save($streamWriter)
-$streamWriter.Close()
+  if ($ENV:DRY_RUN -eq $false) {
+    $utf8WithoutBom = New-Object System.Text.UTF8Encoding($false)
+    $streamWriter = New-Object System.IO.StreamWriter($PomPath, $false, $utf8WithoutBom)
+    $pom.Save($streamWriter)
+    $streamWriter.Close()
+  }
+}

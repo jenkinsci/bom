@@ -31,7 +31,7 @@ jobs:
           curl -sSL "$url" -o "$path"
           echo "PLUGIN_MANAGER_JAR_PATH=$path" >> $GITHUB_ENV
 
-      - name: Generate updatecli manifests for plugins
+      - name: Generate updatecli manifests
         shell: pwsh
         run: |
           Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
