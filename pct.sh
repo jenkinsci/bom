@@ -112,6 +112,18 @@ elif grep -q -F -e '<status>COMPILATION_ERROR</status>' pct-report.xml; then
 	exit 1
 elif grep -q -F -e '<status>TEST_FAILURES</status>' pct-report.xml; then
 	echo 'PCT marked failed, checking to see if that is due to a failure to run tests at all' >&2
+
+	#
+	# Pipeline: Declarative Extension Points API depends on Pipeline: Model API, which lives in
+	# the same repository. When PCT runs the tests for the latter, it ends up compiling the
+	# former, which confuses the logic below that attempts to detect when tests were compiled
+	# but not executed. While this is potentially an issue for any plugin-to-plugin dependency
+	# where both plugins are in a Maven multi-module project tested by PCT, in practice it only
+	# affects Pipeline: Declarative Extension Points API, so rather than making the detection
+	# logic more complex we simply work around the issue by deleting the relevant class.
+	#
+	[[ $PLUGINS == pipeline-model-extensions ]] && rm -fv pct-work/pipeline-model-definition/pipeline-model-api/target/test-classes/InjectedTest.class
+
 	for t in pct-work/*/{,*/}target; do
 		if [[ -f "${t}/test-classes/InjectedTest.class" ]] && [[ ! -f "${t}/surefire-reports/TEST-InjectedTest.xml" ]] && [[ ! -f "${t}/failsafe-reports/TEST-InjectedTest.xml" ]]; then
 			mkdir -p "${t}/surefire-reports"
