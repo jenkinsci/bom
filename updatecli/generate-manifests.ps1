@@ -1,5 +1,8 @@
-
-$root = "$PSScriptRoot/.." | Resolve-Path
+if ($null -eq $ENV:GITHUB_WORKSPACE) {
+  $root = "$PSScriptRoot/.." | Resolve-Path
+} else {
+  $root = $ENV:GITHUB_WORKSPACE
+}
 
 function EnsureModuleInstalled ($name) {
   $module = Get-InstalledModule -Name $name -ErrorAction SilentlyContinue
@@ -18,8 +21,16 @@ if ([System.IO.Directory]::Exists($manifestDirectory) -eq $false) {
   New-Item -Force -ItemType Directory -Path $manifestDirectory | Out-Null
 }
 
-# bills would be sorted by name due to our naming convention of "bom-x.y.z"
-$bills = Get-ChildItem "$root/bom-*" -Directory | Select-Object -ExpandProperty Name
+# Get current bom versions based on directory structure afterwards sort by version number ascending
+$bills = Get-ChildItem "$root/bom-*" -Directory `
+  | Select-Object -ExpandProperty Name `
+  | Where-Object { $_ -ne "bom-weekly" } `
+  | ForEach-Object { [System.Version]$($_ -replace '^bom-(\d+\.\d+?)\.x$','$1') } `
+  | Sort-Object `
+  | ForEach-Object { "bom-$($_.Major).$($_.Minor).x" }
+
+$latestStableBom = $bills[-1]
+$bills = @("bom-weekly") + $bills
 
 $pomPath = "sample-plugin/pom.xml"
 $pom = New-Object System.Xml.XmlDocument
@@ -34,7 +45,6 @@ $pom.project.profiles.profile | ForEach-Object {
   $jenkinsVersions[$_.id] = $_.properties."jenkins.version"
 }
 
-$last = $bills | Where-Object { $_ -ne "bom-weekly" } | Select-Object -Last 1
 foreach ($bom in $bills) {
   $updateJenkinsManifest = [ordered]@{
     scms         = [ordered]@{
@@ -57,10 +67,10 @@ foreach ($bom in $bills) {
     pullrequests = [ordered]@{}
   }
 
-  $version = $bom -replace "bom-", ""
-  $versionWithoutX = $version -replace ".x", ""
+  $bomVersion = $bom -replace "bom-", ""
+  $jenkinsVersion = $jenkinsVersions[$bomVersion]
 
-  $updateJenkinsManifestPath = "$manifestDirectory/update-jenkins-$version.yaml"
+  $updateJenkinsManifestPath = "$manifestDirectory/update-jenkins-$bomVersion.yaml"
 
   if ($bom -eq "bom-weekly") {
     $updateJenkinsManifest.sources["jenkins"] = [ordered]@{
@@ -75,11 +85,14 @@ foreach ($bom in $bills) {
       }
     }
   } else {
-    if ($last -eq $bom) {
-      $versionPattern = "jenkins-$versionWithoutX.1$"
+    # remove .x from z.y.x and replace literal dot with escaped dot
+    $bomVersionPattern = $bomVersion -replace ".x", ""
+    if ($latestStableBom -eq $bom) {
+      $bomVersionPattern = "jenkins-$bomVersionPattern.1$"
     } else {
-      $versionPattern = "jenkins-$versionWithoutX.\d+$"
+      $bomVersionPattern = "jenkins-$bomVersionPattern.\d+$"
     }
+    $bomVersionPattern = $bomVersionPattern -replace "\.", "\."
     $updateJenkinsManifest.sources["jenkins"] = [ordered]@{
       name         = "Get last Jenkins stable version"
       kind         = "githubrelease"
@@ -89,7 +102,7 @@ foreach ($bom in $bills) {
         token         = '{{ requiredEnv .github.token }}'
         versionfilter = [ordered]@{
           kind    = "regex"
-          pattern = "$($versionPattern)"
+          pattern = $bomVersionPattern
         }
       }
       transformers = @(@{
@@ -115,11 +128,11 @@ foreach ($bom in $bills) {
     scmid    = "github"
     kind     = "shell"
     spec     = [ordered]@{
-      command      = 'pwsh -NoProfile -File {{ requiredEnv "GITHUB_WORKSPACE" }}/updatecli/update-jenkins.ps1'
+      command      = "pwsh -NoProfile -File {{ requiredEnv `"GITHUB_WORKSPACE`" }}/updatecli/update-jenkins.ps1 $bomVersion"
     }
   }
   $updateJenkinsManifest.pullrequests["jenkins"] = [ordered]@{
-    title   = "Bump jenkins.version from $($jenkinsVersions[$version]) to {{ source `"jenkins`" }} for bom-$version"
+    title   = "Bump jenkins.version from $jenkinsVersion to {{ source `"jenkins`" }} for bom-$bomVersion"
     kind    = "github"
     scmid   = "github"
     targets = @("jenkins")
@@ -144,19 +157,20 @@ foreach ($bom in $bills) {
   $pom.Load($pomPath)
 
   $dependencies = $pom.Project.DependencyManagement.Dependencies.Dependency | Select-Object -Skip 1
-  $jenkinsVersion = $version
+
 
   foreach ($dependency in $dependencies) {
-    $artifact = $dependency.artifactId
+    $artifactId = $dependency.artifactId
     $groupId = $dependency.groupId
     $version = $dependency.version
+    $name = $artifactId
     if ($version.StartsWith("$")) {
       # remove the dollar sign and curly braces
-      $version = $version -replace '^\${(.+?)}$', '$1'
-      $version = $pom.project.properties."$version"
+      $name = $version -replace '^\${(.+?)}$', '$1'
+      $version = $pom.project.properties."$name"
     }
 
-    $updatePluginsManifestPath = "$manifestDirectory/update-plugin-$jenkinsVersion-$artifact-$version.yaml"
+    $updatePluginsManifestPath = "$manifestDirectory/update-plugin-$bomVersion-$artifactId-$version.yaml"
 
     if ([System.IO.File]::Exists($updatePluginsManifestPath)) {
       continue
@@ -184,10 +198,10 @@ foreach ($bom in $bills) {
     }
 
     $updatePluginsManifest.sources["plugin"] = [ordered]@{
-      name         = "Get last $artifact version"
+      name         = "Get last $name version"
       kind         = "shell"
       spec         = @{
-        command = "java -jar {{ requiredEnv `"PLUGIN_MANAGER_JAR_PATH`" }} --no-download --available-updates --output txt --jenkins-version $($jenkinsVersions[$jenkinsVersion]) --plugins ${artifact}:${version}"
+        command = "java -jar {{ requiredEnv `"PLUGIN_MANAGER_JAR_PATH`" }} --no-download --available-updates --output txt --jenkins-version $jenkinsVersion --plugins ${artifact}:${version}"
       }
       transformers = @(
         @{
@@ -199,27 +213,27 @@ foreach ($bom in $bills) {
       )
     }
     $updatePluginsManifest.conditions["plugin"] = [ordered]@{
-      name     = "Test if $artifact is published"
+      name     = "Test if $name is published"
       kind     = "maven"
       sourceid = "plugin"
       spec     = [ordered]@{
         url        = "repo.jenkins-ci.org"
         repository = "releases"
-        groupId    = "$($groupId)"
-        artifactId = "$($artifact)"
+        groupId    = $groupId
+        artifactId = $artifactId
       }
     }
     $updatePluginsManifest.targets["plugin"] = [ordered]@{
-      name     = "Update $artifact"
+      name     = "Update $name"
       sourceid = "plugin"
       scmid    = "github"
       kind     = "shell"
       spec     = @{
-        command = "pwsh -NoProfile -File {{ requiredEnv `"GITHUB_WORKSPACE`" }}/updatecli/update-plugin.ps1 $pomPath $artifact"
+        command = "pwsh -NoProfile -File {{ requiredEnv `"GITHUB_WORKSPACE`" }}/updatecli/update-plugin.ps1 $pomPath $name"
       }
     }
     $updatePluginsManifest.pullrequests["plugin"] = [ordered]@{
-      title   = "Bump $artifact from $version to {{ source `"plugin`" }} in /bom-$jenkinsVersion"
+      title   = "Bump $name from $version to {{ source `"plugin`" }} in /bom-$bomVersion"
       kind    = "github"
       scmid   = "github"
       targets = @("plugin")
