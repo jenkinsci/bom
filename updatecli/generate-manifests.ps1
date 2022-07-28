@@ -201,7 +201,7 @@ foreach ($bom in $bills) {
       name         = "Get last $name version"
       kind         = "shell"
       spec         = @{
-        command = "java -jar {{ requiredEnv `"PLUGIN_MANAGER_JAR_PATH`" }} --no-download --available-updates --output txt --jenkins-version $jenkinsVersion --plugins ${artifact}:${version}"
+        command = "java -jar {{ requiredEnv `"PLUGIN_MANAGER_JAR_PATH`" }} --no-download --available-updates --output txt --jenkins-version $jenkinsVersion --plugins ${artifactId}:${version}"
       }
       transformers = @(
         @{
