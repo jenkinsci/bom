@@ -67,18 +67,16 @@ else
 fi
 
 #
-# Oracle Java SE Development Kit Installer, JSch, OkHttp, and Plain Credentials use an older plugin
-# parent POM and therefore an older test harness that predates compatibility with the removal of JNR
-# in recent cores in jenkinsci/jenkins-test-harness#350. As a temporary workaround, we override the
-# test harness to a recent version. Note that we cannot use a test harness newer than
-# 1812.v6d4e97d91fd8, because later releases of the test harness require changes to the plugin
-# parent POM for JUnit 5 support.
+# JSch, OkHttp, and Plain Credentials use an older plugin parent POM and therefore an older test
+# harness that predates compatibility with the removal of JNR in recent cores in
+# jenkinsci/jenkins-test-harness#350. As a temporary workaround, we override the test harness to a
+# recent version. Note that we cannot use a test harness newer than 1812.v6d4e97d91fd8, because
+# later releases of the test harness require changes to the plugin parent POM for JUnit 5 support.
 #
 # TODO When these plugins are using a plugin parent POM with test harness 1657.vf8a824e79147 or
 # later (i.e., plugin parent POM 4.32 or later), this can be deleted.
 #
-if [[ $PLUGINS =~ jdk-tool ]] ||
-	[[ $PLUGINS =~ jsch ]] ||
+if [[ $PLUGINS =~ jsch ]] ||
 	[[ $PLUGINS =~ okhttp-api ]] ||
 	[[ $PLUGINS =~ plain-credentials ]]; then
 	MAVEN_PROPERTIES+=:jenkins-test-harness.version=1812.v6d4e97d91fd8
