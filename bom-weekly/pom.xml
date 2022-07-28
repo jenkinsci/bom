@@ -448,7 +448,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>plain-credentials</artifactId>
-                <version>1.8</version>
+                <version>139.ved2b_9cf7587b</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
