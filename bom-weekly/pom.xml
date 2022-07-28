@@ -233,8 +233,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.modules</groupId>
                 <artifactId>sshd</artifactId>
-                <!-- TODO https://github.com/jenkinsci/sshd-plugin/pull/88 -->
-                <version>3.248.v641710dd7a_a_6</version>
+                <version>3.249.v2dc2ea_416e33</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
