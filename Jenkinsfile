@@ -52,6 +52,10 @@ lines.each {line ->
     plugins.each { plugin ->
         branches["pct-$plugin-$line"] = {
             def jdk = line == 'weekly' ? 17 : 11
+            // TODO https://github.com/jenkinsci/theme-manager-plugin/pull/109
+            if (plugin == 'theme-manager') {
+                jdk = 11
+            }
             mavenEnv(jdk: jdk) {
                 deleteDir()
                 unstash 'pct.sh'

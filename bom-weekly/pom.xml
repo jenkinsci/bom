@@ -13,7 +13,7 @@
         <configuration-as-code-plugin.version>1512.vb_79d418d5fc8</configuration-as-code-plugin.version>
         <data-tables-api.version>1.12.1-2</data-tables-api.version>
         <forensics-api.version>1.15.1</forensics-api.version>
-        <git-plugin.version>4.11.3</git-plugin.version>
+        <git-plugin.version>4.11.4</git-plugin.version>
         <mina-sshd-api.version>2.8.0-36.v8e25ce90d4b_1</mina-sshd-api.version>
         <pipeline-model-definition-plugin.version>2.2114.v2654ca_721309</pipeline-model-definition-plugin.version>
         <pipeline-stage-view-plugin.version>2.24</pipeline-stage-view-plugin.version>
@@ -212,8 +212,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>theme-manager</artifactId>
-                <!-- TODO https://github.com/jenkinsci/theme-manager-plugin/pull/109 -->
-                <version>1.5-rc129.781a_4080c3a_a</version>
+                <version>1.4</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins.mina-sshd-api</groupId>
@@ -369,7 +368,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>jdk-tool</artifactId>
-                <version>1.5</version>
+                <version>55.v1b_32b_6ca_f9ca</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -399,8 +398,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>mapdb-api</artifactId>
-                <!-- TODO https://github.com/jenkinsci/mapdb-api-plugin/pull/5 -->
-                <version>1.0.9.1-rc19.4796b_d689b_15</version>
+                <version>1.0.9-28.vf251ce40855d</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -450,7 +448,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>plain-credentials</artifactId>
-                <version>1.8</version>
+                <version>139.ved2b_9cf7587b</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
