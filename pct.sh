@@ -91,6 +91,7 @@ fi
 MAVEN_PROPERTIES+=:enforcer.skip=true
 
 java \
+	-Xmx256m \
 	-jar pct.jar \
 	-war "$(pwd)/megawar.war" \
 	-includePlugins "${PLUGINS}" \
