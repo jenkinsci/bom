@@ -103,26 +103,39 @@ java \
 	-skipTestCache true
 
 if grep -q -F -e '<status>INTERNAL_ERROR</status>' pct-report.xml; then
-	echo PCT failed
+	echo 'PCT failed with internal error' >&2
+	cat pct-report.xml
+	exit 1
+elif grep -q -F -e '<status>COMPILATION_ERROR</status>' pct-report.xml; then
+	echo 'PCT failed with compilation error' >&2
 	cat pct-report.xml
 	exit 1
 elif grep -q -F -e '<status>TEST_FAILURES</status>' pct-report.xml; then
-	echo PCT marked failed, checking to see if that is due to a failure to run tests at all
+	#
+	# Previous versions of PCT claimed that there were test failures even when no tests had been
+	# run at all. While it is possible that current versions of PCT no longer exhibit this
+	# pathology, we err on the side of caution and check anyway.
+	#
+	echo 'PCT marked failed, checking to see if that is due to a failure to run tests at all' >&2
+
+	#
+	# If InjectedTest was compiled but not executed, we assume no tests ran at all. This
+	# assumption is valid except in the case of a multi-module Maven project that contains a
+	# plugin with a dependency on another plugin in the same multi-module Maven project, in
+	# which case PCT will compile both the dependent and its dependency but only execute tests
+	# for the dependent.
+	#
+	# An example of a case where this assumption is invalid is Pipeline: Declarative Extension
+	# Points API, which depends on Pipeline: Model API, both of which are in the same
+	# multi-module Maven project. When PCT runs the tests for the former, it ends up compiling
+	# the latter, which confuses the logic below that attempts to detect when tests were
+	# compiled but not run. Since in practice Pipeline: Declarative Extension Points API is the
+	# only plugin affected by this issue, we work around the issue by deleting the relevant
+	# class rather than making the detection logic more complex.
+	#
+	[[ $PLUGINS == pipeline-model-extensions ]] && rm -fv pct-work/pipeline-model-definition/pipeline-model-api/target/test-classes/InjectedTest.class
 	for t in pct-work/*/{,*/}target; do
-		check=false
-		levels=$(echo "$t" | tr / '\n' | wc -l)
-		short_name=$(echo "$t" | tr / '\n' | grep -v ^target$ | tail -1)
-		if [[ $levels -lt 4 ]]; then
-			# Single-module project or root module of multi-module
-			# project: always check.
-			check=true
-		elif [[ $PLUGINS =~ $short_name ]]; then
-			# Submodule of multi-module project: only check if the
-			# directory name of the submodule is a substring of the
-			# list of plugins we are testing.
-			check=true
-		fi
-		if $check && [[ -f "${t}/test-classes/InjectedTest.class" ]] && [[ ! -f "${t}/surefire-reports/TEST-InjectedTest.xml" ]] && [[ ! -f "${t}/failsafe-reports/TEST-InjectedTest.xml" ]]; then
+		if [[ -f "${t}/test-classes/InjectedTest.class" ]] && [[ ! -f "${t}/surefire-reports/TEST-InjectedTest.xml" ]] && [[ ! -f "${t}/failsafe-reports/TEST-InjectedTest.xml" ]]; then
 			mkdir -p "${t}/surefire-reports"
 			cat >"${t}/surefire-reports/TEST-pct.xml" <<-'EOF'
 				<testsuite name="pct">
