@@ -50,6 +50,7 @@ stage('prep') {
 branches = [failFast: failFast]
 lines.each {line ->
     plugins.each { plugin ->
+      if (plugin == 'pipeline-model-definition') {
         branches["pct-$plugin-$line"] = {
             def jdk = line == 'weekly' ? 17 : 11
             mavenEnv(jdk: jdk) {
@@ -63,6 +64,7 @@ lines.each {line ->
                 }
             }
         }
+      }
     }
 }
 parallel branches
