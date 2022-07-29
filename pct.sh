@@ -131,7 +131,7 @@ elif grep -q -F -e '<status>COMPILATION_ERROR</status>' pct-report.xml; then
 elif grep -q -F -e '<status>TEST_FAILURES</status>' pct-report.xml; then
 	#
 	# Previous versions of PCT claimed that there were test failures even when no tests had been
-	# run at all. While we believe that current versions of PCT no longer present this
+	# run at all. While it is possible that current versions of PCT no longer present this
 	# pathology, we err on the side of caution and check anyway.
 	#
 	echo 'PCT marked failed, checking to see if that is due to a failure to run tests at all' >&2
