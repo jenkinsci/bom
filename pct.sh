@@ -111,6 +111,11 @@ elif grep -q -F -e '<status>COMPILATION_ERROR</status>' pct-report.xml; then
 	cat pct-report.xml
 	exit 1
 elif grep -q -F -e '<status>TEST_FAILURES</status>' pct-report.xml; then
+	#
+	# Previous versions of PCT claimed that there were test failures even when no tests had been
+	# run at all. While we believe that current versions of PCT no longer present this
+	# pathology, we err on the side of caution and check anyway.
+	#
 	echo 'PCT marked failed, checking to see if that is due to a failure to run tests at all' >&2
 
 	#
@@ -118,12 +123,19 @@ elif grep -q -F -e '<status>TEST_FAILURES</status>' pct-report.xml; then
 	# the same repository. When PCT runs the tests for the latter, it ends up compiling the
 	# former, which confuses the logic below that attempts to detect when tests were compiled
 	# but not executed. While this is potentially an issue for any plugin-to-plugin dependency
-	# where both plugins are in a Maven multi-module project tested by PCT, in practice it only
+	# where both plugins are in a multi-module Maven project tested by PCT, in practice it only
 	# affects Pipeline: Declarative Extension Points API, so rather than making the detection
 	# logic more complex we simply work around the issue by deleting the relevant class.
 	#
 	[[ $PLUGINS == pipeline-model-extensions ]] && rm -fv pct-work/pipeline-model-definition/pipeline-model-api/target/test-classes/InjectedTest.class
 
+	#
+	# If InjectedTest was compiled but not executed, we assume no tests ran at all. This
+	# assumption is valid except in the case of a multi-module Maven project that contains a
+	# plugin with a dependency on another plugin in the same multi-module Maven project, in
+	# which case PCT will compile both the dependent and its dependency but only execute tests
+	# for the dependent.
+	#
 	for t in pct-work/*/{,*/}target; do
 		if [[ -f "${t}/test-classes/InjectedTest.class" ]] && [[ ! -f "${t}/surefire-reports/TEST-InjectedTest.xml" ]] && [[ ! -f "${t}/failsafe-reports/TEST-InjectedTest.xml" ]]; then
 			mkdir -p "${t}/surefire-reports"
