@@ -81,6 +81,24 @@ if [[ $PLUGINS =~ jsch ]] || [[ $PLUGINS =~ okhttp-api ]]; then
 fi
 
 #
+# The Subversion and Git plugins both define a descriptor with the "phabricator" symbol, causing
+# duplicate symbol errors with JCasC. As a temporary workaround, we exclude the Subversion plugin
+# from the dependency tree when running the Git plugin's test suite.
+#
+# TODO When jenkinsci/subversion-plugin#273 is merged and released, and when this repository has
+# adopted that release, this can be deleted.
+#
+if [[ $PLUGINS == git ]]; then
+	mkdir pct-work
+	pushd pct-work
+	jar xf ../megawar.war
+	rm -fv WEB-INF/plugins/subversion.hpi
+	jar c0Mf ../megawar.war *
+	popd
+	rm -rf pct-work
+fi
+
+#
 # Testing plugins against a version of Jenkins that requires Java 11 exposes
 # jenkinsci/plugin-pom#563. This was fixed in plugin parent POM 4.42, but many plugins under test
 # still use an older plugin parent POM. As a temporary workaround, we skip Enforcer.
