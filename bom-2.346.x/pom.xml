@@ -48,6 +48,11 @@
                 <version>1.821.vd834f8a_c390e</version>
             </dependency>
             <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>trilead-api</artifactId>
+                <version>1.67.vc3938a_35172f</version>
+            </dependency>
+            <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-job</artifactId>
                 <version>1207.ve6191ff089f8</version>
