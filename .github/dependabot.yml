@@ -16,6 +16,11 @@ updates:
       - "jglick"
     schedule:
       interval: "daily"
+    ignore:
+      # TODO https://github.com/jenkinsci/bom/pull/1374#issuecomment-1205302760 pending new version
+      - dependency-name: trilead-api
+        versions:
+          - 1.71.v9e7860a_67a_df
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
