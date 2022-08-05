@@ -111,12 +111,12 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-cps</artifactId>
-                <version>2660.vb_c0412dc4e6d</version>
+                <version>2660.2664.v4c114e93f4c1</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-cps</artifactId>
-                <version>2660.vb_c0412dc4e6d</version>
+                <version>2660.2664.v4c114e93f4c1</version>
                 <classifier>tests</classifier>
             </dependency>
             <dependency>
