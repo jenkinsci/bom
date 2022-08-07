@@ -40,7 +40,7 @@ MAVEN_PROPERTIES+=":jenkins.version=${JENKINS_VERSION}:overrideWar=$(pwd)/megawa
 # TODO When all plugins in the managed set are using a plugin parent POM with HPI Plugin 3.29 or
 # later (i.e., plugin parent POM 4.44 or later), this can be deleted.
 #
-MAVEN_PROPERTIES+=:hpi-plugin.version=3.31
+MAVEN_PROPERTIES+=:hpi-plugin.version=3.32
 
 #
 # Define the excludes for upper bounds checking. We define these excludes in a separate file and
@@ -64,20 +64,6 @@ else
 	# removal of this trick.
 	#
 	echo upperBoundsExcludes=javax.servlet:servlet-api >maven.properties
-fi
-
-#
-# JSch uses an older plugin parent POM and therefore an older test harness that predates
-# compatibility with the removal of JNR in recent cores in jenkinsci/jenkins-test-harness#350. As a
-# temporary workaround, we override the test harness to a recent version. Note that we cannot use a
-# test harness newer than 1812.v6d4e97d91fd8, because later releases of the test harness require
-# changes to the plugin parent POM for JUnit 5 support.
-#
-# TODO When this plugin is using a plugin parent POM with test harness 1657.vf8a824e79147 or later
-# (i.e., plugin parent POM 4.32 or later), this can be deleted.
-#
-if [[ $PLUGINS =~ jsch ]]; then
-	MAVEN_PROPERTIES+=:jenkins-test-harness.version=1812.v6d4e97d91fd8
 fi
 
 #
