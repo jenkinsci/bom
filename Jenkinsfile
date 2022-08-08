@@ -50,6 +50,9 @@ stage('prep') {
 branches = [failFast: failFast]
 lines.each {line ->
     plugins.each { plugin ->
+        if (plugin != 'analysis-model-api' && plugin != 'prism-api' && plugin != 'warnings-ng') {
+            return
+        }
         branches["pct-$plugin-$line"] = {
             def jdk = line == 'weekly' ? 17 : 11
             mavenEnv(jdk: jdk) {
