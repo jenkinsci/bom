@@ -86,6 +86,7 @@ java \
 	-mavenProperties "${MAVEN_PROPERTIES}" \
 	-excludeHooks org.jenkins.tools.test.hook.TransformPom \
 	-mavenPropertiesFile "$(pwd)/maven.properties" \
+	-mavenOptions -Pconsume-incrementals \
 	-skipTestCache true
 
 if grep -q -F -e '<status>INTERNAL_ERROR</status>' pct-report.xml; then
