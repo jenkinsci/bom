@@ -423,8 +423,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>pam-auth</artifactId>
-                <!-- TODO https://github.com/jenkinsci/pam-auth-plugin/pull/24 -->
-                <version>1.9-rc143.151168c992b2</version>
+                <version>1.10</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
