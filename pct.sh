@@ -19,7 +19,7 @@ fi
 
 #
 # Grab the Jenkins version from the WAR file so that we can pass it in via jenkins.version. This is
-# needed because HPI Plugin requires the version of the WAR passed in via overrideWar to be
+# needed because HPI Plugin requires the version of the WAR passed in via jth.jenkins-war.path to be
 # identical to jenkins.version. If we do not explicitly pass in jenkins.version, then the
 # jenkins.version defined in the plugin's pom.xml file will be used, which may not match the version
 # of the WAR under test.
@@ -30,17 +30,18 @@ jar xf ../megawar.war META-INF/MANIFEST.MF
 JENKINS_VERSION=$(perl -w -p -0777 -e 's/\r?\n //g' META-INF/MANIFEST.MF | grep Jenkins-Version | awk '{print $2}')
 popd
 rm -rf pct-work
-MAVEN_PROPERTIES+=":jenkins.version=${JENKINS_VERSION}:overrideWar=$(pwd)/megawar.war:useUpperBounds=true"
+MAVEN_PROPERTIES+=":jenkins.version=${JENKINS_VERSION}:useUpperBounds=true"
 
 #
-# The overrideWar option is available in HPI Plugin 3.29 or later, but many plugins under test
+# The override WAR behavior is available in HPI Plugin 3.29 or later, but many plugins under test
 # still use an older plugin parent POM and therefore an older HPI plugin version. As a temporary
 # workaround, we override the HPI plugin version to the latest version.
 #
 # TODO When all plugins in the managed set are using a plugin parent POM with HPI Plugin 3.29 or
 # later (i.e., plugin parent POM 4.44 or later), this can be deleted.
 #
-MAVEN_PROPERTIES+=:hpi-plugin.version=3.32
+# TODO https://github.com/jenkinsci/maven-hpi-plugin/pull/375
+MAVEN_PROPERTIES+=:hpi-plugin.version=3.33-rc1301.65901e7f1d81
 
 #
 # Define the excludes for upper bounds checking. We define these excludes in a separate file and
@@ -86,6 +87,7 @@ java \
 	-mavenProperties "${MAVEN_PROPERTIES}" \
 	-excludeHooks org.jenkins.tools.test.hook.TransformPom \
 	-mavenPropertiesFile "$(pwd)/maven.properties" \
+	-mavenOptions -Pconsume-incrementals \
 	-skipTestCache true
 
 if grep -q -F -e '<status>INTERNAL_ERROR</status>' pct-report.xml; then
