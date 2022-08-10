@@ -9,7 +9,8 @@
     <artifactId>bom-weekly</artifactId>
     <packaging>pom</packaging>
     <properties>
-        <checks-api.version>1.7.4</checks-api.version>
+        <!-- TODO https://github.com/jenkinsci/checks-api-plugin/pull/182 -->
+        <checks-api.version>1.7.5-rc275.e476793c30c0</checks-api.version>
         <configuration-as-code-plugin.version>1512.vb_79d418d5fc8</configuration-as-code-plugin.version>
         <data-tables-api.version>1.12.1-2</data-tables-api.version>
         <forensics-api.version>1.15.1</forensics-api.version>
