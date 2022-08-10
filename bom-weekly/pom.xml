@@ -389,7 +389,8 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>junit</artifactId>
-                <version>1119.1121.vc43d0fc45561</version>
+                <!-- TODO https://github.com/jenkinsci/junit-plugin/pull/418 -->
+                <version>1134.va_df33f3b_c656</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
