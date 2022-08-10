@@ -40,7 +40,8 @@ MAVEN_PROPERTIES+=":jenkins.version=${JENKINS_VERSION}:overrideWar=$(pwd)/megawa
 # TODO When all plugins in the managed set are using a plugin parent POM with HPI Plugin 3.29 or
 # later (i.e., plugin parent POM 4.44 or later), this can be deleted.
 #
-MAVEN_PROPERTIES+=:hpi-plugin.version=3.32
+# TODO https://github.com/jenkinsci/maven-hpi-plugin/pull/377
+MAVEN_PROPERTIES+=:hpi-plugin.version=3.33-rc1299.ff356b_1150c1
 
 #
 # Define the excludes for upper bounds checking. We define these excludes in a separate file and
@@ -86,6 +87,7 @@ java \
 	-mavenProperties "${MAVEN_PROPERTIES}" \
 	-excludeHooks org.jenkins.tools.test.hook.TransformPom \
 	-mavenPropertiesFile "$(pwd)/maven.properties" \
+	-mavenOptions -Pconsume-incrementals \
 	-skipTestCache true
 
 if grep -q -F -e '<status>INTERNAL_ERROR</status>' pct-report.xml; then
