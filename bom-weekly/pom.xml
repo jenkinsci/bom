@@ -17,7 +17,7 @@
         <mina-sshd-api.version>2.8.0-36.v8e25ce90d4b_1</mina-sshd-api.version>
         <pipeline-model-definition-plugin.version>2.2114.v2654ca_721309</pipeline-model-definition-plugin.version>
         <pipeline-stage-view-plugin.version>2.24</pipeline-stage-view-plugin.version>
-        <plugin-util-api.version>2.16.0</plugin-util-api.version>
+        <plugin-util-api.version>2.17.0</plugin-util-api.version>
         <scm-api-plugin.version>621.vda_a_b_055e58f7</scm-api-plugin.version>
         <subversion-plugin.version>2.16.0</subversion-plugin.version>
         <workflow-api-plugin.version>1188.v0016b_4f29881</workflow-api-plugin.version>
