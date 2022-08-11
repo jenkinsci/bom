@@ -287,8 +287,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>copyartifact</artifactId>
-                <!-- TODO https://github.com/jenkinsci/copyartifact-plugin/pull/150 -->
-                <version>1.47-rc654.75b_e8a_2a_53e1</version>
+                <version>1.46.4</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
