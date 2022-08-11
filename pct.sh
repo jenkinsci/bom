@@ -30,7 +30,7 @@ jar xf ../megawar.war META-INF/MANIFEST.MF
 JENKINS_VERSION=$(perl -w -p -0777 -e 's/\r?\n //g' META-INF/MANIFEST.MF | grep Jenkins-Version | awk '{print $2}')
 popd
 rm -rf pct-work
-MAVEN_PROPERTIES+=":jenkins.version=${JENKINS_VERSION}:overrideWar=$(pwd)/megawar.war:useUpperBounds=true"
+MAVEN_PROPERTIES+=":jenkins.version=${JENKINS_VERSION}:overrideWar=$(pwd)/megawar.war:overrideWarAdditions=true:useUpperBounds=true"
 
 #
 # The overrideWar option is available in HPI Plugin 3.29 or later, but many plugins under test
@@ -40,7 +40,7 @@ MAVEN_PROPERTIES+=":jenkins.version=${JENKINS_VERSION}:overrideWar=$(pwd)/megawa
 # TODO When all plugins in the managed set are using a plugin parent POM with HPI Plugin 3.29 or
 # later (i.e., plugin parent POM 4.44 or later), this can be deleted.
 #
-MAVEN_PROPERTIES+=:hpi-plugin.version=3.32
+MAVEN_PROPERTIES+=:hpi-plugin.version=3.33
 
 #
 # Define the excludes for upper bounds checking. We define these excludes in a separate file and
