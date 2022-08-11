@@ -18,7 +18,7 @@
         <pipeline-model-definition-plugin.version>2.2114.v2654ca_721309</pipeline-model-definition-plugin.version>
         <pipeline-stage-view-plugin.version>2.24</pipeline-stage-view-plugin.version>
         <plugin-util-api.version>2.16.0</plugin-util-api.version>
-        <scm-api-plugin.version>620.v0a_5b_1f8054c0</scm-api-plugin.version>
+        <scm-api-plugin.version>621.vda_a_b_055e58f7</scm-api-plugin.version>
         <subversion-plugin.version>2.16.0</subversion-plugin.version>
         <workflow-api-plugin.version>1188.v0016b_4f29881</workflow-api-plugin.version>
         <workflow-cps-plugin.version>2759.v87459c4eea_ca_</workflow-cps-plugin.version>
@@ -322,7 +322,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>durable-task</artifactId>
-                <version>496.va67c6f9eefa7</version>
+                <version>500.v8927d9fd99d8</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -387,6 +387,11 @@
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>javadoc</artifactId>
+                <version>226.v71211feb_e7e9</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>jdk-tool</artifactId>
                 <version>55.v1b_32b_6ca_f9ca</version>
             </dependency>
@@ -434,6 +439,11 @@
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>metrics</artifactId>
                 <version>4.2.10-389.v93143621b_050</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>pam-auth</artifactId>
+                <version>1.10</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
