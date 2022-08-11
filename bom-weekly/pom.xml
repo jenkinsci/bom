@@ -9,8 +9,7 @@
     <artifactId>bom-weekly</artifactId>
     <packaging>pom</packaging>
     <properties>
-        <!-- TODO https://github.com/jenkinsci/checks-api-plugin/pull/182 -->
-        <checks-api.version>1.7.5-rc275.e476793c30c0</checks-api.version>
+        <checks-api.version>1.7.5</checks-api.version>
         <configuration-as-code-plugin.version>1512.vb_79d418d5fc8</configuration-as-code-plugin.version>
         <data-tables-api.version>1.12.1-2</data-tables-api.version>
         <forensics-api.version>1.15.1</forensics-api.version>
@@ -18,7 +17,7 @@
         <mina-sshd-api.version>2.8.0-36.v8e25ce90d4b_1</mina-sshd-api.version>
         <pipeline-model-definition-plugin.version>2.2114.v2654ca_721309</pipeline-model-definition-plugin.version>
         <pipeline-stage-view-plugin.version>2.24</pipeline-stage-view-plugin.version>
-        <plugin-util-api.version>2.16.0</plugin-util-api.version>
+        <plugin-util-api.version>2.17.0</plugin-util-api.version>
         <scm-api-plugin.version>621.vda_a_b_055e58f7</scm-api-plugin.version>
         <subversion-plugin.version>2.16.0</subversion-plugin.version>
         <workflow-api-plugin.version>1188.v0016b_4f29881</workflow-api-plugin.version>
@@ -314,7 +313,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>durable-task</artifactId>
-                <version>496.va67c6f9eefa7</version>
+                <version>500.v8927d9fd99d8</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -395,8 +394,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>junit</artifactId>
-                <!-- TODO https://github.com/jenkinsci/junit-plugin/pull/418 -->
-                <version>1134.va_df33f3b_c656</version>
+                <version>1119.1121.vc43d0fc45561</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
