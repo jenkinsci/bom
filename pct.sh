@@ -37,8 +37,8 @@ MAVEN_PROPERTIES+=":jenkins.version=${JENKINS_VERSION}:overrideWar=$(pwd)/megawa
 # still use an older plugin parent POM and therefore an older HPI plugin version. As a temporary
 # workaround, we override the HPI plugin version to the latest version.
 #
-# TODO When all plugins in the managed set are using a plugin parent POM with HPI Plugin 3.29 or
-# later (i.e., plugin parent POM 4.44 or later), this can be deleted.
+# TODO When all plugins in the managed set are using a plugin parent POM with HPI Plugin 3.34 or
+# later (i.e., plugin parent POM TBD or later), this can be deleted.
 #
 MAVEN_PROPERTIES+=:hpi-plugin.version=3.34
 
