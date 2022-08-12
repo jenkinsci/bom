@@ -55,6 +55,9 @@ lines.each {line ->
         }
         branches["pct-$plugin-$line"] = {
             def jdk = line == 'weekly' ? 17 : 11
+            if (plugin == 'copyartifact') {
+                jdk = 11 // https://github.com/jenkinsci/copyartifact-plugin/pull/150
+            }
             mavenEnv(jdk: jdk) {
                 deleteDir()
                 unstash 'pct.sh'
