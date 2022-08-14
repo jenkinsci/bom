@@ -30,7 +30,7 @@ jar xf ../megawar.war META-INF/MANIFEST.MF
 JENKINS_VERSION=$(perl -w -p -0777 -e 's/\r?\n //g' META-INF/MANIFEST.MF | grep Jenkins-Version | awk '{print $2}')
 popd
 rm -rf pct-work
-MAVEN_PROPERTIES+=":jenkins.version=${JENKINS_VERSION}:overrideWar=$(pwd)/megawar.war:useUpperBounds=true"
+MAVEN_PROPERTIES+=":jenkins.version=${JENKINS_VERSION}:overrideWar=$(pwd)/megawar.war:overrideWarAdditions=true:useUpperBounds=true"
 
 #
 # The overrideWar option is available in HPI Plugin 3.29 or later, but many plugins under test
@@ -41,7 +41,7 @@ MAVEN_PROPERTIES+=":jenkins.version=${JENKINS_VERSION}:overrideWar=$(pwd)/megawa
 # later (i.e., plugin parent POM 4.44 or later), this can be deleted.
 #
 # TODO https://github.com/jenkinsci/maven-hpi-plugin/pull/377
-MAVEN_PROPERTIES+=:hpi-plugin.version=3.33-rc1299.ff356b_1150c1
+MAVEN_PROPERTIES+=:hpi-plugin.version=3.35-rc1310.e74fd9188b_93
 
 #
 # Define the excludes for upper bounds checking. We define these excludes in a separate file and
@@ -65,6 +65,19 @@ else
 	# removal of this trick.
 	#
 	echo upperBoundsExcludes=javax.servlet:servlet-api >maven.properties
+fi
+
+#
+# Copy Artifact uses an older plugin parent POM and therefore an older HtmlUnit that predates
+# compatibility with recent frontend changes. As a temporary workaround, we override the test
+# harness to a recent version. Note that we cannot use a test harness newer than 1751.v11e83a_ecfe14,
+# because later releases of the test harness enforce invariants in properties files that this
+# plugin does not currently satisfy.
+#
+# TODO When this plugin is using a recent plugin parent POM, this can be deleted.
+#
+if [[ $PLUGINS == copyartifact ]]; then
+	MAVEN_PROPERTIES+=:jenkins-test-harness.version=1751.v11e83a_ecfe14
 fi
 
 #
