@@ -301,6 +301,11 @@
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>custom-folder-icon</artifactId>
+                <version>2.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>dashboard-view</artifactId>
                 <version>2.447.vda_124dd35f11</version>
             </dependency>
