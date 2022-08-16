@@ -83,6 +83,11 @@
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
+                <artifactId>custom-folder-icon</artifactId>
+                <version>2.0</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jenkins.plugins</groupId>
                 <artifactId>dark-theme</artifactId>
                 <version>185.v276b_5a_8966a_e</version>
             </dependency>
@@ -298,11 +303,6 @@
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>credentials-binding</artifactId>
                 <version>523.vd859a_4b_122e6</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkins-ci.plugins</groupId>
-                <artifactId>custom-folder-icon</artifactId>
-                <version>2.0</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
