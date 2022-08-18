@@ -67,19 +67,6 @@ else
 fi
 
 #
-# Copy Artifact uses an older plugin parent POM and therefore an older HtmlUnit that predates
-# compatibility with recent frontend changes. As a temporary workaround, we override the test
-# harness to a recent version. Note that we cannot use a test harness newer than 1751.v11e83a_ecfe14,
-# because later releases of the test harness enforce invariants in properties files that this
-# plugin does not currently satisfy.
-#
-# TODO When this plugin is using a recent plugin parent POM, this can be deleted.
-#
-if [[ $PLUGINS == copyartifact ]]; then
-	MAVEN_PROPERTIES+=:jenkins-test-harness.version=1751.v11e83a_ecfe14
-fi
-
-#
 # Testing plugins against a version of Jenkins that requires Java 11 exposes
 # jenkinsci/plugin-pom#563. This was fixed in plugin parent POM 4.42, but many plugins under test
 # still use an older plugin parent POM. As a temporary workaround, we skip Enforcer.
