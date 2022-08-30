@@ -297,7 +297,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>credentials</artifactId>
-                <version>1139.veb_9579fca_33b_</version>
+                <version>1143.vb_e8b_b_ceee347</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
