@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.jenkins-ci</groupId>
         <artifactId>jenkins</artifactId>
-        <version>1.70</version>
+        <version>1.85</version>
         <relativePath />
     </parent>
     <groupId>io.jenkins.tools.bom</groupId>
@@ -34,7 +34,6 @@
     </scm>
     <properties>
         <changelist>999999-SNAPSHOT</changelist>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <gitHubRepo>jenkinsci/bom</gitHubRepo>
     </properties>
     <repositories>
