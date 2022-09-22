@@ -217,7 +217,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>snakeyaml-api</artifactId>
-                <version>1.30.2-76.vc104f7ce9870</version>
+                <version>1.32-86.ve3f030a_75631</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
