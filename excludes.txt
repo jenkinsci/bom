@@ -14,13 +14,7 @@ org.jenkinsci.plugins.gitclient.FilePermissionsTest
 org.jenkinsci.plugins.pipeline.modeldefinition.TriggersTest
 
 # TODO https://github.com/jenkinsci/git-client-plugin/pull/920
-org.jenkinsci.plugins.gitclient.CliGitAPIImplTest#test_submodule_update_shallow
-org.jenkinsci.plugins.gitclient.CliGitAPIImplTest#test_submodule_update_shallow_with_depth
-org.jenkinsci.plugins.gitclient.CliGitAPIImplTest#test_trackingSubmodule
-org.jenkinsci.plugins.gitclient.CliGitAPIImplTest#test_trackingSubmoduleBranches
-org.jenkinsci.plugins.gitclient.GitClientTest#testSubmoduleUrlEndsWithDotUrl[git]
-org.jenkinsci.plugins.gitclient.GitClientTest#testSubmodulesUsedFromOtherBranches[git]
-org.jenkinsci.plugins.gitclient.JGitAPIImplTest#test_submodule_update_shallow
-org.jenkinsci.plugins.gitclient.JGitAPIImplTest#test_submodule_update_shallow_with_depth
-org.jenkinsci.plugins.gitclient.JGitApacheAPIImplTest#test_submodule_update_shallow
-org.jenkinsci.plugins.gitclient.JGitApacheAPIImplTest#test_submodule_update_shallow_with_depth
+org.jenkinsci.plugins.gitclient.CliGitAPIImplTest
+org.jenkinsci.plugins.gitclient.GitClientTest
+org.jenkinsci.plugins.gitclient.JGitAPIImplTest
+org.jenkinsci.plugins.gitclient.JGitApacheAPIImplTest
