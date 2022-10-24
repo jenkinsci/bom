@@ -14,15 +14,15 @@
         <data-tables-api.version>1.12.1-3</data-tables-api.version>
         <forensics-api.version>1.15.1</forensics-api.version>
         <git-plugin.version>4.11.5</git-plugin.version>
-        <mina-sshd-api.version>2.8.0-36.v8e25ce90d4b_1</mina-sshd-api.version>
+        <mina-sshd-api.version>2.9.1-44.v476733c11f82</mina-sshd-api.version>
         <pipeline-model-definition-plugin.version>2.2114.v2654ca_721309</pipeline-model-definition-plugin.version>
         <pipeline-stage-view-plugin.version>2.24</pipeline-stage-view-plugin.version>
         <plugin-util-api.version>2.17.0</plugin-util-api.version>
         <scm-api-plugin.version>621.vda_a_b_055e58f7</scm-api-plugin.version>
         <subversion-plugin.version>2.16.0</subversion-plugin.version>
-        <workflow-api-plugin.version>1192.v2d0deb_19d212</workflow-api-plugin.version>
+        <workflow-api-plugin.version>1200.v8005c684b_a_c6</workflow-api-plugin.version>
         <workflow-cps-plugin.version>2759.v87459c4eea_ca_</workflow-cps-plugin.version>
-        <workflow-job-plugin.version>1232.v5a_4c994312f1</workflow-job-plugin.version>
+        <workflow-job-plugin.version>1236.vc3a_d1602f439</workflow-job-plugin.version>
         <workflow-multibranch-plugin.version>716.vc692a_e52371b_</workflow-multibranch-plugin.version>
         <workflow-step-api-plugin.version>639.v6eca_cd8c04a_a_</workflow-step-api-plugin.version>
         <workflow-support-plugin.version>838.va_3a_087b_4055b</workflow-support-plugin.version>
@@ -79,12 +79,12 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>commons-text-api</artifactId>
-                <version>1.9-19.v8df45c678366</version>
+                <version>1.10.0-27.vb_fa_3896786a_7</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>custom-folder-icon</artifactId>
-                <version>2.1</version>
+                <version>2.2</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -136,7 +136,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>gitlab-branch-source</artifactId>
-                <version>636.v55fd8144d335</version>
+                <version>640.v7101b_1c0def9</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -166,7 +166,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>jersey2-api</artifactId>
-                <version>2.36-2</version>
+                <version>2.37-1</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -181,7 +181,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>jquery3-api</artifactId>
-                <version>3.6.0-4</version>
+                <version>3.6.1-1</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -252,7 +252,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>ant</artifactId>
-                <version>475.vf34069fef73c</version>
+                <version>481.v7b_09e538fcca</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -282,7 +282,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>command-launcher</artifactId>
-                <version>84.v4a_97f2027398</version>
+                <version>90.v669d7ccb_7c31</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -368,7 +368,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>htmlpublisher</artifactId>
-                <version>1.30</version>
+                <version>1.31</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -453,7 +453,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>pipeline-input-step</artifactId>
-                <version>449.v77f0e8b_845c4</version>
+                <version>451.vf1a_a_4f405289</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -499,12 +499,12 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>script-security</artifactId>
-                <version>1175.v4b_d517d6db_f0</version>
+                <version>1183.v774b_0b_0a_a_451</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>slack</artifactId>
-                <version>616.v03b_1e98d13dd</version>
+                <version>625.va_eeb_b_168ffb_0</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -519,7 +519,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>ssh-slaves</artifactId>
-                <version>1.834.v622da_57f702c</version>
+                <version>2.846.v1b_70190624f5</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -555,7 +555,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>timestamper</artifactId>
-                <version>1.19</version>
+                <version>1.20</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -622,7 +622,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-durable-task-step</artifactId>
-                <version>1199.v02b_9244f8064</version>
+                <version>1206.v8a_d5f86e336b</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>

@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
-        <version>4.47</version>
+        <version>4.48</version>
         <relativePath />
     </parent>
     <groupId>io.jenkins.tools.bom</groupId>
@@ -14,7 +14,7 @@
     <properties>
         <changelist>999999-SNAPSHOT</changelist>
         <bom>weekly</bom>
-        <jenkins.version>2.366</jenkins.version>
+        <jenkins.version>2.371</jenkins.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -29,7 +29,7 @@
             <dependency>
                 <groupId>joda-time</groupId>
                 <artifactId>joda-time</artifactId>
-                <version>2.11.1</version>
+                <version>2.11.2</version>
             </dependency>
             <!-- Require upper bound dependencies error between jenkins-test-harness and pipeline-model-definition -->
             <dependency>
@@ -570,7 +570,7 @@
             <id>2.361.x</id>
             <properties>
                 <bom>2.361.x</bom>
-                <jenkins.version>2.361</jenkins.version>
+                <jenkins.version>2.361.1</jenkins.version>
             </properties>
         </profile>
         <profile>
