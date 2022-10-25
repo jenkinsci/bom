@@ -126,10 +126,6 @@
         </dependency>
         <dependency>
             <groupId>io.jenkins.plugins</groupId>
-            <artifactId>ionicons-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.jenkins.plugins</groupId>
             <artifactId>jakarta-activation-api</artifactId>
             <scope>test</scope>
         </dependency>
