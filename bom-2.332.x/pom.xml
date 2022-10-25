@@ -71,6 +71,11 @@
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
+                <artifactId>pipeline-groovy-lib</artifactId>
+                <version>612.v84da_9c54906d</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jenkins.plugins</groupId>
                 <artifactId>plugin-util-api</artifactId>
                 <version>2.17.0</version>
             </dependency>
