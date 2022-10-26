@@ -71,6 +71,11 @@
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
+                <artifactId>pipeline-groovy-lib</artifactId>
+                <version>612.v84da_9c54906d</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jenkins.plugins</groupId>
                 <artifactId>plugin-util-api</artifactId>
                 <version>2.17.0</version>
             </dependency>
@@ -114,6 +119,11 @@
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>pipeline-stage-step</artifactId>
                 <version>293.v200037eefcd5</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>script-security</artifactId>
+                <version>1183.v774b_0b_0a_a_451</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
