@@ -89,7 +89,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>dark-theme</artifactId>
-                <version>245.vb_a_2b_b_010ea_96</version>
+                <version>255.v364936264de8</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -151,7 +151,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>jakarta-mail-api</artifactId>
-                <version>2.0.1-1</version>
+                <version>2.0.1-2</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -186,7 +186,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>jquery3-api</artifactId>
-                <version>3.6.1-1</version>
+                <version>3.6.1-2</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -327,7 +327,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>email-ext</artifactId>
-                <version>2.91</version>
+                <version>2.92</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -383,7 +383,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>jackson2-api</artifactId>
-                <version>2.13.3-285.vc03c0256d517</version>
+                <version>2.13.4.20221013-295.v8e29ea_354141</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -524,7 +524,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>ssh-slaves</artifactId>
-                <version>2.846.v1b_70190624f5</version>
+                <version>2.854.v7fd446b_337c9</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
