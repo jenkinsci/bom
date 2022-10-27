@@ -84,6 +84,11 @@
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>pipeline-input-step</artifactId>
+                <version>451.vf1a_a_4f405289</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>saml</artifactId>
                 <version>2.298.vc7a_2b_3958628</version>
             </dependency>
