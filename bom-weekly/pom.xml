@@ -9,7 +9,7 @@
     <artifactId>bom-weekly</artifactId>
     <packaging>pom</packaging>
     <properties>
-        <checks-api.version>1.7.5</checks-api.version>
+        <checks-api.version>1.8.0</checks-api.version>
         <configuration-as-code-plugin.version>1559.v38a_b_2e3b_6b_b_7</configuration-as-code-plugin.version>
         <data-tables-api.version>1.12.1-4</data-tables-api.version>
         <forensics-api.version>1.15.1</forensics-api.version>
