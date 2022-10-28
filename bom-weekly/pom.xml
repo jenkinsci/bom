@@ -156,12 +156,12 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>javax-activation-api</artifactId>
-                <version>1.2.0-4</version>
+                <version>1.2.0-5</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>javax-mail-api</artifactId>
-                <version>1.6.2-7</version>
+                <version>1.6.2-8</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -363,7 +363,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>gitlab-plugin</artifactId>
-                <version>1.5.35</version>
+                <version>1.5.36</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
