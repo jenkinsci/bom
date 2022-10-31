@@ -13,7 +13,7 @@
         <configuration-as-code-plugin.version>1559.v38a_b_2e3b_6b_b_7</configuration-as-code-plugin.version>
         <data-tables-api.version>1.12.1-4</data-tables-api.version>
         <forensics-api.version>1.15.1</forensics-api.version>
-        <git-plugin.version>4.11.5</git-plugin.version>
+        <git-plugin.version>4.13.0</git-plugin.version>
         <mina-sshd-api.version>2.9.1-44.v476733c11f82</mina-sshd-api.version>
         <pipeline-model-definition-plugin.version>2.2118.v31fd5b_9944b_5</pipeline-model-definition-plugin.version>
         <pipeline-stage-view-plugin.version>2.27</pipeline-stage-view-plugin.version>
