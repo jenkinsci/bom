@@ -587,12 +587,5 @@
                 <jenkins.version>2.332.4</jenkins.version>
             </properties>
         </profile>
-        <profile>
-            <id>2.319.x</id>
-            <properties>
-                <bom>2.319.x</bom>
-                <jenkins.version>2.319.3</jenkins.version>
-            </properties>
-        </profile>
     </profiles>
 </project>
