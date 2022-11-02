@@ -40,7 +40,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>mailer</artifactId>
-                <version>435.v79ef3972b_5c7</version>
+                <version>435.437.vec1ef333b_df7</version> <!-- TODO https://github.com/jenkinsci/mailer-plugin/pull/201 -->
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
