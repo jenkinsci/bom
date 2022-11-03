@@ -8,6 +8,9 @@
     </parent>
     <artifactId>bom-2.332.x</artifactId>
     <packaging>pom</packaging>
+    <properties>
+        <git-plugin.version>4.11.5</git-plugin.version>
+    </properties>
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -58,6 +61,22 @@
                 <artifactId>forensics-api</artifactId>
                 <classifier>tests</classifier>
                 <version>1.15.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>git</artifactId>
+                <version>${git-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>git</artifactId>
+                <version>${git-plugin.version}</version>
+                <classifier>tests</classifier>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>git-client</artifactId>
+                <version>3.12.2</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
