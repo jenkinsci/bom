@@ -9,7 +9,7 @@
     <artifactId>bom-2.332.x</artifactId>
     <packaging>pom</packaging>
     <properties>
-        <git-plugin.version>4.11.5</git-plugin.version>
+        <git-plugin.version>4.12.1</git-plugin.version>
     </properties>
     <dependencyManagement>
         <dependencies>
