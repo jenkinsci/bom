@@ -21,7 +21,7 @@
         <scm-api-plugin.version>621.vda_a_b_055e58f7</scm-api-plugin.version>
         <subversion-plugin.version>2.16.0</subversion-plugin.version>
         <workflow-api-plugin.version>1200.v8005c684b_a_c6</workflow-api-plugin.version>
-        <workflow-cps-plugin.version>2803.v1a_f77ffcc773</workflow-cps-plugin.version>
+        <workflow-cps-plugin.version>3520.va_8fc49e2f96f</workflow-cps-plugin.version>
         <workflow-job-plugin.version>1254.v3f64639b_11dd</workflow-job-plugin.version>
         <workflow-multibranch-plugin.version>716.vc692a_e52371b_</workflow-multibranch-plugin.version>
         <workflow-step-api-plugin.version>639.v6eca_cd8c04a_a_</workflow-step-api-plugin.version>
@@ -262,7 +262,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>antisamy-markup-formatter</artifactId>
-                <version>2.7</version>
+                <version>155.v795fb_8702324</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
