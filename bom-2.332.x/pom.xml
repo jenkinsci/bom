@@ -150,6 +150,11 @@
                 <version>277.280.v1e86b_7d0056b_</version>
             </dependency>
             <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>ssh-slaves</artifactId>
+                <version>1.821.vd834f8a_c390e</version>
+            </dependency>
+            <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-cps</artifactId>
                 <version>2729.vea_17b_79ed57a_</version>
