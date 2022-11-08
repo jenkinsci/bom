@@ -35,6 +35,9 @@ if ($plugins.Count -ne 0 -and $plugins[0].version -ne $NewVersion) {
   }
 }
 
+# TODO keeps on offering unwanted plugin updates in LTS lines
+$changed = $false
+
 if ($changed) {
   Write-Output $NewVersion
 
