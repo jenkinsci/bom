@@ -13,7 +13,7 @@
         <configuration-as-code-plugin.version>1559.v38a_b_2e3b_6b_b_7</configuration-as-code-plugin.version>
         <data-tables-api.version>1.12.1-4</data-tables-api.version>
         <forensics-api.version>1.15.1</forensics-api.version>
-        <git-plugin.version>4.11.5</git-plugin.version>
+        <git-plugin.version>4.13.0</git-plugin.version>
         <mina-sshd-api.version>2.9.1-44.v476733c11f82</mina-sshd-api.version>
         <pipeline-model-definition-plugin.version>2.2118.v31fd5b_9944b_5</pipeline-model-definition-plugin.version>
         <pipeline-stage-view-plugin.version>2.27</pipeline-stage-view-plugin.version>
@@ -21,8 +21,8 @@
         <scm-api-plugin.version>621.vda_a_b_055e58f7</scm-api-plugin.version>
         <subversion-plugin.version>2.16.0</subversion-plugin.version>
         <workflow-api-plugin.version>1200.v8005c684b_a_c6</workflow-api-plugin.version>
-        <workflow-cps-plugin.version>2803.v1a_f77ffcc773</workflow-cps-plugin.version>
-        <workflow-job-plugin.version>1236.vc3a_d1602f439</workflow-job-plugin.version>
+        <workflow-cps-plugin.version>3520.va_8fc49e2f96f</workflow-cps-plugin.version>
+        <workflow-job-plugin.version>1254.v3f64639b_11dd</workflow-job-plugin.version>
         <workflow-multibranch-plugin.version>716.vc692a_e52371b_</workflow-multibranch-plugin.version>
         <workflow-step-api-plugin.version>639.v6eca_cd8c04a_a_</workflow-step-api-plugin.version>
         <workflow-support-plugin.version>839.v35e2736cfd5c</workflow-support-plugin.version>
@@ -181,7 +181,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>jnr-posix-api</artifactId>
-                <version>3.1.15-1</version>
+                <version>3.1.15-2</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -222,7 +222,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>snakeyaml-api</artifactId>
-                <version>1.30.2-76.vc104f7ce9870</version>
+                <version>1.32-86.ve3f030a_75631</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -262,7 +262,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>antisamy-markup-formatter</artifactId>
-                <version>2.7</version>
+                <version>155.v795fb_8702324</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -302,7 +302,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>credentials</artifactId>
-                <version>1143.vb_e8b_b_ceee347</version>
+                <version>1189.vf61b_a_5e2f62e</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -343,7 +343,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>git-client</artifactId>
-                <version>3.11.0</version>
+                <version>3.13.0</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -560,7 +560,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>timestamper</artifactId>
-                <version>1.20</version>
+                <version>1.21</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
