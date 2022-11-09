@@ -8,6 +8,9 @@
     </parent>
     <artifactId>bom-2.332.x</artifactId>
     <packaging>pom</packaging>
+    <properties>
+        <git-plugin.version>4.12.1</git-plugin.version>
+    </properties>
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -21,6 +24,11 @@
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>bootstrap5-api</artifactId>
                 <version>5.2.0-1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>credentials</artifactId>
+                <version>1143.vb_e8b_b_ceee347</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -63,6 +71,22 @@
                 <artifactId>forensics-api</artifactId>
                 <classifier>tests</classifier>
                 <version>1.15.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>git</artifactId>
+                <version>${git-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>git</artifactId>
+                <version>${git-plugin.version}</version>
+                <classifier>tests</classifier>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>git-client</artifactId>
+                <version>3.12.2</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -128,12 +152,17 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>script-security</artifactId>
-                <version>1189.vb_a_b_7c8fd5fde</version>
+                <version>1183.v774b_0b_0a_a_451</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>ssh-credentials</artifactId>
                 <version>277.280.v1e86b_7d0056b_</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>ssh-slaves</artifactId>
+                <version>1.821.vd834f8a_c390e</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
