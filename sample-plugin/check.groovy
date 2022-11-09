@@ -7,7 +7,8 @@ assert artifactMap['junit:junit'] == project.artifactMap['junit:junit']
 def managedPluginDeps = managedDeps.collect {stripAllButGA(it)}.grep { ga ->
     def art = artifactMap[ga]
     if (art == null) {
-        if (ga.contains('.plugins')) { // TODO without an Artifact, we have no reliable way of checking whether it is actually a plugin
+        if (ga.contains('.plugins') // TODO without an Artifact, we have no reliable way of checking whether it is actually a plugin
+                && !(ga == 'io.jenkins.plugins:ionicons-api' && settings.activeProfiles.any {it ==~ /^2[.](332)[.]x$/})) { // TODO: Remove once 2.332.x is no longer part of the BOM (or if MNG-5600 is fixed and we can exclude this dependency in the BOM for old LTS lines)
             throw new org.apache.maven.plugin.MojoFailureException("Managed plugin dependency $ga not listed in test classpath of sample plugin")
         } else {
             println "Do not see managed dependency $ga"
