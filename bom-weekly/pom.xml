@@ -222,7 +222,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>snakeyaml-api</artifactId>
-                <version>1.32-86.ve3f030a_75631</version>
+                <version>1.33-90.v80dcb_3814d35</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
