@@ -47,24 +47,15 @@ MAVEN_PROPERTIES+=:hpi-plugin.version=3.33
 # pass it in via -mavenPropertiesFile rather than using -mavenProperties because -mavenProperties
 # uses a colon as the separator and these values contain colons.
 #
-if [[ $LINE == '2.319.x' ]]; then
-	#
-	# com.sun.mail needs to be excluded because it is still provided by core on this line (using
-	# pre-Jakarta imports) and we do not want it to be upgraded to a version that uses Jakarta
-	# imports (which is not a realistic test scenario) just because the Jakarta Mail API plugin
-	# happens to be on the class path and triggers an upper bounds violation.
-	#
-	echo upperBoundsExcludes=com.sun.mail:jakarta.mail,javax.servlet:servlet-api >maven.properties
-else
-	#
-	# javax.servlet:servlet-api comes from core at version 0, which is an intentional trick to
-	# prevent this library from being used, and we do not want it to be upgraded to a nonzero
-	# version (which is not a realistic test scenario) just because it happens to be on the
-	# class path of some plugin and triggers an upper bounds violation. JENKINS-68696 tracks the
-	# removal of this trick.
-	#
-	echo upperBoundsExcludes=javax.servlet:servlet-api >maven.properties
-fi
+
+#
+# javax.servlet:servlet-api comes from core at version 0, which is an intentional trick to
+# prevent this library from being used, and we do not want it to be upgraded to a nonzero
+# version (which is not a realistic test scenario) just because it happens to be on the
+# class path of some plugin and triggers an upper bounds violation. JENKINS-68696 tracks the
+# removal of this trick.
+#
+echo upperBoundsExcludes=javax.servlet:servlet-api >maven.properties
 
 #
 # Testing plugins against a version of Jenkins that requires Java 11 exposes
