@@ -121,6 +121,11 @@
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>credentials</artifactId>
+                <version>1087.1089.v2f1b_9a_b_040e4</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>ldap</artifactId>
                 <version>2.11</version>
             </dependency>
