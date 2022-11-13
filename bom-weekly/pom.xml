@@ -84,7 +84,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>custom-folder-icon</artifactId>
-                <version>2.2</version>
+                <version>2.3</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -166,7 +166,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>jaxb</artifactId>
-                <version>2.3.6-1</version>
+                <version>2.3.7-1</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -302,7 +302,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>credentials</artifactId>
-                <version>1189.vf61b_a_5e2f62e</version>
+                <version>1214.v1de940103927</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -312,7 +312,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>dashboard-view</artifactId>
-                <version>2.447.vda_124dd35f11</version>
+                <version>2.466.vdfefd95a_b_f8d</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -393,7 +393,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>jdk-tool</artifactId>
-                <version>55.v1b_32b_6ca_f9ca</version>
+                <version>63.v62d2fd4b_4793</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -403,7 +403,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>junit</artifactId>
-                <version>1119.1121.vc43d0fc45561</version>
+                <version>1159.v0b_396e1e07dd</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -488,7 +488,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>saml</artifactId>
-                <version>2.333.vc81e525974a_c</version>
+                <version>4.372.v89f13e4c9e97</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -509,7 +509,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>slack</artifactId>
-                <version>625.va_eeb_b_168ffb_0</version>
+                <version>629.vf00ea_cb_40d53</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
