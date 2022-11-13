@@ -9,6 +9,7 @@
     <artifactId>bom-2.332.x</artifactId>
     <packaging>pom</packaging>
     <properties>
+        <checks-api.version>1.7.5</checks-api.version>
         <git-plugin.version>4.12.1</git-plugin.version>
     </properties>
     <dependencyManagement>
@@ -24,6 +25,17 @@
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>bootstrap5-api</artifactId>
                 <version>5.2.0-1</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jenkins.plugins</groupId>
+                <artifactId>checks-api</artifactId>
+                <version>${checks-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jenkins.plugins</groupId>
+                <artifactId>checks-api</artifactId>
+                <version>${checks-api.version}</version>
+                <classifier>tests</classifier>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
