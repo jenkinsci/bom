@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
     <properties>
         <checks-api.version>1.7.5</checks-api.version>
-        <configuration-as-code-plugin.version>1559.v38a_b_2e3b_6b_b_7</configuration-as-code-plugin.version>
+        <configuration-as-code-plugin.version>1569.vb_72405b_80249</configuration-as-code-plugin.version>
         <data-tables-api.version>1.12.1-4</data-tables-api.version>
         <forensics-api.version>1.15.1</forensics-api.version>
         <git-plugin.version>4.13.0</git-plugin.version>
@@ -217,7 +217,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>popper2-api</artifactId>
-                <version>2.11.6-1</version>
+                <version>2.11.6-2</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -282,7 +282,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>cloudbees-folder</artifactId>
-                <version>6.758.vfd75d09eea_a_1</version>
+                <version>6.795.v3e23d3c6f194</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
