@@ -9,6 +9,7 @@
     <artifactId>bom-2.332.x</artifactId>
     <packaging>pom</packaging>
     <properties>
+        <checks-api.version>1.7.5</checks-api.version>
         <git-plugin.version>4.12.1</git-plugin.version>
     </properties>
     <dependencyManagement>
@@ -26,14 +27,15 @@
                 <version>5.2.0-1</version>
             </dependency>
             <dependency>
-                <groupId>org.jenkins-ci.plugins</groupId>
-                <artifactId>credentials</artifactId>
-                <version>1143.vb_e8b_b_ceee347</version>
+                <groupId>io.jenkins.plugins</groupId>
+                <artifactId>checks-api</artifactId>
+                <version>${checks-api.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>checks-api</artifactId>
-                <version>1.7.5</version>
+                <version>${checks-api.version}</version>
+                <classifier>tests</classifier>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -87,6 +89,11 @@
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>git-client</artifactId>
                 <version>3.12.2</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>gitlab-plugin</artifactId>
+                <version>1.5.36</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
