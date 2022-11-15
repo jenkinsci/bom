@@ -403,7 +403,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>junit</artifactId>
-                <version>1159.v0b_396e1e07dd</version>
+                <version>1160.vf1f01a_a_ea_b_7f</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -473,7 +473,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>pipeline-utility-steps</artifactId>
-                <version>2.13.1</version>
+                <version>2.13.2</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -504,7 +504,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>script-security</artifactId>
-                <version>1189.vb_a_b_7c8fd5fde</version>
+                <version>1190.v65867a_a_47126</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -545,7 +545,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>support-core</artifactId>
-                <version>1206.v14049fa_b_d860</version>
+                <version>1229.v84a_e1b_3a_1d32</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
