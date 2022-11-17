@@ -565,7 +565,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>token-macro</artifactId>
-                <version>308.v4f2b_ed62b_b_16</version>
+                <version>321.vd7cc1f2a_52c8</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
