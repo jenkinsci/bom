@@ -155,6 +155,10 @@ according to the `jenkins-infra/update-center2`.
 The UC currently maintains releases for the [past 400 days](https://groups.google.com/g/jenkins-infra/c/LTrRUqkgeQA/m/UmQMD5gDAgAJ)
 so it is reasonable to retire BOMs for lines older than that.
 
+Add the label `full-test` in dangerous-looking PRs to make sure you are running tests in all LTS lines;
+by default tests are only run in the oldest line and weeklies.
+This flag also allows all tests to be run even after some failures are recorded.
+
 ## Releasing
 
 Automatic given [JEP-229](https://jenkins.io/jep/229) when PRs matching certain label patterns are merged.

@@ -25,7 +25,7 @@ def mavenEnv(Map params = [:], Closure body) {
 
 def plugins
 def lines
-def failFast
+def fullTest = env.CHANGE_ID && pullRequest.labels.contains('full-test')
 
 stage('prep') {
     mavenEnv(jdk: 11) {
@@ -37,7 +37,9 @@ stage('prep') {
         dir('target') {
             plugins = readFile('plugins.txt').split('\n')
             lines = readFile('lines.txt').split('\n')
-            lines = [lines[0], lines[-1]] // run PCT only on newest and oldest lines, to save resources
+            if (!fullTest) {
+                lines = [lines[0], lines[-1]] // run PCT only on newest and oldest lines, to save resources
+            }
             stash name: 'pct', includes: 'pct.jar'
             lines.each {stash name: "megawar-$it", includes: "megawar-${it}.war"}
         }
@@ -47,7 +49,7 @@ stage('prep') {
     }
 }
 
-branches = [failFast: failFast]
+branches = [failFast: !fullTest]
 lines.each {line ->
     plugins.each { plugin ->
         branches["pct-$plugin-$line"] = {
