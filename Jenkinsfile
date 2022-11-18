@@ -30,7 +30,6 @@ def fullTest = env.CHANGE_ID && pullRequest.labels.contains('full-test')
 stage('prep') {
     mavenEnv(jdk: 11) {
         checkout scm
-        failFast = Boolean.parseBoolean(readFile('failFast').trim())
         withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist']) {
             sh 'bash prep.sh'
         }
