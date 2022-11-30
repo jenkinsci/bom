@@ -564,7 +564,7 @@
             <id>2.375.x</id>
             <properties>
                 <bom>2.375.x</bom>
-                <jenkins.version>2.375</jenkins.version>
+                <jenkins.version>2.375.1</jenkins.version>
             </properties>
         </profile>
         <profile>
