@@ -40,7 +40,7 @@ MAVEN_PROPERTIES+=":jenkins.version=${JENKINS_VERSION}:overrideWar=$(pwd)/megawa
 # TODO When all plugins in the managed set are using a plugin parent POM with HPI Plugin 3.29 or
 # later (i.e., plugin parent POM 4.44 or later), this can be deleted.
 #
-MAVEN_PROPERTIES+=:hpi-plugin.version=3.33
+MAVEN_PROPERTIES+=:hpi-plugin.version=3.37
 
 #
 # Define the excludes for upper bounds checking. We define these excludes in a separate file and
