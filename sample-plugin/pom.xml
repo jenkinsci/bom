@@ -14,7 +14,7 @@
     <properties>
         <changelist>999999-SNAPSHOT</changelist>
         <bom>weekly</bom>
-        <jenkins.version>2.379</jenkins.version>
+        <jenkins.version>2.381-rc33179.8ea_e71e5464f</jenkins.version>
     </properties>
     <dependencyManagement>
         <dependencies>
