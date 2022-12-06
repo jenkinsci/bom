@@ -9,6 +9,7 @@
     <artifactId>bom-2.346.x</artifactId>
     <packaging>pom</packaging>
     <properties>
+        <git-plugin.version>4.14.2</git-plugin.version>
         <workflow-cps-plugin.version>3536.vb_8a_6628079d5</workflow-cps-plugin.version>
     </properties>
     <dependencyManagement>
@@ -39,6 +40,17 @@
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>credentials</artifactId>
                 <version>1143.vb_e8b_b_ceee347</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>git</artifactId>
+                <version>${git-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>git</artifactId>
+                <version>${git-plugin.version}</version>
+                <classifier>tests</classifier>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
