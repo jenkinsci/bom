@@ -8,6 +8,9 @@
     </parent>
     <artifactId>bom-2.346.x</artifactId>
     <packaging>pom</packaging>
+    <properties>
+        <workflow-cps-plugin.version>3536.vb_8a_6628079d5</workflow-cps-plugin.version>
+    </properties>
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -69,6 +72,11 @@
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>text-finder</artifactId>
+                <version>1.21</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>trilead-api</artifactId>
                 <version>1.67.vc3938a_35172f</version>
             </dependency>
@@ -76,6 +84,22 @@
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-job</artifactId>
                 <version>1207.ve6191ff089f8</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>ws-cleanup</artifactId>
+                <version>0.43</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins.workflow</groupId>
+                <artifactId>workflow-cps</artifactId>
+                <version>${workflow-cps-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins.workflow</groupId>
+                <artifactId>workflow-cps</artifactId>
+                <version>${workflow-cps-plugin.version}</version>
+                <classifier>tests</classifier>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>

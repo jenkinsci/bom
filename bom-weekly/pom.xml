@@ -13,7 +13,7 @@
         <configuration-as-code-plugin.version>1569.vb_72405b_80249</configuration-as-code-plugin.version>
         <data-tables-api.version>1.12.1-4</data-tables-api.version>
         <forensics-api.version>1.15.1</forensics-api.version>
-        <git-plugin.version>4.14.1</git-plugin.version>
+        <git-plugin.version>4.14.3</git-plugin.version>
         <mina-sshd-api.version>2.9.2-50.va_0e1f42659a_a</mina-sshd-api.version>
         <pipeline-model-definition-plugin.version>2.2118.v31fd5b_9944b_5</pipeline-model-definition-plugin.version>
         <pipeline-stage-view-plugin.version>2.28</pipeline-stage-view-plugin.version>
@@ -21,7 +21,7 @@
         <scm-api-plugin.version>621.vda_a_b_055e58f7</scm-api-plugin.version>
         <subversion-plugin.version>2.16.0</subversion-plugin.version>
         <workflow-api-plugin.version>1200.v8005c684b_a_c6</workflow-api-plugin.version>
-        <workflow-cps-plugin.version>3536.vb_8a_6628079d5</workflow-cps-plugin.version>
+        <workflow-cps-plugin.version>3565.v4b_d9b_8c29a_b_3</workflow-cps-plugin.version>
         <workflow-job-plugin.version>1254.v3f64639b_11dd</workflow-job-plugin.version>
         <workflow-multibranch-plugin.version>716.vc692a_e52371b_</workflow-multibranch-plugin.version>
         <workflow-step-api-plugin.version>639.v6eca_cd8c04a_a_</workflow-step-api-plugin.version>
@@ -227,7 +227,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>theme-manager</artifactId>
-                <version>1.5</version>
+                <version>1.6</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins.mina-sshd-api</groupId>
@@ -343,7 +343,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>git-client</artifactId>
-                <version>3.13.0</version>
+                <version>3.13.1</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -438,7 +438,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>metrics</artifactId>
-                <version>4.2.10-405.v60a_9cc74e923</version>
+                <version>4.2.13-420.vea_2f17932dd6</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -504,7 +504,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>script-security</artifactId>
-                <version>1218.v39ca_7f7ed0a_c</version>
+                <version>1228.vd93135a_2fb_25</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -550,7 +550,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>text-finder</artifactId>
-                <version>1.21</version>
+                <version>1.22</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -580,7 +580,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>ws-cleanup</artifactId>
-                <version>0.43</version>
+                <version>0.44</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.pipeline-stage-view</groupId>
