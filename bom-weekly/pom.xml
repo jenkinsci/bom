@@ -12,7 +12,7 @@
         <checks-api.version>1.8.0</checks-api.version>
         <configuration-as-code-plugin.version>1569.vb_72405b_80249</configuration-as-code-plugin.version>
         <data-tables-api.version>1.12.1-4</data-tables-api.version>
-        <forensics-api.version>1.15.1</forensics-api.version>
+        <forensics-api.version>1.17.0</forensics-api.version>
         <git-plugin.version>4.14.3</git-plugin.version>
         <mina-sshd-api.version>2.9.2-50.va_0e1f42659a_a</mina-sshd-api.version>
         <pipeline-model-definition-plugin.version>2.2118.v31fd5b_9944b_5</pipeline-model-definition-plugin.version>
