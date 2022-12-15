@@ -5,6 +5,8 @@ which can be used in a plugin POM to more easily manage dependencies on other co
 This is important because version management is a [common annoyance](https://jenkins.io/doc/developer/plugin-development/updating-parent/#understanding-requireupperbounddeps-failures-and-fixes).
 See [JENKINS-47498](https://issues.jenkins-ci.org/browse/JENKINS-47498) for the background.
 
+A secondary purpose of this repository is to regularly perform plugin compatibility testing (PCT) against new or forthcoming releases of core and plugins.
+
 If you are interested in a Bill of Materials for Jenkins core components, see [this page](https://jenkins.io/doc/developer/plugin-development/dependency-management/#jenkins-core-bom).
 
 # Usage
@@ -93,7 +95,36 @@ In cases where two or more plugins must be updated as a unit
 ([JENKINS-49651](https://issues.jenkins-ci.org/browse/JENKINS-49651)),
 file a PR changing the versions of both.
 
-## Adding a new plugin
+## When to add a new plugin
+
+Though the primary purpose of this repository is to manage the set of versions of dependencies used by dependents,
+a secondary purpose is to provide plugin compatibility testing (PCT).
+For example, risky changes to core or plugins are often run through this test suite to find potential problems.
+
+For this reason, it can be desirable to add plugins to the managed set even when they have no dependents.
+The more critical a plugin is, the more it would benefit from plugin compatibility testing and thus inclusion in the managed set.
+While different people have different definitions as to what constitutes "critical", some common definitions are:
+
+- In the default list of suggested plugins
+- In the list of the top 100 (or 250) plugins
+- In the list of plugins with more than 10,000 (or 1,000) users
+
+Since any PCT issues with a plugin that is in the managed set must be dealt with in a timely manner,
+it is key that all plugins in the managed set have active maintainers that are able to cut releases when needed.
+
+A good candidate for inclusion in the managed set is a critical plugin with an active maintainer,
+regardless of whether or not it has dependents.
+
+A plugin that is not critical could be tolerated in the managed set,
+as long as it poses a low maintenance burden and has an active maintainer.
+
+A critical plugin without a maintainer poses a dilemma:
+while inclusion in the managed set provides desirable compatibility testing,
+it also results in friction when changes need to be made for PCT purposes and nobody is around to release them.
+Ideally, this dilemma would be resolved by someone adopting the plugin.
+In the worst case, such plugins can be excluded from the managed set.
+
+## How to add a new plugin
 
 Insert a new `dependency` in _sorted_ order to `bom-weekly/pom.xml`.
 Make sure it is used (perhaps transitively) in `sample-plugin/pom.xml`.
@@ -154,6 +185,10 @@ is a handy way to find the most recently released plugin version compatible with
 according to the `jenkins-infra/update-center2`.
 The UC currently maintains releases for the [past 400 days](https://groups.google.com/g/jenkins-infra/c/LTrRUqkgeQA/m/UmQMD5gDAgAJ)
 so it is reasonable to retire BOMs for lines older than that.
+
+Add the label `full-test` in dangerous-looking PRs to make sure you are running tests in all LTS lines;
+by default tests are only run in the oldest line and weeklies.
+This flag also allows all tests to be run even after some failures are recorded.
 
 ## Releasing
 
