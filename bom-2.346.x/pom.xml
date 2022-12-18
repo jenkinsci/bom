@@ -9,7 +9,7 @@
     <artifactId>bom-2.346.x</artifactId>
     <packaging>pom</packaging>
     <properties>
-        <git-plugin.version>4.14.2</git-plugin.version>
+        <git-plugin.version>4.14.3</git-plugin.version>
         <workflow-cps-plugin.version>3536.vb_8a_6628079d5</workflow-cps-plugin.version>
     </properties>
     <dependencyManagement>
@@ -40,6 +40,11 @@
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>credentials</artifactId>
                 <version>1143.vb_e8b_b_ceee347</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>display-url-api</artifactId>
+                <version>2.3.6</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -89,6 +94,11 @@
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>text-finder</artifactId>
+                <version>1.21</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>trilead-api</artifactId>
                 <version>1.67.vc3938a_35172f</version>
             </dependency>
@@ -96,6 +106,11 @@
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-job</artifactId>
                 <version>1207.ve6191ff089f8</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>ws-cleanup</artifactId>
+                <version>0.43</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
