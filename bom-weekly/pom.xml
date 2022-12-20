@@ -242,7 +242,7 @@
             <dependency>
                 <groupId>org.6wind.jenkins</groupId>
                 <artifactId>lockable-resources</artifactId>
-                <version>1069.v726298f53f8c</version>
+                <version>1102.vde5663d777cf</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.modules</groupId>
