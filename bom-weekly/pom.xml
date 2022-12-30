@@ -13,7 +13,7 @@
         <configuration-as-code-plugin.version>1569.vb_72405b_80249</configuration-as-code-plugin.version>
         <data-tables-api.version>1.12.1-4</data-tables-api.version>
         <forensics-api.version>1.17.0</forensics-api.version>
-        <git-plugin.version>4.14.3</git-plugin.version>
+        <git-plugin.version>5.0.0</git-plugin.version>
         <mina-sshd-api.version>2.9.2-50.va_0e1f42659a_a</mina-sshd-api.version>
         <pipeline-model-definition-plugin.version>2.2118.v31fd5b_9944b_5</pipeline-model-definition-plugin.version>
         <pipeline-stage-view-plugin.version>2.28</pipeline-stage-view-plugin.version>
@@ -343,7 +343,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>git-client</artifactId>
-                <version>3.13.1</version>
+                <version>4.0.0</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
