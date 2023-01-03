@@ -184,7 +184,8 @@ The CI build (or just `mvn test -P2.nnn.x`) will fail if some managed plugins ar
 is a handy way to find the most recently released plugin version compatible with a given line,
 according to the `jenkins-infra/update-center2`.
 The UC currently maintains releases for the [past 400 days](https://groups.google.com/g/jenkins-infra/c/LTrRUqkgeQA/m/UmQMD5gDAgAJ)
-so it is reasonable to retire BOMs for lines older than that.
+so it is reasonable to retire BOMs for lines older than that,
+or otherwise when the number of accumulated version overrides becomes large.
 
 Add the label `full-test` in dangerous-looking PRs to make sure you are running tests in all LTS lines;
 by default tests are only run in the oldest line and weeklies.
