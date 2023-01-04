@@ -7,9 +7,6 @@ updates:
       - "jglick"
     schedule:
       interval: "daily"
-    ignore:
-      # TODO until 2.332.x & 2.346.x dropped
-      - dependency-name: org.jenkins-ci.plugins:plugin
   - package-ecosystem: "maven"
     open-pull-requests-limit: 25
     directory: "/bom-weekly"

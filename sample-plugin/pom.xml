@@ -574,21 +574,5 @@
                 <jenkins.version>2.361.4</jenkins.version>
             </properties>
         </profile>
-        <profile>
-            <id>2.346.x</id>
-            <properties>
-                <bom>2.346.x</bom>
-                <jenkins.version>2.346.3</jenkins.version>
-                <hpi-plugin.version>3.36</hpi-plugin.version>
-            </properties>
-        </profile>
-        <profile>
-            <id>2.332.x</id>
-            <properties>
-                <bom>2.332.x</bom>
-                <jenkins.version>2.332.4</jenkins.version>
-                <hpi-plugin.version>3.36</hpi-plugin.version>
-            </properties>
-        </profile>
     </profiles>
 </project>

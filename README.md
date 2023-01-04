@@ -14,7 +14,7 @@ If you are interested in a Bill of Materials for Jenkins core components, see [t
 After selecting your plugin’s LTS baseline:
 
 ```xml
-<jenkins.version>2.332.4</jenkins.version>
+<jenkins.version>2.361.4</jenkins.version>
 ```
 
 just import the [latest BOM](https://github.com/jenkinsci/bom/releases) from that line:
@@ -24,7 +24,7 @@ just import the [latest BOM](https://github.com/jenkinsci/bom/releases) from tha
     <dependencies>
         <dependency>
             <groupId>io.jenkins.tools.bom</groupId>
-            <artifactId>bom-2.332.x</artifactId>
+            <artifactId>bom-2.361.x</artifactId>
             <version>…</version>
             <scope>import</scope>
             <type>pom</type>
@@ -184,7 +184,8 @@ The CI build (or just `mvn test -P2.nnn.x`) will fail if some managed plugins ar
 is a handy way to find the most recently released plugin version compatible with a given line,
 according to the `jenkins-infra/update-center2`.
 The UC currently maintains releases for the [past 400 days](https://groups.google.com/g/jenkins-infra/c/LTrRUqkgeQA/m/UmQMD5gDAgAJ)
-so it is reasonable to retire BOMs for lines older than that.
+so it is reasonable to retire BOMs for lines older than that,
+or otherwise when the number of accumulated version overrides becomes large.
 
 Add the label `full-test` in dangerous-looking PRs to make sure you are running tests in all LTS lines;
 by default tests are only run in the oldest line and weeklies.
