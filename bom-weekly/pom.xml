@@ -478,7 +478,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>plain-credentials</artifactId>
-                <version>139.ved2b_9cf7587b</version>
+                <version>143.v1b_df8b_d3b_e48</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
