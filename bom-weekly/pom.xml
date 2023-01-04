@@ -110,7 +110,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>file-parameters</artifactId>
-                <version>205.vf6ce13b_e5dee</version>
+                <version>264.v1733d9b_2a_380</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
