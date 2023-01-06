@@ -19,9 +19,9 @@
         <pipeline-stage-view-plugin.version>2.28</pipeline-stage-view-plugin.version>
         <plugin-util-api.version>2.20.0</plugin-util-api.version>
         <scm-api-plugin.version>631.v9143df5b_e4a_a</scm-api-plugin.version>
-        <subversion-plugin.version>2.16.0</subversion-plugin.version>
+        <subversion-plugin.version>2.17.0</subversion-plugin.version>
         <workflow-api-plugin.version>1200.v8005c684b_a_c6</workflow-api-plugin.version>
-        <workflow-cps-plugin.version>3583.v4f58de0d78d5</workflow-cps-plugin.version>
+        <workflow-cps-plugin.version>3601.v9b_36a_d99e1cc</workflow-cps-plugin.version>
         <workflow-job-plugin.version>1254.v3f64639b_11dd</workflow-job-plugin.version>
         <workflow-multibranch-plugin.version>716.vc692a_e52371b_</workflow-multibranch-plugin.version>
         <workflow-step-api-plugin.version>639.v6eca_cd8c04a_a_</workflow-step-api-plugin.version>
@@ -110,7 +110,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>file-parameters</artifactId>
-                <version>205.vf6ce13b_e5dee</version>
+                <version>264.v1733d9b_2a_380</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -242,7 +242,7 @@
             <dependency>
                 <groupId>org.6wind.jenkins</groupId>
                 <artifactId>lockable-resources</artifactId>
-                <version>1102.vde5663d777cf</version>
+                <version>1106.vc9153f1a_ff25</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.modules</groupId>
@@ -413,7 +413,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>ldap</artifactId>
-                <version>2.12</version>
+                <version>659.v8ca_b_a_fe79fa_d</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -478,7 +478,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>plain-credentials</artifactId>
-                <version>139.ved2b_9cf7587b</version>
+                <version>143.v1b_df8b_d3b_e48</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
