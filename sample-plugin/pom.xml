@@ -14,7 +14,8 @@
     <properties>
         <changelist>999999-SNAPSHOT</changelist>
         <bom>weekly</bom>
-        <jenkins.version>2.384</jenkins.version>
+        <!-- TODO https://github.com/jenkinsci/jenkins/pull/7568 -->
+        <jenkins.version>2.386-rc33284.8078de3d1cda</jenkins.version>
     </properties>
     <dependencyManagement>
         <dependencies>
