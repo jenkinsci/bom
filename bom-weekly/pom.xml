@@ -246,6 +246,11 @@
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.modules</groupId>
+                <artifactId>instance-identity</artifactId>
+                <version>142.v04572ca_5b_265</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.modules</groupId>
                 <artifactId>sshd</artifactId>
                 <version>3.270.vb_a_e71e64c287</version>
             </dependency>
