@@ -84,7 +84,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>custom-folder-icon</artifactId>
-                <version>2.3</version>
+                <version>2.4</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -242,7 +242,7 @@
             <dependency>
                 <groupId>org.6wind.jenkins</groupId>
                 <artifactId>lockable-resources</artifactId>
-                <version>1108.vfc5b_2d723987</version>
+                <version>1109.v470b_a_941b_06e</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.modules</groupId>
@@ -282,7 +282,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>branch-api</artifactId>
-                <version>2.1051.v9985666b_f6cc</version>
+                <version>2.1071.v1a_188a_562481</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -478,7 +478,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>pipeline-utility-steps</artifactId>
-                <version>2.14.0</version>
+                <version>2.15.0</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
