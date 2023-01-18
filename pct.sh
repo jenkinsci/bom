@@ -110,7 +110,7 @@ elif grep -q -F -e '<status>TEST_FAILURES</status>' pct-report.xml; then
 	# only plugin affected by this issue, we work around the issue by deleting the relevant
 	# class rather than making the detection logic more complex.
 	#
-	[[ $PLUGINS == pipeline-model-extensions ]] && rm -fv pct-work/pipeline-model-definition/pipeline-model-api/target/test-classes/InjectedTest.class
+	[[ $PLUGINS == pipeline-model-extensions ]] && rm -fv pct-work/pipeline-model-definition-plugin/pipeline-model-api/target/test-classes/InjectedTest.class
 	for t in pct-work/*/{,*/}target; do
 		if [[ -f "${t}/test-classes/InjectedTest.class" ]] && [[ ! -f "${t}/surefire-reports/TEST-InjectedTest.xml" ]] && [[ ! -f "${t}/failsafe-reports/TEST-InjectedTest.xml" ]]; then
 			mkdir -p "${t}/surefire-reports"
