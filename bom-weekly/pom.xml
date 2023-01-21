@@ -20,8 +20,8 @@
         <plugin-util-api.version>2.20.0</plugin-util-api.version>
         <scm-api-plugin.version>631.v9143df5b_e4a_a</scm-api-plugin.version>
         <subversion-plugin.version>2.17.0</subversion-plugin.version>
-        <workflow-api-plugin.version>1200.v8005c684b_a_c6</workflow-api-plugin.version>
-        <workflow-cps-plugin.version>3601.v9b_36a_d99e1cc</workflow-cps-plugin.version>
+        <workflow-api-plugin.version>1208.v0cc7c6e0da_9e</workflow-api-plugin.version>
+        <workflow-cps-plugin.version>3606.v0b_d8b_e512dcf</workflow-cps-plugin.version>
         <workflow-job-plugin.version>1254.v3f64639b_11dd</workflow-job-plugin.version>
         <workflow-multibranch-plugin.version>716.vc692a_e52371b_</workflow-multibranch-plugin.version>
         <workflow-step-api-plugin.version>639.v6eca_cd8c04a_a_</workflow-step-api-plugin.version>
@@ -242,7 +242,7 @@
             <dependency>
                 <groupId>org.6wind.jenkins</groupId>
                 <artifactId>lockable-resources</artifactId>
-                <version>1109.v470b_a_941b_06e</version>
+                <version>1113.vf66761f17f1e</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.modules</groupId>
@@ -458,7 +458,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>pipeline-graph-analysis</artifactId>
-                <version>195.v5812d95a_a_2f9</version>
+                <version>202.va_d268e64deb_3</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
