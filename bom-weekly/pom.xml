@@ -468,7 +468,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>pipeline-milestone-step</artifactId>
-                <version>101.vd572fef9d926</version>
+                <version>111.v449306f708b_7</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
