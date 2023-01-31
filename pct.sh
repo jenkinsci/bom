@@ -75,7 +75,6 @@ java \
 	-reportFile "$(pwd)/pct-report.xml" \
 	$PCT_S_ARG \
 	-mavenProperties "${MAVEN_PROPERTIES}" \
-	-excludeHooks org.jenkins.tools.test.hook.TransformPom \
 	-mavenPropertiesFile "$(pwd)/maven.properties" \
 	-skipTestCache true
 
