@@ -41,7 +41,8 @@ for LINE in $LINEZ; do
 done
 
 # TODO find a way to encode this in some POM so that it can be managed by Dependabot
-version=1217.v2db_71d83fff3
+# TODO https://github.com/jenkinsci/plugin-compat-tester/pull/419
+version=1227.v8d75a_a_a_66153
 pct=$HOME/.m2/repository/org/jenkins-ci/tests/plugins-compat-tester-cli/${version}/plugins-compat-tester-cli-${version}.jar
 [ -f "${pct}" ] || $MVN dependency:get -Dartifact=org.jenkins-ci.tests:plugins-compat-tester-cli:${version}:jar -DremoteRepositories=https://repo.jenkins-ci.org/public/,https://repo.jenkins-ci.org/incrementals/ -Dtransitive=false
 cp "${pct}" target/pct.jar
