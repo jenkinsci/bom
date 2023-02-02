@@ -75,8 +75,7 @@ java \
 	-reportFile "$(pwd)/pct-report.xml" \
 	$PCT_S_ARG \
 	-mavenProperties "${MAVEN_PROPERTIES}" \
-	-mavenPropertiesFile "$(pwd)/maven.properties" \
-	-skipTestCache true
+	-mavenPropertiesFile "$(pwd)/maven.properties"
 
 if grep -q -F -e '<status>INTERNAL_ERROR</status>' pct-report.xml; then
 	echo 'PCT failed with internal error' >&2
