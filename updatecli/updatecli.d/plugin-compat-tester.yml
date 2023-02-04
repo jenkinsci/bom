@@ -1,0 +1,45 @@
+---
+name: Bump `plugin-compat-tester` version in prep.sh
+
+scms:
+  default:
+    kind: github
+    spec:
+      user: "{{ .github.user }}"
+      email: "{{ .github.email }}"
+      owner: "{{ .github.owner }}"
+      repository: "{{ .github.repository }}"
+      token: "{{ requiredEnv .github.token }}"
+      username: "{{ .github.username }}"
+      branch: "{{ .github.branch }}"
+
+sources:
+  pctVersion:
+    kind: githubrelease
+    spec:
+      owner: "jenkinsci"
+      repository: "plugin-compat-tester"
+      token: "{{ requiredEnv .github.token }}"
+      username: "{{ .github.username }}"
+
+targets:
+  setPctInPrep:
+    sourceid: pctVersion
+    name: "Change the plugin-compat-tester version in prep.sh"
+    kind: file
+    spec:
+      file: prep.sh
+      matchpattern: >-
+        version=(.*)
+      replacepattern: >-
+        version={{ source `pctVersion` }}
+    scmid: default
+
+actions:
+  default:
+    kind: github/pullrequest
+    scmid: default
+    title: Bump `plugin-compat-tester` version in prep.sh
+    spec:
+      labels:
+        - plugin-compat-tester
