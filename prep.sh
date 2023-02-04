@@ -41,7 +41,8 @@ for LINE in $LINEZ; do
 done
 
 # Tracked by ./updatecli/updatecli.d/plugin-compat-tester.yml
-version=1221.vb_b_1b_53b_646c4
+# TODO https://github.com/jenkinsci/plugin-compat-tester/pull/437
+version=1227.v2c1d6e3217a_8
 pct=$HOME/.m2/repository/org/jenkins-ci/tests/plugins-compat-tester-cli/${version}/plugins-compat-tester-cli-${version}.jar
 [ -f "${pct}" ] || $MVN dependency:get -Dartifact=org.jenkins-ci.tests:plugins-compat-tester-cli:${version}:jar -DremoteRepositories=https://repo.jenkins-ci.org/public/,https://repo.jenkins-ci.org/incrementals/ -Dtransitive=false
 cp "${pct}" target/pct.jar
