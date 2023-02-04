@@ -12,11 +12,12 @@
         <checks-api.version>1.8.1</checks-api.version>
         <configuration-as-code-plugin.version>1569.vb_72405b_80249</configuration-as-code-plugin.version>
         <data-tables-api.version>1.12.1-4</data-tables-api.version>
+        <declarative-pipeline-migration-assistant-plugin.version>1.5.5</declarative-pipeline-migration-assistant-plugin.version>
         <forensics-api.version>1.17.0</forensics-api.version>
         <git-plugin.version>5.0.0</git-plugin.version>
         <mina-sshd-api.version>2.9.2-50.va_0e1f42659a_a</mina-sshd-api.version>
         <pipeline-model-definition-plugin.version>2.2118.v31fd5b_9944b_5</pipeline-model-definition-plugin.version>
-        <pipeline-stage-view-plugin.version>2.30</pipeline-stage-view-plugin.version>
+        <pipeline-stage-view-plugin.version>2.31</pipeline-stage-view-plugin.version>
         <plugin-util-api.version>2.20.0</plugin-util-api.version>
         <scm-api-plugin.version>631.v9143df5b_e4a_a</scm-api-plugin.version>
         <subversion-plugin.version>2.17.0</subversion-plugin.version>
@@ -30,6 +31,11 @@
     <dependencyManagement>
         <dependencies>
             <!-- Plugins (sorted): -->
+            <dependency>
+                <groupId>com.coravy.hudson.plugins.github</groupId>
+                <artifactId>github</artifactId>
+                <version>1.36.1</version>
+            </dependency>
             <dependency>
                 <groupId>com.sonyericsson.hudson.plugins.rebuild</groupId>
                 <artifactId>rebuild</artifactId>
@@ -423,7 +429,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>mailer</artifactId>
-                <version>438.v02c7f0a_12fa_4</version>
+                <version>448.v5b_97805e3767</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -596,6 +602,16 @@
                 <groupId>org.jenkins-ci.plugins.pipeline-stage-view</groupId>
                 <artifactId>pipeline-stage-view</artifactId>
                 <version>${pipeline-stage-view-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins.to-declarative</groupId>
+                <artifactId>declarative-pipeline-migration-assistant</artifactId>
+                <version>${declarative-pipeline-migration-assistant-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins.to-declarative</groupId>
+                <artifactId>declarative-pipeline-migration-assistant-api</artifactId>
+                <version>${declarative-pipeline-migration-assistant-plugin.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
