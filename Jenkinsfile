@@ -62,7 +62,7 @@ lines.each {line ->
                 unstash 'excludes.txt'
                 unstash 'pct'
                 unstash "megawar-$line"
-                withEnv(["PLUGINS=$plugin", "LINE=$line", 'EXTRA_MAVEN_PROPERTIES=surefire.rerunFailingTestsCount=4']) {
+                withEnv(["PLUGINS=$plugin", "LINE=$line", 'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=4']) {
                     sh 'mv megawar-$LINE.war megawar.war && bash pct.sh'
                 }
             }
