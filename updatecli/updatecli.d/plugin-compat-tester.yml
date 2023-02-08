@@ -1,5 +1,5 @@
 ---
-name: Bump `plugin-compat-tester` version in prep.sh
+name: Bump `plugin-compat-tester`
 
 scms:
   default:
@@ -25,7 +25,7 @@ sources:
 targets:
   setPctInPrep:
     sourceid: pctVersion
-    name: "Change the plugin-compat-tester version in prep.sh"
+    name: "Change the plugin-compat-tester version"
     kind: file
     spec:
       file: prep.sh
@@ -39,8 +39,7 @@ actions:
   default:
     kind: github/pullrequest
     scmid: default
-    title: Bump `plugin-compat-tester` version in prep.sh to {{ source `pctVersion` }}
+    title: Bump plugin-compat-tester version to {{ source `pctVersion` }}
     spec:
       labels:
-        - chore
-        - plugin-compat-tester
+        - dependencies
