@@ -642,11 +642,6 @@
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
-                <artifactId>workflow-cps-global-lib</artifactId>
-                <version>609.vd95673f149b_b</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-durable-task-step</artifactId>
                 <version>1223.v7f1a_98a_8863e</version>
             </dependency>
