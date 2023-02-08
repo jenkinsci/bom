@@ -58,6 +58,11 @@ MAVEN_PROPERTIES+=:hpi-plugin.version=3.38
 echo upperBoundsExcludes=javax.servlet:servlet-api >maven.properties
 
 #
+# This test has been broken for a very long time.
+#
+[[ $PLUGINS == gitlab-plugin ]] && MAVEN_PROPERTIES+=:failsafe.excludes=com.dabsquared.gitlabjenkins.testing.integration.GitLabIT
+
+#
 # Testing plugins against a version of Jenkins that requires Java 11 exposes
 # jenkinsci/plugin-pom#563. This was fixed in plugin parent POM 4.42, but many plugins under test
 # still use an older plugin parent POM. As a temporary workaround, we skip Enforcer.

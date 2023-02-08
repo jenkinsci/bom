@@ -14,7 +14,7 @@ def mavenEnv(Map params = [:], Closure body) {
             withEnv(["MAVEN_SETTINGS=$settingsXml"]) {
                 body()
             }
-            if (junit(testResults: '**/target/surefire-reports/TEST-*.xml', allowEmptyResults: true).failCount > 0) {
+            if (junit(testResults: '**/target/*-reports/TEST-*.xml').failCount > 0) {
                 // TODO JENKINS-27092 throw up UNSTABLE status in this case
                 error 'Some test failures, not going to continue'
             }
