@@ -42,4 +42,4 @@ actions:
     title: Bump `plugin-compat-tester` version in prep.sh
     spec:
       labels:
-        - plugin-compat-tester
+        - chore
