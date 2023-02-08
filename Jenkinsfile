@@ -8,10 +8,7 @@ def mavenEnv(Map params = [:], Closure body) {
     node("maven-$params.jdk") { // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
         timeout(90) {
             sh 'mvn -version'
-            def settingsXml = "$WORKSPACE_TMP/settings.xml"
-            def ok = infra.retrieveMavenSettingsFile(settingsXml)
-            assert ok
-            withEnv(["MAVEN_SETTINGS=$settingsXml"]) {
+            infra.withArtifactCachingProxy {
                 body()
             }
             if (junit(testResults: '**/target/*-reports/TEST-*.xml').failCount > 0) {
