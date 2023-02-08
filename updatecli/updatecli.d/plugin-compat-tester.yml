@@ -39,7 +39,8 @@ actions:
   default:
     kind: github/pullrequest
     scmid: default
-    title: Bump `plugin-compat-tester` version in prep.sh
+    title: Bump `plugin-compat-tester` version in prep.sh to {{ source `pctVersion` }}
     spec:
       labels:
+        - chore
         - plugin-compat-tester
