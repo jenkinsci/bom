@@ -43,3 +43,4 @@ actions:
     spec:
       labels:
         - chore
+        - plugin-compat-tester
