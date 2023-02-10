@@ -22,7 +22,7 @@
         <scm-api-plugin.version>631.v9143df5b_e4a_a</scm-api-plugin.version>
         <subversion-plugin.version>2.17.0</subversion-plugin.version>
         <workflow-api-plugin.version>1208.v0cc7c6e0da_9e</workflow-api-plugin.version>
-        <workflow-cps-plugin.version>3611.v201b_d9f9eb_f7</workflow-cps-plugin.version>
+        <workflow-cps-plugin.version>3618.v13db_a_21f0fcf</workflow-cps-plugin.version>
         <workflow-job-plugin.version>1254.v3f64639b_11dd</workflow-job-plugin.version>
         <workflow-multibranch-plugin.version>716.vc692a_e52371b_</workflow-multibranch-plugin.version>
         <workflow-step-api-plugin.version>639.v6eca_cd8c04a_a_</workflow-step-api-plugin.version>
@@ -95,7 +95,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>dark-theme</artifactId>
-                <version>255.v364936264de8</version>
+                <version>302.vf069cb_e01486</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -172,7 +172,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>jaxb</artifactId>
-                <version>2.3.7-1</version>
+                <version>2.3.8-1</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -248,7 +248,7 @@
             <dependency>
                 <groupId>org.6wind.jenkins</groupId>
                 <artifactId>lockable-resources</artifactId>
-                <version>1117.v157231b_03882</version>
+                <version>1123.v4002ee23c671</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.modules</groupId>
@@ -374,7 +374,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>gitlab-plugin</artifactId>
-                <version>1.6.0</version>
+                <version>1.7.5</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -556,7 +556,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>support-core</artifactId>
-                <version>1241.v32a_39d7032e5</version>
+                <version>1258.v665d89fa_3607</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
