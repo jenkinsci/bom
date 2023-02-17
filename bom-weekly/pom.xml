@@ -157,7 +157,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>javax-activation-api</artifactId>
-                <version>1.2.0-5</version>
+                <version>1.2.0-6</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
