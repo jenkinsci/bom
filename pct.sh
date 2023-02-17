@@ -20,11 +20,6 @@ if [[ -n ${EXTRA_MAVEN_PROPERTIES-} ]]; then
 fi
 
 #
-# This test has been broken for a very long time.
-#
-[[ $PLUGINS == gitlab-plugin ]] && PCT_D_ARGS+='-Dfailsafe.excludes=com.dabsquared.gitlabjenkins.testing.integration.GitLabIT '
-
-#
 # The overrideWar option is available in HPI Plugin 3.29 or later, but many plugins under test still
 # use an older plugin parent POM and therefore an older HPI plugin version. As a temporary
 # workaround, we override the HPI plugin version to the latest version. When all plugins in the
