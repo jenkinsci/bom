@@ -561,7 +561,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>timestamper</artifactId>
-                <version>1.21</version>
+                <version>1.22</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
