@@ -50,9 +50,6 @@ lines.each {line ->
     plugins.each { plugin ->
         branches["pct-$plugin-$line"] = {
             def jdk = line == 'weekly' ? 17 : 11
-            if (plugin == 'github') {
-                jdk = 11 // TODO JENKINS-69353 DefaultPushGHEventListenerTest does not yet pass on Java 17
-            }
             mavenEnv(jdk: jdk) {
                 deleteDir()
                 unstash 'pct.sh'

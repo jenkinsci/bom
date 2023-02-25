@@ -14,7 +14,7 @@
     <properties>
         <changelist>999999-SNAPSHOT</changelist>
         <bom>weekly</bom>
-        <jenkins.version>2.391</jenkins.version>
+        <jenkins.version>2.392</jenkins.version>
         <kotlin.version>1.8.10</kotlin.version>
     </properties>
     <dependencyManagement>
