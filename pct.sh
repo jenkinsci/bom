@@ -36,7 +36,6 @@ exec java \
 	-DforkCount=.75C \
 	-Dhpi-plugin.version=3.38 \
 	-Djth.jenkins-war.path="$(pwd)/megawar.war" \
-	-DoverrideWarAdditions=true \
 	-Dsurefire.excludesFile="$(pwd)/excludes.txt"
 
 # produces: **/target/surefire-reports/TEST-*.xml
