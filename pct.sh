@@ -26,11 +26,6 @@ fi
 # managed set are using a plugin parent POM with HPI Plugin 3.29 or later (i.e., plugin parent POM
 # 4.44 or later), this can be deleted.
 #
-# Testing plugins against a version of Jenkins that requires Java 11 exposes
-# jenkinsci/plugin-pom#563. This was fixed in plugin parent POM 4.42, but many plugins under test
-# still use an older plugin parent POM. As a temporary workaround, we skip Enforcer. When all
-# plugins in the managed set are using plugin parent POM 4.42 or later, this can be deleted.
-#
 exec java \
 	-jar pct.jar \
 	--war "$(pwd)/megawar.war" \
@@ -38,7 +33,6 @@ exec java \
 	--working-dir "$(pwd)/pct-work" \
 	$PCT_S_ARG \
 	$PCT_D_ARGS \
-	-Denforcer.skip=true \
 	-DforkCount=.75C \
 	-Dhpi-plugin.version=3.38 \
 	-Djth.jenkins-war.path="$(pwd)/megawar.war" \
