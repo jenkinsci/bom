@@ -19,13 +19,6 @@ if [[ -n ${EXTRA_MAVEN_PROPERTIES-} ]]; then
 	done
 fi
 
-#
-# The overrideWar option is available in HPI Plugin 3.29 or later, but many plugins under test still
-# use an older plugin parent POM and therefore an older HPI plugin version. As a temporary
-# workaround, we override the HPI plugin version to the latest version. When all plugins in the
-# managed set are using a plugin parent POM with HPI Plugin 3.29 or later (i.e., plugin parent POM
-# 4.44 or later), this can be deleted.
-#
 exec java \
 	-jar pct.jar \
 	--war "$(pwd)/megawar.war" \
@@ -34,7 +27,6 @@ exec java \
 	$PCT_S_ARG \
 	$PCT_D_ARGS \
 	-DforkCount=.75C \
-	-Dhpi-plugin.version=3.38 \
 	-Djth.jenkins-war.path="$(pwd)/megawar.war" \
 	-DoverrideWarAdditions=true \
 	-Dsurefire.excludesFile="$(pwd)/excludes.txt"
