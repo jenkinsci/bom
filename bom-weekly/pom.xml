@@ -80,7 +80,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>commons-text-api</artifactId>
-                <version>1.10.0-27.vb_fa_3896786a_7</version>
+                <version>1.10.0-36.vc008c8fcda_7b_</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
