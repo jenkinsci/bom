@@ -1,5 +1,3 @@
-# https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
-
 version: 2
 updates:
   - package-ecosystem: "maven"
@@ -10,17 +8,12 @@ updates:
     schedule:
       interval: "daily"
   - package-ecosystem: "maven"
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 25
     directory: "/bom-weekly"
     reviewers:
       - "jglick"
     schedule:
       interval: "daily"
-    ignore:
-      # TODO https://github.com/jenkinsci/bom/pull/1374#issuecomment-1205302760 pending new version
-      - dependency-name: org.jenkins-ci.plugins:trilead-api
-        versions:
-          - 1.71.v9e7860a_67a_df
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
