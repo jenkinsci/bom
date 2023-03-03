@@ -212,6 +212,18 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>io.jenkins.plugins</groupId>
+            <artifactId>warnings-ng</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <!-- Avoid an upper bounds conflict with Jenkins core -->
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
             <groupId>io.jenkins.plugins.mina-sshd-api</groupId>
             <artifactId>mina-sshd-api-core</artifactId>
             <scope>test</scope>

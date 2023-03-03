@@ -19,6 +19,12 @@ if [[ -n ${EXTRA_MAVEN_PROPERTIES-} ]]; then
 	done
 fi
 
+#
+# Work around jenkinsci/warnings-ng-plugin#1463. When jenkinsci/warnings-ng-plugin#1463 is released,
+# this workaround can be deleted.
+#
+[[ $PLUGINS == warnings-ng ]] && PCT_D_ARGS+='-Dfailsafe.excludes=io.jenkins.plugins.analysis.warnings.integrations.ConfigurationAsCodeITest,io.jenkins.plugins.analysis.warnings.integrations.JobDslITest '
+
 exec java \
 	-jar pct.jar \
 	--war "$(pwd)/megawar.war" \
