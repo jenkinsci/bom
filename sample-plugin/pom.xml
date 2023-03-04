@@ -26,28 +26,13 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!-- Require upper bound dependencies error between jenkins-test-harness and pipeline-model-definition -->
-            <dependency>
-                <groupId>net.sf.jopt-simple</groupId>
-                <artifactId>jopt-simple</artifactId>
-                <version>5.0.4</version>
-            </dependency>
             <!-- Require upper bound dependencies error from okhttp api plugin -->
             <dependency>
                 <groupId>org.jetbrains.kotlin</groupId>
-                <artifactId>kotlin-stdlib-common</artifactId>
+                <artifactId>kotlin-bom</artifactId>
                 <version>${kotlin.version}</version>
-            </dependency>
-            <!-- Require upper bound dependencies errors from enforcer update in 4.55 -->
-            <dependency>
-                <groupId>org.jetbrains.kotlin</groupId>
-                <artifactId>kotlin-stdlib</artifactId>
-                <version>${kotlin.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jetbrains.kotlin</groupId>
-                <artifactId>kotlin-stdlib-jdk8</artifactId>
-                <version>${kotlin.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
             </dependency>
             <dependency>
                 <groupId>org.json</groupId>
