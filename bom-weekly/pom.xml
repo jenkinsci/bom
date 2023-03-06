@@ -394,6 +394,11 @@
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>jacoco</artifactId>
+                <version>3.3.3-rc931.593159b_700c5</version> <!-- TODO https://github.com/jenkinsci/jacoco-plugin/pull/206 -->
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>javadoc</artifactId>
                 <version>226.v71211feb_e7e9</version>
             </dependency>
