@@ -9,7 +9,9 @@ def mavenEnv(Map params = [:], Closure body) {
         timeout(90) {
             sh 'mvn -version'
             infra.withArtifactCachingProxy {
-                body()
+                withEnv(["MAVEN_ARGS=-Dmaven.repo.local=${WORKSPACE_TMP}/m2repo"]) {
+                    body()
+                }
             }
             if (junit(testResults: '**/target/*-reports/TEST-*.xml').failCount > 0) {
                 // TODO JENKINS-27092 throw up UNSTABLE status in this case
