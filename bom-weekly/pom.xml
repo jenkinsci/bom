@@ -420,7 +420,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>ldap</artifactId>
-                <version>659.v8ca_b_a_fe79fa_d</version>
+                <version>671.v2a_9192a_7419d</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
