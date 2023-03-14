@@ -8,6 +8,9 @@
     </parent>
     <artifactId>bom-2.375.x</artifactId>
     <packaging>pom</packaging>
+    <properties>
+        <plugin-util-api.version>2.20.0</plugin-util-api.version>
+    </properties>
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -21,6 +24,17 @@
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>custom-folder-icon</artifactId>
                 <version>2.3</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jenkins.plugins</groupId>
+                <artifactId>plugin-util-api</artifactId>
+                <version>${plugin-util-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jenkins.plugins</groupId>
+                <artifactId>plugin-util-api</artifactId>
+                <version>${plugin-util-api.version}</version>
+                <classifier>tests</classifier>
             </dependency>
         </dependencies>
     </dependencyManagement>
