@@ -26,19 +26,13 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!-- Require upper bound dependencies error from okhttp api plugin -->
-            <dependency>
-                <groupId>org.jetbrains.kotlin</groupId>
-                <artifactId>kotlin-bom</artifactId>
-                <version>${kotlin.version}</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
+            <!-- TODO conflict between configuration-as-code, slack, and jackson2-api -->
             <dependency>
                 <groupId>org.json</groupId>
                 <artifactId>json</artifactId>
                 <version>20230227</version>
             </dependency>
+            <!-- TODO conflict between okhttp-api and configuration-as-code -->
             <dependency>
                 <groupId>org.jetbrains</groupId>
                 <artifactId>annotations</artifactId>
