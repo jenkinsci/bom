@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
     <properties>
         <aws-java-sdk-plugin.version>1.12.406-370.v8f993c987059</aws-java-sdk-plugin.version>
-        <checks-api.version>1.8.1</checks-api.version>
+        <checks-api.version>2.0.0</checks-api.version>
         <configuration-as-code-plugin.version>1569.vb_72405b_80249</configuration-as-code-plugin.version>
         <data-tables-api.version>1.13.3-2</data-tables-api.version>
         <declarative-pipeline-migration-assistant-plugin.version>1.5.5</declarative-pipeline-migration-assistant-plugin.version>
