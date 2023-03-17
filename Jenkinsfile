@@ -5,7 +5,7 @@ def mavenEnv(Map params = [:], Closure body) {
   def attempts = 3
   retry(count: attempts, conditions: [kubernetesAgent(), nonresumable()]) {
     echo 'Attempt ' + ++attempt + ' of ' + attempts
-    node("maven-$params.jdk") { // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
+    node("maven-$params.jdk && doks") { // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
         timeout(90) {
             sh 'mvn -version'
             infra.withArtifactCachingProxy {
