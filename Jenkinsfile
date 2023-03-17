@@ -5,6 +5,8 @@ def mavenEnv(Map params = [:], Closure body) {
   def attempts = 3
   retry(count: attempts, conditions: [kubernetesAgent(), nonresumable()]) {
     echo 'Attempt ' + ++attempt + ' of ' + attempts
+    // Forcing the execution on DigitalOcean for now.
+    // TODO: remove 'doks' when AWS agents are fixed cf https://github.com/jenkins-infra/helpdesk/issues/3423#issuecomment-1473642909
     node("maven-$params.jdk && doks") { // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
         timeout(90) {
             sh 'mvn -version'
