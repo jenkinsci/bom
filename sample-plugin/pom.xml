@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
-        <version>4.55</version>
+        <version>4.56</version>
         <relativePath />
     </parent>
     <groupId>io.jenkins.tools.bom</groupId>
@@ -14,7 +14,7 @@
     <properties>
         <changelist>999999-SNAPSHOT</changelist>
         <bom>weekly</bom>
-        <jenkins.version>2.393</jenkins.version>
+        <jenkins.version>2.395</jenkins.version>
         <kotlin.version>1.8.10</kotlin.version>
     </properties>
     <dependencyManagement>
@@ -646,7 +646,7 @@
             <id>2.387.x</id>
             <properties>
                 <bom>2.387.x</bom>
-                <jenkins.version>2.387</jenkins.version>
+                <jenkins.version>2.387.1</jenkins.version>
             </properties>
         </profile>
         <profile>
