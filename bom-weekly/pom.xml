@@ -96,7 +96,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>dark-theme</artifactId>
-                <version>302.vf069cb_e01486</version>
+                <version>315.va_22e7d692ea_a</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
