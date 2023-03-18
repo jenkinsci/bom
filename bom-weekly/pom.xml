@@ -552,7 +552,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>support-core</artifactId>
-                <version>1258.v665d89fa_3607</version>
+                <version>1266.v6d096c154c90</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
