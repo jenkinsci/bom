@@ -6,10 +6,12 @@ def mavenEnv(Map params = [:], Closure body) {
   retry(count: attempts, conditions: [kubernetesAgent(), nonresumable()]) {
     echo 'Attempt ' + ++attempt + ' of ' + attempts
     node("maven-$params.jdk") { // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
-        timeout(90) {
+        timeout(120) {
             sh 'mvn -version'
             infra.withArtifactCachingProxy {
-                body()
+                withEnv(["MAVEN_ARGS=-Dmaven.repo.local=${WORKSPACE_TMP}/m2repo"]) {
+                    body()
+                }
             }
             if (junit(testResults: '**/target/*-reports/TEST-*.xml').failCount > 0) {
                 // TODO JENKINS-27092 throw up UNSTABLE status in this case

@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
-        <version>4.55</version>
+        <version>4.56</version>
         <relativePath />
     </parent>
     <groupId>io.jenkins.tools.bom</groupId>
@@ -14,7 +14,7 @@
     <properties>
         <changelist>999999-SNAPSHOT</changelist>
         <bom>weekly</bom>
-        <jenkins.version>2.393</jenkins.version>
+        <jenkins.version>2.395</jenkins.version>
         <kotlin.version>1.8.10</kotlin.version>
     </properties>
     <dependencyManagement>
@@ -25,19 +25,6 @@
                 <version>${project.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>
-            <!-- Require upper bound dependencies error from okhttp api plugin -->
-            <dependency>
-                <groupId>org.jetbrains.kotlin</groupId>
-                <artifactId>kotlin-bom</artifactId>
-                <version>${kotlin.version}</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-            <dependency>
-                <groupId>org.json</groupId>
-                <artifactId>json</artifactId>
-                <version>20230227</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -175,6 +162,13 @@
             <groupId>io.jenkins.plugins</groupId>
             <artifactId>okhttp-api</artifactId>
             <scope>test</scope>
+            <exclusions>
+                <!-- TODO conflict with configuration-as-code -->
+                <exclusion>
+                    <groupId>org.jetbrains</groupId>
+                    <artifactId>annotations</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>io.jenkins.plugins</groupId>
@@ -321,6 +315,13 @@
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>jackson2-api</artifactId>
             <scope>test</scope>
+            <exclusions>
+                <!-- TODO conflict with configuration-as-code and slack -->
+                <exclusion>
+                    <groupId>org.json</groupId>
+                    <artifactId>json</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
@@ -405,6 +406,13 @@
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>slack</artifactId>
             <scope>test</scope>
+            <exclusions>
+                <!-- TODO conflict with configuration-as-code and jackson2-api -->
+                <exclusion>
+                    <groupId>org.json</groupId>
+                    <artifactId>json</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
@@ -646,14 +654,14 @@
             <id>2.387.x</id>
             <properties>
                 <bom>2.387.x</bom>
-                <jenkins.version>2.387</jenkins.version>
+                <jenkins.version>2.387.1</jenkins.version>
             </properties>
         </profile>
         <profile>
             <id>2.375.x</id>
             <properties>
                 <bom>2.375.x</bom>
-                <jenkins.version>2.375.3</jenkins.version>
+                <jenkins.version>2.375.4</jenkins.version>
             </properties>
         </profile>
         <profile>
