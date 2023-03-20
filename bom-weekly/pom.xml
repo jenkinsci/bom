@@ -117,7 +117,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>file-parameters</artifactId>
-                <version>264.v1733d9b_2a_380</version>
+                <version>285.v757c5b_67a_c25</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -148,7 +148,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>ionicons-api</artifactId>
-                <version>31.v4757b_6987003</version>
+                <version>45.vf54fca_5d2154</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
