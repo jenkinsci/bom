@@ -12,6 +12,3 @@ org.jenkinsci.plugins.gitclient.FilePermissionsTest
 
 # TODO tends to run out of memory
 org.jenkinsci.plugins.pipeline.modeldefinition.TriggersTest
-
-# TODO remove when email-ext merges and releases https://github.com/jenkinsci/email-ext-plugin/pull/431
-hudson.plugins.emailext.ExtendedEmailPublisherDescriptorTest

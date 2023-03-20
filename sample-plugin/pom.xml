@@ -15,7 +15,6 @@
         <changelist>999999-SNAPSHOT</changelist>
         <bom>weekly</bom>
         <jenkins.version>2.395</jenkins.version>
-        <kotlin.version>1.8.10</kotlin.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -162,13 +161,6 @@
             <groupId>io.jenkins.plugins</groupId>
             <artifactId>okhttp-api</artifactId>
             <scope>test</scope>
-            <exclusions>
-                <!-- TODO conflict with configuration-as-code -->
-                <exclusion>
-                    <groupId>org.jetbrains</groupId>
-                    <artifactId>annotations</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>io.jenkins.plugins</groupId>
