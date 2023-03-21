@@ -17,7 +17,7 @@
         <forensics-api.version>2.0.1</forensics-api.version>
         <git-plugin.version>5.0.0</git-plugin.version>
         <mina-sshd-api.version>2.9.2-50.va_0e1f42659a_a</mina-sshd-api.version>
-        <pipeline-model-definition-plugin.version>2.2118.v31fd5b_9944b_5</pipeline-model-definition-plugin.version>
+        <pipeline-model-definition-plugin.version>2.2121.vd87fb_6536d1e</pipeline-model-definition-plugin.version>
         <pipeline-stage-view-plugin.version>2.31</pipeline-stage-view-plugin.version>
         <plugin-util-api.version>3.1.0</plugin-util-api.version>
         <scm-api-plugin.version>631.v9143df5b_e4a_a</scm-api-plugin.version>
