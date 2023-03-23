@@ -17,7 +17,7 @@
         <forensics-api.version>2.0.1</forensics-api.version>
         <git-plugin.version>5.0.0</git-plugin.version>
         <mina-sshd-api.version>2.9.2-50.va_0e1f42659a_a</mina-sshd-api.version>
-        <pipeline-model-definition-plugin.version>2.2121.vd87fb_6536d1e</pipeline-model-definition-plugin.version>
+        <pipeline-model-definition-plugin.version>2.2123.va_31cb_3b_80ef8</pipeline-model-definition-plugin.version>
         <pipeline-stage-view-plugin.version>2.31</pipeline-stage-view-plugin.version>
         <plugin-util-api.version>3.1.0</plugin-util-api.version>
         <scm-api-plugin.version>631.v9143df5b_e4a_a</scm-api-plugin.version>
@@ -731,7 +731,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-scm-step</artifactId>
-                <version>400.v6b_89a_1317c9a_</version>
+                <version>408.v7d5b_135a_b_d49</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
