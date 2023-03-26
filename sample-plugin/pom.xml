@@ -15,6 +15,8 @@
         <changelist>999999-SNAPSHOT</changelist>
         <bom>weekly</bom>
         <jenkins.version>2.396</jenkins.version>
+        <!-- TODO https://github.com/jenkinsci/maven-hpi-plugin/pull/454 -->
+        <hpi-plugin.version>3.41-rc1397.a_3fb_b_d24b_e6b_</hpi-plugin.version>
     </properties>
     <dependencyManagement>
         <dependencies>
