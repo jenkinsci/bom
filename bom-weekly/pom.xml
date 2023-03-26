@@ -9,15 +9,15 @@
     <artifactId>bom-weekly</artifactId>
     <packaging>pom</packaging>
     <properties>
-        <aws-java-sdk-plugin.version>1.12.406-370.v8f993c987059</aws-java-sdk-plugin.version>
+        <aws-java-sdk-plugin.version>1.12.406-374.v4cdf53953691</aws-java-sdk-plugin.version>
         <checks-api.version>2.0.0</checks-api.version>
-        <configuration-as-code-plugin.version>1613.vb_e54b_445ed6f</configuration-as-code-plugin.version>
+        <configuration-as-code-plugin.version>1616.v11393eccf675</configuration-as-code-plugin.version>
         <data-tables-api.version>1.13.3-2</data-tables-api.version>
         <declarative-pipeline-migration-assistant-plugin.version>1.5.5</declarative-pipeline-migration-assistant-plugin.version>
         <forensics-api.version>2.0.1</forensics-api.version>
         <git-plugin.version>5.0.0</git-plugin.version>
-        <mina-sshd-api.version>2.9.2-50.va_0e1f42659a_a</mina-sshd-api.version>
-        <pipeline-model-definition-plugin.version>2.2123.va_31cb_3b_80ef8</pipeline-model-definition-plugin.version>
+        <mina-sshd-api.version>2.9.2-62.v199162f0a_2f8</mina-sshd-api.version>
+        <pipeline-model-definition-plugin.version>2.2125.vddb_a_44a_d605e</pipeline-model-definition-plugin.version>
         <pipeline-stage-view-plugin.version>2.31</pipeline-stage-view-plugin.version>
         <plugin-util-api.version>3.1.0</plugin-util-api.version>
         <scm-api-plugin.version>631.v9143df5b_e4a_a</scm-api-plugin.version>
