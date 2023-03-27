@@ -13,17 +13,17 @@
         <checks-api.version>2.0.0</checks-api.version>
         <configuration-as-code-plugin.version>1616.v11393eccf675</configuration-as-code-plugin.version>
         <data-tables-api.version>1.13.3-3</data-tables-api.version>
-        <declarative-pipeline-migration-assistant-plugin.version>1.5.5</declarative-pipeline-migration-assistant-plugin.version>
+        <declarative-pipeline-migration-assistant-plugin.version>1.5.6</declarative-pipeline-migration-assistant-plugin.version>
         <forensics-api.version>2.1.0</forensics-api.version>
         <git-plugin.version>5.0.0</git-plugin.version>
         <mina-sshd-api.version>2.9.2-62.v199162f0a_2f8</mina-sshd-api.version>
         <pipeline-model-definition-plugin.version>2.2125.vddb_a_44a_d605e</pipeline-model-definition-plugin.version>
-        <pipeline-stage-view-plugin.version>2.31</pipeline-stage-view-plugin.version>
+        <pipeline-stage-view-plugin.version>2.32</pipeline-stage-view-plugin.version>
         <plugin-util-api.version>3.2.0</plugin-util-api.version>
         <scm-api-plugin.version>631.v9143df5b_e4a_a</scm-api-plugin.version>
         <subversion-plugin.version>2.17.1</subversion-plugin.version>
         <workflow-api-plugin.version>1208.v0cc7c6e0da_9e</workflow-api-plugin.version>
-        <workflow-cps-plugin.version>3641.vf58904a_b_b_5d8</workflow-cps-plugin.version>
+        <workflow-cps-plugin.version>3651.ve2e99a_4f4a_e5</workflow-cps-plugin.version>
         <workflow-job-plugin.version>1284.v2fe8ed4573d4</workflow-job-plugin.version>
         <workflow-multibranch-plugin.version>733.v109046189126</workflow-multibranch-plugin.version>
         <workflow-step-api-plugin.version>639.v6eca_cd8c04a_a_</workflow-step-api-plugin.version>
