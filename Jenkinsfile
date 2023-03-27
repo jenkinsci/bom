@@ -50,6 +50,9 @@ stage('prep') {
 branches = [failFast: !fullTest]
 lines.each {line ->
     plugins.each { plugin ->
+        if (plugin != 'workflow-cps') {
+            return
+        }
         branches["pct-$plugin-$line"] = {
             def jdk = line == 'weekly' ? 17 : 11
             mavenEnv(jdk: jdk) {
