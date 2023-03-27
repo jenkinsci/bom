@@ -189,7 +189,12 @@
         </dependency>
         <dependency>
             <groupId>io.jenkins.plugins.mina-sshd-api</groupId>
-            <artifactId>mina-sshd-api-core</artifactId>
+            <artifactId>mina-sshd-api-scp</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jenkins.plugins.mina-sshd-api</groupId>
+            <artifactId>mina-sshd-api-sftp</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -437,6 +442,13 @@
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>subversion</artifactId>
             <scope>test</scope>
+            <exclusions>
+                <!-- TODO RequireUpperBoundDeps with mina-sshd-api-plugin -->
+                <exclusion>
+                    <groupId>org.apache.sshd</groupId>
+                    <artifactId>sshd-common</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>

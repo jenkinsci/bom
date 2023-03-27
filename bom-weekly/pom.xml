@@ -242,6 +242,16 @@
                 <version>${mina-sshd-api.version}</version>
             </dependency>
             <dependency>
+                <groupId>io.jenkins.plugins.mina-sshd-api</groupId>
+                <artifactId>mina-sshd-api-scp</artifactId>
+                <version>${mina-sshd-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jenkins.plugins.mina-sshd-api</groupId>
+                <artifactId>mina-sshd-api-sftp</artifactId>
+                <version>${mina-sshd-api.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.6wind.jenkins</groupId>
                 <artifactId>lockable-resources</artifactId>
                 <version>1131.vb_7c3d377e723</version>
