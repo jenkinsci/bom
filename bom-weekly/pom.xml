@@ -9,17 +9,17 @@
     <artifactId>bom-weekly</artifactId>
     <packaging>pom</packaging>
     <properties>
-        <aws-java-sdk-plugin.version>1.12.406-370.v8f993c987059</aws-java-sdk-plugin.version>
+        <aws-java-sdk-plugin.version>1.12.406-374.v4cdf53953691</aws-java-sdk-plugin.version>
         <checks-api.version>2.0.0</checks-api.version>
-        <configuration-as-code-plugin.version>1569.vb_72405b_80249</configuration-as-code-plugin.version>
-        <data-tables-api.version>1.13.3-2</data-tables-api.version>
+        <configuration-as-code-plugin.version>1616.v11393eccf675</configuration-as-code-plugin.version>
+        <data-tables-api.version>1.13.3-3</data-tables-api.version>
         <declarative-pipeline-migration-assistant-plugin.version>1.5.5</declarative-pipeline-migration-assistant-plugin.version>
-        <forensics-api.version>2.0.1</forensics-api.version>
+        <forensics-api.version>2.1.0</forensics-api.version>
         <git-plugin.version>5.0.0</git-plugin.version>
-        <mina-sshd-api.version>2.9.2-50.va_0e1f42659a_a</mina-sshd-api.version>
-        <pipeline-model-definition-plugin.version>2.2121.vd87fb_6536d1e</pipeline-model-definition-plugin.version>
+        <mina-sshd-api.version>2.9.2-62.v199162f0a_2f8</mina-sshd-api.version>
+        <pipeline-model-definition-plugin.version>2.2125.vddb_a_44a_d605e</pipeline-model-definition-plugin.version>
         <pipeline-stage-view-plugin.version>2.31</pipeline-stage-view-plugin.version>
-        <plugin-util-api.version>3.1.0</plugin-util-api.version>
+        <plugin-util-api.version>3.2.0</plugin-util-api.version>
         <scm-api-plugin.version>631.v9143df5b_e4a_a</scm-api-plugin.version>
         <subversion-plugin.version>2.17.1</subversion-plugin.version>
         <workflow-api-plugin.version>1208.v0cc7c6e0da_9e</workflow-api-plugin.version>
@@ -60,7 +60,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>bootstrap5-api</artifactId>
-                <version>5.2.2-1</version>
+                <version>5.2.2-2</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -112,7 +112,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>echarts-api</artifactId>
-                <version>5.4.0-2</version>
+                <version>5.4.0-3</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -122,7 +122,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>font-awesome-api</artifactId>
-                <version>6.3.0-1</version>
+                <version>6.3.0-2</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -193,7 +193,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>jquery3-api</artifactId>
-                <version>3.6.3-1</version>
+                <version>3.6.4-1</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -239,6 +239,16 @@
             <dependency>
                 <groupId>io.jenkins.plugins.mina-sshd-api</groupId>
                 <artifactId>mina-sshd-api-core</artifactId>
+                <version>${mina-sshd-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jenkins.plugins.mina-sshd-api</groupId>
+                <artifactId>mina-sshd-api-scp</artifactId>
+                <version>${mina-sshd-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jenkins.plugins.mina-sshd-api</groupId>
+                <artifactId>mina-sshd-api-sftp</artifactId>
                 <version>${mina-sshd-api.version}</version>
             </dependency>
             <dependency>
@@ -364,6 +374,11 @@
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>github-branch-source</artifactId>
+                <version>1703.vd5a_2b_29c6cdc</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>gitlab-oauth</artifactId>
                 <version>1.16</version>
             </dependency>
@@ -391,6 +406,11 @@
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>jackson2-api</artifactId>
                 <version>2.14.2-319.v37853346a_229</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jenkins-ci.plugins</groupId>
+                <artifactId>jacoco</artifactId>
+                <version>3.3.3</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -731,7 +751,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
                 <artifactId>workflow-scm-step</artifactId>
-                <version>400.v6b_89a_1317c9a_</version>
+                <version>408.v7d5b_135a_b_d49</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.workflow</groupId>
