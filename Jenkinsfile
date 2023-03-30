@@ -75,7 +75,7 @@ lines.each {line ->
                 withEnv(["PLUGINS=$plugin", "LINE=$line", 'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=4']) {
                     sh 'mv megawar-$LINE.war megawar.war && bash pct.sh'
                 }
-                def launchableSession = readFile "launchable-session-${line}.txt"
+                def launchableSession = readFile("launchable-session-${line}.txt").trim()
                 launchable("record tests --session ${launchableSession} maven './**/target/surefire-reports'") // TODO add failsafe reports
             }
         }
