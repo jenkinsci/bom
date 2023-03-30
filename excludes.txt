@@ -10,5 +10,8 @@ org.jenkinsci.plugins.durabletask.BourneShellScriptTest
 # TODO fails for one reason in (non-PCT) official sources, run locally; and for another reason in PCT in Docker; passes in official sources in Docker, or locally in PCT
 org.jenkinsci.plugins.gitclient.FilePermissionsTest
 
+# TODO https://github.com/jenkinsci/matrix-auth-plugin/pull/136
+org.jenkinsci.plugins.matrixauth.integrations.casc.ImportTest
+
 # TODO tends to run out of memory
 org.jenkinsci.plugins.pipeline.modeldefinition.TriggersTest
