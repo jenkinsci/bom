@@ -42,10 +42,14 @@ for LINE in $LINEZ; do
 		PROFILE="-P${LINE}"
 	fi
 	# TODO https://github.com/jenkinsci/maven-hpi-plugin/pull/464
-	$MVN -f sample-plugin hpi:resolve-test-dependencies \
-		${SAMPLE_PLUGIN_OPTS:-} ${PROFILE:-} \
-		-DoverrideWar="../target/megawar-${LINE}.war" -DuseUpperBounds \
-		-Dhpi-plugin.version=3.42-rc1408.b_fb_b_75ef46e7 \
+	$MVN \
+		-f sample-plugin \
+		hpi:resolve-test-dependencies \
+		${SAMPLE_PLUGIN_OPTS:-} \
+		${PROFILE:-} \
+		-DoverrideWar="../target/megawar-${LINE}.war" \
+		-DuseUpperBounds \
+		-Dhpi-plugin.version=3.42-rc1409.669de6d1a_866 \
 		-DcommitHashes=target/commit-hashes.txt
 	mv sample-plugin/target/commit-hashes.txt "target/commit-hashes-${LINE}.txt"
 done
