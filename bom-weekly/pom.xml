@@ -13,7 +13,7 @@
         <checks-api.version>2.0.0</checks-api.version>
         <configuration-as-code-plugin.version>1616.v11393eccf675</configuration-as-code-plugin.version>
         <data-tables-api.version>1.13.3-3</data-tables-api.version>
-        <declarative-pipeline-migration-assistant-plugin.version>1.5.5</declarative-pipeline-migration-assistant-plugin.version>
+        <declarative-pipeline-migration-assistant-plugin.version>1.5.6</declarative-pipeline-migration-assistant-plugin.version>
         <forensics-api.version>2.1.0</forensics-api.version>
         <git-plugin.version>5.0.0</git-plugin.version>
         <mina-sshd-api.version>2.9.2-62.v199162f0a_2f8</mina-sshd-api.version>
