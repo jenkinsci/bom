@@ -8,7 +8,9 @@ def mavenEnv(Map params = [:], Closure body) {
     node("maven-$params.jdk") { // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
         timeout(120) {
             sh 'mvn -version'
-            infra.withArtifactCachingProxy {
+            // Exclude DigitalOcean artifact caching proxy provider, currently unreliable on BOM builds
+            // TODO: remove when https://github.com/jenkins-infra/helpdesk/issues/3481 is fixed
+            infra.withArtifactCachingProxy(env.ARTIFACT_CACHING_PROXY_PROVIDER != 'do') {
                 withEnv(["MAVEN_ARGS=-Dmaven.repo.local=${WORKSPACE_TMP}/m2repo"]) {
                     body()
                 }
