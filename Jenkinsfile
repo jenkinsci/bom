@@ -15,7 +15,7 @@ def mavenEnv(Map params = [:], Closure body) {
                     body()
                 }
             }
-            if (junit(testResults: '**/target/*-reports/TEST-*.xml').failCount > 0) {
+            if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount > 0) {
                 // TODO JENKINS-27092 throw up UNSTABLE status in this case
                 error 'Some test failures, not going to continue'
             }
@@ -78,7 +78,7 @@ lines.each {line ->
                     sh 'mv megawar-$LINE.war megawar.war && bash pct.sh'
                 }
                 def launchableSession = readFile("launchable-session-${line}.txt").trim()
-                launchable("record tests --session ${launchableSession} maven './**/target/surefire-reports'") // TODO add failsafe reports
+                launchable("record tests --session ${launchableSession} maven './**/target/surefire-reports' './**/target/failsafe-reports'")
             }
         }
     }
