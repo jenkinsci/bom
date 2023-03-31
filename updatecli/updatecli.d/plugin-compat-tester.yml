@@ -30,9 +30,9 @@ targets:
     spec:
       file: prep.sh
       matchpattern: >-
-        version=(.*)
+        ^pct_version=(.*)
       replacepattern: >-
-        version={{ source `pctVersion` }}
+        pct_version={{ source `pctVersion` }}
     scmid: default
 
 actions:
