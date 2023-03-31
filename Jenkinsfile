@@ -45,13 +45,15 @@ stage('prep') {
                 lines = [lines[0], lines[-1]] // run PCT only on newest and oldest lines, to save resources
             }
             stash name: 'pct', includes: 'pct.jar'
+            lines.each {stash name: "megawar-$it", includes: "megawar-${it}.war"}
             launchable.install()
-            lines.each { line ->
-                def commitHashes = readFile "commit-hashes-${line}.txt"
-                launchable("record build --name \"${BUILD_TAG}-${line}\" --no-commit-collection " + commitHashes)
-                launchable("record session --build \"${BUILD_TAG}-${line}\" --observation >launchable-session-${line}.txt")
-                stash name: "megawar-${line}", includes: "megawar-${line}.war"
-                stash name: "launchable-session-${line}.txt", includes: "launchable-session-${line}.txt"
+            withCredentials([string(credentialsId: 'launchable-jenkins-bom', variable: 'LAUNCHABLE_TOKEN')]) {
+                lines.each { line ->
+                    def commitHashes = readFile "commit-hashes-${line}.txt"
+                    launchable("record build --name \"${BUILD_TAG}-${line}\" --no-commit-collection " + commitHashes)
+                    launchable("record session --build \"${BUILD_TAG}-${line}\" --observation >launchable-session-${line}.txt")
+                    stash name: "launchable-session-${line}.txt", includes: "launchable-session-${line}.txt"
+                }
             }
         }
         stash name: 'pct.sh', includes: 'pct.sh'
@@ -69,16 +71,18 @@ lines.each {line ->
                 deleteDir()
                 unstash 'pct.sh'
                 unstash 'excludes.txt'
-                unstash "launchable-session-${line}.txt"
                 unstash 'pct'
                 unstash "megawar-$line"
-                launchable.install()
-                launchable('verify')
                 withEnv(["PLUGINS=$plugin", "LINE=$line", 'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=4']) {
                     sh 'mv megawar-$LINE.war megawar.war && bash pct.sh'
                 }
-                def launchableSession = readFile("launchable-session-${line}.txt").trim()
-                launchable("record tests --session ${launchableSession} maven './**/target/surefire-reports' './**/target/failsafe-reports'")
+                launchable.install()
+                withCredentials([string(credentialsId: 'launchable-jenkins-bom', variable: 'LAUNCHABLE_TOKEN')]) {
+                    launchable('verify')
+                    unstash "launchable-session-${line}.txt"
+                    def launchableSession = readFile("launchable-session-${line}.txt").trim()
+                    launchable("record tests --session ${launchableSession} maven './**/target/surefire-reports' './**/target/failsafe-reports'")
+                }
             }
         }
     }
