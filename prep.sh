@@ -38,6 +38,20 @@ for LINE in $LINEZ; do
 	cd "megawar-${LINE}"
 	jar c0Mf "../../../target/megawar-${LINE}.war" *
 	popd
+	if [[ ${LINE} != weekly ]]; then
+		PROFILE="-P${LINE}"
+	fi
+	# TODO https://github.com/jenkinsci/maven-hpi-plugin/pull/464
+	$MVN \
+		-f sample-plugin \
+		hpi:resolve-test-dependencies \
+		${SAMPLE_PLUGIN_OPTS:-} \
+		${PROFILE:-} \
+		-DoverrideWar="../target/megawar-${LINE}.war" \
+		-DuseUpperBounds \
+		-Dhpi-plugin.version=3.42-rc1409.669de6d1a_866 \
+		-DcommitHashes=target/commit-hashes.txt
+	mv sample-plugin/target/commit-hashes.txt "target/commit-hashes-${LINE}.txt"
 done
 
 # Tracked by ./updatecli/updatecli.d/plugin-compat-tester.yml
@@ -46,4 +60,4 @@ pct="$($MVN -Dset.changelist -Dexpression=settings.localRepository -q -DforceStd
 [ -f "${pct}" ] || $MVN dependency:get -Dartifact=org.jenkins-ci.tests:plugins-compat-tester-cli:${version}:jar -DremoteRepositories=repo.jenkins-ci.org::default::https://repo.jenkins-ci.org/public/,incrementals::default::https://repo.jenkins-ci.org/incrementals/ -Dtransitive=false
 cp "${pct}" target/pct.jar
 
-# produces: target/{megawar-*.war,pct.jar,plugins.txt,lines.txt}
+# produces: target/{megawar-*.war,commit-hashes-*.txt,pct.jar,plugins.txt,lines.txt}

@@ -30,7 +30,11 @@ stage('prep') {
     mavenEnv(jdk: 11) {
         checkout scm
         withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist']) {
-            sh 'bash prep.sh'
+            withCredentials([
+                usernamePassword(credentialsId: 'app-ci.jenkins.io', usernameVariable: 'GITHUB_APP', passwordVariable: 'GITHUB_OAUTH')
+            ]) {
+                sh 'bash prep.sh'
+            }
         }
         dir('target') {
             plugins = readFile('plugins.txt').split('\n')
@@ -39,7 +43,14 @@ stage('prep') {
                 lines = [lines[0], lines[-1]] // run PCT only on newest and oldest lines, to save resources
             }
             stash name: 'pct', includes: 'pct.jar'
-            lines.each {stash name: "megawar-$it", includes: "megawar-${it}.war"}
+            lines.each { line ->
+                def commitHashes = readFile "commit-hashes-${line}.txt"
+                launchable.install()
+                launchable("record build --name \"${BUILD_TAG}-${line}\" --no-commit-collection " + commitHashes)
+                launchable("record session --build \"${BUILD_TAG}-${line}\" --observation >launchable-session-${line}.txt")
+                stash name: "megawar-${line}", includes: "megawar-${line}.war"
+                stash name: "launchable-session-${line}.txt", includes: "launchable-session-${line}.txt"
+            }
         }
         stash name: 'pct.sh', includes: 'pct.sh'
         stash name: 'excludes.txt', includes: 'excludes.txt'
@@ -56,6 +67,7 @@ lines.each {line ->
                 deleteDir()
                 unstash 'pct.sh'
                 unstash 'excludes.txt'
+                unstash "launchable-session-${line}.txt"
                 unstash 'pct'
                 unstash "megawar-$line"
                 launchable.install()
@@ -63,7 +75,8 @@ lines.each {line ->
                 withEnv(["PLUGINS=$plugin", "LINE=$line", 'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=4']) {
                     sh 'mv megawar-$LINE.war megawar.war && bash pct.sh'
                 }
-                launchable("record tests --no-build maven './**/target/surefire-reports'")
+                def launchableSession = readFile("launchable-session-${line}.txt").trim()
+                launchable("record tests --session ${launchableSession} maven './**/target/surefire-reports'") // TODO add failsafe reports
             }
         }
     }
