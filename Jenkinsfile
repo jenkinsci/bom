@@ -45,9 +45,9 @@ stage('prep') {
                 lines = [lines[0], lines[-1]] // run PCT only on newest and oldest lines, to save resources
             }
             stash name: 'pct', includes: 'pct.jar'
+            launchable.install()
             lines.each { line ->
                 def commitHashes = readFile "commit-hashes-${line}.txt"
-                launchable.install()
                 launchable("record build --name \"${BUILD_TAG}-${line}\" --no-commit-collection " + commitHashes)
                 launchable("record session --build \"${BUILD_TAG}-${line}\" --observation >launchable-session-${line}.txt")
                 stash name: "megawar-${line}", includes: "megawar-${line}.war"
