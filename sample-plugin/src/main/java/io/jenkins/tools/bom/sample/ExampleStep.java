@@ -14,11 +14,14 @@ import org.kohsuke.stapler.DataBoundSetter;
 
 public final class ExampleStep extends Step {
 
-    @DataBoundSetter public String x;
+    @DataBoundSetter
+    public String x;
 
-    @DataBoundConstructor public ExampleStep() {}
+    @DataBoundConstructor
+    public ExampleStep() {}
 
-    @Override public StepExecution start(StepContext context) throws Exception {
+    @Override
+    public StepExecution start(StepContext context) throws Exception {
         return new Execution(context, x);
     }
 
@@ -30,24 +33,25 @@ public final class ExampleStep extends Step {
             super(context);
             this.x = x;
         }
-        
-        @Override protected Void run() throws Exception {
+
+        @Override
+        protected Void run() throws Exception {
             getContext().get(TaskListener.class).getLogger().println("Ran on " + x + "!");
             return null;
         }
-
     }
 
-    @Extension public static final class DescriptorImpl extends StepDescriptor {
+    @Extension
+    public static final class DescriptorImpl extends StepDescriptor {
 
-        @Override public String getFunctionName() {
+        @Override
+        public String getFunctionName() {
             return "example";
         }
 
-        @Override public Set<? extends Class<?>> getRequiredContext() {
+        @Override
+        public Set<? extends Class<?>> getRequiredContext() {
             return Collections.singleton(TaskListener.class);
         }
-
     }
-
 }

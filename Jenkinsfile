@@ -1,27 +1,28 @@
 properties([disableConcurrentBuilds(abortPrevious: true)])
 
 def mavenEnv(Map params = [:], Closure body) {
-  def attempt = 0
-  def attempts = 3
-  retry(count: attempts, conditions: [kubernetesAgent(), nonresumable()]) {
-    echo 'Attempt ' + ++attempt + ' of ' + attempts
-    node("maven-$params.jdk") { // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
-        timeout(120) {
-            sh 'mvn -version'
-            // Exclude DigitalOcean artifact caching proxy provider, currently unreliable on BOM builds
-            // TODO: remove when https://github.com/jenkins-infra/helpdesk/issues/3481 is fixed
-            infra.withArtifactCachingProxy(env.ARTIFACT_CACHING_PROXY_PROVIDER != 'do') {
-                withEnv(["MAVEN_ARGS=-Dmaven.repo.local=${WORKSPACE_TMP}/m2repo"]) {
-                    body()
+    def attempt = 0
+    def attempts = 3
+    retry(count: attempts, conditions: [kubernetesAgent(), nonresumable()]) {
+        echo 'Attempt ' + ++attempt + ' of ' + attempts
+        // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
+        node("maven-$params.jdk") {
+            timeout(120) {
+                sh 'mvn -version'
+                // Exclude DigitalOcean artifact caching proxy provider, currently unreliable on BOM builds
+                // TODO: remove when https://github.com/jenkins-infra/helpdesk/issues/3481 is fixed
+                infra.withArtifactCachingProxy(env.ARTIFACT_CACHING_PROXY_PROVIDER != 'do') {
+                    withEnv(["MAVEN_ARGS=-Dmaven.repo.local=${WORKSPACE_TMP}/m2repo"]) {
+                        body()
+                    }
                 }
-            }
-            if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount > 0) {
-                // TODO JENKINS-27092 throw up UNSTABLE status in this case
-                error 'Some test failures, not going to continue'
+                if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount > 0) {
+                    // TODO JENKINS-27092 throw up UNSTABLE status in this case
+                    error 'Some test failures, not going to continue'
+                }
             }
         }
     }
-  }
 }
 
 def plugins
@@ -42,7 +43,8 @@ stage('prep') {
             plugins = readFile('plugins.txt').split('\n')
             lines = readFile('lines.txt').split('\n')
             if (!fullTest) {
-                lines = [lines[0], lines[-1]] // run PCT only on newest and oldest lines, to save resources
+                // run PCT only on newest and oldest lines, to save resources
+                lines = [lines[0], lines[-1]]
             }
             stash name: 'pct', includes: 'pct.jar'
             lines.each {stash name: "megawar-$it", includes: "megawar-${it}.war"}
@@ -73,7 +75,11 @@ lines.each {line ->
                 unstash 'excludes.txt'
                 unstash 'pct'
                 unstash "megawar-$line"
-                withEnv(["PLUGINS=$plugin", "LINE=$line", 'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=4']) {
+                withEnv([
+                    "PLUGINS=$plugin",
+                    "LINE=$line",
+                    'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=4'
+                ]) {
                     sh 'mv megawar-$LINE.war megawar.war && bash pct.sh'
                 }
                 launchable.install()
