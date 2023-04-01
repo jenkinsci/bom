@@ -78,7 +78,7 @@ lines.each {line ->
                 withEnv([
                     "PLUGINS=$plugin",
                     "LINE=$line",
-                    'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=4'
+                    'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
                 ]) {
                     sh 'mv megawar-$LINE.war megawar.war && bash pct.sh'
                 }
