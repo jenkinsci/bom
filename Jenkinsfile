@@ -3,7 +3,7 @@ properties([disableConcurrentBuilds(abortPrevious: true)])
 def mavenEnv(Map params = [:], Closure body) {
     def attempt = 0
     def attempts = 3
-    retry(count: attempts, conditions: [kubernetesAgent(), nonresumable()]) {
+    retry(count: attempts, conditions: [kubernetesAgent(handleNonKubernetes: true), nonresumable()]) {
         echo 'Attempt ' + ++attempt + ' of ' + attempts
         // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
         node("maven-$params.jdk") {
