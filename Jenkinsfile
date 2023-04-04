@@ -6,12 +6,10 @@ def mavenEnv(Map params = [:], Closure body) {
     retry(count: attempts, conditions: [kubernetesAgent(handleNonKubernetes: true), nonresumable()]) {
         echo 'Attempt ' + ++attempt + ' of ' + attempts
         // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
-        node("maven-$params.jdk") {
+        node("maven-$params.jdk && doks") {
             timeout(120) {
                 sh 'mvn -version'
-                // Exclude DigitalOcean artifact caching proxy provider, currently unreliable on BOM builds
-                // TODO: remove when https://github.com/jenkins-infra/helpdesk/issues/3481 is fixed
-                infra.withArtifactCachingProxy(env.ARTIFACT_CACHING_PROXY_PROVIDER != 'do') {
+                infra.withArtifactCachingProxy {
                     withEnv(["MAVEN_ARGS=-Dmaven.repo.local=${WORKSPACE_TMP}/m2repo"]) {
                         body()
                     }
