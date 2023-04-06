@@ -9,9 +9,9 @@
     <artifactId>bom-weekly</artifactId>
     <packaging>pom</packaging>
     <properties>
-        <aws-java-sdk-plugin.version>1.12.406-374.v4cdf53953691</aws-java-sdk-plugin.version>
+        <aws-java-sdk-plugin.version>1.12.406-378.v938a_d577f750</aws-java-sdk-plugin.version>
         <checks-api.version>2.0.0</checks-api.version>
-        <configuration-as-code-plugin.version>1616.v11393eccf675</configuration-as-code-plugin.version>
+        <configuration-as-code-plugin.version>1625.v27444588cc3d</configuration-as-code-plugin.version>
         <data-tables-api.version>1.13.3-3</data-tables-api.version>
         <declarative-pipeline-migration-assistant-plugin.version>1.5.6</declarative-pipeline-migration-assistant-plugin.version>
         <forensics-api.version>2.1.0</forensics-api.version>
@@ -138,7 +138,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>gitlab-api</artifactId>
-                <version>5.0.1-78.v47a_45b_9f78b_7</version>
+                <version>5.1.0-84.v491924123a_f7</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -582,7 +582,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>text-finder</artifactId>
-                <version>1.23</version>
+                <version>1.24</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
