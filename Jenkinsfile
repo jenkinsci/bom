@@ -1,4 +1,7 @@
-properties([disableConcurrentBuilds(abortPrevious: true)])
+properties([
+    disableConcurrentBuilds(abortPrevious: true),
+    buildDiscarder(logRotator(numToKeepStr: '7'))
+])
 
 def mavenEnv(Map params = [:], Closure body) {
     def attempt = 0
