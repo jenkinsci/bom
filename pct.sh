@@ -6,12 +6,6 @@ cd "$(dirname "$0")"
 
 rm -rf pct-work
 
-if [[ -n ${MAVEN_SETTINGS-} ]]; then
-	PCT_S_ARG="--maven-settings ${MAVEN_SETTINGS}"
-else
-	PCT_S_ARG=
-fi
-
 PCT_D_ARGS=
 if [[ -n ${EXTRA_MAVEN_PROPERTIES-} ]]; then
 	for prop in ${EXTRA_MAVEN_PROPERTIES//:/ }; do
@@ -24,7 +18,6 @@ exec java \
 	--war "$(pwd)/megawar.war" \
 	--include-plugins "${PLUGINS}" \
 	--working-dir "$(pwd)/pct-work" \
-	$PCT_S_ARG \
 	$PCT_D_ARGS \
 	-DforkCount=.75C \
 	-Djth.jenkins-war.path="$(pwd)/megawar.war" \
