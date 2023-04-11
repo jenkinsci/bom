@@ -22,6 +22,7 @@ for LINE in $LINEZ; do
 		popd
 	fi
 	if [[ -n ${CI-} ]]; then
+    LINE=$LINE bash prep-megawar.sh
 		if [[ ${LINE} != weekly ]]; then
 			PROFILE="-P${LINE}"
 		fi

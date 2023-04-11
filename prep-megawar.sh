@@ -4,7 +4,7 @@ cd "$(dirname "${0}")"
 
 # expects: $LINE
 
-if [ \! -d sample-plugin/target/test-classes/test-dependencies ]
+if [ \! -d sample-plugin/target/test-classes/test-dependencies -o \! -d sample-plugin/target/jenkins-for-test ]
 then
   if [ $LINE = weekly ]
   then
@@ -12,7 +12,7 @@ then
   else
     PROFILE=-P$LINE
   fi
-  mvn -f sample-plugin clean package -Pquick-build $PROFILE
+  mvn -f sample-plugin clean test -Dtest=InjectedTest $PROFILE
 fi
 
 cd sample-plugin/target
