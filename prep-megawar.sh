@@ -12,7 +12,7 @@ then
   else
     PROFILE=-P$LINE
   fi
-  mvn -f sample-plugin clean test -Dtest=InjectedTest $PROFILE
+  mvn -pl sample-plugin clean test -Dtest=InjectedTest $PROFILE
 fi
 
 cd sample-plugin/target
@@ -25,6 +25,7 @@ rm -rfv megawar-$LINE/WEB-INF/detached-plugins megawar-$LINE/META-INF/*.{RSA,SF}
 mkdir "megawar-${LINE}/WEB-INF/plugins"
 cp -rv test-classes/test-dependencies/*.hpi "megawar-${LINE}/WEB-INF/plugins"
 cd "megawar-${LINE}"
+mkdir -p ../../../target
 jar c0Mf "../../../target/megawar-${LINE}.war" *
 
 # produces: target/megawar-*.war

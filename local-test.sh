@@ -16,11 +16,6 @@ LINEZ=$LINE bash prep.sh
 LINE=$LINE bash prep-megawar.sh
 bash prep-pct.sh
 
-rm -rf target/local-test
-mkdir target/local-test
-cp -v target/pct.jar pct.sh excludes.txt target/local-test
-cp -v target/megawar-$LINE.war target/local-test/megawar.war
-
 if [[ -n ${TEST-} ]]; then
 	EXTRA_MAVEN_PROPERTIES="test=${TEST}"
 else
@@ -33,7 +28,7 @@ if [[ -n ${DOCKERIZED-} ]]; then
 		-v ~/.m2:/var/maven/.m2 \
 		--rm \
 		--name bom-pct \
-		-v "$(pwd)/target/local-test:/pct" \
+		-v "$(pwd):/pct" \
 		-e MAVEN_OPTS=-Duser.home=/var/maven \
 		-e MAVEN_CONFIG=/var/maven/.m2 \
 		-e "PLUGINS=${PLUGINS}" \
@@ -44,5 +39,5 @@ if [[ -n ${DOCKERIZED-} ]]; then
 		-c "trap 'chown -R $(id -u):$(id -g) /pct /var/maven/.m2/repository' EXIT; bash /pct/pct.sh"
 else
 	export EXTRA_MAVEN_PROPERTIES
-	LINE=$LINE bash target/local-test/pct.sh
+	LINE=$LINE bash pct.sh
 fi

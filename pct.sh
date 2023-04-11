@@ -2,7 +2,7 @@
 set -euxo pipefail
 cd "$(dirname "$0")"
 
-# expects: megawar.war, pct.jar, excludes.txt, $PLUGINS, $LINE
+# expects: target/megawar-$LINE.war, target/pct.jar, $PLUGINS, $LINE
 
 rm -rf pct-work
 
@@ -14,13 +14,13 @@ if [[ -n ${EXTRA_MAVEN_PROPERTIES-} ]]; then
 fi
 
 exec java \
-	-jar pct.jar \
-	--war "$(pwd)/megawar.war" \
+	-jar target/pct.jar \
+	--war "$(pwd)/target/megawar-$LINE.war" \
 	--include-plugins "${PLUGINS}" \
 	--working-dir "$(pwd)/pct-work" \
 	$PCT_D_ARGS \
 	-DforkCount=.75C \
-	-Djth.jenkins-war.path="$(pwd)/megawar.war" \
+	-Djth.jenkins-war.path="$(pwd)/target/megawar-$LINE.war" \
 	-Dsurefire.excludesFile="$(pwd)/excludes.txt"
 
 # produces: **/target/surefire-reports/TEST-*.xml
