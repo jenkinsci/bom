@@ -15,7 +15,7 @@ def mavenEnv(Map params = [:], Closure body) {
                 // Exclude DigitalOcean artifact caching proxy provider, currently unreliable on BOM builds
                 // TODO: remove when https://github.com/jenkins-infra/helpdesk/issues/3481 is fixed
                 infra.withArtifactCachingProxy(env.ARTIFACT_CACHING_PROXY_PROVIDER != 'do') {
-                    withEnv(["MAVEN_ARGS=-Dmaven.repo.local=${WORKSPACE_TMP}/m2repo"]) {
+                    withEnv(["MAVEN_ARGS=-B -ntp -s $MAVEN_SETTINGS -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo"]) {
                         body()
                     }
                 }
@@ -49,8 +49,6 @@ stage('prep') {
                 // run PCT only on newest and oldest lines, to save resources
                 lines = [lines[0], lines[-1]]
             }
-            stash name: 'pct', includes: 'pct.jar'
-            lines.each {stash name: "megawar-$it", includes: "megawar-${it}.war"}
             launchable.install()
             withCredentials([string(credentialsId: 'launchable-jenkins-bom', variable: 'LAUNCHABLE_TOKEN')]) {
                 lines.each { line ->
@@ -61,8 +59,6 @@ stage('prep') {
                 }
             }
         }
-        stash name: 'pct.sh', includes: 'pct.sh'
-        stash name: 'excludes.txt', includes: 'excludes.txt'
         infra.prepareToPublishIncrementals()
     }
 }
@@ -74,16 +70,13 @@ lines.each {line ->
             def jdk = line == 'weekly' ? 17 : 11
             mavenEnv(jdk: jdk) {
                 deleteDir()
-                unstash 'pct.sh'
-                unstash 'excludes.txt'
-                unstash 'pct'
-                unstash "megawar-$line"
+                checkout scm
                 withEnv([
                     "PLUGINS=$plugin",
                     "LINE=$line",
                     'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
                 ]) {
-                    sh 'mv megawar-$LINE.war megawar.war && bash pct.sh'
+                    sh 'bash prep-megawar.sh && bash prep-pct.sh && bash pct.sh'
                 }
                 launchable.install()
                 withCredentials([string(credentialsId: 'launchable-jenkins-bom', variable: 'LAUNCHABLE_TOKEN')]) {

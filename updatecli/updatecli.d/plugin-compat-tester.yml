@@ -28,7 +28,7 @@ targets:
     name: "Change the plugin-compat-tester version"
     kind: file
     spec:
-      file: prep.sh
+      file: prep-pct.sh
       matchpattern: >-
         pct_version=(.*)
       replacepattern: >-

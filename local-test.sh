@@ -13,6 +13,8 @@ if [[ $LINE != "${LATEST_LINE}" ]]; then
 fi
 export SAMPLE_PLUGIN_OPTS
 LINEZ=$LINE bash prep.sh
+LINE=$LINE bash prep-megawar.sh
+bash prep-pct.sh
 
 rm -rf target/local-test
 mkdir target/local-test
@@ -38,7 +40,7 @@ if [[ -n ${DOCKERIZED-} ]]; then
 		-e "LINE=${LINE}" \
 		-e "EXTRA_MAVEN_PROPERTIES=${EXTRA_MAVEN_PROPERTIES}" \
 		--entrypoint bash \
-		jenkins/jnlp-agent-maven \
+		maven \
 		-c "trap 'chown -R $(id -u):$(id -g) /pct /var/maven/.m2/repository' EXIT; bash /pct/pct.sh"
 else
 	export EXTRA_MAVEN_PROPERTIES
