@@ -15,7 +15,9 @@ def mavenEnv(Map params = [:], Closure body) {
                 // Exclude DigitalOcean artifact caching proxy provider, currently unreliable on BOM builds
                 // TODO: remove when https://github.com/jenkins-infra/helpdesk/issues/3481 is fixed
                 infra.withArtifactCachingProxy(env.ARTIFACT_CACHING_PROXY_PROVIDER != 'do') {
-                    withEnv(["MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B -ntp -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo"]) {
+                    withEnv([
+                        "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B -ntp -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo"
+                    ]) {
                         body()
                     }
                 }
