@@ -43,5 +43,6 @@ if ($changed) {
     $streamWriter = New-Object System.IO.StreamWriter($pomPath, $false, $utf8WithoutBom)
     $pom.Save($streamWriter)
     $streamWriter.Close()
+    (Get-Content $pomPath) -creplace 'utf-8', 'UTF-8' | Set-Content $pomPath
   }
 }

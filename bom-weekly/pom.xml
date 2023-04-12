@@ -9,9 +9,9 @@
     <artifactId>bom-weekly</artifactId>
     <packaging>pom</packaging>
     <properties>
-        <aws-java-sdk-plugin.version>1.12.406-374.v4cdf53953691</aws-java-sdk-plugin.version>
+        <aws-java-sdk-plugin.version>1.12.406-378.v938a_d577f750</aws-java-sdk-plugin.version>
         <checks-api.version>2.0.0</checks-api.version>
-        <configuration-as-code-plugin.version>1616.v11393eccf675</configuration-as-code-plugin.version>
+        <configuration-as-code-plugin.version>1625.v27444588cc3d</configuration-as-code-plugin.version>
         <data-tables-api.version>1.13.3-3</data-tables-api.version>
         <declarative-pipeline-migration-assistant-plugin.version>1.5.6</declarative-pipeline-migration-assistant-plugin.version>
         <forensics-api.version>2.1.0</forensics-api.version>
@@ -138,7 +138,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>gitlab-api</artifactId>
-                <version>5.0.1-78.v47a_45b_9f78b_7</version>
+                <version>5.1.0-84.v491924123a_f7</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -203,7 +203,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>pipeline-groovy-lib</artifactId>
-                <version>629.vb_5627b_ee2104</version>
+                <version>656.va_a_ceeb_6ffb_f7</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -344,7 +344,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>email-ext</artifactId>
-                <version>2.95</version>
+                <version>2.96</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -475,7 +475,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>pipeline-build-step</artifactId>
-                <version>487.va_823138eee8b_</version>
+                <version>488.v8993df156e8d</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -515,7 +515,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>resource-disposer</artifactId>
-                <version>0.21</version>
+                <version>0.22</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -582,17 +582,17 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>text-finder</artifactId>
-                <version>1.23</version>
+                <version>1.24</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>throttle-concurrents</artifactId>
-                <version>2.12</version>
+                <version>2.13</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>timestamper</artifactId>
-                <version>1.23</version>
+                <version>1.24</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -612,7 +612,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>ws-cleanup</artifactId>
-                <version>0.44</version>
+                <version>0.45</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins.aws-java-sdk</groupId>
