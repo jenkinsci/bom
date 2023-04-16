@@ -71,10 +71,17 @@
                             <include>**/*.groovy</include>
                         </includes>
                         <greclipse>
-                            <file>src/spotless/greclipse.properties</file>
+                            <file>config/greclipse.properties</file>
                         </greclipse>
                     </groovy>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>io.jenkins.lib</groupId>
+                        <artifactId>shared-resources</artifactId>
+                        <version>1.0</version>
+                    </dependency>
+                </dependencies>
                 <executions>
                     <execution>
                         <goals>
