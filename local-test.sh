@@ -13,8 +13,6 @@ if [[ $LINE != "${LATEST_LINE}" ]]; then
 fi
 export SAMPLE_PLUGIN_OPTS
 LINEZ=$LINE bash prep.sh
-LINE=$LINE bash prep-megawar.sh
-bash prep-pct.sh
 
 if [[ -n ${TEST-} ]]; then
 	EXTRA_MAVEN_PROPERTIES="test=${TEST}"
