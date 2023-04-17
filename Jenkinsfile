@@ -17,7 +17,6 @@ def mavenEnv(Map params = [:], Closure body) {
       node(POD_LABEL) {
         timeout(120) {
           withEnv(["JAVA_HOME=/opt/jdk-$params.jdk"]) {
-            sh 'mvn -version'
             // Exclude DigitalOcean artifact caching proxy provider, currently unreliable on BOM builds
             // TODO: remove when https://github.com/jenkins-infra/helpdesk/issues/3481 is fixed
             infra.withArtifactCachingProxy(env.ARTIFACT_CACHING_PROXY_PROVIDER != 'do') {
@@ -49,7 +48,10 @@ stage('prep') {
       withCredentials([
         usernamePassword(credentialsId: 'app-ci.jenkins.io', usernameVariable: 'GITHUB_APP', passwordVariable: 'GITHUB_OAUTH')
       ]) {
-        sh 'bash prep.sh'
+        sh '''
+        mvn -version
+        bash prep.sh
+        '''
       }
     }
     dir('target') {
