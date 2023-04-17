@@ -1,0 +1,52 @@
+---
+apiVersion: "v1"
+kind: "Pod"
+spec:
+  containers:
+    - name: jnlp
+      image: jenkinsciinfra/jenkins-agent-ubuntu-22.04@sha256:35420f09777717099416fb80f334f5c5d34d09ac29743c12be21dbb0e1628f1f
+      imagePullPolicy: "IfNotPresent"
+      command:
+        - "/usr/local/bin/jenkins-agent"
+      env:
+        - name: "PATH"
+          value: "/opt/jdk-11/bin:/home/jenkins/.asdf/shims:/home/jenkins/.asdf/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
+        - name: "ARTIFACT_CACHING_PROXY_PROVIDER"
+          value: "aws"
+        - name: "JENKINS_AGENT_WORKDIR"
+          value: "/home/jenkins/agent"
+        - name: "JENKINS_JAVA_OPTS"
+          value: "-XX:+PrintCommandLineFlags"
+        - name: "JENKINS_JAVA_BIN"
+          value: "/opt/jdk-11/bin/java"
+      resources:
+        limits:
+          memory: "8Gi"
+          cpu: "4"
+        requests:
+          memory: "8Gi"
+          cpu: "4"
+      securityContext:
+        privileged: false
+      tty: false
+      volumeMounts:
+        - mountPath: "/home/jenkins/.m2/repository"
+          name: "volume-1"
+          readOnly: false
+        - mountPath: "/tmp"
+          name: "volume-0"
+          readOnly: false
+  volumes:
+  - emptyDir:
+      medium: "Memory"
+    name: "volume-0"
+  - emptyDir:
+      medium: ""
+    name: "volume-1"
+  nodeSelector:
+    ci.jenkins.io/agents-density: 23
+  tolerations:
+    - key: "ci.jenkins.io/bom"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
