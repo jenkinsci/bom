@@ -17,13 +17,17 @@ for LINE in $LINEZ; do
 		mvn -f sample-plugin clean package ${SAMPLE_PLUGIN_OPTS:-} "-P${LINE}"
 	else
 		rebuild=true
-		pushd sample-plugin/target/test-classes/test-dependencies
-		ls -1 *.hpi | sed s/.hpi//g >../../../../target/plugins.txt
-		popd
+		bash prep-pct.sh
+		LINE=$LINE bash prep-megawar.sh
+		java \
+			-jar target/pct.jar \
+			list-plugins \
+			--war "target/megawar-${LINE}.war" \
+			--output "target/plugins.txt"
 	fi
 	if [[ -n ${CI-} ]]; then
-    LINE=$LINE bash prep-megawar.sh
 		if [[ ${LINE} != weekly ]]; then
+			LINE=$LINE bash prep-megawar.sh
 			PROFILE="-P${LINE}"
 		fi
 		# TODO https://github.com/jenkinsci/maven-hpi-plugin/pull/464
