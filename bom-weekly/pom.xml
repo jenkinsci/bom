@@ -520,7 +520,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>saml</artifactId>
-                <version>4.385.v4dea_91565e9d</version>
+                <version>4.403.v423b_3195a_9ec</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
