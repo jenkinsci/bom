@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.jenkins-ci</groupId>
         <artifactId>jenkins</artifactId>
-        <version>1.97</version>
+        <version>1.98</version>
         <relativePath />
     </parent>
     <groupId>io.jenkins.tools.bom</groupId>
@@ -34,6 +34,7 @@
     <properties>
         <changelist>999999-SNAPSHOT</changelist>
         <gitHubRepo>jenkinsci/bom</gitHubRepo>
+        <spotless.check.skip>false</spotless.check.skip>
     </properties>
     <repositories>
         <repository>
@@ -52,17 +53,10 @@
             <plugin>
                 <groupId>com.diffplug.spotless</groupId>
                 <artifactId>spotless-maven-plugin</artifactId>
-                <version>2.36.0</version>
                 <configuration>
                     <pom>
                         <sortPom>
-                            <encoding>${project.build.sourceEncoding}</encoding>
-                            <expandEmptyElements>false</expandEmptyElements>
-                            <lineSeparator>\n</lineSeparator>
                             <nrOfIndentSpace>4</nrOfIndentSpace>
-                            <sortDependencies>scope,groupId,artifactId</sortDependencies>
-                            <sortDependencyExclusions>groupId,artifactId</sortDependencyExclusions>
-                            <spaceBeforeCloseEmptyElement>true</spaceBeforeCloseEmptyElement>
                         </sortPom>
                     </pom>
                     <groovy>
@@ -82,13 +76,6 @@
                         <version>1.0</version>
                     </dependency>
                 </dependencies>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
