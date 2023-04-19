@@ -9,7 +9,7 @@
     <artifactId>bom-weekly</artifactId>
     <packaging>pom</packaging>
     <properties>
-        <aws-java-sdk-plugin.version>1.12.406-378.v938a_d577f750</aws-java-sdk-plugin.version>
+        <aws-java-sdk-plugin.version>1.12.447-382.vda_68e2007233</aws-java-sdk-plugin.version>
         <checks-api.version>2.0.0</checks-api.version>
         <configuration-as-code-plugin.version>1625.v27444588cc3d</configuration-as-code-plugin.version>
         <data-tables-api.version>1.13.3-3</data-tables-api.version>
@@ -415,7 +415,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>javadoc</artifactId>
-                <version>226.v71211feb_e7e9</version>
+                <version>233.vdc1a_ec702cff</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -455,7 +455,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>matrix-auth</artifactId>
-                <version>3.1.5</version>
+                <version>3.1.7</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -520,7 +520,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>saml</artifactId>
-                <version>4.385.v4dea_91565e9d</version>
+                <version>4.403.v423b_3195a_9ec</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -536,7 +536,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>script-security</artifactId>
-                <version>1229.v4880b_b_e905a_6</version>
+                <version>1244.ve463715a_f89c</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>

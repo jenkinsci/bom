@@ -27,7 +27,7 @@ def mavenEnv(Map params = [:], Closure body) {
   }
 }
 
-def plugins
+def pluginsByRepository
 def lines
 def fullTest = env.CHANGE_ID && pullRequest.labels.contains('full-test')
 
@@ -42,7 +42,7 @@ stage('prep') {
       }
     }
     dir('target') {
-      plugins = readFile('plugins.txt').split('\n')
+      pluginsByRepository = readFile('plugins.txt').split('\n')
       lines = readFile('lines.txt').split('\n')
       if (!fullTest) {
         // run PCT only on newest and oldest lines, to save resources
@@ -64,14 +64,14 @@ stage('prep') {
 
 branches = [failFast: !fullTest]
 lines.each {line ->
-  plugins.each { plugin ->
-    branches["pct-$plugin-$line"] = {
+  pluginsByRepository.each { plugins ->
+    branches["pct-$plugins-$line"] = {
       def jdk = line == 'weekly' ? 17 : 11
       mavenEnv(jdk: jdk) {
         deleteDir()
         checkout scm
         withEnv([
-          "PLUGINS=$plugin",
+          "PLUGINS=$plugins",
           "LINE=$line",
           'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
         ]) {
