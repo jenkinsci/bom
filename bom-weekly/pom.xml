@@ -257,11 +257,6 @@
                 <version>1141.v7c5f8f31d2ee</version>
             </dependency>
             <dependency>
-                <groupId>org.jenkins-ci.main</groupId>
-                <artifactId>maven-plugin</artifactId>
-                <version>3.21</version>
-            </dependency>
-            <dependency>
                 <groupId>org.jenkins-ci.modules</groupId>
                 <artifactId>instance-identity</artifactId>
                 <version>142.v04572ca_5b_265</version>
@@ -319,7 +314,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>copyartifact</artifactId>
-                <version>697.v12c6e8c8fb_34</version>
+                <version>699.va_d483d5b_041d</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
