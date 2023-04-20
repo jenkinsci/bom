@@ -9,7 +9,7 @@
     <artifactId>bom-weekly</artifactId>
     <packaging>pom</packaging>
     <properties>
-        <aws-java-sdk-plugin.version>1.12.406-378.v938a_d577f750</aws-java-sdk-plugin.version>
+        <aws-java-sdk-plugin.version>1.12.447-382.vda_68e2007233</aws-java-sdk-plugin.version>
         <checks-api.version>2.0.0</checks-api.version>
         <configuration-as-code-plugin.version>1625.v27444588cc3d</configuration-as-code-plugin.version>
         <data-tables-api.version>1.13.3-3</data-tables-api.version>
@@ -138,7 +138,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>gitlab-api</artifactId>
-                <version>5.1.0-84.v491924123a_f7</version>
+                <version>5.2.0-86.v1ed41a_9cf486</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -385,7 +385,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>gitlab-plugin</artifactId>
-                <version>1.7.10</version>
+                <version>1.7.11</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -415,12 +415,12 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>javadoc</artifactId>
-                <version>226.v71211feb_e7e9</version>
+                <version>233.vdc1a_ec702cff</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>jdk-tool</artifactId>
-                <version>63.v62d2fd4b_4793</version>
+                <version>66.vd8fa_64ee91b_d</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -430,7 +430,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>junit</artifactId>
-                <version>1189.v1b_e593637fa_e</version>
+                <version>1196.vb_4cf28b_c7724</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -455,12 +455,12 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>matrix-auth</artifactId>
-                <version>3.1.5</version>
+                <version>3.1.7</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>matrix-project</artifactId>
-                <version>785.v06b_7f47b_c631</version>
+                <version>789.v57a_725b_63c79</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -520,7 +520,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>saml</artifactId>
-                <version>4.385.v4dea_91565e9d</version>
+                <version>4.403.v423b_3195a_9ec</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -536,12 +536,12 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>script-security</artifactId>
-                <version>1229.v4880b_b_e905a_6</version>
+                <version>1244.ve463715a_f89c</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>slack</artifactId>
-                <version>629.vf00ea_cb_40d53</version>
+                <version>664.vc9a_90f8b_c24a_</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>

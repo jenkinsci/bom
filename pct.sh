@@ -15,6 +15,7 @@ fi
 
 exec java \
 	-jar target/pct.jar \
+	test-plugins \
 	--war "$(pwd)/target/megawar-$LINE.war" \
 	--include-plugins "${PLUGINS}" \
 	--working-dir "$(pwd)/pct-work" \
