@@ -1,6 +1,6 @@
 properties([disableConcurrentBuilds(abortPrevious: true), buildDiscarder(logRotator(numToKeepStr: '7'))])
 
-error "TODO causes in $BRANCH_NAME: $currentBuild.buildCauses*._class"
+error "TODO causes in $BRANCH_NAME: ${currentBuild.buildCauses*._class}"
 
 def mavenEnv(Map params = [:], Closure body) {
   def attempt = 0
