@@ -58,8 +58,8 @@ stage('prep') {
         }
       }
     }
-    lines.each {
-      stash name: it, includes: "pct.sh,excludes.txt,target/pct.jar,target/megawar-$it.war"
+    lines.each { line ->
+      stash name: line, includes: "pct.sh,excludes.txt,target/pct.jar,target/megawar-${line}.war"
     }
     infra.prepareToPublishIncrementals()
   }
