@@ -48,8 +48,8 @@ stage('prep') {
     dir('target') {
       pluginsByRepository = readFile('plugins.txt').split('\n')
       lines = readFile('lines.txt').split('\n')
-      if (!fullTest) {
-        // run PCT only on newest and oldest lines, to save resources
+      if (env.CHANGE_ID && !fullTest) {
+        // run PCT only on newest and oldest lines, to save resources (but check all lines on deliberate master builds)
         lines = [lines[0], lines[-1]]
       }
       launchable.install()
