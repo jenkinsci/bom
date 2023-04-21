@@ -23,7 +23,7 @@
         <scm-api-plugin.version>631.v9143df5b_e4a_a</scm-api-plugin.version>
         <subversion-plugin.version>2.17.1</subversion-plugin.version>
         <workflow-api-plugin.version>1208.v0cc7c6e0da_9e</workflow-api-plugin.version>
-        <workflow-cps-plugin.version>3653.v07ea_433c90b_4</workflow-cps-plugin.version>
+        <workflow-cps-plugin.version>3659.v582dc37621d8</workflow-cps-plugin.version>
         <workflow-job-plugin.version>1289.vd1c337fd5354</workflow-job-plugin.version>
         <workflow-multibranch-plugin.version>733.v109046189126</workflow-multibranch-plugin.version>
         <workflow-step-api-plugin.version>639.v6eca_cd8c04a_a_</workflow-step-api-plugin.version>
@@ -91,7 +91,7 @@
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
                 <artifactId>custom-folder-icon</artifactId>
-                <version>2.6</version>
+                <version>2.7</version>
             </dependency>
             <dependency>
                 <groupId>io.jenkins.plugins</groupId>
@@ -274,7 +274,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>ant</artifactId>
-                <version>481.v7b_09e538fcca</version>
+                <version>487.vd79d090d4ea_e</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -314,7 +314,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>copyartifact</artifactId>
-                <version>686.v6fd37018d7c2</version>
+                <version>698.v393f578eb_ddc</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -440,7 +440,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>ldap</artifactId>
-                <version>671.v2a_9192a_7419d</version>
+                <version>673.v034ec70ec2b_b_</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
@@ -597,7 +597,7 @@
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
                 <artifactId>token-macro</artifactId>
-                <version>321.vd7cc1f2a_52c8</version>
+                <version>359.vb_cde11682e0c</version>
             </dependency>
             <dependency>
                 <groupId>org.jenkins-ci.plugins</groupId>
