@@ -1,5 +1,7 @@
 properties([disableConcurrentBuilds(abortPrevious: true), buildDiscarder(logRotator(numToKeepStr: '7'))])
 
+error "TODO causes: $currentBuild.buildCauses"
+
 def mavenEnv(Map params = [:], Closure body) {
   def attempt = 0
   def attempts = 3
