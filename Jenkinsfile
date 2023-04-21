@@ -1,6 +1,8 @@
 properties([disableConcurrentBuilds(abortPrevious: true), buildDiscarder(logRotator(numToKeepStr: '7'))])
 
-error "in $BRANCH_NAME, triggered by push?: ${currentBuild.buildCauses*._class == ['jenkins.branch.BranchEventCause']}"
+if (BRANCH_NAME == 'master' && currentBuild.buildCauses*._class == ['jenkins.branch.BranchEventCause']) {
+  error 'No longer running builds on response to master branch pushes. If you wish to cut a release, use “Re-run checks” from this failing check in https://github.com/jenkinsci/bom/commits/master'
+}
 
 def mavenEnv(Map params = [:], Closure body) {
   def attempt = 0
