@@ -62,6 +62,9 @@ stage('prep') {
         }
       }
     }
+    lines.each { line ->
+      stash name: line, includes: "pct.sh,excludes.txt,target/pct.jar,target/megawar-${line}.war"
+    }
     infra.prepareToPublishIncrementals()
   }
 }
@@ -72,14 +75,13 @@ lines.each {line ->
     branches["pct-$plugins-$line"] = {
       def jdk = line == 'weekly' ? 17 : 11
       mavenEnv(jdk: jdk) {
-        deleteDir()
-        checkout scm
+        unstash line
         withEnv([
           "PLUGINS=$plugins",
           "LINE=$line",
           'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
         ]) {
-          sh 'bash prep-megawar.sh && bash prep-pct.sh && bash pct.sh'
+          sh 'bash pct.sh'
         }
         launchable.install()
         withCredentials([string(credentialsId: 'launchable-jenkins-bom', variable: 'LAUNCHABLE_TOKEN')]) {
