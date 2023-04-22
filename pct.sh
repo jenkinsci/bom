@@ -2,7 +2,7 @@
 set -euxo pipefail
 cd "$(dirname "$0")"
 
-# expects: target/megawar-$LINE.war, target/pct.jar, $PLUGINS, $LINE
+# expects: excludes.txt, target/megawar-$LINE.war, target/pct.jar, $PLUGINS, $LINE
 
 rm -rf pct-work
 
