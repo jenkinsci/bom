@@ -5,7 +5,6 @@ spec:
   containers:
     - name: jnlp
       image: jenkinsciinfra/jenkins-agent-ubuntu-22.04@sha256:0f007bec7835b0b7e383d12eac4f860af9fa9b35d53159f67348770f97d55ce6
-      imagePullPolicy: "IfNotPresent"
       command:
         - "/usr/local/bin/jenkins-agent"
       env:
@@ -22,13 +21,12 @@ spec:
       resources:
         limits:
           memory: "8Gi"
-          cpu: "4"
+          cpu: "6"
         requests:
           memory: "8Gi"
-          cpu: "4"
+          cpu: "6"
       securityContext:
         privileged: false
-      tty: false
       volumeMounts:
         - mountPath: "/home/jenkins/.m2/repository"
           name: "volume-1"
