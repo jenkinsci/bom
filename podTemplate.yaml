@@ -4,7 +4,7 @@ kind: "Pod"
 spec:
   containers:
     - name: jnlp
-      image: jenkinsciinfra/jenkins-agent-ubuntu-22.04@sha256:35420f09777717099416fb80f334f5c5d34d09ac29743c12be21dbb0e1628f1f
+      image: jenkinsciinfra/jenkins-agent-ubuntu-22.04@sha256:0f007bec7835b0b7e383d12eac4f860af9fa9b35d53159f67348770f97d55ce6
       imagePullPolicy: "IfNotPresent"
       command:
         - "/usr/local/bin/jenkins-agent"
