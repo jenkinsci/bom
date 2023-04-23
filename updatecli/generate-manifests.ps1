@@ -64,7 +64,7 @@ foreach ($bom in $bills) {
     sources      = [ordered]@{}
     conditions   = [ordered]@{}
     targets      = [ordered]@{}
-    pullrequests = [ordered]@{}
+    actions      = [ordered]@{}
   }
 
   $bomVersion = $bom -replace "bom-", ""
@@ -131,9 +131,9 @@ foreach ($bom in $bills) {
       command      = "pwsh -NoProfile -File {{ requiredEnv `"GITHUB_WORKSPACE`" }}/updatecli/update-jenkins.ps1 $bomVersion"
     }
   }
-  $updateJenkinsManifest.pullrequests["jenkins"] = [ordered]@{
+  $updateJenkinsManifest.actions["jenkins"] = [ordered]@{
     title   = "Bump jenkins.version from $jenkinsVersion to {{ source `"jenkins`" }} for bom-$bomVersion"
-    kind    = "github"
+    kind    = "github/pullrequest"
     scmid   = "github"
     targets = @("jenkins")
     spec    = [ordered]@{
@@ -194,7 +194,7 @@ foreach ($bom in $bills) {
       sources      = [ordered]@{}
       conditions   = [ordered]@{}
       targets      = [ordered]@{}
-      pullrequests = [ordered]@{}
+      actions      = [ordered]@{}
     }
 
     $updatePluginsManifest.sources["plugin"] = [ordered]@{
@@ -232,9 +232,9 @@ foreach ($bom in $bills) {
         command = "pwsh -NoProfile -File {{ requiredEnv `"GITHUB_WORKSPACE`" }}/updatecli/update-plugin.ps1 $pomPath $name"
       }
     }
-    $updatePluginsManifest.pullrequests["plugin"] = [ordered]@{
+    $updatePluginsManifest.actions["plugin"] = [ordered]@{
       title   = "Bump $name from $version to {{ source `"plugin`" }} in /bom-$bomVersion"
-      kind    = "github"
+      kind    = "github/pullrequest"
       scmid   = "github"
       targets = @("plugin")
       spec    = [ordered]@{
