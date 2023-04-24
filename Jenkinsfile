@@ -35,6 +35,16 @@ def mavenEnv(Map params = [:], Closure body) {
   }
 }
 
+@NonCPS
+def parsePlugins(plugins) {
+  def pluginsByRepository = [:]
+  plugins.each { plugin ->
+    def splits = plugin.split('\t')
+    pluginsByRepository[splits[0]] = splits[1].split(',')
+  }
+  pluginsByRepository
+}
+
 def pluginsByRepository
 def lines
 def fullTest = env.CHANGE_ID && pullRequest.labels.contains('full-test')
@@ -53,7 +63,9 @@ stage('prep') {
       }
     }
     dir('target') {
-      pluginsByRepository = readFile('plugins.txt').split('\n')
+      def plugins = readFile('plugins.txt').split('\n')
+      pluginsByRepository = parsePlugins(plugins)
+
       lines = readFile('lines.txt').split('\n')
       if (env.CHANGE_ID && !fullTest) {
         // run PCT only on newest and oldest lines, to save resources (but check all lines on deliberate master builds)
@@ -63,9 +75,12 @@ stage('prep') {
       withCredentials([string(credentialsId: 'launchable-jenkins-bom', variable: 'LAUNCHABLE_TOKEN')]) {
         lines.each { line ->
           def commitHashes = readFile "commit-hashes-${line}.txt"
-          launchable("record build --name \"${BUILD_TAG}-${line}\" --no-commit-collection " + commitHashes)
-          launchable("record session --build \"${BUILD_TAG}-${line}\" --observation >launchable-session-${line}.txt")
-          stash name: "launchable-session-${line}.txt", includes: "launchable-session-${line}.txt"
+          launchable("record build --name ${env.BUILD_TAG}-${line} --no-commit-collection " + commitHashes + " --link \"View build in CI\"=${env.BUILD_URL}")
+
+          def jdk = line == 'weekly' ? 17 : 11
+          def sessionFile = "launchable-session-${line}.txt"
+          launchable("record session --build ${env.BUILD_TAG}-${line} --flavor platform=linux --flavor jdk=${jdk} --observation --link \"View session in CI\"=${env.BUILD_URL} >${sessionFile}")
+          stash name: sessionFile, includes: sessionFile
         }
       }
     }
@@ -78,13 +93,13 @@ stage('prep') {
 
 branches = [failFast: !fullTest]
 lines.each {line ->
-  pluginsByRepository.each { plugins ->
-    branches["pct-$plugins-$line"] = {
+  pluginsByRepository.each { repository, plugins ->
+    branches["pct-$repository-$line"] = {
       def jdk = line == 'weekly' ? 17 : 11
       mavenEnv(jdk: jdk) {
         unstash line
         withEnv([
-          "PLUGINS=$plugins",
+          "PLUGINS=${plugins.join(',')}",
           "LINE=$line",
           'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
         ]) {
@@ -93,9 +108,10 @@ lines.each {line ->
         launchable.install()
         withCredentials([string(credentialsId: 'launchable-jenkins-bom', variable: 'LAUNCHABLE_TOKEN')]) {
           launchable('verify')
-          unstash "launchable-session-${line}.txt"
-          def launchableSession = readFile("launchable-session-${line}.txt").trim()
-          launchable("record tests --session ${launchableSession} maven './**/target/surefire-reports' './**/target/failsafe-reports'")
+          def sessionFile = "launchable-session-${line}.txt"
+          unstash sessionFile
+          def session = readFile(sessionFile).trim()
+          launchable("record tests --session ${session} --group ${repository} maven './**/target/surefire-reports' './**/target/failsafe-reports'")
         }
       }
     }
