@@ -385,7 +385,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>gitlab-plugin</artifactId>
-        <version>1.7.11</version>
+        <version>1.7.12</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -430,7 +430,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>junit</artifactId>
-        <version>1196.vb_4cf28b_c7724</version>
+        <version>1198.ve38db_d1b_c975</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -577,7 +577,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>support-core</artifactId>
-        <version>1266.v6d096c154c90</version>
+        <version>1274.v097a_073e7733</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
