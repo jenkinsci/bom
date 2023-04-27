@@ -65,7 +65,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>caffeine-api</artifactId>
-        <version>2.9.3-65.v6a_47d0f4d1fe</version>
+        <version>3.1.6-115.vb_8b_b_328e59d8</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
