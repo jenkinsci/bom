@@ -36,7 +36,7 @@ def parsePlugins(plugins) {
   def pluginsByRepository = [:]
   plugins.each { plugin ->
     def splits = plugin.split('\t')
-    pluginsByRepository[splits[0]] = splits[1].split(',')
+    pluginsByRepository[splits[0].split('/')[1]] = splits[1].split(',')
   }
   pluginsByRepository
 }
