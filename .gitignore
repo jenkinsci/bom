@@ -1,7 +1,6 @@
 target
 .idea/
 *.iml
-pct-work/
 pct-report.*
 logs/
 megawar.war
