@@ -229,7 +229,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>theme-manager</artifactId>
-        <version>1.6</version>
+        <version>192.v43b_71661283b_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins.mina-sshd-api</groupId>
