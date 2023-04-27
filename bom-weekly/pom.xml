@@ -304,7 +304,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>command-launcher</artifactId>
-        <version>90.v669d7ccb_7c31</version>
+        <version>100.v2f6722292ee8</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
