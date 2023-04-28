@@ -93,13 +93,13 @@ stage('prep') {
             sh 'rm subset-groups.txt'
           }
           subsets[line] = createSubset(pluginsByRepository, subsetGroups)
-          sh "cat excludes.txt subset-*.txt | grep -v InjectedTest | sort -u >excludes-${line}.txt"
+          sh "cat ../excludes.txt subset-*.txt | grep -v InjectedTest | sort -u >excludes-${line}.txt"
           sh "cat excludes-${line}.txt"
         }
       }
     }
     lines.each { line ->
-      stash name: line, includes: "pct.sh,excludes-${line}.txt,launchable-session-${line}.txt,target/pct.jar,target/megawar-${line}.war"
+      stash name: line, includes: "pct.sh,target/excludes-${line}.txt,launchable-session-${line}.txt,target/pct.jar,target/megawar-${line}.war"
     }
     infra.prepareToPublishIncrementals()
   }
