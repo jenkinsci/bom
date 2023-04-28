@@ -2,7 +2,7 @@
 set -euxo pipefail
 cd "$(dirname "$0")"
 
-# expects: excludes.txt, target/megawar-$LINE.war, target/pct.jar, $PLUGINS, $LINE
+# expects: excludes-$LINE.txt, target/megawar-$LINE.war, target/pct.jar, $PLUGINS, $LINE
 
 rm -rf target/pct-work
 
@@ -22,6 +22,6 @@ exec java \
 	$PCT_D_ARGS \
 	-DforkCount=.75C \
 	-Djth.jenkins-war.path="$(pwd)/target/megawar-$LINE.war" \
-	-Dsurefire.excludesFile="$(pwd)/excludes.txt"
+	-Dsurefire.excludesFile="$(pwd)/excludes-$LINE.txt"
 
 # produces: **/target/surefire-reports/TEST-*.xml

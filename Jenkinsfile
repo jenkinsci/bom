@@ -41,9 +41,18 @@ def parsePlugins(plugins) {
   pluginsByRepository
 }
 
-def pluginsByRepository
+@NonCPS
+def createSubset(plugins, subsetGroups) {
+  def result = [:]
+  result << plugins
+  result.keySet().removeAll(subsetGroups)
+  result
+}
+
 def lines
 def fullTest = env.CHANGE_ID && pullRequest.labels.contains('full-test')
+def isSubset = env.CHANGE_ID && !pullRequest.labels.contains('skip-launchable-subset')
+def subsets = [:]
 
 stage('prep') {
   mavenEnv(jdk: 11) {
@@ -57,7 +66,7 @@ stage('prep') {
     }
     dir('target') {
       def plugins = readFile('plugins.txt').split('\n')
-      pluginsByRepository = parsePlugins(plugins)
+      def pluginsByRepository = parsePlugins(plugins)
 
       lines = readFile('lines.txt').split('\n')
       if (env.CHANGE_ID && !fullTest) {
@@ -69,16 +78,28 @@ stage('prep') {
         lines.each { line ->
           def commitHashes = readFile "commit-hashes-${line}.txt"
           launchable("record build --name ${env.BUILD_TAG}-${line} --no-commit-collection " + commitHashes + " --link \"View build in CI\"=${env.BUILD_URL}")
-
           def jdk = line == 'weekly' ? 17 : 11
           def sessionFile = "launchable-session-${line}.txt"
-          launchable("record session --build ${env.BUILD_TAG}-${line} --flavor platform=linux --flavor jdk=${jdk} --observation --link \"View session in CI\"=${env.BUILD_URL} >${sessionFile}")
-          stash name: sessionFile, includes: sessionFile
+          launchable("record session --build ${env.BUILD_TAG}-${line} --flavor platform=linux --flavor jdk=${jdk} ${isSubset ? '--observation ' : ''}--link \"View session in CI\"=${env.BUILD_URL} >${sessionFile}")
+          def session = readFile(sessionFile).trim()
+          def subsetFile = "launchable-subset-${line}.txt"
+          launchable("launchable subset --session ${session} --split --target 20% --get-tests-from-previous-sessions --output-exclusion-rules maven >${subsetFile}")
+          def subset = readFile(subsetFile).trim()
+          launchable("inspect subset --subset-id ${subset}")
+          launchable("split-subset --subset-id ${subset} --split-by-groups --output-exclusion-rules maven")
+          def subsetGroups = [] as Set
+          if (fileExists('subset-groups.txt')) {
+            subsetGroups << readFile('subset-groups.txt').split('\n').toSet()
+            sh 'rm subset-groups.txt'
+          }
+          subsets[line] = createSubset(pluginsByRepository, subsetGroups)
+          sh "cat excludes.txt subset-*.txt | grep -v InjectedTest | sort -u >excludes-${line}.txt"
+          cat "excludes-${line}.txt"
         }
       }
     }
     lines.each { line ->
-      stash name: line, includes: "pct.sh,excludes.txt,target/pct.jar,target/megawar-${line}.war"
+      stash name: line, includes: "pct.sh,excludes-${line}.txt,launchable-session-${line}.txt,target/pct.jar,target/megawar-${line}.war"
     }
     infra.prepareToPublishIncrementals()
   }
@@ -86,7 +107,7 @@ stage('prep') {
 
 branches = [failFast: !fullTest]
 lines.each {line ->
-  pluginsByRepository.each { repository, plugins ->
+  subsets[line].each { repository, plugins ->
     branches["pct-$repository-$line"] = {
       def jdk = line == 'weekly' ? 17 : 11
       mavenEnv(jdk: jdk) {
@@ -101,9 +122,7 @@ lines.each {line ->
         launchable.install()
         withCredentials([string(credentialsId: 'launchable-jenkins-bom', variable: 'LAUNCHABLE_TOKEN')]) {
           launchable('verify')
-          def sessionFile = "launchable-session-${line}.txt"
-          unstash sessionFile
-          def session = readFile(sessionFile).trim()
+          def session = readFile("launchable-session-${line}.txt").trim()
           launchable("record tests --session ${session} --group ${repository} maven './**/target/surefire-reports' './**/target/failsafe-reports'")
         }
       }
