@@ -93,7 +93,8 @@ stage('prep') {
             sh 'rm subset-groups.txt'
           }
           subsets[line] = createSubset(pluginsByRepository, subsetGroups)
-          sh "cat ../excludes.txt subset-*.txt | grep -v InjectedTest | sort -u >excludes-${line}.txt"
+          sh "ls ../excludes.txt subset-*.txt | xargs -I{} bash -c 'cat {} >>excludes-${line}.txt && echo >>excludes-${line}.txt'"
+          sh "cat excludes-${line}.txt | grep -v ^\$ | grep -v ^# | grep -v InjectedTest | sort -u >excludes-${line}.txt.new && mv excludes-${line}.txt.new excludes-${line}.txt"
           sh "cat excludes-${line}.txt"
         }
       }
