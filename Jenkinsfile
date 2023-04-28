@@ -94,7 +94,7 @@ stage('prep') {
           }
           subsets[line] = createSubset(pluginsByRepository, subsetGroups)
           sh "cat excludes.txt subset-*.txt | grep -v InjectedTest | sort -u >excludes-${line}.txt"
-          cat "excludes-${line}.txt"
+          sh "cat excludes-${line}.txt"
         }
       }
     }
