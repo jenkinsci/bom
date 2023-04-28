@@ -80,7 +80,7 @@ stage('prep') {
           launchable("record build --name ${env.BUILD_TAG}-${line} --no-commit-collection " + commitHashes + " --link \"View build in CI\"=${env.BUILD_URL}")
           def jdk = line == 'weekly' ? 17 : 11
           def sessionFile = "launchable-session-${line}.txt"
-          launchable("record session --build ${env.BUILD_TAG}-${line} --flavor platform=linux --flavor jdk=${jdk} ${isSubset ? '--observation ' : ''}--link \"View session in CI\"=${env.BUILD_URL} >${sessionFile}")
+          launchable("record session --build ${env.BUILD_TAG}-${line} --flavor platform=linux --flavor jdk=${jdk} ${isSubset ? '' : '--observation '}--link \"View session in CI\"=${env.BUILD_URL} >${sessionFile}")
           def session = readFile(sessionFile).trim()
           def subsetFile = "launchable-subset-${line}.txt"
           launchable("subset --session ${session} --split --target 20% --get-tests-from-previous-sessions --output-exclusion-rules maven >${subsetFile}")
