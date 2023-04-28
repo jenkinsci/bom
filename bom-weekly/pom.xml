@@ -40,7 +40,7 @@
       <dependency>
         <groupId>com.sonyericsson.hudson.plugins.rebuild</groupId>
         <artifactId>rebuild</artifactId>
-        <version>1.34</version>
+        <version>320.v5a_0933a_e7d61</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins</groupId>
