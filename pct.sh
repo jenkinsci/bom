@@ -22,6 +22,6 @@ exec java \
 	$PCT_D_ARGS \
 	-DforkCount=.75C \
 	-Djth.jenkins-war.path="$(pwd)/target/megawar-$LINE.war" \
-	-Dsurefire.excludesFile="$(pwd)/excludes-$LINE.txt"
+	-Dsurefire.excludesFile="$(pwd)/target/excludes-$LINE.txt"
 
 # produces: **/target/surefire-reports/TEST-*.xml
