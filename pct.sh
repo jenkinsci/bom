@@ -4,7 +4,7 @@ cd "$(dirname "$0")"
 
 # expects: excludes.txt, target/megawar-$LINE.war, target/pct.jar, $PLUGINS, $LINE
 
-rm -rf pct-work
+rm -rf target/pct-work
 
 PCT_D_ARGS=
 if [[ -n ${EXTRA_MAVEN_PROPERTIES-} ]]; then
@@ -18,7 +18,7 @@ exec java \
 	test-plugins \
 	--war "$(pwd)/target/megawar-$LINE.war" \
 	--include-plugins "${PLUGINS}" \
-	--working-dir "$(pwd)/pct-work" \
+	--working-dir "$(pwd)/target/pct-work" \
 	$PCT_D_ARGS \
 	-DforkCount=.75C \
 	-Djth.jenkins-war.path="$(pwd)/target/megawar-$LINE.war" \
