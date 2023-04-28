@@ -83,7 +83,7 @@ stage('prep') {
           launchable("record session --build ${env.BUILD_TAG}-${line} --flavor platform=linux --flavor jdk=${jdk} ${isSubset ? '--observation ' : ''}--link \"View session in CI\"=${env.BUILD_URL} >${sessionFile}")
           def session = readFile(sessionFile).trim()
           def subsetFile = "launchable-subset-${line}.txt"
-          launchable("launchable subset --session ${session} --split --target 20% --get-tests-from-previous-sessions --output-exclusion-rules maven >${subsetFile}")
+          launchable("subset --session ${session} --split --target 20% --get-tests-from-previous-sessions --output-exclusion-rules maven >${subsetFile}")
           def subset = readFile(subsetFile).trim()
           launchable("inspect subset --subset-id ${subset}")
           launchable("split-subset --subset-id ${subset} --split-by-groups --output-exclusion-rules maven")
