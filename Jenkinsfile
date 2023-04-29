@@ -1,7 +1,13 @@
-properties([disableConcurrentBuilds(abortPrevious: true), buildDiscarder(logRotator(numToKeepStr: '7'))])
+def props = [disableConcurrentBuilds(abortPrevious: true), buildDiscarder(logRotator(numToKeepStr: '7'))]
 
-if (BRANCH_NAME == 'master' && currentBuild.buildCauses*._class == ['jenkins.branch.BranchEventCause']) {
-  error 'No longer running builds on response to master branch pushes. If you wish to cut a release, use “Re-run checks” from this failing check in https://github.com/jenkinsci/bom/commits/master'
+if (env.BRANCH_NAME == 'release') {
+  props.add(pipelineTriggers([cron('30 10 * * 1')]))
+}
+
+properties props
+
+if (env.BRANCH_NAME == 'release' && currentBuild.buildCauses*._class == ['jenkins.branch.BranchEventCause']) {
+  error 'No longer running builds on response to release branch pushes. If you wish to cut an out-of-order release, use “Re-run checks” from this failing check in https://github.com/jenkinsci/bom/commits/release'
 }
 
 def mavenEnv(Map params = [:], Closure body) {
@@ -44,6 +50,7 @@ def parsePlugins(plugins) {
 def pluginsByRepository
 def lines
 def fullTest = env.CHANGE_ID && pullRequest.labels.contains('full-test')
+def isSubset = env.BRANCH_NAME == 'master' || (env.CHANGE_ID && env.CHANGE_TARGET == 'master' && !pullRequest.labels.contains('skip-subset'))
 
 stage('prep') {
   mavenEnv(jdk: 11) {
@@ -84,32 +91,34 @@ stage('prep') {
   }
 }
 
-branches = [failFast: !fullTest]
-lines.each {line ->
-  pluginsByRepository.each { repository, plugins ->
-    branches["pct-$repository-$line"] = {
-      def jdk = line == 'weekly' ? 17 : 11
-      mavenEnv(jdk: jdk) {
-        unstash line
-        withEnv([
-          "PLUGINS=${plugins.join(',')}",
-          "LINE=$line",
-          'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
-        ]) {
-          sh 'bash pct.sh'
-        }
-        launchable.install()
-        withCredentials([string(credentialsId: 'launchable-jenkins-bom', variable: 'LAUNCHABLE_TOKEN')]) {
-          launchable('verify')
-          def sessionFile = "launchable-session-${line}.txt"
-          unstash sessionFile
-          def session = readFile(sessionFile).trim()
-          launchable("record tests --session ${session} --group ${repository} maven './**/target/surefire-reports' './**/target/failsafe-reports'")
+if (!isSubset) {
+  branches = [failFast: !fullTest]
+  lines.each {line ->
+    pluginsByRepository.each { repository, plugins ->
+      branches["pct-$repository-$line"] = {
+        def jdk = line == 'weekly' ? 17 : 11
+        mavenEnv(jdk: jdk) {
+          unstash line
+          withEnv([
+            "PLUGINS=${plugins.join(',')}",
+            "LINE=$line",
+            'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
+          ]) {
+            sh 'bash pct.sh'
+          }
+          launchable.install()
+          withCredentials([string(credentialsId: 'launchable-jenkins-bom', variable: 'LAUNCHABLE_TOKEN')]) {
+            launchable('verify')
+            def sessionFile = "launchable-session-${line}.txt"
+            unstash sessionFile
+            def session = readFile(sessionFile).trim()
+            launchable("record tests --session ${session} --group ${repository} maven './**/target/surefire-reports' './**/target/failsafe-reports'")
+          }
         }
       }
     }
   }
+  parallel branches
 }
-parallel branches
 
 infra.maybePublishIncrementals()

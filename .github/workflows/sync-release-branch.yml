@@ -1,0 +1,22 @@
+---
+name: Sync release branch
+on:
+  schedule:
+    - cron: '30 10 * * 3,5,7'
+  workflow_dispatch:
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: release
+      - run: |
+          git fetch origin
+          git reset --hard origin/master
+          git rebase origin/release
+      - uses: peter-evans/create-pull-request@v5
+        with:
+          title: Merge branch `master` into `release`
+          branch: sync-release-branch
+          delete-branch: true

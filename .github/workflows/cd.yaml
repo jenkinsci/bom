@@ -3,12 +3,16 @@
 name: cd
 on:
   workflow_dispatch:
-  check_run:
-    types:
-      - completed
+  # TODO how can we trigger releases after a passing build of the "release"
+  # branch?
+#  check_run:
+#    types:
+#      - completed
 
 jobs:
   maven-cd:
+    # TODO this always releases the default branch, but we want to release only
+    # the "release" branch
     uses: jenkins-infra/github-reusable-workflows/.github/workflows/maven-cd.yml@v1
     secrets:
       MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
