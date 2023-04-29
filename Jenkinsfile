@@ -10,21 +10,23 @@ def mavenEnv(Map params = [:], Closure body) {
   retry(count: attempts, conditions: [kubernetesAgent(handleNonKubernetes: true), nonresumable()]) {
     echo 'Attempt ' + ++attempt + ' of ' + attempts
     // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
-    node("maven-$params.jdk") {
+    node('maven-bom') {
       timeout(120) {
-        sh 'mvn -version'
-        // Exclude DigitalOcean artifact caching proxy provider, currently unreliable on BOM builds
-        // TODO: remove when https://github.com/jenkins-infra/helpdesk/issues/3481 is fixed
-        infra.withArtifactCachingProxy(env.ARTIFACT_CACHING_PROXY_PROVIDER != 'do') {
-          withEnv([
-            "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B -ntp -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo"
-          ]) {
-            body()
+        withEnv(["JAVA_HOME=/opt/jdk-$params.jdk"]) {
+          sh 'mvn -version'
+          // Exclude DigitalOcean artifact caching proxy provider, currently unreliable on BOM builds
+          // TODO: remove when https://github.com/jenkins-infra/helpdesk/issues/3481 is fixed
+          infra.withArtifactCachingProxy(env.ARTIFACT_CACHING_PROXY_PROVIDER != 'do') {
+            withEnv([
+              "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B -ntp -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo"
+            ]) {
+              body()
+            }
           }
-        }
-        if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount > 0) {
-          // TODO JENKINS-27092 throw up UNSTABLE status in this case
-          error 'Some test failures, not going to continue'
+          if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount > 0) {
+            // TODO JENKINS-27092 throw up UNSTABLE status in this case
+            error 'Some test failures, not going to continue'
+          }
         }
       }
     }
