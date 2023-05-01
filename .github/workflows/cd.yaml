@@ -3,11 +3,7 @@
 name: cd
 on:
   workflow_dispatch:
-  # TODO how can we trigger releases after a passing build of the "release"
-  # branch?
-#  check_run:
-#    types:
-#      - completed
+  # no check_run trigger since releases are not made from the default branch
 
 jobs:
   maven-cd:
