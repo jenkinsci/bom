@@ -19,7 +19,7 @@ jobs:
         with:
           title: Merge branch `master` into `release`
           body: |
-            Do not modify this PR
+            Do not modify this PR.
             If it cannot be merged, fix the default branch and rerun the sync job.
           branch: sync-release-branch
           delete-branch: true
