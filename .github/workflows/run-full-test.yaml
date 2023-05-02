@@ -21,11 +21,9 @@ jobs:
         fi
         git checkout -b full-tests
         # GitHub apparently does not let you create a PR with no commits:
-        echo 'Just rerunning PCT, do not merge me!' > DO-NOT-MERGE-ME
-        git add DO-NOT-MERGE-ME
-        git commit --message 'Phony commit'
+        git commit --allow-empty --message 'Phony commit'
         git push origin full-tests
         # Not using --draft to ensure notifications are sent:
-        gh pr create --head --title 'Testing master (do not merge)' --body 'Check test results, then close' --reviewer jenkinsci/bom-developers --label full-test
+        gh pr create --head --title 'Testing master (do not merge)' --body 'Close this PR if it passes; otherwise please fix failures.' --reviewer jenkinsci/bom-developers --label full-test
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
