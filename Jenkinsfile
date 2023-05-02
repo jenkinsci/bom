@@ -12,18 +12,17 @@ def mavenEnv(Map params = [:], Closure body) {
     // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
     node('maven-bom') {
       timeout(120) {
-        withEnv(["JAVA_HOME=/opt/jdk-$params.jdk"]) {
-          infra.withArtifactCachingProxy {
-            withEnv([
-              "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B -ntp -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo"
-            ]) {
-              body()
-            }
+        infra.withArtifactCachingProxy {
+          withEnv([
+            "JAVA_HOME=/opt/jdk-$params.jdk",
+            "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B -ntp -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo"
+          ]) {
+            body()
           }
-          if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount > 0) {
-            // TODO JENKINS-27092 throw up UNSTABLE status in this case
-            error 'Some test failures, not going to continue'
-          }
+        }
+        if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount > 0) {
+          // TODO JENKINS-27092 throw up UNSTABLE status in this case
+          error 'Some test failures, not going to continue'
         }
       }
     }
