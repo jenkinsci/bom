@@ -1,0 +1,31 @@
+name: Run full tests
+on:
+  schedule:
+    - cron: '0 1 * * 6'
+  workflow_dispatch:
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - run: |
+        set -x
+        git fetch
+        if gh pr checkout full-tests
+        then
+          gh pr close --comment 'Recreating'
+          git checkout master
+          git branch -d full-tests
+          git push origin :full-tests
+          git reset --hard master
+        fi
+        git checkout -b full-tests
+        # GitHub apparently does not let you create a PR with no commits:
+        echo 'Just rerunning PCT, do not merge me!' > DO-NOT-MERGE-ME
+        git add DO-NOT-MERGE-ME
+        git commit --message 'Phony commit'
+        git push origin full-tests
+        # Not using --draft to ensure notifications are sent:
+        gh pr create --head --title 'Testing master (do not merge)' --body 'Check test results, then close' --reviewer jenkinsci/bom-developers --label full-test
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
