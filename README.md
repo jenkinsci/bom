@@ -194,10 +194,9 @@ This flag also allows all tests to be run even after some failures are recorded.
 ## Releasing
 
 You can cut a release using [JEP-229](https://jenkins.io/jep/229).
-To save resources, `master` is built only on demand, so use **Re-run checks**  in https://github.com/jenkinsci/bom/commits/master if you wish to start.
-If that build passes, a release should be published automatically when PRs matching certain label patterns are merged.
-For the common case that only lots of `dependencies` PRs have been merged,
-the release can be triggered manually from the **Actions** tab after a `master` build has succeeded.
+To save resources, `master` is built only on demand, so use **Re-run checks** in https://github.com/jenkinsci/bom/commits/release if you wish to start.
+If that build passes, trigger the CD workflow manually from the **Actions** tab,
+being sure to specify `release` rather than `master` as the branch to run the workflow from.
 
 ## Incrementals
 
