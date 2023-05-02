@@ -41,7 +41,6 @@ def parsePlugins(plugins) {
 
 def pluginsByRepository
 def lines
-def fullTest = env.CHANGE_ID && pullRequest.labels.contains('full-test')
 
 stage('prep') {
   mavenEnv(jdk: 11) {
@@ -61,10 +60,6 @@ stage('prep') {
       pluginsByRepository = parsePlugins(plugins)
 
       lines = readFile('lines.txt').split('\n')
-      if (env.CHANGE_ID && !fullTest) {
-        // run PCT only on newest and oldest lines, to save resources (but check all lines on deliberate master builds)
-        lines = [lines[0], lines[-1]]
-      }
       launchable.install()
       withCredentials([string(credentialsId: 'launchable-jenkins-bom', variable: 'LAUNCHABLE_TOKEN')]) {
         lines.each { line ->
@@ -85,35 +80,37 @@ stage('prep') {
   }
 }
 
-branches = [failFast: !fullTest]
-lines.each {line ->
-  pluginsByRepository.each { repository, plugins ->
-    branches["pct-$repository-$line"] = {
-      def jdk = line == 'weekly' ? 17 : 11
-      mavenEnv(jdk: jdk) {
-        unstash line
-        withEnv([
-          "PLUGINS=${plugins.join(',')}",
-          "LINE=$line",
-          'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
-        ]) {
-          sh '''
-          mvn -v
-          bash pct.sh
-          '''
-        }
-        launchable.install()
-        withCredentials([string(credentialsId: 'launchable-jenkins-bom', variable: 'LAUNCHABLE_TOKEN')]) {
-          launchable('verify')
-          def sessionFile = "launchable-session-${line}.txt"
-          unstash sessionFile
-          def session = readFile(sessionFile).trim()
-          launchable("record tests --session ${session} --group ${repository} maven './**/target/surefire-reports' './**/target/failsafe-reports'")
+if (BRANCH_NAME == 'master' || env.CHANGE_ID && pullRequest.labels.contains('full-test')) {
+  branches = [failFast: false]
+  lines.each {line ->
+    pluginsByRepository.each { repository, plugins ->
+      branches["pct-$repository-$line"] = {
+        def jdk = line == 'weekly' ? 17 : 11
+        mavenEnv(jdk: jdk) {
+          unstash line
+          withEnv([
+            "PLUGINS=${plugins.join(',')}",
+            "LINE=$line",
+            'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
+          ]) {
+            sh '''
+            mvn -v
+            bash pct.sh
+            '''
+          }
+          launchable.install()
+          withCredentials([string(credentialsId: 'launchable-jenkins-bom', variable: 'LAUNCHABLE_TOKEN')]) {
+            launchable('verify')
+            def sessionFile = "launchable-session-${line}.txt"
+            unstash sessionFile
+            def session = readFile(sessionFile).trim()
+            launchable("record tests --session ${session} --group ${repository} maven './**/target/surefire-reports' './**/target/failsafe-reports'")
+          }
         }
       }
     }
   }
+  parallel branches
 }
-parallel branches
 
 infra.maybePublishIncrementals()

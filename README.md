@@ -145,7 +145,7 @@ If the build fails due to an unmanaged transitive plugin dependency, add it to
 
 ## PCT
 
-The CI build tries running the [Plugin Compatibility Tester (PCT)](https://github.com/jenkinsci/plugin-compat-tester/)
+The CI build can run the [Plugin Compatibility Tester (PCT)](https://github.com/jenkinsci/plugin-compat-tester/)
 on the particular combination of plugins being managed by the BOM.
 This catches mutual incompatibilities between plugins
 (as revealed by their `JenkinsRule` tests)
@@ -168,7 +168,10 @@ DOCKERIZED=true
 
 to reproduce image-specific failures.
 
-Note that to minimize build time, tests are run only on Linux, against JDK 8, and without Docker support.
+To minimize cloud resources, PCT is not run at all by default on pull requests, only some basic sanity checks.
+Add the label `full-test` to run PCT in a PR.
+
+To further minimize build time, tests are run only on Linux, against Java 11, and without Docker support.
 It is unusual but possible for cross-component incompatibilities to only be visible in more specialized environments (such as Windows).
 
 ## LTS lines
@@ -186,10 +189,6 @@ according to the `jenkins-infra/update-center2`.
 The UC currently maintains releases for the [past 400 days](https://groups.google.com/g/jenkins-infra/c/LTrRUqkgeQA/m/UmQMD5gDAgAJ)
 so it is reasonable to retire BOMs for lines older than that,
 or otherwise when the number of accumulated version overrides becomes large.
-
-Add the label `full-test` in dangerous-looking PRs to make sure you are running tests in all LTS lines;
-by default tests are only run in the oldest line and weeklies.
-This flag also allows all tests to be run even after some failures are recorded.
 
 ## Releasing
 
