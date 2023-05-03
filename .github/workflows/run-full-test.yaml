@@ -15,7 +15,7 @@ jobs:
         then
           gh pr close --comment 'Recreating'
           git checkout master
-          git branch -d full-tests
+          git branch -D full-tests
           git push origin :full-tests
           git reset --hard master
         fi
