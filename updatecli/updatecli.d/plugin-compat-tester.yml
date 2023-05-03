@@ -43,3 +43,4 @@ actions:
     spec:
       labels:
         - dependencies
+        - full-test
