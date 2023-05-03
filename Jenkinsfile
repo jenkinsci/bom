@@ -4,17 +4,17 @@ if (BRANCH_NAME == 'master' && currentBuild.buildCauses*._class == ['jenkins.bra
   error 'No longer running builds on response to master branch pushes. If you wish to cut a release, use “Re-run checks” from this failing check in https://github.com/jenkinsci/bom/commits/master'
 }
 
-def mavenEnv(Map params = [:], Closure body) {
+def mavenEnv(boolean nodePool, int jdk, Closure body) {
   def attempt = 0
   def attempts = 3
   retry(count: attempts, conditions: [kubernetesAgent(handleNonKubernetes: true), nonresumable()]) {
     echo 'Attempt ' + ++attempt + ' of ' + attempts
     // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
-    node('maven-bom') {
+    node(nodePool ? 'maven-bom': "maven-$jdk") {
       timeout(120) {
         infra.withArtifactCachingProxy {
           withEnv([
-            "JAVA_HOME=/opt/jdk-$params.jdk",
+            "JAVA_HOME=/opt/jdk-$jdk",
             "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B -ntp -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo"
           ]) {
             body()
@@ -43,7 +43,7 @@ def pluginsByRepository
 def lines
 
 stage('prep') {
-  mavenEnv(jdk: 11) {
+  mavenEnv(false, 11) {
     checkout scm
     withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist']) {
       withCredentials([
@@ -86,7 +86,7 @@ if (BRANCH_NAME == 'master' || env.CHANGE_ID && pullRequest.labels.contains('ful
     pluginsByRepository.each { repository, plugins ->
       branches["pct-$repository-$line"] = {
         def jdk = line == 'weekly' ? 17 : 11
-        mavenEnv(jdk: jdk) {
+        mavenEnv(true, jdk) {
           unstash line
           withEnv([
             "PLUGINS=${plugins.join(',')}",
