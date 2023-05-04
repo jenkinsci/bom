@@ -4,15 +4,13 @@ cd "$(dirname "${0}")"
 
 # expects: $LINE
 
-if [ \! -d sample-plugin/target/test-classes/test-dependencies -o \! -d sample-plugin/target/jenkins-for-test ]
-then
-  if [ $LINE = weekly ]
-  then
-    PROFILE=
-  else
-    PROFILE=-P$LINE
-  fi
-  mvn -pl sample-plugin clean test -Dtest=InjectedTest $PROFILE
+if [[ ! -d sample-plugin/target/test-classes/test-dependencies || ! -d sample-plugin/target/jenkins-for-test ]]; then
+	if [[ $LINE == weekly ]]; then
+		PROFILE=
+	else
+		PROFILE=-P$LINE
+	fi
+	mvn -pl sample-plugin clean test -Dtest=InjectedTest $PROFILE
 fi
 
 cd sample-plugin/target
