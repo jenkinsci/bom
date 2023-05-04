@@ -425,7 +425,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jsch</artifactId>
-        <version>0.1.55.61.va_e9ee26616e7</version>
+        <version>0.2.8-65.v052c39de79b_2</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
