@@ -81,37 +81,38 @@ stage('prep') {
   }
 }
 
-if (BRANCH_NAME == 'master' || env.CHANGE_ID && pullRequest.labels.contains('full-test')) {
-  branches = [failFast: false]
-  lines.each {line ->
-    pluginsByRepository.each { repository, plugins ->
-      branches["pct-$repository-$line"] = {
-        def jdk = line == 'weekly' ? 17 : 11
-        mavenEnv(true, jdk) {
-          unstash line
-          withEnv([
-            "PLUGINS=${plugins.join(',')}",
-            "LINE=$line",
-            'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
-          ]) {
-            sh '''
+branches = [failFast: false]
+lines.each {line ->
+  if (line != 'weekly') {
+    return
+  }
+  pluginsByRepository.each { repository, plugins ->
+    branches["pct-$repository-$line"] = {
+      def jdk = line == 'weekly' ? 17 : 11
+      mavenEnv(true, jdk) {
+        unstash line
+        withEnv([
+          "PLUGINS=${plugins.join(',')}",
+          "LINE=$line",
+          'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
+        ]) {
+          sh '''
             mvn -v
             bash pct.sh
             '''
-          }
-          launchable.install()
-          withCredentials([string(credentialsId: 'launchable-jenkins-bom', variable: 'LAUNCHABLE_TOKEN')]) {
-            launchable('verify')
-            def sessionFile = "launchable-session-${line}.txt"
-            unstash sessionFile
-            def session = readFile(sessionFile).trim()
-            launchable("record tests --session ${session} --group ${repository} maven './**/target/surefire-reports' './**/target/failsafe-reports'")
-          }
+        }
+        launchable.install()
+        withCredentials([string(credentialsId: 'launchable-jenkins-bom', variable: 'LAUNCHABLE_TOKEN')]) {
+          launchable('verify')
+          def sessionFile = "launchable-session-${line}.txt"
+          unstash sessionFile
+          def session = readFile(sessionFile).trim()
+          launchable("record tests --session ${session} --group ${repository} maven './**/target/surefire-reports' './**/target/failsafe-reports'")
         }
       }
     }
   }
-  parallel branches
 }
+parallel branches
 
 infra.maybePublishIncrementals()
