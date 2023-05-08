@@ -21,6 +21,8 @@ jobs:
         fi
         git checkout -b full-tests
         # GitHub apparently does not let you create a PR with no commits:
+        git config --global user.email git@example.org
+        git config --global user.name run-full-test
         git commit --allow-empty --message 'Phony commit'
         git push origin full-tests
         # Not using --draft to ensure notifications are sent:
