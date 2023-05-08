@@ -26,6 +26,6 @@ jobs:
         git commit --allow-empty --message 'Phony commit'
         git push origin full-tests
         # Not using --draft to ensure notifications are sent:
-        gh pr create --head full-tests --title 'Testing master (do not merge)' --body 'Close this PR if it passes; otherwise please fix failures.' --reviewer jenkinsci/bom-developers --label full-test
+        gh pr create --head full-tests --title 'Testing master (do not merge)' --body 'Close this PR if it passes; otherwise please fix failures.' --label full-test
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
