@@ -309,7 +309,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>config-file-provider</artifactId>
-        <version>3.11.1</version>
+        <version>938.ve2b_8a_591c596</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
