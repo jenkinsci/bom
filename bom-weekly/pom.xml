@@ -329,7 +329,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>dashboard-view</artifactId>
-        <version>2.472.v9ff2a_e6a_c529</version>
+        <version>2.487.vcf0ff9008a_c0</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
