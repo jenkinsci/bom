@@ -24,7 +24,7 @@
     <subversion-plugin.version>2.17.2</subversion-plugin.version>
     <workflow-api-plugin.version>1213.v646def1087f9</workflow-api-plugin.version>
     <workflow-cps-plugin.version>3659.v582dc37621d8</workflow-cps-plugin.version>
-    <workflow-job-plugin.version>1292.v27d8cc3e2602</workflow-job-plugin.version>
+    <workflow-job-plugin.version>1295.v395eb_7400005</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>746.v05814d19c001</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>639.v6eca_cd8c04a_a_</workflow-step-api-plugin.version>
     <workflow-support-plugin.version>839.v35e2736cfd5c</workflow-support-plugin.version>
@@ -117,7 +117,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>file-parameters</artifactId>
-        <version>285.v757c5b_67a_c25</version>
+        <version>285.287.v4b_7b_29d3469d</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -344,7 +344,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>email-ext</artifactId>
-        <version>2.96</version>
+        <version>2.96.1</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -440,7 +440,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ldap</artifactId>
-        <version>673.v034ec70ec2b_b_</version>
+        <version>676.vfa_64cf6b_b_002</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -505,7 +505,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pipeline-utility-steps</artifactId>
-        <version>2.15.2</version>
+        <version>2.15.3</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
