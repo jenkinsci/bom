@@ -294,7 +294,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>branch-api</artifactId>
-        <version>2.1071.v1a_188a_562481</version>
+        <version>2.1092.vda_3c2a_a_f0c11</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
