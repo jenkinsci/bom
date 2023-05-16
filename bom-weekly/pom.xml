@@ -370,7 +370,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>github-api</artifactId>
-        <version>1.303-417.ve35d9dd78549</version>
+        <version>1.314-431.v78d72a_3fe4c3</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
