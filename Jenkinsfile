@@ -61,15 +61,14 @@ stage('prep') {
       pluginsByRepository = parsePlugins(plugins)
 
       lines = readFile('lines.txt').split('\n')
-      launchable.install()
       withCredentials([string(credentialsId: 'launchable-jenkins-bom', variable: 'LAUNCHABLE_TOKEN')]) {
         lines.each { line ->
           def commitHashes = readFile "commit-hashes-${line}.txt"
-          launchable("record build --name ${env.BUILD_TAG}-${line} --no-commit-collection " + commitHashes + " --link \"View build in CI\"=${env.BUILD_URL}")
+          sh "launchable verify && launchable record build --name ${env.BUILD_TAG}-${line} --no-commit-collection " + commitHashes
 
           def jdk = line == 'weekly' ? 17 : 11
           def sessionFile = "launchable-session-${line}.txt"
-          launchable("record session --build ${env.BUILD_TAG}-${line} --flavor platform=linux --flavor jdk=${jdk} --observation --link \"View session in CI\"=${env.BUILD_URL} >${sessionFile}")
+          sh "launchable record session --build ${env.BUILD_TAG}-${line} --flavor platform=linux --flavor jdk=${jdk} >${sessionFile}"
           stash name: sessionFile, includes: sessionFile
         }
       }
@@ -99,13 +98,11 @@ if (BRANCH_NAME == 'master' || env.CHANGE_ID && pullRequest.labels.contains('ful
             bash pct.sh
             '''
           }
-          launchable.install()
           withCredentials([string(credentialsId: 'launchable-jenkins-bom', variable: 'LAUNCHABLE_TOKEN')]) {
-            launchable('verify')
             def sessionFile = "launchable-session-${line}.txt"
             unstash sessionFile
             def session = readFile(sessionFile).trim()
-            launchable("record tests --session ${session} --group ${repository} maven './**/target/surefire-reports' './**/target/failsafe-reports'")
+            sh "launchable verify && launchable record tests --session ${session} --group ${repository} maven './**/target/surefire-reports' './**/target/failsafe-reports'"
           }
         }
       }
