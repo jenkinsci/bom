@@ -314,7 +314,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>copyartifact</artifactId>
-        <version>698.v393f578eb_ddc</version>
+        <version>702.va_c09cb_6e51cf</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
