@@ -14,7 +14,7 @@
     <configuration-as-code-plugin.version>1625.v27444588cc3d</configuration-as-code-plugin.version>
     <data-tables-api.version>1.13.3-4</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.5.6</declarative-pipeline-migration-assistant-plugin.version>
-    <forensics-api.version>2.1.0</forensics-api.version>
+    <forensics-api.version>2.2.0</forensics-api.version>
     <git-plugin.version>5.0.2</git-plugin.version>
     <mina-sshd-api.version>2.10.0-69.v28e3e36d18eb_</mina-sshd-api.version>
     <pipeline-model-definition-plugin.version>2.2131.vb_9788088fdb_5</pipeline-model-definition-plugin.version>
