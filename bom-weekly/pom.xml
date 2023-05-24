@@ -17,8 +17,7 @@
     <forensics-api.version>2.2.0</forensics-api.version>
     <git-plugin.version>5.0.2</git-plugin.version>
     <mina-sshd-api.version>2.10.0-69.v28e3e36d18eb_</mina-sshd-api.version>
-    <!-- TODO https://github.com/jenkinsci/pipeline-model-definition-plugin/pull/618 -->
-    <pipeline-model-definition-plugin.version>2.2132.vc917a_958b_577</pipeline-model-definition-plugin.version>
+    <pipeline-model-definition-plugin.version>2.2131.vb_9788088fdb_5</pipeline-model-definition-plugin.version>
     <pipeline-stage-view-plugin.version>2.32</pipeline-stage-view-plugin.version>
     <plugin-util-api.version>3.2.1</plugin-util-api.version>
     <scm-api-plugin.version>672.v64378a_b_20c60</scm-api-plugin.version>
@@ -26,7 +25,7 @@
     <workflow-api-plugin.version>1213.v646def1087f9</workflow-api-plugin.version>
     <workflow-cps-plugin.version>3668.v1763b_b_6ccffd</workflow-cps-plugin.version>
     <!-- TODO https://github.com/jenkinsci/workflow-job-plugin/pull/357 -->
-    <workflow-job-plugin.version>1296.v218158493f40</workflow-job-plugin.version>
+    <workflow-job-plugin.version>1298.v4ddfef699b_b_7</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>746.v05814d19c001</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>639.v6eca_cd8c04a_a_</workflow-step-api-plugin.version>
     <workflow-support-plugin.version>839.v35e2736cfd5c</workflow-support-plugin.version>
