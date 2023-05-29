@@ -460,7 +460,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>metrics</artifactId>
-        <version>4.2.13-420.vea_2f17932dd6</version>
+        <version>4.2.18-438.v0ede325a_4c68</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
