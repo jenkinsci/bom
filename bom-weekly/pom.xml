@@ -17,14 +17,14 @@
     <forensics-api.version>2.2.0</forensics-api.version>
     <git-plugin.version>5.0.2</git-plugin.version>
     <mina-sshd-api.version>2.10.0-69.v28e3e36d18eb_</mina-sshd-api.version>
-    <pipeline-model-definition-plugin.version>2.2133.ve46a_6113dfc3</pipeline-model-definition-plugin.version>
+    <pipeline-model-definition-plugin.version>2.2131.vb_9788088fdb_5</pipeline-model-definition-plugin.version>
     <pipeline-stage-view-plugin.version>2.32</pipeline-stage-view-plugin.version>
     <plugin-util-api.version>3.2.1</plugin-util-api.version>
     <scm-api-plugin.version>672.v64378a_b_20c60</scm-api-plugin.version>
     <subversion-plugin.version>2.17.2</subversion-plugin.version>
     <workflow-api-plugin.version>1213.v646def1087f9</workflow-api-plugin.version>
-    <workflow-cps-plugin.version>3668.v1763b_b_6ccffd</workflow-cps-plugin.version>
-    <workflow-job-plugin.version>1301.v054d9cea_9593</workflow-job-plugin.version>
+    <workflow-cps-plugin.version>3659.v582dc37621d8</workflow-cps-plugin.version>
+    <workflow-job-plugin.version>1295.v395eb_7400005</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>746.v05814d19c001</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>639.v6eca_cd8c04a_a_</workflow-step-api-plugin.version>
     <workflow-support-plugin.version>839.v35e2736cfd5c</workflow-support-plugin.version>
@@ -60,7 +60,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>bootstrap5-api</artifactId>
-        <version>5.2.2-6</version>
+        <version>5.2.2-4</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -143,12 +143,12 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>gitlab-branch-source</artifactId>
-        <version>660.vd45c0f4c0042</version>
+        <version>659.va_685a_51fda_db_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>ionicons-api</artifactId>
-        <version>56.v1b_1c8c49374e</version>
+        <version>45.vf54fca_5d2154</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -218,6 +218,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>popper2-api</artifactId>
+        <version>2.11.6-2</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>snakeyaml-api</artifactId>
         <version>1.33-95.va_b_a_e3e47b_fa_4</version>
       </dependency>
@@ -284,12 +289,12 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>bouncycastle-api</artifactId>
-        <version>2.28</version>
+        <version>2.27</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>branch-api</artifactId>
-        <version>2.1105.v472604208c55</version>
+        <version>2.1092.vda_3c2a_a_f0c11</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -380,7 +385,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>gitlab-plugin</artifactId>
-        <version>1.7.14</version>
+        <version>1.7.13</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -440,7 +445,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>mailer</artifactId>
-        <version>457.v3f72cb_e015e5</version>
+        <version>448.v5b_97805e3767</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -460,7 +465,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>metrics</artifactId>
-        <version>4.2.18-438.v0ede325a_4c68</version>
+        <version>4.2.13-420.vea_2f17932dd6</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
