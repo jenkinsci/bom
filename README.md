@@ -189,7 +189,7 @@ according to the `jenkins-infra/update-center2`.
 
 The [developer documentation](https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/) recommends the last releases of each of the previous two LTS baselines.
 BOMs for the current LTS release and two prior LTS releases are typically retained.
-BOMs older than the two prior LTS releases will generally be retired in better manage evaluation costs and maintenance efforts.
+BOMs older than the two prior LTS releases will generally be retired in order to better manage evaluation costs and maintenance efforts.
 
 ## Releasing
 
