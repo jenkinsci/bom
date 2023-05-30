@@ -186,9 +186,10 @@ The CI build (or just `mvn test -P2.nnn.x`) will fail if some managed plugins ar
 [This script](https://gist.github.com/jglick/0a85759ea65f60e107ac5a85a5032cae)
 is a handy way to find the most recently released plugin version compatible with a given line,
 according to the `jenkins-infra/update-center2`.
-The UC currently maintains releases for the [past 400 days](https://groups.google.com/g/jenkins-infra/c/LTrRUqkgeQA/m/UmQMD5gDAgAJ)
-so it is reasonable to retire BOMs for lines older than that,
-or otherwise when the number of accumulated version overrides becomes large.
+
+The [developer documentation](https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/) recommends the last releases of each of the previous two LTS baselines.
+BOMs for the current LTS release and two prior LTS releases are typically retained.
+BOMs older than the two prior LTS releases will generally be retired in better manage evaluation costs and maintenance efforts.
 
 ## Releasing
 
