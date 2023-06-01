@@ -676,7 +676,7 @@
       <id>2.401.x</id>
       <properties>
         <bom>2.401.x</bom>
-        <jenkins.version>2.401</jenkins.version>
+        <jenkins.version>2.401.1</jenkins.version>
       </properties>
     </profile>
     <profile>
