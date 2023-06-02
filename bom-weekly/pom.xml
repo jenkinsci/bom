@@ -122,7 +122,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>font-awesome-api</artifactId>
-        <version>6.3.0-2</version>
+        <version>6.4.0-1</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
