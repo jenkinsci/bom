@@ -10,6 +10,7 @@
   <packaging>pom</packaging>
   <properties>
     <checks-api.version>1.8.1</checks-api.version>
+    <configuration-as-code-plugin.version>1625.v27444588cc3d</configuration-as-code-plugin.version>
     <data-tables-api.version>1.12.1-4</data-tables-api.version>
     <forensics-api.version>1.17.0</forensics-api.version>
     <plugin-util-api.version>2.20.0</plugin-util-api.version>
@@ -22,6 +23,16 @@
         <version>${project.version}</version>
         <type>pom</type>
         <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins</groupId>
+        <artifactId>configuration-as-code</artifactId>
+        <version>${configuration-as-code-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.configuration-as-code</groupId>
+        <artifactId>test-harness</artifactId>
+        <version>${configuration-as-code-plugin.version}</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -87,6 +98,11 @@
         <version>${plugin-util-api.version}</version>
       </dependency>
       <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>popper2-api</artifactId>
+        <version>2.11.6-2</version>
+      </dependency>
+      <dependency>
         <groupId>org.6wind.jenkins</groupId>
         <artifactId>lockable-resources</artifactId>
         <version>1131.vb_7c3d377e723</version>
@@ -95,6 +111,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>credentials</artifactId>
         <version>1224.vc23ca_a_9a_2cb_0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>junit</artifactId>
+        <version>1202.v79a_986785076</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
