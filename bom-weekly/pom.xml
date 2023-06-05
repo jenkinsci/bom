@@ -9,7 +9,7 @@
   <artifactId>bom-weekly</artifactId>
   <packaging>pom</packaging>
   <properties>
-    <aws-java-sdk-plugin.version>1.12.447-382.vda_68e2007233</aws-java-sdk-plugin.version>
+    <aws-java-sdk-plugin.version>1.12.481-392.v8b_291cfcda_09</aws-java-sdk-plugin.version>
     <checks-api.version>2.0.0</checks-api.version>
     <configuration-as-code-plugin.version>1647.ve39ca_b_829b_42</configuration-as-code-plugin.version>
     <data-tables-api.version>1.13.4-1</data-tables-api.version>
