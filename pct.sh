@@ -22,6 +22,7 @@ exec java \
 	$PCT_D_ARGS \
 	-DforkCount=.75C \
 	-Djth.jenkins-war.path="$(pwd)/target/megawar-$LINE.war" \
+	-Dorg.eclipse.jetty.server.Request.maxFormContentSize=-1 \
 	-Dsurefire.excludesFile="$(pwd)/excludes.txt"
 
 # produces: **/target/surefire-reports/TEST-*.xml
