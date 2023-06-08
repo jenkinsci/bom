@@ -170,6 +170,15 @@ to reproduce image-specific failures.
 
 To minimize cloud resources, PCT is not run at all by default on pull requests, only some basic sanity checks.
 Add the label `full-test` to run PCT in a PR.
+If you lack triage permission and so cannot add this label, then you may instead
+
+```bash
+echo 'TODO delete me' > full-test
+git add full-test
+git commit -m 'Run full tests'
+```
+
+while keeping the PR in draft until tests pass and this file can be deleted.
 
 To further minimize build time, tests are run only on Linux, against Java 11, and without Docker support.
 It is unusual but possible for cross-component incompatibilities to only be visible in more specialized environments (such as Windows).

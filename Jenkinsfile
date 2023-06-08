@@ -42,6 +42,7 @@ def parsePlugins(plugins) {
 
 def pluginsByRepository
 def lines
+def fullTestMarkerFile
 
 stage('prep') {
   mavenEnv(false, 11) {
@@ -56,6 +57,7 @@ stage('prep') {
         '''
       }
     }
+    fullTestMarkerFile = fileExists 'full-test'
     dir('target') {
       def plugins = readFile('plugins.txt').split('\n')
       pluginsByRepository = parsePlugins(plugins)
@@ -80,7 +82,7 @@ stage('prep') {
   }
 }
 
-if (BRANCH_NAME == 'master' || env.CHANGE_ID && pullRequest.labels.contains('full-test')) {
+if (BRANCH_NAME == 'master' || fullTestMarkerFile || env.CHANGE_ID && pullRequest.labels.contains('full-test')) {
   branches = [failFast: false]
   lines.each {line ->
     pluginsByRepository.each { repository, plugins ->
@@ -109,6 +111,10 @@ if (BRANCH_NAME == 'master' || env.CHANGE_ID && pullRequest.labels.contains('ful
     }
   }
   parallel branches
+}
+
+if (fullTestMarkerFile) {
+  error 'Remember to `git rm full-test` before taking out of draft'
 }
 
 infra.maybePublishIncrementals()
