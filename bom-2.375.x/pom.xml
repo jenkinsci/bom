@@ -25,11 +25,6 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-       <dependency>
-         <groupId>org.jenkins-ci.plugins</groupId>
-         <artifactId>branch-api</artifactId>
-         <version>2.1105.v472604208c55</version>
-       </dependency>
       <dependency>
         <groupId>io.jenkins</groupId>
         <artifactId>configuration-as-code</artifactId>
@@ -112,6 +107,11 @@
         <groupId>org.6wind.jenkins</groupId>
         <artifactId>lockable-resources</artifactId>
         <version>1131.vb_7c3d377e723</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>branch-api</artifactId>
+        <version>2.1105.v472604208c55</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
