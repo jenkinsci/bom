@@ -134,6 +134,11 @@
         <artifactId>junit</artifactId>
         <version>1202.v79a_986785076</version>
       </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins.workflow</groupId>
+        <artifactId>workflow-scm-step</artifactId>
+        <version>408.v7d5b_135a_b_d49</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 </project>
