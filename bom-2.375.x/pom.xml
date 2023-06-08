@@ -13,6 +13,7 @@
     <configuration-as-code-plugin.version>1625.v27444588cc3d</configuration-as-code-plugin.version>
     <data-tables-api.version>1.12.1-4</data-tables-api.version>
     <forensics-api.version>1.17.0</forensics-api.version>
+    <git-plugin.version>5.0.2</git-plugin.version>
     <plugin-util-api.version>2.20.0</plugin-util-api.version>
   </properties>
   <dependencyManagement>
@@ -111,6 +112,17 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>credentials</artifactId>
         <version>1224.vc23ca_a_9a_2cb_0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>git</artifactId>
+        <version>${git-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>git</artifactId>
+        <version>${git-plugin.version}</version>
+        <classifier>tests</classifier>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
