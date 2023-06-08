@@ -470,7 +470,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pipeline-build-step</artifactId>
-        <version>491.v1fec530da_858</version>
+        <version>496.v2449a_9a_221f2</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
