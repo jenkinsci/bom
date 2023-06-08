@@ -15,3 +15,6 @@ org.jenkinsci.plugins.matrixauth.integrations.casc.ImportTest
 
 # TODO tends to run out of memory
 org.jenkinsci.plugins.pipeline.modeldefinition.TriggersTest
+
+# TODO depends on page content that changed in 2.409 or earlier
+hudson.plugins.emailext.ExtendedEmailPublisherDescriptorTest
