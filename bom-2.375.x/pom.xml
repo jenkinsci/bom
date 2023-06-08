@@ -15,6 +15,7 @@
     <forensics-api.version>1.17.0</forensics-api.version>
     <git-plugin.version>5.0.2</git-plugin.version>
     <plugin-util-api.version>2.20.0</plugin-util-api.version>
+    <workflow-cps-plugin.version>3673.v5b_dd74276262</workflow-cps-plugin.version>
     <workflow-multibranch-plugin.version>746.v05814d19c001</workflow-multibranch-plugin.version>
   </properties>
   <dependencyManagement>
@@ -111,6 +112,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>branch-api</artifactId>
+        <version>2.1105.v472604208c55</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>credentials</artifactId>
         <version>1224.vc23ca_a_9a_2cb_0</version>
       </dependency>
@@ -127,11 +133,27 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>git-client</artifactId>
+        <version>4.3.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>junit</artifactId>
         <version>1202.v79a_986785076</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
+        <artifactId>workflow-cps</artifactId>
+        <version>${workflow-cps-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins.workflow</groupId>
+        <artifactId>workflow-cps</artifactId>
+        <version>${workflow-cps-plugin.version}</version>
+        <classifier>tests</classifier>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins.workflow</groupId>
         <artifactId>workflow-multibranch</artifactId>
         <version>${workflow-multibranch-plugin.version}</version>
       </dependency>
@@ -139,7 +161,6 @@
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
         <artifactId>workflow-multibranch</artifactId>
         <version>${workflow-multibranch-plugin.version}</version>
-        <classifier>tests</classifier>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins.workflow</groupId>

@@ -23,7 +23,7 @@
     <scm-api-plugin.version>672.v64378a_b_20c60</scm-api-plugin.version>
     <subversion-plugin.version>2.17.2</subversion-plugin.version>
     <workflow-api-plugin.version>1213.v646def1087f9</workflow-api-plugin.version>
-    <workflow-cps-plugin.version>3673.v5b_dd74276262</workflow-cps-plugin.version>
+    <workflow-cps-plugin.version>3691.v28b_14c465a_b_b_</workflow-cps-plugin.version>
     <workflow-job-plugin.version>1308.v58d48a_763b_31</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>756.v891d88f2cd46</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>639.v6eca_cd8c04a_a_</workflow-step-api-plugin.version>
@@ -289,7 +289,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>branch-api</artifactId>
-        <version>2.1105.v472604208c55</version>
+        <version>2.1109.vdf225489a_16d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -355,7 +355,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>git-client</artifactId>
-        <version>4.3.0</version>
+        <version>4.4.0</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
