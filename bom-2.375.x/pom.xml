@@ -13,6 +13,7 @@
     <configuration-as-code-plugin.version>1625.v27444588cc3d</configuration-as-code-plugin.version>
     <data-tables-api.version>1.12.1-4</data-tables-api.version>
     <forensics-api.version>1.17.0</forensics-api.version>
+    <git-plugin.version>5.0.2</git-plugin.version>
     <plugin-util-api.version>2.20.0</plugin-util-api.version>
     <workflow-multibranch-plugin.version>746.v05814d19c001</workflow-multibranch-plugin.version>
   </properties>
@@ -115,6 +116,17 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>git</artifactId>
+        <version>${git-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>git</artifactId>
+        <version>${git-plugin.version}</version>
+        <classifier>tests</classifier>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>junit</artifactId>
         <version>1202.v79a_986785076</version>
       </dependency>
@@ -128,6 +140,11 @@
         <artifactId>workflow-multibranch</artifactId>
         <version>${workflow-multibranch-plugin.version}</version>
         <classifier>tests</classifier>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins.workflow</groupId>
+        <artifactId>workflow-scm-step</artifactId>
+        <version>408.v7d5b_135a_b_d49</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
