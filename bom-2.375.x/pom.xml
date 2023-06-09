@@ -14,6 +14,7 @@
     <data-tables-api.version>1.12.1-4</data-tables-api.version>
     <forensics-api.version>1.17.0</forensics-api.version>
     <git-plugin.version>5.0.2</git-plugin.version>
+    <pipeline-model-definition-plugin.version>2.2133.ve46a_6113dfc3</pipeline-model-definition-plugin.version>
     <plugin-util-api.version>2.20.0</plugin-util-api.version>
     <workflow-cps-plugin.version>3673.v5b_dd74276262</workflow-cps-plugin.version>
     <workflow-multibranch-plugin.version>746.v05814d19c001</workflow-multibranch-plugin.version>
@@ -171,6 +172,32 @@
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
         <artifactId>workflow-scm-step</artifactId>
         <version>408.v7d5b_135a_b_d49</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkinsci.plugins</groupId>
+        <artifactId>pipeline-model-api</artifactId>
+        <version>${pipeline-model-definition-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkinsci.plugins</groupId>
+        <artifactId>pipeline-model-definition</artifactId>
+        <version>${pipeline-model-definition-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkinsci.plugins</groupId>
+        <artifactId>pipeline-model-definition</artifactId>
+        <version>${pipeline-model-definition-plugin.version}</version>
+        <classifier>tests</classifier>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkinsci.plugins</groupId>
+        <artifactId>pipeline-model-extensions</artifactId>
+        <version>${pipeline-model-definition-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkinsci.plugins</groupId>
+        <artifactId>pipeline-stage-tags-metadata</artifactId>
+        <version>${pipeline-model-definition-plugin.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
