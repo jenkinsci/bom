@@ -254,7 +254,8 @@
       <dependency>
         <groupId>org.jenkins-ci.modules</groupId>
         <artifactId>instance-identity</artifactId>
-        <version>142.v04572ca_5b_265</version>
+        <!-- https://github.com/jenkinsci/instance-identity-plugin/pull/91 -->
+        <version>173.v3b_72987467d8</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.modules</groupId>
@@ -572,7 +573,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>support-core</artifactId>
-        <version>1283.v9ddb_0284a_00c</version>
+        <!-- TODO https://github.com/jenkinsci/support-core-plugin/pull/472 -->
+        <version>1284.v854ef4b_a_29dd</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
