@@ -144,6 +144,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>junit-attachments</artifactId>
+        <version>131.vef2117770555</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pipeline-build-step</artifactId>
         <version>491.v1fec530da_858</version>
       </dependency>
