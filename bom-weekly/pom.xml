@@ -12,7 +12,7 @@
     <aws-java-sdk-plugin.version>1.12.481-392.v8b_291cfcda_09</aws-java-sdk-plugin.version>
     <checks-api.version>2.0.0</checks-api.version>
     <configuration-as-code-plugin.version>1647.ve39ca_b_829b_42</configuration-as-code-plugin.version>
-    <data-tables-api.version>1.13.4-1</data-tables-api.version>
+    <data-tables-api.version>1.13.4-2</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.5.6</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>2.3.0</forensics-api.version>
     <git-plugin.version>5.1.0</git-plugin.version>
@@ -188,7 +188,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>jnr-posix-api</artifactId>
-        <version>3.1.16-2</version>
+        <version>3.1.17-1</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -254,7 +254,7 @@
       <dependency>
         <groupId>org.jenkins-ci.modules</groupId>
         <artifactId>instance-identity</artifactId>
-        <version>142.v04572ca_5b_265</version>
+        <version>173.va_37c494ec4e5</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.modules</groupId>
@@ -370,7 +370,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>github-branch-source</artifactId>
-        <version>1725.vd391eef681a_e</version>
+        <version>1728.v859147241f49</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
