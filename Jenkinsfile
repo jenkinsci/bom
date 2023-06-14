@@ -7,7 +7,7 @@ if (BRANCH_NAME == 'master' && currentBuild.buildCauses*._class == ['jenkins.bra
 
 def mavenEnv(boolean nodePool, int jdk, Closure body) {
   def attempt = 0
-  def attempts = 3
+  def attempts = 6
   retry(count: attempts, conditions: [kubernetesAgent(handleNonKubernetes: true), nonresumable()]) {
     echo 'Attempt ' + ++attempt + ' of ' + attempts
     // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
