@@ -283,6 +283,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>authentication-tokens</artifactId>
+        <version>1.53.v1c90fd9191a_b_</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>bouncycastle-api</artifactId>
         <version>2.28</version>
       </dependency>
