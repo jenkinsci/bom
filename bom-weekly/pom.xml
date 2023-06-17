@@ -333,6 +333,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>docker-java-api</artifactId>
+        <version>3.3.1-79.v20b_53427e041</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>durable-task</artifactId>
         <version>507.v050055d0cb_dd</version>
       </dependency>
