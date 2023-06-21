@@ -577,7 +577,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>support-core</artifactId>
-        <version>1315.v0f514a_a_7e133</version>
+        <version>1318.va_a_105294c1df</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
