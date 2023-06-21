@@ -1,6 +1,11 @@
 # TODO cryptic PCT-only errors: https://github.com/jenkinsci/bom/pull/251#issuecomment-645012427
 hudson.matrix.AxisTest
 
+# TODO https://github.com/jenkinsci/jacoco-plugin/pull/244
+hudson.plugins.jacococoveragecolumn.AbstractJaCoCoCoverageColumnTest
+hudson.plugins.jacococoveragecolumn.BranchCoverageColumnTest
+hudson.plugins.jacococoveragecolumn.JaCoCoColumnTest
+
 # TODO tends to time out
 jenkins.plugins.http_request.HttpRequestStepRoundTripTest
 
