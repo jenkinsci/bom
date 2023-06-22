@@ -12,7 +12,7 @@
     <aws-java-sdk-plugin.version>1.12.481-392.v8b_291cfcda_09</aws-java-sdk-plugin.version>
     <checks-api.version>2.0.0</checks-api.version>
     <configuration-as-code-plugin.version>1647.ve39ca_b_829b_42</configuration-as-code-plugin.version>
-    <data-tables-api.version>1.13.4-2</data-tables-api.version>
+    <data-tables-api.version>1.13.4-3</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.0</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>2.3.0</forensics-api.version>
     <git-plugin.version>5.1.0</git-plugin.version>
