@@ -20,3 +20,7 @@ org.jenkinsci.plugins.matrixauth.integrations.casc.ImportTest
 
 # TODO tends to run out of memory
 org.jenkinsci.plugins.pipeline.modeldefinition.TriggersTest
+
+# TODO remove exclusion when 2.375.x line is no longer being tested
+# https://github.com/jenkinsci/git-client-plugin/pull/1019 fixed the issue for 2.387.x, 2.401.x, and weekly in git client plugin 4.4.0
+org.jenkinsci.plugins.gitclient.GitClientMaintenanceTest.test_loose_objects_maintenance
