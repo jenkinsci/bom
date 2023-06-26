@@ -10,7 +10,7 @@
   <packaging>pom</packaging>
   <properties>
     <checks-api.version>1.8.1</checks-api.version>
-    <configuration-as-code-plugin.version>1625.v27444588cc3d</configuration-as-code-plugin.version>
+    <configuration-as-code-plugin.version>1647.ve39ca_b_829b_42</configuration-as-code-plugin.version>
     <data-tables-api.version>1.12.1-4</data-tables-api.version>
     <forensics-api.version>1.17.0</forensics-api.version>
     <git-plugin.version>5.0.2</git-plugin.version>
