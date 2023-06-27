@@ -289,7 +289,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>branch-api</artifactId>
-        <version>2.1118.v5d691a_82b_5a_b_</version>
+        <version>2.1122.v09cb_8ea_8a_724</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
