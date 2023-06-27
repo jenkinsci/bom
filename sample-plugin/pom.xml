@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.jenkins-ci.plugins</groupId>
     <artifactId>plugin</artifactId>
-    <version>4.67</version>
+    <version>4.68</version>
     <relativePath />
   </parent>
   <groupId>io.jenkins.tools.bom</groupId>
@@ -14,7 +14,7 @@
   <properties>
     <changelist>999999-SNAPSHOT</changelist>
     <bom>weekly</bom>
-    <jenkins.version>2.410</jenkins.version>
+    <jenkins.version>2.411</jenkins.version>
     <spotless.check.skip>false</spotless.check.skip>
   </properties>
   <dependencyManagement>
@@ -260,6 +260,11 @@
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>dashboard-view</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>docker-java-api</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -689,13 +694,6 @@
       <properties>
         <bom>2.387.x</bom>
         <jenkins.version>2.387.3</jenkins.version>
-      </properties>
-    </profile>
-    <profile>
-      <id>2.375.x</id>
-      <properties>
-        <bom>2.375.x</bom>
-        <jenkins.version>2.375.4</jenkins.version>
       </properties>
     </profile>
   </profiles>

@@ -12,19 +12,19 @@
     <aws-java-sdk-plugin.version>1.12.481-392.v8b_291cfcda_09</aws-java-sdk-plugin.version>
     <checks-api.version>2.0.0</checks-api.version>
     <configuration-as-code-plugin.version>1647.ve39ca_b_829b_42</configuration-as-code-plugin.version>
-    <data-tables-api.version>1.13.4-2</data-tables-api.version>
-    <declarative-pipeline-migration-assistant-plugin.version>1.5.6</declarative-pipeline-migration-assistant-plugin.version>
+    <data-tables-api.version>1.13.4-3</data-tables-api.version>
+    <declarative-pipeline-migration-assistant-plugin.version>1.6.0</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>2.3.0</forensics-api.version>
     <git-plugin.version>5.1.0</git-plugin.version>
     <mina-sshd-api.version>2.10.0-69.v28e3e36d18eb_</mina-sshd-api.version>
     <pipeline-model-definition-plugin.version>2.2141.v5402e818a_779</pipeline-model-definition-plugin.version>
-    <pipeline-stage-view-plugin.version>2.32</pipeline-stage-view-plugin.version>
+    <pipeline-stage-view-plugin.version>2.33</pipeline-stage-view-plugin.version>
     <plugin-util-api.version>3.3.0</plugin-util-api.version>
     <scm-api-plugin.version>676.v886669a_199a_a_</scm-api-plugin.version>
     <subversion-plugin.version>2.17.2</subversion-plugin.version>
-    <workflow-api-plugin.version>1215.v2b_ee3e1b_dd39</workflow-api-plugin.version>
+    <workflow-api-plugin.version>1219.v05cd837ea_249</workflow-api-plugin.version>
     <workflow-cps-plugin.version>3691.v28b_14c465a_b_b_</workflow-cps-plugin.version>
-    <workflow-job-plugin.version>1308.v58d48a_763b_31</workflow-job-plugin.version>
+    <workflow-job-plugin.version>1316.vd2290d3341a_f</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>756.v891d88f2cd46</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>639.v6eca_cd8c04a_a_</workflow-step-api-plugin.version>
     <workflow-support-plugin.version>839.v35e2736cfd5c</workflow-support-plugin.version>
@@ -138,12 +138,12 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>gitlab-api</artifactId>
-        <version>5.3.0-88.vf8787b_92d679</version>
+        <version>5.3.0-91.v1f9a_fda_d654f</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>gitlab-branch-source</artifactId>
-        <version>663.v2602c3e6376d</version>
+        <version>664.v877fdc293c89</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -178,7 +178,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>jersey2-api</artifactId>
-        <version>2.39.1-2</version>
+        <version>2.40-1</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -249,7 +249,7 @@
       <dependency>
         <groupId>org.6wind.jenkins</groupId>
         <artifactId>lockable-resources</artifactId>
-        <version>1166.v7ef984f72fe2</version>
+        <version>1172.v4b_8fc8eed570</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.modules</groupId>
@@ -294,7 +294,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>branch-api</artifactId>
-        <version>2.1109.vdf225489a_16d</version>
+        <version>2.1118.v5d691a_82b_5a_b_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -335,6 +335,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>display-url-api</artifactId>
         <version>2.3.7</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>docker-java-api</artifactId>
+        <version>3.3.1-79.v20b_53427e041</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -400,7 +405,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>http_request</artifactId>
-        <version>1.16</version>
+        <version>1.17</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -430,7 +435,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>junit</artifactId>
-        <version>1207.va_09d5100410f</version>
+        <version>1214.va_2f9db_3e6de0</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -577,7 +582,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>support-core</artifactId>
-        <version>1283.v9ddb_0284a_00c</version>
+        <version>1328.vb_4e66d4d525c</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -587,7 +592,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>throttle-concurrents</artifactId>
-        <version>2.13</version>
+        <version>2.14</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
