@@ -252,6 +252,12 @@
         <version>1172.v4b_8fc8eed570</version>
       </dependency>
       <dependency>
+        <groupId>org.jenkins-ci.main</groupId>
+        <artifactId>maven-plugin</artifactId>
+        <!-- TODO https://github.com/jenkinsci/maven-plugin/pull/313 -->
+        <version>3.23-rc2433.17eb_e89c10d3</version>
+      </dependency>
+      <dependency>
         <groupId>org.jenkins-ci.modules</groupId>
         <artifactId>instance-identity</artifactId>
         <version>173.va_37c494ec4e5</version>
@@ -300,6 +306,12 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>command-launcher</artifactId>
         <version>100.v2f6722292ee8</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>conditional-buildstep</artifactId>
+        <!-- TODO https://github.com/jenkinsci/conditional-buildstep-plugin/pull/65 -->
+        <version>1.4.3-rc189.2db_f38ee55e5</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -516,6 +528,12 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>resource-disposer</artifactId>
         <version>0.22</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>run-condition</artifactId>
+        <!-- TODO https://github.com/jenkinsci/run-condition-plugin/pull/73 -->
+        <version>1.6-rc175.203b_03607e6e</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
