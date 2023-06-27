@@ -691,12 +691,5 @@
         <jenkins.version>2.387.3</jenkins.version>
       </properties>
     </profile>
-    <profile>
-      <id>2.375.x</id>
-      <properties>
-        <bom>2.375.x</bom>
-        <jenkins.version>2.375.4</jenkins.version>
-      </properties>
-    </profile>
   </profiles>
 </project>
