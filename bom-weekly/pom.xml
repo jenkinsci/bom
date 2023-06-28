@@ -554,6 +554,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>role-strategy</artifactId>
+        <version>633.v836e5b_3e80a_5</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>saml</artifactId>
         <version>4.418.vdfa_7489a_b_a_2d</version>
       </dependency>
