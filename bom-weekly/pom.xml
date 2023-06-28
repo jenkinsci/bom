@@ -371,6 +371,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>external-monitor-job</artifactId>
+        <version>206.v9a_94ff0b_4a_10</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>git</artifactId>
         <version>${git-plugin.version}</version>
       </dependency>
