@@ -376,6 +376,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>external-monitor-job</artifactId>
+        <version>206.v9a_94ff0b_4a_10</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>git</artifactId>
         <version>${git-plugin.version}</version>
       </dependency>
@@ -556,6 +561,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>resource-disposer</artifactId>
         <version>0.22</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>role-strategy</artifactId>
+        <version>633.v836e5b_3e80a_5</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
