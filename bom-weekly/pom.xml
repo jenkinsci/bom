@@ -10,13 +10,18 @@
   <packaging>pom</packaging>
   <properties>
     <aws-java-sdk-plugin.version>1.12.481-392.v8b_291cfcda_09</aws-java-sdk-plugin.version>
+    <branch-api-plugin.version>2.1122.v09cb_8ea_8a_724</branch-api-plugin.version>
     <checks-api.version>2.0.0</checks-api.version>
+    <cloudbees-folder-plugin.version>6.815.v0dd5a_cb_40e0e</cloudbees-folder-plugin.version>
     <configuration-as-code-plugin.version>1647.ve39ca_b_829b_42</configuration-as-code-plugin.version>
     <data-tables-api.version>1.13.4-3</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.0</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>2.3.0</forensics-api.version>
+    <github-api-plugin.version>1.314-431.v78d72a_3fe4c3</github-api-plugin.version>
     <git-plugin.version>5.1.0</git-plugin.version>
+    <junit-plugin.version>1214.va_2f9db_3e6de0</junit-plugin.version>
     <mina-sshd-api.version>2.10.0-69.v28e3e36d18eb_</mina-sshd-api.version>
+    <okhttp-api-plugin.version>4.11.0-145.vcb_8de402ef81</okhttp-api-plugin.version>
     <pipeline-model-definition-plugin.version>2.2141.v5402e818a_779</pipeline-model-definition-plugin.version>
     <pipeline-stage-view-plugin.version>2.33</pipeline-stage-view-plugin.version>
     <plugin-util-api.version>3.3.0</plugin-util-api.version>
@@ -198,7 +203,13 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>okhttp-api</artifactId>
-        <version>4.11.0-145.vcb_8de402ef81</version>
+        <version>${okhttp-api-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>okhttp-api</artifactId>
+        <version>${okhttp-api-plugin.version}</version>
+        <classifier>tests</classifier>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -289,12 +300,24 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>branch-api</artifactId>
-        <version>2.1122.v09cb_8ea_8a_724</version>
+        <version>${branch-api-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>branch-api</artifactId>
+        <version>${branch-api-plugin.version}</version>
+        <classifier>tests</classifier>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>cloudbees-folder</artifactId>
-        <version>6.815.v0dd5a_cb_40e0e</version>
+        <version>${cloudbees-folder-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>cloudbees-folder</artifactId>
+        <version>${cloudbees-folder-plugin.version}</version>
+        <classifier>tests</classifier>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -370,7 +393,13 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>github-api</artifactId>
-        <version>1.314-431.v78d72a_3fe4c3</version>
+        <version>${github-api-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>github-api</artifactId>
+        <version>${github-api-plugin.version}</version>
+        <classifier>tests</classifier>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -430,7 +459,13 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>junit</artifactId>
-        <version>1214.va_2f9db_3e6de0</version>
+        <version>${junit-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>junit</artifactId>
+        <version>${junit-plugin.version}</version>
+        <classifier>tests</classifier>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
