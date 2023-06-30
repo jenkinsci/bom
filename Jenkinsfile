@@ -5,17 +5,17 @@ if (BRANCH_NAME == 'master' && currentBuild.buildCauses*._class == ['jenkins.bra
   error 'No longer running builds on response to master branch pushes. If you wish to cut a release, use “Re-run checks” from this failing check in https://github.com/jenkinsci/bom/commits/master'
 }
 
-def mavenEnv(boolean nodePool, int jdk, Closure body) {
+def mavenEnv(boolean nodePool, Closure body) {
   def attempt = 0
   def attempts = 6
   retry(count: attempts, conditions: [kubernetesAgent(handleNonKubernetes: true), nonresumable()]) {
     echo 'Attempt ' + ++attempt + ' of ' + attempts
     // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
-    node(nodePool ? 'maven-bom': "maven-$jdk") {
+    node(nodePool ? 'maven-bom': 'maven-17') {
       timeout(120) {
         infra.withArtifactCachingProxy {
           withEnv([
-            "JAVA_HOME=/opt/jdk-$jdk",
+            'JAVA_HOME=/opt/jdk-17',
             "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B -ntp -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo"
           ]) {
             body()
@@ -45,7 +45,7 @@ def lines
 def fullTestMarkerFile
 
 stage('prep') {
-  mavenEnv(false, 11) {
+  mavenEnv(false) {
     checkout scm
     withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist']) {
       withCredentials([
@@ -68,9 +68,8 @@ stage('prep') {
           def commitHashes = readFile "commit-hashes-${line}.txt"
           sh "launchable verify && launchable record build --name ${env.BUILD_TAG}-${line} --no-commit-collection " + commitHashes
 
-          def jdk = line == 'weekly' ? 17 : 11
           def sessionFile = "launchable-session-${line}.txt"
-          sh "launchable record session --build ${env.BUILD_TAG}-${line} --flavor platform=linux --flavor jdk=${jdk} >${sessionFile}"
+          sh "launchable record session --build ${env.BUILD_TAG}-${line} --flavor platform=linux --flavor jdk=17 >${sessionFile}"
           stash name: sessionFile, includes: sessionFile
         }
       }
@@ -87,8 +86,7 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || env.CHANGE_ID && pullReques
   lines.each {line ->
     pluginsByRepository.each { repository, plugins ->
       branches["pct-$repository-$line"] = {
-        def jdk = line == 'weekly' ? 17 : 11
-        mavenEnv(true, jdk) {
+        mavenEnv(true) {
           unstash line
           withEnv([
             "PLUGINS=${plugins.join(',')}",
