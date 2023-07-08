@@ -19,7 +19,7 @@
     <forensics-api.version>2.3.0</forensics-api.version>
     <github-api-plugin.version>1.314-431.v78d72a_3fe4c3</github-api-plugin.version>
     <git-plugin.version>5.1.0</git-plugin.version>
-    <junit-plugin.version>1214.va_2f9db_3e6de0</junit-plugin.version>
+    <junit-plugin.version>1217.v4297208a_a_b_ce</junit-plugin.version>
     <mina-sshd-api.version>2.10.0-69.v28e3e36d18eb_</mina-sshd-api.version>
     <okhttp-api-plugin.version>4.11.0-145.vcb_8de402ef81</okhttp-api-plugin.version>
     <pipeline-model-definition-plugin.version>2.2141.v5402e818a_779</pipeline-model-definition-plugin.version>
@@ -300,7 +300,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>bouncycastle-api</artifactId>
-        <version>2.28</version>
+        <version>2.29</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -444,7 +444,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>http_request</artifactId>
-        <version>1.17</version>
+        <version>1.18</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -454,7 +454,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jacoco</artifactId>
-        <version>3.3.3</version>
+        <version>3.3.4</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -505,7 +505,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>matrix-auth</artifactId>
-        <version>3.1.8</version>
+        <version>3.1.9</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -560,7 +560,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pipeline-utility-steps</artifactId>
-        <version>2.15.4</version>
+        <version>2.16.0</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -575,7 +575,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>role-strategy</artifactId>
-        <version>633.v836e5b_3e80a_5</version>
+        <version>664.ve141973c58b_5</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
