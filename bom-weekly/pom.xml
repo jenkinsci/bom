@@ -362,7 +362,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>docker-commons</artifactId>
-        <version>434.v3dc53576ec32</version>
+        <version>436.vc30a_5a_8b_92f1</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
