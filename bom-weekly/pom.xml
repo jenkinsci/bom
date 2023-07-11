@@ -332,7 +332,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>config-file-provider</artifactId>
-        <version>938.ve2b_8a_591c596</version>
+        <version>951.v0461b_87b_721b_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
