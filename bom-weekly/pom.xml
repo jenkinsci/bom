@@ -367,7 +367,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>durable-task</artifactId>
-        <version>507.v050055d0cb_dd</version>
+        <version>510.v324450f8dca_4</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -790,7 +790,7 @@
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
         <artifactId>workflow-durable-task-step</artifactId>
         <!-- TODO https://github.com/jenkinsci/workflow-durable-task-step-plugin/pull/323 -->
-        <version>1253.v97e3735501dc</version>
+        <version>1255.vfa_91b_a_a_d64fa_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
