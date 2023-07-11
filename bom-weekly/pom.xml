@@ -339,7 +339,7 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>conditional-buildstep</artifactId>
         <!-- TODO https://github.com/jenkinsci/conditional-buildstep-plugin/pull/65 -->
-        <version>1.4.3-rc189.2db_f38ee55e5</version>
+        <version>1.4.3-rc189.de81901b_c2a_a_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
