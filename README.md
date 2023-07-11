@@ -135,7 +135,7 @@ Avoid adding transitive dependencies to `sample-plugin/pom.xml`. It is supposed
 to look as much as possible like a real plugin, and a real plugin should only
 declare its direct dependencies and not its transitive dependencies.
 
-You can also add a `<classifier>tests</classifier>` entry,
+You should also add a `<classifier>tests</classifier>` entry,
 for a plugin which specifies `<no-test-jar>false</no-test-jar>`.
 You should introduce a POM property so that the version is not repeated.
 
