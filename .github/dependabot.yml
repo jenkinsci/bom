@@ -3,15 +3,11 @@ updates:
   - package-ecosystem: "maven"
     open-pull-requests-limit: 10
     directory: "/sample-plugin"
-    reviewers:
-      - "jglick"
     schedule:
       interval: "daily"
   - package-ecosystem: "maven"
     open-pull-requests-limit: 25
     directory: "/bom-weekly"
-    reviewers:
-      - "jglick"
     schedule:
       interval: "daily"
   - package-ecosystem: "github-actions"
