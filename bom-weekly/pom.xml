@@ -18,7 +18,7 @@
     <declarative-pipeline-migration-assistant-plugin.version>1.6.0</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>2.3.0</forensics-api.version>
     <github-api-plugin.version>1.314-431.v78d72a_3fe4c3</github-api-plugin.version>
-    <git-plugin.version>5.1.0</git-plugin.version>
+    <git-plugin.version>5.2.0</git-plugin.version>
     <junit-plugin.version>1217.v4297208a_a_b_ce</junit-plugin.version>
     <mina-sshd-api.version>2.10.0-69.v28e3e36d18eb_</mina-sshd-api.version>
     <okhttp-api-plugin.version>4.11.0-145.vcb_8de402ef81</okhttp-api-plugin.version>
@@ -382,7 +382,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>external-monitor-job</artifactId>
-        <version>206.v9a_94ff0b_4a_10</version>
+        <version>207.v98a_a_37a_85525</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
