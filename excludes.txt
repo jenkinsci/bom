@@ -12,3 +12,8 @@ org.jenkinsci.plugins.gitclient.FilePermissionsTest
 
 # TODO tends to run out of memory
 org.jenkinsci.plugins.pipeline.modeldefinition.TriggersTest
+
+# TODO config file provider test fixes for 2.415 and later: https://github.com/jenkinsci/config-file-provider-plugin/pull/286
+org.jenkinsci.plugins.configfiles.ConfigFilesSEC1253Test
+org.jenkinsci.plugins.configfiles.folder.FolderConfigFileActionTest
+org.jenkinsci.plugins.configfiles.sec.Security2002Test
