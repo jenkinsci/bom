@@ -13,7 +13,7 @@
     <branch-api-plugin.version>2.1122.v09cb_8ea_8a_724</branch-api-plugin.version>
     <checks-api.version>2.0.0</checks-api.version>
     <cloudbees-folder-plugin.version>6.815.v0dd5a_cb_40e0e</cloudbees-folder-plugin.version>
-    <configuration-as-code-plugin.version>1647.ve39ca_b_829b_42</configuration-as-code-plugin.version>
+    <configuration-as-code-plugin.version>1670.v564dc8b_982d0</configuration-as-code-plugin.version>
     <data-tables-api.version>1.13.5-1</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.0</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>2.3.0</forensics-api.version>
@@ -22,18 +22,18 @@
     <junit-plugin.version>1217.v4297208a_a_b_ce</junit-plugin.version>
     <mina-sshd-api.version>2.10.0-69.v28e3e36d18eb_</mina-sshd-api.version>
     <okhttp-api-plugin.version>4.11.0-145.vcb_8de402ef81</okhttp-api-plugin.version>
-    <pipeline-model-definition-plugin.version>2.2141.v5402e818a_779</pipeline-model-definition-plugin.version>
+    <pipeline-model-definition-plugin.version>2.2144.v077a_d1928a_40</pipeline-model-definition-plugin.version>
     <pipeline-stage-view-plugin.version>2.33</pipeline-stage-view-plugin.version>
     <plugin-util-api.version>3.3.0</plugin-util-api.version>
     <scm-api-plugin.version>676.v886669a_199a_a_</scm-api-plugin.version>
     <subversion-plugin.version>2.17.2</subversion-plugin.version>
     <!-- TODO https://github.com/jenkinsci/workflow-api-plugin/pull/294 -->
-    <workflow-api-plugin.version>1235.v9b_7f964a_a_d70</workflow-api-plugin.version>
-    <workflow-cps-plugin.version>3705.va_6a_c2775a_c17</workflow-cps-plugin.version>
+    <workflow-api-plugin.version>1247.v12f6b_094cea_d</workflow-api-plugin.version>
+    <workflow-cps-plugin.version>3722.v85ce2a_c6240b_</workflow-cps-plugin.version>
     <workflow-job-plugin.version>1316.vd2290d3341a_f</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>756.v891d88f2cd46</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>639.v6eca_cd8c04a_a_</workflow-step-api-plugin.version>
-    <workflow-support-plugin.version>839.v35e2736cfd5c</workflow-support-plugin.version>
+    <workflow-support-plugin.version>848.v5a_383b_d14921</workflow-support-plugin.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -97,7 +97,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>custom-folder-icon</artifactId>
-        <version>2.8</version>
+        <version>2.9</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -128,7 +128,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>font-awesome-api</artifactId>
-        <version>6.4.0-1</version>
+        <version>6.4.0-2</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -333,7 +333,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>config-file-provider</artifactId>
-        <version>951.v0461b_87b_721b_</version>
+        <version>952.va_544a_6234b_46</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -343,12 +343,12 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>credentials</artifactId>
-        <version>1254.vb_96f366e7b_a_d</version>
+        <version>1271.v54b_1c2c6388a_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>credentials-binding</artifactId>
-        <version>604.vb_64480b_c56ca_</version>
+        <version>631.v861c06d062b_4</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -373,12 +373,13 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>durable-task</artifactId>
-        <version>510.v324450f8dca_4</version>
+        <!-- TODO https://github.com/jenkinsci/durable-task-plugin/pull/186 -->
+        <version>512.vb_fa_f04b_09178</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>email-ext</artifactId>
-        <version>2.99</version>
+        <version>2.100</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -425,12 +426,12 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>gitlab-oauth</artifactId>
-        <version>1.17</version>
+        <version>1.18</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>gitlab-plugin</artifactId>
-        <version>1.7.14</version>
+        <version>1.7.15</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -506,7 +507,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>matrix-auth</artifactId>
-        <version>3.1.9</version>
+        <version>3.1.10</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -576,7 +577,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>role-strategy</artifactId>
-        <version>665.v4d4f871dc768</version>
+        <version>670.vc71a_a_c00039e</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -796,7 +797,7 @@
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
         <artifactId>workflow-durable-task-step</artifactId>
         <!-- TODO https://github.com/jenkinsci/workflow-durable-task-step-plugin/pull/323 -->
-        <version>1257.vb_7498d9b_f681</version>
+        <version>1269.v33b_b_ec59d3b_4</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
