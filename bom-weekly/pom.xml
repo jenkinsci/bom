@@ -794,7 +794,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
         <artifactId>workflow-durable-task-step</artifactId>
-        <version>1247.v7f9dfea_b_4fd0</version>
+        <version>1275.vb_30a_a_ca_96879</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
