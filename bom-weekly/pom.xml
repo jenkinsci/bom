@@ -585,7 +585,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>saml</artifactId>
-        <version>4.418.vdfa_7489a_b_a_2d</version>
+        <version>4.429.v9a_781a_61f1da_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
