@@ -459,7 +459,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>javadoc</artifactId>
-        <version>233.vdc1a_ec702cff</version>
+        <version>243.vb_b_503b_b_45537</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
