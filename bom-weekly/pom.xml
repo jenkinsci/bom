@@ -515,7 +515,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>metrics</artifactId>
-        <version>4.2.18-439.v86a_20b_a_8318b_</version>
+        <version>4.2.18-442.v02e107157925</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
