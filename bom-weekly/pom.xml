@@ -464,7 +464,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jdk-tool</artifactId>
-        <version>66.vd8fa_64ee91b_d</version>
+        <version>73.vddf737284550</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
