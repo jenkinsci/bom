@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.jenkins-ci</groupId>
     <artifactId>jenkins</artifactId>
-    <version>1.100</version>
+    <version>1.103</version>
     <relativePath />
   </parent>
   <groupId>io.jenkins.tools.bom</groupId>
@@ -20,6 +20,7 @@
   </licenses>
   <modules>
     <module>bom-weekly</module>
+    <module>bom-2.414.x</module>
     <module>bom-2.401.x</module>
     <module>bom-2.387.x</module>
     <module>sample-plugin</module>

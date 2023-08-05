@@ -1,22 +1,11 @@
 # TODO cryptic PCT-only errors: https://github.com/jenkinsci/bom/pull/251#issuecomment-645012427
 hudson.matrix.AxisTest
 
-# TODO https://github.com/jenkinsci/jacoco-plugin/pull/244
-hudson.plugins.jacococoveragecolumn.AbstractJaCoCoCoverageColumnTest
-hudson.plugins.jacococoveragecolumn.BranchCoverageColumnTest
-hudson.plugins.jacococoveragecolumn.JaCoCoColumnTest
-
 # TODO tends to time out
 jenkins.plugins.http_request.HttpRequestStepRoundTripTest
 
 # TODO flakes on CI for inscrutable reasons
 org.jenkinsci.plugins.durabletask.BourneShellScriptTest
-
-# TODO fails for one reason in (non-PCT) official sources, run locally; and for another reason in PCT in Docker; passes in official sources in Docker, or locally in PCT
-org.jenkinsci.plugins.gitclient.FilePermissionsTest
-
-# TODO https://github.com/jenkinsci/matrix-auth-plugin/pull/136
-org.jenkinsci.plugins.matrixauth.integrations.casc.ImportTest
 
 # TODO tends to run out of memory
 org.jenkinsci.plugins.pipeline.modeldefinition.TriggersTest
