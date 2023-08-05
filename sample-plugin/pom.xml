@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.jenkins-ci.plugins</groupId>
     <artifactId>plugin</artifactId>
-    <version>4.70</version>
+    <version>4.71</version>
     <relativePath />
   </parent>
   <groupId>io.jenkins.tools.bom</groupId>
@@ -14,7 +14,7 @@
   <properties>
     <changelist>999999-SNAPSHOT</changelist>
     <bom>weekly</bom>
-    <jenkins.version>2.413</jenkins.version>
+    <jenkins.version>2.417</jenkins.version>
     <spotless.check.skip>false</spotless.check.skip>
   </properties>
   <dependencyManagement>
@@ -29,6 +29,10 @@
     </dependencies>
   </dependencyManagement>
   <dependencies>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>authorize-project</artifactId>
+    </dependency>
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>jsch</artifactId>
@@ -288,6 +292,11 @@
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>dashboard-view</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>docker-commons</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -767,10 +776,17 @@
   <profiles>
     <!-- Use .1 of most recent active line, and .3 (or later) of previous lines: https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/#choosing-a-version -->
     <profile>
+      <id>2.414.x</id>
+      <properties>
+        <bom>2.414.x</bom>
+        <jenkins.version>2.414</jenkins.version>
+      </properties>
+    </profile>
+    <profile>
       <id>2.401.x</id>
       <properties>
         <bom>2.401.x</bom>
-        <jenkins.version>2.401.1</jenkins.version>
+        <jenkins.version>2.401.3</jenkins.version>
       </properties>
     </profile>
     <profile>
