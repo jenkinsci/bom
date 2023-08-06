@@ -271,6 +271,11 @@
     </dependency>
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>conditional-buildstep</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>config-file-provider</artifactId>
       <scope>test</scope>
     </dependency>

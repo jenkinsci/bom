@@ -341,6 +341,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>conditional-buildstep</artifactId>
+        <version>1.4.3</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>config-file-provider</artifactId>
         <version>952.va_544a_6234b_46</version>
       </dependency>
