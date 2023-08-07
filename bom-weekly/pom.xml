@@ -179,7 +179,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>commons-lang3-api</artifactId>
-        <version>3.12.0-36.vd97de6465d5b_</version>
+        <version>3.13.0-62.v603998187873</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
