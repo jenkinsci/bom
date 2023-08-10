@@ -14,8 +14,11 @@
   <properties>
     <changelist>999999-SNAPSHOT</changelist>
     <bom>weekly</bom>
-    <jenkins.version>2.418</jenkins.version>
+    <!-- TODO https://ci.jenkins.io/job/Core/job/jenkins/job/jakarta/ -->
+    <jenkins.version>2.419-rc34089.785e25d970d7</jenkins.version>
     <spotless.check.skip>false</spotless.check.skip>
+    <!-- TODO https://ci.jenkins.io/job/Core/job/jenkins-test-harness/job/PR-631/ -->
+    <jenkins-test-harness.version>2047.v2c4d0ceb_a_5b_8</jenkins-test-harness.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -876,6 +879,22 @@
           <skip>true</skip>
         </configuration>
       </plugin>
+      <!-- TODO pending parent POM -->
+      <plugin>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>display-info</id>
+            <configuration>
+              <rules>
+                <enforceBytecodeVersion>
+                  <maxJdkVersion>17</maxJdkVersion>
+                </enforceBytecodeVersion>
+              </rules>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
   <profiles>
@@ -885,6 +904,7 @@
       <properties>
         <bom>2.414.x</bom>
         <jenkins.version>2.414</jenkins.version>
+        <jenkins-test-harness.version>2053.v0ea_6fc5d99b_f</jenkins-test-harness.version>
       </properties>
     </profile>
     <profile>
@@ -892,6 +912,7 @@
       <properties>
         <bom>2.401.x</bom>
         <jenkins.version>2.401.3</jenkins.version>
+        <jenkins-test-harness.version>2053.v0ea_6fc5d99b_f</jenkins-test-harness.version>
       </properties>
     </profile>
     <profile>
@@ -899,6 +920,7 @@
       <properties>
         <bom>2.387.x</bom>
         <jenkins.version>2.387.3</jenkins.version>
+        <jenkins-test-harness.version>2053.v0ea_6fc5d99b_f</jenkins-test-harness.version>
       </properties>
     </profile>
   </profiles>

@@ -88,6 +88,9 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || env.CHANGE_ID && pullReques
       return
     }
     pluginsByRepository.each { repository, plugins ->
+      if (repository == 'checks-api-plugin') {
+        return
+      }
       branches["pct-$repository-$line"] = {
         mavenEnv(true) {
           unstash line

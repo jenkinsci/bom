@@ -22,7 +22,7 @@ exec java \
 	$PCT_D_ARGS \
 	-DforkCount=.75C \
 	-Djth.jenkins-war.path="$(pwd)/target/megawar-$LINE.war" \
-	-Djenkins-test-harness.version=2053.v0ea_6fc5d99b_f \
+	-Djenkins-test-harness.version=2047.v2c4d0ceb_a_5b_8 \
 	-Dsurefire.excludesFile="$(pwd)/excludes.txt"
 
 # produces: **/target/surefire-reports/TEST-*.xml
