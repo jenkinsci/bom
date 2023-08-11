@@ -719,7 +719,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>slack</artifactId>
-        <version>664.vc9a_90f8b_c24a_</version>
+        <version>684.v833089650554</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
