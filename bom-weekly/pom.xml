@@ -780,7 +780,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>token-macro</artifactId>
-        <version>383.v36161104b_002</version>
+        <version>384.vf35b_f26814ec</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
