@@ -17,6 +17,11 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>dark-theme</artifactId>
+        <version>336.v02165cd8c2ee</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 </project>
