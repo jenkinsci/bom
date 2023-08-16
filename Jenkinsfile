@@ -5,17 +5,17 @@ if (BRANCH_NAME == 'master' && currentBuild.buildCauses*._class == ['jenkins.bra
   error 'No longer running builds on response to master branch pushes. If you wish to cut a release, use “Re-run checks” from this failing check in https://github.com/jenkinsci/bom/commits/master'
 }
 
-def mavenEnv(boolean nodePool, Closure body) {
+def mavenEnv(Map params = [:], Closure body) {
   def attempt = 0
   def attempts = 6
   retry(count: attempts, conditions: [kubernetesAgent(handleNonKubernetes: true), nonresumable()]) {
     echo 'Attempt ' + ++attempt + ' of ' + attempts
     // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
-    node(nodePool ? 'maven-bom': 'maven-17') {
+    node(params['nodePool'] ? 'maven-bom': 'maven-' + params['jdk']) {
       timeout(120) {
         infra.withArtifactCachingProxy {
           withEnv([
-            'JAVA_HOME=/opt/jdk-17',
+            'JAVA_HOME=/opt/jdk-' + params['jdk'],
             "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B -ntp -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo"
           ]) {
             body()
@@ -45,7 +45,7 @@ def lines
 def fullTestMarkerFile
 
 stage('prep') {
-  mavenEnv(false) {
+  mavenEnv(jdk: 21) {
     checkout scm
     withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist']) {
       withCredentials([
@@ -86,7 +86,23 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || env.CHANGE_ID && pullReques
   lines.each {line ->
     pluginsByRepository.each { repository, plugins ->
       branches["pct-$repository-$line"] = {
-        mavenEnv(true) {
+        def jdk = line == 'weekly' ? 21 : 11
+        if (jdk == 21) {
+          if (repository == 'blueocean-plugin') {
+            // TODO JENKINS-71803
+            jdk = 17
+          } else if (repository == 'checks-api-plugin') {
+            // TODO JENKINS-71804
+            jdk = 17
+          } else if (repository == 'jacoco-plugin') {
+            // TODO JENKINS-71806
+            jdk = 17
+          } else if (repository == 'run-condition-plugin') {
+            // TODO JENKINS-71807
+            jdk = 17
+          }
+        }
+        mavenEnv(jdk: jdk, nodePool: true) {
           unstash line
           withEnv([
             "PLUGINS=${plugins.join(',')}",
