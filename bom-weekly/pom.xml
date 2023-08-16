@@ -10,10 +10,10 @@
   <packaging>pom</packaging>
   <properties>
     <aws-java-sdk-plugin.version>1.12.481-392.v8b_291cfcda_09</aws-java-sdk-plugin.version>
-    <blueocean-plugin.version>1.27.5</blueocean-plugin.version>
+    <blueocean-plugin.version>1.27.5.1</blueocean-plugin.version>
     <branch-api-plugin.version>2.1122.v09cb_8ea_8a_724</branch-api-plugin.version>
     <checks-api.version>2.0.0</checks-api.version>
-    <cloudbees-folder-plugin.version>6.846.v23698686f0f6</cloudbees-folder-plugin.version>
+    <cloudbees-folder-plugin.version>6.848.ve3b_fd7839a_81</cloudbees-folder-plugin.version>
     <configuration-as-code-plugin.version>1670.v564dc8b_982d0</configuration-as-code-plugin.version>
     <data-tables-api.version>1.13.5-1</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.0</declarative-pipeline-migration-assistant-plugin.version>
@@ -29,7 +29,7 @@
     <scm-api-plugin.version>676.v886669a_199a_a_</scm-api-plugin.version>
     <subversion-plugin.version>2.17.3</subversion-plugin.version>
     <workflow-api-plugin.version>1251.vd4889a_b_0a_065</workflow-api-plugin.version>
-    <workflow-cps-plugin.version>3731.ve4b_5b_857b_a_d3</workflow-cps-plugin.version>
+    <workflow-cps-plugin.version>3732.vb_77c00a_57e12</workflow-cps-plugin.version>
     <workflow-job-plugin.version>1316.vd2290d3341a_f</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>756.v891d88f2cd46</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>639.v6eca_cd8c04a_a_</workflow-step-api-plugin.version>
@@ -163,7 +163,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>caffeine-api</artifactId>
-        <version>3.1.6-115.vb_8b_b_328e59d8</version>
+        <version>3.1.8-133.v17b_1ff2e0599</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -430,7 +430,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>command-launcher</artifactId>
-        <version>106.vb_a_b_8f751309c</version>
+        <version>107.v773860566e2e</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -440,7 +440,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>config-file-provider</artifactId>
-        <version>952.va_544a_6234b_46</version>
+        <version>953.v0432a_802e4d2</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -714,7 +714,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>script-security</artifactId>
-        <version>1264.vecf66020eb_7d</version>
+        <version>1265.va_fb_290b_4b_d34</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
