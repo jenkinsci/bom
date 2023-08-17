@@ -418,6 +418,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>cloud-stats</artifactId>
+        <version>316.vd6d6b_292238d</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>cloudbees-folder</artifactId>
         <version>${cloudbees-folder-plugin.version}</version>
       </dependency>
