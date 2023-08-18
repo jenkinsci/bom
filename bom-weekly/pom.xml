@@ -464,6 +464,12 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>cvs</artifactId>
+        <!-- TODO https://github.com/jenkinsci/cvs-plugin/pull/87 -->
+        <version>2.20-rc444.7b_3b_2d526eee</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>dashboard-view</artifactId>
         <version>2.495.v07e81500c3f2</version>
       </dependency>
@@ -599,6 +605,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>junit-attachments</artifactId>
         <version>167.vf1d139e316b_3</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>junit-realtime-test-reporter</artifactId>
+        <version>129.vd45a_61b_e3a_c8</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -796,6 +807,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>variant</artifactId>
         <version>59.vf075fe829ccb</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>view-job-filters</artifactId>
+        <version>369.ve0513a_a_f5524</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
