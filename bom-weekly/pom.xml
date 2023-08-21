@@ -194,7 +194,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>dark-theme</artifactId>
-        <version>359.vb_d6175e5f6f9</version>
+        <version>354.vc5571c718b_dc</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -328,7 +328,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>theme-manager</artifactId>
-        <version>209.va_da_1152274b_e</version>
+        <version>193.vcef22f6c5f2b_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins.mina-sshd-api</groupId>
