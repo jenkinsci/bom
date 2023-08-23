@@ -894,7 +894,7 @@
       <id>2.414.x</id>
       <properties>
         <bom>2.414.x</bom>
-        <jenkins.version>2.414</jenkins.version>
+        <jenkins.version>2.414.1</jenkins.version>
       </properties>
     </profile>
     <profile>
