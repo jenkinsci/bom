@@ -309,6 +309,11 @@
     </dependency>
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>active-directory</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>ansicolor</artifactId>
       <scope>test</scope>
     </dependency>
@@ -513,6 +518,11 @@
     </dependency>
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>junit-realtime-test-reporter</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>ldap</artifactId>
       <scope>test</scope>
     </dependency>
@@ -529,6 +539,11 @@
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>metrics</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>node-iterator-api</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -680,6 +695,11 @@
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>variant</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>view-job-filters</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
