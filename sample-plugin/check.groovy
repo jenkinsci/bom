@@ -45,9 +45,6 @@ project.artifacts.each { art ->
   if (plugin == null) {
     return
   }
-  if (plugin == 'instance-identity') {
-    return // JEP-230
-  }
   for (String intermediate : art.dependencyTrail.drop(1).dropRight(1).collect {stripAllButGA(it)}) {
     def intermediateArt = artifactMap[intermediate]
     if (intermediateArt == null) {
