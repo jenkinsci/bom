@@ -11,7 +11,7 @@ If you are interested in a Bill of Materials for Jenkins core components, see [t
 
 # Usage
 
-After selecting your plugin’s LTS baseline:
+After [selecting your plugin’s LTS baseline](https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/):
 
 ```xml
 <jenkins.version>2.387.3</jenkins.version>
