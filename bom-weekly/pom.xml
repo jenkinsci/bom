@@ -407,6 +407,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>aws-credentials</artifactId>
+        <version>218.v1b_e9466ec5da_</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>bouncycastle-api</artifactId>
         <version>2.29</version>
       </dependency>
