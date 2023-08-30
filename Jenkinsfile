@@ -97,9 +97,6 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || env.CHANGE_ID && pullReques
           } else if (repository == 'jacoco-plugin') {
             // TODO JENKINS-71806
             jdk = 17
-          } else if (repository == 'run-condition-plugin') {
-            // TODO JENKINS-71807
-            jdk = 17
           }
         }
         mavenEnv(jdk: jdk, nodePool: true) {
