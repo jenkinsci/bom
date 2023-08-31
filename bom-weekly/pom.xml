@@ -53,7 +53,11 @@
         <artifactId>configuration-as-code</artifactId>
         <version>${configuration-as-code-plugin.version}</version>
       </dependency>
-      <!-- TODO add blueocean-bitbucket-pipeline -->
+      <dependency>
+        <groupId>io.jenkins.blueocean</groupId>
+        <artifactId>blueocean-bitbucket-pipeline</artifactId>
+        <version>${blueocean-plugin.version}</version>
+      </dependency>
       <dependency>
         <groupId>io.jenkins.blueocean</groupId>
         <artifactId>blueocean-commons</artifactId>
@@ -430,6 +434,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>cloud-stats</artifactId>
         <version>316.vd6d6b_292238d</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>cloudbees-bitbucket-branch-source</artifactId>
+        <version>832.v43175a_425ea_6</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>

@@ -20,7 +20,11 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-      <!-- TODO add blueocean-bitbucket-pipeline -->
+      <dependency>
+        <groupId>io.jenkins.blueocean</groupId>
+        <artifactId>blueocean-bitbucket-pipeline</artifactId>
+        <version>${blueocean-plugin.version}</version>
+      </dependency>
       <dependency>
         <groupId>io.jenkins.blueocean</groupId>
         <artifactId>blueocean-commons</artifactId>
