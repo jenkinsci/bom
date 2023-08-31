@@ -444,6 +444,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>cloudbees-jenkins-advisor</artifactId>
+        <version>358.v58972d19b_1f0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>command-launcher</artifactId>
         <version>107.v773860566e2e</version>
       </dependency>
@@ -743,6 +748,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>secure-requester-whitelist</artifactId>
+        <version>67.vca_a_d9205723f</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>slack</artifactId>
         <version>684.v833089650554</version>
       </dependency>
@@ -811,6 +821,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>trilead-api</artifactId>
         <version>2.84.v72119de229b_7</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>unique-id</artifactId>
+        <version>2.101.v21a_b_6390a_b_04</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
