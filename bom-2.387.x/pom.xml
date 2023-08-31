@@ -112,6 +112,21 @@
         <artifactId>jenkins-design-language</artifactId>
         <version>${blueocean-plugin.version}</version>
       </dependency>
+      <dependency>
+        <groupId>org.csanchez.jenkins.plugins</groupId>
+        <artifactId>kubernetes</artifactId>
+        <version>4007.v633279962016</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>kubernetes-client-api</artifactId>
+        <version>6.4.1-215.v2ed17097a_8e9</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkinsci.plugins</groupId>
+        <artifactId>kubernetes-credentials</artifactId>
+        <version>0.10.0</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 </project>
