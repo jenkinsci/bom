@@ -303,6 +303,11 @@
       <scope>test</scope>
     </dependency>
     <dependency>
+      <groupId>org.csanchez.jenkins.plugins</groupId>
+      <artifactId>kubernetes</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <groupId>org.jenkins-ci.main</groupId>
       <artifactId>maven-plugin</artifactId>
       <scope>test</scope>
