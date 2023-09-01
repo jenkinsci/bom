@@ -495,25 +495,11 @@
       <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>jackson2-api</artifactId>
       <scope>test</scope>
-      <exclusions>
-        <!-- TODO conflict with configuration-as-code and slack -->
-        <exclusion>
-          <groupId>org.json</groupId>
-          <artifactId>json</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>jacoco</artifactId>
       <scope>test</scope>
-      <exclusions>
-        <!-- TODO RequireUpperBoundDeps with pipeline-utility-steps -->
-        <exclusion>
-          <groupId>org.codehaus.plexus</groupId>
-          <artifactId>plexus-utils</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
@@ -651,13 +637,6 @@
       <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>slack</artifactId>
       <scope>test</scope>
-      <exclusions>
-        <!-- TODO conflict with configuration-as-code and jackson2-api -->
-        <exclusion>
-          <groupId>org.json</groupId>
-          <artifactId>json</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
@@ -678,13 +657,6 @@
       <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>subversion</artifactId>
       <scope>test</scope>
-      <exclusions>
-        <!-- TODO RequireUpperBoundDeps with mina-sshd-api-plugin -->
-        <exclusion>
-          <groupId>org.apache.sshd</groupId>
-          <artifactId>sshd-common</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
