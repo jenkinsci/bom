@@ -849,7 +849,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>variant</artifactId>
-        <version>59.vf075fe829ccb</version>
+        <version>60.v7290fc0eb_b_cd</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
