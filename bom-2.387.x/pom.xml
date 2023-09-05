@@ -10,6 +10,7 @@
   <packaging>pom</packaging>
   <properties>
     <blueocean-plugin.version>1.27.5.1</blueocean-plugin.version>
+    <configuration-as-code-plugin.version>1670.v564dc8b_982d0</configuration-as-code-plugin.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -19,6 +20,11 @@
         <version>${project.version}</version>
         <type>pom</type>
         <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins</groupId>
+        <artifactId>configuration-as-code</artifactId>
+        <version>${configuration-as-code-plugin.version}</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.blueocean</groupId>
@@ -115,6 +121,11 @@
         <groupId>io.jenkins.blueocean</groupId>
         <artifactId>jenkins-design-language</artifactId>
         <version>${blueocean-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.configuration-as-code</groupId>
+        <artifactId>test-harness</artifactId>
+        <version>${configuration-as-code-plugin.version}</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
