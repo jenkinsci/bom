@@ -16,9 +16,6 @@ jenkins.plugins.http_request.HttpRequestStepRoundTripTest
 # TODO flakes on CI for inscrutable reasons
 org.jenkinsci.plugins.durabletask.BourneShellScriptTest
 
-# TODO https://github.com/jenkinsci/github-branch-source-plugin/pull/724
-org.jenkinsci.plugins.github_branch_source.GitHubSCMSourceTraitsTest#given__configuredInstance__when__uninstantiating__then__deprecatedFieldsIgnored
-
 # TODO tends to run out of memory
 org.jenkinsci.plugins.pipeline.modeldefinition.TriggersTest
 
