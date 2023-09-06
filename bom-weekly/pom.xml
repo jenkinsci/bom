@@ -576,7 +576,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>gitlab-plugin</artifactId>
-        <version>1.7.15</version>
+        <version>1.7.16</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
