@@ -513,6 +513,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>docker-workflow</artifactId>
+        <version>572.v950f58993843</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>durable-task</artifactId>
         <version>523.va_a_22cf15d5e0</version>
       </dependency>
