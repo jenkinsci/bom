@@ -337,7 +337,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>theme-manager</artifactId>
-        <version>215.vc1ff18d67920</version>
+        <version>211.vef2a_42c645a_b_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins.mina-sshd-api</groupId>
