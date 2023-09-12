@@ -22,6 +22,11 @@
         <artifactId>dark-theme</artifactId>
         <version>336.v02165cd8c2ee</version>
       </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>theme-manager</artifactId>
+        <version>211.vef2a_42c645a_b_</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 </project>
