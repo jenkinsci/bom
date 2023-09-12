@@ -85,6 +85,9 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || env.CHANGE_ID && pullReques
   branches = [failFast: false]
   lines.each {line ->
     pluginsByRepository.each { repository, plugins ->
+      if (repository != 'blueocean-plugin') {
+        return
+      }
       branches["pct-$repository-$line"] = {
         def jdk = line == 'weekly' ? 21 : 11
         if (jdk == 21) {
