@@ -6,8 +6,5 @@ logs/
 megawar.war
 pct.jar
 plugin-manager.jar
-!updatecli.d/
-updatecli.d/*
-!updatecli.d/plugin-compat-tester.yml
 .env
 .envrc
