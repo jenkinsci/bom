@@ -891,21 +891,21 @@
       <id>2.414.x</id>
       <properties>
         <bom>2.414.x</bom>
-        <jenkins.version>2.414.1</jenkins.version>
+        <jenkins.version>2.423</jenkins.version>
       </properties>
     </profile>
     <profile>
       <id>2.401.x</id>
       <properties>
         <bom>2.401.x</bom>
-        <jenkins.version>2.401.3</jenkins.version>
+        <jenkins.version>2.423</jenkins.version>
       </properties>
     </profile>
     <profile>
       <id>2.387.x</id>
       <properties>
         <bom>2.387.x</bom>
-        <jenkins.version>2.387.3</jenkins.version>
+        <jenkins.version>2.423</jenkins.version>
       </properties>
     </profile>
   </profiles>
