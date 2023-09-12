@@ -1,0 +1,26 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:base", ":semanticCommitsDisabled", "schedule:daily"],
+  "enabledManagers": ["regex"],
+  "automerge": true,
+  "regexManagers": [
+    {
+      "fileMatch": ["prep-pct.sh"],
+      "matchStrings": ["pct_version=(?<currentValue>.*?)\n"],
+      "depNameTemplate": "org.jenkins-ci.tests:plugins-compat-tester-cli",
+      "datasourceTemplate": "maven",
+      "registryUrlTemplate": "https://repo.jenkins-ci.org/releases/"
+    },
+    {
+      "fileMatch": ["sample-plugin/pom.xml"],
+      "matchStrings": [
+        "<jenkins.version>(?<currentValue>.*?)</jenkins.version>"
+      ],
+      "depNameTemplate": "org.jenkins-ci.main:jenkins-war",
+      "datasourceTemplate": "maven",
+      "registryUrlTemplate": "https://repo.jenkins-ci.org/releases/"
+    }
+  ],
+  "labels": ["dependencies"],
+  "rebaseWhen": "conflicted"
+}
