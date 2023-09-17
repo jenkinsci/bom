@@ -88,7 +88,10 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || env.CHANGE_ID && pullReques
       branches["pct-$repository-$line"] = {
         def jdk = line == 'weekly' ? 21 : 11
         if (jdk == 21) {
-          if (repository == 'jacoco-plugin') {
+          if (repository == 'checks-api-plugin') {
+            // TODO JENKINS-71804
+            jdk = 17
+          } else if (repository == 'jacoco-plugin') {
             // TODO JENKINS-71806
             jdk = 17
           }
