@@ -160,7 +160,13 @@ To reproduce a PCT failure locally, use something like
 PLUGINS=structs,mailer TEST=InjectedTest bash local-test.sh
 ```
 
-optionally also passing
+optionally also passing either
+
+```
+LINE=2.414.x
+```
+
+or
 
 ```
 DOCKERIZED=true
