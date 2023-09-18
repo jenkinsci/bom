@@ -27,15 +27,6 @@
         <artifactId>theme-manager</artifactId>
         <version>211.vef2a_42c645a_b_</version>
       </dependency>
-      <!-- TODO Remove when config-file-provider test failure is fixed
-           by credentials-binding plugin
-           https://github.com/jenkinsci/bom/issues/2513
-      -->
-      <dependency>
-        <groupId>org.jenkins-ci.plugins</groupId>
-        <artifactId>credentials-binding</artifactId>
-        <version>631.v861c06d062b_4</version>
-      </dependency>
     </dependencies>
   </dependencyManagement>
 </project>
