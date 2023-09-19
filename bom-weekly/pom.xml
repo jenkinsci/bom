@@ -528,6 +528,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>dockerhub-notification</artifactId>
+        <version>2.7.1-rc187.7fc53a_ca_6193</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>durable-task</artifactId>
         <version>523.va_a_22cf15d5e0</version>
       </dependency>
