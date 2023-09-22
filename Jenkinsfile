@@ -91,6 +91,9 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || env.CHANGE_ID && pullReques
           if (repository == 'checks-api-plugin') {
             // TODO JENKINS-71804
             jdk = 17
+          } else if (repository == 'google-compute-engine-plugin') {
+            // TODO JENKINS-71921
+            jdk = 17
           } else if (repository == 'jacoco-plugin') {
             // TODO JENKINS-71806
             jdk = 17
