@@ -585,6 +585,31 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>google-compute-engine</artifactId>
+        <version>4.3.17</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>google-kubernetes-engine</artifactId>
+        <version>0.424.v0a_79d1e437e0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>google-metadata-plugin</artifactId>
+        <version>0.5</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>google-oauth-plugin</artifactId>
+        <version>1.0.11</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>google-storage-plugin</artifactId>
+        <version>1.336.v6f13b_290b_014</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>handy-uri-templates-2-api</artifactId>
         <version>2.1.8-22.v77d5b_75e6953</version>
       </dependency>
@@ -683,6 +708,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>node-iterator-api</artifactId>
         <version>49.v58a_8b_35f8363</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>oauth-credentials</artifactId>
+        <version>0.645.ve666a_c332668</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>

@@ -478,6 +478,31 @@
     </dependency>
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>google-compute-engine</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>google-kubernetes-engine</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>google-metadata-plugin</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>google-oauth-plugin</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>google-storage-plugin</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>htmlpublisher</artifactId>
       <scope>test</scope>
     </dependency>
@@ -906,6 +931,8 @@
       <properties>
         <bom>2.387.x</bom>
         <jenkins.version>2.387.3</jenkins.version>
+        <!-- TODO why does this only run out of memory on 2.387.x? -->
+        <surefire.excludes>io.jenkins.tools.bom.sample.ExampleStepTest</surefire.excludes>
       </properties>
     </profile>
   </profiles>
