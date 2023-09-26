@@ -8,6 +8,9 @@
   </parent>
   <artifactId>bom-2.401.x</artifactId>
   <packaging>pom</packaging>
+  <properties>
+    <configuration-as-code-plugin.version>1700.v6f448841296e</configuration-as-code-plugin.version>
+  </properties>
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -16,6 +19,16 @@
         <version>${project.version}</version>
         <type>pom</type>
         <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins</groupId>
+        <artifactId>configuration-as-code</artifactId>
+        <version>${configuration-as-code-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.configuration-as-code</groupId>
+        <artifactId>test-harness</artifactId>
+        <version>${configuration-as-code-plugin.version}</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
