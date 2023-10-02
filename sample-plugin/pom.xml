@@ -921,7 +921,7 @@
       <id>2.414.x</id>
       <properties>
         <bom>2.414.x</bom>
-        <jenkins.version>2.414.1</jenkins.version>
+        <jenkins.version>2.414.3-rc33994.b_e8fef2ca_024</jenkins.version>
       </properties>
     </profile>
     <profile>
