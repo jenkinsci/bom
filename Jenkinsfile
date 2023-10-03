@@ -84,6 +84,9 @@ stage('prep') {
 if (BRANCH_NAME == 'master' || fullTestMarkerFile || env.CHANGE_ID && pullRequest.labels.contains('full-test')) {
   branches = [failFast: false]
   lines.each {line ->
+    if (line != 'weekly') {
+      return
+    }
     pluginsByRepository.each { repository, plugins ->
       branches["pct-$repository-$line"] = {
         def jdk = line == 'weekly' ? 21 : 11
