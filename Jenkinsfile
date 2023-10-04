@@ -84,7 +84,7 @@ stage('prep') {
 if (BRANCH_NAME == 'master' || fullTestMarkerFile || env.CHANGE_ID && pullRequest.labels.contains('full-test')) {
   branches = [failFast: false]
   lines.each {line ->
-    if (line !- 'weekly') {
+    if (line != 'weekly') {
       return // Older lines are unchanged by the copy button logic pull request
     }
     pluginsByRepository.each { repository, plugins ->
