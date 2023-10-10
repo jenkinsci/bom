@@ -25,7 +25,7 @@
     <okhttp-api-plugin.version>4.11.0-157.v6852a_a_fa_ec11</okhttp-api-plugin.version>
     <pipeline-model-definition-plugin.version>2.2144.v077a_d1928a_40</pipeline-model-definition-plugin.version>
     <pipeline-stage-view-plugin.version>2.33</pipeline-stage-view-plugin.version>
-    <plugin-util-api.version>3.5.0</plugin-util-api.version>
+    <plugin-util-api.version>3.6.0</plugin-util-api.version>
     <scm-api-plugin.version>676.v886669a_199a_a_</scm-api-plugin.version>
     <subversion-plugin.version>2.17.3</subversion-plugin.version>
     <workflow-api-plugin.version>1283.v99c10937efcb_</workflow-api-plugin.version>
