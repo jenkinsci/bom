@@ -9,7 +9,7 @@ updates:
     open-pull-requests-limit: 25
     directory: "/bom-weekly"
     ignore:
-      - dependency-name: "google-oauth-plugin"
+      - dependency-name: "org.jenkins-ci.plugins:google-oauth-plugin"
         versions: "1.1.1"
     schedule:
       interval: "daily"
