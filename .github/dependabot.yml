@@ -10,7 +10,7 @@ updates:
     directory: "/bom-weekly"
     ignore:
       - dependency-name: "org.jenkins-ci.plugins:google-oauth-plugin"
-        versions: "1.1.1"
+        versions: ["1.1.1", "1.318.vb_39c5db_e3041"]
     schedule:
       interval: "daily"
   - package-ecosystem: "github-actions"
