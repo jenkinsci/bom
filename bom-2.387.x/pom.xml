@@ -139,6 +139,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>jackson2-api</artifactId>
+        <version>2.15.2-350.v0c2f3f8fc595</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jacoco</artifactId>
         <version>3.3.4</version>
       </dependency>
