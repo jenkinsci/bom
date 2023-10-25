@@ -682,7 +682,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ldap</artifactId>
-        <version>701.vf8619de9160a_</version>
+        <version>711.vb_d1a_491714dc</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
