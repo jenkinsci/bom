@@ -27,6 +27,11 @@
         <artifactId>theme-manager</artifactId>
         <version>211.vef2a_42c645a_b_</version>
       </dependency>
+      <dependency>
+        <groupId>org.csanchez.jenkins.plugins</groupId>
+        <artifactId>kubernetes</artifactId>
+        <version>4054.v2da_8e2794884</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 </project>
