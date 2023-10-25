@@ -21,7 +21,7 @@
     <github-api-plugin.version>1.316-451.v15738eef3414</github-api-plugin.version>
     <git-plugin.version>5.2.0</git-plugin.version>
     <junit-plugin.version>1240.vf9529b_881428</junit-plugin.version>
-    <mina-sshd-api.version>2.10.0-69.v28e3e36d18eb_</mina-sshd-api.version>
+    <mina-sshd-api.version>2.11.0-86.v836f585d47fa_</mina-sshd-api.version>
     <okhttp-api-plugin.version>4.11.0-157.v6852a_a_fa_ec11</okhttp-api-plugin.version>
     <pipeline-model-definition-plugin.version>2.2144.v077a_d1928a_40</pipeline-model-definition-plugin.version>
     <pipeline-stage-view-plugin.version>2.33</pipeline-stage-view-plugin.version>
@@ -29,8 +29,8 @@
     <scm-api-plugin.version>676.v886669a_199a_a_</scm-api-plugin.version>
     <subversion-plugin.version>2.17.3</subversion-plugin.version>
     <workflow-api-plugin.version>1283.v99c10937efcb_</workflow-api-plugin.version>
-    <workflow-cps-plugin.version>3802.vd42b_fcf00b_a_c</workflow-cps-plugin.version>
-    <workflow-job-plugin.version>1348.v32a_a_f150910e</workflow-job-plugin.version>
+    <workflow-cps-plugin.version>3805.v769b_b_74b_db_14</workflow-cps-plugin.version>
+    <workflow-job-plugin.version>1360.vc6700e3136f5</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>756.v891d88f2cd46</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>639.v6eca_cd8c04a_a_</workflow-step-api-plugin.version>
     <workflow-support-plugin.version>865.v43e78cc44e0d</workflow-support-plugin.version>
@@ -280,12 +280,12 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>jaxb</artifactId>
-        <version>2.3.8-1</version>
+        <version>2.3.9-1</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>jersey2-api</artifactId>
-        <version>2.40-1</version>
+        <version>2.41-133.va_03323b_a_1396</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -499,7 +499,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>credentials-binding</artifactId>
-        <version>636.v55f1275c7b_27</version>
+        <version>642.v737c34dea_6c2</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -717,7 +717,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>node-iterator-api</artifactId>
-        <version>49.v58a_8b_35f8363</version>
+        <version>55.v3b_77d4032326</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -777,7 +777,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pubsub-light</artifactId>
-        <version>1.17</version>
+        <version>1.18</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
