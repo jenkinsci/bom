@@ -11,6 +11,8 @@ updates:
     ignore:
       - dependency-name: "org.jenkins-ci.plugins:google-oauth-plugin"
         versions: ["1.1.1", "1.318.vb_39c5db_e3041"]
+      - dependency-name: "org.jenkins-ci.plugins:credentials"
+        versions: "1305.v04f5ec1f3743"
     schedule:
       interval: "daily"
   - package-ecosystem: "github-actions"
