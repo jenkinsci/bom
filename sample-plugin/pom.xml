@@ -923,10 +923,18 @@
   <profiles>
     <!-- Use .1 of most recent active line, and .3 (or later) of previous lines: https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/#choosing-a-version -->
     <profile>
+      <id>2.426.x</id>
+      <properties>
+        <bom>2.426.x</bom>
+        <!-- TODO: Revise to 2.426.1 when release is available -->
+        <jenkins.version>2.426</jenkins.version>
+      </properties>
+    </profile>
+    <profile>
       <id>2.414.x</id>
       <properties>
         <bom>2.414.x</bom>
-        <jenkins.version>2.414.1</jenkins.version>
+        <jenkins.version>2.414.3</jenkins.version>
       </properties>
     </profile>
     <profile>
@@ -934,15 +942,6 @@
       <properties>
         <bom>2.401.x</bom>
         <jenkins.version>2.401.3</jenkins.version>
-      </properties>
-    </profile>
-    <profile>
-      <id>2.387.x</id>
-      <properties>
-        <bom>2.387.x</bom>
-        <jenkins.version>2.387.3</jenkins.version>
-        <!-- TODO why does this only run out of memory on 2.387.x? -->
-        <surefire.excludes>io.jenkins.tools.bom.sample.ExampleStepTest</surefire.excludes>
       </properties>
     </profile>
   </profiles>
