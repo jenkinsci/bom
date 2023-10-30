@@ -193,7 +193,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>commons-text-api</artifactId>
-        <version>1.10.0-78.v3e7b_ea_d5a_fe1</version>
+        <version>1.11.0-94.v3e1f4a_926e49</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -611,12 +611,12 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>google-oauth-plugin</artifactId>
-        <version>1.0.11</version>
+        <version>1.318.vb_39c5db_e3041</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>google-storage-plugin</artifactId>
-        <version>1.336.v6f13b_290b_014</version>
+        <version>1.344.vc9a_c797ef183</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
