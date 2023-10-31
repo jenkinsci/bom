@@ -382,7 +382,7 @@
       <dependency>
         <groupId>org.jenkins-ci.modules</groupId>
         <artifactId>instance-identity</artifactId>
-        <version>173.va_37c494ec4e5</version>
+        <version>185.v303dc7c645f9</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.modules</groupId>
