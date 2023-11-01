@@ -1,16 +1,8 @@
 # TODO cryptic PCT-only errors: https://github.com/jenkinsci/bom/pull/251#issuecomment-645012427
 hudson.matrix.AxisTest
 
-# TODO Remove this exclusion when 2.387.x is no longer an active line
-# Refer to https://github.com/jenkinsci/blueocean-plugin/pull/2505
-# PR is included in blueocean-rest-impl versions for Jenkins 2.401.3 and later
-io.jenkins.blueocean.rest.impl.pipeline.MultiBranchTest
-
 # TODO https://github.com/jenkinsci/blueocean-plugin/pull/2471
 io.jenkins.blueocean.service.embedded.PipelineApiTest
-
-# TODO https://github.com/jenkinsci/blueocean-plugin/pull/2470
-io.jenkins.blueocean.service.embedded.rest.BlueTrendTest
 
 # TODO tends to time out
 jenkins.plugins.http_request.HttpRequestStepRoundTripTest
