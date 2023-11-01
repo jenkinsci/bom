@@ -382,7 +382,7 @@
       <dependency>
         <groupId>org.jenkins-ci.modules</groupId>
         <artifactId>instance-identity</artifactId>
-        <version>173.va_37c494ec4e5</version>
+        <version>185.v303dc7c645f9</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.modules</groupId>
@@ -596,7 +596,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>google-compute-engine</artifactId>
-        <version>4.3.17</version>
+        <version>4.548.v4a_7f1b_1767b_1</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
