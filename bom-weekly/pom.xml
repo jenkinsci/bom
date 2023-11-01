@@ -833,7 +833,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ssh-agent</artifactId>
-        <version>333.v878b_53c89511</version>
+        <version>346.vda_a_c4f2c8e50</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
