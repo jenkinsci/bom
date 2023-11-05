@@ -85,90 +85,19 @@ You would not use it:
 
 Sometimes a plugin maintainer may prefer to require an older version of Jenkins as its minimum version.
 Refer to [choosing a Jenkins version](https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/) for more details.
-Some reasons to require an older Jenkins version include:
 
-* API plugins should choose an older LTS, approximately 1 year old that does not have too many detached plugins so that API updates are available to older Jenkins versions
-* Plugins that need to retain a specific Java version should choose the matching Jenkins version
+When an older Jenkins version is used, then the matching older version of the plugin bill of materials should be used.
 
-Dependency management examples for several older versions are provided here for reference.
-Newer versions should generally be preferred, as recommended in [choosing a Jenkins version](https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/).
+[cols="1,1"]
+|===
+| BOM Line    | Version               | Comment
+| bom-2.346.x | 1763.v092b_8980a_f5e  | Last LTS to support Java 8
+| bom-2.361.x | 2102.v854b_fec19c92   | First LTS to require Java 11
+| bom-2.375.x | 2198.v39c76fc308ca    |
+| bom-2.387.x | 2543.vfb_1a_5fb_9496d |
+|===
 
-### Last LTS to support Java 8 - 2.346.x
-
-Choose Jenkins 2.346.3 if the plugin must remain with Java 8.
-Jenkins core no longer supports Java 8, but some plugins may not yet be ready to compile with newer versions of Java.
-Jenkins 2.346.x is no longer supported by the Jenkins update center.
-Remain with Jenkins 2.346.x only until the plugin can be updated to compile with newer Java versions.
-
-```xml
-<dependencyManagement>
-    <dependencies>
-        <dependency>
-            <groupId>io.jenkins.tools.bom</groupId>
-            <artifactId>bom-2.346.x</artifactId>
-            <version>1763.v092b_8980a_f5e</version>
-            <scope>import</scope>
-            <type>pom</type>
-        </dependency>
-    </dependencies>
-</dependencyManagement>
-```
-
-### First LTS to support Java 11 - 2.361.x
-
-Choose Jenkins 2.361.4 if the plugin supports Java 11 but needs to remain on an older release.
-Jenkins 2.361.4 was released in November of 2022.
-After November 2023, newer Jenkins versions should be chosen rather than Jenkins 2.361.x.
-
-```xml
-<dependencyManagement>
-    <dependencies>
-        <dependency>
-            <groupId>io.jenkins.tools.bom</groupId>
-            <artifactId>bom-2.361.x</artifactId>
-            <version>2102.v854b_fec19c92</version>
-            <scope>import</scope>
-            <type>pom</type>
-        </dependency>
-    </dependencies>
-</dependencyManagement>
-```
-
-### Other LTS versions
-
-Other Jenkins versions can be a viable choice, though much less common than the versions recommended in the [developer documentation](https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/).
-
-#### Jenkins 2.375.x
-
-```xml
-<dependencyManagement>
-    <dependencies>
-        <dependency>
-            <groupId>io.jenkins.tools.bom</groupId>
-            <artifactId>bom-2.375.x</artifactId>
-            <version>2198.v39c76fc308ca</version>
-            <scope>import</scope>
-            <type>pom</type>
-        </dependency>
-    </dependencies>
-</dependencyManagement>
-```
-
-#### Jenkins 2.387.x
-
-```xml
-<dependencyManagement>
-    <dependencies>
-        <dependency>
-            <groupId>io.jenkins.tools.bom</groupId>
-            <artifactId>bom-2.387.x</artifactId>
-            <version>2543.vfb_1a_5fb_9496d</version>
-            <scope>import</scope>
-            <type>pom</type>
-        </dependency>
-    </dependencies>
-</dependencyManagement>
-```
+The latest versions of all BOM lines are available from the [Jenkins artifact repository](https://repo.jenkins-ci.org/public/io/jenkins/tools/bom).
 
 # Development
 
