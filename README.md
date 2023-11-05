@@ -81,6 +81,22 @@ You would not use it:
 - When you are temporarily depending on the weekly line but do not plan to update it on every release
   - This would cause dependabot build failures when a plugin is updated only on the weekly line (if you depend on it)
 
+## Depending on older versions
+
+Sometimes a plugin maintainer may prefer to require an older version of Jenkins as its minimum version.
+Refer to [choosing a Jenkins version](https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/) for more details.
+
+When an older Jenkins version is used, then the matching older version of the plugin bill of materials should be used.
+
+| BOM Line    | Version               | Comment                      |
+| ----------- | --------------------- | ---------------------------- |
+| bom-2.346.x | 1763.v092b_8980a_f5e  | Last LTS to support Java 8   |
+| bom-2.361.x | 2102.v854b_fec19c92   | First LTS to require Java 11 |
+| bom-2.375.x | 2198.v39c76fc308ca    |                              |
+| bom-2.387.x | 2543.vfb_1a_5fb_9496d |                              |
+
+The latest versions of all BOM lines are available from the [Jenkins artifact repository](https://repo.jenkins-ci.org/public/io/jenkins/tools/bom).
+
 # Development
 
 For people potentially working on the BOM itself, not just consuming it.
