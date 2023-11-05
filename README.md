@@ -67,6 +67,7 @@ can offer clues about unused plugin dependencies,
 though you must evaluate each carefully since it only understands Java binary dependencies
 (what is required for compilation, more or less).
 
+A [BOM tutorial video](https://www.jenkins.io/doc/developer/tutorial-improve/use-plugin-bill-of-materials/) is available in the [Jenkins developer documentation](https://www.jenkins.io/doc/developer/tutorial-improve/).
 
 ## Depending on `bom-weekly`
 
