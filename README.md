@@ -88,7 +88,7 @@ Refer to [choosing a Jenkins version](https://www.jenkins.io/doc/developer/plugi
 
 When an older Jenkins version is used, then the matching older version of the plugin bill of materials should be used.
 
-[cols="1,1"]
+[cols="1,1,1"]
 |===
 | BOM Line    | Version               | Comment
 | bom-2.346.x | 1763.v092b_8980a_f5e  | Last LTS to support Java 8
