@@ -17,7 +17,7 @@ After [selecting your plugin’s LTS baseline](https://www.jenkins.io/doc/develo
 <jenkins.version>2.401.3</jenkins.version>
 ```
 
-just import the [latest BOM](https://github.com/jenkinsci/bom/releases) from that line:
+just import the [latest BOM](https://repo.jenkins-ci.org/public/io/jenkins/tools/bom) from that line:
 
 ```xml
 <dependencyManagement>
