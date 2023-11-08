@@ -8,6 +8,9 @@
   </parent>
   <artifactId>bom-2.414.x</artifactId>
   <packaging>pom</packaging>
+  <properties>
+    <branch-api-plugin.version>2.1128.v717130d4f816</branch-api-plugin.version>
+  </properties>
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -31,6 +34,17 @@
         <groupId>org.csanchez.jenkins.plugins</groupId>
         <artifactId>kubernetes</artifactId>
         <version>4054.v2da_8e2794884</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>branch-api</artifactId>
+        <version>${branch-api-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>branch-api</artifactId>
+        <version>${branch-api-plugin.version}</version>
+        <classifier>tests</classifier>
       </dependency>
     </dependencies>
   </dependencyManagement>
