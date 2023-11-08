@@ -10,6 +10,7 @@
   <packaging>pom</packaging>
   <properties>
     <branch-api-plugin.version>2.1128.v717130d4f816</branch-api-plugin.version>
+    <pipeline-model-definition-plugin.version>2.2150.v4cfd8916915c</pipeline-model-definition-plugin.version>
     <scm-api-plugin.version>676.v886669a_199a_a_</scm-api-plugin.version>
   </properties>
   <dependencyManagement>
@@ -57,6 +58,32 @@
         <artifactId>scm-api</artifactId>
         <version>${scm-api-plugin.version}</version>
         <classifier>tests</classifier>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkinsci.plugins</groupId>
+        <artifactId>pipeline-model-api</artifactId>
+        <version>${pipeline-model-definition-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkinsci.plugins</groupId>
+        <artifactId>pipeline-model-definition</artifactId>
+        <version>${pipeline-model-definition-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkinsci.plugins</groupId>
+        <artifactId>pipeline-model-definition</artifactId>
+        <version>${pipeline-model-definition-plugin.version}</version>
+        <classifier>tests</classifier>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkinsci.plugins</groupId>
+        <artifactId>pipeline-model-extensions</artifactId>
+        <version>${pipeline-model-definition-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkinsci.plugins</groupId>
+        <artifactId>pipeline-stage-tags-metadata</artifactId>
+        <version>${pipeline-model-definition-plugin.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
