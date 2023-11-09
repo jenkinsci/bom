@@ -43,6 +43,7 @@ def parsePlugins(plugins) {
 def pluginsByRepository
 def lines
 def fullTestMarkerFile
+def weeklyTestMarkerFile
 
 stage('prep') {
   mavenEnv(jdk: 21) {
@@ -58,6 +59,7 @@ stage('prep') {
       }
     }
     fullTestMarkerFile = fileExists 'full-test'
+    weeklyTestMarkerFile = fileExists 'weekly-test'
     dir('target') {
       def plugins = readFile('plugins.txt').split('\n')
       pluginsByRepository = parsePlugins(plugins)
@@ -81,9 +83,12 @@ stage('prep') {
   }
 }
 
-if (BRANCH_NAME == 'master' || fullTestMarkerFile || env.CHANGE_ID && pullRequest.labels.contains('full-test')) {
+if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env.CHANGE_ID && (pullRequest.labels.contains('full-test') || pullRequest.labels.contains('weekly-test'))) {
   branches = [failFast: false]
   lines.each {line ->
+    if (line != 'weekly' && (weeklyTestMarkerFile || env.CHANGE_ID && pullRequest.labels.contains('weekly-test'))) {
+      return
+    }
     pluginsByRepository.each { repository, plugins ->
       branches["pct-$repository-$line"] = {
         def jdk = line == 'weekly' ? 21 : 11

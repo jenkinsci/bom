@@ -203,6 +203,8 @@ git commit -m 'Run full tests'
 
 while keeping the PR in draft until tests pass and this file can be deleted.
 
+Similarly, the `weekly-test` label (or marker file) can be used to run tests on weekly releases in isolation.
+
 To further minimize build time, tests are run only on Linux, against Java 11, and without Docker support.
 It is unusual but possible for cross-component incompatibilities to only be visible in more specialized environments (such as Windows).
 
