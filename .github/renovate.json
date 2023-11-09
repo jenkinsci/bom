@@ -3,8 +3,9 @@
   "extends": ["config:base", ":semanticCommitsDisabled", "schedule:daily"],
   "enabledManagers": ["regex"],
   "automerge": true,
-  "regexManagers": [
+  "customManagers": [
     {
+      "customType": "regex",
       "fileMatch": ["prep-pct.sh"],
       "matchStrings": ["pct_version=(?<currentValue>.*?)\\n"],
       "depNameTemplate": "org.jenkins-ci.tests:plugins-compat-tester-cli",
@@ -12,6 +13,7 @@
       "registryUrlTemplate": "https://repo.jenkins-ci.org/releases/"
     },
     {
+      "customType": "regex",
       "fileMatch": ["sample-plugin/pom.xml"],
       "matchStrings": [
         "\\n\\s{4}<jenkins\\.version>(?<currentValue>.*?)<\\\/jenkins\\.version>\\n"
@@ -21,6 +23,15 @@
       "registryUrlTemplate": "https://repo.jenkins-ci.org/releases/"
     }
   ],
-  "labels": ["dependencies"],
+  "packageRules": [
+    {
+      "matchDepNames": ["org.jenkins-ci.tests:plugins-compat-tester-cli"],
+      "labels": ["dependencies", "full-test"]
+    },
+    {
+      "matchDepNames": ["org.jenkins-ci.main:jenkins-war"],
+      "labels": ["dependencies", "weekly-test"]
+    }
+  ],
   "rebaseWhen": "conflicted"
 }
