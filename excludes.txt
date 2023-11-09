@@ -1,8 +1,8 @@
 # TODO cryptic PCT-only errors: https://github.com/jenkinsci/bom/pull/251#issuecomment-645012427
 hudson.matrix.AxisTest
 
-# TODO https://github.com/jenkinsci/blueocean-plugin/pull/2471
-io.jenkins.blueocean.service.embedded.PipelineApiTest
+# TODO cryptic PCT-only errors: https://github.com/jenkinsci/bom/issues/2645#issue-1984697087
+io.jenkins.blueocean.service.embedded.PipelineApiTest#testOrganizationFolder
 
 # TODO tends to time out
 jenkins.plugins.http_request.HttpRequestStepRoundTripTest
