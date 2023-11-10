@@ -90,6 +90,9 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
       return
     }
     pluginsByRepository.each { repository, plugins ->
+      if (repository != 'pipeline-maven-plugin') {
+        return
+      }
       branches["pct-$repository-$line"] = {
         def jdk = line == 'weekly' ? 21 : 11
         if (jdk == 21) {

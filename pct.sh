@@ -12,10 +12,10 @@ if [[ -n ${EXTRA_MAVEN_PROPERTIES-} ]]; then
 		PCT_D_ARGS+="-D${prop} "
 	done
 fi
-if ! [[ $PLUGINS =~ blueocean ]]; then
+if ! [[ $PLUGINS =~ blueocean || $PLUGINS =~ pipeline-maven ]]; then
 	#
-	# The Blue Ocean test suite uses a lot of memory and cannot handle
-	# parallelism.
+	# The Blue Ocean and Pipeline Maven Integration test suites use a lot of
+	# memory and cannot handle parallelism.
 	#
 	PCT_D_ARGS+='-DforkCount=.75C '
 fi
