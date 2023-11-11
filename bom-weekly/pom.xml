@@ -23,7 +23,6 @@
     <junit-plugin.version>1240.vf9529b_881428</junit-plugin.version>
     <mina-sshd-api.version>2.11.0-86.v836f585d47fa_</mina-sshd-api.version>
     <okhttp-api-plugin.version>4.11.0-157.v6852a_a_fa_ec11</okhttp-api-plugin.version>
-    <!-- TODO https://github.com/jenkinsci/pipeline-maven-plugin/pull/733 -->
     <pipeline-maven-plugin.version>1362.vee39a_d4b_02b_1</pipeline-maven-plugin.version>
     <pipeline-model-definition-plugin.version>2.2151.ve32c9d209a_3f</pipeline-model-definition-plugin.version>
     <pipeline-stage-view-plugin.version>2.34</pipeline-stage-view-plugin.version>
