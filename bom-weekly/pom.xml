@@ -765,11 +765,7 @@
         <artifactId>pipeline-maven-api</artifactId>
         <version>${pipeline-maven-plugin.version}</version>
       </dependency>
-      <dependency>
-        <groupId>org.jenkins-ci.plugins</groupId>
-        <artifactId>pipeline-maven-database</artifactId>
-        <version>${pipeline-maven-plugin.version}</version>
-      </dependency>
+      <!-- TODO add pipeline-maven-database -->
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pipeline-milestone-step</artifactId>
