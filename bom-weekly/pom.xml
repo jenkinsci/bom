@@ -23,6 +23,7 @@
     <junit-plugin.version>1240.vf9529b_881428</junit-plugin.version>
     <mina-sshd-api.version>2.11.0-86.v836f585d47fa_</mina-sshd-api.version>
     <okhttp-api-plugin.version>4.11.0-157.v6852a_a_fa_ec11</okhttp-api-plugin.version>
+    <pipeline-maven-plugin.version>1362.vee39a_d4b_02b_1</pipeline-maven-plugin.version>
     <pipeline-model-definition-plugin.version>2.2151.ve32c9d209a_3f</pipeline-model-definition-plugin.version>
     <pipeline-stage-view-plugin.version>2.34</pipeline-stage-view-plugin.version>
     <plugin-util-api.version>3.6.0</plugin-util-api.version>
@@ -754,6 +755,17 @@
         <artifactId>pipeline-input-step</artifactId>
         <version>477.v339683a_8d55e</version>
       </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>pipeline-maven</artifactId>
+        <version>${pipeline-maven-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>pipeline-maven-api</artifactId>
+        <version>${pipeline-maven-plugin.version}</version>
+      </dependency>
+      <!-- TODO add pipeline-maven-database -->
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pipeline-milestone-step</artifactId>
