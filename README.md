@@ -180,7 +180,7 @@ PLUGINS=structs,mailer TEST=InjectedTest bash local-test.sh
 optionally also passing either
 
 ```
-LINE=2.414.x
+LINE=2.426.x
 ```
 
 or
