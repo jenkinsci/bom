@@ -6,25 +6,20 @@ if (BRANCH_NAME == 'master' && currentBuild.buildCauses*._class == ['jenkins.bra
 }
 
 def mavenEnv(Map params = [:], Closure body) {
-  def attempt = 0
-  def attempts = 6
-  retry(count: attempts, conditions: [kubernetesAgent(handleNonKubernetes: true), nonresumable()]) {
-    echo 'Attempt ' + ++attempt + ' of ' + attempts
-    // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
-    node(params['nodePool'] ? 'maven-bom': 'maven-' + params['jdk']) {
-      timeout(120) {
-        infra.withArtifactCachingProxy {
-          withEnv([
-            'JAVA_HOME=/opt/jdk-' + params['jdk'],
-            "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B -ntp -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo"
-          ]) {
-            body()
-          }
+  // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
+  node(params['nodePool'] ? 'maven-bom': 'maven-' + params['jdk']) {
+    timeout(120) {
+      infra.withArtifactCachingProxy {
+        withEnv([
+          'JAVA_HOME=/opt/jdk-' + params['jdk'],
+          "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B -ntp -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo"
+        ]) {
+          body()
         }
-        if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount > 0) {
-          // TODO JENKINS-27092 throw up UNSTABLE status in this case
-          error 'Some test failures, not going to continue'
-        }
+      }
+      if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount > 0) {
+        // TODO JENKINS-27092 throw up UNSTABLE status in this case
+        error 'Some test failures, not going to continue'
       }
     }
   }
@@ -46,7 +41,7 @@ def fullTestMarkerFile
 def weeklyTestMarkerFile
 
 stage('prep') {
-  mavenEnv(jdk: 21) {
+  mavenEnv(jdk: 17) {
     checkout scm
     withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist']) {
       withCredentials([
@@ -90,8 +85,11 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
       return
     }
     pluginsByRepository.each { repository, plugins ->
+      if (line != 'weekly' || repository != 'pipeline-groovy-lib-plugin') {
+        return
+      }
       branches["pct-$repository-$line"] = {
-        def jdk = line == 'weekly' ? 21 : 11
+        def jdk = line == 'weekly' ? 17 : 11
         if (jdk == 21) {
           if (repository == 'google-compute-engine-plugin') {
             // TODO JENKINS-71921
@@ -103,11 +101,13 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
           withEnv([
             "PLUGINS=${plugins.join(',')}",
             "LINE=$line",
-            'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
+            'EXTRA_MAVEN_PROPERTIES=test=org.jenkinsci.plugins.workflow.libs.LibraryMemoryTest'
           ]) {
             sh '''
             mvn -v
-            bash pct.sh
+            while true; do
+              bash pct.sh
+            done
             '''
           }
           withCredentials([string(credentialsId: 'launchable-jenkins-bom', variable: 'LAUNCHABLE_TOKEN')]) {
