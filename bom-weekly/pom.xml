@@ -525,8 +525,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>database-h2</artifactId>
-        <!-- TODO https://github.com/jenkinsci/database-h2-plugin/pull/84 -->
-        <version>1.3-rc86.8b_42361b_b_9c0</version>
+        <version>1.4.89.v22b_9ca_318b_0a_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
