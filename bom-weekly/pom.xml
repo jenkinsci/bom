@@ -255,6 +255,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>h2-api</artifactId>
+        <version>11.1.4.199-12.v9f4244395f7a_</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>ionicons-api</artifactId>
         <version>56.v1b_1c8c49374e</version>
       </dependency>
@@ -329,6 +334,11 @@
         <artifactId>plugin-util-api</artifactId>
         <version>${plugin-util-api.version}</version>
         <classifier>tests</classifier>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>postgresql-api</artifactId>
+        <version>42.6.0-31.vb_7e76dc13969</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -506,6 +516,21 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>dashboard-view</artifactId>
         <version>2.495.v07e81500c3f2</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>database</artifactId>
+        <version>191.vd5981b_97a_5fa_</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>database-h2</artifactId>
+        <version>1.4.89.v22b_9ca_318b_0a_</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>database-postgresql</artifactId>
+        <version>100.v2418e0a_c6909</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -765,7 +790,11 @@
         <artifactId>pipeline-maven-api</artifactId>
         <version>${pipeline-maven-plugin.version}</version>
       </dependency>
-      <!-- TODO add pipeline-maven-database -->
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>pipeline-maven-database</artifactId>
+        <version>${pipeline-maven-plugin.version}</version>
+      </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pipeline-milestone-step</artifactId>
