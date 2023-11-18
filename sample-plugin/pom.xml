@@ -14,7 +14,7 @@
   <properties>
     <changelist>999999-SNAPSHOT</changelist>
     <bom>weekly</bom>
-    <jenkins.version>2.431</jenkins.version>
+    <jenkins.version>2.432</jenkins.version>
     <spotless.check.skip>false</spotless.check.skip>
   </properties>
   <dependencyManagement>
@@ -956,8 +956,7 @@
       <id>2.426.x</id>
       <properties>
         <bom>2.426.x</bom>
-        <!-- TODO: Revise to 2.426.1 when release is available -->
-        <jenkins.version>2.426</jenkins.version>
+        <jenkins.version>2.426.1</jenkins.version>
       </properties>
     </profile>
     <profile>

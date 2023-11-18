@@ -14,7 +14,7 @@
     <branch-api-plugin.version>2.1135.v8de8e7899051</branch-api-plugin.version>
     <checks-api.version>2.0.2</checks-api.version>
     <cloudbees-folder-plugin.version>6.858.v898218f3609d</cloudbees-folder-plugin.version>
-    <configuration-as-code-plugin.version>1714.v09593e830cfa</configuration-as-code-plugin.version>
+    <configuration-as-code-plugin.version>1737.v652ee9b_a_e0d9</configuration-as-code-plugin.version>
     <data-tables-api.version>1.13.6-5</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.1</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>2.3.0</forensics-api.version>
@@ -47,7 +47,7 @@
       <dependency>
         <groupId>com.sonyericsson.hudson.plugins.rebuild</groupId>
         <artifactId>rebuild</artifactId>
-        <version>320.v5a_0933a_e7d61</version>
+        <version>330.v645b_7df10e2a_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins</groupId>
@@ -383,7 +383,7 @@
       <dependency>
         <groupId>org.csanchez.jenkins.plugins</groupId>
         <artifactId>kubernetes</artifactId>
-        <version>4132.v758a_0c613a_38</version>
+        <version>4144.vfd176ec18694</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.main</groupId>
@@ -608,7 +608,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>github-branch-source</artifactId>
-        <version>1741.va_3028eb_9fd21</version>
+        <version>1751.v90e17c48a_6a_c</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -855,7 +855,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>script-security</artifactId>
-        <version>1275.v23895f409fb_d</version>
+        <version>1281.v22fb_899df1a_e</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
