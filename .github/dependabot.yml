@@ -9,8 +9,12 @@ updates:
     open-pull-requests-limit: 25
     directory: "/bom-weekly"
     ignore:
-      - dependency-name: "org.jenkins-ci.plugins:google-oauth-plugin"
-        versions: ["1.1.1"]
+      - dependency-name: "io.jenkins.plugins:data-tables-api"
+        versions: ["1.13.8-1"]
+      - dependency-name: "io.jenkins.plugins:echarts-api"
+        versions: ["5.4.3-1"]
+      - dependency-name: "io.jenkins.plugins:prism-api"
+        versions: ["1.29.0-9"]
     schedule:
       interval: "daily"
   - package-ecosystem: "github-actions"
