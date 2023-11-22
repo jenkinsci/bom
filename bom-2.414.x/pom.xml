@@ -10,7 +10,6 @@
   <packaging>pom</packaging>
   <properties>
     <branch-api-plugin.version>2.1128.v717130d4f816</branch-api-plugin.version>
-    <data-tables-api.version>1.13.6-5</data-tables-api.version>
     <pipeline-model-definition-plugin.version>2.2150.v4cfd8916915c</pipeline-model-definition-plugin.version>
     <scm-api-plugin.version>676.v886669a_199a_a_</scm-api-plugin.version>
   </properties>
@@ -27,17 +26,6 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>dark-theme</artifactId>
         <version>336.v02165cd8c2ee</version>
-      </dependency>
-      <dependency>
-        <groupId>io.jenkins.plugins</groupId>
-        <artifactId>data-tables-api</artifactId>
-        <version>${data-tables-api.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>io.jenkins.plugins</groupId>
-        <artifactId>data-tables-api</artifactId>
-        <version>${data-tables-api.version}</version>
-        <classifier>tests</classifier>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
