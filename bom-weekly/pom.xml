@@ -310,6 +310,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>mysql-api</artifactId>
+        <version>8.0.33-7.v45b_7eb_1e2311</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>okhttp-api</artifactId>
         <version>${okhttp-api-plugin.version}</version>
       </dependency>
@@ -526,6 +531,12 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>database-h2</artifactId>
         <version>1.4.89.v22b_9ca_318b_0a_</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>database-mysql</artifactId>
+        <version>1.4</version>
+        <!-- Pending https://github.com/jenkinsci/database-mysql-plugin/pull/66/files -->
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
