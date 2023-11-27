@@ -956,7 +956,7 @@
       <id>2.426.x</id>
       <properties>
         <bom>2.426.x</bom>
-        <jenkins.version>2.426.1</jenkins.version>
+        <jenkins.version>2.426.2-rc34280.a_190edf08212</jenkins.version>
       </properties>
     </profile>
     <profile>
