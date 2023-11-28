@@ -18,7 +18,7 @@
     <data-tables-api.version>1.13.8-1</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.1</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>2.3.0</forensics-api.version>
-    <github-api-plugin.version>1.316-451.v15738eef3414</github-api-plugin.version>
+    <github-api-plugin.version>1.318-461.v7a_c09c9fa_d63</github-api-plugin.version>
     <git-plugin.version>5.2.1</git-plugin.version>
     <junit-plugin.version>1240.vf9529b_881428</junit-plugin.version>
     <mina-sshd-api.version>2.11.0-86.v836f585d47fa_</mina-sshd-api.version>
@@ -158,7 +158,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>apache-httpcomponents-client-5-api</artifactId>
-        <version>5.2.2-1.0</version>
+        <version>5.2.2-1.1</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -607,7 +607,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>github-branch-source</artifactId>
-        <version>1751.v90e17c48a_6a_c</version>
+        <version>1752.vc201a_0235d80</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -637,7 +637,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>google-oauth-plugin</artifactId>
-        <version>1.318.vb_39c5db_e3041</version>
+        <version>1.319.v5cb_58b_91b_389</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -854,7 +854,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>script-security</artifactId>
-        <version>1281.v22fb_899df1a_e</version>
+        <version>1294.v99333c047434</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
