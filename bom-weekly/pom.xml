@@ -637,7 +637,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>google-oauth-plugin</artifactId>
-        <version>1.318.vb_39c5db_e3041</version>
+        <version>1.319.v5cb_58b_91b_389</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
