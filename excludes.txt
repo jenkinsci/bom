@@ -16,3 +16,6 @@ org.jenkinsci.plugins.pipeline.modeldefinition.TriggersTest
 # TODO https://github.com/jenkinsci/pipeline-model-definition-plugin/pull/660
 org.jenkinsci.plugins.pipeline.modeldefinition.endpoints.ErrorsEndpointOpsTest
 org.jenkinsci.plugins.pipeline.modeldefinition.validator.ErrorsJSONParserTest
+
+# TODO https://github.com/jenkinsci/junit-plugin/issues/588
+hudson.tasks.test.AggregatedTestResultPublisherTest
