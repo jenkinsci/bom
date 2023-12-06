@@ -255,6 +255,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>gson-api</artifactId>
+        <version>2.10.1-3.vb_25b_599b_e4f8</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>h2-api</artifactId>
         <version>11.1.4.199-12.v9f4244395f7a_</version>
       </dependency>
