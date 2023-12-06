@@ -383,7 +383,7 @@
       <dependency>
         <groupId>org.6wind.jenkins</groupId>
         <artifactId>lockable-resources</artifactId>
-        <version>1217.v4e62e7f05b_c5</version>
+        <version>1218.va_3dd45e2b_fa_7</version>
       </dependency>
       <dependency>
         <groupId>org.csanchez.jenkins.plugins</groupId>
