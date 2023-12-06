@@ -228,6 +228,11 @@
     </dependency>
     <dependency>
       <groupId>io.jenkins.plugins</groupId>
+      <artifactId>gson-api</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.jenkins.plugins</groupId>
       <artifactId>h2-api</artifactId>
       <scope>test</scope>
     </dependency>
