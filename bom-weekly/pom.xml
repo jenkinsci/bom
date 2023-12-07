@@ -632,7 +632,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>google-kubernetes-engine</artifactId>
-        <version>0.424.v0a_79d1e437e0</version>
+        <version>0.426.ve2419ed7f563</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
