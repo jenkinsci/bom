@@ -310,8 +310,18 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>joda-time-api</artifactId>
+        <version>2.12.5-5.v5495a_235fedf</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>jquery3-api</artifactId>
         <version>3.7.1-1</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>json-api</artifactId>
+        <version>20231013-3.v20f3c247f2fe</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
