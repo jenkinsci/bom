@@ -92,12 +92,6 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
     pluginsByRepository.each { repository, plugins ->
       branches["pct-$repository-$line"] = {
         def jdk = line == 'weekly' ? 21 : 11
-        if (jdk == 21) {
-          if (repository == 'google-compute-engine-plugin') {
-            // TODO JENKINS-71921
-            jdk = 17
-          }
-        }
         mavenEnv(jdk: jdk, nodePool: true) {
           unstash line
           withEnv([
