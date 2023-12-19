@@ -1,5 +1,7 @@
 # TODO cryptic PCT-only errors: https://github.com/jenkinsci/bom/pull/251#issuecomment-645012427
-hudson.matrix.AxisTest
+hudson.matrix.AxisTest#emptyAxisValueListResultInNoConfigurations
+hudson.matrix.AxisTest#submitEmptyAxisName
+hudson.matrix.AxisTest#submitInvalidAxisName
 
 # TODO cryptic PCT-only errors: https://github.com/jenkinsci/bom/issues/2645#issue-1984697087
 io.jenkins.blueocean.service.embedded.PipelineApiTest#testOrganizationFolder
