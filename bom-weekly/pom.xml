@@ -662,7 +662,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>google-storage-plugin</artifactId>
-        <version>1.355.v355d5981b_67f</version>
+        <version>1.360.v6ca_38618b_41f</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
