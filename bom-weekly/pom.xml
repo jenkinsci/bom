@@ -702,7 +702,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jsch</artifactId>
-        <version>0.2.8-65.v052c39de79b_2</version>
+        <version>0.2.16-86.v42e010d9484b_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
