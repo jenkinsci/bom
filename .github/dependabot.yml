@@ -11,6 +11,8 @@ updates:
     ignore:
       - dependency-name: "org.jenkins-ci.plugins:script-security"
         versions: ["1310.vf24a_dfce068b"]
+      - dependency-name: "io.jenkins.plugins:custom-folder-icon"
+        versions: ["2.11"]
     schedule:
       interval: "daily"
   - package-ecosystem: "github-actions"
