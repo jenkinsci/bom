@@ -8,6 +8,9 @@ updates:
   - package-ecosystem: "maven"
     open-pull-requests-limit: 25
     directory: "/bom-weekly"
+    ignore:
+      - dependency-name: "org.jenkins-ci.plugins:script-security"
+        versions: ["1310.vf24a_dfce068b"]
     schedule:
       interval: "daily"
   - package-ecosystem: "github-actions"
