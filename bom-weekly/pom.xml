@@ -162,6 +162,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>asm-api</artifactId>
+        <version>9.6-3.v2e1fa_b_338cd7</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>aws-global-configuration</artifactId>
         <version>128.ve2c5685a_09c3</version>
       </dependency>
