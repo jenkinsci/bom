@@ -19,6 +19,7 @@ if ! [[ $PLUGINS =~ blueocean || $PLUGINS =~ pipeline-maven ]]; then
 	#
 	PCT_D_ARGS+='-DforkCount=.75C '
 fi
+PCT_D_ARGS+="${PCT_OPTS-}"
 
 exec java \
 	-jar target/pct.jar \

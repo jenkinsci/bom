@@ -191,6 +191,15 @@ DOCKERIZED=true
 
 to reproduce image-specific failures.
 
+You can also pass
+
+```sh
+PCT_OPTS=--local-checkout-dir=/path/to/plugin
+```
+
+to check a local patch without waiting for incrementals deployment,
+if you have switched the version in `bom-weekly/pom.xml` to a `*-SNAPSHOT`.
+
 To minimize cloud resources, PCT is not run at all by default on pull requests, only some basic sanity checks.
 Add the label `full-test` to run PCT in a PR.
 If you lack triage permission and so cannot add this label, then you may instead
