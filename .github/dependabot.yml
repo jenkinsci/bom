@@ -9,8 +9,6 @@ updates:
     open-pull-requests-limit: 25
     directory: "/bom-weekly"
     ignore:
-      - dependency-name: "org.jenkins-ci.plugins:script-security"
-        versions: ["1310.vf24a_dfce068b_"]
       - dependency-name: "io.jenkins.plugins:custom-folder-icon"
         versions: ["2.11"]
     schedule:
