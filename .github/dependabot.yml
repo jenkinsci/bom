@@ -8,9 +8,6 @@ updates:
   - package-ecosystem: "maven"
     open-pull-requests-limit: 25
     directory: "/bom-weekly"
-    ignore:
-      - dependency-name: "io.jenkins.plugins:custom-folder-icon"
-        versions: ["2.11"]
     schedule:
       interval: "daily"
   - package-ecosystem: "github-actions"
