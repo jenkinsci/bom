@@ -19,7 +19,6 @@ if ! [[ $PLUGINS =~ blueocean || $PLUGINS =~ pipeline-maven ]]; then
 	#
 	PCT_D_ARGS+='-DforkCount=.75C '
 fi
-PCT_D_ARGS+="${PCT_OPTS-}"
 
 exec java \
 	-jar target/pct.jar \
@@ -28,6 +27,7 @@ exec java \
 	--include-plugins "${PLUGINS}" \
 	--working-dir "$(pwd)/target/pct-work" \
 	$PCT_D_ARGS \
+	${PCT_OPTS-} \
 	-Djth.jenkins-war.path="$(pwd)/target/megawar-$LINE.war" \
 	-Dsurefire.excludesFile="$(pwd)/excludes.txt"
 
