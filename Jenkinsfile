@@ -90,6 +90,9 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
       return
     }
     pluginsByRepository.each { repository, plugins ->
+      if (repository == 'declarative-pipeline-migration-assistant-plugin') {
+        return
+      }
       branches["pct-$repository-$line"] = {
         def jdk = line == 'weekly' ? 21 : 11
         mavenEnv(jdk: jdk, nodePool: true) {
