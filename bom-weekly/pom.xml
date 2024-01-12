@@ -16,6 +16,7 @@
     <cloudbees-folder-plugin.version>6.858.v898218f3609d</cloudbees-folder-plugin.version>
     <configuration-as-code-plugin.version>1756.v2b_7eea_874392</configuration-as-code-plugin.version>
     <data-tables-api.version>1.13.8-2</data-tables-api.version>
+    <declarative-pipeline-migration-assistant-plugin.version>1.6.1</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>2.3.0</forensics-api.version>
     <github-api-plugin.version>1.318-461.v7a_c09c9fa_d63</github-api-plugin.version>
     <git-plugin.version>5.2.1</git-plugin.version>
@@ -1055,6 +1056,16 @@
         <groupId>org.jenkins-ci.plugins.pipeline-stage-view</groupId>
         <artifactId>pipeline-stage-view</artifactId>
         <version>${pipeline-stage-view-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins.to-declarative</groupId>
+        <artifactId>declarative-pipeline-migration-assistant</artifactId>
+        <version>${declarative-pipeline-migration-assistant-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins.to-declarative</groupId>
+        <artifactId>declarative-pipeline-migration-assistant-api</artifactId>
+        <version>${declarative-pipeline-migration-assistant-plugin.version}</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
