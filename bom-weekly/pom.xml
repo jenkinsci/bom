@@ -9,14 +9,14 @@
   <artifactId>bom-weekly</artifactId>
   <packaging>pom</packaging>
   <properties>
-    <aws-java-sdk-plugin.version>1.12.610-428.v849169a_01b_a_5</aws-java-sdk-plugin.version>
+    <aws-java-sdk-plugin.version>1.12.633-430.vf9a_e567a_244f</aws-java-sdk-plugin.version>
     <blueocean-plugin.version>1.27.9</blueocean-plugin.version>
     <branch-api-plugin.version>2.1144.v1425d1c3d5a_7</branch-api-plugin.version>
     <checks-api.version>2.0.2</checks-api.version>
     <cloudbees-folder-plugin.version>6.858.v898218f3609d</cloudbees-folder-plugin.version>
     <configuration-as-code-plugin.version>1756.v2b_7eea_874392</configuration-as-code-plugin.version>
     <data-tables-api.version>1.13.8-2</data-tables-api.version>
-    <declarative-pipeline-migration-assistant-plugin.version>1.6.1</declarative-pipeline-migration-assistant-plugin.version>
+    <declarative-pipeline-migration-assistant-plugin.version>1.6.2</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>2.3.0</forensics-api.version>
     <github-api-plugin.version>1.318-461.v7a_c09c9fa_d63</github-api-plugin.version>
     <git-plugin.version>5.2.1</git-plugin.version>
@@ -30,7 +30,7 @@
     <scm-api-plugin.version>683.vb_16722fb_b_80b_</scm-api-plugin.version>
     <subversion-plugin.version>2.17.3</subversion-plugin.version>
     <workflow-api-plugin.version>1283.v99c10937efcb_</workflow-api-plugin.version>
-    <workflow-cps-plugin.version>3832.vc43e04d6d68c</workflow-cps-plugin.version>
+    <workflow-cps-plugin.version>3837.v305192405b_c0</workflow-cps-plugin.version>
     <workflow-job-plugin.version>1385.vb_58b_86ea_fff1</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>770.v1a_d0708dd1f6</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>639.v6eca_cd8c04a_a_</workflow-step-api-plugin.version>
@@ -403,7 +403,7 @@
       <dependency>
         <groupId>org.6wind.jenkins</groupId>
         <artifactId>lockable-resources</artifactId>
-        <version>1224.v5e9500f98269</version>
+        <version>1228.v1b_2379444670</version>
       </dependency>
       <dependency>
         <groupId>org.csanchez.jenkins.plugins</groupId>
