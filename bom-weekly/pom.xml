@@ -632,7 +632,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>github-branch-source</artifactId>
-        <version>1771.v59b_6a_fa_1b_89e</version>
+        <version>1772.va_69eda_d018d4</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
