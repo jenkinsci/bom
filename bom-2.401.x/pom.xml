@@ -31,6 +31,11 @@
         <version>${configuration-as-code-plugin.version}</version>
       </dependency>
       <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>pipeline-groovy-lib</artifactId>
+        <version>689.veec561a_dee13</version>
+      </dependency>
+      <dependency>
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
         <artifactId>workflow-job</artifactId>
         <version>1326.ve643e00e9220</version>
