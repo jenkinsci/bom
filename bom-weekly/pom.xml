@@ -14,7 +14,7 @@
     <branch-api-plugin.version>2.1144.v1425d1c3d5a_7</branch-api-plugin.version>
     <checks-api.version>2.0.2</checks-api.version>
     <cloudbees-folder-plugin.version>6.858.v898218f3609d</cloudbees-folder-plugin.version>
-    <configuration-as-code-plugin.version>1756.v2b_7eea_874392</configuration-as-code-plugin.version>
+    <configuration-as-code-plugin.version>1775.v810dc950b_514</configuration-as-code-plugin.version>
     <data-tables-api.version>1.13.8-2</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.2</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>2.3.0</forensics-api.version>
@@ -33,7 +33,7 @@
     <workflow-cps-plugin.version>3837.v305192405b_c0</workflow-cps-plugin.version>
     <workflow-job-plugin.version>1385.vb_58b_86ea_fff1</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>770.v1a_d0708dd1f6</workflow-multibranch-plugin.version>
-    <workflow-step-api-plugin.version>639.v6eca_cd8c04a_a_</workflow-step-api-plugin.version>
+    <workflow-step-api-plugin.version>653.v84d381622a_a_d</workflow-step-api-plugin.version>
     <workflow-support-plugin.version>865.v43e78cc44e0d</workflow-support-plugin.version>
   </properties>
   <dependencyManagement>
@@ -403,7 +403,7 @@
       <dependency>
         <groupId>org.6wind.jenkins</groupId>
         <artifactId>lockable-resources</artifactId>
-        <version>1228.v1b_2379444670</version>
+        <version>1232.v512d6c434eb_d</version>
       </dependency>
       <dependency>
         <groupId>org.csanchez.jenkins.plugins</groupId>
@@ -423,7 +423,7 @@
       <dependency>
         <groupId>org.jenkins-ci.modules</groupId>
         <artifactId>sshd</artifactId>
-        <version>3.312.v1c601b_c83b_0e</version>
+        <version>3.322.v159e91f6a_550</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -545,7 +545,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>database</artifactId>
-        <version>191.vd5981b_97a_5fa_</version>
+        <version>230.v701f20b_8b_f95</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
