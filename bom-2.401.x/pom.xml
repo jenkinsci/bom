@@ -31,6 +31,11 @@
         <version>${configuration-as-code-plugin.version}</version>
       </dependency>
       <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>database</artifactId>
+        <version>191.vd5981b_97a_5fa_</version>
+      </dependency>
+      <dependency>
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
         <artifactId>workflow-job</artifactId>
         <version>1326.ve643e00e9220</version>
