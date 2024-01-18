@@ -10,6 +10,7 @@
   <packaging>pom</packaging>
   <properties>
     <configuration-as-code-plugin.version>1700.v6f448841296e</configuration-as-code-plugin.version>
+    <workflow-step-api-plugin.version>639.v6eca_cd8c04a_a_</workflow-step-api-plugin.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -39,6 +40,17 @@
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
         <artifactId>workflow-job</artifactId>
         <version>1326.ve643e00e9220</version>
+        <classifier>tests</classifier>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins.workflow</groupId>
+        <artifactId>workflow-step-api</artifactId>
+        <version>${workflow-step-api-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins.workflow</groupId>
+        <artifactId>workflow-step-api</artifactId>
+        <version>${workflow-step-api-plugin.version}</version>
         <classifier>tests</classifier>
       </dependency>
       <dependency>
