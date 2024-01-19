@@ -11,7 +11,7 @@ updates:
     schedule:
       interval: "daily"
     ignore:
-      - dependency-name: "org.jenkins-ci.plugins.workflow:org.jenkins-ci.plugins.workflow"
+      - dependency-name: "org.jenkins-ci.plugins.workflow:workflow-step-api"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
