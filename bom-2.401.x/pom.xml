@@ -39,6 +39,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>credentials-binding</artifactId>
+        <version>642.v737c34dea_6c2</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>database</artifactId>
         <version>191.vd5981b_97a_5fa_</version>
       </dependency>

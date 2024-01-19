@@ -10,8 +10,6 @@ updates:
     directory: "/bom-weekly"
     schedule:
       interval: "daily"
-    ignore:
-      - dependency-name: "org.jenkins-ci.plugins.workflow:workflow-step-api"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
