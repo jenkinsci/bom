@@ -6,13 +6,13 @@
     <artifactId>parent</artifactId>
     <version>${changelist}</version>
   </parent>
-  <artifactId>bom-2.426.x</artifactId>
+  <artifactId>bom-2.440.x</artifactId>
   <packaging>pom</packaging>
   <dependencyManagement>
     <dependencies>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>bom-2.440.x</artifactId>
+        <artifactId>bom-weekly</artifactId>
         <version>${project.version}</version>
         <type>pom</type>
         <scope>import</scope>
