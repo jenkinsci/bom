@@ -23,7 +23,6 @@
     <module>bom-2.440.x</module>
     <module>bom-2.426.x</module>
     <module>bom-2.414.x</module>
-    <module>bom-2.401.x</module>
     <module>sample-plugin</module>
   </modules>
   <scm child.scm.connection.inherit.append.path="false" child.scm.developerConnection.inherit.append.path="false" child.scm.url.inherit.append.path="false">

@@ -998,12 +998,5 @@
         <jenkins.version>2.414.3</jenkins.version>
       </properties>
     </profile>
-    <profile>
-      <id>2.401.x</id>
-      <properties>
-        <bom>2.401.x</bom>
-        <jenkins.version>2.401.3</jenkins.version>
-      </properties>
-    </profile>
   </profiles>
 </project>
