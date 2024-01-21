@@ -224,6 +224,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>database-mariadb</artifactId>
+        <version>35.va_ea_62c1d0f0a_</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>echarts-api</artifactId>
         <version>5.4.3-2</version>
       </dependency>
@@ -332,6 +337,16 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>json-path-api</artifactId>
         <version>2.8.0-21.v8b_7dc8b_1037b_</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>mariadb-api</artifactId>
+        <version>3.3.2-23.va_d9b_cb_b_2d46c</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>mysql-api</artifactId>
+        <version>8.3.0-21.v2837a_a_360d57</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -551,6 +566,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>database-h2</artifactId>
         <version>1.4.97.v8b_21e67e883a_</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>database-mysql</artifactId>
+        <version>63.va_0596d2b_1438</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
