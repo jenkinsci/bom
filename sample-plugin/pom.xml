@@ -208,6 +208,11 @@
     </dependency>
     <dependency>
       <groupId>io.jenkins.plugins</groupId>
+      <artifactId>database-mariadb</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.jenkins.plugins</groupId>
       <artifactId>echarts-api</artifactId>
       <scope>test</scope>
     </dependency>
@@ -294,6 +299,16 @@
     <dependency>
       <groupId>io.jenkins.plugins</groupId>
       <artifactId>json-path-api</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.jenkins.plugins</groupId>
+      <artifactId>mariadb-api</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.jenkins.plugins</groupId>
+      <artifactId>mysql-api</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -457,6 +472,11 @@
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>database-h2</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>database-mysql</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
