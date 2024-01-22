@@ -883,7 +883,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>saml</artifactId>
-        <version>4.429.v9a_781a_61f1da_</version>
+        <version>4.464.vea_cb_75d7f5e0</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
