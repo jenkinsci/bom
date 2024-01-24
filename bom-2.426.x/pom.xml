@@ -8,6 +8,9 @@
   </parent>
   <artifactId>bom-2.426.x</artifactId>
   <packaging>pom</packaging>
+  <properties>
+    <cloudbees-folder-plugin.version>6.858.v898218f3609d</cloudbees-folder-plugin.version>
+  </properties>
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -16,6 +19,17 @@
         <version>${project.version}</version>
         <type>pom</type>
         <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>cloudbees-folder</artifactId>
+        <version>${cloudbees-folder-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>cloudbees-folder</artifactId>
+        <version>${cloudbees-folder-plugin.version}</version>
+        <classifier>tests</classifier>
       </dependency>
     </dependencies>
   </dependencyManagement>
