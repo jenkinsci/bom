@@ -535,7 +535,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>config-file-provider</artifactId>
-        <version>959.vcff671a_4518b_</version>
+        <version>968.ve1ca_eb_913f8c</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
