@@ -23,7 +23,8 @@
     <junit-plugin.version>1256.v002534a_5f33e</junit-plugin.version>
     <mina-sshd-api.version>2.12.0-90.v9f7fb_9fa_3d3b_</mina-sshd-api.version>
     <okhttp-api-plugin.version>4.11.0-157.v6852a_a_fa_ec11</okhttp-api-plugin.version>
-    <pipeline-maven-plugin.version>1376.v18876d10ce9c</pipeline-maven-plugin.version>
+    <!-- TODO https://github.com/jenkinsci/pipeline-maven-plugin/pull/753 -->
+    <pipeline-maven-plugin.version>1379.vc04523d97cb_1</pipeline-maven-plugin.version>
     <pipeline-model-definition-plugin.version>2.2175.v76a_fff0a_2618</pipeline-model-definition-plugin.version>
     <pipeline-stage-view-plugin.version>2.34</pipeline-stage-view-plugin.version>
     <plugin-util-api.version>3.8.0</plugin-util-api.version>
@@ -42,7 +43,8 @@
       <dependency>
         <groupId>com.coravy.hudson.plugins.github</groupId>
         <artifactId>github</artifactId>
-        <version>1.37.3.1</version>
+        <!-- TODO https://github.com/jenkinsci/github-plugin/pull/374 -->
+        <version>1.37.3.2-rc819.7a_e54e89f0a_e</version>
       </dependency>
       <dependency>
         <groupId>com.sonyericsson.hudson.plugins.rebuild</groupId>
