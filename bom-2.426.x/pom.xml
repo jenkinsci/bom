@@ -33,6 +33,11 @@
         <classifier>tests</classifier>
       </dependency>
       <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>pipeline-input-step</artifactId>
+        <version>477.v339683a_8d55e</version>
+      </dependency>
+      <dependency>
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
         <artifactId>workflow-job</artifactId>
         <version>${workflow-job-plugin.version}</version>
