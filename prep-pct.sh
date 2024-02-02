@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-set -euxo pipefail
+
+set -euo pipefail
+
 cd "$(dirname "${0}")"
 
 # Tracked by .github/renovate.json

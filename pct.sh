@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-set -euxo pipefail
+
+set -euo pipefail
+
 cd "$(dirname "$0")"
 
 # expects: excludes.txt, target/megawar-$LINE.war, target/pct.jar, $PLUGINS, $LINE

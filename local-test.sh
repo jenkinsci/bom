@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -euxo pipefail
+set -euo pipefail
 
 cd "$(dirname "$0")"
 
@@ -22,7 +22,7 @@ else
 	EXTRA_MAVEN_PROPERTIES=
 fi
 
-if [[ "${DOCKERIZED-}" == "true" ]]; then
+if [[ ${DOCKERIZED-} == "true" ]]; then
 	docker volume inspect m2repo || docker volume create m2repo
 	docker run \
 		-v ~/.m2:/var/maven/.m2 \

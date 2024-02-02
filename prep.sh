@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-set -euxo pipefail
+
+set -euo pipefail
+
 cd "$(dirname "${0}")"
 
 mvn clean install ${SAMPLE_PLUGIN_OPTS:-}
