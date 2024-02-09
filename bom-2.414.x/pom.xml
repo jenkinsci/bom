@@ -77,6 +77,17 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>dashboard-view</artifactId>
+        <version>2.495.v07e81500c3f2</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>dashboard-view</artifactId>
+        <version>2.495.v07e81500c3f2</version>
+        <classifier>tests</classifier>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>scm-api</artifactId>
         <version>${scm-api-plugin.version}</version>
       </dependency>
