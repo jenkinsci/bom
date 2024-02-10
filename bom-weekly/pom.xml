@@ -239,6 +239,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>flyway-api</artifactId>
+        <version>9.22.3-59.v256230cf4a_09</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>font-awesome-api</artifactId>
         <version>6.5.1-2</version>
       </dependency>
