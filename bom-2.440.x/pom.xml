@@ -8,6 +8,10 @@
   </parent>
   <artifactId>bom-2.440.x</artifactId>
   <packaging>pom</packaging>
+  <properties>
+    <cloudbees-folder-plugin.version>6.901.vb_4c7a_da_75da_3</cloudbees-folder-plugin.version>
+    <workflow-multibranch-plugin.version>773.vc4fe1378f1d5</workflow-multibranch-plugin.version>
+  </properties>
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -16,6 +20,28 @@
         <version>${project.version}</version>
         <type>pom</type>
         <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>cloudbees-folder</artifactId>
+        <version>${cloudbees-folder-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>cloudbees-folder</artifactId>
+        <version>${cloudbees-folder-plugin.version}</version>
+        <classifier>tests</classifier>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins.workflow</groupId>
+        <artifactId>workflow-multibranch</artifactId>
+        <version>${workflow-multibranch-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins.workflow</groupId>
+        <artifactId>workflow-multibranch</artifactId>
+        <version>${workflow-multibranch-plugin.version}</version>
+        <classifier>tests</classifier>
       </dependency>
     </dependencies>
   </dependencyManagement>
