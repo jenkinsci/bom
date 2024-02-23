@@ -52,13 +52,13 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
-        <artifactId>plugin-util-api</artifactId>
-        <version>${plugin-util-api.version}</version>
+        <artifactId>font-awesome-api</artifactId>
+        <version>6.5.1-2</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
-        <artifactId>font-awesome-api</artifactId>
-        <version>6.5.1-2</version>
+        <artifactId>plugin-util-api</artifactId>
+        <version>${plugin-util-api.version}</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
