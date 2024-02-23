@@ -11,6 +11,7 @@
   <properties>
     <branch-api-plugin.version>2.1128.v717130d4f816</branch-api-plugin.version>
     <data-tables-api.version>1.13.6-5</data-tables-api.version>
+    <forensics-api.version>2.3.0</forensics-api.version>
     <pipeline-model-definition-plugin.version>2.2150.v4cfd8916915c</pipeline-model-definition-plugin.version>
     <plugin-util-api.version>3.8.0</plugin-util-api.version>
     <scm-api-plugin.version>676.v886669a_199a_a_</scm-api-plugin.version>
@@ -59,6 +60,17 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>font-awesome-api</artifactId>
         <version>6.5.1-2</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>forensics-api</artifactId>
+        <version>${forensics-api.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>forensics-api</artifactId>
+        <version>${forensics-api.version}</version>
+        <classifier>tests</classifier>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
