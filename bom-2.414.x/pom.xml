@@ -12,6 +12,7 @@
     <branch-api-plugin.version>2.1128.v717130d4f816</branch-api-plugin.version>
     <data-tables-api.version>1.13.6-5</data-tables-api.version>
     <pipeline-model-definition-plugin.version>2.2150.v4cfd8916915c</pipeline-model-definition-plugin.version>
+    <plugin-util-api.version>3.8.0</plugin-util-api.version>
     <scm-api-plugin.version>676.v886669a_199a_a_</scm-api-plugin.version>
   </properties>
   <dependencyManagement>
@@ -48,6 +49,17 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>echarts-api</artifactId>
         <version>5.4.0-7</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>plugin-util-api</artifactId>
+        <version>${plugin-util-api.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>plugin-util-api</artifactId>
+        <version>${plugin-util-api.version}</version>
+        <classifier>tests</classifier>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
