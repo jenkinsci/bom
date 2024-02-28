@@ -10,9 +10,9 @@ LATEST_LINE=weekly
 : "${LINE:=$LATEST_LINE}"
 
 if [[ -n "${SAMPLE_PLUGIN_OPTS:-}" ]]; then
-  SAMPLE_PLUGIN_OPTS+=' -Dtest=InjectedTest'
+	SAMPLE_PLUGIN_OPTS+=' -Dtest=InjectedTest'
 else
-  SAMPLE_PLUGIN_OPTS=-Dtest=InjectedTest
+	SAMPLE_PLUGIN_OPTS=-Dtest=InjectedTest
 fi
 if [[ $LINE != "${LATEST_LINE}" ]]; then
 	SAMPLE_PLUGIN_OPTS+=" -P${LINE}"
