@@ -229,6 +229,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>database-sqlserver</artifactId>
+        <version>15.vcee70121b_510</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>echarts-api</artifactId>
         <version>5.4.3-4</version>
       </dependency>
