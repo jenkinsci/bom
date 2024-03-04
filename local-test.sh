@@ -9,7 +9,7 @@ cd "$(dirname "$0")"
 LATEST_LINE=weekly
 : "${LINE:=$LATEST_LINE}"
 
-if [[ -z "${SAMPLE_PLUGIN_OPTS:-}" ]]; then
+if [[ -z ${SAMPLE_PLUGIN_OPTS-} ]]; then
 	SAMPLE_PLUGIN_OPTS="-Dtest=InjectedTest"
 fi
 if [[ $LINE != "${LATEST_LINE}" ]]; then
