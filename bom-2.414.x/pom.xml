@@ -116,6 +116,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>credentials</artifactId>
+        <version>1319.v7eb_51b_3a_c97b_</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>dashboard-view</artifactId>
         <version>2.495.v07e81500c3f2</version>
       </dependency>
