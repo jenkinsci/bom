@@ -30,7 +30,7 @@
     <scm-api-plugin.version>683.vb_16722fb_b_80b_</scm-api-plugin.version>
     <subversion-plugin.version>2.17.3</subversion-plugin.version>
     <workflow-api-plugin.version>1291.v51fd2a_625da_7</workflow-api-plugin.version>
-    <workflow-cps-plugin.version>3867.v535458ce43fd</workflow-cps-plugin.version>
+    <workflow-cps-plugin.version>3880.vb_ef4b_5cfd270</workflow-cps-plugin.version>
     <workflow-job-plugin.version>1400.v7fd111b_ec82f</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>783.va_6eb_ef636fb_d</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>657.v03b_e8115821b_</workflow-step-api-plugin.version>
@@ -209,7 +209,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>dark-theme</artifactId>
-        <version>416.v535839b_c4e88</version>
+        <version>439.vdef09f81f85e</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -229,6 +229,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>database-sqlserver</artifactId>
+        <version>15.vcee70121b_510</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>echarts-api</artifactId>
         <version>5.4.3-4</version>
       </dependency>
@@ -240,7 +245,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>flyway-api</artifactId>
-        <version>9.22.3-63.v51799961cec6</version>
+        <version>9.22.3-75.vfdfb_f75a_a_9b_e</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -514,7 +519,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>cloudbees-bitbucket-branch-source</artifactId>
-        <version>876.v857269a_5f439</version>
+        <version>877.vb_b_d5243f6794</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -828,7 +833,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pipeline-graph-analysis</artifactId>
-        <version>202.va_d268e64deb_3</version>
+        <version>216.vfd8b_ece330ca_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -883,7 +888,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>role-strategy</artifactId>
-        <version>689.v731678c3e0eb_</version>
+        <version>711.vf33a_d2c994b_a_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -960,7 +965,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>support-core</artifactId>
-        <version>1386.vc7f0a_46f9e6c</version>
+        <version>1402.va_cfa_c685d735</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
