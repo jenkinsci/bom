@@ -443,7 +443,8 @@
       <dependency>
         <groupId>org.jenkins-ci.main</groupId>
         <artifactId>maven-plugin</artifactId>
-        <version>3.23</version>
+        <!-- TODO https://github.com/jenkinsci/maven-plugin/pull/321 -->
+        <version>3.24-rc2438.f46a_e7e696ed</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.modules</groupId>
@@ -625,7 +626,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>email-ext</artifactId>
-        <version>2.104</version>
+        <version>2.105</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -778,7 +779,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>mailer</artifactId>
-        <version>463.vedf8358e006b_</version>
+        <version>470.vc91f60c5d8e2</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1116,7 +1117,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
         <artifactId>workflow-basic-steps</artifactId>
-        <version>1042.ve7b_140c4a_e0c</version>
+        <!-- TODO https://github.com/jenkinsci/workflow-basic-steps-plugin/pull/300 -->
+        <version>1047.v15a_6cfcb_268e</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
