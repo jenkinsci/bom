@@ -682,7 +682,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>google-compute-engine</artifactId>
-        <version>4.562.v5ed247b_e6b_42</version>
+        <version>4.563.vfa_446a_7e00a_d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
