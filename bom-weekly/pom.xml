@@ -438,7 +438,7 @@
       <dependency>
         <groupId>org.csanchez.jenkins.plugins</groupId>
         <artifactId>kubernetes</artifactId>
-        <version>4193.vded98e56cc25</version>
+        <version>4198.v5da_9435c6c3e</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.main</groupId>
