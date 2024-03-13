@@ -230,7 +230,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>database-sqlserver</artifactId>
-        <version>15.vcee70121b_510</version>
+        <version>21.v7a_a_b_a_85c9491</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -438,7 +438,7 @@
       <dependency>
         <groupId>org.csanchez.jenkins.plugins</groupId>
         <artifactId>kubernetes</artifactId>
-        <version>4193.vded98e56cc25</version>
+        <version>4198.v5da_9435c6c3e</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.main</groupId>
@@ -965,7 +965,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>support-core</artifactId>
-        <version>1408.vf28a_13c74f1d</version>
+        <version>1413.v8021b_0f777dc</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
