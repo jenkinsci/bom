@@ -965,7 +965,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>support-core</artifactId>
-        <version>1413.v8021b_0f777dc</version>
+        <version>1416.v3a_46b_9b_c041a_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
