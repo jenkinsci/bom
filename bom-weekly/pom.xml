@@ -433,7 +433,7 @@
       <dependency>
         <groupId>org.6wind.jenkins</groupId>
         <artifactId>lockable-resources</artifactId>
-        <version>1245.vb_05f8a_4e28db_</version>
+        <version>1246.v28b_e4cc6fa_16</version>
       </dependency>
       <dependency>
         <groupId>org.csanchez.jenkins.plugins</groupId>
