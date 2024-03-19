@@ -142,6 +142,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>jacoco</artifactId>
+        <version>3.3.5</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>role-strategy</artifactId>
         <version>689.v731678c3e0eb_</version>
       </dependency>
