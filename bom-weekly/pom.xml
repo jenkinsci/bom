@@ -773,7 +773,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ldap</artifactId>
-        <version>711.vb_d1a_491714dc</version>
+        <version>719.vcb_d039b_77d0d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
