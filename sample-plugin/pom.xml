@@ -831,12 +831,32 @@
     </dependency>
     <dependency>
       <groupId>org.jenkins-ci.plugins.aws-java-sdk</groupId>
+      <artifactId>aws-java-sdk-api-gateway</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins.aws-java-sdk</groupId>
+      <artifactId>aws-java-sdk-autoscaling</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins.aws-java-sdk</groupId>
       <artifactId>aws-java-sdk-cloudformation</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.jenkins-ci.plugins.aws-java-sdk</groupId>
+      <artifactId>aws-java-sdk-cloudfront</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins.aws-java-sdk</groupId>
       <artifactId>aws-java-sdk-codebuild</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins.aws-java-sdk</groupId>
+      <artifactId>aws-java-sdk-codedeploy</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -866,7 +886,22 @@
     </dependency>
     <dependency>
       <groupId>org.jenkins-ci.plugins.aws-java-sdk</groupId>
+      <artifactId>aws-java-sdk-elasticloadbalancingv2</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins.aws-java-sdk</groupId>
       <artifactId>aws-java-sdk-iam</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins.aws-java-sdk</groupId>
+      <artifactId>aws-java-sdk-kinesis</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins.aws-java-sdk</groupId>
+      <artifactId>aws-java-sdk-lambda</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -877,6 +912,11 @@
     <dependency>
       <groupId>org.jenkins-ci.plugins.aws-java-sdk</groupId>
       <artifactId>aws-java-sdk-minimal</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins.aws-java-sdk</groupId>
+      <artifactId>aws-java-sdk-organizations</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
