@@ -8,6 +8,10 @@ updates:
   - package-ecosystem: "maven"
     open-pull-requests-limit: 25
     directory: "/bom-weekly"
+    ignore:
+      # Remove when https://github.com/jenkinsci/subversion-plugin/pull/284 is released
+      - dependency-name: "org.jenkins-ci.plugins:ssh-credentials"
+        versions: ["326.v7fcb_a_ef6194b_"]
     schedule:
       interval: "daily"
   - package-ecosystem: "github-actions"
