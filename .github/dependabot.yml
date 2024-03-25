@@ -9,7 +9,8 @@ updates:
     open-pull-requests-limit: 25
     directory: "/bom-weekly"
     ignore:
-      # Remove when https://github.com/jenkinsci/subversion-plugin/pull/284 is released
+      # Remove when https://github.com/jenkinsci/subversion-plugin/pull/284 is released and mina-sshd-api-core test failure is resolved
+      # https://github.com/jenkinsci/bom/pull/3049 has more details
       - dependency-name: "org.jenkins-ci.plugins:ssh-credentials"
         versions: ["326.v7fcb_a_ef6194b_"]
     schedule:
