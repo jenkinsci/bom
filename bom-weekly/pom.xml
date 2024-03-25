@@ -939,7 +939,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ssh-credentials</artifactId>
-        <version>326.v7fcb_a_ef6194b_</version>
+        <version>322.v124df57ed808</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
