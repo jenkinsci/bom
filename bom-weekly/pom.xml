@@ -594,6 +594,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>database-sqlite</artifactId>
+        <version>1.6</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>display-url-api</artifactId>
         <version>2.200.vb_9327d658781</version>
       </dependency>
