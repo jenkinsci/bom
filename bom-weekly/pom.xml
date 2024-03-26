@@ -28,9 +28,9 @@
     <pipeline-stage-view-plugin.version>2.34</pipeline-stage-view-plugin.version>
     <plugin-util-api.version>4.1.0</plugin-util-api.version>
     <scm-api-plugin.version>689.v237b_6d3a_ef7f</scm-api-plugin.version>
-    <subversion-plugin.version>2.17.3</subversion-plugin.version>
+    <subversion-plugin.version>1256.vee91953217b_6</subversion-plugin.version>
     <workflow-api-plugin.version>1291.v51fd2a_625da_7</workflow-api-plugin.version>
-    <workflow-cps-plugin.version>3883.vb_3ff2a_e3eea_f</workflow-cps-plugin.version>
+    <workflow-cps-plugin.version>3889.v937e0b_3412d3</workflow-cps-plugin.version>
     <workflow-job-plugin.version>1400.v7fd111b_ec82f</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>783.va_6eb_ef636fb_d</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>657.v03b_e8115821b_</workflow-step-api-plugin.version>
@@ -316,7 +316,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>jersey2-api</artifactId>
-        <version>2.41-133.va_03323b_a_1396</version>
+        <version>2.42-147.va_28a_44603b_d5</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
