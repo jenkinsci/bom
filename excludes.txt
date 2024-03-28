@@ -18,3 +18,7 @@ org.jenkinsci.plugins.pipeline.modeldefinition.TriggersTest
 # TODO https://github.com/jenkinsci/pipeline-model-definition-plugin/pull/660
 org.jenkinsci.plugins.pipeline.modeldefinition.endpoints.ErrorsEndpointOpsTest
 org.jenkinsci.plugins.pipeline.modeldefinition.validator.ErrorsJSONParserTest
+
+# TODO https://github.com/jenkinsci/lockable-resources-plugin/issues/634
+org.jenkins.plugins.lockableresources.LockableResourceApiTest#reserveUnreserveApi
+org.jenkins.plugins.lockableresources.LockStepTest#unlockButtonWithWaitingRuns
