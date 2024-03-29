@@ -15,7 +15,7 @@
     <checks-api.version>2.0.2</checks-api.version>
     <cloudbees-folder-plugin.version>6.928.v7c780211d66e</cloudbees-folder-plugin.version>
     <configuration-as-code-plugin.version>1775.v810dc950b_514</configuration-as-code-plugin.version>
-    <data-tables-api.version>1.13.8-4</data-tables-api.version>
+    <data-tables-api.version>2.0.2-1</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.3</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>2.4.0</forensics-api.version>
     <github-api-plugin.version>1.318-461.v7a_c09c9fa_d63</github-api-plugin.version>
@@ -493,7 +493,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>aws-credentials</artifactId>
-        <version>218.v1b_e9466ec5da_</version>
+        <version>231.v08a_59f17d742</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -519,7 +519,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>cloudbees-bitbucket-branch-source</artifactId>
-        <version>880.vcf4056c5a_71f</version>
+        <version>883.v041fa_695e9c2</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
