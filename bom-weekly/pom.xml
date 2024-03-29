@@ -788,7 +788,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>mapdb-api</artifactId>
-        <version>1.0.9-28.vf251ce40855d</version>
+        <version>1.0.9-40.v58107308b_7a_7</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
