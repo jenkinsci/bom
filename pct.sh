@@ -29,6 +29,7 @@ exec java \
 	$PCT_D_ARGS \
 	${PCT_OPTS-} \
 	-Djth.jenkins-war.path="$(pwd)/target/megawar-$LINE.war" \
+	-Djenkins-test-harness.version=2182.v0138ccb_c0b_cb_ \
 	-Dsurefire.excludesFile="$(pwd)/excludes.txt"
 
 # produces: **/target/surefire-reports/TEST-*.xml
