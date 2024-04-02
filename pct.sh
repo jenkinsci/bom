@@ -20,6 +20,7 @@ if ! [[ $PLUGINS =~ blueocean || $PLUGINS =~ pipeline-maven ]]; then
 	PCT_D_ARGS+='-DforkCount=.75C '
 fi
 
+# TODO https://github.com/jenkinsci/jenkins-test-harness/pull/734
 exec java \
 	-jar target/pct.jar \
 	test-plugins \
@@ -29,6 +30,7 @@ exec java \
 	$PCT_D_ARGS \
 	${PCT_OPTS-} \
 	-Djth.jenkins-war.path="$(pwd)/target/megawar-$LINE.war" \
+	-Djenkins-test-harness.version=2184.v7da_f7da_69c94 \
 	-Dsurefire.excludesFile="$(pwd)/excludes.txt"
 
 # produces: **/target/surefire-reports/TEST-*.xml
