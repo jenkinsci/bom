@@ -1061,7 +1061,7 @@
       <id>2.440.x</id>
       <properties>
         <bom>2.440.x</bom>
-        <jenkins.version>2.440.1</jenkins.version>
+        <jenkins.version>2.440.3-rc34568.5b_4427a_35640</jenkins.version>
       </properties>
     </profile>
     <profile>
