@@ -355,6 +355,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>markdown-formatter</artifactId>
+        <version>167.v8a_428ca_49f89</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>mysql-api</artifactId>
         <version>8.3.0-21.v2837a_a_360d57</version>
       </dependency>
