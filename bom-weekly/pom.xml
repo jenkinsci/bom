@@ -30,11 +30,11 @@
     <scm-api-plugin.version>689.v237b_6d3a_ef7f</scm-api-plugin.version>
     <subversion-plugin.version>1256.vee91953217b_6</subversion-plugin.version>
     <workflow-api-plugin.version>1291.v51fd2a_625da_7</workflow-api-plugin.version>
-    <workflow-cps-plugin.version>3889.v937e0b_3412d3</workflow-cps-plugin.version>
+    <workflow-cps-plugin.version>3894.vd0f0248b_a_fc4</workflow-cps-plugin.version>
     <workflow-job-plugin.version>1400.v7fd111b_ec82f</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>783.va_6eb_ef636fb_d</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>657.v03b_e8115821b_</workflow-step-api-plugin.version>
-    <workflow-support-plugin.version>881.v7663695646cf</workflow-support-plugin.version>
+    <workflow-support-plugin.version>896.v175a_a_9c5b_78f</workflow-support-plugin.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -47,7 +47,7 @@
       <dependency>
         <groupId>com.sonyericsson.hudson.plugins.rebuild</groupId>
         <artifactId>rebuild</artifactId>
-        <version>330.v645b_7df10e2a_</version>
+        <version>332.va_1ee476d8f6d</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins</groupId>
@@ -163,7 +163,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>asm-api</artifactId>
-        <version>9.6-3.v2e1fa_b_338cd7</version>
+        <version>9.7-33.v4d23ef79fcc8</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -286,7 +286,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>ionicons-api</artifactId>
-        <version>56.v1b_1c8c49374e</version>
+        <version>70.v2959a_b_74e3cf</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -321,7 +321,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>jjwt-api</artifactId>
-        <version>0.11.5-77.v646c772fddb_0</version>
+        <version>0.11.5-112.ve82dfb_224b_a_d</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -788,7 +788,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>mapdb-api</artifactId>
-        <version>1.0.9-28.vf251ce40855d</version>
+        <version>1.0.9-40.v58107308b_7a_7</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -863,12 +863,12 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pipeline-milestone-step</artifactId>
-        <version>111.v449306f708b_7</version>
+        <version>119.vdfdc43fc3b_9a_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pipeline-stage-step</artifactId>
-        <version>305.ve96d0205c1c6</version>
+        <version>312.v8cd10304c27a_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1177,7 +1177,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
         <artifactId>workflow-durable-task-step</artifactId>
-        <version>1331.vc8c2fed35334</version>
+        <version>1336.v768003e07199</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
