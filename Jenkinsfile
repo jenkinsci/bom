@@ -90,10 +90,6 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
       return
     }
     pluginsByRepository.each { repository, plugins ->
-      if (repository == 'pam-auth-plugin' || repository == 'sse-gateway-plugin') {
-        // TODO https://github.com/jenkins-infra/helpdesk/issues/4021
-        return
-      }
       branches["pct-$repository-$line"] = {
         def jdk = line == 'weekly' ? 21 : 11
         mavenEnv(jdk: jdk, nodePool: true) {
