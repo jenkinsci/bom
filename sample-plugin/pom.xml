@@ -14,7 +14,7 @@
   <properties>
     <changelist>999999-SNAPSHOT</changelist>
     <bom>weekly</bom>
-    <jenkins.version>2.451</jenkins.version>
+    <jenkins.version>2.452</jenkins.version>
     <spotless.check.skip>false</spotless.check.skip>
   </properties>
   <dependencyManagement>
@@ -314,6 +314,11 @@
     <dependency>
       <groupId>io.jenkins.plugins</groupId>
       <artifactId>mariadb-api</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.jenkins.plugins</groupId>
+      <artifactId>markdown-formatter</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>

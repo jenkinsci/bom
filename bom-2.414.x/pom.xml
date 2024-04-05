@@ -10,6 +10,7 @@
   <packaging>pom</packaging>
   <properties>
     <branch-api-plugin.version>2.1128.v717130d4f816</branch-api-plugin.version>
+    <checks-api.version>2.0.2</checks-api.version>
     <data-tables-api.version>1.13.6-5</data-tables-api.version>
     <forensics-api.version>2.3.0</forensics-api.version>
     <pipeline-model-definition-plugin.version>2.2150.v4cfd8916915c</pipeline-model-definition-plugin.version>
@@ -29,6 +30,17 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>bootstrap5-api</artifactId>
         <version>5.3.2-3</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>checks-api</artifactId>
+        <version>${checks-api.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>checks-api</artifactId>
+        <version>${checks-api.version}</version>
+        <classifier>tests</classifier>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -86,6 +98,11 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>json-path-api</artifactId>
         <version>2.9.0-33.v2527142f2e1d</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>markdown-formatter</artifactId>
+        <version>95.v17a_965e696ee</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>

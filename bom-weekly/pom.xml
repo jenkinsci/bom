@@ -12,10 +12,10 @@
     <aws-java-sdk-plugin.version>1.12.671-445.ve02f9b_558f2e</aws-java-sdk-plugin.version>
     <blueocean-plugin.version>1.27.11</blueocean-plugin.version>
     <branch-api-plugin.version>2.1152.v6f101e97dd77</branch-api-plugin.version>
-    <checks-api.version>2.0.2</checks-api.version>
+    <checks-api.version>2.2.0</checks-api.version>
     <cloudbees-folder-plugin.version>6.928.v7c780211d66e</cloudbees-folder-plugin.version>
     <configuration-as-code-plugin.version>1775.v810dc950b_514</configuration-as-code-plugin.version>
-    <data-tables-api.version>2.0.2-1</data-tables-api.version>
+    <data-tables-api.version>2.0.3-1</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.3</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>2.4.0</forensics-api.version>
     <github-api-plugin.version>1.318-461.v7a_c09c9fa_d63</github-api-plugin.version>
@@ -30,7 +30,7 @@
     <scm-api-plugin.version>689.v237b_6d3a_ef7f</scm-api-plugin.version>
     <subversion-plugin.version>1256.vee91953217b_6</subversion-plugin.version>
     <workflow-api-plugin.version>1291.v51fd2a_625da_7</workflow-api-plugin.version>
-    <workflow-cps-plugin.version>3889.v937e0b_3412d3</workflow-cps-plugin.version>
+    <workflow-cps-plugin.version>3894.vd0f0248b_a_fc4</workflow-cps-plugin.version>
     <workflow-job-plugin.version>1400.v7fd111b_ec82f</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>783.va_6eb_ef636fb_d</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>657.v03b_e8115821b_</workflow-step-api-plugin.version>
@@ -352,6 +352,11 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>mariadb-api</artifactId>
         <version>3.3.3-31.v2fb_e19b_1802e</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>markdown-formatter</artifactId>
+        <version>167.v8a_428ca_49f89</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -944,7 +949,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ssh-credentials</artifactId>
-        <version>334.v7732563deee1</version>
+        <version>337.v395d2403ccd4</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
