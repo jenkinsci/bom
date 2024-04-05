@@ -365,6 +365,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>oidc-provider</artifactId>
+        <version>47.v182a_02f5b_771</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>okhttp-api</artifactId>
         <version>${okhttp-api-plugin.version}</version>
       </dependency>
