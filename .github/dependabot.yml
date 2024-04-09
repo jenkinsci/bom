@@ -8,6 +8,16 @@ updates:
   - package-ecosystem: "maven"
     open-pull-requests-limit: 25
     directory: "/bom-weekly"
+    ignore:
+      # TODO: Remove exclusion when https://github.com/jenkinsci/bom/issues/3106 is fixed
+      - dependency-name: "org.jenkinsci.plugins:pipeline-model-api"
+        versions: ["2.2188.v26e255fd2984"]
+      - dependency-name: "org.jenkinsci.plugins:pipeline-model-definition"
+        versions: ["2.2188.v26e255fd2984"]
+      - dependency-name: "org.jenkinsci.plugins:pipeline-model-extensions"
+        versions: ["2.2188.v26e255fd2984"]
+      - dependency-name: "org.jenkinsci.plugins:pipeline-stage-tags-metadata"
+        versions: ["2.2188.v26e255fd2984"]
     schedule:
       interval: "daily"
   - package-ecosystem: "github-actions"
