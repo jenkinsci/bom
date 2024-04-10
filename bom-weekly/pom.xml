@@ -9,10 +9,10 @@
   <artifactId>bom-weekly</artifactId>
   <packaging>pom</packaging>
   <properties>
-    <aws-java-sdk-plugin.version>1.12.671-445.ve02f9b_558f2e</aws-java-sdk-plugin.version>
+    <aws-java-sdk-plugin.version>1.12.696-451.v0651a_da_9ca_ec</aws-java-sdk-plugin.version>
     <blueocean-plugin.version>1.27.11</blueocean-plugin.version>
     <branch-api-plugin.version>2.1152.v6f101e97dd77</branch-api-plugin.version>
-    <checks-api.version>2.0.2</checks-api.version>
+    <checks-api.version>2.2.0</checks-api.version>
     <cloudbees-folder-plugin.version>6.928.v7c780211d66e</cloudbees-folder-plugin.version>
     <configuration-as-code-plugin.version>1775.v810dc950b_514</configuration-as-code-plugin.version>
     <data-tables-api.version>2.0.3-1</data-tables-api.version>
@@ -24,7 +24,7 @@
     <mina-sshd-api.version>2.12.1-101.v85b_e08b_780dd</mina-sshd-api.version>
     <okhttp-api-plugin.version>4.11.0-172.vda_da_1feeb_c6e</okhttp-api-plugin.version>
     <pipeline-maven-plugin.version>1396.veb_f07b_2fc1d8</pipeline-maven-plugin.version>
-    <pipeline-model-definition-plugin.version>2.2184.v0b_358b_953e69</pipeline-model-definition-plugin.version>
+    <pipeline-model-definition-plugin.version>2.2188.v26e255fd2984</pipeline-model-definition-plugin.version>
     <pipeline-stage-view-plugin.version>2.34</pipeline-stage-view-plugin.version>
     <plugin-util-api.version>4.1.0</plugin-util-api.version>
     <scm-api-plugin.version>689.v237b_6d3a_ef7f</scm-api-plugin.version>
@@ -742,7 +742,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jacoco</artifactId>
-        <version>3.3.5</version>
+        <version>3.3.6</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -903,7 +903,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>role-strategy</artifactId>
-        <version>713.vb_3837801b_8cc</version>
+        <version>717.v6a_69a_fe98974</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -929,7 +929,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>script-security</artifactId>
-        <version>1326.vdb_c154de8669</version>
+        <version>1335.vf07d9ce377a_e</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -949,7 +949,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ssh-agent</artifactId>
-        <version>346.vda_a_c4f2c8e50</version>
+        <version>367.vf9076cd4ee21</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -980,7 +980,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>support-core</artifactId>
-        <version>1421.v1a_899a_c02a_54</version>
+        <version>1427.v083f1d9372a_f</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
