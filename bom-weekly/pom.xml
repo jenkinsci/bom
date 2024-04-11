@@ -366,7 +366,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>oidc-provider</artifactId>
-        <version>60.v4b_9522d31cfb_</version>
+        <version>62.vd67c19f76766</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
