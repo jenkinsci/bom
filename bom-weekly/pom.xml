@@ -560,7 +560,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>config-file-provider</artifactId>
-        <version>968.ve1ca_eb_913f8c</version>
+        <version>973.vb_a_80ecb_9a_4d0</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
