@@ -95,6 +95,7 @@ When an older Jenkins version is used, then the matching older version of the pl
 | bom-2.361.x | 2102.v854b_fec19c92   | First LTS to require Java 11 |
 | bom-2.375.x | 2198.v39c76fc308ca    |                              |
 | bom-2.387.x | 2543.vfb_1a_5fb_9496d |                              |
+| bom-2.401.x | 2745.vc7b_fe4c876fa_  |                              |
 
 The latest versions of all BOM lines are available from the [Jenkins artifact repository](https://repo.jenkins-ci.org/public/io/jenkins/tools/bom).
 
