@@ -199,7 +199,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>commons-text-api</artifactId>
-        <version>1.11.0-95.v22a_d30ee5d36</version>
+        <version>1.11.0-109.vfe16c66636eb_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
