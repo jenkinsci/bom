@@ -157,6 +157,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>analysis-model-api</artifactId>
+        <version>12.1.0</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>apache-httpcomponents-client-5-api</artifactId>
         <version>5.3.1-1.0</version>
       </dependency>
@@ -419,6 +424,11 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>theme-manager</artifactId>
         <version>215.vc1ff18d67920</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>warnings-ng</artifactId>
+        <version>11.3.0</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins.mina-sshd-api</groupId>
