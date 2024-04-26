@@ -214,7 +214,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>dark-theme</artifactId>
-        <version>453.v3f988b_c80202</version>
+        <version>460.va_de13e406a_14</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
