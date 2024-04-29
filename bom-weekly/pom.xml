@@ -158,7 +158,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>analysis-model-api</artifactId>
-        <version>12.3.0</version>
+        <version>12.3.3</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -214,7 +214,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>dark-theme</artifactId>
-        <version>453.v3f988b_c80202</version>
+        <version>460.va_de13e406a_14</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -458,12 +458,12 @@
       <dependency>
         <groupId>org.6wind.jenkins</groupId>
         <artifactId>lockable-resources</artifactId>
-        <version>1246.v28b_e4cc6fa_16</version>
+        <version>1255.vf48745da_35d0</version>
       </dependency>
       <dependency>
         <groupId>org.csanchez.jenkins.plugins</groupId>
         <artifactId>kubernetes</artifactId>
-        <version>4203.v1dd44f5b_1cf9</version>
+        <version>4208.v4017b_a_27a_d67</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.main</groupId>
@@ -590,7 +590,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>credentials-binding</artifactId>
-        <version>657.v2b_19db_7d6e6d</version>
+        <version>677.vdc9d38cb_254d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -625,7 +625,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>display-url-api</artifactId>
-        <version>2.200.vb_9327d658781</version>
+        <version>2.204.vf6fddd8a_8b_e9</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1186,7 +1186,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
         <artifactId>workflow-basic-steps</artifactId>
-        <version>1049.v257a_e6b_30fb_d</version>
+        <version>1058.vcb_fc1e3a_21a_9</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
