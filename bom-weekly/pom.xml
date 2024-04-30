@@ -13,7 +13,7 @@
     <blueocean-plugin.version>1.27.12</blueocean-plugin.version>
     <branch-api-plugin.version>2.1163.va_f1064e4a_a_f3</branch-api-plugin.version>
     <checks-api.version>2.2.0</checks-api.version>
-    <cloudbees-folder-plugin.version>6.928.v7c780211d66e</cloudbees-folder-plugin.version>
+    <cloudbees-folder-plugin.version>6.936.v3c5cd2190e9e</cloudbees-folder-plugin.version>
     <configuration-as-code-plugin.version>1775.v810dc950b_514</configuration-as-code-plugin.version>
     <data-tables-api.version>2.0.5-1</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.3</declarative-pipeline-migration-assistant-plugin.version>
@@ -31,7 +31,7 @@
     <subversion-plugin.version>1256.vee91953217b_6</subversion-plugin.version>
     <workflow-api-plugin.version>1291.v51fd2a_625da_7</workflow-api-plugin.version>
     <workflow-cps-plugin.version>3894.vd0f0248b_a_fc4</workflow-cps-plugin.version>
-    <workflow-job-plugin.version>1400.v7fd111b_ec82f</workflow-job-plugin.version>
+    <workflow-job-plugin.version>1415.v4f9c9131248b_</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>791.v28fb_f74dfca_e</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>657.v03b_e8115821b_</workflow-step-api-plugin.version>
     <workflow-support-plugin.version>896.v175a_a_9c5b_78f</workflow-support-plugin.version>
