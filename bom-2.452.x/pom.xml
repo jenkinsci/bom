@@ -10,6 +10,7 @@
   <packaging>pom</packaging>
   <properties>
     <workflow-job-plugin.version>1400.v7fd111b_ec82f</workflow-job-plugin.version>
+    <cloudbees-folder-plugin.version>6.928.v7c780211d66e</cloudbees-folder-plugin.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -34,6 +35,17 @@
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
         <artifactId>workflow-job</artifactId>
         <version>${workflow-job-plugin.version}</version>
+        <classifier>tests</classifier>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>cloudbees-folder</artifactId>
+        <version>${cloudbees-folder-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>cloudbees-folder</artifactId>
+        <version>${cloudbees-folder-plugin.version}</version>
         <classifier>tests</classifier>
       </dependency>
     </dependencies>
