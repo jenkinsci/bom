@@ -27,25 +27,25 @@
         <version>439.vdef09f81f85e</version>
       </dependency>
       <dependency>
-        <groupId>org.jenkins-ci.plugins.workflow</groupId>
-        <artifactId>workflow-job</artifactId>
-        <version>${workflow-job-plugin.version}</version>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>cloudbees-folder</artifactId>
+        <version>${cloudbees-folder-plugin.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.jenkins-ci.plugins.workflow</groupId>
-        <artifactId>workflow-job</artifactId>
-        <version>${workflow-job-plugin.version}</version>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>cloudbees-folder</artifactId>
+        <version>${cloudbees-folder-plugin.version}</version>
         <classifier>tests</classifier>
       </dependency>
       <dependency>
-        <groupId>org.jenkins-ci.plugins</groupId>
-        <artifactId>cloudbees-folder</artifactId>
-        <version>${cloudbees-folder-plugin.version}</version>
+        <groupId>org.jenkins-ci.plugins.workflow</groupId>
+        <artifactId>workflow-job</artifactId>
+        <version>${workflow-job-plugin.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.jenkins-ci.plugins</groupId>
-        <artifactId>cloudbees-folder</artifactId>
-        <version>${cloudbees-folder-plugin.version}</version>
+        <groupId>org.jenkins-ci.plugins.workflow</groupId>
+        <artifactId>workflow-job</artifactId>
+        <version>${workflow-job-plugin.version}</version>
         <classifier>tests</classifier>
       </dependency>
     </dependencies>
