@@ -11,9 +11,9 @@
   <properties>
     <aws-java-sdk-plugin.version>1.12.696-451.v0651a_da_9ca_ec</aws-java-sdk-plugin.version>
     <blueocean-plugin.version>1.27.12</blueocean-plugin.version>
-    <branch-api-plugin.version>2.1163.va_f1064e4a_a_f3</branch-api-plugin.version>
+    <branch-api-plugin.version>2.1169.va_f810c56e895</branch-api-plugin.version>
     <checks-api.version>2.2.0</checks-api.version>
-    <cloudbees-folder-plugin.version>6.928.v7c780211d66e</cloudbees-folder-plugin.version>
+    <cloudbees-folder-plugin.version>6.940.v7fa_03b_f14759</cloudbees-folder-plugin.version>
     <configuration-as-code-plugin.version>1775.v810dc950b_514</configuration-as-code-plugin.version>
     <data-tables-api.version>2.0.5-1</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.3</declarative-pipeline-migration-assistant-plugin.version>
@@ -31,10 +31,10 @@
     <subversion-plugin.version>1256.vee91953217b_6</subversion-plugin.version>
     <workflow-api-plugin.version>1291.v51fd2a_625da_7</workflow-api-plugin.version>
     <workflow-cps-plugin.version>3894.3896.vca_2c931e7935</workflow-cps-plugin.version>
-    <workflow-job-plugin.version>1400.v7fd111b_ec82f</workflow-job-plugin.version>
-    <workflow-multibranch-plugin.version>783.va_6eb_ef636fb_d</workflow-multibranch-plugin.version>
+    <workflow-job-plugin.version>1415.v4f9c9131248b_</workflow-job-plugin.version>
+    <workflow-multibranch-plugin.version>791.v28fb_f74dfca_e</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>657.v03b_e8115821b_</workflow-step-api-plugin.version>
-    <workflow-support-plugin.version>896.v175a_a_9c5b_78f</workflow-support-plugin.version>
+    <workflow-support-plugin.version>907.v6713a_ed8a_573</workflow-support-plugin.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -291,7 +291,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>ionicons-api</artifactId>
-        <version>70.v2959a_b_74e3cf</version>
+        <version>73.vb_f522f227457</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -366,7 +366,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>mysql-api</artifactId>
-        <version>8.3.0-21.v2837a_a_360d57</version>
+        <version>8.4.0-31.va_b_5ce7933762</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -387,7 +387,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
-        <version>242.v04d14822e97f</version>
+        <version>243.vc9e11fec486a_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -463,7 +463,7 @@
       <dependency>
         <groupId>org.csanchez.jenkins.plugins</groupId>
         <artifactId>kubernetes</artifactId>
-        <version>4208.v4017b_a_27a_d67</version>
+        <version>4209.vc646b_71e5269</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.main</groupId>

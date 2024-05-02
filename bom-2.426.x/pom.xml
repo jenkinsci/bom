@@ -24,12 +24,12 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
-        <version>215.vc0ea_557e4d6f</version>
+        <version>215.217.v2f6b_05084f10</version>
       </dependency>
       <dependency>
         <groupId>org.6wind.jenkins</groupId>
         <artifactId>lockable-resources</artifactId>
-        <version>1245.vb_05f8a_4e28db_</version>
+        <version>1245.1247.vea_384d871c85</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
