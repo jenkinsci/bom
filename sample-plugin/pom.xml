@@ -31,6 +31,10 @@
   <dependencies>
     <dependency>
       <groupId>io.jenkins.plugins</groupId>
+      <artifactId>byte-buddy-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.jenkins.plugins</groupId>
       <artifactId>pipeline-graph-view</artifactId>
     </dependency>
     <dependency>
