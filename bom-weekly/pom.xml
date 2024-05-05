@@ -776,6 +776,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>job-dsl</artifactId>
+        <version>1.87</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jsch</artifactId>
         <version>0.2.16-86.v42e010d9484b_</version>
       </dependency>
