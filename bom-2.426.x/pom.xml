@@ -58,6 +58,11 @@
         <version>477.v339683a_8d55e</version>
       </dependency>
       <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>role-strategy</artifactId>
+        <version>717.v6a_69a_fe98974</version>
+      </dependency>
+      <dependency>
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
         <artifactId>workflow-durable-task-step</artifactId>
         <version>1331.vc8c2fed35334</version>
