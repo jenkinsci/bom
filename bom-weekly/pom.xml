@@ -923,7 +923,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>role-strategy</artifactId>
-        <version>717.v6a_69a_fe98974</version>
+        <version>727.vd344b_eec783d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
