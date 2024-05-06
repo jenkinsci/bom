@@ -605,7 +605,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>database</artifactId>
-        <version>230.v701f20b_8b_f95</version>
+        <version>247.v244b_d85f086d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
