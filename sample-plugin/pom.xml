@@ -14,7 +14,8 @@
   <properties>
     <changelist>999999-SNAPSHOT</changelist>
     <bom>weekly</bom>
-    <jenkins.version>2.457</jenkins.version>
+    <!-- TODO https://ci.jenkins.io/job/Core/job/jenkins/job/prototype/ -->
+    <jenkins.version>2.458-rc34914.4c98535ee22e</jenkins.version>
     <spotless.check.skip>false</spotless.check.skip>
   </properties>
   <dependencyManagement>
