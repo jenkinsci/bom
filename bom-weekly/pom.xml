@@ -392,7 +392,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
-        <version>271.v330cf007b_fe6</version>
+        <version>287.v3ef017b_780d5</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
