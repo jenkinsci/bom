@@ -660,7 +660,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>email-ext</artifactId>
-        <version>1806.v856a_01a_fa_39a_</version>
+        <version>1814.v404722f34263</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
