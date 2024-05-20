@@ -21,7 +21,8 @@
     <github-api-plugin.version>1.318-461.v7a_c09c9fa_d63</github-api-plugin.version>
     <git-plugin.version>5.2.2</git-plugin.version>
     <junit-plugin.version>1265.v65b_14fa_f12f0</junit-plugin.version>
-    <mina-sshd-api.version>2.12.1-101.v85b_e08b_780dd</mina-sshd-api.version>
+    <mina-sshd-api.version>2.12.1-108.v3a_48e2042a_a_a_</mina-sshd-api.version>
+    <!-- https://github.com/jenkinsci/mina-sshd-api-plugin/pull/98 -->
     <okhttp-api-plugin.version>4.11.0-172.vda_da_1feeb_c6e</okhttp-api-plugin.version>
     <pipeline-maven-plugin.version>1396.veb_f07b_2fc1d8</pipeline-maven-plugin.version>
     <pipeline-model-definition-plugin.version>2.2198.v41dd8ef6dd56</pipeline-model-definition-plugin.version>
@@ -246,6 +247,11 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>echarts-api</artifactId>
         <version>5.5.0-1</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>eddsa-api</artifactId>
+        <version>0.3.0-4.v84c6f0f4969e</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1025,7 +1031,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>trilead-api</artifactId>
-        <version>2.142.v748523a_76693</version>
+        <version>2.147.v801a_f62d7fe7</version>
+        <!-- https://github.com/jenkinsci/trilead-api-plugin/pull/148/ -->
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
