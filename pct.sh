@@ -28,7 +28,6 @@ exec java \
 	--working-dir "$(pwd)/target/pct-work" \
 	$PCT_D_ARGS \
 	${PCT_OPTS-} \
-	-Djth.jenkins-war.path="$(pwd)/target/megawar-$LINE.war" \
 	-Dsurefire.excludesFile="$(pwd)/excludes.txt"
 
 # produces: **/target/surefire-reports/TEST-*.xml
