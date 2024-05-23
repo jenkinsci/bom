@@ -250,7 +250,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>file-parameters</artifactId>
-        <version>316.va_83a_1221db_a_7</version>
+        <version>339.v4b_cc83e11455</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
