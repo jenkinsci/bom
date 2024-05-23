@@ -843,7 +843,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>oauth-credentials</artifactId>
-        <version>0.646.v02b_66dc03d2e</version>
+        <version>0.653.v14cf2088e950</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
