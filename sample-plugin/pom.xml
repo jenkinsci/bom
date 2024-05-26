@@ -1084,7 +1084,7 @@
       <id>2.452.x</id>
       <properties>
         <bom>2.452.x</bom>
-        <jenkins.version>2.452</jenkins.version>
+        <jenkins.version>2.452.2-rc34803.50780054027a_</jenkins.version>
       </properties>
     </profile>
     <profile>
