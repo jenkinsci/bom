@@ -1000,7 +1000,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>support-core</artifactId>
-        <version>1441.vcdfefe55b_f34</version>
+        <version>1449.v261d6f7b_f9f3</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
