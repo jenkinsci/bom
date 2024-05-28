@@ -686,7 +686,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>git-server</artifactId>
-        <version>117.veb_68868fa_027</version>
+        <version>126.v0d945d8d2b_39</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
