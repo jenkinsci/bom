@@ -35,6 +35,10 @@
     </dependency>
     <dependency>
       <groupId>io.jenkins.plugins</groupId>
+      <artifactId>eddsa-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.jenkins.plugins</groupId>
       <artifactId>pipeline-graph-view</artifactId>
     </dependency>
     <dependency>
