@@ -29,7 +29,7 @@ exec java \
 	--maven-args "-Pconsume-incrementals" \
 	$PCT_D_ARGS \
 	${PCT_OPTS-} \
-	-Djenkins-test-harness.version=2217.v9fc3c7d9c602 \
+	-Djenkins-test-harness.version=2221.v91ecb_5e6f597 \
 	-Dsurefire.excludesFile="$(pwd)/excludes.txt"
 
 # produces: **/target/surefire-reports/TEST-*.xml
