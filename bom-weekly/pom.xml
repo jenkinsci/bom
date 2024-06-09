@@ -183,7 +183,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>byte-buddy-api</artifactId>
-        <version>1.14.16-13.vd26f1fc366ed</version>
+        <version>1.14.17-21.v290f2a_ff9732</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -219,7 +219,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>dark-theme</artifactId>
-        <version>465.vd8b_419b_0728f</version>
+        <version>479.v661b_1b_911c01</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -438,7 +438,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>theme-manager</artifactId>
-        <version>215.vc1ff18d67920</version>
+        <version>262.vc57ee4a_eda_5d</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -488,7 +488,7 @@
       <dependency>
         <groupId>org.jenkins-ci.modules</groupId>
         <artifactId>sshd</artifactId>
-        <version>3.328.v659088899699</version>
+        <version>3.330.vc866a_8389b_58</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
