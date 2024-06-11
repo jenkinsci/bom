@@ -73,7 +73,8 @@ stage('prep') {
           sh "launchable verify && launchable record build --name ${env.BUILD_TAG}-${line} --no-commit-collection " + commitHashes
 
           def sessionFile = "launchable-session-${line}.txt"
-          sh "launchable record session --build ${env.BUILD_TAG}-${line} --flavor platform=linux --flavor jdk=17 >${sessionFile}"
+          def jdk = line == 'weekly' ? 21 : 17
+          sh "launchable record session --build ${env.BUILD_TAG}-${line} --flavor platform=linux --flavor jdk=${jdk} >${sessionFile}"
           stash name: sessionFile, includes: sessionFile
         }
       }
@@ -93,7 +94,7 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
     }
     pluginsByRepository.each { repository, plugins ->
       branches["pct-$repository-$line"] = {
-        def jdk = line == 'weekly' ? 21 : 11
+        def jdk = line == 'weekly' ? 21 : 17
         mavenEnv(jdk: jdk, nodePool: true) {
           unstash line
           withEnv([
