@@ -49,6 +49,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>git-client</artifactId>
+        <version>4.7.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>mailer</artifactId>
         <version>470.vc91f60c5d8e2</version>
       </dependency>
