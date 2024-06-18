@@ -18,13 +18,14 @@
     <data-tables-api.version>2.0.8-1</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.4</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>2.4.0</forensics-api.version>
-    <!-- TODO JENKINS-73132 https://github.com/jenkinsci/github-api-plugin/pull/242 -->
-    <github-api-plugin.version>1.321-468.v4921b_f1cecd4</github-api-plugin.version>
-    <git-plugin.version>5.2.2</git-plugin.version>
+    <!-- TODO JENKINS-73312 https://github.com/jenkinsci/github-api-plugin/pull/243 -->
+    <github-api-plugin.version>1.321-469.v5f8c16e71f9f</github-api-plugin.version>
+    <!-- TODO JENKINS-73247 https://github.com/jenkinsci/git-plugin/pull/1589 -->
+    <git-plugin.version>5.2.3-rc5249.a_eca_06a_9ff8a_</git-plugin.version>
     <junit-plugin.version>1265.v65b_14fa_f12f0</junit-plugin.version>
     <mina-sshd-api.version>2.12.1-113.v4d3ea_5eb_7f72</mina-sshd-api.version>
-    <!-- TODO JENKINS-73140 https://github.com/jenkinsci/okhttp-api-plugin/pull/204 -->
-    <okhttp-api-plugin.version>4.11.0-173.va_6384cfef759</okhttp-api-plugin.version>
+    <!-- TODO JENKINS-73315 https://github.com/jenkinsci/okhttp-api-plugin/pull/205 -->
+    <okhttp-api-plugin.version>4.11.0-174.veb_f0a_67d44d6</okhttp-api-plugin.version>
     <pipeline-maven-plugin.version>1421.v610fa_b_e2d60e</pipeline-maven-plugin.version>
     <pipeline-model-definition-plugin.version>2.2203.v89fa_170c2b_f5</pipeline-model-definition-plugin.version>
     <pipeline-stage-view-plugin.version>2.34</pipeline-stage-view-plugin.version>
@@ -44,8 +45,8 @@
       <dependency>
         <groupId>com.coravy.hudson.plugins.github</groupId>
         <artifactId>github</artifactId>
-        <!-- TODO JENKINS-73133 https://github.com/jenkinsci/github-plugin/pull/380 -->
-        <version>1.39.1-rc831.dd3ff7b_9db_74</version>
+        <!-- TODO JENKINS-73313 https://github.com/jenkinsci/github-plugin/pull/381 -->
+        <version>1.39.1-rc832.e67e2df48e52</version>
       </dependency>
       <dependency>
         <groupId>com.sonyericsson.hudson.plugins.rebuild</groupId>
@@ -725,8 +726,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>gitlab-plugin</artifactId>
-        <!-- TODO JENKINS-73135 https://github.com/jenkinsci/gitlab-plugin/pull/1664 -->
-        <version>1.8.2-rc1842.d9df5d7809b_4</version>
+        <!-- TODO JENKINS-73344 https://github.com/jenkinsci/gitlab-plugin/pull/1665 -->
+        <version>1.8.2-rc1843.4a_b_1e0247e36</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -822,7 +823,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ldap</artifactId>
-        <version>725.v3cb_b_711b_1a_ef</version>
+        <!-- TODO JENKINS-73279 https://github.com/jenkinsci/ldap-plugin/pull/285 -->
+        <version>726.v2fb_a_11718a_0e</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -947,7 +949,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>saml</artifactId>
-        <version>4.464.vea_cb_75d7f5e0</version>
+        <!-- TODO JENKINS-73316 https://github.com/jenkinsci/saml-plugin/pull/421 -->
+        <version>4.478.v76d31b_148e5e</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1275,8 +1278,8 @@
       <dependency>
         <groupId>org.jenkinsci.plugins</groupId>
         <artifactId>kubernetes-credentials</artifactId>
-        <!-- TODO JENKINS-73139 https://github.com/jenkinsci/kubernetes-credentials-plugin/pull/44 -->
-        <version>175.v23da_034cd536</version>
+        <!-- TODO JENKINS-73314 https://github.com/jenkinsci/kubernetes-credentials-plugin/pull/46 -->
+        <version>176.vc0620c0e360e</version>
       </dependency>
       <dependency>
         <groupId>org.jenkinsci.plugins</groupId>

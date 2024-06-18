@@ -14,8 +14,8 @@
   <properties>
     <changelist>999999-SNAPSHOT</changelist>
     <bom>weekly</bom>
-    <!-- TODO JENKINS-73130 https://ci.jenkins.io/job/Core/job/jenkins/job/prototype/ -->
-    <jenkins.version>2.465-rc35086.20352b_8ef123</jenkins.version>
+    <!-- TODO JENKINS-73278 https://ci.jenkins.io/job/Core/job/jenkins/job/jakarta/ -->
+    <jenkins.version>2.465-rc35091.e1058402b_0c2</jenkins.version>
     <spotless.check.skip>false</spotless.check.skip>
     <!-- TODO JENKINS-73339 until in parent POM -->
     <jenkins-test-harness.version>2230.v4fa_477b_634f4</jenkins-test-harness.version>
@@ -28,6 +28,12 @@
         <version>${project.version}</version>
         <type>pom</type>
         <scope>import</scope>
+      </dependency>
+      <!-- TODO JENKINS-73339 until in parent POM, work around https://github.com/jenkinsci/plugin-pom/issues/936 -->
+      <dependency>
+        <groupId>jakarta.servlet</groupId>
+        <artifactId>jakarta.servlet-api</artifactId>
+        <version>5.0.0</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
