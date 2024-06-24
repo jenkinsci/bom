@@ -10,6 +10,7 @@
   <packaging>pom</packaging>
   <properties>
     <cloudbees-folder-plugin.version>6.858.v898218f3609d</cloudbees-folder-plugin.version>
+    <subversion-plugin.version>1261.v040121d29c7c</subversion-plugin.version>
     <workflow-job-plugin.version>1385.vb_58b_86ea_fff1</workflow-job-plugin.version>
   </properties>
   <dependencyManagement>
@@ -76,6 +77,17 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>role-strategy</artifactId>
         <version>717.v6a_69a_fe98974</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>subversion</artifactId>
+        <version>${subversion-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>subversion</artifactId>
+        <version>${subversion-plugin.version}</version>
+        <classifier>tests</classifier>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
