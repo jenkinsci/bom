@@ -24,6 +24,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>markdown-formatter</artifactId>
+        <version>167.v8a_428ca_49f89</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
         <version>215.217.v2f6b_05084f10</version>
       </dependency>
