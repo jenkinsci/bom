@@ -14,8 +14,11 @@
   <properties>
     <changelist>999999-SNAPSHOT</changelist>
     <bom>weekly</bom>
-    <jenkins.version>2.464</jenkins.version>
+    <!-- TODO JENKINS-73130 https://ci.jenkins.io/job/Core/job/jenkins/job/prototype/ -->
+    <jenkins.version>2.465-rc35086.20352b_8ef123</jenkins.version>
     <spotless.check.skip>false</spotless.check.skip>
+    <!-- TODO JENKINS-73339 until in parent POM -->
+    <jenkins-test-harness.version>2230.v4fa_477b_634f4</jenkins-test-harness.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -403,6 +406,13 @@
       <groupId>io.jenkins.plugins.mina-sshd-api</groupId>
       <artifactId>mina-sshd-api-sftp</artifactId>
       <scope>test</scope>
+      <exclusions>
+        <!-- TODO work around JENKINS-73281 on 2.426.x; remove after dropping support for 2.426.x -->
+        <exclusion>
+          <groupId>org.apache.sshd</groupId>
+          <artifactId>sshd-sftp</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.6wind.jenkins</groupId>
