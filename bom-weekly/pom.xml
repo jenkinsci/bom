@@ -1010,7 +1010,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>support-core</artifactId>
-        <version>1449.v261d6f7b_f9f3</version>
+        <version>1459.va_f527ce9a_d64</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
