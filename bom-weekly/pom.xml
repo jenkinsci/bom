@@ -600,7 +600,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>credentials</artifactId>
-        <version>1361.v56f5ca_35d21c</version>
+        <version>1370.ve2d2a_4e20e25</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
