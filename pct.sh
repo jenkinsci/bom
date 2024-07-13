@@ -20,16 +20,6 @@ if ! [[ $PLUGINS =~ blueocean || $PLUGINS =~ lockable-resources || $PLUGINS =~ p
 	PCT_D_ARGS+='-DforkCount=.75C '
 fi
 
-#
-# jenkinsci/workflow-cps-plugin#877 depends on jenkinsci/jenkins#9012, but only
-# on Java 17 and newer. The 2.426.x line is the only remaining line to which
-# jenkinsci/jenkins#9012 has not been backported. When we drop support for
-# 2.426.x, this should be deleted.
-#
-if [[ $PLUGINS =~ pipeline-groovy-lib && $LINE == 2.426.x ]]; then
-	echo 'org.jenkinsci.plugins.workflow.libs.LibraryMemoryTest#loaderReleased' >>excludes.txt
-fi
-
 exec java \
 	-jar target/pct.jar \
 	test-plugins \
