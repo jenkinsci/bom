@@ -1090,6 +1090,14 @@
   <profiles>
     <!-- Use .1 of most recent active line, and .3 (or later) of previous lines: https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/#choosing-a-version -->
     <profile>
+      <id>2.462.x</id>
+      <properties>
+        <bom>2.462.x</bom>
+        <!-- TODO: Update to 2.462.1 after it is released. -->
+        <jenkins.version>2.462</jenkins.version>
+      </properties>
+    </profile>
+    <profile>
       <id>2.452.x</id>
       <properties>
         <bom>2.452.x</bom>

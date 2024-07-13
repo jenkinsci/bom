@@ -20,6 +20,7 @@
   </licenses>
   <modules>
     <module>bom-weekly</module>
+    <module>bom-2.462.x</module>
     <module>bom-2.452.x</module>
     <module>bom-2.440.x</module>
     <module>sample-plugin</module>
