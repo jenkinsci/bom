@@ -1101,7 +1101,7 @@
       <id>2.452.x</id>
       <properties>
         <bom>2.452.x</bom>
-        <jenkins.version>2.452.1</jenkins.version>
+        <jenkins.version>2.452.3</jenkins.version>
       </properties>
     </profile>
     <profile>
