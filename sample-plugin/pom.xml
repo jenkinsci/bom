@@ -1094,7 +1094,8 @@
       <properties>
         <bom>2.462.x</bom>
         <!-- TODO: Update to 2.462.1 after it is released. -->
-        <jenkins.version>2.462</jenkins.version>
+        <!-- TODO: 2.462.1 LTS release checklist verify bom checks pass with a pre-release build. -->
+        <jenkins.version>2.462.1-rc35045.7a_306482f65c</jenkins.version>
       </properties>
     </profile>
     <profile>
