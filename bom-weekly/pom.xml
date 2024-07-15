@@ -402,7 +402,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
-        <version>304.va_f2a_16b_e4964</version>
+        <version>313.v1322ce83d680</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
