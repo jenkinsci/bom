@@ -10,7 +10,7 @@
   <packaging>pom</packaging>
   <properties>
     <aws-java-sdk-plugin.version>1.12.753-463.v071a_97315959</aws-java-sdk-plugin.version>
-    <blueocean-plugin.version>1.27.13</blueocean-plugin.version>
+    <blueocean-plugin.version>1.27.14</blueocean-plugin.version>
     <branch-api-plugin.version>2.1169.va_f810c56e895</branch-api-plugin.version>
     <checks-api.version>2.2.0</checks-api.version>
     <cloudbees-folder-plugin.version>6.942.vb_43318a_156b_2</cloudbees-folder-plugin.version>
