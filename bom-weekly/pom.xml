@@ -595,7 +595,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>copyartifact</artifactId>
-        <version>746.vd2a_674fb_4f6f</version>
+        <version>749.vfb_dca_a_9b_6549</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
