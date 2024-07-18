@@ -10,7 +10,7 @@
   <packaging>pom</packaging>
   <properties>
     <aws-java-sdk-plugin.version>1.12.753-463.v071a_97315959</aws-java-sdk-plugin.version>
-    <blueocean-plugin.version>1.27.13</blueocean-plugin.version>
+    <blueocean-plugin.version>1.27.14</blueocean-plugin.version>
     <branch-api-plugin.version>2.1169.va_f810c56e895</branch-api-plugin.version>
     <checks-api.version>2.2.0</checks-api.version>
     <cloudbees-folder-plugin.version>6.942.vb_43318a_156b_2</cloudbees-folder-plugin.version>
@@ -29,7 +29,7 @@
     <plugin-util-api.version>4.1.0</plugin-util-api.version>
     <scm-api-plugin.version>690.vfc8b_54395023</scm-api-plugin.version>
     <subversion-plugin.version>1269.v53185011cd9f</subversion-plugin.version>
-    <workflow-api-plugin.version>1316.v33eb_726c50b_a_</workflow-api-plugin.version>
+    <workflow-api-plugin.version>1322.v857eeeea_9902</workflow-api-plugin.version>
     <workflow-cps-plugin.version>3908.vd6b_b_5a_a_54010</workflow-cps-plugin.version>
     <workflow-job-plugin.version>1436.vfa_244484591f</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>791.v28fb_f74dfca_e</workflow-multibranch-plugin.version>
@@ -158,7 +158,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>analysis-model-api</artifactId>
-        <version>12.3.3</version>
+        <version>12.4.0</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -595,7 +595,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>copyartifact</artifactId>
-        <version>746.vd2a_674fb_4f6f</version>
+        <version>749.vfb_dca_a_9b_6549</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -712,7 +712,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>github-branch-source</artifactId>
-        <version>1789.v5b_0c0cea_18c3</version>
+        <version>1790.v5a_7859812c8d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
