@@ -60,6 +60,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>htmlpublisher</artifactId>
+        <version>1.35</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>mailer</artifactId>
         <version>470.vc91f60c5d8e2</version>
       </dependency>
