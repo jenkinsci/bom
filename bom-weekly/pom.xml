@@ -803,7 +803,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>junit-attachments</artifactId>
-        <version>240.v0fa_a_a_43cb_f98</version>
+        <version>239.v2157c2921fc2</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
