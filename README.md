@@ -14,7 +14,7 @@ If you are interested in a Bill of Materials for Jenkins core components, see [t
 After [selecting your plugin’s LTS baseline](https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/):
 
 ```xml
-<jenkins.version>2.426.3</jenkins.version>
+<jenkins.version>2.440.3</jenkins.version>
 ```
 
 just import the [latest BOM](https://repo.jenkins-ci.org/public/io/jenkins/tools/bom) from that line:
@@ -24,7 +24,7 @@ just import the [latest BOM](https://repo.jenkins-ci.org/public/io/jenkins/tools
     <dependencies>
         <dependency>
             <groupId>io.jenkins.tools.bom</groupId>
-            <artifactId>bom-2.426.x</artifactId>
+            <artifactId>bom-2.440.x</artifactId>
             <version>…</version>
             <scope>import</scope>
             <type>pom</type>
@@ -97,6 +97,7 @@ When an older Jenkins version is used, then the matching older version of the pl
 | bom-2.387.x | 2543.vfb_1a_5fb_9496d |                              |
 | bom-2.401.x | 2745.vc7b_fe4c876fa_  |                              |
 | bom-2.414.x | 2982.vdce2153031a_0   |                              |
+| bom-2.426.x | 3208.vb_21177d4b_cd9  |                              |
 
 The latest versions of all BOM lines are available from the [Jenkins artifact repository](https://repo.jenkins-ci.org/public/io/jenkins/tools/bom).
 
@@ -182,7 +183,7 @@ PLUGINS=structs,mailer TEST=InjectedTest bash local-test.sh
 optionally also passing either
 
 ```
-LINE=2.426.x
+LINE=2.440.x
 ```
 
 or
