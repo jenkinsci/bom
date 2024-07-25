@@ -20,7 +20,7 @@
     <forensics-api.version>2.4.0</forensics-api.version>
     <github-api-plugin.version>1.318-461.v7a_c09c9fa_d63</github-api-plugin.version>
     <git-plugin.version>5.2.2</git-plugin.version>
-    <junit-plugin.version>1265.v65b_14fa_f12f0</junit-plugin.version>
+    <junit-plugin.version>1279.v72cf99b_25c43</junit-plugin.version>
     <mina-sshd-api.version>2.13.1-117.v2f1a_b_66ff91d</mina-sshd-api.version>
     <okhttp-api-plugin.version>4.11.0-172.vda_da_1feeb_c6e</okhttp-api-plugin.version>
     <pipeline-maven-plugin.version>1421.v610fa_b_e2d60e</pipeline-maven-plugin.version>
@@ -803,7 +803,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>junit-attachments</artifactId>
-        <version>205.vc0677977deb_0</version>
+        <version>239.v9e003a_c80a_8c</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -984,7 +984,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ssh-credentials</artifactId>
-        <version>337.v395d2403ccd4</version>
+        <version>342.ve5a_f1db_5a_132</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
