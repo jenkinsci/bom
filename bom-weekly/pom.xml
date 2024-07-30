@@ -979,7 +979,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ssh-agent</artifactId>
-        <version>367.vf9076cd4ee21</version>
+        <version>376.v8933585c69d3</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
