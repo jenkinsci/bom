@@ -19,7 +19,7 @@
     <declarative-pipeline-migration-assistant-plugin.version>1.6.4</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>2.4.0</forensics-api.version>
     <github-api-plugin.version>1.321-468.v6a_9f5f2d5a_7e</github-api-plugin.version>
-    <git-plugin.version>5.3.0-rc5284.3671c032a_cc2</git-plugin.version>
+    <git-plugin.version>5.3.0-rc5284.c54ef076130b_</git-plugin.version>
     <junit-plugin.version>1280.v310a_78b_9a_1e0</junit-plugin.version>
     <mina-sshd-api.version>2.13.1-117.v2f1a_b_66ff91d</mina-sshd-api.version>
     <okhttp-api-plugin.version>4.11.0-172.vda_da_1feeb_c6e</okhttp-api-plugin.version>
