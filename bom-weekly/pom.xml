@@ -645,7 +645,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>docker-commons</artifactId>
-        <version>439.va_3cb_0a_6a_fb_29</version>
+        <version>443.v921729d5611d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
