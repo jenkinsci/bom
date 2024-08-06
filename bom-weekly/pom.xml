@@ -286,7 +286,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>gitlab-api</artifactId>
-        <version>5.3.0-91.v1f9a_fda_d654f</version>
+        <version>5.6.0-97.v6603a_83f8690</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
