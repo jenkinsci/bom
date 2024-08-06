@@ -964,7 +964,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>secure-requester-whitelist</artifactId>
-        <version>67.vca_a_d9205723f</version>
+        <version>70.ve2a_3c4a_dc9f5</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
