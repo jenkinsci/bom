@@ -32,7 +32,7 @@
     <workflow-api-plugin.version>1322.v857eeeea_9902</workflow-api-plugin.version>
     <workflow-cps-plugin.version>3922.va_f73b_7c4246b_</workflow-cps-plugin.version>
     <workflow-job-plugin.version>1436.vfa_244484591f</workflow-job-plugin.version>
-    <workflow-multibranch-plugin.version>791.v28fb_f74dfca_e</workflow-multibranch-plugin.version>
+    <workflow-multibranch-plugin.version>795.ve0cb_1f45ca_9a_</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>678.v3ee58b_469476</workflow-step-api-plugin.version>
     <workflow-support-plugin.version>920.v59f71ce16f04</workflow-support-plugin.version>
   </properties>
