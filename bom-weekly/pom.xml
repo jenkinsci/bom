@@ -18,11 +18,13 @@
     <data-tables-api.version>2.0.8-1</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.4</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>2.4.0</forensics-api.version>
-    <github-api-plugin.version>1.321-468.v6a_9f5f2d5a_7e</github-api-plugin.version>
+    <!-- TODO JENKINS-73132 https://github.com/jenkinsci/github-api-plugin/pull/242 -->
+    <github-api-plugin.version>1.321-468.va_d8c695d0f9e</github-api-plugin.version>
     <git-plugin.version>5.3.0</git-plugin.version>
     <junit-plugin.version>1284.vf75d778f98c5</junit-plugin.version>
     <mina-sshd-api.version>2.13.1-117.v2f1a_b_66ff91d</mina-sshd-api.version>
-    <okhttp-api-plugin.version>4.11.0-172.vda_da_1feeb_c6e</okhttp-api-plugin.version>
+    <!-- TODO JENKINS-73140 https://github.com/jenkinsci/okhttp-api-plugin/pull/204 -->
+    <okhttp-api-plugin.version>4.11.0-173.v8c3497f81db_f</okhttp-api-plugin.version>
     <pipeline-maven-plugin.version>1421.v610fa_b_e2d60e</pipeline-maven-plugin.version>
     <pipeline-model-definition-plugin.version>2.2205.vc9522a_9d5711</pipeline-model-definition-plugin.version>
     <pipeline-stage-view-plugin.version>2.34</pipeline-stage-view-plugin.version>
@@ -722,7 +724,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>gitlab-plugin</artifactId>
-        <version>1.8.1</version>
+        <!-- TODO JENKINS-73135 https://github.com/jenkinsci/gitlab-plugin/pull/1664 -->
+        <version>1.8.2-rc1844.16d92855915f</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1271,7 +1274,8 @@
       <dependency>
         <groupId>org.jenkinsci.plugins</groupId>
         <artifactId>kubernetes-credentials</artifactId>
-        <version>174.va_36e093562d9</version>
+        <!-- TODO JENKINS-73139 https://github.com/jenkinsci/kubernetes-credentials-plugin/pull/44 -->
+        <version>175.v559e4f282f91</version>
       </dependency>
       <dependency>
         <groupId>org.jenkinsci.plugins</groupId>
