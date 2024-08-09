@@ -14,8 +14,11 @@
   <properties>
     <changelist>999999-SNAPSHOT</changelist>
     <bom>weekly</bom>
-    <jenkins.version>2.471</jenkins.version>
+    <!-- TODO JENKINS-73130 https://ci.jenkins.io/job/Core/job/jenkins/job/prototype/ -->
+    <jenkins.version>2.472-rc35208.8d09f0cdc34f</jenkins.version>
     <spotless.check.skip>false</spotless.check.skip>
+    <!-- TODO JENKINS-73339 until in parent POM -->
+    <jenkins-test-harness.version>2250.v03a_1295b_0a_30</jenkins-test-harness.version>
   </properties>
   <dependencyManagement>
     <dependencies>
