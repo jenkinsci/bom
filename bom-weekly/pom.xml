@@ -18,11 +18,13 @@
     <data-tables-api.version>2.0.8-1</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.4</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>2.4.0</forensics-api.version>
-    <github-api-plugin.version>1.321-468.v6a_9f5f2d5a_7e</github-api-plugin.version>
+    <!-- TODO JENKINS-73312 https://github.com/jenkinsci/github-api-plugin/pull/243 -->
+    <github-api-plugin.version>1.321-469.v364832cda_99f</github-api-plugin.version>
     <git-plugin.version>5.3.0</git-plugin.version>
     <junit-plugin.version>1284.vf75d778f98c5</junit-plugin.version>
     <mina-sshd-api.version>2.13.1-117.v2f1a_b_66ff91d</mina-sshd-api.version>
-    <okhttp-api-plugin.version>4.11.0-172.vda_da_1feeb_c6e</okhttp-api-plugin.version>
+    <!-- TODO JENKINS-73315 https://github.com/jenkinsci/okhttp-api-plugin/pull/205 -->
+    <okhttp-api-plugin.version>4.11.0-174.vd6cb_813ec6ca_</okhttp-api-plugin.version>
     <pipeline-maven-plugin.version>1421.v610fa_b_e2d60e</pipeline-maven-plugin.version>
     <pipeline-model-definition-plugin.version>2.2205.vc9522a_9d5711</pipeline-model-definition-plugin.version>
     <pipeline-stage-view-plugin.version>2.34</pipeline-stage-view-plugin.version>
@@ -722,7 +724,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>gitlab-plugin</artifactId>
-        <version>1.8.1</version>
+        <!-- TODO JENKINS-73344 https://github.com/jenkinsci/gitlab-plugin/pull/1665 -->
+        <version>1.8.2-rc1845.d55249e8d488</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -818,7 +821,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ldap</artifactId>
-        <version>725.v3cb_b_711b_1a_ef</version>
+        <!-- TODO JENKINS-73279 https://github.com/jenkinsci/ldap-plugin/pull/285 -->
+        <version>726.v164e0d4b_ed38</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -943,7 +947,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>saml</artifactId>
-        <version>4.464.vea_cb_75d7f5e0</version>
+        <!-- TODO JENKINS-73316 https://github.com/jenkinsci/saml-plugin/pull/421 -->
+        <version>4.480.va_9ca_ef91d69a_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1271,7 +1276,8 @@
       <dependency>
         <groupId>org.jenkinsci.plugins</groupId>
         <artifactId>kubernetes-credentials</artifactId>
-        <version>174.va_36e093562d9</version>
+        <!-- TODO JENKINS-73314 https://github.com/jenkinsci/kubernetes-credentials-plugin/pull/46 -->
+        <version>176.vecd5de0b_d06d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkinsci.plugins</groupId>
