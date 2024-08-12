@@ -11,6 +11,7 @@
   <properties>
     <workflow-job-plugin.version>1400.v7fd111b_ec82f</workflow-job-plugin.version>
     <cloudbees-folder-plugin.version>6.928.v7c780211d66e</cloudbees-folder-plugin.version>
+    <subversion-plugin.version>1269.v53185011cd9f</subversion-plugin.version>
     <workflow-multibranch-plugin.version>783.va_6eb_ef636fb_d</workflow-multibranch-plugin.version>
   </properties>
   <dependencyManagement>
@@ -41,6 +42,17 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>cloudbees-folder</artifactId>
         <version>${cloudbees-folder-plugin.version}</version>
+        <classifier>tests</classifier>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>subversion</artifactId>
+        <version>${subversion-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>subversion</artifactId>
+        <version>${subversion-plugin.version}</version>
         <classifier>tests</classifier>
       </dependency>
       <dependency>
