@@ -1271,7 +1271,7 @@
       <dependency>
         <groupId>org.jenkinsci.plugins</groupId>
         <artifactId>kubernetes-credentials</artifactId>
-        <version>174.va_36e093562d9</version>
+        <version>186.v71b_1a_82049de</version>
       </dependency>
       <dependency>
         <groupId>org.jenkinsci.plugins</groupId>
