@@ -8,6 +8,9 @@
   </parent>
   <artifactId>bom-2.462.x</artifactId>
   <packaging>pom</packaging>
+  <properties>
+    <github-api-plugin.version>1.321-468.v6a_9f5f2d5a_7e</github-api-plugin.version>
+  </properties>
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -16,6 +19,17 @@
         <version>${project.version}</version>
         <type>pom</type>
         <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>github-api</artifactId>
+        <version>${github-api-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>github-api</artifactId>
+        <version>${github-api-plugin.version}</version>
+        <classifier>tests</classifier>
       </dependency>
     </dependencies>
   </dependencyManagement>
