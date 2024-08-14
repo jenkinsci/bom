@@ -18,7 +18,7 @@
     <data-tables-api.version>2.0.8-1</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.4</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>2.4.0</forensics-api.version>
-    <github-api-plugin.version>1.321-468.v6a_9f5f2d5a_7e</github-api-plugin.version>
+    <github-api-plugin.version>1.321-475.vf7ef62885c83</github-api-plugin.version>
     <git-plugin.version>5.3.0</git-plugin.version>
     <junit-plugin.version>1284.vf75d778f98c5</junit-plugin.version>
     <mina-sshd-api.version>2.13.2-125.v200281b_61d59</mina-sshd-api.version>
