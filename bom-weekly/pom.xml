@@ -443,7 +443,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>sqlserver-api</artifactId>
-        <version>12.8.0.jre11-59.va_a_a_5f7a_cb_660</version>
+        <version>12.8.1.jre11-63.v522a_b_7b_6ea_d7</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
