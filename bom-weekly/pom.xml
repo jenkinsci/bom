@@ -296,7 +296,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>gitlab-branch-source</artifactId>
-        <version>704.vc7f1202d7e14</version>
+        <version>710.v6f19df32544b_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
