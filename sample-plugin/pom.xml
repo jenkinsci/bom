@@ -14,7 +14,7 @@
   <properties>
     <changelist>999999-SNAPSHOT</changelist>
     <bom>weekly</bom>
-    <jenkins.version>2.473</jenkins.version>
+    <jenkins.version>2.474</jenkins.version>
     <spotless.check.skip>false</spotless.check.skip>
     <!-- TODO JENKINS-73339 until in parent POM -->
     <jenkins-test-harness.version>2254.vcff7a_d4969e5</jenkins-test-harness.version>
