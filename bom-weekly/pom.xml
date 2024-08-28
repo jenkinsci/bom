@@ -558,6 +558,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>build-user-vars-plugin</artifactId>
+        <version>166.v52976843b_435</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>cloud-stats</artifactId>
         <version>336.v788e4055508b_</version>
       </dependency>
