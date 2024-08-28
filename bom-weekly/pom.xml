@@ -24,7 +24,7 @@
     <mina-sshd-api.version>2.13.2-125.v200281b_61d59</mina-sshd-api.version>
     <okhttp-api-plugin.version>4.11.0-179.vdc1e64343d52</okhttp-api-plugin.version>
     <pipeline-maven-plugin.version>1421.v610fa_b_e2d60e</pipeline-maven-plugin.version>
-    <pipeline-model-definition-plugin.version>2.2205.vc9522a_9d5711</pipeline-model-definition-plugin.version>
+    <pipeline-model-definition-plugin.version>2.2214.vb_b_34b_2ea_9b_83</pipeline-model-definition-plugin.version>
     <pipeline-stage-view-plugin.version>2.34</pipeline-stage-view-plugin.version>
     <plugin-util-api.version>4.1.0</plugin-util-api.version>
     <scm-api-plugin.version>696.v778d637b_a_762</scm-api-plugin.version>
