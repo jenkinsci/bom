@@ -66,6 +66,11 @@
       <scope>test</scope>
     </dependency>
     <dependency>
+      <groupId>com.sonyericsson.jenkins.plugins.bfa</groupId>
+      <artifactId>build-failure-analyzer</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <groupId>io.jenkins</groupId>
       <artifactId>configuration-as-code</artifactId>
       <scope>test</scope>
