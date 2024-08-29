@@ -50,6 +50,11 @@
         <version>332.va_1ee476d8f6d</version>
       </dependency>
       <dependency>
+        <groupId>com.sonyericsson.jenkins.plugins.bfa</groupId>
+        <artifactId>build-failure-analyzer</artifactId>
+        <version>2.5.2</version>
+      </dependency>
+      <dependency>
         <groupId>io.jenkins</groupId>
         <artifactId>configuration-as-code</artifactId>
         <version>${configuration-as-code-plugin.version}</version>
