@@ -1040,7 +1040,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>support-core</artifactId>
-        <version>1475.va_b_510dc46b_3d</version>
+        <version>1477.v998880b_16031</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
