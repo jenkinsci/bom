@@ -684,6 +684,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>electricflow</artifactId>
+        <version>1.1.37</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>email-ext</artifactId>
         <version>1814.v404722f34263</version>
       </dependency>
