@@ -411,6 +411,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>oss-symbols-api</artifactId>
+        <version>35.v9d19a_09d53e9</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
         <version>313.v1322ce83d680</version>
       </dependency>
