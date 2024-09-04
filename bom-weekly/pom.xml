@@ -18,11 +18,11 @@
     <data-tables-api.version>2.1.4-1</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.4</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>2.5.0</forensics-api.version>
-    <github-api-plugin.version>1.321-475.vf7ef62885c83</github-api-plugin.version>
+    <github-api-plugin.version>1.321-478.vc9ce627ce001</github-api-plugin.version>
     <git-plugin.version>5.4.1</git-plugin.version>
     <junit-plugin.version>1296.vb_f538b_c88630</junit-plugin.version>
     <mina-sshd-api.version>2.13.2-125.v200281b_61d59</mina-sshd-api.version>
-    <okhttp-api-plugin.version>4.11.0-179.vdc1e64343d52</okhttp-api-plugin.version>
+    <okhttp-api-plugin.version>4.11.0-181.v1de5b_83857df</okhttp-api-plugin.version>
     <pipeline-maven-plugin.version>1421.v610fa_b_e2d60e</pipeline-maven-plugin.version>
     <pipeline-model-definition-plugin.version>2.2214.vb_b_34b_2ea_9b_83</pipeline-model-definition-plugin.version>
     <pipeline-stage-view-plugin.version>2.34</pipeline-stage-view-plugin.version>
@@ -747,7 +747,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>gitlab-plugin</artifactId>
-        <version>1.9.1</version>
+        <version>1.9.2</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -848,7 +848,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ldap</artifactId>
-        <version>725.v3cb_b_711b_1a_ef</version>
+        <version>733.vd3700c27b_043</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -983,7 +983,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>saml</artifactId>
-        <version>4.464.vea_cb_75d7f5e0</version>
+        <version>4.485.v99810fb_34d77</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
