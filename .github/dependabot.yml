@@ -6,6 +6,10 @@ updates:
     directory: "/sample-plugin"
     schedule:
       interval: "daily"
+    ignore:
+      # EE 10+ is not yet supported
+      - dependency-name: "jakarta.servlet:jakarta.servlet-api"
+        versions: [">=6.0.0"]
   - package-ecosystem: "maven"
     open-pull-requests-limit: 25
     directory: "/bom-weekly"
@@ -15,9 +19,6 @@ updates:
       # Should have been 1.27.0
       - dependency-name: "com.sonyericsson.jenkins.plugins.bfa:build-failure-analyzer"
         versions: ["2.27.0"]
-      # EE 10+ is not yet supported
-      - dependency-name: "jakarta.servlet:jakarta.servlet-api"
-        versions: [">=6.0.0"]
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
