@@ -14,7 +14,8 @@
   <properties>
     <changelist>999999-SNAPSHOT</changelist>
     <bom>weekly</bom>
-    <jenkins.version>2.475</jenkins.version>
+    <!-- TODO https://github.com/jenkinsci/jenkins/pull/9696 -->
+    <jenkins.version>2.476-rc35313.0144a_9701da_2</jenkins.version>
     <spotless.check.skip>false</spotless.check.skip>
     <!-- TODO JENKINS-73339 until in parent POM -->
     <jenkins-test-harness.version>2254.vcff7a_d4969e5</jenkins-test-harness.version>
@@ -749,6 +750,11 @@
     </dependency>
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>oic-auth</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>pam-auth</artifactId>
       <scope>test</scope>
     </dependency>
@@ -816,6 +822,22 @@
       <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>pubsub-light</artifactId>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>reverse-proxy-auth-plugin</artifactId>
+      <scope>test</scope>
+      <exclusions>
+        <!-- TODO Migrate from Acegi to Spring Security -->
+        <exclusion>
+          <groupId>org.acegisecurity</groupId>
+          <artifactId>acegi-security</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-dao</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
