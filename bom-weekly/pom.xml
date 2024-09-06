@@ -897,6 +897,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>parallel-test-executor</artifactId>
+        <version>506.vfe24090a_9d49</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>parameterized-trigger</artifactId>
         <version>806.vf6fff3e28c3e</version>
       </dependency>
