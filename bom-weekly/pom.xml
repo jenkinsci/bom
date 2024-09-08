@@ -412,7 +412,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>oss-symbols-api</artifactId>
-        <version>55.v6a_f47f01a_2f7</version>
+        <version>47.v2719b_2c9d389</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -569,7 +569,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>build-user-vars-plugin</artifactId>
-        <version>177.vb_2fa_784145db_</version>
+        <!-- TODO https://github.com/jenkinsci/build-user-vars-plugin/pull/141 -->
+        <version>178.v79b_a_d56232e7</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -892,6 +893,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>oic-auth</artifactId>
+        <version>4.331.vd925b_f76f3a_c</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pam-auth</artifactId>
         <version>1.11</version>
       </dependency>
@@ -974,6 +980,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>resource-disposer</artifactId>
         <version>0.23</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>reverse-proxy-auth-plugin</artifactId>
+        <version>1.7.7</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
