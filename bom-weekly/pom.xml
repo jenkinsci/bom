@@ -610,7 +610,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>config-file-provider</artifactId>
-        <version>973.vb_a_80ecb_9a_4d0</version>
+        <version>978.v8e85886ffdc4</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
