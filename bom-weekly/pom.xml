@@ -892,6 +892,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>oic-auth</artifactId>
+        <version>4.340.ve70636c6590e</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pam-auth</artifactId>
         <version>1.11</version>
       </dependency>
@@ -974,6 +979,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>resource-disposer</artifactId>
         <version>0.23</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>reverse-proxy-auth-plugin</artifactId>
+        <version>1.7.7</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
