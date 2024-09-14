@@ -1014,7 +1014,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>script-security</artifactId>
-        <version>1361.v913100720139</version>
+        <!-- TODO: https://github.com/jenkinsci/script-security-plugin/pull/578 -->
+        <version>1364.v88f2cb_94682d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
