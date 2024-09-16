@@ -10,7 +10,7 @@
   <packaging>pom</packaging>
   <properties>
     <aws-java-sdk-plugin.version>1.12.767-467.vb_e93f0c614b_6</aws-java-sdk-plugin.version>
-    <blueocean-plugin.version>1.27.14</blueocean-plugin.version>
+    <blueocean-plugin.version>1.27.15</blueocean-plugin.version>
     <branch-api-plugin.version>2.1178.v969d9eb_c728e</branch-api-plugin.version>
     <checks-api.version>2.2.1</checks-api.version>
     <cloudbees-folder-plugin.version>6.951.v5f91d88d76b_b_</cloudbees-folder-plugin.version>
@@ -361,7 +361,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>joda-time-api</artifactId>
-        <version>2.12.7-29.v5a_b_e3a_82269a_</version>
+        <version>2.13.0-85.vb_64d1c2921f1</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -463,7 +463,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>warnings-ng</artifactId>
-        <version>11.5.0</version>
+        <version>11.6.0</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins.mina-sshd-api</groupId>
@@ -903,7 +903,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>parallel-test-executor</artifactId>
-        <version>506.vfe24090a_9d49</version>
+        <version>512.v751a_b_24e0e67</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1014,8 +1014,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>script-security</artifactId>
-        <!-- TODO: https://github.com/jenkinsci/script-security-plugin/pull/578 -->
-        <version>1364.v88f2cb_94682d</version>
+        <version>1362.v67dc1f0e1b_b_3</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
