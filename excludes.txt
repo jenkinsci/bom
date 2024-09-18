@@ -23,9 +23,6 @@ hudson.matrix.AxisTest#emptyAxisValueListResultInNoConfigurations
 hudson.matrix.AxisTest#submitEmptyAxisName
 hudson.matrix.AxisTest#submitInvalidAxisName
 
-# TODO https://github.com/jenkinsci/blueocean-plugin/pull/2578
-io.jenkins.blueocean.blueocean_git_pipeline.GitReadSaveTest#testBareRepoReadWrite
-
 # TODO cryptic PCT-only errors: https://github.com/jenkinsci/bom/issues/2645#issue-1984697087
 io.jenkins.blueocean.service.embedded.PipelineApiTest#testOrganizationFolder
 
