@@ -893,7 +893,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>oic-auth</artifactId>
-        <version>4.350.v347c3b_8b_9d95</version>
+        <version>4.354.v321ce67a_1de8</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
