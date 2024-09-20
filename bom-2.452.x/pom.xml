@@ -9,9 +9,10 @@
   <artifactId>bom-2.452.x</artifactId>
   <packaging>pom</packaging>
   <properties>
-    <workflow-job-plugin.version>1400.v7fd111b_ec82f</workflow-job-plugin.version>
     <cloudbees-folder-plugin.version>6.928.v7c780211d66e</cloudbees-folder-plugin.version>
+    <plugin-util-api.version>4.1.0</plugin-util-api.version>
     <subversion-plugin.version>1269.v53185011cd9f</subversion-plugin.version>
+    <workflow-job-plugin.version>1400.v7fd111b_ec82f</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>783.va_6eb_ef636fb_d</workflow-multibranch-plugin.version>
   </properties>
   <dependencyManagement>
@@ -32,6 +33,17 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>dark-theme</artifactId>
         <version>439.vdef09f81f85e</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>plugin-util-api</artifactId>
+        <version>${plugin-util-api.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>plugin-util-api</artifactId>
+        <version>${plugin-util-api.version}</version>
+        <classifier>tests</classifier>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
