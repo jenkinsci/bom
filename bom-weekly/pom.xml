@@ -26,7 +26,7 @@
     <pipeline-maven-plugin.version>1421.v610fa_b_e2d60e</pipeline-maven-plugin.version>
     <pipeline-model-definition-plugin.version>2.2214.vb_b_34b_2ea_9b_83</pipeline-model-definition-plugin.version>
     <pipeline-stage-view-plugin.version>2.34</pipeline-stage-view-plugin.version>
-    <plugin-util-api.version>4.1.0</plugin-util-api.version>
+    <plugin-util-api.version>5.1.0</plugin-util-api.version>
     <scm-api-plugin.version>696.v778d637b_a_762</scm-api-plugin.version>
     <subversion-plugin.version>1275.va_7b_014f3fc2c</subversion-plugin.version>
     <workflow-api-plugin.version>1336.vee415d95c521</workflow-api-plugin.version>
@@ -163,7 +163,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>analysis-model-api</artifactId>
-        <version>12.4.0</version>
+        <version>12.7.0</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -893,7 +893,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>oic-auth</artifactId>
-        <version>4.350.v347c3b_8b_9d95</version>
+        <version>4.354.v321ce67a_1de8</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
