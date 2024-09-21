@@ -386,7 +386,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>markdown-formatter</artifactId>
-        <version>220.v1a_262cd9f77f</version>
+        <version>225.v859f46dea_3b_5</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
