@@ -411,6 +411,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>opentelemetry-api</artifactId>
+        <version>1.40.0-36.v1e02b_b_4db_8f4</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>oss-symbols-api</artifactId>
         <version>71.v08d42ee3785d</version>
       </dependency>
