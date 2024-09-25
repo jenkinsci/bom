@@ -578,6 +578,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>build-monitor-plugin</artifactId>
+        <version>1.14-925.v95b_9089a_4c7f</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>build-user-vars-plugin</artifactId>
         <version>178.v69708a_7a_dc17</version>
       </dependency>
