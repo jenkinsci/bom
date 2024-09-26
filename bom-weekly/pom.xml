@@ -275,7 +275,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>flyway-api</artifactId>
-        <version>10.18.1-161.v8cc01e08c2c0</version>
+        <version>10.18.2-163.v10696ed45dd6</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
