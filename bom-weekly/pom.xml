@@ -13,7 +13,7 @@
     <blueocean-plugin.version>1.27.16</blueocean-plugin.version>
     <branch-api-plugin.version>2.1178.v969d9eb_c728e</branch-api-plugin.version>
     <checks-api.version>2.2.1</checks-api.version>
-    <cloudbees-folder-plugin.version>6.951.v5f91d88d76b_b_</cloudbees-folder-plugin.version>
+    <cloudbees-folder-plugin.version>6.955.v81e2a_35c08d3</cloudbees-folder-plugin.version>
     <configuration-as-code-plugin.version>1850.va_a_8c31d3158b_</configuration-as-code-plugin.version>
     <data-tables-api.version>2.1.6-1</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.4</declarative-pipeline-migration-assistant-plugin.version>
