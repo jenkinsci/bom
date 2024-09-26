@@ -1,10 +1,8 @@
-properties(
-  [
-    disableConcurrentBuilds(abortPrevious: true), 
-    buildDiscarder(logRotator(numToKeepStr: '7')),
-    pipelineTriggers([cron('H 11 * * 5')])
-  ]
-)
+properties([
+  disableConcurrentBuilds(abortPrevious: true),
+  buildDiscarder(logRotator(numToKeepStr: '7')),
+  pipelineTriggers([cron('H 11 * * 5')])
+])
 
 if (BRANCH_NAME == 'master' && currentBuild.buildCauses*._class == ['jenkins.branch.BranchEventCause']) {
   currentBuild.result = 'NOT_BUILT'
