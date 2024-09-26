@@ -20,7 +20,7 @@
     <forensics-api.version>2.6.0</forensics-api.version>
     <github-api-plugin.version>1.321-478.vc9ce627ce001</github-api-plugin.version>
     <git-plugin.version>5.5.1</git-plugin.version>
-    <junit-plugin.version>1300.v03d9d8a_cf1fb_</junit-plugin.version>
+    <junit-plugin.version>1302.va_b_878c32eb_b_5</junit-plugin.version>
     <mina-sshd-api.version>2.13.2-125.v200281b_61d59</mina-sshd-api.version>
     <okhttp-api-plugin.version>4.11.0-181.v1de5b_83857df</okhttp-api-plugin.version>
     <pipeline-maven-plugin.version>1421.v610fa_b_e2d60e</pipeline-maven-plugin.version>
@@ -275,7 +275,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>flyway-api</artifactId>
-        <version>10.18.1-161.v8cc01e08c2c0</version>
+        <version>10.18.2-163.v10696ed45dd6</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
