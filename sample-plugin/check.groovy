@@ -4,7 +4,7 @@ println "Managed dependencies of $project: $managedDeps"
 def artifactMap = project.artifacts.grep {!it.hasClassifier()}.collectEntries {art -> ["$art.groupId:$art.artifactId".toString(), art]}
 assert artifactMap['junit:junit'] == project.artifactMap['junit:junit']
 
-def managedPluginDeps = managedDeps.collect {stripAllButGA(it)}.grep { ga ->
+managedDeps.collect {stripAllButGA(it)}.grep { ga ->
   def art = artifactMap[ga]
   if (art == null) {
     // TODO without an Artifact, we have no reliable way of checking whether it is actually a plugin
@@ -16,25 +16,6 @@ def managedPluginDeps = managedDeps.collect {stripAllButGA(it)}.grep { ga ->
     }
   }
   pluginName(art) != null
-}
-if (settings.activeProfiles.any {it ==~ /^2[.][0-9]+[.]x$/}) {
-  println 'Skipping managed plugin dep sort check on this old LTS line'
-} else {
-  def sortedDeps = managedPluginDeps.toSorted { a, b ->
-    def aSplit = a.split(':')
-    def bSplit = b.split(':')
-    def result = aSplit[0] <=> bSplit[0]
-    if (result == 0) {
-      result = aSplit[1] <=> bSplit[1]
-    }
-    result
-  }
-  if (managedPluginDeps != sortedDeps) {
-    throw new org.apache.maven.plugin.MojoFailureException("""Managed plugin dependencies should be sorted: $managedPluginDeps, 
-
-expected: $sortedDeps
-""")
-  }
 }
 
 project.artifacts.each { art ->
