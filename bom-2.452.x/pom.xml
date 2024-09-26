@@ -58,6 +58,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>JiraTestResultReporter</artifactId>
+        <version>213.vccc8cf83e157</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>job-dsl</artifactId>
         <version>1.87</version>
       </dependency>
