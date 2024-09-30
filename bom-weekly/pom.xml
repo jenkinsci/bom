@@ -993,7 +993,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>resource-disposer</artifactId>
-        <version>0.23</version>
+        <version>0.24</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
