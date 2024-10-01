@@ -883,7 +883,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>matrix-project</artifactId>
-        <version>832.va_66e270d2946</version>
+        <!-- TODO https://github.com/jenkinsci/matrix-project-plugin/pull/130 -->
+        <version>846.v4f1c596a_210a_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
