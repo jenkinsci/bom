@@ -635,7 +635,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>credentials</artifactId>
-        <version>1378.v81ef4269d764</version>
+        <!-- TODO https://github.com/jenkinsci/credentials-plugin/pull/533 -->
+        <version>1384.ve9d929a_a_8fe9</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
