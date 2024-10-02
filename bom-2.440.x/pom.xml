@@ -44,6 +44,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>credentials</artifactId>
+        <version>1380.va_435002fa_924</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>support-core</artifactId>
         <version>1427.v083f1d9372a_f</version>
       </dependency>
