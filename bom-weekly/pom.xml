@@ -23,7 +23,7 @@
     <junit-plugin.version>1302.va_b_878c32eb_b_5</junit-plugin.version>
     <mina-sshd-api.version>2.13.2-125.v200281b_61d59</mina-sshd-api.version>
     <okhttp-api-plugin.version>4.11.0-181.v1de5b_83857df</okhttp-api-plugin.version>
-    <pipeline-maven-plugin.version>1421.v610fa_b_e2d60e</pipeline-maven-plugin.version>
+    <pipeline-maven-plugin.version>1457.vf7a_de13b_c0d4</pipeline-maven-plugin.version>
     <pipeline-model-definition-plugin.version>2.2214.vb_b_34b_2ea_9b_83</pipeline-model-definition-plugin.version>
     <pipeline-stage-view-plugin.version>2.34</pipeline-stage-view-plugin.version>
     <plugin-util-api.version>5.1.0</plugin-util-api.version>
@@ -863,7 +863,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ldap</artifactId>
-        <version>756.v2f20b_801f120</version>
+        <version>759.vef7f616475df</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -908,7 +908,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>oic-auth</artifactId>
-        <version>4.354.v321ce67a_1de8</version>
+        <version>4.355.v3a_fb_fca_b_96d4</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
