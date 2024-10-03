@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.jenkins-ci.plugins</groupId>
     <artifactId>plugin</artifactId>
-    <version>4.88</version>
+    <version>5.0</version>
     <relativePath />
   </parent>
   <groupId>io.jenkins.tools.bom</groupId>
@@ -16,8 +16,6 @@
     <bom>weekly</bom>
     <jenkins.version>2.479</jenkins.version>
     <spotless.check.skip>false</spotless.check.skip>
-    <!-- TODO JENKINS-73339 until in parent POM -->
-    <jenkins-test-harness.version>2254.vcff7a_d4969e5</jenkins-test-harness.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -27,12 +25,6 @@
         <version>${project.version}</version>
         <type>pom</type>
         <scope>import</scope>
-      </dependency>
-      <!-- TODO JENKINS-73339 until in parent POM, work around https://github.com/jenkinsci/plugin-pom/issues/936 -->
-      <dependency>
-        <groupId>jakarta.servlet</groupId>
-        <artifactId>jakarta.servlet-api</artifactId>
-        <version>5.0.0</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -1169,6 +1161,29 @@
           <skip>true</skip>
         </configuration>
       </plugin>
+      <!-- TODO Remove when we drop support for the 2.452.x LTS line -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>display-info</id>
+            <configuration>
+              <rules>
+                <requireUpperBoundDeps>
+                  <excludes combine.children="append">
+                    <exclude>org.ow2.asm:asm</exclude>
+                    <exclude>org.ow2.asm:asm-analysis</exclude>
+                    <exclude>org.ow2.asm:asm-commons</exclude>
+                    <exclude>org.ow2.asm:asm-tree</exclude>
+                    <exclude>org.ow2.asm:asm-util</exclude>
+                  </excludes>
+                </requireUpperBoundDeps>
+              </rules>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
   <profiles>
@@ -1177,22 +1192,49 @@
       <id>2.462.x</id>
       <properties>
         <bom>2.462.x</bom>
+        <hpi-plugin.version>3.57</hpi-plugin.version>
         <jenkins.version>2.462.3</jenkins.version>
+        <jenkins-test-harness.version>2225.2230.v6210cb_b_827f9</jenkins-test-harness.version>
+        <maven.compiler.release>11</maven.compiler.release>
       </properties>
     </profile>
     <profile>
       <id>2.452.x</id>
       <properties>
         <bom>2.452.x</bom>
+        <hpi-plugin.version>3.57</hpi-plugin.version>
         <jenkins.version>2.452.3</jenkins.version>
+        <jenkins-test-harness.version>2225.2230.v6210cb_b_827f9</jenkins-test-harness.version>
+        <maven.compiler.release>11</maven.compiler.release>
       </properties>
+      <dependencyManagement>
+        <dependencies>
+          <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>4.0.4</version>
+          </dependency>
+        </dependencies>
+      </dependencyManagement>
     </profile>
     <profile>
       <id>2.440.x</id>
       <properties>
         <bom>2.440.x</bom>
+        <hpi-plugin.version>3.57</hpi-plugin.version>
         <jenkins.version>2.440.3</jenkins.version>
+        <jenkins-test-harness.version>2225.2230.v6210cb_b_827f9</jenkins-test-harness.version>
+        <maven.compiler.release>11</maven.compiler.release>
       </properties>
+      <dependencyManagement>
+        <dependencies>
+          <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>4.0.4</version>
+          </dependency>
+        </dependencies>
+      </dependencyManagement>
     </profile>
   </profiles>
 </project>
