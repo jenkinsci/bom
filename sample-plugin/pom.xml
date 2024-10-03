@@ -1147,6 +1147,29 @@
           </execution>
         </executions>
       </plugin>
+      <!-- TODO Remove when we drop support for the 2.452.x LTS line -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>display-info</id>
+            <configuration>
+              <rules>
+                <requireUpperBoundDeps>
+                  <excludes combine.children="append">
+                    <exclude>org.ow2.asm:asm</exclude>
+                    <exclude>org.ow2.asm:asm-analysis</exclude>
+                    <exclude>org.ow2.asm:asm-commons</exclude>
+                    <exclude>org.ow2.asm:asm-tree</exclude>
+                    <exclude>org.ow2.asm:asm-util</exclude>
+                  </excludes>
+                </requireUpperBoundDeps>
+              </rules>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-install-plugin</artifactId>
