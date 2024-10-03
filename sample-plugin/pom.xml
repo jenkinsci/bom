@@ -1194,6 +1194,15 @@
         <bom>2.462.x</bom>
         <jenkins.version>2.462.3</jenkins.version>
       </properties>
+      <dependencyManagement>
+        <dependencies>
+          <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>4.0.4</version>
+          </dependency>
+        </dependencies>
+      </dependencyManagement>
     </profile>
     <profile>
       <id>2.452.x</id>
@@ -1201,6 +1210,15 @@
         <bom>2.452.x</bom>
         <jenkins.version>2.452.3</jenkins.version>
       </properties>
+      <dependencyManagement>
+        <dependencies>
+          <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>4.0.4</version>
+          </dependency>
+        </dependencies>
+      </dependencyManagement>
     </profile>
     <profile>
       <id>2.440.x</id>
@@ -1208,6 +1226,15 @@
         <bom>2.440.x</bom>
         <jenkins.version>2.440.3</jenkins.version>
       </properties>
+      <dependencyManagement>
+        <dependencies>
+          <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>4.0.4</version>
+          </dependency>
+        </dependencies>
+      </dependencyManagement>
     </profile>
   </profiles>
 </project>
