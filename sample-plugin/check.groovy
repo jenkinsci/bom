@@ -23,9 +23,9 @@ if (settings.activeProfiles.any {it ==~ /^2[.][0-9]+[.]x$/}) {
   def sortedDeps = managedPluginDeps.toSorted { a, b ->
     def aSplit = a.split(':')
     def bSplit = b.split(':')
-    def result = aSplit[0] <=> bSplit[0]
+    def result = aSplit[0].toLowerCase() <=> bSplit[0].toLowerCase()
     if (result == 0) {
-      result = aSplit[1] <=> bSplit[1]
+      result = aSplit[1].toLowerCase() <=> bSplit[1].toLowerCase()
     }
     result
   }
