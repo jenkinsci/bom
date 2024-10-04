@@ -1161,29 +1161,6 @@
           <skip>true</skip>
         </configuration>
       </plugin>
-      <!-- TODO Remove when we drop support for the 2.452.x LTS line -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-enforcer-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>display-info</id>
-            <configuration>
-              <rules>
-                <requireUpperBoundDeps>
-                  <excludes combine.children="append">
-                    <exclude>org.ow2.asm:asm</exclude>
-                    <exclude>org.ow2.asm:asm-analysis</exclude>
-                    <exclude>org.ow2.asm:asm-commons</exclude>
-                    <exclude>org.ow2.asm:asm-tree</exclude>
-                    <exclude>org.ow2.asm:asm-util</exclude>
-                  </excludes>
-                </requireUpperBoundDeps>
-              </rules>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
     </plugins>
   </build>
   <profiles>
@@ -1205,6 +1182,15 @@
         <jenkins-test-harness.version>2225.2230.v6210cb_b_827f9</jenkins-test-harness.version>
         <maven.compiler.release>11</maven.compiler.release>
       </properties>
+      <dependencyManagement>
+        <dependencies>
+          <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>4.0.4</version>
+          </dependency>
+        </dependencies>
+      </dependencyManagement>
     </profile>
     <profile>
       <id>2.452.x</id>

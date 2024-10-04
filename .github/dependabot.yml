@@ -9,7 +9,7 @@ updates:
     ignore:
       # EE 10+ is not yet supported
       # EE 9 is inherited from parent pom now
-      # EE 4 needs to remain in older lines of sample-plugin until those lines are retired
+      # EE 8 needs to remain in older lines of sample-plugin until those lines are retired
       - dependency-name: "jakarta.servlet:jakarta.servlet-api"
         versions: [">=5.0.0"]
   - package-ecosystem: "maven"
