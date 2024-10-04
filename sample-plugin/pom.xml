@@ -1182,15 +1182,6 @@
         <jenkins-test-harness.version>2225.2230.v6210cb_b_827f9</jenkins-test-harness.version>
         <maven.compiler.release>11</maven.compiler.release>
       </properties>
-      <dependencyManagement>
-        <dependencies>
-          <dependency>
-            <groupId>jakarta.servlet</groupId>
-            <artifactId>jakarta.servlet-api</artifactId>
-            <version>4.0.4</version>
-          </dependency>
-        </dependencies>
-      </dependencyManagement>
     </profile>
     <profile>
       <id>2.452.x</id>
