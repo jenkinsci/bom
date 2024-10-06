@@ -21,7 +21,7 @@
     <github-api-plugin.version>1.321-478.vc9ce627ce001</github-api-plugin.version>
     <git-plugin.version>5.5.2</git-plugin.version>
     <junit-plugin.version>1303.v05e2505656b_7</junit-plugin.version>
-    <mina-sshd-api.version>2.14.0-131.v04e9b_6b_e0362</mina-sshd-api.version>
+    <mina-sshd-api.version>2.14.0-133.vcc091215a_358</mina-sshd-api.version>
     <okhttp-api-plugin.version>4.11.0-181.v1de5b_83857df</okhttp-api-plugin.version>
     <pipeline-maven-plugin.version>1457.vf7a_de13b_c0d4</pipeline-maven-plugin.version>
     <pipeline-model-definition-plugin.version>2.2214.vb_b_34b_2ea_9b_83</pipeline-model-definition-plugin.version>
@@ -762,7 +762,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>gitlab-plugin</artifactId>
-        <version>1.9.2</version>
+        <version>1.9.3</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -823,6 +823,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jdk-tool</artifactId>
         <version>80.v8a_dee33ed6f0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>JiraTestResultReporter</artifactId>
+        <version>231.v70eec719d7e9</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
