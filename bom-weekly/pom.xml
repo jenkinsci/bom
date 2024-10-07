@@ -15,7 +15,7 @@
     <checks-api.version>2.2.1</checks-api.version>
     <cloudbees-folder-plugin.version>6.955.v81e2a_35c08d3</cloudbees-folder-plugin.version>
     <configuration-as-code-plugin.version>1850.va_a_8c31d3158b_</configuration-as-code-plugin.version>
-    <data-tables-api.version>2.1.6-1</data-tables-api.version>
+    <data-tables-api.version>2.1.8-1</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.4</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>2.6.0</forensics-api.version>
     <github-api-plugin.version>1.321-478.vc9ce627ce001</github-api-plugin.version>
@@ -422,7 +422,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
-        <version>349.veda_b_e2366d99</version>
+        <version>354.v2f82db_3f59cc</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
