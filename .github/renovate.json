@@ -1,12 +1,12 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base",
+    "config:recommended",
     ":semanticCommitsDisabled",
     "schedule:daily"
   ],
   "enabledManagers": [
-    "regex"
+    "custom.regex"
   ],
   "automerge": true,
   "customManagers": [
