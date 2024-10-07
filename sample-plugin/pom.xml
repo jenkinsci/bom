@@ -1193,7 +1193,7 @@
       <properties>
         <bom>2.452.x</bom>
         <hpi-plugin.version>3.57</hpi-plugin.version>
-        <jenkins.version>2.452.3</jenkins.version>
+        <jenkins.version>2.452.4</jenkins.version>
         <jenkins-test-harness.version>2225.2230.v6210cb_b_827f9</jenkins-test-harness.version>
         <maven.compiler.release>11</maven.compiler.release>
       </properties>
