@@ -913,7 +913,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>oic-auth</artifactId>
-        <version>4.355.v3a_fb_fca_b_96d4</version>
+        <version>4.371.vc7c0c06e8a_f5</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
