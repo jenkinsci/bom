@@ -1018,7 +1018,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>saml</artifactId>
-        <version>4.487.v9f1c3328f1c0</version>
+        <version>4.496.v56a_6423dca_35</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
