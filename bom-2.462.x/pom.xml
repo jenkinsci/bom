@@ -93,7 +93,6 @@
         <version>4.464.vea_cb_75d7f5e0</version>
       </dependency>
       <dependency>
-<<<<<<< HEAD
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>scm-api</artifactId>
         <version>${scm-api-plugin.version}</version>
@@ -105,14 +104,11 @@
         <classifier>tests</classifier>
       </dependency>
       <dependency>
-||||||| ae64d314
-=======
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>throttle-concurrents</artifactId>
         <version>2.14</version>
       </dependency>
       <dependency>
->>>>>>> origin/master
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
         <artifactId>workflow-job</artifactId>
         <version>${workflow-job-plugin.version}</version>
