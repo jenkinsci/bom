@@ -503,7 +503,8 @@
       <dependency>
         <groupId>org.jenkins-ci.main</groupId>
         <artifactId>maven-plugin</artifactId>
-        <version>3.23</version>
+        <!-- TODO: https://github.com/jenkinsci/maven-plugin/pull/345 -->
+        <version>3.24-rc2459.92567fa_a_4b_65</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.modules</groupId>
