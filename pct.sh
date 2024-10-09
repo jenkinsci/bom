@@ -26,8 +26,10 @@ exec java \
 	--war "$(pwd)/target/megawar-$LINE.war" \
 	--include-plugins "${PLUGINS}" \
 	--working-dir "$(pwd)/target/pct-work" \
+	--maven-args "-Pconsume-incrementals" \
 	$PCT_D_ARGS \
 	${PCT_OPTS-} \
+	-Djenkins-test-harness.version=2318.v43483ea_a_9386 \
 	-Dsurefire.excludesFile="$(pwd)/excludes.txt"
 
 # produces: **/target/surefire-reports/TEST-*.xml
