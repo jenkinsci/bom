@@ -12,7 +12,7 @@
     <github-api-plugin.version>1.321-468.v6a_9f5f2d5a_7e</github-api-plugin.version>
     <git-plugin.version>5.5.2</git-plugin.version>
     <okhttp-api-plugin.version>4.11.0-172.vda_da_1feeb_c6e</okhttp-api-plugin.version>
-    <scm-api-plugin.version>696.v778d637b_a_762</scm-api-plugin.version>
+    <scm-api-plugin.version>698.v1b_46fc0633b_9</scm-api-plugin.version>
     <workflow-job-plugin.version>1436.vfa_244484591f</workflow-job-plugin.version>
   </properties>
   <dependencyManagement>
