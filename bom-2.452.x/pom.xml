@@ -26,6 +26,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>analysis-model-api</artifactId>
+        <version>12.6.0</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>asm-api</artifactId>
         <version>9.7-33.v4d23ef79fcc8</version>
       </dependency>
@@ -49,6 +54,11 @@
         <artifactId>plugin-util-api</artifactId>
         <version>${plugin-util-api.version}</version>
         <classifier>tests</classifier>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>warnings-ng</artifactId>
+        <version>11.7.0</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
