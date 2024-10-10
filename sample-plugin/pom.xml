@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.jenkins-ci.plugins</groupId>
     <artifactId>plugin</artifactId>
-    <version>4.87</version>
+    <version>5.1</version>
     <relativePath />
   </parent>
   <groupId>io.jenkins.tools.bom</groupId>
@@ -14,10 +14,8 @@
   <properties>
     <changelist>999999-SNAPSHOT</changelist>
     <bom>weekly</bom>
-    <jenkins.version>2.477</jenkins.version>
+    <jenkins.version>2.480</jenkins.version>
     <spotless.check.skip>false</spotless.check.skip>
-    <!-- TODO JENKINS-73339 until in parent POM -->
-    <jenkins-test-harness.version>2254.vcff7a_d4969e5</jenkins-test-harness.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -27,12 +25,6 @@
         <version>${project.version}</version>
         <type>pom</type>
         <scope>import</scope>
-      </dependency>
-      <!-- TODO JENKINS-73339 until in parent POM, work around https://github.com/jenkinsci/plugin-pom/issues/936 -->
-      <dependency>
-        <groupId>jakarta.servlet</groupId>
-        <artifactId>jakarta.servlet-api</artifactId>
-        <version>5.0.0</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -474,6 +466,11 @@
     </dependency>
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>badge</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>bouncycastle-api</artifactId>
       <scope>test</scope>
     </dependency>
@@ -486,6 +483,11 @@
       <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>branch-api</artifactId>
       <classifier>tests</classifier>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>build-monitor-plugin</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -689,6 +691,11 @@
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>jdk-tool</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>JiraTestResultReporter</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -1164,25 +1171,41 @@
   <profiles>
     <!-- Use .1 of most recent active line, and .3 (or later) of previous lines: https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/#choosing-a-version -->
     <profile>
+      <id>2.479.x</id>
+      <properties>
+        <bom>2.479.x</bom>
+        <!-- TODO: Replace with 2.479.1 after release of 2.479.1 -->
+        <jenkins.version>2.479</jenkins.version>
+      </properties>
+    </profile>
+    <profile>
       <id>2.462.x</id>
       <properties>
         <bom>2.462.x</bom>
-        <jenkins.version>2.462.1</jenkins.version>
+        <hpi-plugin.version>3.57</hpi-plugin.version>
+        <jenkins.version>2.462.3</jenkins.version>
+        <jenkins-test-harness.version>2225.2230.v6210cb_b_827f9</jenkins-test-harness.version>
+        <maven.compiler.release>11</maven.compiler.release>
       </properties>
     </profile>
     <profile>
       <id>2.452.x</id>
       <properties>
         <bom>2.452.x</bom>
-        <jenkins.version>2.452.3</jenkins.version>
+        <hpi-plugin.version>3.57</hpi-plugin.version>
+        <jenkins.version>2.452.4</jenkins.version>
+        <jenkins-test-harness.version>2225.2230.v6210cb_b_827f9</jenkins-test-harness.version>
+        <maven.compiler.release>11</maven.compiler.release>
       </properties>
-    </profile>
-    <profile>
-      <id>2.440.x</id>
-      <properties>
-        <bom>2.440.x</bom>
-        <jenkins.version>2.440.3</jenkins.version>
-      </properties>
+      <dependencyManagement>
+        <dependencies>
+          <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>4.0.4</version>
+          </dependency>
+        </dependencies>
+      </dependencyManagement>
     </profile>
   </profiles>
 </project>
