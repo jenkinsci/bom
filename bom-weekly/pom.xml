@@ -27,7 +27,7 @@
     <pipeline-model-definition-plugin.version>2.2214.vb_b_34b_2ea_9b_83</pipeline-model-definition-plugin.version>
     <pipeline-stage-view-plugin.version>2.34</pipeline-stage-view-plugin.version>
     <plugin-util-api.version>5.1.0</plugin-util-api.version>
-    <scm-api-plugin.version>696.v778d637b_a_762</scm-api-plugin.version>
+    <scm-api-plugin.version>698.v8e3b_c788f0a_6</scm-api-plugin.version>
     <subversion-plugin.version>1275.va_7b_014f3fc2c</subversion-plugin.version>
     <workflow-api-plugin.version>1336.vee415d95c521</workflow-api-plugin.version>
     <workflow-cps-plugin.version>3969.vdc9d3a_efcc6a_</workflow-cps-plugin.version>
