@@ -645,7 +645,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>credentials-binding</artifactId>
-        <version>681.vf91669a_32e45</version>
+        <version>687.v619cb_15e923f</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -680,7 +680,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>display-url-api</artifactId>
-        <version>2.204.vf6fddd8a_8b_e9</version>
+        <version>2.209.v582ed814ff2f</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -893,7 +893,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>matrix-project</artifactId>
-        <version>839.vff91cd7e3a_b_2</version>
+        <version>840.v812f627cb_578</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
