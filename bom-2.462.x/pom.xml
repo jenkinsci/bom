@@ -57,6 +57,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>display-url-api</artifactId>
+        <version>2.204.vf6fddd8a_8b_e9</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>git</artifactId>
         <version>${git-plugin.version}</version>
       </dependency>
