@@ -26,6 +26,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>analysis-model-api</artifactId>
+        <version>12.4.0</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>flyway-api</artifactId>
         <version>9.22.3-151.v475c057b_07fc</version>
       </dependency>
@@ -44,6 +49,11 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
         <version>340.v28cecee8b_25f</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>warnings-ng</artifactId>
+        <version>11.5.0</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
