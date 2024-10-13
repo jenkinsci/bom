@@ -1384,6 +1384,11 @@
         <artifactId>favorite</artifactId>
         <version>2.221.v19ca_666b_62f5</version>
       </dependency>
+      <dependency>
+        <groupId>org.jvnet.hudson.plugins</groupId>
+        <artifactId>groovy-postbuild</artifactId>
+        <version>264.vf6e02a_77d5b_c</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 </project>
