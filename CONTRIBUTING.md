@@ -184,6 +184,14 @@ In a not so perfect world, a Dependabot PR will fail to build. Most of the time,
 [!TIP] 
 If you do have to do work on a PR, make sure to assign the PR to yourself so others can see that you are actively looking at the PR.
 
+The easiest way to work on the PR is to use the `gh` CLI to checkout the PR:
+
+* `gh pr checkout <PR id>`
+
+Then you can work on the PR. Once done, push your changes back to the PR. If everything is successful, the PR will auto-merge. At this point, you can delete the local branch:
+
+* `git branch -D <branchName>`
+
 #### Manually created PRs
 
 When there is a manually generated PR, there's probably a pretty good chance as a BOM maintainer you won't have to do anything. The person opening the PR should open the PR as `draft`. As a BOM maintainer, feel free to look at a `draft` PR, but don't spend much time on it.
@@ -194,13 +202,13 @@ However, if the person reaches out for help, be sure to help them.
 
 #### Friday (BOM release day)
 
-* run `bom-lock-master issueId`
-* verify that job started
-* run `bom-job-running issueId buildNumber`
+* run `bom-lock-master <issueId>` where `<issueId>` is the issue that you created on Thursday
+* verify that job started at [ci.jenkins.io](https://ci.jenkins.io/job/Tools/job/bom/view/change-requests/)
+* run `bom-job-running <issueId> <buildNumber>`
 * wait for build to make it through the `prep` stag then (typically) take a 1.5-2 hr break
 * [LOOP] if there are any failures, fix until everything is successful
-* run `bom-release-issue-add-release-comment issueId releaseNumber`
-* run `bom-unlock-master issueId`
+* run `bom-release-issue-add-release-comment <issueId> <releaseNumber>`
+* run `bom-unlock-master <issueId>`
 * edit the auto-generated release notes
   * remove `<!-- Optional: add a release summary here -->`
   * remove `<details>`
@@ -235,6 +243,23 @@ As someone that is "on-call" for managing BOM, there are a few helpful aliases/s
 These aliases use `git` and `gh`. If you haven't installed `gh` yet, do that and go ahead and login using:
 
 `gh auth login`
+
+You'll answer the questions:
+
+* Where do you use GitHub?
+  * GitHub.com
+* What is your preferred protocol for Git operations on this host?
+  * HTTPS
+* Authenticate Git with your GitHub credentials?
+  * Y
+* How would you like to authenticate GitHub CLI?
+  * Login with a web browser
+* Copy your one time code from the command line then press Enter
+* Depending on if you are already logged into GitHub with the browser that opened, you may have a few different steps. Eventually, you should get to a "Device Activation" screen. Click on the "Continue" button beside your avatar.
+* Enter the code you copied from the command line and click Continue
+* Now you'll be on the "Authorize GitHub CLI" screen. Click on the "Authorize github" button at the bottom of the page.
+  * You may be asked to confirm access in various forms. Just follow the instructions.
+* Once you complete the web login, look back at your command prompt. You should see that the login process has completed.
 
 ### `bom-lock-master`
 
