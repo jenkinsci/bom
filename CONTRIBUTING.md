@@ -44,8 +44,12 @@ In the worst case, such plugins can be excluded from the managed set.
 ## How to add a new plugin
 
 Insert a new `dependency` in _sorted_ order to `bom-weekly/pom.xml`.
+
+[!TIP]
+You can use `mvn spotless:apply` to sort the pom.xmls.
+
 Make sure it is used (perhaps transitively) in `sample-plugin/pom.xml`.
-Ideally also update the sample plugin’s tests to actually exercise it,
+Ideally, also update the sample plugin’s tests to actually exercise it,
 as a sanity check.
 
 Avoid adding transitive dependencies to `sample-plugin/pom.xml`. It is supposed
@@ -102,6 +106,7 @@ if you have switched the version in `bom-weekly/pom.xml` to a `*-SNAPSHOT`.
 
 To minimize cloud resources, PCT is not run at all by default on pull requests, only some basic sanity checks.
 Add the label `full-test` to run PCT in a PR.
+
 If you lack triage permission and so cannot add this label, then you may instead
 
 ```bash
@@ -159,3 +164,219 @@ This repository uses Dependabot to be notified automatically of available update
 (It is not currently possible for Jenkins core updates to be tracked this way.)
 
 Release Drafter is also used to prepare changelogs for the releases page.
+
+## A week in the life of a BOM maintainer
+
+A BOM maintainer is typically in charge of BOM maintenance for 2 weeks. 
+
+Typically as a BOM maintainer, you'll be working directly with the `jenkinsci/bom` repository. Said differently, think hard before using your fork of the `bom` repository.
+
+### Task handling
+
+#### Dependabot created PRs
+
+This will probably be the majority of work you'll do.
+
+In a perfect world, a Dependabot PR will just auto-merge into `master` and you won't have to do anything.
+
+In a not so perfect world, a Dependabot PR will fail to build. Most of the time, it's because a plugin is too new for older LTS lines. The way you'll resolve this issue is to pin the older version to the correct LTS line.
+
+[!TIP] 
+If you do have to do work on a PR, make sure to assign the PR to yourself so others can see that you are actively looking at the PR.
+
+#### Manually created PRs
+
+When there is a manually generated PR, there's probably a pretty good chance as a BOM maintainer you won't have to do anything. The person opening the PR should open the PR as `draft`. As a BOM maintainer, feel free to look at a `draft` PR, but don't spend much time on it.
+
+However, if the person reaches out for help, be sure to help them.
+
+### Day of week tasks
+
+#### Friday (BOM release day)
+
+* run `bom-lock-master issueId`
+* verify that job started
+* run `bom-job-running issueId buildNumber`
+* wait for build to make it through the `prep` stag then (typically) take a 1.5-2 hr break
+* [LOOP] if there are any failures, fix until everything is successful
+* run `bom-release-issue-add-release-comment issueId releaseNumber`
+* run `bom-unlock-master issueId`
+* edit the auto-generated release notes
+  * remove `<!-- Optional: add a release summary here -->`
+  * remove `<details>`
+  * remove `<summary>XYZ changes</summary>`
+  * remove `</details>`
+* run `bom-release-issue-close issueId`
+
+#### Saturday/Sunday/Monday
+
+* business as usual tasks
+ 
+#### Tuesday (full test day)
+
+* TODO: add the Tuesday tasks
+
+#### Wednesday
+
+* business as usual tasks
+
+#### Thursday (Prep for BOM release)
+
+* run `bom-release-issue-create yyyy-MM-dd`
+* on the newly created issue, set `Type` to `Task`
+* Locally run tests for `warnings-ng` for all current LINEs and weekly (`bom-test-all-lines warnings-ng`)
+
+## Using `gh` CLI 
+
+As someone that is "on-call" for managing BOM, there are a few helpful aliases/scripts that you can create to make your life easier.
+
+### Pre-requisites
+
+These aliases use `git` and `gh`. If you haven't installed `gh` yet, do that and go ahead and login using:
+
+`gh auth login`
+
+### `bom-lock-master`
+
+```bash
+function bom-lock-master {
+  cd $HOME/github/bom
+  git checkout master
+  git pull
+  gh api \
+    /repos/jenkinsci/bom/branches/master/protection \
+    --method PUT \
+    --header "Accept: application/vnd.github+json" \
+    --header "X-GitHub-Api-Version: 2022-11-28" \
+    -F "lock_branch=true" \
+    -F "enforce_admins=false" \
+    -F "required_pull_request_reviews=null" \
+    -F "required_status_checks[strict]=false" \
+    -f "required_status_checks[contexts][]=Jenkins" \
+    -F "restrictions=null" \
+    --silent
+
+  updatedBody=$(gh issue view $1 --json body --jq ".body" | sed 's/\[\ \] Lock/[x] Lock/')
+  gh issue edit $1 --body $updatedBody
+  bom-get-branch-protection
+}
+```
+
+### `bom-unlock-master`
+
+```bash
+function bom-unlock-master {
+  cd $HOME/github/bom
+  git checkout master
+  git pull
+  gh api \
+    /repos/jenkinsci/bom/branches/master/protection \
+    --method PUT \
+    --header "Accept: application/vnd.github+json" \
+    --header "X-GitHub-Api-Version: 2022-11-28" \
+    -F "lock_branch=false" \
+    -F "enforce_admins=false" \
+    -F "required_pull_request_reviews=null" \
+    -F "required_status_checks[strict]=false" \
+    -f "required_status_checks[contexts][]=Jenkins" \
+    -F "restrictions=null" \
+    --silent
+
+  updatedBody=$(gh issue view $1 --json body --jq ".body" | sed 's/\[\ \] Unlock/[x] Unlock/')
+  gh issue edit $1 --body $updatedBody
+  bom-get-branch-protection
+}
+```
+
+### `bom-get-branch-protection`
+
+```bash
+function bom-get-branch-protection {
+  cd $HOME/github/bom
+  git checkout master
+  git pull
+  gh api \
+    -H "Accept: application/vnd.github+json" \
+    -H "X-GitHub-Api-Version: 2022-11-28" \
+    /repos/jenkinsci/bom/branches/master/protection \
+    --jq ".lock_branch"
+}
+```
+
+### `bom-release-issue-create`
+
+```bash
+function bom-release-issue-create {
+  cd $HOME/github/bom
+  git checkout master
+  git pull
+  bodyValue=$(cat $HOME/github/myzsh/bom-release-issue-template.md)
+  issueNumber=$(gh api \
+    --method POST \
+    -H "Accept: application/vnd.github+json" \
+    -H "X-GitHub-Api-Version: 2022-11-28" \
+    /repos/jenkinsci/bom/issues \
+    -f "title=[RELEASE] New release for $1" \
+    -f "body=$bodyValue" \
+    -f "assignees[]=darinpope" \
+    --jq ".number")
+  echo $issueNumber
+  gh issue pin $issueNumber
+}
+```
+
+### `bom-release-issue-add-release-comment`
+
+```bash
+function bom-release-issue-add-release-comment {
+  cd $HOME/github/bom
+  git checkout master
+  git pull
+  gh issue comment $1 --body "New release: [https://github.com/jenkinsci/bom/releases/tag/$2](https://github.com/jenkinsci/bom/releases/tag/$2)"
+}
+```
+
+### `bom-release-issue-job-running`
+
+```bash
+function bom-release-issue-job-running {
+  cd $HOME/github/bom
+  git checkout master
+  git pull
+  updatedBody=$(gh issue view $1 --json body --jq ".body" | sed 's/\[\ \] Trigger/[x] Trigger/' | sed "s/BUILDNUMBER/$2/")
+  gh issue edit $1 --body $updatedBody
+}
+```
+
+### `bom-release-issue-close`
+
+```bash
+function bom-release-issue-close {
+  cd $HOME/github/bom
+  git checkout master
+  git pull
+  gh issue unpin $1
+  gh issue close $1
+}
+```
+
+### `bom-line-test`
+
+```bash
+function bom-line-test {
+  cd $HOME/github/bom
+  LINE=$1 PLUGINS=$2 TEST=InjectedTest bash local-test.sh
+}
+```
+
+### `bom-test-all-lines`
+
+```bash
+function bom-test-all-lines {
+  bom-line-test weekly $1
+  bom-line-test 2.479.x $1
+  bom-line-test 2.462.x $1
+  bom-line-test 2.452.x $1
+}
+```
+
