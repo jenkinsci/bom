@@ -219,7 +219,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>commons-math3-api</artifactId>
-        <version>3.6.1-4.vdd4613817d74</version>
+        <version>3.6.1-18.v9d7081dffa_f5</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
