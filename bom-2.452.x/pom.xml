@@ -10,6 +10,8 @@
   <packaging>pom</packaging>
   <properties>
     <cloudbees-folder-plugin.version>6.928.v7c780211d66e</cloudbees-folder-plugin.version>
+    <!-- TODO https://github.com/jenkinsci/git-plugin/pull/1677 -->
+    <git-plugin.version>5.6.1-rc5339.d2579e568302</git-plugin.version>
     <plugin-util-api.version>4.1.0</plugin-util-api.version>
     <subversion-plugin.version>1269.v53185011cd9f</subversion-plugin.version>
     <workflow-job-plugin.version>1400.v7fd111b_ec82f</workflow-job-plugin.version>
@@ -65,6 +67,17 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>credentials</artifactId>
         <version>1380.va_435002fa_924</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>git</artifactId>
+        <version>${git-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>git</artifactId>
+        <version>${git-plugin.version}</version>
+        <classifier>tests</classifier>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
