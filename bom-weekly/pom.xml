@@ -250,7 +250,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>database-mariadb</artifactId>
-        <version>35.va_ea_62c1d0f0a_</version>
+        <version>104.vc21b_a_ceb_6043</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
