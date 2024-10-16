@@ -9,7 +9,7 @@
   <artifactId>bom-weekly</artifactId>
   <packaging>pom</packaging>
   <properties>
-    <aws-java-sdk-plugin.version>1.12.767-467.vb_e93f0c614b_6</aws-java-sdk-plugin.version>
+    <aws-java-sdk-plugin.version>1.12.772-474.v7f79a_2046a_fb_</aws-java-sdk-plugin.version>
     <blueocean-plugin.version>1.27.16</blueocean-plugin.version>
     <branch-api-plugin.version>2.1178.v969d9eb_c728e</branch-api-plugin.version>
     <checks-api.version>2.2.1</checks-api.version>
@@ -30,8 +30,8 @@
     <scm-api-plugin.version>698.v8e3b_c788f0a_6</scm-api-plugin.version>
     <subversion-plugin.version>1275.va_7b_014f3fc2c</subversion-plugin.version>
     <workflow-api-plugin.version>1336.vee415d95c521</workflow-api-plugin.version>
-    <workflow-cps-plugin.version>3969.vdc9d3a_efcc6a_</workflow-cps-plugin.version>
-    <workflow-job-plugin.version>1447.v559b_c710cd2e</workflow-job-plugin.version>
+    <workflow-cps-plugin.version>3975.v567e2a_1ffa_22</workflow-cps-plugin.version>
+    <workflow-job-plugin.version>1459.v6c531091efcd</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>795.ve0cb_1f45ca_9a_</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>678.v3ee58b_469476</workflow-step-api-plugin.version>
     <workflow-support-plugin.version>926.v9f4f9b_b_98c19</workflow-support-plugin.version>
@@ -173,7 +173,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>asm-api</artifactId>
-        <version>9.7.1-95.v9f552033802a_</version>
+        <version>9.7.1-97.v4cc844130d97</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -188,7 +188,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>byte-buddy-api</artifactId>
-        <version>1.15.4-69.vd70e2921645d</version>
+        <version>1.15.4-71.v0fde2c875645</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -219,7 +219,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>commons-math3-api</artifactId>
-        <version>3.6.1-4.vdd4613817d74</version>
+        <version>3.6.1-18.v9d7081dffa_f5</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -250,7 +250,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>database-mariadb</artifactId>
-        <version>35.va_ea_62c1d0f0a_</version>
+        <version>104.vc21b_a_ceb_6043</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -260,7 +260,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>echarts-api</artifactId>
-        <version>5.5.1-1</version>
+        <version>5.5.1-3</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -306,12 +306,12 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>gitlab-branch-source</artifactId>
-        <version>710.v6f19df32544b_</version>
+        <version>711.v41fb_c8b_2b_7a_e</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>gson-api</artifactId>
-        <version>2.11.0-41.v019fcf6125dc</version>
+        <version>2.11.0-85.v1f4e87273c33</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -366,7 +366,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>joda-time-api</artifactId>
-        <version>2.13.0-85.vb_64d1c2921f1</version>
+        <version>2.13.0-93.v9934da_29b_a_e9</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -376,17 +376,17 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>json-api</artifactId>
-        <version>20240303-41.v94e11e6de726</version>
+        <version>20240303-101.v7a_8666713110</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>json-path-api</artifactId>
-        <version>2.9.0-58.v62e3e85b_a_655</version>
+        <version>2.9.0-118.v7f23ed82a_8b_8</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>mariadb-api</artifactId>
-        <version>3.4.1-77.v2dd016a_b_3dcf</version>
+        <version>3.4.1-91.vb_2f510b_5f976</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -422,7 +422,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>oss-symbols-api</artifactId>
-        <version>75.v337a_1c270ffc</version>
+        <version>79.v399f9fe5b_487</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -498,7 +498,7 @@
       <dependency>
         <groupId>org.6wind.jenkins</groupId>
         <artifactId>lockable-resources</artifactId>
-        <version>1315.v4ea_8e5159ec8</version>
+        <version>1320.v1f0dff578476</version>
       </dependency>
       <dependency>
         <groupId>org.csanchez.jenkins.plugins</groupId>
@@ -918,7 +918,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>oic-auth</artifactId>
-        <version>4.388.v4f73328eb_d2c</version>
+        <version>4.411.v990b_9d36e74e</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1039,7 +1039,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>script-security</artifactId>
-        <version>1362.v67dc1f0e1b_b_3</version>
+        <version>1365.v4778ca_84b_de5</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
