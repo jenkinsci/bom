@@ -200,30 +200,40 @@ On the other hand, if the person reaches out for help, be sure to help them.
 
 ### Day of week tasks
 
+This section goes over the expectations and work items for the BOM release manager during their on-call cycle. 
+
+The scripts that are referenced are in the `release-manager-scripts` directory. Open a terminal and `cd` to that directory before running the scripts.
+
 #### Thursday (Prep for BOM release)
 
 * run `./bom-release-issue-create.sh <yyyy-MM-dd>`
+  * Example: `./bom-release-issue-create.sh 2024-10-14`
 * on the newly created issue, manually set `Type` to `Task`
   * at the time of writing (2024-10-14), there is no `gh` option to set the Type
 * Locally run tests for `warnings-ng` for all current LINEs and weekly
-  * `bom-test-all-lines warnings-ng`
+  * `./bom-test-all-lines.sh warnings-ng`
 
 #### Friday (BOM release day)
 
 * run `./bom-lock-master.sh <issueId>` 
   * where `<issueId>` is the issue that you created on Thursday
+  * Example: `./bom-lock-master.sh 3220` 
 * verify that job started at [ci.jenkins.io](https://ci.jenkins.io/job/Tools/job/bom/view/change-requests/)
 * run `./bom-release-issue-job-running.sh <issueId> <buildNumber>`
+  * Example: `./bom-release-issue-job-running.sh 3220 3789`
 * wait for build to make it through the `prep` stage then (typically) take a 1.5-2 hr break
 * [LOOP] if there are any failures, fix until everything is successful
-* run `./bom-release-issue-add-release-comment.sh <issueId> <releaseNumber>`
+* run `./bom-release-issue-add-release-comment.sh <issueId>`
+  * Example: `./bom-release-issue-add-release-comment.sh 3220`
 * run `./bom-unlock-master.sh <issueId>`
-* edit the auto-generated release notes
+  * Example: `./bom-unlock-master.sh 3220`
+* manually edit the auto-generated release notes
   * remove `<!-- Optional: add a release summary here -->`
   * remove `<details>`
   * remove `<summary>XYZ changes</summary>`
   * remove `</details>`
 * run `./bom-release-issue-close.sh <issueId>`
+  * Example: `./bom-release-issue-close.sh 3220`
 
 #### Saturday/Sunday/Monday
 
