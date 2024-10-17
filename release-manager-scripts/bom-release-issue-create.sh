@@ -1,18 +1,18 @@
 #!/bin/bash
 
-if [[ $# -ne 2 ]]; then
-	echo "Error: This script requires exactly two arguments."
-	echo "./bom-release-issue-create.sh <yyyy-MM-dd> <GitHub id>"
+if [[ $# -ne 1 ]]; then
+	echo "Error: This script requires exactly one argument."
+	echo "./bom-release-issue-create.sh <yyyy-MM-dd>"
 	exit 1
 fi
 
 git checkout master
 git pull
-releaseManager=$2
+releaseManager=$(gh api user -q .login)
 bodyValue=$(
 	cat <<-EOM
 		A new release is being scheduled.
-		Release manager: @$2
+		Release manager: @$releaseManager
 
 		# Release progress
 		- [ ] Lock primary branch
@@ -27,7 +27,7 @@ issueNumber=$(gh api \
 	/repos/jenkinsci/bom/issues \
 	-f "title=[RELEASE] New release for $1" \
 	-f "body=$bodyValue" \
-	-f "assignees[]=$2" \
+	-f "assignees[]=$releaseManager" \
 	--jq ".number")
 echo $issueNumber
 gh issue pin $issueNumber
