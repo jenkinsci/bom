@@ -30,4 +30,5 @@ issueNumber=$(gh api \
 	-f "assignees[]=$releaseManager" \
 	--jq ".number")
 echo $issueNumber
+gh issue edit $issueNumber --add-label "release"
 gh issue pin $issueNumber
