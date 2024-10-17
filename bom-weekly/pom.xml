@@ -503,7 +503,7 @@
       <dependency>
         <groupId>org.csanchez.jenkins.plugins</groupId>
         <artifactId>kubernetes</artifactId>
-        <version>4292.v11898cf8fa_66</version>
+        <version>4295.v7fa_01b_309c95</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.main</groupId>
