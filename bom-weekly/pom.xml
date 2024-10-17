@@ -34,7 +34,7 @@
     <workflow-job-plugin.version>1459.v6c531091efcd</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>795.ve0cb_1f45ca_9a_</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>678.v3ee58b_469476</workflow-step-api-plugin.version>
-    <workflow-support-plugin.version>926.v9f4f9b_b_98c19</workflow-support-plugin.version>
+    <workflow-support-plugin.version>930.vf51d22b_ce488</workflow-support-plugin.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -188,7 +188,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>byte-buddy-api</artifactId>
-        <version>1.15.4-71.v0fde2c875645</version>
+        <version>1.15.5-75.vc7a_3c3d4291c</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -280,7 +280,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>flyway-api</artifactId>
-        <version>10.19.0-169.vb_8c730d33389</version>
+        <version>10.20.0-177.v6a_e325da_6cc4</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -473,7 +473,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>warnings-ng</artifactId>
-        <version>11.9.0</version>
+        <version>11.10.0</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins.mina-sshd-api</groupId>
@@ -503,7 +503,7 @@
       <dependency>
         <groupId>org.csanchez.jenkins.plugins</groupId>
         <artifactId>kubernetes</artifactId>
-        <version>4292.v11898cf8fa_66</version>
+        <version>4295.v7fa_01b_309c95</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.main</groupId>
@@ -757,7 +757,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>github-branch-source</artifactId>
-        <version>1797.v86fdb_4d57d43</version>
+        <version>1803.v98e3d8a_c8169</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1130,7 +1130,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>view-job-filters</artifactId>
-        <version>382.vdf2d5e3f02f0</version>
+        <version>392.v2c0a_4dd46909</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
