@@ -20,7 +20,7 @@
     <forensics-api.version>2.6.0</forensics-api.version>
     <github-api-plugin.version>1.321-478.vc9ce627ce001</github-api-plugin.version>
     <git-plugin.version>5.6.0</git-plugin.version>
-    <junit-plugin.version>1304.vc85a_b_ca_96613</junit-plugin.version>
+    <junit-plugin.version>1307.vdd5b_2646279e</junit-plugin.version>
     <mina-sshd-api.version>2.14.0-133.vcc091215a_358</mina-sshd-api.version>
     <okhttp-api-plugin.version>4.11.0-181.v1de5b_83857df</okhttp-api-plugin.version>
     <pipeline-maven-plugin.version>1457.vf7a_de13b_c0d4</pipeline-maven-plugin.version>
