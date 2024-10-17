@@ -215,25 +215,23 @@ The scripts that are referenced are in the `release-manager-scripts` directory. 
 
 #### Friday (BOM release day)
 
-* run `./bom-lock-master.sh <issueId>` 
-  * where `<issueId>` is the issue that you created on Thursday
-  * Example: `./bom-lock-master.sh 3220` 
-* verify that job started at [ci.jenkins.io](https://ci.jenkins.io/job/Tools/job/bom/view/change-requests/)
-* run `./bom-release-issue-job-running.sh <issueId> <buildNumber>`
-  * Example: `./bom-release-issue-job-running.sh 3220 3789`
+* run `./bom-lock-master.sh` before the job runs
+  * currently, the job is [scheduled to run at 11:HH am UTC (actual 11:26am)](https://github.com/jenkinsci/bom/blob/master/Jenkinsfile#L4)
+* verify that the [branch is locked](https://github.com/jenkinsci/bom/settings/branch_protection_rules/6421306)
+* wait to verify that job started at [ci.jenkins.io](https://ci.jenkins.io/job/Tools/job/bom/view/change-requests/)
+* run `./bom-release-issue-job-running.sh <buildNumber>`
+  * Example: `./bom-release-issue-job-running.sh 1234`
 * wait for build to make it through the `prep` stage then (typically) take a 1.5-2 hr break
 * [LOOP] if there are any failures, fix until everything is successful
-* run `./bom-release-issue-add-release-comment.sh <issueId>`
-  * Example: `./bom-release-issue-add-release-comment.sh 3220`
-* run `./bom-unlock-master.sh <issueId>`
-  * Example: `./bom-unlock-master.sh 3220`
+* run `./bom-release-issue-add-release-comment.sh`
+* run `./bom-unlock-master.sh`
+* verify that the [branch is unlocked](https://github.com/jenkinsci/bom/settings/branch_protection_rules/6421306)
 * manually edit the auto-generated release notes
   * remove `<!-- Optional: add a release summary here -->`
   * remove `<details>`
   * remove `<summary>XYZ changes</summary>`
   * remove `</details>`
-* run `./bom-release-issue-close.sh <issueId>`
-  * Example: `./bom-release-issue-close.sh 3220`
+* run `./bom-release-issue-close.sh`
 
 #### Saturday/Sunday/Monday
 

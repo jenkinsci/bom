@@ -1,11 +1,5 @@
 #!/bin/bash
 
-if [[ $# -ne 1 ]]; then
-	echo "Error: This script requires exactly one argument."
-	echo "./bom-unlock-master.sh <GitHub issue id>"
-	exit 1
-fi
-
 git checkout master
 git pull
 gh api \
@@ -21,6 +15,8 @@ gh api \
 	-F "restrictions=null" \
 	--silent
 
-updatedBody=$(gh issue view $1 --json body --jq ".body" | sed 's/\[\ \] Unlock/[x] Unlock/')
-gh issue edit $1 --body $updatedBody
+issueNumber=$(gh issue list --limit 1 --state open --label release --json number --jq=".[].number")
+
+updatedBody=$(gh issue view $issueNumber --json body --jq ".body" | sed 's/\[\ \] Unlock/[x] Unlock/')
+gh issue edit $issueNumber --body $updatedBody
 ./bom-get-branch-protection.sh
