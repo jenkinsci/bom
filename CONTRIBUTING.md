@@ -44,8 +44,12 @@ In the worst case, such plugins can be excluded from the managed set.
 ## How to add a new plugin
 
 Insert a new `dependency` in _sorted_ order to `bom-weekly/pom.xml`.
+
+[!TIP]
+You can use `mvn spotless:apply` to sort the pom.xmls.
+
 Make sure it is used (perhaps transitively) in `sample-plugin/pom.xml`.
-Ideally also update the sample plugin’s tests to actually exercise it,
+Ideally, also update the sample plugin’s tests to actually exercise it,
 as a sanity check.
 
 Avoid adding transitive dependencies to `sample-plugin/pom.xml`. It is supposed
@@ -102,6 +106,7 @@ if you have switched the version in `bom-weekly/pom.xml` to a `*-SNAPSHOT`.
 
 To minimize cloud resources, PCT is not run at all by default on pull requests, only some basic sanity checks.
 Add the label `full-test` to run PCT in a PR.
+
 If you lack triage permission and so cannot add this label, then you may instead
 
 ```bash
@@ -159,3 +164,168 @@ This repository uses Dependabot to be notified automatically of available update
 (It is not currently possible for Jenkins core updates to be tracked this way.)
 
 Release Drafter is also used to prepare changelogs for the releases page.
+
+## A week in the life of a BOM release manager
+
+A BOM release manager is in charge of BOM releases for 2 weeks. 
+
+As a BOM release manager, you'll be working directly with the `jenkinsci/bom` repository. Said differently, think hard before using your fork of the `bom` repository.
+
+### Task handling
+
+#### Dependabot created PRs
+
+This will probably be the majority of work you'll do.
+
+In a perfect world, a Dependabot PR will just auto-merge into `master` and you won't have to do anything.
+
+In a not so perfect world, a Dependabot PR will fail to build. Most of the time, it's because a plugin is too new for older LTS lines. The way you'll resolve this issue is to pin the older version to the correct LTS line.
+
+[!TIP] 
+If you do have to do work on a PR, make sure to assign the PR to yourself so others can see that you are actively looking at the PR.
+
+The easiest way to work on the PR is to use the `gh` CLI to checkout the PR:
+
+* `gh pr checkout <PR id>`
+
+Then you can work on the PR. Once done, push your changes back to the PR. If everything is successful, the PR will auto-merge. At this point, you can delete the local branch:
+
+* `git branch -D <branchName>`
+
+#### Manually created PRs
+
+When there is a manually generated PR, there's probably a pretty good chance as the BOM release manager you won't have to do anything. The person opening the PR should open the PR as `draft`. As a BOM release manager, feel free to look at a `draft` PR, but don't spend much time on it.
+
+On the other hand, if the person reaches out for help, be sure to help them.
+
+### Day of week tasks
+
+This section goes over the expectations and work items for the BOM release manager during their on-call cycle. 
+
+The scripts that are referenced are in the `release-manager-scripts` directory. Open a terminal and `cd` to that directory before running the scripts.
+
+#### Thursday (Prep for BOM release)
+
+* run `./bom-release-issue-create.sh <yyyy-MM-dd>`
+  * Example: `./bom-release-issue-create.sh 2024-10-14`
+* on the newly created issue, manually set `Type` to `Task`
+  * at the time of writing (2024-10-14), there is no `gh` option to set the Type
+* Locally run tests for `warnings-ng` for all current LINEs and weekly
+  * `./bom-test-all-lines.sh warnings-ng`
+
+#### Friday (BOM release day)
+
+* run `./bom-lock-master.sh <issueId>` 
+  * where `<issueId>` is the issue that you created on Thursday
+  * Example: `./bom-lock-master.sh 3220` 
+* verify that job started at [ci.jenkins.io](https://ci.jenkins.io/job/Tools/job/bom/view/change-requests/)
+* run `./bom-release-issue-job-running.sh <issueId> <buildNumber>`
+  * Example: `./bom-release-issue-job-running.sh 3220 3789`
+* wait for build to make it through the `prep` stage then (typically) take a 1.5-2 hr break
+* [LOOP] if there are any failures, fix until everything is successful
+* run `./bom-release-issue-add-release-comment.sh <issueId>`
+  * Example: `./bom-release-issue-add-release-comment.sh 3220`
+* run `./bom-unlock-master.sh <issueId>`
+  * Example: `./bom-unlock-master.sh 3220`
+* manually edit the auto-generated release notes
+  * remove `<!-- Optional: add a release summary here -->`
+  * remove `<details>`
+  * remove `<summary>XYZ changes</summary>`
+  * remove `</details>`
+* run `./bom-release-issue-close.sh <issueId>`
+  * Example: `./bom-release-issue-close.sh 3220`
+
+#### Saturday/Sunday/Monday
+
+* business as usual tasks
+ 
+#### Tuesday (test the new weekly)
+
+* run the Dependabot dependency graph checks
+  * open [Dependency graph for sample-plugin/pom.xml](https://github.com/jenkinsci/bom/network/updates/5427365/jobs)
+  * click on "Check for updates" button in upper right hand corner of table
+  * open [Dependency graph for bom-weekly/pom.xml](https://github.com/jenkinsci/bom/network/updates/10189727/jobs)
+  * click on "Check for updates" button in upper right hand corner of table
+* wait for both of the Dependabot dependency graph checks to complete
+* check to see if any new dependabot PRs were opened. If there were, make sure they clear and merge before continuing.
+* Open the pinned [Dependency Dashboard](https://github.com/jenkinsci/bom/issues/2500) issue
+* Once the weekly build has completed, you will see a line that says "Update dependency org.jenkins-ci.main:jenkins-war to v2.`XYZ`", where `XYZ` is the weekly build number. Click the checkbox next to that line to start the full test.
+* Once the box is checked, a new PR will be created by renovate named "Update dependency org.jenkins-ci.main:jenkins-war to v2.`XYZ`" where `XYZ` is the weekly build number. This will fire off a full `weekly` build that will take about 1.5-2 hours to complete.
+* If everything succeeds, the PR will auto-merge and the line from the Dependency Dashboard will be removed.
+
+#### Wednesday
+
+* business as usual tasks
+
+## Using `gh` CLI 
+
+As someone that is "on-call" for managing BOM, there are a few helpful aliases/scripts that you can create to make your life easier.
+
+### Pre-requisites
+
+These aliases use `git`, `sed` and `gh`. If you haven't installed `gh` yet, do that and go ahead and login using:
+
+`gh auth login`
+
+You'll answer the questions:
+
+* Where do you use GitHub?
+  * GitHub.com
+* What is your preferred protocol for Git operations on this host?
+  * HTTPS
+* Authenticate Git with your GitHub credentials?
+  * Y
+* How would you like to authenticate GitHub CLI?
+  * Login with a web browser
+* Copy your one time code from the command line then press `Enter`
+* Depending on if you are already logged into GitHub with the browser that opened, you may have a few different steps. Eventually, you should get to a "Device Activation" screen. Click on the `Continue` button beside your avatar.
+* Enter the code you copied from the command line and click `Continue`
+* Now you'll be on the "Authorize GitHub CLI" screen. Click on the "Authorize github" button at the bottom of the page.
+  * You may be asked to confirm access in various forms. Just follow the instructions.
+* Once you complete the web login, look back at your command prompt. You should see that the login process has completed.
+
+Once you are logged in, you can use the scripts in `release-manager-scripts`.
+
+### Scripts
+
+#### bom-release-issue-create.sh
+
+This script creates the boilerplate GitHub issue for the weekly BOM release, as well as pinning the issue.
+
+#### bom-release-issue-job-running.sh
+
+This script updates the body of the GitHub issue by checking the `Trigger` task item.
+
+#### bom-release-issue-add-release-comment.sh
+
+This script adds a comment to the GitHub issue with the latest release number.
+
+#### bom-release-issue-close.sh
+
+This script unpins and closes the GitHub issue.
+
+#### bom-lock-master.sh
+
+This script:
+
+* locks the `master` branch
+* updates the GitHub issue body by checking the `Lock branch` task item.
+
+#### bom-unlock-master.sh
+
+This script:
+
+* unlocks the `master` branch
+* updates the GitHub issue body by checking the `Unlock branch` task item.
+
+#### bom-get-branch-protection.sh
+
+This script returns the lock state of the `master` branch.
+
+#### bom-line-test.sh
+
+This is a helper script to test a plugin against a specific Jenkins line.
+
+#### bom-test-all-lines.sh
+
+This is a helper script that calls `bom-line-test.sh` for all active Jenkins lines.
