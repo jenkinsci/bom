@@ -2,7 +2,7 @@
 
 if [ $# -ne 1 ]; then
     echo "Error: This script requires exactly one argument."
-    echo "./bom-lock-master.sh <GitHub issue id>
+    echo "./bom-lock-master.sh <GitHub issue id>"
     exit 1
 fi
 
