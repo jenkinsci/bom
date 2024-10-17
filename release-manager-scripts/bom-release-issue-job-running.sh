@@ -1,9 +1,9 @@
 #!/bin/bash
 
 if [ $# -ne 2 ]; then
-    echo "Error: This script requires exactly two arguments."
-    echo "./bom-release-issue-job-running.sh <GitHub issue id> <Jenkins build number>"
-    exit 1
+	echo "Error: This script requires exactly two arguments."
+	echo "./bom-release-issue-job-running.sh <GitHub issue id> <Jenkins build number>"
+	exit 1
 fi
 
 git checkout master
