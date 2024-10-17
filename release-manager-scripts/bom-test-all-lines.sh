@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ $# -ne 1 ]; then
+if [[ $# -ne 1 ]]; then
 	echo "Error: This script requires exactly one argument."
 	echo "./bom-test-all-lines.sh <comma separated list of plugins>"
 	exit 1
