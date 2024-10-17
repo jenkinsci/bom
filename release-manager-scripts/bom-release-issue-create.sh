@@ -2,7 +2,7 @@
 
 if [ $# -ne 2 ]; then
     echo "Error: This script requires exactly two arguments."
-    echo "./bom-release-issue-create.sh <yyyy-MM-dd> <GitHub id>
+    echo "./bom-release-issue-create.sh <yyyy-MM-dd> <GitHub id>"
     exit 1
 fi
 
