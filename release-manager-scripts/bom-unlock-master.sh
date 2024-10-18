@@ -1,7 +1,5 @@
 #!/bin/bash
 
-git checkout master
-git pull
 gh api \
 	/repos/jenkinsci/bom/branches/master/protection \
 	--method PUT \
@@ -18,5 +16,5 @@ gh api \
 issueNumber=$(gh issue list --limit 1 --state open --label release --json number --jq=".[].number")
 
 updatedBody=$(gh issue view $issueNumber --json body --jq ".body" | sed 's/\[\ \] Unlock/[x] Unlock/')
-gh issue edit $issueNumber --body $updatedBody
+gh issue edit $issueNumber --body "$updatedBody"
 ./bom-get-branch-protection.sh
