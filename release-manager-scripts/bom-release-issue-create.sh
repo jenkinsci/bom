@@ -6,8 +6,6 @@ if [[ $# -ne 1 ]]; then
 	exit 1
 fi
 
-git checkout master
-git pull
 releaseManager=$(gh api user -q .login)
 bodyValue=$(
 	cat <<-EOM
