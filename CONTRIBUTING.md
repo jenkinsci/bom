@@ -236,6 +236,8 @@ The scripts that are referenced are in the `release-manager-scripts` directory. 
 * verify that the [branch is unlocked](https://github.com/jenkinsci/bom/settings/branch_protection_rules/6421306)
 * run `./bom-release-issue-close.sh`
 
+For tasks that don't have a specific script, i.e. tasks 2, 4, 5, 7, and 10, you can run `./bom-release-issue-complete-task.sh <task number>` to check the box off without having to manually edit the issue.
+
 #### Saturday/Sunday/Monday
 
 * business as usual tasks

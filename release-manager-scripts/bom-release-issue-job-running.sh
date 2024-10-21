@@ -6,6 +6,6 @@ if [[ $# -ne 1 ]]; then
 	exit 1
 fi
 
-issueNumber=$(gh issue list --limit 1 --state open --label release --json number --jq=".[].number")
-updatedBody=$(gh issue view $issueNumber --json body --jq ".body" | sed 's/\[\ \] Trigger/[x] Trigger/' | sed "s/BUILDNUMBER/$1/")
-gh issue edit $issueNumber --body "$updatedBody"
+issueNumber=$(gh issue list --limit 1 --state open --label release --json number --jq=".[].number" --repo jenkinsci/bom)
+gh issue comment $issueNumber --body "[https://ci.jenkins.io/job/Tools/job/bom/job/master/$1/](https://ci.jenkins.io/job/Tools/job/bom/job/master/$1/)"  --repo jenkinsci/bom
+./bom-release-issue-complete-task.sh 3

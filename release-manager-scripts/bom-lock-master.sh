@@ -13,8 +13,5 @@ gh api \
 	-F "restrictions=null" \
 	--silent
 
-issueNumber=$(gh issue list --limit 1 --state open --label release --json number --jq=".[].number")
-
-updatedBody=$(gh issue view $issueNumber --json body --jq ".body" | sed 's/\[\ \] Lock/[x] Lock/')
-gh issue edit $issueNumber --body "$updatedBody"
+./bom-release-issue-complete-task.sh 1
 ./bom-get-branch-protection.sh
