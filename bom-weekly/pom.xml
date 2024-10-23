@@ -832,7 +832,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>JiraTestResultReporter</artifactId>
-        <version>234.v87b_530ef775a_</version>
+        <version>237.v7c59f4873925</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
