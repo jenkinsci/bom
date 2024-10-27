@@ -180,6 +180,11 @@
     </dependency>
     <dependency>
       <groupId>io.jenkins.plugins</groupId>
+      <artifactId>artifact-manager-s3</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.jenkins.plugins</groupId>
       <artifactId>asm-api</artifactId>
       <scope>test</scope>
     </dependency>

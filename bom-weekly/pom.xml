@@ -172,6 +172,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>artifact-manager-s3</artifactId>
+        <version>878.v84f6f8f9dce7</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>asm-api</artifactId>
         <version>9.7.1-97.v4cc844130d97</version>
       </dependency>
