@@ -305,6 +305,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>gcp-java-sdk-storage</artifactId>
+        <version>26.23.0-28.vd30f921a_22a_8</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>gitlab-api</artifactId>
         <version>5.6.0-97.v6603a_83f8690</version>
       </dependency>
@@ -1033,7 +1038,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>saml</artifactId>
-        <version>4.496.v56a_6423dca_35</version>
+        <version>4.501.v4313a_01e3a_18</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
