@@ -618,6 +618,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>cloudbees-disk-usage-simple</artifactId>
+        <version>205.v47f4ee8803d1</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>cloudbees-folder</artifactId>
         <version>${cloudbees-folder-plugin.version}</version>
       </dependency>
