@@ -13,7 +13,7 @@ bodyValue=$(
 		Release manager: @$releaseManager
 
 		# Note
-		For tasks that don't have a specific script, i.e. tasks 2, 4, 5, 7, and 10, run `./bom-release-issue-complete-task.sh <task number>` to check the box off without having to manually edit the issue.
+		For tasks that don\'t have a specific script, i.e. tasks 2, 4, 5, 7, and 10, run \`./bom-release-issue-complete-task.sh <task number>\` to check the box off without having to manually edit the issue.
 
 		# Release progress
 		* [ ] 1. run \`./bom-lock-master.sh\` before the job runs
