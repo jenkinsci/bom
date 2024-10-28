@@ -598,6 +598,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>build-timeout</artifactId>
+        <version>1.33</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>build-user-vars-plugin</artifactId>
         <version>182.v378b_9f14b_487</version>
       </dependency>
