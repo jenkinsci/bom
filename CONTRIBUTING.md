@@ -254,7 +254,8 @@ For tasks that don't have a specific script, i.e. tasks 2, 4, 5, 7, and 10, you 
 * Open the pinned [Dependency Dashboard](https://github.com/jenkinsci/bom/issues/2500) issue
 * Once the weekly build has completed, you will see a line that says "Update dependency org.jenkins-ci.main:jenkins-war to v2.`XYZ`", where `XYZ` is the weekly build number. Click the checkbox next to that line to start the full test.
 * Once the box is checked, a new PR will be created by renovate named "Update dependency org.jenkins-ci.main:jenkins-war to v2.`XYZ`" where `XYZ` is the weekly build number. This will fire off a full `weekly` build that will take about 1.5-2 hours to complete.
-* If everything succeeds, the PR will auto-merge and the line from the Dependency Dashboard will be removed.
+* If everything succeeds, the PR will auto-merge.
+* Once the auto-merge completes, go back to the [Dependency Dashboard](https://github.com/jenkinsci/bom/issues/2500) issue and check the box for "Check this box to trigger a request for Renovate to run again on this repository". This will remove the "Update dependency..." line from the issue.
 
 #### Wednesday
 
