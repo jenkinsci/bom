@@ -1149,6 +1149,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>versioncolumn</artifactId>
+        <version>243.vda_c20eea_a_8a_f</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>view-job-filters</artifactId>
         <version>392.v2c0a_4dd46909</version>
       </dependency>
