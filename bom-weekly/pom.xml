@@ -14,7 +14,7 @@
     <branch-api-plugin.version>2.1193.v64a_61471c489</branch-api-plugin.version>
     <checks-api.version>2.2.1</checks-api.version>
     <cloudbees-folder-plugin.version>6.955.v81e2a_35c08d3</cloudbees-folder-plugin.version>
-    <configuration-as-code-plugin.version>1850.va_a_8c31d3158b_</configuration-as-code-plugin.version>
+    <configuration-as-code-plugin.version>1873.vea_5814ca_9c93</configuration-as-code-plugin.version>
     <data-tables-api.version>2.1.8-1</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.4</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>2.6.0</forensics-api.version>
@@ -234,7 +234,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>custom-folder-icon</artifactId>
-        <version>2.14</version>
+        <version>2.15</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -265,7 +265,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>echarts-api</artifactId>
-        <version>5.5.1-3</version>
+        <version>5.5.1-4</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1110,7 +1110,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>support-core</artifactId>
-        <version>1519.vb_f214b_a_25a_a_5</version>
+        <version>1521.va_992a_0879034</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
