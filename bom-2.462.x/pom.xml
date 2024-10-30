@@ -135,6 +135,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>resource-disposer</artifactId>
+        <version>0.24</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>throttle-concurrents</artifactId>
         <version>2.14</version>
       </dependency>
