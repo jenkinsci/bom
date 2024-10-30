@@ -52,6 +52,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>basic-branch-build-strategies</artifactId>
+        <version>81.v05e333931c7d</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>build-user-vars-plugin</artifactId>
         <version>176.vb_9c7907fd524</version>
       </dependency>
