@@ -893,7 +893,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ldap</artifactId>
-        <version>759.vef7f616475df</version>
+        <version>764.v4d0d3599e9c2</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
