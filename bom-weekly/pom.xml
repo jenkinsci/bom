@@ -30,7 +30,7 @@
     <scm-api-plugin.version>698.v8e3b_c788f0a_6</scm-api-plugin.version>
     <subversion-plugin.version>1280.v5465ce107f22</subversion-plugin.version>
     <workflow-api-plugin.version>1336.vee415d95c521</workflow-api-plugin.version>
-    <workflow-cps-plugin.version>3990.vd281dd77a_388</workflow-cps-plugin.version>
+    <workflow-cps-plugin.version>3975.v567e2a_1ffa_22</workflow-cps-plugin.version>
     <workflow-job-plugin.version>1459.v6c531091efcd</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>795.ve0cb_1f45ca_9a_</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>678.v3ee58b_469476</workflow-step-api-plugin.version>
@@ -1059,7 +1059,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>script-security</artifactId>
-        <version>1367.vdf2fc45f229c</version>
+        <version>1366.vd44b_49a_5c85c</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
