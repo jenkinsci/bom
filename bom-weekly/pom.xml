@@ -1012,6 +1012,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>prometheus</artifactId>
+        <version>787.v52e8f47488fc</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>promoted-builds</artifactId>
         <version>965.vcda_c6a_e0998f</version>
       </dependency>
