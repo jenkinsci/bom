@@ -49,6 +49,5 @@ issueNumber=$(gh api \
 	-f "labels[]=release" \
 	--jq ".number")
 echo $issueNumber
-# gh issue edit $issueNumber --add-label "release" --repo jenkinsci/bom
 gh issue pin $issueNumber --repo jenkinsci/bom
 gh issue view $issueNumber --web --repo jenkinsci/bom
