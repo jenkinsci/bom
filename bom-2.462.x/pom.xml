@@ -144,6 +144,11 @@
         <version>2.14</version>
       </dependency>
       <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>timestamper</artifactId>
+        <version>1.27</version>
+      </dependency>
+      <dependency>
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
         <artifactId>workflow-job</artifactId>
         <version>${workflow-job-plugin.version}</version>
