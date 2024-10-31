@@ -11,7 +11,7 @@
   <properties>
     <aws-java-sdk-plugin.version>1.12.772-474.v7f79a_2046a_fb_</aws-java-sdk-plugin.version>
     <blueocean-plugin.version>1.27.16</blueocean-plugin.version>
-    <branch-api-plugin.version>2.1193.v64a_61471c489</branch-api-plugin.version>
+    <branch-api-plugin.version>2.1197.vfa_d0c47c267d</branch-api-plugin.version>
     <checks-api.version>2.2.1</checks-api.version>
     <cloudbees-folder-plugin.version>6.955.v81e2a_35c08d3</cloudbees-folder-plugin.version>
     <configuration-as-code-plugin.version>1873.vea_5814ca_9c93</configuration-as-code-plugin.version>
@@ -31,7 +31,7 @@
     <subversion-plugin.version>1280.v5465ce107f22</subversion-plugin.version>
     <workflow-api-plugin.version>1336.vee415d95c521</workflow-api-plugin.version>
     <workflow-cps-plugin.version>3990.vd281dd77a_388</workflow-cps-plugin.version>
-    <workflow-job-plugin.version>1459.v6c531091efcd</workflow-job-plugin.version>
+    <workflow-job-plugin.version>1460.v28178c1ef6e6</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>795.ve0cb_1f45ca_9a_</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>678.v3ee58b_469476</workflow-step-api-plugin.version>
     <workflow-support-plugin.version>930.vf51d22b_ce488</workflow-support-plugin.version>
@@ -437,7 +437,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
-        <version>367.vb_18b_b_5c0cfb_e</version>
+        <version>382.vb_9a_27b_7b_ea_71</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -508,7 +508,7 @@
       <dependency>
         <groupId>org.6wind.jenkins</groupId>
         <artifactId>lockable-resources</artifactId>
-        <version>1322.v102a_16ce25ec</version>
+        <version>1327.ved786b_a_197e0</version>
       </dependency>
       <dependency>
         <groupId>org.csanchez.jenkins.plugins</groupId>
@@ -862,7 +862,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>job-dsl</artifactId>
-        <version>1.89</version>
+        <version>1.90</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -898,7 +898,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ldap</artifactId>
-        <version>759.vef7f616475df</version>
+        <version>764.v4d0d3599e9c2</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1028,7 +1028,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>resource-disposer</artifactId>
-        <version>0.24</version>
+        <version>0.25</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1120,17 +1120,17 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>text-finder</artifactId>
-        <version>1.30</version>
+        <version>1.31</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>throttle-concurrents</artifactId>
-        <version>2.15</version>
+        <version>2.16</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>timestamper</artifactId>
-        <version>1.27</version>
+        <version>1.28</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1154,13 +1154,18 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>versioncolumn</artifactId>
+        <version>243.vda_c20eea_a_8a_f</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>view-job-filters</artifactId>
         <version>392.v2c0a_4dd46909</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ws-cleanup</artifactId>
-        <version>0.47</version>
+        <version>0.48</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins.aws-java-sdk</groupId>
