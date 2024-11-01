@@ -31,6 +31,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>custom-folder-icon</artifactId>
+        <version>2.15</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>flyway-api</artifactId>
         <version>9.22.3-151.v475c057b_07fc</version>
       </dependency>
@@ -49,6 +54,11 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
         <version>340.v28cecee8b_25f</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>basic-branch-build-strategies</artifactId>
+        <version>81.v05e333931c7d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>

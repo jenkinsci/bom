@@ -1,7 +1,7 @@
 properties([
   disableConcurrentBuilds(abortPrevious: true),
   buildDiscarder(logRotator(numToKeepStr: '7')),
-  pipelineTriggers([cron('30 16 * * 4')])
+  pipelineTriggers([cron('45 18 * * 4')])
 ])
 
 if (BRANCH_NAME == 'master' && currentBuild.buildCauses*._class == ['jenkins.branch.BranchEventCause']) {
