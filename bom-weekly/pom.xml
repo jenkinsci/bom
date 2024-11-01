@@ -406,7 +406,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>mysql-api</artifactId>
-        <version>9.0.0-41.vb_fb_62f443490</version>
+        <version>9.1.0-49.v012b_dfb_92c8a_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
