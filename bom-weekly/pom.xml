@@ -1023,7 +1023,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>prometheus</artifactId>
-        <version>787.v52e8f47488fc</version>
+        <version>795.v995762102f28</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
