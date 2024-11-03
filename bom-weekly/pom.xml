@@ -193,7 +193,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>byte-buddy-api</artifactId>
-        <version>1.15.7-79.vb_21b_79e4069d</version>
+        <version>1.15.9-85.vc5b_19876b_c22</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
