@@ -68,6 +68,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>email-ext</artifactId>
+        <version>1844.v3ea_a_b_842374a_</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>job-dsl</artifactId>
         <version>1.87</version>
       </dependency>
