@@ -599,7 +599,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>build-monitor-plugin</artifactId>
-        <version>1.14-925.v95b_9089a_4c7f</version>
+        <version>1.14-942.v18a_5ca_625a_91</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
