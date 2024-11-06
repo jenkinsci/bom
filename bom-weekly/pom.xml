@@ -11,7 +11,7 @@
   <properties>
     <aws-java-sdk-plugin.version>1.12.772-474.v7f79a_2046a_fb_</aws-java-sdk-plugin.version>
     <blueocean-plugin.version>1.27.16</blueocean-plugin.version>
-    <branch-api-plugin.version>2.1197.vfa_d0c47c267d</branch-api-plugin.version>
+    <branch-api-plugin.version>2.1199.v20ee565260fb_</branch-api-plugin.version>
     <checks-api.version>2.2.1</checks-api.version>
     <cloudbees-folder-plugin.version>6.955.v81e2a_35c08d3</cloudbees-folder-plugin.version>
     <configuration-as-code-plugin.version>1887.v9e47623cb_043</configuration-as-code-plugin.version>
@@ -28,7 +28,7 @@
     <pipeline-stage-view-plugin.version>2.34</pipeline-stage-view-plugin.version>
     <plugin-util-api.version>5.1.0</plugin-util-api.version>
     <scm-api-plugin.version>698.v8e3b_c788f0a_6</scm-api-plugin.version>
-    <subversion-plugin.version>1280.v5465ce107f22</subversion-plugin.version>
+    <subversion-plugin.version>1281.vc8837f91a_07a_</subversion-plugin.version>
     <workflow-api-plugin.version>1336.vee415d95c521</workflow-api-plugin.version>
     <workflow-cps-plugin.version>3990.vd281dd77a_388</workflow-cps-plugin.version>
     <workflow-job-plugin.version>1460.v28178c1ef6e6</workflow-job-plugin.version>
