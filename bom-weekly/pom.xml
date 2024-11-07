@@ -802,7 +802,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>google-compute-engine</artifactId>
-        <version>4.579.vc9f7ca_9f728a_</version>
+        <version>4.580.v005441dfeea_d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
