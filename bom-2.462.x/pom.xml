@@ -13,6 +13,7 @@
     <git-plugin.version>5.5.2</git-plugin.version>
     <okhttp-api-plugin.version>4.11.0-172.vda_da_1feeb_c6e</okhttp-api-plugin.version>
     <scm-api-plugin.version>696.v778d637b_a_762</scm-api-plugin.version>
+    <configuration-as-code-plugin.version>1873.vea_5814ca_9c93</configuration-as-code-plugin.version>
     <workflow-job-plugin.version>1436.vfa_244484591f</workflow-job-plugin.version>
   </properties>
   <dependencyManagement>
@@ -30,9 +31,24 @@
         <version>2.5.2</version>
       </dependency>
       <dependency>
+        <groupId>io.jenkins</groupId>
+        <artifactId>configuration-as-code</artifactId>
+        <version>${configuration-as-code-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.configuration-as-code</groupId>
+        <artifactId>test-harness</artifactId>
+        <version>${configuration-as-code-plugin.version}</version>
+      </dependency>
+      <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>custom-folder-icon</artifactId>
         <version>2.15</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>emoji-symbols-api</artifactId>
+        <version>5.v70a_000e95970</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -59,6 +75,16 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
         <version>340.v28cecee8b_25f</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>sqlserver-api</artifactId>
+        <version>12.8.1.jre11-63.v522a_b_7b_6ea_d7</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>badge</artifactId>
+        <version>2.3</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -141,6 +167,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>resource-disposer</artifactId>
         <version>0.24</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>reverse-proxy-auth-plugin</artifactId>
+        <version>1.7.7</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
