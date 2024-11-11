@@ -463,7 +463,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>prism-api</artifactId>
-        <version>1.29.0-17</version>
+        <version>1.29.0-18</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
