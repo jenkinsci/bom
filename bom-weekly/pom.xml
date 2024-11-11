@@ -735,7 +735,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ec2</artifactId>
-        <version>1723.v132eb_a_549b_21</version>
+        <version>1746.vff2f5a_25b_61a_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
