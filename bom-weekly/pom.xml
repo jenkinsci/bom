@@ -675,7 +675,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>dashboard-view</artifactId>
-        <version>2.517.v776a_b_811a_b_4e</version>
+        <version>2.521.v339b_a_f4d8da_8</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
