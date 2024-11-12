@@ -745,7 +745,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>email-ext</artifactId>
-        <version>1849.v6dd03b_f6e423</version>
+        <version>1851.v2b_5345e6272d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
