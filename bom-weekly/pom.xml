@@ -645,7 +645,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>command-launcher</artifactId>
-        <version>115.vd8b_301cc15d0</version>
+        <version>116.vd85919c54a_d6</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
