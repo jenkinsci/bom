@@ -202,14 +202,20 @@ On the other hand, if the person reaches out for help, be sure to help them.
 
 This section goes over the expectations and work items for the BOM release manager during their on-call cycle. 
 
-The scripts that are referenced are in the `release-manager-scripts` directory. Open a terminal and `cd` to that directory before running the scripts.
+The scripts that are referenced are in the `release-manager-scripts` directory.
+Open a terminal and `cd` to that directory before running the scripts.
+Alternatively, you can call them from wherever you want, just know that they are located in the `release-manager-scripts` directory.
 
 #### Thursday (Prep for BOM release)
 
 * run `./bom-release-issue-create.sh <yyyy-MM-dd>`
   * Example: `./bom-release-issue-create.sh 2024-10-14`
+  * use the desired date of the release, not the date when you create the ticket
 * on the newly created issue, manually set `Type` to `Task`
   * at the time of writing (2024-10-14), there is no `gh` option to set the Type
+* check the CRON expression to see if the pre-release build will be executed at a time suited for you
+  * this can also be used to change when the release happened if you prefer the release to be made on thurday
+  * run `./bom-release-issue-complete-task.sh 1`
 * Locally run tests for `warnings-ng` for all current LINEs and weekly
   * `./bom-test-all-lines.sh warnings-ng`
 
@@ -236,7 +242,7 @@ The scripts that are referenced are in the `release-manager-scripts` directory. 
 * verify that the [branch is unlocked](https://github.com/jenkinsci/bom/settings/branch_protection_rules/6421306)
 * run `./bom-release-issue-close.sh`
 
-For tasks that don't have a specific script, i.e. tasks 2, 4, 5, 7, and 10, you can run `./bom-release-issue-complete-task.sh <task number>` to check the box off without having to manually edit the issue.
+For tasks that don't have a specific script, i.e. tasks 1, 5, 6, 8 and 11, you can run `./bom-release-issue-complete-task.sh <task number>` to check the box off without having to manually edit the issue.
 
 #### Saturday/Sunday/Monday
 

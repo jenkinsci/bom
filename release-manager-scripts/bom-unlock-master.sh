@@ -1,5 +1,7 @@
 #!/bin/bash
 
+HERE="$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 gh api \
 	/repos/jenkinsci/bom/branches/master/protection \
 	--method PUT \
@@ -13,5 +15,5 @@ gh api \
 	-F "restrictions=null" \
 	--silent
 
-./bom-release-issue-complete-task.sh 9
-./bom-get-branch-protection.sh
+${HERE}/bom-release-issue-complete-task.sh 10
+${HERE}/bom-get-branch-protection.sh
