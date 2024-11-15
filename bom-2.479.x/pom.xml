@@ -27,6 +27,11 @@
         <artifactId>warnings-ng</artifactId>
         <version>11.5.0</version>
       </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>htmlpublisher</artifactId>
+        <version>1.36</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 </project>
