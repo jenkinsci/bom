@@ -167,7 +167,7 @@ Release Drafter is also used to prepare changelogs for the releases page.
 
 ## A week in the life of a BOM release manager
 
-A BOM release manager is in charge of BOM releases for 2 weeks. 
+A BOM release manager is in charge of BOM releases for 2 weeks.
 
 As a BOM release manager, you'll be working directly with the `jenkinsci/bom` repository. Said differently, think hard before using your fork of the `bom` repository.
 
@@ -181,7 +181,7 @@ In a perfect world, a Dependabot PR will just auto-merge into `master` and you w
 
 In a not so perfect world, a Dependabot PR will fail to build. Most of the time, it's because a plugin is too new for older LTS lines. The way you'll resolve this issue is to pin the older version to the correct LTS line.
 
-[!TIP] 
+[!TIP]
 If you do have to do work on a PR, make sure to assign the PR to yourself so others can see that you are actively looking at the PR.
 
 The easiest way to work on the PR is to use the `gh` CLI to checkout the PR:
@@ -192,6 +192,34 @@ Then you can work on the PR. Once done, push your changes back to the PR. If eve
 
 * `git branch -D <branchName>`
 
+#### Known issues and examples
+
+There are some known issues that commonly need to be addressed by the BOM release manager.
+
+##### Dependency requires Jenkins 2.xxx.y or higher
+
+This message shows that a plugin requires a newer Jenkins LTS than one or more of the LTS lines supported by the BOM. Pin the older version to the correct LTS line to resolve the issue.  Some pull requests that pin older plugin versions include:
+
+* [cloudbees-folder 6.959.v4ed5cc9e2dd4](https://github.com/jenkinsci/bom/pull/3979)
+* [git-client 4.0.0 and git 5.0.0](https://github.com/jenkinsci/bom/pull/1663)
+* [reverse-proxy-auth 1.8.0](https://github.com/jenkinsci/bom/pull/3930)
+
+##### Failed to load - update required
+
+This message usually shows that an optional dependency of a plugin is not being updated by the [Plugin Compatibility Tester (PCT)](https://github.com/jenkinsci/plugin-compat-tester/) and that update is needed by another plugin. This is a [known issue](https://github.com/jenkinsci/bom/issues/3158) in PCT. Workarounds include:
+
+* Add the optional dependency in test scope to the affected plugin. The workaround leaves an unnecessary test dependency in the affected plugin in order to avoid the issue
+* Pin an older version of the optional plugin on older LTS lines if the issue is not visible in the weekly line. This only works if the specific issue is not visible on the weekly line.
+
+Some pull requests that add the optional dependency in test scope include:
+
+* [Customer folder icon add test dependency on config-file-provider](https://github.com/jenkinsci/custom-folder-icon-plugin/pull/282) and [issue 280](https://github.com/jenkinsci/custom-folder-icon-plugin/issues/280)
+* [Mark trilead API as test even if not needed](https://github.com/jenkinsci/mina-sshd-api-plugin/pull/91), followed by [remove trilead](https://github.com/jenkinsci/mina-sshd-api-plugin/pull/98)
+
+A pull request that pins an older version of the optional plugin is:
+
+* [Pin htmlpublisher 1.36 for older lines](https://github.com/jenkinsci/bom/pull/3975)
+
 #### Manually created PRs
 
 When there is a manually generated PR, there's probably a pretty good chance as the BOM release manager you won't have to do anything. The person opening the PR should open the PR as `draft`. As a BOM release manager, feel free to look at a `draft` PR, but don't spend much time on it.
@@ -200,7 +228,7 @@ On the other hand, if the person reaches out for help, be sure to help them.
 
 ### Day of week tasks
 
-This section goes over the expectations and work items for the BOM release manager during their on-call cycle. 
+This section goes over the expectations and work items for the BOM release manager during their on-call cycle.
 
 The scripts that are referenced are in the `release-manager-scripts` directory.
 Open a terminal and `cd` to that directory before running the scripts.
@@ -247,7 +275,7 @@ For tasks that don't have a specific script, i.e. tasks 1, 5, 6, 8 and 11, you c
 #### Saturday/Sunday/Monday
 
 * business as usual tasks
- 
+
 #### Tuesday (test the new weekly)
 
 * run the Dependabot dependency graph checks
@@ -267,7 +295,7 @@ For tasks that don't have a specific script, i.e. tasks 1, 5, 6, 8 and 11, you c
 
 * business as usual tasks
 
-## Using `gh` CLI 
+## Using `gh` CLI
 
 As someone that is "on-call" for managing BOM, there are a few helpful aliases/scripts that you can create to make your life easier.
 
