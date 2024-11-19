@@ -400,6 +400,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>locale</artifactId>
+        <version>549.v824602fe3393</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>mariadb-api</artifactId>
         <version>3.5.0-97.v7a_b_c4a_1a_f3df</version>
       </dependency>
