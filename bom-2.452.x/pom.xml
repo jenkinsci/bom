@@ -78,6 +78,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>hidden-parameter</artifactId>
+        <version>237.v4b_df26c7a_f0e</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>job-dsl</artifactId>
         <version>1.87</version>
       </dependency>

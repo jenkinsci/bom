@@ -846,6 +846,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>hidden-parameter</artifactId>
+        <version>374.v00e27777a_0eb_</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>htmlpublisher</artifactId>
         <version>1.37</version>
       </dependency>
