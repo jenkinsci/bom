@@ -197,6 +197,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>parameter-separator</artifactId>
+        <version>250.va_6292fd7f47b_</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>resource-disposer</artifactId>
         <version>0.24</version>
       </dependency>
