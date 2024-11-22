@@ -187,6 +187,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>azure-sdk</artifactId>
+        <version>184.v1f2c161c9777</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>bootstrap5-api</artifactId>
         <version>5.3.3-1</version>
       </dependency>
