@@ -992,6 +992,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>parameterized-scheduler</artifactId>
+        <version>277.v61a_4b_a_49a_c5c</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>parameterized-trigger</artifactId>
         <version>806.vf6fff3e28c3e</version>
       </dependency>
