@@ -23,7 +23,7 @@
     <junit-plugin.version>1309.v0078b_fecd6ed</junit-plugin.version>
     <mina-sshd-api.version>2.14.0-133.vcc091215a_358</mina-sshd-api.version>
     <okhttp-api-plugin.version>4.11.0-181.v1de5b_83857df</okhttp-api-plugin.version>
-    <pipeline-maven-plugin.version>1457.vf7a_de13b_c0d4</pipeline-maven-plugin.version>
+    <pipeline-maven-plugin.version>1469.ve15ca_a_b_90b_44</pipeline-maven-plugin.version>
     <pipeline-model-definition-plugin.version>2.2218.v56d0cda_37c72</pipeline-model-definition-plugin.version>
     <pipeline-stage-view-plugin.version>2.34</pipeline-stage-view-plugin.version>
     <plugin-util-api.version>5.1.0</plugin-util-api.version>
