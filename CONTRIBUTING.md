@@ -2,6 +2,24 @@
 
 For people potentially working on the BOM itself, not just consuming it.
 
+## BOM release leads
+
+| Lead | Release Date |
+| --- | --- |
+| Bruno Verachten | 29 Nov 2024 |
+| Kris Stern | 6 Dec 2024 |
+| Kris Stern | 13 Dec 2024 |
+| Basil Crow | 20 Dec 2024 |
+| Skipped | 27 Dec 2024 |
+| Skipped | 3 Jan 2025 |
+| Basil Crow | 10 Jan 2025 |
+| Darin Pope | 17 Jan 2025 |
+| Darin Pope | 24 Jan 2025 |
+| Adrien Lecharpentier | 31 Jan 2025 |
+| Adrien Lecharpentier | 7 Feb 2025 |
+| Mark Waite | 14 Feb 2025 |
+| Mark Waite | 21 Feb 2025 |
+
 ## Updating a plugin
 
 You can try just incrementing plugin versions in `bom/pom.xml`.
