@@ -88,6 +88,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>jobcacher</artifactId>
+        <version>551.ve0b_00cb_1b_85c</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>parameter-separator</artifactId>
         <version>166.vd0120849b_386</version>
       </dependency>

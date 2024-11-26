@@ -956,6 +956,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>jobcacher</artifactId>
+        <version>589.v10419b_45a_a_72</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jsch</artifactId>
         <version>0.2.16-86.v42e010d9484b_</version>
       </dependency>

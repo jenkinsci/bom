@@ -187,6 +187,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>jobcacher</artifactId>
+        <version>573.v33fa_12644a_91</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ldap</artifactId>
         <version>725.v3cb_b_711b_1a_ef</version>
       </dependency>
