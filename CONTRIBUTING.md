@@ -4,21 +4,20 @@ For people potentially working on the BOM itself, not just consuming it.
 
 ## BOM release leads
 
-| Lead | Release Date |
+| Release Date | Lead |
 | --- | --- |
-| Bruno Verachten | 29 Nov 2024 |
-| Kris Stern | 6 Dec 2024 |
-| Kris Stern | 13 Dec 2024 |
-| Basil Crow | 20 Dec 2024 |
-| Skipped | 27 Dec 2024 |
-| Skipped | 3 Jan 2025 |
-| Basil Crow | 10 Jan 2025 |
-| Darin Pope | 17 Jan 2025 |
-| Darin Pope | 24 Jan 2025 |
-| Adrien Lecharpentier | 31 Jan 2025 |
-| Adrien Lecharpentier | 7 Feb 2025 |
-| Mark Waite | 14 Feb 2025 |
-| Mark Waite | 21 Feb 2025 |
+| 2024-12-06 | Kris Stern |
+| 2024-12-13 | Kris Stern |
+| 2024-12-20 | Basil Crow |
+| 2024-12-27 | Skipped |
+| 2025-01-03 | Skipped |
+| 2025-01-10 | Basil Crow |
+| 2025-01-17 | Darin Pope |
+| 2025-01-24 | Darin Pope |
+| 2025-01-31 | Adrien Lecharpentier |
+| 2025-02-07 | Adrien Lecharpentier |
+| 2025-02-14 | Mark Waite |
+| 2025-02-21 | Mark Waite |
 
 ## Updating a plugin
 
