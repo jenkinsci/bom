@@ -805,7 +805,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>cloudbees-bitbucket-branch-source</artifactId>
-        <version>922.va_71d0e0b_7b_8d</version>
+        <version>932.vff504b_2003fe</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
