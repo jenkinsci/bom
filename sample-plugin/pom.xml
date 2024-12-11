@@ -1454,7 +1454,7 @@
       <id>2.479.x</id>
       <properties>
         <bom>2.479.x</bom>
-        <jenkins.version>2.479.1</jenkins.version>
+        <jenkins.version>2.479.3-rc35427.fa_ef7d7f8e13</jenkins.version>
       </properties>
     </profile>
     <profile>
