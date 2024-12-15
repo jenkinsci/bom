@@ -901,7 +901,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>docker-java-api</artifactId>
-        <version>3.4.0-94.v65ced49b_a_7d5</version>
+        <version>3.4.1-96.v77147a_de67f8</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
