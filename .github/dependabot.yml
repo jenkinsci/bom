@@ -21,6 +21,11 @@ updates:
       # Should have been 1.27.0
       - dependency-name: "com.sonyericsson.jenkins.plugins.bfa:build-failure-analyzer"
         versions: ["2.27.0"]
+    labels:
+      # dependency updates to plugin BOM are developer relevant changes
+      # developer label assures CD process will release with this change
+      # https://github.com/jenkinsci/bom/issues/4092#issuecomment-2544153741
+      - "developer"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
