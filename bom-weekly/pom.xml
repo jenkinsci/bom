@@ -866,7 +866,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>database</artifactId>
-        <version>266.v1d03c767934e</version>
+        <version>273.vc4781cc27e67</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
