@@ -60,6 +60,9 @@ stage('prep') {
       ]) {
         sh '''
         mvn -v
+        echo "Starting artifact caching proxy pre-heat"
+        mvn -ntp dependency:go-offline
+        echo "Finished artifact caching proxy pre-heat"
         bash prep.sh
         '''
       }
