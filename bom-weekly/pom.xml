@@ -10,7 +10,7 @@
   <packaging>pom</packaging>
   <properties>
     <aws-java-sdk-plugin.version>1.12.772-474.v7f79a_2046a_fb_</aws-java-sdk-plugin.version>
-    <aws-java-sdk2-plugin.version>2.29.34-8.v76857219b_b_92</aws-java-sdk2-plugin.version>
+    <aws-java-sdk2-plugin.version>2.29.34-9.v117ff2a_65538</aws-java-sdk2-plugin.version>
     <blueocean-plugin.version>1.27.16</blueocean-plugin.version>
     <branch-api-plugin.version>2.1200.v4b_a_3da_2eb_db_4</branch-api-plugin.version>
     <checks-api.version>2.2.1</checks-api.version>
@@ -194,7 +194,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>aws-global-configuration</artifactId>
-        <version>140.vc08280b_30015</version>
+        <version>141.v3a_5c7ded79ee</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -652,11 +652,6 @@
         <version>${aws-java-sdk2-plugin.version}</version>
       </dependency>
       <dependency>
-        <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
-        <artifactId>aws-java-sdk2-sts</artifactId>
-        <version>${aws-java-sdk2-plugin.version}</version>
-      </dependency>
-      <dependency>
         <groupId>io.jenkins.plugins.mina-sshd-api</groupId>
         <artifactId>mina-sshd-api-common</artifactId>
         <version>${mina-sshd-api.version}</version>
@@ -739,7 +734,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>aws-credentials</artifactId>
-        <version>238.v8fb_588a_2b_e67</version>
+        <version>239.v6681a_0ea_46ef</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
