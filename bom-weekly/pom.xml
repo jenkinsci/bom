@@ -744,7 +744,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>azure-vm-agents</artifactId>
-        <version>980.v4742455100fe</version>
+        <version>982.vc94e428b_b_4d1</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
