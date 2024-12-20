@@ -194,7 +194,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>aws-global-configuration</artifactId>
-        <version>141.v3a_5c7ded79ee</version>
+        <version>142.vfc0728241c1b_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
