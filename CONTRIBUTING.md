@@ -6,8 +6,6 @@ For people potentially working on the BOM itself, not just consuming it.
 
 | Release Date | Lead |
 | --- | --- |
-| 2024-12-06 | Bruno Verachten |
-| 2024-12-13 | Kris Stern |
 | 2024-12-20 | Basil Crow |
 | 2024-12-27 | Skipped |
 | 2025-01-03 | Skipped |
