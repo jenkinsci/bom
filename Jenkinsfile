@@ -1,7 +1,8 @@
 properties([
   disableConcurrentBuilds(abortPrevious: true),
   buildDiscarder(logRotator(numToKeepStr: '7')),
-  pipelineTriggers([cron('18 03 * * 6')])
+  // TODO: Restore build schedule after end of year break
+  // pipelineTriggers([cron('18 04 * * 5')])
 ])
 
 if (BRANCH_NAME == 'master' && currentBuild.buildCauses*._class == ['jenkins.branch.BranchEventCause']) {
