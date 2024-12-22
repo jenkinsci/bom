@@ -15,7 +15,7 @@
     <branch-api-plugin.version>2.1202.vc51412f3ed84</branch-api-plugin.version>
     <checks-api.version>2.2.1</checks-api.version>
     <cloudbees-folder-plugin.version>6.975.v4161e479479f</cloudbees-folder-plugin.version>
-    <configuration-as-code-plugin.version>1903.v004d55388f30</configuration-as-code-plugin.version>
+    <configuration-as-code-plugin.version>1909.vb_b_f59a_27d013</configuration-as-code-plugin.version>
     <data-tables-api.version>2.1.8-1</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.4</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>2.7.0</forensics-api.version>
