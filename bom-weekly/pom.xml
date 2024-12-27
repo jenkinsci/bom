@@ -22,7 +22,7 @@
     <github-api-plugin.version>1.321-478.vc9ce627ce001</github-api-plugin.version>
     <git-plugin.version>5.6.0</git-plugin.version>
     <junit-plugin.version>1312.v1a_235a_b_94a_31</junit-plugin.version>
-    <mina-sshd-api.version>2.14.0-136.v4d2b_0853615e</mina-sshd-api.version>
+    <mina-sshd-api.version>2.14.0-138.v6341ee58e1df</mina-sshd-api.version>
     <okhttp-api-plugin.version>4.11.0-183.va_87fc7a_89810</okhttp-api-plugin.version>
     <pipeline-maven-plugin.version>1469.ve15ca_a_b_90b_44</pipeline-maven-plugin.version>
     <pipeline-model-definition-plugin.version>2.2218.v56d0cda_37c72</pipeline-model-definition-plugin.version>
