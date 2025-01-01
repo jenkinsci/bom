@@ -255,7 +255,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>coverage-badges-extension</artifactId>
-        <version>127.v8f212c1db_3b_9</version>
+        <version>147.vb_b_2f87a_c7a_54</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
