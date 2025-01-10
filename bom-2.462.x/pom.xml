@@ -227,6 +227,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>oic-auth</artifactId>
+        <version>4.444.vd4c54f157201</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>parameter-separator</artifactId>
         <version>250.va_6292fd7f47b_</version>
       </dependency>
