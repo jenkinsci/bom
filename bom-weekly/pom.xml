@@ -169,7 +169,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>apache-httpcomponents-client-5-api</artifactId>
-        <version>5.4-124.v31e2987e48f4</version>
+        <version>5.4-133.vc674f119dc48</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
