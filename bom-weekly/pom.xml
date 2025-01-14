@@ -1346,7 +1346,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>support-core</artifactId>
-        <version>1551.v6479d730fa_e6</version>
+        <version>1553.v4dd20218b_cb_2</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
