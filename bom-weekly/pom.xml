@@ -41,6 +41,11 @@
     <dependencies>
       <!-- Plugins (sorted): -->
       <dependency>
+        <groupId>com.cloudbees.jenkins.plugins</groupId>
+        <artifactId>kubernetes-credentials-provider</artifactId>
+        <version>1.273.v15e69b_55ea_8e</version>
+      </dependency>
+      <dependency>
         <groupId>com.coravy.hudson.plugins.github</groupId>
         <artifactId>github</artifactId>
         <version>1.40.0</version>
