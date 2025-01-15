@@ -957,7 +957,9 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>git-client</artifactId>
-        <version>6.1.1-rc3667.8f7cddc42e9e</version>
+        <!-- master branch after adapting test for CLI git 2.48.0 -->
+        <!-- https://github.com/jenkinsci/git-client-plugin/commit/8d5f9c37c25ece914f7d968efda9bdf36ad74aab -->
+        <version>6.1.1-rc3667.8d5f9c37c25e</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
