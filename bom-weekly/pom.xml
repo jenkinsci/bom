@@ -371,6 +371,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>gitlab-kubernetes-credentials</artifactId>
+        <version>388.v4c6f01ffdb_c5</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>gson-api</artifactId>
         <version>2.11.0-85.v1f4e87273c33</version>
       </dependency>
