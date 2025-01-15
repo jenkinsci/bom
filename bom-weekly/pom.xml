@@ -10,7 +10,7 @@
   <packaging>pom</packaging>
   <properties>
     <aws-java-sdk-plugin.version>1.12.772-474.v7f79a_2046a_fb_</aws-java-sdk-plugin.version>
-    <aws-java-sdk2-plugin.version>2.29.34-9.v117ff2a_65538</aws-java-sdk2-plugin.version>
+    <aws-java-sdk2-plugin.version>2.29.52-15.v9980e773794d</aws-java-sdk2-plugin.version>
     <blueocean-plugin.version>1.27.16</blueocean-plugin.version>
     <branch-api-plugin.version>2.1208.vf528356feca_4</branch-api-plugin.version>
     <checks-api.version>2.2.1</checks-api.version>
@@ -568,6 +568,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
+        <artifactId>aws-java-sdk2-cloudwatchlogs</artifactId>
+        <version>${aws-java-sdk2-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
         <artifactId>aws-java-sdk2-codebuild</artifactId>
         <version>${aws-java-sdk2-plugin.version}</version>
       </dependency>
@@ -624,11 +629,6 @@
       <dependency>
         <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
         <artifactId>aws-java-sdk2-lambda</artifactId>
-        <version>${aws-java-sdk2-plugin.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
-        <artifactId>aws-java-sdk2-logs</artifactId>
         <version>${aws-java-sdk2-plugin.version}</version>
       </dependency>
       <dependency>
