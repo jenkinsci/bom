@@ -959,7 +959,11 @@
         <artifactId>git-client</artifactId>
         <!-- master branch after adapting test for CLI git 2.48.0 -->
         <!-- https://github.com/jenkinsci/git-client-plugin/commit/8d5f9c37c25ece914f7d968efda9bdf36ad74aab -->
-        <version>6.1.1-rc3667.8d5f9c37c25e</version>
+        <!-- <version>6.1.1-rc3667.8d5f9c37c25e</version> -->
+        <!-- stable-6.1 branch after adapting test for CLI git 2.48.0 -->
+        <!-- https://github.com/jenkinsci/git-client-plugin/compare/stable-6.1 -->
+        <!-- https://github.com/jenkinsci/git-client-plugin/commit/dc6719e47df4a18f8b7bdf1a6ff1a454bcd8d520 -->
+        <version>6.1.1-rc3628.dc6719e47df4</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
