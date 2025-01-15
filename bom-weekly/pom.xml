@@ -957,7 +957,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>git-client</artifactId>
-        <version>6.1.1-rc3670.65a_d746a_b_706</version>
+        <version>6.1.1-rc3667.8f7cddc42e9e</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
