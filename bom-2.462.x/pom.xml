@@ -229,6 +229,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>github-oauth</artifactId>
+        <version>597.ve0c3480fcb_d0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>gitlab-plugin</artifactId>
         <version>1.8.2</version>
       </dependency>
