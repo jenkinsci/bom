@@ -334,6 +334,11 @@
         <version>${workflow-job-plugin.version}</version>
         <classifier>tests</classifier>
       </dependency>
+      <dependency>
+        <groupId>org.jvnet.hudson.plugins</groupId>
+        <artifactId>favorite</artifactId>
+        <version>2.221.v19ca_666b_62f5</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 </project>
