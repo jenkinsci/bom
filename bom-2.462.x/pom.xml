@@ -294,6 +294,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>s3</artifactId>
+        <version>483.vcb_db_3dcee68f</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>saml</artifactId>
         <version>4.464.vea_cb_75d7f5e0</version>
       </dependency>
