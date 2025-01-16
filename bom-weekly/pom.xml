@@ -184,7 +184,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>artifactory-artifact-manager</artifactId>
-        <version>166.vefc3e640f00b_</version>
+        <version>190.vfca_09a_223ca_2</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
