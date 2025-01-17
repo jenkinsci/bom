@@ -1436,7 +1436,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>versioncolumn</artifactId>
-        <version>319.v052e2d416b_23</version>
+        <version>243.vda_c20eea_a_8a_f</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
