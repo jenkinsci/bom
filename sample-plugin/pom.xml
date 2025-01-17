@@ -1486,6 +1486,14 @@
   <profiles>
     <!-- Use .1 of most recent active line, and .3 (or later) of previous lines: https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/#choosing-a-version -->
     <profile>
+      <id>2.492.x</id>
+      <properties>
+        <bom>2.492.x</bom>
+        <!-- TODO: Replace with 2.492.1 after release of 2.492.1 -->
+        <jenkins.version>2.492</jenkins.version>
+      </properties>
+    </profile>
+    <profile>
       <id>2.479.x</id>
       <properties>
         <bom>2.479.x</bom>
@@ -1501,25 +1509,6 @@
         <jenkins-test-harness.version>2225.2230.v6210cb_b_827f9</jenkins-test-harness.version>
         <maven.compiler.release>11</maven.compiler.release>
       </properties>
-    </profile>
-    <profile>
-      <id>2.452.x</id>
-      <properties>
-        <bom>2.452.x</bom>
-        <hpi-plugin.version>3.57</hpi-plugin.version>
-        <jenkins.version>2.452.4</jenkins.version>
-        <jenkins-test-harness.version>2225.2230.v6210cb_b_827f9</jenkins-test-harness.version>
-        <maven.compiler.release>11</maven.compiler.release>
-      </properties>
-      <dependencyManagement>
-        <dependencies>
-          <dependency>
-            <groupId>jakarta.servlet</groupId>
-            <artifactId>jakarta.servlet-api</artifactId>
-            <version>4.0.4</version>
-          </dependency>
-        </dependencies>
-      </dependencyManagement>
     </profile>
   </profiles>
 </project>
