@@ -28,7 +28,7 @@
     <pipeline-model-definition-plugin.version>2.2218.v56d0cda_37c72</pipeline-model-definition-plugin.version>
     <pipeline-stage-view-plugin.version>2.34</pipeline-stage-view-plugin.version>
     <plugin-util-api.version>5.1.0</plugin-util-api.version>
-    <scm-api-plugin.version>698.v8e3b_c788f0a_6</scm-api-plugin.version>
+    <scm-api-plugin.version>703.v72ff4b_259600</scm-api-plugin.version>
     <subversion-plugin.version>1281.vc8837f91a_07a_</subversion-plugin.version>
     <workflow-api-plugin.version>1358.vfb_5780da_64cb_</workflow-api-plugin.version>
     <workflow-cps-plugin.version>4009.v0089238351a_9</workflow-cps-plugin.version>
@@ -326,7 +326,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>flyway-api</artifactId>
-        <version>11.1.1-217.v555a_4735dda_a_</version>
+        <version>11.2.0-223.va_b_087b_80376b_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1320,6 +1320,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>saml</artifactId>
         <version>4.514.vfd5088cc4ed7</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>sbt</artifactId>
+        <version>87.v455263c57692</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
