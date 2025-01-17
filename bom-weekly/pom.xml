@@ -1710,6 +1710,11 @@
         <artifactId>groovy-postbuild</artifactId>
         <version>272.v52a_03efb_8653</version>
       </dependency>
+      <dependency>
+        <groupId>org.jvnet.hudson.plugins</groupId>
+        <artifactId>instant-messaging</artifactId>
+        <version>2.838.vb_0ca_54247221</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 </project>
