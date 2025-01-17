@@ -28,6 +28,11 @@
         <scope>import</scope>
       </dependency>
       <dependency>
+        <groupId>com.paul8620.jenkins.plugins</groupId>
+        <artifactId>pipeline-aggregator-view</artifactId>
+        <version>104.v94a_e5f6cdb_c3</version>
+      </dependency>
+      <dependency>
         <groupId>com.sonyericsson.jenkins.plugins.bfa</groupId>
         <artifactId>build-failure-analyzer</artifactId>
         <version>2.5.2</version>

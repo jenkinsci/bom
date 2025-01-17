@@ -64,6 +64,11 @@
       <scope>test</scope>
     </dependency>
     <dependency>
+      <groupId>com.paul8620.jenkins.plugins</groupId>
+      <artifactId>pipeline-aggregator-view</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <groupId>com.sonyericsson.hudson.plugins.rebuild</groupId>
       <artifactId>rebuild</artifactId>
       <scope>test</scope>
