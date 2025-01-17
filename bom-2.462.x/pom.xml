@@ -156,6 +156,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>claim</artifactId>
+        <version>554.va_f9b_58b_0a_088</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>cloudbees-bitbucket-branch-source</artifactId>
         <version>912.v3b_f74026941c</version>
       </dependency>
