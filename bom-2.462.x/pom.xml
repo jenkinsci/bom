@@ -389,6 +389,11 @@
         <artifactId>groovy-postbuild</artifactId>
         <version>267.va_df06de9fa_fa_</version>
       </dependency>
+      <dependency>
+        <groupId>org.jvnet.hudson.plugins</groupId>
+        <artifactId>instant-messaging</artifactId>
+        <version>2.813.v7a_c55a_3cc547</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 </project>
