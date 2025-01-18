@@ -55,6 +55,11 @@
     </dependency>
     <dependency>
       <groupId>com.cloudbees.jenkins.plugins</groupId>
+      <artifactId>file-leak-detector</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.cloudbees.jenkins.plugins</groupId>
       <artifactId>kubernetes-credentials-provider</artifactId>
       <scope>test</scope>
     </dependency>
