@@ -299,6 +299,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>nodejs</artifactId>
+        <version>1.6.2</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>oic-auth</artifactId>
         <version>4.444.vd4c54f157201</version>
       </dependency>
