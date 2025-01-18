@@ -28,11 +28,11 @@
     <pipeline-model-definition-plugin.version>2.2218.v56d0cda_37c72</pipeline-model-definition-plugin.version>
     <pipeline-stage-view-plugin.version>2.34</pipeline-stage-view-plugin.version>
     <plugin-util-api.version>5.1.0</plugin-util-api.version>
-    <scm-api-plugin.version>698.v8e3b_c788f0a_6</scm-api-plugin.version>
+    <scm-api-plugin.version>703.v72ff4b_259600</scm-api-plugin.version>
     <subversion-plugin.version>1281.vc8837f91a_07a_</subversion-plugin.version>
     <workflow-api-plugin.version>1358.vfb_5780da_64cb_</workflow-api-plugin.version>
     <workflow-cps-plugin.version>4009.v0089238351a_9</workflow-cps-plugin.version>
-    <workflow-job-plugin.version>1496.v5b_18defc07f2</workflow-job-plugin.version>
+    <workflow-job-plugin.version>1498.v33a_0c6f3a_4b_4</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>795.ve0cb_1f45ca_9a_</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>678.v3ee58b_469476</workflow-step-api-plugin.version>
     <workflow-support-plugin.version>943.v8b_0d01a_7b_a_08</workflow-support-plugin.version>
@@ -49,6 +49,11 @@
         <groupId>com.coravy.hudson.plugins.github</groupId>
         <artifactId>github</artifactId>
         <version>1.40.0</version>
+      </dependency>
+      <dependency>
+        <groupId>com.paul8620.jenkins.plugins</groupId>
+        <artifactId>pipeline-aggregator-view</artifactId>
+        <version>119.v4b_ec11953552</version>
       </dependency>
       <dependency>
         <groupId>com.sonyericsson.hudson.plugins.rebuild</groupId>
@@ -321,7 +326,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>flyway-api</artifactId>
-        <version>11.1.1-217.v555a_4735dda_a_</version>
+        <version>11.2.0-223.va_b_087b_80376b_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -442,7 +447,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>json-api</artifactId>
-        <version>20241224-119.va_dca_a_b_ea_7da_5</version>
+        <version>20250107-125.v28b_a_ffa_eb_f01</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -750,6 +755,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>azure-credentials</artifactId>
         <version>343.vd80f9c4859df</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>azure-keyvault</artifactId>
+        <version>251.vcfe31c013dc7</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1318,6 +1328,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>sbt</artifactId>
+        <version>87.v455263c57692</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>scm-api</artifactId>
         <version>${scm-api-plugin.version}</version>
       </dependency>
@@ -1698,7 +1713,12 @@
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
         <artifactId>groovy-postbuild</artifactId>
-        <version>267.va_df06de9fa_fa_</version>
+        <version>272.v52a_03efb_8653</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jvnet.hudson.plugins</groupId>
+        <artifactId>instant-messaging</artifactId>
+        <version>2.838.vb_0ca_54247221</version>
       </dependency>
     </dependencies>
   </dependencyManagement>

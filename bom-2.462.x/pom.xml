@@ -28,6 +28,11 @@
         <scope>import</scope>
       </dependency>
       <dependency>
+        <groupId>com.paul8620.jenkins.plugins</groupId>
+        <artifactId>pipeline-aggregator-view</artifactId>
+        <version>104.v94a_e5f6cdb_c3</version>
+      </dependency>
+      <dependency>
         <groupId>com.sonyericsson.jenkins.plugins.bfa</groupId>
         <artifactId>build-failure-analyzer</artifactId>
         <version>2.5.2</version>
@@ -81,6 +86,11 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>gitlab-kubernetes-credentials</artifactId>
         <version>376.veb_da_720f7745</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>json-api</artifactId>
+        <version>20241224-119.va_dca_a_b_ea_7da_5</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -373,6 +383,16 @@
         <groupId>org.jvnet.hudson.plugins</groupId>
         <artifactId>favorite</artifactId>
         <version>2.221.v19ca_666b_62f5</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jvnet.hudson.plugins</groupId>
+        <artifactId>groovy-postbuild</artifactId>
+        <version>267.va_df06de9fa_fa_</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jvnet.hudson.plugins</groupId>
+        <artifactId>instant-messaging</artifactId>
+        <version>2.813.v7a_c55a_3cc547</version>
       </dependency>
     </dependencies>
   </dependencyManagement>

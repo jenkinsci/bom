@@ -64,6 +64,11 @@
       <scope>test</scope>
     </dependency>
     <dependency>
+      <groupId>com.paul8620.jenkins.plugins</groupId>
+      <artifactId>pipeline-aggregator-view</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <groupId>com.sonyericsson.hudson.plugins.rebuild</groupId>
       <artifactId>rebuild</artifactId>
       <scope>test</scope>
@@ -661,6 +666,11 @@
     </dependency>
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>azure-keyvault</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>azure-vm-agents</artifactId>
       <scope>test</scope>
     </dependency>
@@ -1152,6 +1162,11 @@
     </dependency>
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>sbt</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>scm-api</artifactId>
       <classifier>tests</classifier>
       <scope>test</scope>
@@ -1427,6 +1442,11 @@
     <dependency>
       <groupId>org.jvnet.hudson.plugins</groupId>
       <artifactId>groovy-postbuild</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jvnet.hudson.plugins</groupId>
+      <artifactId>instant-messaging</artifactId>
       <scope>test</scope>
     </dependency>
   </dependencies>
