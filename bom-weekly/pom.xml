@@ -300,6 +300,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>design-library</artifactId>
+        <version>353.v3b_c47f293f54</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>echarts-api</artifactId>
         <version>5.5.1-5</version>
       </dependency>
