@@ -95,7 +95,7 @@ PLUGINS=structs,mailer TEST=InjectedTest bash local-test.sh
 optionally also passing either
 
 ```
-LINE=2.452.x
+LINE=2.462.x
 ```
 
 or
