@@ -99,7 +99,7 @@ When an older Jenkins version is used, then the matching older version of the pl
 | bom-2.414.x | 2982.vdce2153031a_0   |                              |
 | bom-2.426.x | 3208.vb_21177d4b_cd9  |                              |
 | bom-2.440.x | 3435.v238d66a_043fb_  |                              |
-| bom-2.452.x | 3893.v213a_42768d35   |                              |
+| bom-2.452.x | 3944.v1a_e4f8b_452db_ |                              |
 
 The latest versions of all BOM lines are available from the [Jenkins artifact repository](https://repo.jenkins-ci.org/public/io/jenkins/tools/bom).
 
