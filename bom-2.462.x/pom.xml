@@ -54,6 +54,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>byte-buddy-api</artifactId>
+        <version>1.15.11-99.v078c614a_5258</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>commons-text-api</artifactId>
         <version>1.12.0-129.v99a_50df237f7</version>
       </dependency>
@@ -66,6 +71,11 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>custom-folder-icon</artifactId>
         <version>2.15</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>design-library</artifactId>
+        <version>307.vecc0205ca_707</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -234,7 +244,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>git-client</artifactId>
-        <version>5.0.0</version>
+        <version>5.0.2</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -286,6 +296,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>matrix-project</artifactId>
         <version>839.vff91cd7e3a_b_2</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>nodejs</artifactId>
+        <version>1.6.2</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -357,6 +372,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>timestamper</artifactId>
         <version>1.27</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>versioncolumn</artifactId>
+        <version>243.vda_c20eea_a_8a_f</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>

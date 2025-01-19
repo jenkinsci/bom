@@ -55,6 +55,11 @@
     </dependency>
     <dependency>
       <groupId>com.cloudbees.jenkins.plugins</groupId>
+      <artifactId>file-leak-detector</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.cloudbees.jenkins.plugins</groupId>
       <artifactId>kubernetes-credentials-provider</artifactId>
       <scope>test</scope>
     </dependency>
@@ -285,12 +290,22 @@
     </dependency>
     <dependency>
       <groupId>io.jenkins.plugins</groupId>
+      <artifactId>design-library</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.jenkins.plugins</groupId>
       <artifactId>echarts-api</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>io.jenkins.plugins</groupId>
       <artifactId>emoji-symbols-api</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.jenkins.plugins</groupId>
+      <artifactId>extra-tool-installers</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>

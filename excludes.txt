@@ -18,9 +18,3 @@ org.jenkinsci.plugins.durabletask.BourneShellScriptTest
 
 # TODO tends to run out of memory
 org.jenkinsci.plugins.pipeline.modeldefinition.TriggersTest
-
-# TODO need this to ignore for git-client 2.452.x/2.462.x
-# TODO Remove when 2.462.x and 2.452.x are no longer supported BOM lines
-# TODO Real fix is in 6.1.1 but 2.452.x and 2.462.x only supports 5.0.0
-# TODO https://github.com/jenkinsci/git-client-plugin/pull/1242
-org.jenkinsci.plugins.gitclient.GitAPITest#testListRemoteBranches
