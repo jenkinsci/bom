@@ -279,6 +279,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>customizable-header</artifactId>
+        <version>169.v671208540e56</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>dark-theme</artifactId>
         <version>514.va_3ea_73d65dc1</version>
       </dependency>
