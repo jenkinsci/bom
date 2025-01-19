@@ -144,6 +144,11 @@
         <version>12.8.1.jre11-63.v522a_b_7b_6ea_d7</version>
       </dependency>
       <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>theme-manager</artifactId>
+        <version>262.vc57ee4a_eda_5d</version>
+      </dependency>
+      <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>badge</artifactId>
         <version>2.3</version>
