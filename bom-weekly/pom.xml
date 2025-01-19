@@ -224,7 +224,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>byte-buddy-api</artifactId>
-        <version>1.16.0-109.v2a_9f5387f958</version>
+        <version>1.16.1-111.vc76cd8b_2dce5</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
