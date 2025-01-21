@@ -8,7 +8,7 @@ For people potentially working on the BOM itself, not just consuming it.
 | --- | --- |
 | 2025-01-24 | Darin Pope |
 | 2025-01-31 | Adrien Lecharpentier |
-| 2025-02-06 | Adrien Lecharpentier |
+| 2025-02-05 | Adrien Lecharpentier |
 | 2025-02-14 | Mark Waite |
 | 2025-02-21 | Mark Waite |
 
