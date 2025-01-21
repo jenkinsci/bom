@@ -1058,7 +1058,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>google-compute-engine</artifactId>
-        <version>4.606.ve3308d41b_013</version>
+        <version>4.680.v03300ceb_5e7e</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
