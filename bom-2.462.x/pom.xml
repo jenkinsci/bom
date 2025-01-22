@@ -76,6 +76,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>dark-theme</artifactId>
+        <version>514.va_3ea_73d65dc1</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>design-library</artifactId>
         <version>307.vecc0205ca_707</version>
       </dependency>
