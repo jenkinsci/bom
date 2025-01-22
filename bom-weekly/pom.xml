@@ -976,7 +976,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ec2</artifactId>
-        <version>1801.v526399543dca_</version>
+        <version>1822.v87175d209b_b_5</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
