@@ -1199,7 +1199,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>metrics</artifactId>
-        <version>4.2.21-458.vcf496cb_839e4</version>
+        <version>4.2.21-461.v881e35d8fa_b_a_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>

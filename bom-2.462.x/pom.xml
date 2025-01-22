@@ -342,6 +342,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>metrics</artifactId>
+        <version>4.2.21-458.vcf496cb_839e4</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>nodejs</artifactId>
         <version>1.6.2</version>
       </dependency>
