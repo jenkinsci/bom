@@ -17,6 +17,7 @@
     <scm-api-plugin.version>696.v778d637b_a_762</scm-api-plugin.version>
     <configuration-as-code-plugin.version>1873.vea_5814ca_9c93</configuration-as-code-plugin.version>
     <workflow-job-plugin.version>1436.vfa_244484591f</workflow-job-plugin.version>
+    <workflow-step-api-plugin.version>678.v3ee58b_469476</workflow-step-api-plugin.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -407,6 +408,17 @@
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
         <artifactId>workflow-job</artifactId>
         <version>${workflow-job-plugin.version}</version>
+        <classifier>tests</classifier>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins.workflow</groupId>
+        <artifactId>workflow-step-api</artifactId>
+        <version>${workflow-step-api-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins.workflow</groupId>
+        <artifactId>workflow-step-api</artifactId>
+        <version>${workflow-step-api-plugin.version}</version>
         <classifier>tests</classifier>
       </dependency>
       <dependency>
