@@ -1198,6 +1198,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>mercurial</artifactId>
+        <version>1308.v0e0888fdb_628</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>metrics</artifactId>
         <version>4.2.21-461.v881e35d8fa_b_a_</version>
       </dependency>
