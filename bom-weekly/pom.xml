@@ -1031,6 +1031,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>gitea</artifactId>
+        <version>234.v60def593ec50</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>github-api</artifactId>
         <version>${github-api-plugin.version}</version>
       </dependency>
