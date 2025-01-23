@@ -132,6 +132,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>mariadb-api</artifactId>
+        <version>3.5.1-105.vb_6505b_66efb_d</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>markdown-formatter</artifactId>
         <version>232.vfd558d47524b_</version>
       </dependency>
