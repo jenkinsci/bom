@@ -31,6 +31,11 @@
         <scope>import</scope>
       </dependency>
       <dependency>
+        <groupId>com.coravy.hudson.plugins.github</groupId>
+        <artifactId>github</artifactId>
+        <version>1.40.0</version>
+      </dependency>
+      <dependency>
         <groupId>com.paul8620.jenkins.plugins</groupId>
         <artifactId>pipeline-aggregator-view</artifactId>
         <version>104.v94a_e5f6cdb_c3</version>
