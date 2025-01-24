@@ -1395,7 +1395,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>slack</artifactId>
-        <version>760.vb_e6a_66db_2d43</version>
+        <version>761.v2a_8770f0d169</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
