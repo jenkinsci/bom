@@ -17,6 +17,7 @@
     <scm-api-plugin.version>696.v778d637b_a_762</scm-api-plugin.version>
     <subversion-plugin.version>1281.vc8837f91a_07a_</subversion-plugin.version>
     <configuration-as-code-plugin.version>1873.vea_5814ca_9c93</configuration-as-code-plugin.version>
+    <pipeline-model-definition-plugin.version>2.2218.v56d0cda_37c72</pipeline-model-definition-plugin.version>
     <workflow-api-plugin.version>1358.vfb_5780da_64cb_</workflow-api-plugin.version>
     <workflow-cps-plugin.version>4009.v0089238351a_9</workflow-cps-plugin.version>
     <workflow-job-plugin.version>1436.vfa_244484591f</workflow-job-plugin.version>
@@ -555,6 +556,32 @@
         <artifactId>workflow-support</artifactId>
         <version>${workflow-support-plugin.version}</version>
         <classifier>tests</classifier>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkinsci.plugins</groupId>
+        <artifactId>pipeline-model-api</artifactId>
+        <version>${pipeline-model-definition-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkinsci.plugins</groupId>
+        <artifactId>pipeline-model-definition</artifactId>
+        <version>${pipeline-model-definition-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkinsci.plugins</groupId>
+        <artifactId>pipeline-model-definition</artifactId>
+        <version>${pipeline-model-definition-plugin.version}</version>
+        <classifier>tests</classifier>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkinsci.plugins</groupId>
+        <artifactId>pipeline-model-extensions</artifactId>
+        <version>${pipeline-model-definition-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkinsci.plugins</groupId>
+        <artifactId>pipeline-stage-tags-metadata</artifactId>
+        <version>${pipeline-model-definition-plugin.version}</version>
       </dependency>
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
