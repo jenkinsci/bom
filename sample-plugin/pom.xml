@@ -1571,7 +1571,7 @@
       <properties>
         <bom>2.492.x</bom>
         <!-- TODO: Replace with 2.492.1 after release of 2.492.1 -->
-        <jenkins.version>2.492</jenkins.version>
+        <jenkins.version>2.492.1-rc35787.b_8fc6edfc740</jenkins.version>
       </properties>
     </profile>
     <profile>
