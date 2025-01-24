@@ -9,7 +9,7 @@
   <artifactId>bom-weekly</artifactId>
   <packaging>pom</packaging>
   <properties>
-    <aws-java-sdk-plugin.version>1.12.772-474.v7f79a_2046a_fb_</aws-java-sdk-plugin.version>
+    <aws-java-sdk-plugin.version>1.12.772-477.v650d756dcf6d</aws-java-sdk-plugin.version>
     <aws-java-sdk2-plugin.version>2.29.52-15.v9980e773794d</aws-java-sdk2-plugin.version>
     <blueocean-plugin.version>1.27.16</blueocean-plugin.version>
     <branch-api-plugin.version>2.1208.vf528356feca_4</branch-api-plugin.version>
