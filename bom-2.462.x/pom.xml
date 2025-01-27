@@ -186,6 +186,11 @@
         <version>262.vc57ee4a_eda_5d</version>
       </dependency>
       <dependency>
+        <groupId>org.6wind.jenkins</groupId>
+        <artifactId>lockable-resources</artifactId>
+        <version>1327.ved786b_a_197e0</version>
+      </dependency>
+      <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>authorize-project</artifactId>
         <version>1.8.1</version>
