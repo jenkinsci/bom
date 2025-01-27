@@ -436,6 +436,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>role-strategy</artifactId>
+        <version>743.v142ea_b_d5f1d3</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>run-condition</artifactId>
         <version>1.7</version>
       </dependency>
