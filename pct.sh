@@ -20,6 +20,8 @@ if ! [[ $PLUGINS =~ blueocean || $PLUGINS =~ lockable-resources || $PLUGINS =~ p
 	PCT_D_ARGS+='-DforkCount=.75C '
 fi
 
+PCT_D_ARGS+='-Djenkins-test-harness.version=2390.v2f27c3de6c38 '
+
 exec java \
 	-jar target/pct.jar \
 	test-plugins \
