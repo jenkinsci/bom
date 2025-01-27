@@ -9,8 +9,8 @@
   <artifactId>bom-weekly</artifactId>
   <packaging>pom</packaging>
   <properties>
-    <aws-java-sdk-plugin.version>1.12.772-474.v7f79a_2046a_fb_</aws-java-sdk-plugin.version>
-    <aws-java-sdk2-plugin.version>2.29.52-15.v9980e773794d</aws-java-sdk2-plugin.version>
+    <aws-java-sdk-plugin.version>1.12.772-477.v650d756dcf6d</aws-java-sdk-plugin.version>
+    <aws-java-sdk2-plugin.version>2.30.5-19.va_fd426c59215</aws-java-sdk2-plugin.version>
     <blueocean-plugin.version>1.27.16</blueocean-plugin.version>
     <branch-api-plugin.version>2.1208.vf528356feca_4</branch-api-plugin.version>
     <checks-api.version>2.2.1</checks-api.version>
@@ -25,7 +25,7 @@
     <mina-sshd-api.version>2.14.0-143.v2b_362fc39576</mina-sshd-api.version>
     <okhttp-api-plugin.version>4.11.0-183.va_87fc7a_89810</okhttp-api-plugin.version>
     <pipeline-maven-plugin.version>1469.ve15ca_a_b_90b_44</pipeline-maven-plugin.version>
-    <pipeline-model-definition-plugin.version>2.2218.v56d0cda_37c72</pipeline-model-definition-plugin.version>
+    <pipeline-model-definition-plugin.version>2.2221.vc657003fb_d93</pipeline-model-definition-plugin.version>
     <pipeline-stage-view-plugin.version>2.34</pipeline-stage-view-plugin.version>
     <plugin-util-api.version>5.1.0</plugin-util-api.version>
     <scm-api-plugin.version>703.v72ff4b_259600</scm-api-plugin.version>
@@ -603,6 +603,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
+        <artifactId>aws-java-sdk2-cloudwatch</artifactId>
+        <version>${aws-java-sdk2-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
         <artifactId>aws-java-sdk2-cloudwatchlogs</artifactId>
         <version>${aws-java-sdk2-plugin.version}</version>
       </dependency>
@@ -774,7 +779,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>authorize-project</artifactId>
-        <version>1.8.1</version>
+        <version>2.0.0</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -850,7 +855,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>cloud-stats</artifactId>
-        <version>336.v788e4055508b_</version>
+        <version>377.vd8a_6c953e98e</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -891,7 +896,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>config-file-provider</artifactId>
-        <version>980.v88956a_a_5d6a_d</version>
+        <version>982.vb_a_e458a_37021</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -996,7 +1001,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>external-monitor-job</artifactId>
-        <version>215.v2e88e894db_f8</version>
+        <version>221.v35059272565b_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1264,7 +1269,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pipeline-build-step</artifactId>
-        <version>540.vb_e8849e1a_b_d8</version>
+        <version>551.v178956c49ef8</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1395,7 +1400,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>slack</artifactId>
-        <version>760.vb_e6a_66db_2d43</version>
+        <version>761.v2a_8770f0d169</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1516,6 +1521,11 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins.aws-java-sdk</groupId>
         <artifactId>aws-java-sdk-cloudfront</artifactId>
+        <version>${aws-java-sdk-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins.aws-java-sdk</groupId>
+        <artifactId>aws-java-sdk-cloudwatch</artifactId>
         <version>${aws-java-sdk-plugin.version}</version>
       </dependency>
       <dependency>

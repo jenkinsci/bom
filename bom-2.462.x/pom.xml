@@ -17,6 +17,7 @@
     <scm-api-plugin.version>696.v778d637b_a_762</scm-api-plugin.version>
     <subversion-plugin.version>1281.vc8837f91a_07a_</subversion-plugin.version>
     <configuration-as-code-plugin.version>1873.vea_5814ca_9c93</configuration-as-code-plugin.version>
+    <pipeline-model-definition-plugin.version>2.2218.v56d0cda_37c72</pipeline-model-definition-plugin.version>
     <workflow-api-plugin.version>1358.vfb_5780da_64cb_</workflow-api-plugin.version>
     <workflow-cps-plugin.version>4009.v0089238351a_9</workflow-cps-plugin.version>
     <workflow-job-plugin.version>1436.vfa_244484591f</workflow-job-plugin.version>
@@ -186,6 +187,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>authorize-project</artifactId>
+        <version>1.8.1</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>badge</artifactId>
         <version>2.3</version>
       </dependency>
@@ -227,6 +233,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>cloud-stats</artifactId>
+        <version>336.v788e4055508b_</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>cloudbees-bitbucket-branch-source</artifactId>
         <version>912.v3b_f74026941c</version>
       </dependency>
@@ -250,6 +261,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>conditional-buildstep</artifactId>
         <version>1.4.3</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>config-file-provider</artifactId>
+        <version>980.v88956a_a_5d6a_d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -280,6 +296,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>embeddable-build-status</artifactId>
         <version>487.va_0ef04c898a_2</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>external-monitor-job</artifactId>
+        <version>215.v2e88e894db_f8</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -387,6 +408,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>parameterized-trigger</artifactId>
         <version>806.vf6fff3e28c3e</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>pipeline-build-step</artifactId>
+        <version>540.vb_e8849e1a_b_d8</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -555,6 +581,32 @@
         <artifactId>workflow-support</artifactId>
         <version>${workflow-support-plugin.version}</version>
         <classifier>tests</classifier>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkinsci.plugins</groupId>
+        <artifactId>pipeline-model-api</artifactId>
+        <version>${pipeline-model-definition-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkinsci.plugins</groupId>
+        <artifactId>pipeline-model-definition</artifactId>
+        <version>${pipeline-model-definition-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkinsci.plugins</groupId>
+        <artifactId>pipeline-model-definition</artifactId>
+        <version>${pipeline-model-definition-plugin.version}</version>
+        <classifier>tests</classifier>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkinsci.plugins</groupId>
+        <artifactId>pipeline-model-extensions</artifactId>
+        <version>${pipeline-model-definition-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkinsci.plugins</groupId>
+        <artifactId>pipeline-stage-tags-metadata</artifactId>
+        <version>${pipeline-model-definition-plugin.version}</version>
       </dependency>
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
