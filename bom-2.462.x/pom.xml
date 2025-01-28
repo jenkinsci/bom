@@ -614,6 +614,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkinsci.plugins</groupId>
+        <artifactId>emailext-template</artifactId>
+        <version>219.v14fff547f78d</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkinsci.plugins</groupId>
         <artifactId>pipeline-model-api</artifactId>
         <version>${pipeline-model-definition-plugin.version}</version>
       </dependency>
