@@ -1726,6 +1726,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkinsci.plugins</groupId>
+        <artifactId>emailext-template</artifactId>
+        <version>224.va_f6a_ecd5d46e</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkinsci.plugins</groupId>
         <artifactId>kubernetes-credentials</artifactId>
         <version>190.v03c305394deb_</version>
       </dependency>

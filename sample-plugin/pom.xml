@@ -1481,6 +1481,11 @@
     </dependency>
     <dependency>
       <groupId>org.jenkinsci.plugins</groupId>
+      <artifactId>emailext-template</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkinsci.plugins</groupId>
       <artifactId>pipeline-model-definition</artifactId>
       <scope>test</scope>
     </dependency>
