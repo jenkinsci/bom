@@ -19,6 +19,7 @@ def mavenEnv(Map params = [:], Closure body) {
       timeout(120) {
         withChecks(name: 'Tests', includeStage: true) {
           infra.withArtifactCachingProxy {
+            def mavenRepoPath = "/tmp/.m2-cache-${params['cacheKey']}"
             cache(
                 // max cache size in MB, will be reset after exceeding this size
                 maxCacheSize: 20480,
@@ -30,14 +31,14 @@ def mavenEnv(Map params = [:], Closure body) {
                   // using a fixed path for Maven cache instead of the normal workspace pattern
                   // due to the cache name being calculated from the path
                   // this prevents seeding working if you use the normal pattern
-                  path: "/tmp/.m2-cache-${params['cacheKey']}",
+                  path: mavenRepoPath,
                   cacheValidityDecidingFile: '.repository-cache-marker'
                   )
                 ]
                 ) {
                   withEnv([
                     'JAVA_HOME=/opt/jdk-' + params['jdk'],
-                    "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B -ntp -Dmaven.repo.local=/tmp/.m2-cache"
+                    "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B -ntp -Dmaven.repo.local=${mavenRepoPath}"
                   ]) {
                     body()
                   }
