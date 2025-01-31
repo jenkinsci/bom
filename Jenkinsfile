@@ -27,21 +27,21 @@ def mavenEnv(Map params = [:], Closure body) {
                 // skipSave: env.BRANCH_NAME != 'master',
                 caches: [
                   arbitraryFileCache(
-                    // using a fixed path for Maven cache instead of the normal workspace pattern
-                    // due to the cache name being calculated from the path
-                    // this prevents seeding working if you use the normal pattern
-                    path: "/tmp/.m2-cache",
-                    cacheValidityDecidingFile: '.repository-cache-marker'
+                  // using a fixed path for Maven cache instead of the normal workspace pattern
+                  // due to the cache name being calculated from the path
+                  // this prevents seeding working if you use the normal pattern
+                  path: "/tmp/.m2-cache",
+                  cacheValidityDecidingFile: '.repository-cache-marker'
                   )
                 ]
-            ) {
-              withEnv([
-                'JAVA_HOME=/opt/jdk-' + params['jdk'],
-                "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B -ntp -Dmaven.repo.local=/tmp/.m2-cache"
-              ]) {
-                body()
-              }
-            }
+                ) {
+                  withEnv([
+                    'JAVA_HOME=/opt/jdk-' + params['jdk'],
+                    "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B -ntp -Dmaven.repo.local=/tmp/.m2-cache"
+                  ]) {
+                    body()
+                  }
+                }
           }
           if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount > 0) {
             // TODO JENKINS-27092 throw up UNSTABLE status in this case
