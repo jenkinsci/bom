@@ -19,11 +19,20 @@ def mavenEnv(Map params = [:], Closure body) {
       timeout(120) {
         withChecks(name: 'Tests', includeStage: true) {
           infra.withArtifactCachingProxy {
-            withEnv([
-              'JAVA_HOME=/opt/jdk-' + params['jdk'],
-              "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B -ntp -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo"
+            cache(
+                // max cache size in MB, will be reset after exceeding this size
+                maxCacheSize: 2048
+                defaultBranch: 'master', caches: [
+                      arbitraryFileCache(path: "${WORKSPACE_TMP}/m2repo",
+                      cacheValidityDecidingFile: '.repository-cache-marker'
+              )
             ]) {
-              body()
+              withEnv([
+                'JAVA_HOME=/opt/jdk-' + params['jdk'],
+                "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B -ntp -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo"
+              ]) {
+                body()
+              }
             }
           }
           if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount > 0) {
