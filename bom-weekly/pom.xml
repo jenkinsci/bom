@@ -81,6 +81,11 @@
         <version>212.vc34d63a_6704b_</version>
       </dependency>
       <dependency>
+        <groupId>igalg.jenkins.plugins</groupId>
+        <artifactId>multibranch-build-strategy-extension</artifactId>
+        <version>60.vce1b_19770361</version>
+      </dependency>
+      <dependency>
         <groupId>io.jenkins</groupId>
         <artifactId>configuration-as-code</artifactId>
         <version>${configuration-as-code-plugin.version}</version>
