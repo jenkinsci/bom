@@ -732,6 +732,11 @@
         <version>${mina-sshd-api.version}</version>
       </dependency>
       <dependency>
+        <groupId>net.plavcak.jenkins</groupId>
+        <artifactId>scmskip</artifactId>
+        <version>66.ve200ee8116cd</version>
+      </dependency>
+      <dependency>
         <groupId>org.6wind.jenkins</groupId>
         <artifactId>lockable-resources</artifactId>
         <version>1342.v673282c325c0</version>
