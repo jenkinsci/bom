@@ -21,7 +21,7 @@ def mavenEnv(Map params = [:], Closure body) {
           infra.withArtifactCachingProxy {
             cache(
                 // max cache size in MB, will be reset after exceeding this size
-                maxCacheSize: 2048
+                maxCacheSize: 20480
                 defaultBranch: 'master', caches: [
                       arbitraryFileCache(path: "${WORKSPACE_TMP}/m2repo",
                       cacheValidityDecidingFile: '.repository-cache-marker'
