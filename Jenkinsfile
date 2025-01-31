@@ -21,15 +21,23 @@ def mavenEnv(Map params = [:], Closure body) {
           infra.withArtifactCachingProxy {
             cache(
                 // max cache size in MB, will be reset after exceeding this size
-                maxCacheSize: 20480
-                defaultBranch: 'master', caches: [
-                      arbitraryFileCache(path: "${WORKSPACE_TMP}/m2repo",
-                      cacheValidityDecidingFile: '.repository-cache-marker'
-              )
-            ]) {
+                maxCacheSize: 20480,
+                defaultBranch: 'master',
+                // don't save pull requests, only cache on master branches
+                // skipSave: env.BRANCH_NAME != 'master',
+                caches: [
+                  arbitraryFileCache(
+                    // using a fixed path for Maven cache instead of the normal workspace pattern
+                    // due to the cache name being calculated from the path
+                    // this prevents seeding working if you use the normal pattern
+                    path: "/tmp/.m2-cache",
+                    cacheValidityDecidingFile: '.repository-cache-marker'
+                  )
+                ]
+            ) {
               withEnv([
                 'JAVA_HOME=/opt/jdk-' + params['jdk'],
-                "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B -ntp -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo"
+                "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B -ntp -Dmaven.repo.local=/tmp/.m2-cache"
               ]) {
                 body()
               }
