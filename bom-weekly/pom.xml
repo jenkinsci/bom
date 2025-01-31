@@ -1409,6 +1409,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>skip-notifications-trait</artifactId>
+        <version>448.va_e30ed251b_4c</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>slack</artifactId>
         <version>761.v2a_8770f0d169</version>
       </dependency>
