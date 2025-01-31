@@ -54,6 +54,11 @@
       <artifactId>workflow-step-api</artifactId>
     </dependency>
     <dependency>
+      <groupId>au.com.versent.jenkins.plugins</groupId>
+      <artifactId>ignore-committer-strategy</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <groupId>com.cloudbees.jenkins.plugins</groupId>
       <artifactId>file-leak-detector</artifactId>
       <scope>test</scope>
