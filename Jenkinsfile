@@ -30,7 +30,7 @@ def mavenEnv(Map params = [:], Closure body) {
                   // using a fixed path for Maven cache instead of the normal workspace pattern
                   // due to the cache name being calculated from the path
                   // this prevents seeding working if you use the normal pattern
-                  path: "/tmp/.m2-cache",
+                  path: "/tmp/.m2-cache-${params['cacheKey']}",
                   cacheValidityDecidingFile: '.repository-cache-marker'
                   )
                 ]
@@ -69,7 +69,7 @@ def fullTestMarkerFile
 def weeklyTestMarkerFile
 
 stage('prep') {
-  mavenEnv(jdk: 21) {
+  mavenEnv(jdk: 21, cacheKey: "sample-plugin") {
     checkout scm
     withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist']) {
       withCredentials([
@@ -77,9 +77,6 @@ stage('prep') {
       ]) {
         sh '''
         mvn -v
-        echo "Starting artifact caching proxy pre-heat"
-        mvn -ntp dependency:go-offline
-        echo "Finished artifact caching proxy pre-heat"
         bash prep.sh
         '''
       }
@@ -119,7 +116,7 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
     pluginsByRepository.each { repository, plugins ->
       branches["pct-$repository-$line"] = {
         def jdk = line == 'weekly' ? 21 : 17
-        mavenEnv(jdk: jdk, nodePool: true) {
+        mavenEnv(jdk: jdk, nodePool: true, cacheKey: repository) {
           unstash line
           withEnv([
             "PLUGINS=${plugins.join(',')}",
