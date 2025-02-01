@@ -19,12 +19,30 @@ def mavenEnv(Map params = [:], Closure body) {
       timeout(120) {
         withChecks(name: 'Tests', includeStage: true) {
           infra.withArtifactCachingProxy {
-            withEnv([
-              'JAVA_HOME=/opt/jdk-' + params['jdk'],
-              "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B -ntp -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo"
-            ]) {
-              body()
-            }
+            def mavenRepoPath = "/tmp/.m2-cache-${params['cacheKey']}"
+            cache(
+                // max cache size in MB, will be reset after exceeding this size
+                maxCacheSize: 20480,
+                defaultBranch: 'master',
+                // don't save pull requests, only cache on master branches
+                // skipSave: env.BRANCH_NAME != 'master',
+                caches: [
+                  arbitraryFileCache(
+                  // using a fixed path for Maven cache instead of the normal workspace pattern
+                  // due to the cache name being calculated from the path
+                  // this prevents seeding working if you use the normal pattern
+                  path: mavenRepoPath,
+                  cacheValidityDecidingFile: '.repository-cache-marker'
+                  )
+                ]
+                ) {
+                  withEnv([
+                    'JAVA_HOME=/opt/jdk-' + params['jdk'],
+                    "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B -ntp -Dmaven.repo.local=${mavenRepoPath}"
+                  ]) {
+                    body()
+                  }
+                }
           }
           if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount > 0) {
             // TODO JENKINS-27092 throw up UNSTABLE status in this case
@@ -52,7 +70,7 @@ def fullTestMarkerFile
 def weeklyTestMarkerFile
 
 stage('prep') {
-  mavenEnv(jdk: 21) {
+  mavenEnv(jdk: 21, cacheKey: "sample-plugin") {
     checkout scm
     withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist']) {
       withCredentials([
@@ -60,9 +78,6 @@ stage('prep') {
       ]) {
         sh '''
         mvn -v
-        echo "Starting artifact caching proxy pre-heat"
-        mvn -ntp dependency:go-offline
-        echo "Finished artifact caching proxy pre-heat"
         bash prep.sh
         '''
       }
@@ -102,7 +117,7 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
     pluginsByRepository.each { repository, plugins ->
       branches["pct-$repository-$line"] = {
         def jdk = line == 'weekly' ? 21 : 17
-        mavenEnv(jdk: jdk, nodePool: true) {
+        mavenEnv(jdk: jdk, nodePool: true, cacheKey: repository) {
           unstash line
           withEnv([
             "PLUGINS=${plugins.join(',')}",
