@@ -54,6 +54,11 @@
       <artifactId>workflow-step-api</artifactId>
     </dependency>
     <dependency>
+      <groupId>au.com.versent.jenkins.plugins</groupId>
+      <artifactId>ignore-committer-strategy</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <groupId>com.cloudbees.jenkins.plugins</groupId>
       <artifactId>file-leak-detector</artifactId>
       <scope>test</scope>
@@ -86,6 +91,11 @@
     <dependency>
       <groupId>com.synopsys.arc.jenkinsci.plugins</groupId>
       <artifactId>job-restrictions</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>igalg.jenkins.plugins</groupId>
+      <artifactId>multibranch-build-strategy-extension</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -527,7 +537,7 @@
     </dependency>
     <dependency>
       <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
-      <artifactId>aws-java-sdk2-api-gateway</artifactId>
+      <artifactId>aws-java-sdk2-apigateway</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -653,6 +663,11 @@
     <dependency>
       <groupId>io.jenkins.plugins.mina-sshd-api</groupId>
       <artifactId>mina-sshd-api-sftp</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>net.plavcak.jenkins</groupId>
+      <artifactId>scmskip</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -1072,6 +1087,11 @@
     </dependency>
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>naginator</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>node-iterator-api</artifactId>
       <scope>test</scope>
     </dependency>
@@ -1225,6 +1245,11 @@
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>secure-requester-whitelist</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>skip-notifications-trait</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>

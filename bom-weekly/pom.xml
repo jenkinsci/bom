@@ -10,7 +10,7 @@
   <packaging>pom</packaging>
   <properties>
     <aws-java-sdk-plugin.version>1.12.772-477.v650d756dcf6d</aws-java-sdk-plugin.version>
-    <aws-java-sdk2-plugin.version>2.30.5-19.va_fd426c59215</aws-java-sdk2-plugin.version>
+    <aws-java-sdk2-plugin.version>2.30.10-22.v1339d66b_e0f4</aws-java-sdk2-plugin.version>
     <blueocean-plugin.version>1.27.16</blueocean-plugin.version>
     <branch-api-plugin.version>2.1208.vf528356feca_4</branch-api-plugin.version>
     <checks-api.version>2.2.1</checks-api.version>
@@ -40,6 +40,11 @@
   <dependencyManagement>
     <dependencies>
       <!-- Plugins (sorted): -->
+      <dependency>
+        <groupId>au.com.versent.jenkins.plugins</groupId>
+        <artifactId>ignore-committer-strategy</artifactId>
+        <version>29.v7c3891a_434c3</version>
+      </dependency>
       <dependency>
         <groupId>com.cloudbees.jenkins.plugins</groupId>
         <artifactId>file-leak-detector</artifactId>
@@ -74,6 +79,11 @@
         <groupId>com.synopsys.arc.jenkinsci.plugins</groupId>
         <artifactId>job-restrictions</artifactId>
         <version>212.vc34d63a_6704b_</version>
+      </dependency>
+      <dependency>
+        <groupId>igalg.jenkins.plugins</groupId>
+        <artifactId>multibranch-build-strategy-extension</artifactId>
+        <version>60.vce1b_19770361</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins</groupId>
@@ -321,7 +331,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>design-library</artifactId>
-        <version>354.v87d9d5804b_c1</version>
+        <version>355.v0f007356e15d</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -588,7 +598,7 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
-        <artifactId>aws-java-sdk2-api-gateway</artifactId>
+        <artifactId>aws-java-sdk2-apigateway</artifactId>
         <version>${aws-java-sdk2-plugin.version}</version>
       </dependency>
       <dependency>
@@ -725,6 +735,11 @@
         <groupId>io.jenkins.plugins.mina-sshd-api</groupId>
         <artifactId>mina-sshd-api-sftp</artifactId>
         <version>${mina-sshd-api.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>net.plavcak.jenkins</groupId>
+        <artifactId>scmskip</artifactId>
+        <version>66.ve200ee8116cd</version>
       </dependency>
       <dependency>
         <groupId>org.6wind.jenkins</groupId>
@@ -986,7 +1001,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ec2</artifactId>
-        <version>1823.v828850f7f155</version>
+        <version>1856.vf40220e7a_75f</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1228,6 +1243,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>naginator</artifactId>
+        <version>1.489.v5808b_a_72e0fc</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>node-iterator-api</artifactId>
         <version>55.v3b_77d4032326</version>
       </dependency>
@@ -1334,7 +1354,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>prometheus</artifactId>
-        <version>801.v98e119d8eeda_</version>
+        <version>811.v1823c780b_e8e</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1401,6 +1421,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>secure-requester-whitelist</artifactId>
         <version>70.ve2a_3c4a_dc9f5</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>skip-notifications-trait</artifactId>
+        <version>448.va_e30ed251b_4c</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
