@@ -22,7 +22,7 @@ def mavenEnv(Map params = [:], Closure body) {
             def mavenRepoPath = "/tmp/.m2-cache-${params['cacheKey']}"
             cache(
                 // max cache size in MB, will be reset after exceeding this size
-                maxCacheSize: 20480,
+                maxCacheSize: 3072,
                 defaultBranch: 'master',
                 // don't save pull requests, only cache on master branches
                 // skipSave: env.BRANCH_NAME != 'master',
