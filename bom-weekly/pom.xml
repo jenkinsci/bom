@@ -366,7 +366,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>flyway-api</artifactId>
-        <version>11.2.0-223.va_b_087b_80376b_</version>
+        <version>11.3.0-229.vc8f3594c89dc</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -517,7 +517,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>mysql-api</artifactId>
-        <version>9.1.0-49.v012b_dfb_92c8a_</version>
+        <version>9.2.0-51.v555cd9442556</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
