@@ -319,6 +319,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>description-setter</artifactId>
+        <version>258.vcd25251271a_a_</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>display-url-api</artifactId>
         <version>2.204.vf6fddd8a_8b_e9</version>
       </dependency>
