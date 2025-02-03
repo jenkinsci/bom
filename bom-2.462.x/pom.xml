@@ -391,6 +391,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>gitlab-logo</artifactId>
+        <version>130.v9d2696eb_8dc6</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>gitlab-plugin</artifactId>
         <version>1.8.2</version>
       </dependency>
