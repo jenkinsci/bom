@@ -291,7 +291,6 @@
     <dependency>
       <groupId>io.jenkins.plugins</groupId>
       <artifactId>customizable-header</artifactId>
-      <version>171.vd1b_e1cb_6cb_53</version>
       <scope>test</scope>
     </dependency>
     <dependency>
