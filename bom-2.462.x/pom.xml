@@ -628,6 +628,11 @@
         <classifier>tests</classifier>
       </dependency>
       <dependency>
+        <groupId>org.jenkins-ci.tools</groupId>
+        <artifactId>git-parameter</artifactId>
+        <version>0.10.0</version>
+      </dependency>
+      <dependency>
         <groupId>org.jenkinsci.plugins</groupId>
         <artifactId>emailext-template</artifactId>
         <version>219.v14fff547f78d</version>
