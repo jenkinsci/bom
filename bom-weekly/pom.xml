@@ -1393,6 +1393,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>saferestart</artifactId>
+        <version>102.v4dc1b_9636a_ee</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>saml</artifactId>
         <version>4.519.v3927f2f0e020</version>
       </dependency>
