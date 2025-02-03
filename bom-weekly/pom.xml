@@ -1087,6 +1087,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>gitlab-logo</artifactId>
+        <version>156.vb_07d6f88a_e93</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>gitlab-oauth</artifactId>
         <version>1.20</version>
       </dependency>
