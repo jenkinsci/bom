@@ -86,6 +86,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>customizable-header</artifactId>
+        <version>169.v671208540e56</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>dark-theme</artifactId>
         <version>514.va_3ea_73d65dc1</version>
       </dependency>
@@ -133,6 +138,11 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>jersey2-api</artifactId>
         <version>2.44-151.v6df377fff741</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>joda-time-api</artifactId>
+        <version>2.13.0-93.v9934da_29b_a_e9</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
