@@ -136,6 +136,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>joda-time-api</artifactId>
+        <version>2.13.0-93.v9934da_29b_a_e9</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>json-api</artifactId>
         <version>20241224-119.va_dca_a_b_ea_7da_5</version>
       </dependency>
