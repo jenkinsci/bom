@@ -517,7 +517,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>mysql-api</artifactId>
-        <version>9.2.0-51.v555cd9442556</version>
+        <version>9.2.0-53.v708a_e33e6cb_6</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -951,7 +951,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>database-mysql</artifactId>
-        <version>63.va_0596d2b_1438</version>
+        <version>134.vb_98470b_d4d2d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1752,7 +1752,7 @@
       <dependency>
         <groupId>org.jenkins-ci.tools</groupId>
         <artifactId>git-parameter</artifactId>
-        <version>0.10.0</version>
+        <version>0.11.0</version>
       </dependency>
       <dependency>
         <groupId>org.jenkinsci.plugins</groupId>

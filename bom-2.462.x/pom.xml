@@ -171,6 +171,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>mysql-api</artifactId>
+        <version>9.2.0-51.v555cd9442556</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>okhttp-api</artifactId>
         <version>${okhttp-api-plugin.version}</version>
       </dependency>
@@ -307,6 +312,11 @@
         <artifactId>credentials-binding</artifactId>
         <version>681.vf91669a_32e45</version>
       </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>database-mysql</artifactId>
+        <version>63.va_0596d2b_1438</version>
+      </dependency>      
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>description-setter</artifactId>
@@ -641,6 +651,11 @@
         <artifactId>workflow-support</artifactId>
         <version>${workflow-support-plugin.version}</version>
         <classifier>tests</classifier>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.tools</groupId>
+        <artifactId>git-parameter</artifactId>
+        <version>0.10.0</version>
       </dependency>
       <dependency>
         <groupId>org.jenkinsci.plugins</groupId>
