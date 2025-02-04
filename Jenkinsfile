@@ -9,6 +9,8 @@ if (BRANCH_NAME == 'master' && currentBuild.buildCauses*._class == ['jenkins.bra
   error 'No longer running builds on response to master branch pushes. If you wish to cut a release, use “Re-run checks” from this failing check in https://github.com/jenkinsci/bom/commits/master'
 }
 
+def updateDependencyCache = true
+
 def mavenEnv(Map params = [:], Closure body) {
   def attempt = 0
   def attempts = 6
@@ -26,8 +28,7 @@ def mavenEnv(Map params = [:], Closure body) {
                 maxCacheSize: 3072,
                 defaultBranch: 'master',
                 compressionMethod: 'TAR_ZSTD',
-                // don't save pull requests, only cache on master branches
-                // skipSave: env.BRANCH_NAME != 'master',
+                skipSave: !updateDependencyCache,
                 caches: [
                   arbitraryFileCache(
                   // using a fixed path for Maven cache instead of the normal workspace pattern
@@ -113,7 +114,7 @@ stage('prep') {
 if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env.CHANGE_ID && (pullRequest.labels.contains('full-test') || pullRequest.labels.contains('weekly-test'))) {
   branches = [failFast: false]
   lines.each {line ->
-    if (line != 'weekly' && (weeklyTestMarkerFile || env.CHANGE_ID && pullRequest.labels.contains('weekly-test'))) {
+    if (line != 'weekly' && (updateDependencyCache || weeklyTestMarkerFile || env.CHANGE_ID && pullRequest.labels.contains('weekly-test'))) {
       return
     }
     pluginsByRepository.each { repository, plugins ->
@@ -124,7 +125,8 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
           withEnv([
             "PLUGINS=${plugins.join(',')}",
             "LINE=$line",
-            'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
+            // when updating caching just download dependencies
+            updateDependencyCache ? 'EXTRA_MAVEN_PROPERTIES=skipTests=true' : 'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
           ]) {
             sh '''
             mvn -v
