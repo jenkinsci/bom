@@ -28,7 +28,6 @@ def mavenEnv(Map params = [:], Closure body) {
                 // max cache size in MB, will be reset after exceeding this size
                 maxCacheSize: 3072,
                 defaultBranch: 'master',
-                compressionMethod: 'TAR_ZSTD',
                 skipSave: !params["updateDependencyCache"],
                 caches: [
                   arbitraryFileCache(
@@ -36,6 +35,7 @@ def mavenEnv(Map params = [:], Closure body) {
                   // due to the cache name being calculated from the path
                   // this prevents seeding working if you use the normal pattern
                   path: mavenRepoPath,
+                  compressionMethod: 'TAR_ZSTD',
                   cacheValidityDecidingFile: '.repository-cache-marker'
                   )
                 ]
