@@ -76,7 +76,7 @@ def weeklyTestMarkerFile
 stage('prep') {
   mavenEnv(jdk: 21, cacheKey: "sample-plugin", updateDependencyCache: updateDependencyCache) {
     checkout scm
-    withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist']) {
+    withEnv(["SAMPLE_PLUGIN_OPTS=-Dset.changelist"]) {
       withCredentials([
         usernamePassword(credentialsId: 'app-ci.jenkins.io', usernameVariable: 'GITHUB_APP', passwordVariable: 'GITHUB_OAUTH')
       ]) {
@@ -112,7 +112,7 @@ stage('prep') {
   }
 }
 
-if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env.CHANGE_ID && (pullRequest.labels.contains('full-test') || pullRequest.labels.contains('weekly-test'))) {
+if (BRANCH_NAME == 'master' || updateDependencyCache || fullTestMarkerFile || weeklyTestMarkerFile || env.CHANGE_ID && (pullRequest.labels.contains('full-test') || pullRequest.labels.contains('weekly-test'))) {
   branches = [failFast: false]
   lines.each {line ->
     if (line != 'weekly' && (updateDependencyCache || weeklyTestMarkerFile || env.CHANGE_ID && pullRequest.labels.contains('weekly-test'))) {
@@ -121,7 +121,7 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
     pluginsByRepository.each { repository, plugins ->
       branches["pct-$repository-$line"] = {
         def jdk = line == 'weekly' ? 21 : 17
-        mavenEnv(jdk: jdk, nodePool: true, cacheKey: repository) {
+        mavenEnv(jdk: jdk, nodePool: true, cacheKey: repository, updateDependencyCache: updateDependencyCache) {
           unstash line
           withEnv([
             "PLUGINS=${plugins.join(',')}",
