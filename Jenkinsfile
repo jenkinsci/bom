@@ -17,8 +17,6 @@ def mavenEnv(Map params = [:], Closure body) {
   retry(count: attempts, conditions: [kubernetesAgent(handleNonKubernetes: true), nonresumable()]) {
     echo 'Attempt ' + ++attempt + ' of ' + attempts
 
-    echo params["updateDependencyCache"]
-    
     // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
     node(params['nodePool'] ? 'maven-bom': 'maven-' + params['jdk']) {
       timeout(120) {
