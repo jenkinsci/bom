@@ -25,6 +25,7 @@ def mavenEnv(Map params = [:], Closure body) {
                 // max cache size in MB, will be reset after exceeding this size
                 maxCacheSize: 3072,
                 defaultBranch: 'master',
+                compressionMethod: 'TAR_ZSTD',
                 // don't save pull requests, only cache on master branches
                 // skipSave: env.BRANCH_NAME != 'master',
                 caches: [
