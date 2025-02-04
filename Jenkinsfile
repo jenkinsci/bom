@@ -19,7 +19,8 @@ def mavenEnv(Map params = [:], Closure body) {
       timeout(120) {
         withChecks(name: 'Tests', includeStage: true) {
           infra.withArtifactCachingProxy {
-            def mavenRepoPath = "/tmp/.m2-cache-${params['cacheKey']}"
+            def cacheBaseDir = env.JOBCACHER_CACHE_DIR ?: "/tmp"
+            def mavenRepoPath = "${cacheBaseDir}/.m2-cache-${params['cacheKey']}"
             cache(
                 // max cache size in MB, will be reset after exceeding this size
                 maxCacheSize: 3072,
