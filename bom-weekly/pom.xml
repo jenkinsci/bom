@@ -1506,7 +1506,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>token-macro</artifactId>
-        <version>442.v4f452dc3c7c0</version>
+        <version>444.v52de7e9c573d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
