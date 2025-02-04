@@ -16,6 +16,9 @@ def mavenEnv(Map params = [:], Closure body) {
   def attempts = 6
   retry(count: attempts, conditions: [kubernetesAgent(handleNonKubernetes: true), nonresumable()]) {
     echo 'Attempt ' + ++attempt + ' of ' + attempts
+
+    echo params["updateDependencyCache"]
+    
     // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
     node(params['nodePool'] ? 'maven-bom': 'maven-' + params['jdk']) {
       timeout(120) {
@@ -28,7 +31,7 @@ def mavenEnv(Map params = [:], Closure body) {
                 maxCacheSize: 3072,
                 defaultBranch: 'master',
                 compressionMethod: 'TAR_ZSTD',
-                skipSave: !updateDependencyCache,
+                skipSave: !params["updateDependencyCache"],
                 caches: [
                   arbitraryFileCache(
                   // using a fixed path for Maven cache instead of the normal workspace pattern
@@ -73,7 +76,7 @@ def fullTestMarkerFile
 def weeklyTestMarkerFile
 
 stage('prep') {
-  mavenEnv(jdk: 21, cacheKey: "sample-plugin") {
+  mavenEnv(jdk: 21, cacheKey: "sample-plugin", updateDependencyCache: updateDependencyCache) {
     checkout scm
     withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist']) {
       withCredentials([
