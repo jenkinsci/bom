@@ -36,7 +36,6 @@ def mavenEnv(Map params = [:], Closure body) {
                   // this prevents seeding working if you use the normal pattern
                   path: mavenRepoPath,
                   compressionMethod: 'TAR_ZSTD',
-                  cacheValidityDecidingFile: '.repository-cache-marker'
                   )
                 ]
                 ) {
@@ -48,7 +47,7 @@ def mavenEnv(Map params = [:], Closure body) {
                   }
                 }
           }
-          if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount > 0) {
+          if (!params["updateDependencyCache"] && junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount > 0) {
             // TODO JENKINS-27092 throw up UNSTABLE status in this case
             error 'Some test failures, not going to continue'
           }
