@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.jenkins-ci.plugins</groupId>
     <artifactId>plugin</artifactId>
-    <version>5.6</version>
+    <version>5.7</version>
     <relativePath />
   </parent>
   <groupId>io.jenkins.tools.bom</groupId>
@@ -14,7 +14,7 @@
   <properties>
     <changelist>999999-SNAPSHOT</changelist>
     <bom>weekly</bom>
-    <jenkins.version>2.495</jenkins.version>
+    <jenkins.version>2.496</jenkins.version>
     <spotless.check.skip>false</spotless.check.skip>
   </properties>
   <dependencyManagement>
@@ -291,7 +291,6 @@
     <dependency>
       <groupId>io.jenkins.plugins</groupId>
       <artifactId>customizable-header</artifactId>
-      <version>169.v671208540e56</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -956,6 +955,11 @@
     </dependency>
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>gitlab-logo</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>gitlab-oauth</artifactId>
       <scope>test</scope>
     </dependency>
@@ -1224,6 +1228,11 @@
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>s3</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>saferestart</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>

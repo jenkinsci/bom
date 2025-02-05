@@ -66,6 +66,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>artifactory-client-api</artifactId>
+        <version>2.19.0-76.v1826d97a_fef0</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>byte-buddy-api</artifactId>
         <version>1.15.11-99.v078c614a_5258</version>
       </dependency>
@@ -83,6 +88,11 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>custom-folder-icon</artifactId>
         <version>2.15</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>customizable-header</artifactId>
+        <version>169.v671208540e56</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -136,6 +146,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>joda-time-api</artifactId>
+        <version>2.13.0-93.v9934da_29b_a_e9</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>json-api</artifactId>
         <version>20241224-119.va_dca_a_b_ea_7da_5</version>
       </dependency>
@@ -158,6 +173,11 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>markdown-formatter</artifactId>
         <version>232.vfd558d47524b_</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>mysql-api</artifactId>
+        <version>9.2.0-51.v555cd9442556</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -299,6 +319,16 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>database-mysql</artifactId>
+        <version>63.va_0596d2b_1438</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>description-setter</artifactId>
+        <version>258.vcd25251271a_a_</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>display-url-api</artifactId>
         <version>2.204.vf6fddd8a_8b_e9</version>
       </dependency>
@@ -363,6 +393,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>github-oauth</artifactId>
         <version>597.ve0c3480fcb_d0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>gitlab-logo</artifactId>
+        <version>130.v9d2696eb_8dc6</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -476,6 +511,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>saferestart</artifactId>
+        <version>101.vc7fa_8ca_dd18b_</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>saml</artifactId>
         <version>4.464.vea_cb_75d7f5e0</version>
       </dependency>
@@ -530,6 +570,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>timestamper</artifactId>
         <version>1.27</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>token-macro</artifactId>
+        <version>400.v35420b_922dcb_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -621,6 +666,11 @@
         <artifactId>workflow-support</artifactId>
         <version>${workflow-support-plugin.version}</version>
         <classifier>tests</classifier>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.tools</groupId>
+        <artifactId>git-parameter</artifactId>
+        <version>0.10.0</version>
       </dependency>
       <dependency>
         <groupId>org.jenkinsci.plugins</groupId>
