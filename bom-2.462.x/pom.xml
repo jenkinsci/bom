@@ -232,6 +232,11 @@
         <version>1327.ved786b_a_197e0</version>
       </dependency>
       <dependency>
+        <groupId>org.jenkins-ci.main</groupId>
+        <artifactId>maven-plugin</artifactId>
+        <version>3.24</version>
+      </dependency>
+      <dependency>
         <groupId>org.jenkins-ci.modules</groupId>
         <artifactId>sshd</artifactId>
         <version>3.330.vc866a_8389b_58</version>
