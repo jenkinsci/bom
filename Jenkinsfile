@@ -92,15 +92,17 @@ stage('prep') {
       pluginsByRepository = parsePlugins(plugins)
 
       lines = readFile('lines.txt').split('\n')
-      withCredentials([string(credentialsId: 'launchable-jenkins-bom', variable: 'LAUNCHABLE_TOKEN')]) {
-        lines.each { line ->
-          def commitHashes = readFile "commit-hashes-${line}.txt"
-          sh "launchable verify && launchable record build --name ${env.BUILD_TAG}-${line} --no-commit-collection " + commitHashes
+      if (!updateDependencyCache) {
+        withCredentials([string(credentialsId: 'launchable-jenkins-bom', variable: 'LAUNCHABLE_TOKEN')]) {
+          lines.each { line ->
+            def commitHashes = readFile "commit-hashes-${line}.txt"
+            sh "launchable verify && launchable record build --name ${env.BUILD_TAG}-${line} --no-commit-collection " + commitHashes
 
-          def sessionFile = "launchable-session-${line}.txt"
-          def jdk = line == 'weekly' ? 21 : 17
-          sh "launchable record session --build ${env.BUILD_TAG}-${line} --flavor platform=linux --flavor jdk=${jdk} >${sessionFile}"
-          stash name: sessionFile, includes: sessionFile
+            def sessionFile = "launchable-session-${line}.txt"
+            def jdk = line == 'weekly' ? 21 : 17
+            sh "launchable record session --build ${env.BUILD_TAG}-${line} --flavor platform=linux --flavor jdk=${jdk} >${sessionFile}"
+            stash name: sessionFile, includes: sessionFile
+          }
         }
       }
     }
@@ -133,11 +135,13 @@ if (BRANCH_NAME == 'master' || updateDependencyCache || fullTestMarkerFile || we
             bash pct.sh
             '''
           }
-          withCredentials([string(credentialsId: 'launchable-jenkins-bom', variable: 'LAUNCHABLE_TOKEN')]) {
-            def sessionFile = "launchable-session-${line}.txt"
-            unstash sessionFile
-            def session = readFile(sessionFile).trim()
-            sh "launchable verify && launchable record tests --session ${session} --group ${repository} maven './**/target/surefire-reports' './**/target/failsafe-reports'"
+          if (!updateDependencyCache) {
+            withCredentials([string(credentialsId: 'launchable-jenkins-bom', variable: 'LAUNCHABLE_TOKEN')]) {
+              def sessionFile = "launchable-session-${line}.txt"
+              unstash sessionFile
+              def session = readFile(sessionFile).trim()
+              sh "launchable verify && launchable record tests --session ${session} --group ${repository} maven './**/target/surefire-reports' './**/target/failsafe-reports'"
+            }
           }
         }
       }
