@@ -1450,7 +1450,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>sse-gateway</artifactId>
-        <version>1.27</version>
+        <!-- TODO https://github.com/jenkinsci/sse-gateway-plugin/pull/225 -->
+        <version>1.28-rc304.f887837cef17</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
