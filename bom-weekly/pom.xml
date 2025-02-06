@@ -275,7 +275,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>commons-math3-api</artifactId>
-        <version>3.6.1-18.v9d7081dffa_f5</version>
+        <version>3.6.1-38.vb_753c9382184</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -548,7 +548,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
-        <version>407.v7857c9611b_44</version>
+        <version>409.v98f212e980b_4</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
