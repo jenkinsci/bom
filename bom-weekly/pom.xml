@@ -26,7 +26,7 @@
     <okhttp-api-plugin.version>4.11.0-183.va_87fc7a_89810</okhttp-api-plugin.version>
     <pipeline-maven-plugin.version>1469.ve15ca_a_b_90b_44</pipeline-maven-plugin.version>
     <pipeline-model-definition-plugin.version>2.2221.vc657003fb_d93</pipeline-model-definition-plugin.version>
-    <pipeline-stage-view-plugin.version>2.34</pipeline-stage-view-plugin.version>
+    <pipeline-stage-view-plugin.version>2.35</pipeline-stage-view-plugin.version>
     <plugin-util-api.version>5.1.0</plugin-util-api.version>
     <scm-api-plugin.version>703.v72ff4b_259600</scm-api-plugin.version>
     <subversion-plugin.version>1283.vfc8b_92d49a_06</subversion-plugin.version>
