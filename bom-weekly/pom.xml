@@ -1194,7 +1194,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>junit-attachments</artifactId>
-        <version>239.v9e003a_c80a_8c</version>
+        <version>275.v54db_1ed8e66f</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
