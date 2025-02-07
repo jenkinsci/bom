@@ -13,6 +13,7 @@
     <cloudbees-folder-plugin.version>6.955.v81e2a_35c08d3</cloudbees-folder-plugin.version>
     <github-api-plugin.version>1.321-468.v6a_9f5f2d5a_7e</github-api-plugin.version>
     <git-plugin.version>5.5.2</git-plugin.version>
+    <junit-plugin.version>1312.v1a_235a_b_94a_31</junit-plugin.version>
     <okhttp-api-plugin.version>4.11.0-172.vda_da_1feeb_c6e</okhttp-api-plugin.version>
     <pipeline-stage-view-plugin.version>2.34</pipeline-stage-view-plugin.version>
     <scm-api-plugin.version>696.v778d637b_a_762</scm-api-plugin.version>
@@ -137,6 +138,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>gitlab-branch-source</artifactId>
+        <version>715.v4c830b_ca_ef95</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>gitlab-kubernetes-credentials</artifactId>
         <version>376.veb_da_720f7745</version>
       </dependency>
@@ -213,6 +219,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>pipeline-groovy-lib</artifactId>
+        <version>749.v70084559234a_</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>sqlserver-api</artifactId>
         <version>12.8.1.jre11-63.v522a_b_7b_6ea_d7</version>
       </dependency>
@@ -232,6 +243,11 @@
         <version>1327.ved786b_a_197e0</version>
       </dependency>
       <dependency>
+        <groupId>org.jenkins-ci.main</groupId>
+        <artifactId>maven-plugin</artifactId>
+        <version>3.24</version>
+      </dependency>
+      <dependency>
         <groupId>org.jenkins-ci.modules</groupId>
         <artifactId>sshd</artifactId>
         <version>3.330.vc866a_8389b_58</version>
@@ -240,6 +256,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ansicolor</artifactId>
         <version>1.0.5</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>apache-httpcomponents-client-4-api</artifactId>
+        <version>4.5.14-208.v438351942757</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -322,6 +343,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>config-file-provider</artifactId>
         <version>980.v88956a_a_5d6a_d</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>copyartifact</artifactId>
+        <version>761.vea_2b_25523e84</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -452,6 +478,17 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>junit</artifactId>
+        <version>${junit-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>junit</artifactId>
+        <version>${junit-plugin.version}</version>
+        <classifier>tests</classifier>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ldap</artifactId>
         <version>725.v3cb_b_711b_1a_ef</version>
       </dependency>
@@ -469,6 +506,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>matrix-project</artifactId>
         <version>839.vff91cd7e3a_b_2</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>mercurial</artifactId>
+        <version>1308.v0e0888fdb_628</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -494,6 +536,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>parameter-separator</artifactId>
         <version>250.va_6292fd7f47b_</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>parameterized-scheduler</artifactId>
+        <version>277.v61a_4b_a_49a_c5c</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>

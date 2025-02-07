@@ -21,7 +21,7 @@
     <forensics-api.version>2.7.0</forensics-api.version>
     <github-api-plugin.version>1.321-478.vc9ce627ce001</github-api-plugin.version>
     <git-plugin.version>5.7.0</git-plugin.version>
-    <junit-plugin.version>1312.v1a_235a_b_94a_31</junit-plugin.version>
+    <junit-plugin.version>1314.vd966e9a_88895</junit-plugin.version>
     <mina-sshd-api.version>2.14.0-143.v2b_362fc39576</mina-sshd-api.version>
     <okhttp-api-plugin.version>4.11.0-183.va_87fc7a_89810</okhttp-api-plugin.version>
     <pipeline-maven-plugin.version>1469.ve15ca_a_b_90b_44</pipeline-maven-plugin.version>
@@ -417,7 +417,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>gitlab-branch-source</artifactId>
-        <version>715.v4c830b_ca_ef95</version>
+        <version>718.v40b_5f0e67cd3</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -553,7 +553,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-groovy-lib</artifactId>
-        <version>749.v70084559234a_</version>
+        <version>751.v709f84f7d768</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -754,7 +754,7 @@
       <dependency>
         <groupId>org.jenkins-ci.main</groupId>
         <artifactId>maven-plugin</artifactId>
-        <version>3.24</version>
+        <version>3.25</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.modules</groupId>
@@ -789,7 +789,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>apache-httpcomponents-client-4-api</artifactId>
-        <version>4.5.14-208.v438351942757</version>
+        <version>4.5.14-268.v37113894b_d72</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -880,7 +880,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>cloudbees-bitbucket-branch-source</artifactId>
-        <version>934.4.1</version>
+        <version>934.4.2</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -921,7 +921,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>copyartifact</artifactId>
-        <version>761.vea_2b_25523e84</version>
+        <version>763.v66351b_9c297f</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1168,7 +1168,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>JiraTestResultReporter</artifactId>
-        <version>245.v5a_2d45c771c9</version>
+        <version>251.v8ee0248c418c</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1234,7 +1234,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>mercurial</artifactId>
-        <version>1308.v0e0888fdb_628</version>
+        <version>1309.v6802b_f0efb_b_9</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1289,7 +1289,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>parameterized-scheduler</artifactId>
-        <version>277.v61a_4b_a_49a_c5c</version>
+        <version>285.ve611986d4c48</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
