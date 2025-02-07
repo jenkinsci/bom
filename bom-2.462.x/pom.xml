@@ -138,6 +138,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>github-checks</artifactId>
+        <version>589.v845136f916cd</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>gitlab-branch-source</artifactId>
         <version>715.v4c830b_ca_ef95</version>
       </dependency>
