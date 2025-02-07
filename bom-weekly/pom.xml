@@ -921,7 +921,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>copyartifact</artifactId>
-        <version>763.v66351b_9c297f</version>
+        <version>761.vea_2b_25523e84</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
