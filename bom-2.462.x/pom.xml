@@ -13,6 +13,7 @@
     <cloudbees-folder-plugin.version>6.955.v81e2a_35c08d3</cloudbees-folder-plugin.version>
     <github-api-plugin.version>1.321-468.v6a_9f5f2d5a_7e</github-api-plugin.version>
     <git-plugin.version>5.5.2</git-plugin.version>
+    <junit-plugin.version>1312.v1a_235a_b_94a_31</junit-plugin.version>
     <okhttp-api-plugin.version>4.11.0-172.vda_da_1feeb_c6e</okhttp-api-plugin.version>
     <pipeline-stage-view-plugin.version>2.34</pipeline-stage-view-plugin.version>
     <scm-api-plugin.version>696.v778d637b_a_762</scm-api-plugin.version>
@@ -469,6 +470,17 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>job-dsl</artifactId>
         <version>1.89</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>junit</artifactId>
+        <version>${junit-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>junit</artifactId>
+        <version>${junit-plugin.version}</version>
+        <classifier>tests</classifier>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
