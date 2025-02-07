@@ -1234,7 +1234,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>mercurial</artifactId>
-        <version>1308.v0e0888fdb_628</version>
+        <version>1309.v6802b_f0efb_b_9</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
