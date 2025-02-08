@@ -1249,7 +1249,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>naginator</artifactId>
-        <version>1.489.v5808b_a_72e0fc</version>
+        <version>1.496.v94260e77b_3f5</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
