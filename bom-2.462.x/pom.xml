@@ -371,6 +371,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>database</artifactId>
+        <version>273.vc4781cc27e67</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>database-mysql</artifactId>
         <version>63.va_0596d2b_1438</version>
       </dependency>
