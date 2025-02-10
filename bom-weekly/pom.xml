@@ -941,7 +941,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>database</artifactId>
-        <version>273.vc4781cc27e67</version>
+        <version>274.vea_2e859b_2661</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
