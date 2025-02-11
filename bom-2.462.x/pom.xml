@@ -47,6 +47,11 @@
         <version>104.v94a_e5f6cdb_c3</version>
       </dependency>
       <dependency>
+        <groupId>com.sonyericsson.hudson.plugins.rebuild</groupId>
+        <artifactId>rebuild</artifactId>
+        <version>332.va_1ee476d8f6d</version>
+      </dependency>
+      <dependency>
         <groupId>com.sonyericsson.jenkins.plugins.bfa</groupId>
         <artifactId>build-failure-analyzer</artifactId>
         <version>2.5.2</version>
@@ -371,6 +376,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>database</artifactId>
+        <version>273.vc4781cc27e67</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>database-mysql</artifactId>
         <version>63.va_0596d2b_1438</version>
       </dependency>
@@ -574,8 +584,18 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>pipeline-input-step</artifactId>
+        <version>508.v584c0e9a_2177</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>prometheus</artifactId>
         <version>795.v995762102f28</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>promoted-builds</artifactId>
+        <version>965.vcda_c6a_e0998f</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -622,6 +642,11 @@
         <artifactId>scm-api</artifactId>
         <version>${scm-api-plugin.version}</version>
         <classifier>tests</classifier>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>script-security</artifactId>
+        <version>1369.v9b_98a_4e95b_2d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
