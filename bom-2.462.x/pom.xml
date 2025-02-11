@@ -594,6 +594,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>promoted-builds</artifactId>
+        <version>965.vcda_c6a_e0998f</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>resource-disposer</artifactId>
         <version>0.24</version>
       </dependency>
