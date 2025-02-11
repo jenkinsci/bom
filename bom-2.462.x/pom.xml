@@ -37,6 +37,11 @@
         <scope>import</scope>
       </dependency>
       <dependency>
+        <groupId>com.cloudbees.jenkins.plugins</groupId>
+        <artifactId>file-leak-detector</artifactId>
+        <version>1.13</version>
+      </dependency>
+      <dependency>
         <groupId>com.coravy.hudson.plugins.github</groupId>
         <artifactId>github</artifactId>
         <version>1.40.0</version>
