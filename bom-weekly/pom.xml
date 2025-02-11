@@ -68,7 +68,7 @@
       <dependency>
         <groupId>com.sonyericsson.hudson.plugins.rebuild</groupId>
         <artifactId>rebuild</artifactId>
-        <version>332.va_1ee476d8f6d</version>
+        <version>338.va_0a_b_50e29397</version>
       </dependency>
       <dependency>
         <groupId>com.sonyericsson.jenkins.plugins.bfa</groupId>
@@ -764,7 +764,7 @@
       <dependency>
         <groupId>org.jenkins-ci.modules</groupId>
         <artifactId>sshd</artifactId>
-        <version>3.350.v1080103a_10fd</version>
+        <version>3.353.v2b_d33c46e970</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -921,7 +921,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>copyartifact</artifactId>
-        <version>763.v66351b_9c297f</version>
+        <version>765.v0357cc6e6eb_3</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1088,7 +1088,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>gitlab-logo</artifactId>
-        <version>156.vb_07d6f88a_e93</version>
+        <version>160.vb_6d064dfb_ffc</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1324,7 +1324,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pipeline-input-step</artifactId>
-        <version>508.v584c0e9a_2177</version>
+        <version>513.v7eb_fe7e2c0fc</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1369,7 +1369,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>promoted-builds</artifactId>
-        <version>965.vcda_c6a_e0998f</version>
+        <version>978.v4536a_f065dd8</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1430,7 +1430,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>script-security</artifactId>
-        <version>1369.v9b_98a_4e95b_2d</version>
+        <version>1373.vb_b_4a_a_c26fa_00</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
