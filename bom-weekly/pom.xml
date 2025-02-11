@@ -356,7 +356,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>file-parameters</artifactId>
-        <version>339.v4b_cc83e11455</version>
+        <version>358.v9ed4456a_169a_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
