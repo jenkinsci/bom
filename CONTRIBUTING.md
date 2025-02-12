@@ -6,7 +6,6 @@ For people potentially working on the BOM itself, not just consuming it.
 
 | Release Date | Lead |
 | --- | --- |
-| 2025-02-05 | Kris Stern |
 | 2025-02-14 | Mark Waite |
 | 2025-02-21 | Mark Waite |
 | 2025-02-28 | Bruno Verachten |

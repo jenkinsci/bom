@@ -12,9 +12,9 @@
     <aws-java-sdk-plugin.version>1.12.772-477.v650d756dcf6d</aws-java-sdk-plugin.version>
     <aws-java-sdk2-plugin.version>2.30.10-22.v1339d66b_e0f4</aws-java-sdk2-plugin.version>
     <blueocean-plugin.version>1.27.16</blueocean-plugin.version>
-    <branch-api-plugin.version>2.1208.vf528356feca_4</branch-api-plugin.version>
+    <branch-api-plugin.version>2.1214.v3f652804588d</branch-api-plugin.version>
     <checks-api.version>2.2.2</checks-api.version>
-    <cloudbees-folder-plugin.version>6.980.v5a_cc0cb_25881</cloudbees-folder-plugin.version>
+    <cloudbees-folder-plugin.version>6.982.vf165a_16c9507</cloudbees-folder-plugin.version>
     <configuration-as-code-plugin.version>1932.v75cb_b_f1b_698d</configuration-as-code-plugin.version>
     <data-tables-api.version>2.1.8-1</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.4</declarative-pipeline-migration-assistant-plugin.version>
@@ -24,9 +24,9 @@
     <junit-plugin.version>1314.vd966e9a_88895</junit-plugin.version>
     <mina-sshd-api.version>2.14.0-143.v2b_362fc39576</mina-sshd-api.version>
     <okhttp-api-plugin.version>4.11.0-183.va_87fc7a_89810</okhttp-api-plugin.version>
-    <pipeline-maven-plugin.version>1469.ve15ca_a_b_90b_44</pipeline-maven-plugin.version>
+    <pipeline-maven-plugin.version>1485.v9a_5a_116d6fb_0</pipeline-maven-plugin.version>
     <pipeline-model-definition-plugin.version>2.2221.vc657003fb_d93</pipeline-model-definition-plugin.version>
-    <pipeline-stage-view-plugin.version>2.35</pipeline-stage-view-plugin.version>
+    <pipeline-stage-view-plugin.version>2.36</pipeline-stage-view-plugin.version>
     <plugin-util-api.version>5.1.0</plugin-util-api.version>
     <scm-api-plugin.version>703.v72ff4b_259600</scm-api-plugin.version>
     <subversion-plugin.version>1287.vd2d507146906</subversion-plugin.version>
@@ -48,7 +48,7 @@
       <dependency>
         <groupId>com.cloudbees.jenkins.plugins</groupId>
         <artifactId>file-leak-detector</artifactId>
-        <version>1.13</version>
+        <version>1.14</version>
       </dependency>
       <dependency>
         <groupId>com.cloudbees.jenkins.plugins</groupId>
@@ -229,7 +229,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>aws-global-configuration</artifactId>
-        <version>142.vfc0728241c1b_</version>
+        <version>144.v1b_4447b_7c93e</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -356,7 +356,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>file-parameters</artifactId>
-        <version>339.v4b_cc83e11455</version>
+        <version>358.v9ed4456a_169a_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -522,7 +522,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>oidc-provider</artifactId>
-        <version>89.v3dfb_6d89b_618</version>
+        <version>96.vee8ed882ec4d</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -739,7 +739,7 @@
       <dependency>
         <groupId>net.plavcak.jenkins</groupId>
         <artifactId>scmskip</artifactId>
-        <version>66.ve200ee8116cd</version>
+        <version>72.vc2f9088d11e2</version>
       </dependency>
       <dependency>
         <groupId>org.6wind.jenkins</groupId>
@@ -814,12 +814,12 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>azure-keyvault</artifactId>
-        <version>251.vcfe31c013dc7</version>
+        <version>280.v166053ddda_42</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>azure-vm-agents</artifactId>
-        <version>1001.vf3448fe27897</version>
+        <version>1002.va_3819d704fe7</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1031,7 +1031,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>flaky-test-handler</artifactId>
-        <version>1.3.165.v8c796143641b_</version>
+        <version>1.3.168.v9b_0b_fd020db_8</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1057,7 +1057,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>gitea</artifactId>
-        <version>234.v60def593ec50</version>
+        <version>238.v626a_cf5e1940</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1103,7 +1103,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>google-compute-engine</artifactId>
-        <version>4.681.v9020cf2b_7453</version>
+        <version>4.683.v0ce26579a_ee7</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1179,6 +1179,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jsch</artifactId>
         <version>0.2.16-86.v42e010d9484b_</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>jsoup</artifactId>
+        <version>1.18.3-30.v952e9442d416</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1536,7 +1541,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>windows-azure-storage</artifactId>
-        <version>454.v573775e9feef</version>
+        <version>469.v75a_3db_ea_d2b_a_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
