@@ -739,7 +739,7 @@
       <dependency>
         <groupId>net.plavcak.jenkins</groupId>
         <artifactId>scmskip</artifactId>
-        <version>66.ve200ee8116cd</version>
+        <version>72.vc2f9088d11e2</version>
       </dependency>
       <dependency>
         <groupId>org.6wind.jenkins</groupId>
