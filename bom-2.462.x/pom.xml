@@ -330,6 +330,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>build-monitor-plugin</artifactId>
+        <version>1.14-948.va_a_a_5a_7eb_1f37</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>build-timeout</artifactId>
         <version>1.33</version>
       </dependency>
@@ -416,6 +421,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>docker-workflow</artifactId>
+        <version>592.v1001d948426c</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>dockerhub-notification</artifactId>
         <version>2.7.2</version>
       </dependency>
@@ -458,7 +468,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>git-client</artifactId>
-        <version>5.0.2</version>
+        <version>5.0.3</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
