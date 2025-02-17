@@ -188,6 +188,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>jquery3-api</artifactId>
+        <version>3.7.1-2</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>json-api</artifactId>
         <version>20241224-119.va_dca_a_b_ea_7da_5</version>
       </dependency>
