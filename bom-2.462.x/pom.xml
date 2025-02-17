@@ -696,6 +696,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>sbt</artifactId>
+        <version>87.v455263c57692</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>scm-api</artifactId>
         <version>${scm-api-plugin.version}</version>
       </dependency>
