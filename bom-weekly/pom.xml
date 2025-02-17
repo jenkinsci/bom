@@ -336,7 +336,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>echarts-api</artifactId>
-        <version>5.5.1-5</version>
+        <version>5.5.1-6</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
