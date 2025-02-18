@@ -371,6 +371,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>azure-credentials</artifactId>
+        <version>343.vd80f9c4859df</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>badge</artifactId>
         <version>2.3</version>
       </dependency>
