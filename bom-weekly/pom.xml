@@ -809,7 +809,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>azure-credentials</artifactId>
-        <version>343.vd80f9c4859df</version>
+        <version>357.v6447d38fb_007</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
