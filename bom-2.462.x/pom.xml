@@ -772,6 +772,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>secure-requester-whitelist</artifactId>
+        <version>70.ve2a_3c4a_dc9f5</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>slack</artifactId>
         <version>751.v2e44153c8fe1</version>
       </dependency>
