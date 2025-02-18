@@ -14,6 +14,7 @@
     <github-api-plugin.version>1.321-468.v6a_9f5f2d5a_7e</github-api-plugin.version>
     <data-tables-api.version>2.1.8-1</data-tables-api.version>
     <git-plugin.version>5.5.2</git-plugin.version>
+    <forensics-api.version>2.7.0</forensics-api.version>
     <junit-plugin.version>1312.v1a_235a_b_94a_31</junit-plugin.version>
     <forensics-api.version>2.7.0</forensics-api.version>
     <okhttp-api-plugin.version>4.11.0-172.vda_da_1feeb_c6e</okhttp-api-plugin.version>
@@ -108,6 +109,11 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>commons-text-api</artifactId>
         <version>1.12.0-129.v99a_50df237f7</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>coverage</artifactId>
+        <version>1.16.1</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
