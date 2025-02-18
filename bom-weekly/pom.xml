@@ -1435,7 +1435,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>secure-requester-whitelist</artifactId>
-        <version>70.ve2a_3c4a_dc9f5</version>
+        <version>72.v6cce468c5513</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
