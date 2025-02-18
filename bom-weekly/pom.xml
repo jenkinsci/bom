@@ -860,7 +860,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>build-timeout</artifactId>
-        <version>1.35</version>
+        <version>1.36</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
