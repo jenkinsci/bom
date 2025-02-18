@@ -12,9 +12,13 @@
     <branch-api-plugin.version>2.1206.vd9f35001c95c</branch-api-plugin.version>
     <cloudbees-folder-plugin.version>6.955.v81e2a_35c08d3</cloudbees-folder-plugin.version>
     <github-api-plugin.version>1.321-468.v6a_9f5f2d5a_7e</github-api-plugin.version>
+    <data-tables-api.version>2.1.8-1</data-tables-api.version>
     <git-plugin.version>5.5.2</git-plugin.version>
+    <forensics-api.version>2.7.0</forensics-api.version>
     <junit-plugin.version>1312.v1a_235a_b_94a_31</junit-plugin.version>
+    <forensics-api.version>2.7.0</forensics-api.version>
     <okhttp-api-plugin.version>4.11.0-172.vda_da_1feeb_c6e</okhttp-api-plugin.version>
+    <plugin-util-api.version>5.1.0</plugin-util-api.version>
     <pipeline-stage-view-plugin.version>2.34</pipeline-stage-view-plugin.version>
     <scm-api-plugin.version>696.v778d637b_a_762</scm-api-plugin.version>
     <subversion-plugin.version>1281.vc8837f91a_07a_</subversion-plugin.version>
@@ -88,6 +92,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>bootstrap5-api</artifactId>
+        <version>5.3.3-1</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>byte-buddy-api</artifactId>
         <version>1.15.11-99.v078c614a_5258</version>
       </dependency>
@@ -100,6 +109,11 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>commons-text-api</artifactId>
         <version>1.12.0-129.v99a_50df237f7</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>coverage</artifactId>
+        <version>1.16.1</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -120,6 +134,17 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>dark-theme</artifactId>
         <version>514.va_3ea_73d65dc1</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>data-tables-api</artifactId>
+        <version>${data-tables-api.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>data-tables-api</artifactId>
+        <version>${data-tables-api.version}</version>
+        <classifier>tests</classifier>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -150,6 +175,27 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>flyway-api</artifactId>
         <version>9.22.3-151.v475c057b_07fc</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>font-awesome-api</artifactId>
+        <version>6.6.0-2</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>forensics-api</artifactId>
+        <version>${forensics-api.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>forensics-api</artifactId>
+        <version>${forensics-api.version}</version>
+        <classifier>tests</classifier>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>git-forensics</artifactId>
+        <version>2.2.1</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -185,6 +231,11 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>joda-time-api</artifactId>
         <version>2.13.0-93.v9934da_29b_a_e9</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>jquery3-api</artifactId>
+        <version>3.7.1-2</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -254,6 +305,22 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>plugin-util-api</artifactId>
+        <version>${plugin-util-api.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>plugin-util-api</artifactId>
+        <version>${plugin-util-api.version}</version>
+        <classifier>tests</classifier>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>prism-api</artifactId>
+        <version>1.29.0-18</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>sqlserver-api</artifactId>
         <version>12.8.1.jre11-63.v522a_b_7b_6ea_d7</version>
       </dependency>
@@ -301,6 +368,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>authorize-project</artifactId>
         <version>1.8.1</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>azure-credentials</artifactId>
+        <version>343.vd80f9c4859df</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -676,6 +748,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>saml</artifactId>
         <version>4.464.vea_cb_75d7f5e0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>sbt</artifactId>
+        <version>87.v455263c57692</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
