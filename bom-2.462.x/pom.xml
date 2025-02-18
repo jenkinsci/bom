@@ -14,6 +14,7 @@
     <github-api-plugin.version>1.321-468.v6a_9f5f2d5a_7e</github-api-plugin.version>
     <data-tables-api.version>2.1.8-1</data-tables-api.version>
     <git-plugin.version>5.5.2</git-plugin.version>
+    <forensics-api.version>2.7.0</forensics-api.version>
     <junit-plugin.version>1312.v1a_235a_b_94a_31</junit-plugin.version>
     <okhttp-api-plugin.version>4.11.0-172.vda_da_1feeb_c6e</okhttp-api-plugin.version>
     <plugin-util-api.version>5.1.0</plugin-util-api.version>
@@ -110,6 +111,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>coverage</artifactId>
+        <version>1.16.1</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>coverage-badges-extension</artifactId>
         <version>127.v8f212c1db_3b_9</version>
       </dependency>
@@ -168,6 +174,17 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>flyway-api</artifactId>
         <version>9.22.3-151.v475c057b_07fc</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>forensics-api</artifactId>
+        <version>${forensics-api.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>forensics-api</artifactId>
+        <version>${forensics-api.version}</version>
+        <classifier>tests</classifier>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
