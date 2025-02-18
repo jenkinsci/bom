@@ -194,6 +194,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>git-forensics</artifactId>
+        <version>2.2.1</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>gitea-checks</artifactId>
         <version>513.vb_b_a_98c46ec22</version>
       </dependency>
