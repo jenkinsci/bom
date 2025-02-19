@@ -199,7 +199,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>analysis-model-api</artifactId>
-        <version>13.0.0</version>
+        <version>13.1.0</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -749,7 +749,7 @@
       <dependency>
         <groupId>org.csanchez.jenkins.plugins</groupId>
         <artifactId>kubernetes</artifactId>
-        <version>4306.vc91e951ea_eb_d</version>
+        <version>4313.va_9b_4fe2a_0e34</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.main</groupId>
