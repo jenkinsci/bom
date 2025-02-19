@@ -595,6 +595,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>google-storage-plugin</artifactId>
+        <version>1.360.v6ca_38618b_41f</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>hidden-parameter</artifactId>
         <version>366.v7024b_32e399e</version>
       </dependency>
