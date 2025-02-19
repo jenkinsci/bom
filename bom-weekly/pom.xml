@@ -1123,7 +1123,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>google-storage-plugin</artifactId>
-        <version>1.360.v6ca_38618b_41f</version>
+        <version>1.370.vf53e2efa_585b_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1319,7 +1319,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pipeline-graph-analysis</artifactId>
-        <version>216.vfd8b_ece330ca_</version>
+        <version>231.v56354571a_da_0</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1491,7 +1491,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>support-core</artifactId>
-        <version>1557.v3435ec4057a_e</version>
+        <version>1575.v49b_01a_460e3b_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1536,7 +1536,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>view-job-filters</artifactId>
-        <version>392.v2c0a_4dd46909</version>
+        <version>396.veea_3d19b_9551</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
