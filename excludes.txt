@@ -19,7 +19,7 @@ org.jenkinsci.plugins.durabletask.BourneShellScriptTest
 # TODO tends to run out of memory
 org.jenkinsci.plugins.pipeline.modeldefinition.TriggersTest
 
-# TODO times out since move to AWS. Remove after 2.462.x falls off
+# TODO https://github.com/jenkinsci/build-timeout-plugin/pull/136 times out since move to AWS. Remove after 2.462.x falls off
 hudson.plugins.build_timeout.operations.AbortAndRestartOperationTest#abortAndRestartTwice
 
 # TODO times out since move to AWS. Remove after 2.462.x falls off
