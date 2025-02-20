@@ -870,7 +870,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>claim</artifactId>
-        <version>590.v544cb_038c099</version>
+        <version>594.v44e928488dea_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
