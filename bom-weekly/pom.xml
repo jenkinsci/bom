@@ -58,7 +58,7 @@
       <dependency>
         <groupId>com.coravy.hudson.plugins.github</groupId>
         <artifactId>github</artifactId>
-        <version>1.41.0</version>
+        <version>1.42.0</version>
       </dependency>
       <dependency>
         <groupId>com.paul8620.jenkins.plugins</groupId>
