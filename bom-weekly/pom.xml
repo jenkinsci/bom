@@ -548,7 +548,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
-        <version>409.v98f212e980b_4</version>
+        <version>413.v204a_03785b_92</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -870,7 +870,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>claim</artifactId>
-        <version>590.v544cb_038c099</version>
+        <version>594.v44e928488dea_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1264,7 +1264,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>nodejs</artifactId>
-        <version>1.6.3</version>
+        <version>1.6.4</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1399,7 +1399,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>s3</artifactId>
-        <version>494.v65894c3ef139</version>
+        <version>496.v320cdd5a_1f65</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1491,7 +1491,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>support-core</artifactId>
-        <version>1575.v49b_01a_460e3b_</version>
+        <version>1637.v6a_6b_f31d4373</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
