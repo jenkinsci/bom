@@ -502,7 +502,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>locale</artifactId>
-        <version>560.vc5b_91b_3a_2b_68</version>
+        <version>566.v3323643741cc</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
