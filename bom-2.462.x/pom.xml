@@ -225,6 +225,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>javax-mail-api</artifactId>
+        <version>1.6.2-10</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>jersey2-api</artifactId>
         <version>2.44-151.v6df377fff741</version>
       </dependency>
