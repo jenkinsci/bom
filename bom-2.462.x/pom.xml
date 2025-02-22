@@ -225,6 +225,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>jakarta-mail-api</artifactId>
+        <version>2.1.3-1</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>javax-mail-api</artifactId>
         <version>1.6.2-10</version>
       </dependency>
