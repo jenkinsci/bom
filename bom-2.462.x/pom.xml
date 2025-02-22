@@ -24,6 +24,7 @@
     <subversion-plugin.version>1281.vc8837f91a_07a_</subversion-plugin.version>
     <configuration-as-code-plugin.version>1873.vea_5814ca_9c93</configuration-as-code-plugin.version>
     <pipeline-model-definition-plugin.version>2.2218.v56d0cda_37c72</pipeline-model-definition-plugin.version>
+    <pipeline-maven-plugin.version>1485.v9a_5a_116d6fb_0</pipeline-maven-plugin.version>
     <workflow-api-plugin.version>1358.vfb_5780da_64cb_</workflow-api-plugin.version>
     <workflow-cps-plugin.version>4009.v0089238351a_9</workflow-cps-plugin.version>
     <workflow-job-plugin.version>1436.vfa_244484591f</workflow-job-plugin.version>
@@ -713,6 +714,21 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pipeline-input-step</artifactId>
         <version>508.v584c0e9a_2177</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>pipeline-maven</artifactId>
+        <version>${pipeline-maven-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>pipeline-maven-api</artifactId>
+        <version>${pipeline-maven-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>pipeline-maven-database</artifactId>
+        <version>${pipeline-maven-plugin.version}</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
