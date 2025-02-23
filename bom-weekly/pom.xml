@@ -14,7 +14,8 @@
     <blueocean-plugin.version>1.27.16</blueocean-plugin.version>
     <branch-api-plugin.version>2.1214.v3f652804588d</branch-api-plugin.version>
     <checks-api.version>2.2.3</checks-api.version>
-    <cloudbees-folder-plugin.version>6.982.vf165a_16c9507</cloudbees-folder-plugin.version>
+    <!-- TODO https://github.com/jenkinsci/cloudbees-folder-plugin/pull/470 -->
+    <cloudbees-folder-plugin.version>6.985.v030b_71b_a_e6b_c</cloudbees-folder-plugin.version>
     <configuration-as-code-plugin.version>1932.v75cb_b_f1b_698d</configuration-as-code-plugin.version>
     <data-tables-api.version>2.2.2-1</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.4</declarative-pipeline-migration-assistant-plugin.version>
@@ -73,7 +74,8 @@
       <dependency>
         <groupId>com.sonyericsson.jenkins.plugins.bfa</groupId>
         <artifactId>build-failure-analyzer</artifactId>
-        <version>2.5.3</version>
+        <!-- TODO https://github.com/jenkinsci/build-failure-analyzer-plugin/pull/202 -->
+        <version>2.5.4-rc861.76281a_f7d6b_e</version>
       </dependency>
       <dependency>
         <groupId>com.synopsys.arc.jenkinsci.plugins</groupId>
@@ -462,7 +464,8 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>jaxb</artifactId>
-        <version>2.3.9-1</version>
+        <!-- TODO https://github.com/jenkinsci/jaxb-plugin/pull/103 -->
+        <version>2.3.9-2-rc132.4a_2b_9f80a_488</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -885,7 +888,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>cloudbees-disk-usage-simple</artifactId>
-        <version>232.v713eeed2e1f4</version>
+        <!-- TODO https://github.com/jenkinsci/cloudbees-disk-usage-simple-plugin/pull/120 -->
+        <version>233.vdb_f6d55db_0b_5</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -901,7 +905,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>cloudbees-jenkins-advisor</artifactId>
-        <version>358.v58972d19b_1f0</version>
+        <!-- TODO https://github.com/jenkinsci/cloudbees-jenkins-advisor-plugin/pull/213 -->
+        <version>373.vc9ed656225f4</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1006,7 +1011,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>electricflow</artifactId>
-        <version>1.1.38</version>
+        <!-- TODO https://github.com/jenkinsci/electricflow-plugin/pull/404 -->
+        <version>1.1.39-rc900.25ca_ced07c5c</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1052,7 +1058,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>git-server</artifactId>
-        <version>126.v0d945d8d2b_39</version>
+        <!-- TODO https://github.com/jenkinsci/git-server-plugin/pull/134 -->
+        <version>134.v238480b_a_2519</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1078,7 +1085,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>github-oauth</artifactId>
-        <version>621.v33b_4394dda_4d</version>
+        <!-- TODO https://github.com/jenkinsci/github-oauth-plugin/pull/285 -->
+        <version>642.vb_6598d6fea_a_9</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1138,7 +1146,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>htmlpublisher</artifactId>
-        <version>1.37</version>
+        <!-- TODO https://github.com/jenkinsci/htmlpublisher-plugin/pull/320 -->
+        <version>1.38-rc418.c0e7a_0f34c5b_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1279,7 +1288,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pam-auth</artifactId>
-        <version>1.11</version>
+        <!-- TODO https://github.com/jenkinsci/pam-auth-plugin/pull/34 -->
+        <version>1.12-rc163.8539f140dfdd</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1455,7 +1465,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>sse-gateway</artifactId>
-        <version>1.27</version>
+        <!-- TODO https://github.com/jenkinsci/sse-gateway-plugin/pull/225 -->
+        <version>1.28-rc305.1526595b_2f73</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1516,7 +1527,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>trilead-api</artifactId>
-        <version>2.147.vb_73cc728a_32e</version>
+        <!-- TODO https://github.com/jenkinsci/trilead-api-plugin/pull/191 -->
+        <version>2.186.v7364f3671c3d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
