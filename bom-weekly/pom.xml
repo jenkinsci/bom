@@ -321,7 +321,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>database-mariadb</artifactId>
-        <version>126.v6d53b_2f60b_e3</version>
+        <version>134.v4287ed4a_ccd6</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
