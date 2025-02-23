@@ -1349,7 +1349,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pipeline-stage-step</artifactId>
-        <version>312.v8cd10304c27a_</version>
+        <version>322.vecffa_99f371c</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
