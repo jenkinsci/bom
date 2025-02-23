@@ -169,6 +169,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>extra-tool-installers</artifactId>
+        <version>175.v1534b_dc88a_54</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>file-parameters</artifactId>
         <version>339.v4b_cc83e11455</version>
       </dependency>
@@ -247,6 +252,11 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>jersey2-api</artifactId>
         <version>2.44-151.v6df377fff741</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>jjwt-api</artifactId>
+        <version>0.11.5-112.ve82dfb_224b_a_d</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -732,6 +742,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>pipeline-github-lib</artifactId>
+        <version>61.v629f2cc41d83</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pipeline-input-step</artifactId>
         <version>508.v584c0e9a_2177</version>
       </dependency>
@@ -754,6 +769,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pipeline-milestone-step</artifactId>
         <version>119.vdfdc43fc3b_9a_</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>pipeline-stage-step</artifactId>
+        <version>312.v8cd10304c27a_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -828,6 +848,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>skip-notifications-trait</artifactId>
+        <version>448.va_e30ed251b_4c</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>slack</artifactId>
         <version>751.v2e44153c8fe1</version>
       </dependency>
@@ -835,6 +860,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ssh-slaves</artifactId>
         <version>2.973.v0fa_8c0dea_f9f</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>structs</artifactId>
+        <version>338.v848422169819</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -960,6 +990,11 @@
         <artifactId>workflow-multibranch</artifactId>
         <version>${workflow-multibranch-plugin.version}</version>
         <classifier>tests</classifier>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins.workflow</groupId>
+        <artifactId>workflow-scm-step</artifactId>
+        <version>427.v4ca_6512e7df1</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins.workflow</groupId>

@@ -214,7 +214,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>artifactory-artifact-manager</artifactId>
-        <version>190.vfca_09a_223ca_2</version>
+        <version>198.v70e5f9e07b_22</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -321,7 +321,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>database-mariadb</artifactId>
-        <version>126.v6d53b_2f60b_e3</version>
+        <version>134.v4287ed4a_ccd6</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -351,7 +351,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>extra-tool-installers</artifactId>
-        <version>175.v1534b_dc88a_54</version>
+        <version>185.ve48fe9685e7a_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -422,7 +422,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>gitlab-kubernetes-credentials</artifactId>
-        <version>388.v4c6f01ffdb_c5</version>
+        <version>424.vd4c848a_61813</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -472,7 +472,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>jjwt-api</artifactId>
-        <version>0.11.5-112.ve82dfb_224b_a_d</version>
+        <version>0.11.5-120.v0268cf544b_89</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -502,7 +502,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>locale</artifactId>
-        <version>560.vc5b_91b_3a_2b_68</version>
+        <version>566.v3323643741cc</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1133,7 +1133,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>hidden-parameter</artifactId>
-        <version>374.v00e27777a_0eb_</version>
+        <version>414.vfe0a_8b_052546</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1289,7 +1289,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>parameter-separator</artifactId>
-        <version>258.vc2a_4c51b_de4c</version>
+        <version>276.v7b_5328f5c7a_d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1314,7 +1314,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pipeline-github-lib</artifactId>
-        <version>61.v629f2cc41d83</version>
+        <version>65.v203688e7727e</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1349,7 +1349,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pipeline-stage-step</artifactId>
-        <version>312.v8cd10304c27a_</version>
+        <version>322.vecffa_99f371c</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1440,7 +1440,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>skip-notifications-trait</artifactId>
-        <version>448.va_e30ed251b_4c</version>
+        <version>490.v81b_0f37c3676</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1475,7 +1475,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>structs</artifactId>
-        <version>338.v848422169819</version>
+        <version>343.vdcf37b_a_c81d5</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1740,7 +1740,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
         <artifactId>workflow-scm-step</artifactId>
-        <version>427.v4ca_6512e7df1</version>
+        <version>437.v05a_f66b_e5ef8</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
