@@ -772,6 +772,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>pipeline-milestone-step</artifactId>
+        <version>119.vdfdc43fc3b_9a_</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pipeline-stage-step</artifactId>
         <version>312.v8cd10304c27a_</version>
       </dependency>
