@@ -387,6 +387,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>ant</artifactId>
+        <version>511.v0a_a_1a_334f41b_</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>apache-httpcomponents-client-4-api</artifactId>
         <version>4.5.14-208.v438351942757</version>
       </dependency>
