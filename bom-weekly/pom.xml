@@ -1314,7 +1314,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pipeline-github-lib</artifactId>
-        <version>61.v629f2cc41d83</version>
+        <version>65.v203688e7727e</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>

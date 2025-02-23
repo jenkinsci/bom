@@ -737,6 +737,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>pipeline-github-lib</artifactId>
+        <version>61.v629f2cc41d83</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pipeline-input-step</artifactId>
         <version>508.v584c0e9a_2177</version>
       </dependency>
