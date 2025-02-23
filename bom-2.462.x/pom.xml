@@ -255,6 +255,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>jjwt-api</artifactId>
+        <version>0.11.5-112.ve82dfb_224b_a_d</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>joda-time-api</artifactId>
         <version>2.13.0-93.v9934da_29b_a_e9</version>
       </dependency>
