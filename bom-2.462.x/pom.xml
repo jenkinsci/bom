@@ -958,6 +958,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
+        <artifactId>workflow-scm-step</artifactId>
+        <version>427.v4ca_6512e7df1</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins.workflow</groupId>
         <artifactId>workflow-step-api</artifactId>
         <version>${workflow-step-api-plugin.version}</version>
       </dependency>
