@@ -290,7 +290,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>coverage-badges-extension</artifactId>
-        <version>147.vb_b_2f87a_c7a_54</version>
+        <version>157.vf5d725246222</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
