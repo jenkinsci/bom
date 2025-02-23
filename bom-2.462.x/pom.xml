@@ -752,6 +752,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>pipeline-stage-step</artifactId>
+        <version>312.v8cd10304c27a_</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>prometheus</artifactId>
         <version>795.v995762102f28</version>
       </dependency>
