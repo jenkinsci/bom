@@ -682,6 +682,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>junit-realtime-test-reporter</artifactId>
+        <version>149.v05a_d403e2f48</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ldap</artifactId>
         <version>725.v3cb_b_711b_1a_ef</version>
       </dependency>

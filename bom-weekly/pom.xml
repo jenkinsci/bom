@@ -1204,7 +1204,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>junit-realtime-test-reporter</artifactId>
-        <version>149.v05a_d403e2f48</version>
+        <version>166.v889e7b_0e23a_a_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
