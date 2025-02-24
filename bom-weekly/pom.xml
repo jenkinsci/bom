@@ -239,7 +239,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>bootstrap5-api</artifactId>
-        <version>5.3.3-2</version>
+        <version>5.3.3-3</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>

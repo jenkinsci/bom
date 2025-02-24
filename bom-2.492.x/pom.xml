@@ -19,6 +19,11 @@
         <scope>import</scope>
       </dependency>
       <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>bootstrap5-api</artifactId>
+        <version>5.3.3-2</version>
+      </dependency>
+      <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>copyartifact</artifactId>
         <version>761.vea_2b_25523e84</version>
