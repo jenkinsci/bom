@@ -164,6 +164,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>eddsa-api</artifactId>
+        <version>0.3.0-4.v84c6f0f4969e</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>emoji-symbols-api</artifactId>
         <version>5.v70a_000e95970</version>
       </dependency>
