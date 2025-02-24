@@ -544,6 +544,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>database-sqlite</artifactId>
+        <version>1.8</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>description-setter</artifactId>
         <version>258.vcd25251271a_a_</version>
       </dependency>
