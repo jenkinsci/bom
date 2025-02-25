@@ -143,6 +143,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>h2-api</artifactId>
+        <version>11.1.4.199-30.v1c64e772f3a_c</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>data-tables-api</artifactId>
         <version>${data-tables-api.version}</version>
         <classifier>tests</classifier>
