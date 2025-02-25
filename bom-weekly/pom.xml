@@ -1284,7 +1284,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>parallel-test-executor</artifactId>
-        <version>522.vfe4fd4a_3382a_</version>
+        <version>535.v0343a_314327b_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
