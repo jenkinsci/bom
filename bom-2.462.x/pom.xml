@@ -777,6 +777,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>parallel-test-executor</artifactId>
+        <version>522.vfe4fd4a_3382a_</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>parameter-separator</artifactId>
         <version>250.va_6292fd7f47b_</version>
       </dependency>
