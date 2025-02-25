@@ -367,11 +367,6 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
-        <artifactId>postgresql-api</artifactId>
-        <version>100.v2418e0a_c6909</version>
-      </dependency>
-      <dependency>
-        <groupId>io.jenkins.plugins</groupId>
         <artifactId>prism-api</artifactId>
         <version>1.29.0-18</version>
       </dependency>
@@ -561,6 +556,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>database-mysql</artifactId>
         <version>63.va_0596d2b_1438</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>database-postgresql</artifactId>
+        <version>100.v2418e0a_c6909</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
