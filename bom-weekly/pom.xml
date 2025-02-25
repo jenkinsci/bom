@@ -326,7 +326,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>database-sqlserver</artifactId>
-        <version>23.v158a_7d4d1d46</version>
+        <version>91.v61e8e4680cdc</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
