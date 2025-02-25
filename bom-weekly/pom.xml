@@ -569,7 +569,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>postgresql-api</artifactId>
-        <version>42.7.2-40.v76d376d65c77</version>
+        <version>42.7.5-56.vc0921b_3cc11e</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
