@@ -829,7 +829,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>basic-branch-build-strategies</artifactId>
-        <version>190.v343a_ee70d920</version>
+        <version>228.v68c089762a_db_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
