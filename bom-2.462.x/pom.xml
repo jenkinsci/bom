@@ -666,6 +666,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>handy-uri-templates-2-api</artifactId>
+        <version>2.1.8-30.v7e777411b_148</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>hidden-parameter</artifactId>
         <version>366.v7024b_32e399e</version>
       </dependency>
