@@ -946,7 +946,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>database-h2</artifactId>
-        <version>1.4.97.v8b_21e67e883a_</version>
+        <version>1.4.116.vc979ffa_d29c7</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
