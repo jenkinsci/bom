@@ -432,7 +432,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>h2-api</artifactId>
-        <version>11.1.4.199-30.v1c64e772f3a_c</version>
+        <version>11.1.4.199-36.vb_ee07e965744</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
