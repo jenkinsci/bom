@@ -154,6 +154,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>database-sqlserver</artifactId>
+        <version>23.v158a_7d4d1d46</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>design-library</artifactId>
         <version>307.vecc0205ca_707</version>
       </dependency>
