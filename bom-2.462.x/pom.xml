@@ -742,6 +742,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>mapdb-api</artifactId>
+        <version>1.0.9-40.v58107308b_7a_7</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>matrix-auth</artifactId>
         <version>3.2.3</version>
       </dependency>
