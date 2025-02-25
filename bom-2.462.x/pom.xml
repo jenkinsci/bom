@@ -559,6 +559,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>database-h2</artifactId>
+        <version>1.4.97.v8b_21e67e883a_</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>database-mysql</artifactId>
         <version>63.va_0596d2b_1438</version>
       </dependency>
