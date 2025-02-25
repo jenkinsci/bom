@@ -986,7 +986,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>docker-workflow</artifactId>
-        <version>596.v3e6972b_46b_e2</version>
+        <version>599.v76126c79a_a_2d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
