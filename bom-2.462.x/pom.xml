@@ -591,6 +591,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>database-postgresql</artifactId>
+        <version>100.v2418e0a_c6909</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>database-sqlite</artifactId>
         <version>1.8</version>
       </dependency>
