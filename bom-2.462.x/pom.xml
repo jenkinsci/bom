@@ -11,6 +11,7 @@
   <properties>
     <branch-api-plugin.version>2.1206.vd9f35001c95c</branch-api-plugin.version>
     <cloudbees-folder-plugin.version>6.955.v81e2a_35c08d3</cloudbees-folder-plugin.version>
+    <checks-api.version>2.2.3</checks-api.version>
     <github-api-plugin.version>1.321-468.v6a_9f5f2d5a_7e</github-api-plugin.version>
     <data-tables-api.version>2.1.8-1</data-tables-api.version>
     <git-plugin.version>5.5.2</git-plugin.version>
@@ -100,6 +101,17 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>byte-buddy-api</artifactId>
         <version>1.15.11-99.v078c614a_5258</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>checks-api</artifactId>
+        <version>${checks-api.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>checks-api</artifactId>
+        <version>${checks-api.version}</version>
+        <classifier>tests</classifier>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
