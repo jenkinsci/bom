@@ -452,6 +452,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>azure-keyvault</artifactId>
+        <version>280.v166053ddda_42</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>badge</artifactId>
         <version>2.3</version>
       </dependency>
@@ -742,6 +747,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>mapdb-api</artifactId>
+        <version>1.0.9-40.v58107308b_7a_7</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>matrix-auth</artifactId>
         <version>3.2.3</version>
       </dependency>
@@ -779,6 +789,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>oic-auth</artifactId>
         <version>4.444.vd4c54f157201</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>parallel-test-executor</artifactId>
+        <version>522.vfe4fd4a_3382a_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
