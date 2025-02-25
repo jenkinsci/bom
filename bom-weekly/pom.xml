@@ -13,7 +13,7 @@
     <aws-java-sdk2-plugin.version>2.30.10-22.v1339d66b_e0f4</aws-java-sdk2-plugin.version>
     <blueocean-plugin.version>1.27.16</blueocean-plugin.version>
     <branch-api-plugin.version>2.1214.v3f652804588d</branch-api-plugin.version>
-    <checks-api.version>2.2.3</checks-api.version>
+    <checks-api.version>367.v18b_7f530e54a_</checks-api.version>
     <cloudbees-folder-plugin.version>6.982.vf165a_16c9507</cloudbees-folder-plugin.version>
     <configuration-as-code-plugin.version>1932.v75cb_b_f1b_698d</configuration-as-code-plugin.version>
     <data-tables-api.version>2.2.2-1</data-tables-api.version>
