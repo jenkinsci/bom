@@ -903,6 +903,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>ssh-agent</artifactId>
+        <version>376.v8933585c69d3</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ssh-slaves</artifactId>
         <version>2.973.v0fa_8c0dea_f9f</version>
       </dependency>
