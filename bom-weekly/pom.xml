@@ -387,7 +387,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>gcp-java-sdk-storage</artifactId>
-        <version>26.23.0-28.vd30f921a_22a_8</version>
+        <version>26.23.0-31.va_efec42c4f8c</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
