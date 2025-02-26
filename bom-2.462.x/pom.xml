@@ -207,6 +207,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>flatpickr-api</artifactId>
+        <version>4.6.13-15.vf6e534338831</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>flyway-api</artifactId>
         <version>9.22.3-151.v475c057b_07fc</version>
       </dependency>
