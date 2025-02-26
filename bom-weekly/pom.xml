@@ -1113,7 +1113,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>google-metadata-plugin</artifactId>
-        <version>0.5</version>
+        <version>0.6.70.v87a_e90994a_32</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
