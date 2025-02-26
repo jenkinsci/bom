@@ -9,6 +9,7 @@
   <artifactId>bom-2.462.x</artifactId>
   <packaging>pom</packaging>
   <properties>
+    <aws-java-sdk2-plugin.version>2.30.10-22.v1339d66b_e0f4</aws-java-sdk2-plugin.version>
     <branch-api-plugin.version>2.1206.vd9f35001c95c</branch-api-plugin.version>
     <cloudbees-folder-plugin.version>6.955.v81e2a_35c08d3</cloudbees-folder-plugin.version>
     <checks-api.version>2.2.3</checks-api.version>
@@ -406,6 +407,126 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>theme-manager</artifactId>
         <version>262.vc57ee4a_eda_5d</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
+        <artifactId>aws-java-sdk2-apigateway</artifactId>
+        <version>${aws-java-sdk2-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
+        <artifactId>aws-java-sdk2-autoscaling</artifactId>
+        <version>${aws-java-sdk2-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
+        <artifactId>aws-java-sdk2-cloudformation</artifactId>
+        <version>${aws-java-sdk2-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
+        <artifactId>aws-java-sdk2-cloudfront</artifactId>
+        <version>${aws-java-sdk2-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
+        <artifactId>aws-java-sdk2-cloudwatch</artifactId>
+        <version>${aws-java-sdk2-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
+        <artifactId>aws-java-sdk2-cloudwatchlogs</artifactId>
+        <version>${aws-java-sdk2-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
+        <artifactId>aws-java-sdk2-codebuild</artifactId>
+        <version>${aws-java-sdk2-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
+        <artifactId>aws-java-sdk2-codedeploy</artifactId>
+        <version>${aws-java-sdk2-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
+        <artifactId>aws-java-sdk2-core</artifactId>
+        <version>${aws-java-sdk2-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
+        <artifactId>aws-java-sdk2-ec2</artifactId>
+        <version>${aws-java-sdk2-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
+        <artifactId>aws-java-sdk2-ecr</artifactId>
+        <version>${aws-java-sdk2-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
+        <artifactId>aws-java-sdk2-ecs</artifactId>
+        <version>${aws-java-sdk2-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
+        <artifactId>aws-java-sdk2-efs</artifactId>
+        <version>${aws-java-sdk2-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
+        <artifactId>aws-java-sdk2-elasticbeanstalk</artifactId>
+        <version>${aws-java-sdk2-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
+        <artifactId>aws-java-sdk2-elasticloadbalancingv2</artifactId>
+        <version>${aws-java-sdk2-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
+        <artifactId>aws-java-sdk2-iam</artifactId>
+        <version>${aws-java-sdk2-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
+        <artifactId>aws-java-sdk2-kinesis</artifactId>
+        <version>${aws-java-sdk2-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
+        <artifactId>aws-java-sdk2-lambda</artifactId>
+        <version>${aws-java-sdk2-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
+        <artifactId>aws-java-sdk2-organizations</artifactId>
+        <version>${aws-java-sdk2-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
+        <artifactId>aws-java-sdk2-s3</artifactId>
+        <version>${aws-java-sdk2-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
+        <artifactId>aws-java-sdk2-secretsmanager</artifactId>
+        <version>${aws-java-sdk2-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
+        <artifactId>aws-java-sdk2-sns</artifactId>
+        <version>${aws-java-sdk2-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
+        <artifactId>aws-java-sdk2-sqs</artifactId>
+        <version>${aws-java-sdk2-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
+        <artifactId>aws-java-sdk2-ssm</artifactId>
+        <version>${aws-java-sdk2-plugin.version}</version>
       </dependency>
       <dependency>
         <groupId>net.plavcak.jenkins</groupId>
