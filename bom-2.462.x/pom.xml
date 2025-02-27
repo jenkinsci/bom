@@ -69,6 +69,11 @@
         <version>2.5.2</version>
       </dependency>
       <dependency>
+        <groupId>com.synopsys.arc.jenkinsci.plugins</groupId>
+        <artifactId>job-restrictions</artifactId>
+        <version>212.vc34d63a_6704b_</version>
+      </dependency>
+      <dependency>
         <groupId>io.jenkins</groupId>
         <artifactId>configuration-as-code</artifactId>
         <version>${configuration-as-code-plugin.version}</version>
