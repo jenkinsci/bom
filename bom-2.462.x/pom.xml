@@ -10,6 +10,7 @@
   <packaging>pom</packaging>
   <properties>
     <aws-java-sdk2-plugin.version>2.30.10-22.v1339d66b_e0f4</aws-java-sdk2-plugin.version>
+    <gcp-java-sdk-plugin.version>26.23.0-28.vd30f921a_22a_8</gcp-java-sdk-plugin.version>
     <branch-api-plugin.version>2.1206.vd9f35001c95c</branch-api-plugin.version>
     <cloudbees-folder-plugin.version>6.955.v81e2a_35c08d3</cloudbees-folder-plugin.version>
     <checks-api.version>2.2.3</checks-api.version>
@@ -243,8 +244,13 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>gcp-java-sdk-auth</artifactId>
+        <version>${gcp-java-sdk-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>gcp-java-sdk-storage</artifactId>
-        <version>26.23.0-28.vd30f921a_22a_8</version>
+        <version>${gcp-java-sdk-plugin.version}</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
