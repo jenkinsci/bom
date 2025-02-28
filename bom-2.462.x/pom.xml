@@ -773,6 +773,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>durable-task</artifactId>
+        <version>581.v299a_5609d767</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>email-ext</artifactId>
         <version>1849.v6dd03b_f6e423</version>
       </dependency>
