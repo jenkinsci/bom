@@ -1127,6 +1127,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>ssh-credentials</artifactId>
+        <version>349.vb_8b_6b_9709f5b_</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ssh-slaves</artifactId>
         <version>2.973.v0fa_8c0dea_f9f</version>
       </dependency>
