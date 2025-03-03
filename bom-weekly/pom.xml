@@ -957,7 +957,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>database-mysql</artifactId>
-        <version>134.vb_98470b_d4d2d</version>
+        <version>142.vc259713f0032</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
