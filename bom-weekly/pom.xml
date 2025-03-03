@@ -1007,7 +1007,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ec2</artifactId>
-        <version>1864.v6fc4480cb_8fb_</version>
+        <version>1869.v73998b_605c4d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
