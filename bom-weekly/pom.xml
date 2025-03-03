@@ -1330,7 +1330,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pipeline-input-step</artifactId>
-        <version>515.v8857b_eb_b_910c</version>
+        <version>517.vf8e782ee645c</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
