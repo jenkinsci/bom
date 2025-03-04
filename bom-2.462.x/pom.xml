@@ -1314,6 +1314,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkinsci.plugins</groupId>
+        <artifactId>kubernetes-credentials</artifactId>
+        <version>190.v03c305394deb_</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkinsci.plugins</groupId>
         <artifactId>pipeline-model-api</artifactId>
         <version>${pipeline-model-definition-plugin.version}</version>
       </dependency>
