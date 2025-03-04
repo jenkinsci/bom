@@ -45,6 +45,11 @@
         <scope>import</scope>
       </dependency>
       <dependency>
+        <groupId>au.com.versent.jenkins.plugins</groupId>
+        <artifactId>ignore-committer-strategy</artifactId>
+        <version>29.v7c3891a_434c3</version>
+      </dependency>
+      <dependency>
         <groupId>com.cloudbees.jenkins.plugins</groupId>
         <artifactId>file-leak-detector</artifactId>
         <version>1.13</version>
