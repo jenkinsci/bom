@@ -981,6 +981,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>oauth-credentials</artifactId>
+        <version>0.653.v14cf2088e950</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>oic-auth</artifactId>
         <version>4.444.vd4c54f157201</version>
       </dependency>
