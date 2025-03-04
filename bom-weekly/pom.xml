@@ -1265,7 +1265,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>node-iterator-api</artifactId>
-        <version>55.v3b_77d4032326</version>
+        <version>72.vc90e81737df1</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
