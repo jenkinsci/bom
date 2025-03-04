@@ -778,6 +778,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>ec2</artifactId>
+        <version>1864.v6fc4480cb_8fb_</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>email-ext</artifactId>
         <version>1849.v6dd03b_f6e423</version>
       </dependency>
