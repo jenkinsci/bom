@@ -26,13 +26,13 @@
     <mina-sshd-api.version>2.14.0-143.v2b_362fc39576</mina-sshd-api.version>
     <okhttp-api-plugin.version>4.11.0-183.va_87fc7a_89810</okhttp-api-plugin.version>
     <pipeline-maven-plugin.version>1488.vfd8c04864236</pipeline-maven-plugin.version>
-    <pipeline-model-definition-plugin.version>2.2236.va_b_88ceec798f</pipeline-model-definition-plugin.version>
+    <pipeline-model-definition-plugin.version>2.2247.va_423189a_7dff</pipeline-model-definition-plugin.version>
     <pipeline-stage-view-plugin.version>2.37</pipeline-stage-view-plugin.version>
     <plugin-util-api.version>6.0.0</plugin-util-api.version>
     <scm-api-plugin.version>704.v3ce5c542825a_</scm-api-plugin.version>
     <subversion-plugin.version>1287.vd2d507146906</subversion-plugin.version>
     <workflow-api-plugin.version>1363.v03f731255494</workflow-api-plugin.version>
-    <workflow-cps-plugin.version>4018.vf02e01888da_f</workflow-cps-plugin.version>
+    <workflow-cps-plugin.version>4039.vd58c465ea_71a_</workflow-cps-plugin.version>
     <workflow-job-plugin.version>1505.vea_4b_20a_4a_495</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>803.v08103b_87c280</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>700.v6e45cb_a_5a_a_21</workflow-step-api-plugin.version>
@@ -44,7 +44,7 @@
       <dependency>
         <groupId>au.com.versent.jenkins.plugins</groupId>
         <artifactId>ignore-committer-strategy</artifactId>
-        <version>29.v7c3891a_434c3</version>
+        <version>37.v0d3157c4a_ef8</version>
       </dependency>
       <dependency>
         <groupId>com.cloudbees.jenkins.plugins</groupId>
@@ -245,7 +245,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>byte-buddy-api</artifactId>
-        <version>1.17.1-127.vb_73ce3c8c5cf</version>
+        <version>1.17.2-133.vb_f77d7cfe701</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -513,7 +513,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>mariadb-api</artifactId>
-        <version>3.5.1-113.v00c68e5287d4</version>
+        <version>3.5.2-123.v97fa_a_c45f625</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -523,7 +523,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>mysql-api</artifactId>
-        <version>9.2.0-53.v708a_e33e6cb_6</version>
+        <version>9.2.0-55.v0c3a_9754999c</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -554,7 +554,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
-        <version>419.v946ff4a_49e1c</version>
+        <version>423.v765c49ca_da_3f</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -886,7 +886,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>cloudbees-bitbucket-branch-source</artifactId>
-        <version>935.0.0</version>
+        <version>935.1.1</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -957,7 +957,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>database-mysql</artifactId>
-        <version>134.vb_98470b_d4d2d</version>
+        <version>142.vc259713f0032</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1007,12 +1007,12 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ec2</artifactId>
-        <version>1864.v6fc4480cb_8fb_</version>
+        <version>1869.v73998b_605c4d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>electricflow</artifactId>
-        <version>1.1.38</version>
+        <version>1.1.39</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1084,7 +1084,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>github-oauth</artifactId>
-        <version>621.v33b_4394dda_4d</version>
+        <version>647.v44f5236c308d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1215,7 +1215,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>kubernetes-client-api</artifactId>
-        <version>6.10.0-240.v57880ce8b_0b_2</version>
+        <version>6.10.0-251.v556f5f100500</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1265,7 +1265,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>node-iterator-api</artifactId>
-        <version>55.v3b_77d4032326</version>
+        <version>72.vc90e81737df1</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1275,7 +1275,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>oauth-credentials</artifactId>
-        <version>0.653.v14cf2088e950</version>
+        <version>0.657.v7d8dd90b_0382</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1330,7 +1330,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pipeline-input-step</artifactId>
-        <version>515.v8857b_eb_b_910c</version>
+        <version>517.vf8e782ee645c</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1783,7 +1783,7 @@
       <dependency>
         <groupId>org.jenkinsci.plugins</groupId>
         <artifactId>kubernetes-credentials</artifactId>
-        <version>190.v03c305394deb_</version>
+        <version>192.v4d5b_1c429d17</version>
       </dependency>
       <dependency>
         <groupId>org.jenkinsci.plugins</groupId>
