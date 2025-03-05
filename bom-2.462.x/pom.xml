@@ -45,6 +45,11 @@
         <scope>import</scope>
       </dependency>
       <dependency>
+        <groupId>au.com.versent.jenkins.plugins</groupId>
+        <artifactId>ignore-committer-strategy</artifactId>
+        <version>29.v7c3891a_434c3</version>
+      </dependency>
+      <dependency>
         <groupId>com.cloudbees.jenkins.plugins</groupId>
         <artifactId>file-leak-detector</artifactId>
         <version>1.13</version>
@@ -778,6 +783,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>ec2</artifactId>
+        <version>1864.v6fc4480cb_8fb_</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>email-ext</artifactId>
         <version>1849.v6dd03b_f6e423</version>
       </dependency>
@@ -931,6 +941,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>kubernetes-client-api</artifactId>
+        <version>6.10.0-240.v57880ce8b_0b_2</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ldap</artifactId>
         <version>725.v3cb_b_711b_1a_ef</version>
       </dependency>
@@ -976,8 +991,18 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>node-iterator-api</artifactId>
+        <version>55.v3b_77d4032326</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>nodejs</artifactId>
         <version>1.6.2</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>oauth-credentials</artifactId>
+        <version>0.653.v14cf2088e950</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1311,6 +1336,11 @@
         <groupId>org.jenkinsci.plugins</groupId>
         <artifactId>emailext-template</artifactId>
         <version>219.v14fff547f78d</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkinsci.plugins</groupId>
+        <artifactId>kubernetes-credentials</artifactId>
+        <version>190.v03c305394deb_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkinsci.plugins</groupId>
