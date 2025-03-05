@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.jenkins-ci.plugins</groupId>
     <artifactId>plugin</artifactId>
-    <version>5.7</version>
+    <version>5.8</version>
     <relativePath />
   </parent>
   <groupId>io.jenkins.tools.bom</groupId>
@@ -1617,16 +1617,6 @@
       <properties>
         <bom>2.479.x</bom>
         <jenkins.version>2.479.3</jenkins.version>
-      </properties>
-    </profile>
-    <profile>
-      <id>2.462.x</id>
-      <properties>
-        <bom>2.462.x</bom>
-        <hpi-plugin.version>3.57</hpi-plugin.version>
-        <jenkins.version>2.462.3</jenkins.version>
-        <jenkins-test-harness.version>2225.2230.v6210cb_b_827f9</jenkins-test-harness.version>
-        <maven.compiler.release>11</maven.compiler.release>
       </properties>
     </profile>
   </profiles>
