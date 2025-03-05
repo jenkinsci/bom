@@ -907,7 +907,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>cloudbees-jenkins-advisor</artifactId>
-        <version>358.v58972d19b_1f0</version>
+        <version>374.v194b_d4f0c8c8</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
