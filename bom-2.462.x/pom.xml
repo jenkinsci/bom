@@ -1011,6 +1011,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>pam-auth</artifactId>
+        <version>1.11</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>parallel-test-executor</artifactId>
         <version>522.vfe4fd4a_3382a_</version>
       </dependency>
