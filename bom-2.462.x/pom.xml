@@ -11,6 +11,7 @@
   <properties>
     <aws-java-sdk2-plugin.version>2.30.10-22.v1339d66b_e0f4</aws-java-sdk2-plugin.version>
     <gcp-java-sdk-plugin.version>26.23.0-28.vd30f921a_22a_8</gcp-java-sdk-plugin.version>
+    <blueocean-plugin.version>1.27.16</blueocean-plugin.version>
     <branch-api-plugin.version>2.1206.vd9f35001c95c</branch-api-plugin.version>
     <cloudbees-folder-plugin.version>6.955.v81e2a_35c08d3</cloudbees-folder-plugin.version>
     <checks-api.version>2.2.3</checks-api.version>
@@ -83,6 +84,102 @@
         <groupId>io.jenkins</groupId>
         <artifactId>configuration-as-code</artifactId>
         <version>${configuration-as-code-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.blueocean</groupId>
+        <artifactId>blueocean-bitbucket-pipeline</artifactId>
+        <version>${blueocean-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.blueocean</groupId>
+        <artifactId>blueocean-commons</artifactId>
+        <version>${blueocean-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.blueocean</groupId>
+        <artifactId>blueocean-config</artifactId>
+        <version>${blueocean-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.blueocean</groupId>
+        <artifactId>blueocean-core-js</artifactId>
+        <version>${blueocean-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.blueocean</groupId>
+        <artifactId>blueocean-dashboard</artifactId>
+        <version>${blueocean-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.blueocean</groupId>
+        <artifactId>blueocean-events</artifactId>
+        <version>${blueocean-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.blueocean</groupId>
+        <artifactId>blueocean-executor-info</artifactId>
+        <version>${blueocean-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.blueocean</groupId>
+        <artifactId>blueocean-git-pipeline</artifactId>
+        <version>${blueocean-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.blueocean</groupId>
+        <artifactId>blueocean-github-pipeline</artifactId>
+        <version>${blueocean-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.blueocean</groupId>
+        <artifactId>blueocean-i18n</artifactId>
+        <version>${blueocean-plugin.version}</version>
+      </dependency>
+      <!-- TODO add blueocean-jira -->
+      <dependency>
+        <groupId>io.jenkins.blueocean</groupId>
+        <artifactId>blueocean-jwt</artifactId>
+        <version>${blueocean-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.blueocean</groupId>
+        <artifactId>blueocean-personalization</artifactId>
+        <version>${blueocean-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.blueocean</groupId>
+        <artifactId>blueocean-pipeline-api-impl</artifactId>
+        <version>${blueocean-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.blueocean</groupId>
+        <artifactId>blueocean-pipeline-editor</artifactId>
+        <version>${blueocean-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.blueocean</groupId>
+        <artifactId>blueocean-pipeline-scm-api</artifactId>
+        <version>${blueocean-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.blueocean</groupId>
+        <artifactId>blueocean-rest</artifactId>
+        <version>${blueocean-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.blueocean</groupId>
+        <artifactId>blueocean-rest-impl</artifactId>
+        <version>${blueocean-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.blueocean</groupId>
+        <artifactId>blueocean-web</artifactId>
+        <version>${blueocean-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.blueocean</groupId>
+        <artifactId>jenkins-design-language</artifactId>
+        <version>${blueocean-plugin.version}</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.configuration-as-code</groupId>
