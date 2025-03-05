@@ -1152,6 +1152,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>sse-gateway</artifactId>
+        <version>1.27</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ssh-agent</artifactId>
         <version>376.v8933585c69d3</version>
       </dependency>
