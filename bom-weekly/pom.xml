@@ -15,7 +15,7 @@
     <blueocean-plugin.version>1.27.17</blueocean-plugin.version>
     <branch-api-plugin.version>2.1214.v3f652804588d</branch-api-plugin.version>
     <checks-api.version>367.v18b_7f530e54a_</checks-api.version>
-    <cloudbees-folder-plugin.version>6.982.vf165a_16c9507</cloudbees-folder-plugin.version>
+    <cloudbees-folder-plugin.version>6.985.va_f1635030cc5</cloudbees-folder-plugin.version>
     <configuration-as-code-plugin.version>1932.v75cb_b_f1b_698d</configuration-as-code-plugin.version>
     <data-tables-api.version>2.2.2-1</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.4</declarative-pipeline-migration-assistant-plugin.version>
@@ -32,7 +32,7 @@
     <scm-api-plugin.version>704.v3ce5c542825a_</scm-api-plugin.version>
     <subversion-plugin.version>1287.vd2d507146906</subversion-plugin.version>
     <workflow-api-plugin.version>1363.v03f731255494</workflow-api-plugin.version>
-    <workflow-cps-plugin.version>4039.vd58c465ea_71a_</workflow-cps-plugin.version>
+    <workflow-cps-plugin.version>4043.va_fb_de6a_a_8b_f5</workflow-cps-plugin.version>
     <workflow-job-plugin.version>1505.vea_4b_20a_4a_495</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>803.v08103b_87c280</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>700.v6e45cb_a_5a_a_21</workflow-step-api-plugin.version>
@@ -755,7 +755,7 @@
       <dependency>
         <groupId>org.csanchez.jenkins.plugins</groupId>
         <artifactId>kubernetes</artifactId>
-        <version>4314.v5b_846cf499eb_</version>
+        <version>4324.vfec199a_33512</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.main</groupId>
@@ -765,7 +765,7 @@
       <dependency>
         <groupId>org.jenkins-ci.modules</groupId>
         <artifactId>instance-identity</artifactId>
-        <version>201.vd2a_b_5a_468a_a_6</version>
+        <version>203.v15e81a_1b_7a_38</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.modules</groupId>
@@ -891,7 +891,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>cloudbees-disk-usage-simple</artifactId>
-        <version>232.v713eeed2e1f4</version>
+        <version>239.v6a_f1a_c1c8046</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -907,7 +907,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>cloudbees-jenkins-advisor</artifactId>
-        <version>358.v58972d19b_1f0</version>
+        <version>374.v194b_d4f0c8c8</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -992,7 +992,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>docker-workflow</artifactId>
-        <version>603.va_6964865a_9b_9</version>
+        <version>611.v16e84da_6d3ff</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
