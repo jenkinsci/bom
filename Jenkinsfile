@@ -1,13 +1,15 @@
 properties([
   disableConcurrentBuilds(abortPrevious: true),
-  buildDiscarder(logRotator(numToKeepStr: '7')),
-  pipelineTriggers([cron('02 07 * * 6')])
+  // buildDiscarder(logRotator(numToKeepStr: '7')),
+  // pipelineTriggers([cron('02 07 * * 6')])
 ])
 
-if (BRANCH_NAME == 'master' && currentBuild.buildCauses*._class == ['jenkins.branch.BranchEventCause']) {
-  currentBuild.result = 'NOT_BUILT'
-  error 'No longer running builds on response to master branch pushes. If you wish to cut a release, use “Re-run checks” from this failing check in https://github.com/jenkinsci/bom/commits/master'
-}
+// if (BRANCH_NAME == 'master' && currentBuild.buildCauses*._class == ['jenkins.branch.BranchEventCause']) {
+//   currentBuild.result = 'NOT_BUILT'
+//   error 'No longer running builds on response to master branch pushes. If you wish to cut a release, use “Re-run checks” from this failing check in https://github.com/jenkinsci/bom/commits/master'
+// }
+
+final String m2repo = '/home/jenkins/.m2/repository'
 
 def mavenEnv(Map params = [:], Closure body) {
   def attempt = 0
@@ -21,7 +23,7 @@ def mavenEnv(Map params = [:], Closure body) {
           infra.withArtifactCachingProxy {
             withEnv([
               'JAVA_HOME=/opt/jdk-' + params['jdk'],
-              "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B -ntp -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo"
+              "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B -ntp -Dmaven.repo.local=${m2repo}"
             ]) {
               body()
             }
@@ -54,10 +56,20 @@ def weeklyTestMarkerFile
 stage('prep') {
   mavenEnv(jdk: 21) {
     checkout scm
-    withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist']) {
+    withEnv([
+      'SAMPLE_PLUGIN_OPTS=-Dset.changelist',
+      "MVN_LOCAL_REPO=${m2repo}",
+      ]) {
       withCredentials([
         usernamePassword(credentialsId: 'app-ci.jenkins.io', usernameVariable: 'GITHUB_APP', passwordVariable: 'GITHUB_OAUTH')
       ]) {
+        sh '''
+        mkdir -p "${MVN_LOCAL_REPO}"
+        if [ test -f /cache-rw/maven-bom-local-repo.tar.gz ];
+        then
+          tar xzf /cache-rw/maven-bom-local-repo.tar.gz -C "${MVN_LOCAL_REPO}"
+        fi
+        '''
         sh '''
         mvn -v
         echo "Starting artifact caching proxy pre-heat"
@@ -65,70 +77,77 @@ stage('prep') {
         echo "Finished artifact caching proxy pre-heat"
         bash prep.sh
         '''
+        sh '''
+        if [ test -d /cache-rw ];
+        then
+          cd "${MVN_LOCAL_REPO}"
+          tar czf /cache-rw/maven-bom-local-repo.tar.gz ./
+        fi
+        '''
       }
     }
-    fullTestMarkerFile = fileExists 'full-test'
-    weeklyTestMarkerFile = fileExists 'weekly-test'
-    dir('target') {
-      def plugins = readFile('plugins.txt').split('\n')
-      pluginsByRepository = parsePlugins(plugins)
+    // fullTestMarkerFile = fileExists 'full-test'
+    // weeklyTestMarkerFile = fileExists 'weekly-test'
+    // dir('target') {
+    //   def plugins = readFile('plugins.txt').split('\n')
+    //   pluginsByRepository = parsePlugins(plugins)
 
-      lines = readFile('lines.txt').split('\n')
-      withCredentials([string(credentialsId: 'launchable-jenkins-bom', variable: 'LAUNCHABLE_TOKEN')]) {
-        lines.each { line ->
-          def commitHashes = readFile "commit-hashes-${line}.txt"
-          sh "launchable verify && launchable record build --name ${env.BUILD_TAG}-${line} --no-commit-collection " + commitHashes
+    //   lines = readFile('lines.txt').split('\n')
+    //   withCredentials([string(credentialsId: 'launchable-jenkins-bom', variable: 'LAUNCHABLE_TOKEN')]) {
+    //     lines.each { line ->
+    //       def commitHashes = readFile "commit-hashes-${line}.txt"
+    //       sh "launchable verify && launchable record build --name ${env.BUILD_TAG}-${line} --no-commit-collection " + commitHashes
 
-          def sessionFile = "launchable-session-${line}.txt"
-          def jdk = line == 'weekly' ? 21 : 17
-          sh "launchable record session --build ${env.BUILD_TAG}-${line} --flavor platform=linux --flavor jdk=${jdk} >${sessionFile}"
-          stash name: sessionFile, includes: sessionFile
-        }
-      }
-    }
-    lines.each { line ->
-      stash name: line, includes: "pct.sh,excludes.txt,target/pct.jar,target/megawar-${line}.war"
-    }
-    infra.prepareToPublishIncrementals()
+    //       def sessionFile = "launchable-session-${line}.txt"
+    //       def jdk = line == 'weekly' ? 21 : 17
+    //       sh "launchable record session --build ${env.BUILD_TAG}-${line} --flavor platform=linux --flavor jdk=${jdk} >${sessionFile}"
+    //       stash name: sessionFile, includes: sessionFile
+    //     }
+    //   }
+    // }
+    // lines.each { line ->
+    //   stash name: line, includes: "pct.sh,excludes.txt,target/pct.jar,target/megawar-${line}.war"
+    // }
+    // infra.prepareToPublishIncrementals()
   }
 }
 
-if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env.CHANGE_ID && (pullRequest.labels.contains('full-test') || pullRequest.labels.contains('weekly-test'))) {
-  branches = [failFast: false]
-  lines.each {line ->
-    if (line != 'weekly' && (weeklyTestMarkerFile || env.CHANGE_ID && pullRequest.labels.contains('weekly-test'))) {
-      return
-    }
-    pluginsByRepository.each { repository, plugins ->
-      branches["pct-$repository-$line"] = {
-        def jdk = line == 'weekly' ? 21 : 17
-        mavenEnv(jdk: jdk, nodePool: true) {
-          unstash line
-          withEnv([
-            "PLUGINS=${plugins.join(',')}",
-            "LINE=$line",
-            'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
-          ]) {
-            sh '''
-            mvn -v
-            bash pct.sh
-            '''
-          }
-          withCredentials([string(credentialsId: 'launchable-jenkins-bom', variable: 'LAUNCHABLE_TOKEN')]) {
-            def sessionFile = "launchable-session-${line}.txt"
-            unstash sessionFile
-            def session = readFile(sessionFile).trim()
-            sh "launchable verify && launchable record tests --session ${session} --group ${repository} maven './**/target/surefire-reports' './**/target/failsafe-reports'"
-          }
-        }
-      }
-    }
-  }
-  parallel branches
-}
+// if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env.CHANGE_ID && (pullRequest.labels.contains('full-test') || pullRequest.labels.contains('weekly-test'))) {
+//   branches = [failFast: false]
+//   lines.each {line ->
+//     if (line != 'weekly' && (weeklyTestMarkerFile || env.CHANGE_ID && pullRequest.labels.contains('weekly-test'))) {
+//       return
+//     }
+//     pluginsByRepository.each { repository, plugins ->
+//       branches["pct-$repository-$line"] = {
+//         def jdk = line == 'weekly' ? 21 : 17
+//         mavenEnv(jdk: jdk, nodePool: true) {
+//           unstash line
+//           withEnv([
+//             "PLUGINS=${plugins.join(',')}",
+//             "LINE=$line",
+//             'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
+//           ]) {
+//             sh '''
+//             mvn -v
+//             bash pct.sh
+//             '''
+//           }
+//           withCredentials([string(credentialsId: 'launchable-jenkins-bom', variable: 'LAUNCHABLE_TOKEN')]) {
+//             def sessionFile = "launchable-session-${line}.txt"
+//             unstash sessionFile
+//             def session = readFile(sessionFile).trim()
+//             sh "launchable verify && launchable record tests --session ${session} --group ${repository} maven './**/target/surefire-reports' './**/target/failsafe-reports'"
+//           }
+//         }
+//       }
+//     }
+//   }
+//   parallel branches
+// }
 
-if (fullTestMarkerFile) {
-  error 'Remember to `git rm full-test` before taking out of draft'
-}
+// if (fullTestMarkerFile) {
+//   error 'Remember to `git rm full-test` before taking out of draft'
+// }
 
-infra.maybePublishIncrementals()
+// infra.maybePublishIncrementals()
