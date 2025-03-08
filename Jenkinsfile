@@ -54,7 +54,7 @@ def fullTestMarkerFile
 def weeklyTestMarkerFile
 
 stage('prep') {
-  mavenEnv(jdk: 21) {
+  mavenEnv(nodePool: true, jdk: 21) {
     checkout scm
     withEnv([
       'SAMPLE_PLUGIN_OPTS=-Dset.changelist',
