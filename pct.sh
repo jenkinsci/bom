@@ -21,6 +21,7 @@ if ! [[ $PLUGINS =~ blueocean || $PLUGINS =~ lockable-resources || $PLUGINS =~ p
 fi
 
 exec java \
+	-Dorg.jenkins.tools.test.hook.JenkinsTestHarnessHook2.enabled \
 	-jar target/pct.jar \
 	test-plugins \
 	--war "$(pwd)/target/megawar-$LINE.war" \

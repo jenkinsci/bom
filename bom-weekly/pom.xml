@@ -18,7 +18,8 @@
     <cloudbees-folder-plugin.version>6.985.va_f1635030cc5</cloudbees-folder-plugin.version>
     <configuration-as-code-plugin.version>1932.v75cb_b_f1b_698d</configuration-as-code-plugin.version>
     <data-tables-api.version>2.2.2-1</data-tables-api.version>
-    <declarative-pipeline-migration-assistant-plugin.version>1.6.4</declarative-pipeline-migration-assistant-plugin.version>
+    <!-- TODO https://github.com/jenkinsci/declarative-pipeline-migration-assistant-plugin/pull/285 -->
+    <declarative-pipeline-migration-assistant-plugin.version>1.6.5-rc329.8206b_56fea_29</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>3.0.0</forensics-api.version>
     <github-api-plugin.version>1.321-478.vc9ce627ce001</github-api-plugin.version>
     <git-plugin.version>5.7.0</git-plugin.version>
@@ -54,7 +55,8 @@
       <dependency>
         <groupId>com.cloudbees.jenkins.plugins</groupId>
         <artifactId>kubernetes-credentials-provider</artifactId>
-        <version>1.273.v15e69b_55ea_8e</version>
+        <!-- TODO https://github.com/jenkinsci/kubernetes-credentials-provider-plugin/pull/111 -->
+        <version>1.275.v23c719eb_2c3f</version>
       </dependency>
       <dependency>
         <groupId>com.coravy.hudson.plugins.github</groupId>
@@ -398,7 +400,8 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>generic-tool</artifactId>
-        <version>1.1</version>
+        <!-- TODO https://github.com/jenkinsci/generic-tool-plugin/pull/2 -->
+        <version>1.2-rc14.b_171b_dda_9cc2</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -810,7 +813,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>aws-credentials</artifactId>
-        <version>243.v41c19a_fb_5dcf</version>
+        <!-- TODO https://github.com/jenkinsci/aws-credentials-plugin/pull/275 -->
+        <version>244.v4b_3546297cf3</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -982,7 +986,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>docker-commons</artifactId>
-        <version>445.v6b_646c962a_94</version>
+        <!-- TODO https://github.com/jenkinsci/docker-commons-plugin/pull/159 -->
+        <version>448.v7763e868b_389</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1012,7 +1017,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>electricflow</artifactId>
-        <version>1.1.39</version>
+        <!-- TODO https://github.com/jenkinsci/electricflow-plugin/pull/404 -->
+        <version>1.1.40-rc914.f8cd2f7a_f745</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1058,7 +1064,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>git-server</artifactId>
-        <version>126.v0d945d8d2b_39</version>
+        <!-- TODO https://github.com/jenkinsci/git-server-plugin/pull/134 -->
+        <version>134.v238480b_a_2519</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1089,7 +1096,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>github-scm-trait-notification-context</artifactId>
-        <version>40.vfa_7f31a_b_d7f8</version>
+        <!-- TODO https://github.com/jenkinsci/github-scm-trait-notification-context-plugin/pull/18 -->
+        <version>44.vfdf88c64095f</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1114,7 +1122,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>google-kubernetes-engine</artifactId>
-        <version>0.430.v4cc1fa_1847a_9</version>
+        <!-- TODO https://github.com/jenkinsci/google-kubernetes-engine-plugin/pull/405 -->
+        <version>0.435.v259573660693</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1124,7 +1133,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>google-oauth-plugin</artifactId>
-        <version>1.330.vf5e86021cb_ec</version>
+        <!-- TODO https://github.com/jenkinsci/google-oauth-plugin/pull/243 -->
+        <version>1.334.v853f486f60c7</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1315,7 +1325,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pipeline-github</artifactId>
-        <version>2.8-159.09e4403bc62f</version>
+        <!-- TODO https://github.com/jenkinsci/pipeline-github-plugin/pull/132 -->
+        <version>2.8-161.0b_e979b_552ed</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1527,7 +1538,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>unique-id</artifactId>
-        <version>2.107.v3fa_e48679298</version>
+        <!-- TODO https://github.com/jenkinsci/unique-id-plugin/pull/27 -->
+        <version>2.112.v0514333314b_b_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
