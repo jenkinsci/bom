@@ -9,8 +9,6 @@ properties([
 //   error 'No longer running builds on response to master branch pushes. If you wish to cut a release, use “Re-run checks” from this failing check in https://github.com/jenkinsci/bom/commits/master'
 // }
 
-final String m2repo = '/home/jenkins/.m2/repository'
-
 def mavenEnv(Map params = [:], Closure body) {
   def attempt = 0
   def attempts = 6
@@ -23,7 +21,7 @@ def mavenEnv(Map params = [:], Closure body) {
           infra.withArtifactCachingProxy {
             withEnv([
               'JAVA_HOME=/opt/jdk-' + params['jdk'],
-              "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B -ntp -Dmaven.repo.local=${m2repo}"
+              "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B -ntp -Dmaven.repo.local=/home/jenkins/.m2/repository"
             ]) {
               body()
             }
@@ -58,7 +56,7 @@ stage('prep') {
     checkout scm
     withEnv([
       'SAMPLE_PLUGIN_OPTS=-Dset.changelist',
-      "MVN_LOCAL_REPO=${m2repo}",
+      'MVN_LOCAL_REPO=/home/jenkins/.m2/repository',
       ]) {
       withCredentials([
         usernamePassword(credentialsId: 'app-ci.jenkins.io', usernameVariable: 'GITHUB_APP', passwordVariable: 'GITHUB_OAUTH')
