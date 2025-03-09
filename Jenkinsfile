@@ -4,18 +4,20 @@ properties([
   // pipelineTriggers([cron('54 20 * * 6')])
 ])
 
-// if (BRANCH_NAME == 'master' && currentBuild.buildCauses*._class == ['jenkins.branch.BranchEventCause']) {
-//   currentBuild.result = 'NOT_BUILT'
-//   error 'No longer running builds on response to master branch pushes. If you wish to cut a release, use “Re-run checks” from this failing check in https://github.com/jenkinsci/bom/commits/master'
-// }
+if (BRANCH_NAME == 'master' && currentBuild.buildCauses*._class == ['jenkins.branch.BranchEventCause']) {
+  currentBuild.result = 'NOT_BUILT'
+  error 'No longer running builds on response to master branch pushes. If you wish to cut a release, use “Re-run checks” from this failing check in https://github.com/jenkinsci/bom/commits/master'
+}
+
 
 def mavenEnv(Map params = [:], Closure body) {
-  // def attempt = 0
-  // def attempts = 6
-  // retry(count: attempts, conditions: [kubernetesAgent(handleNonKubernetes: true), nonresumable()]) {
-  //   echo 'Attempt ' + ++attempt + ' of ' + attempts
-  // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
-  timeout(120) {
+  def attempt = 0
+  def attempts = 6
+  retry(count: attempts, conditions: [kubernetesAgent(handleNonKubernetes: true), nonresumable()]) {
+    echo 'Attempt ' + ++attempt + ' of ' + attempts
+    // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
+    // node('maven-bom-cacher') {
+    // timeout(120) {
     // withChecks(name: 'Tests', includeStage: true) {
     infra.withArtifactCachingProxy {
       withEnv([
@@ -33,6 +35,7 @@ def mavenEnv(Map params = [:], Closure body) {
     // }
     // }
   }
+  // }
 }
 
 @NonCPS
@@ -50,16 +53,14 @@ def lines
 def fullTestMarkerFile
 def weeklyTestMarkerFile
 
-// Single Node to ensure maven deps are filled on a single location, even concurrently
 node('maven-bom-cacher') {
   stage('prep') {
-    mavenEnv(nodePool: true, jdk: 21) {
-      withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist -DskipTests=true',]) {
+    mavenEnv(jdk: 21) {
+      checkout scm
+      withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist']) {
         withCredentials([
           usernamePassword(credentialsId: 'app-ci.jenkins.io', usernameVariable: 'GITHUB_APP', passwordVariable: 'GITHUB_OAUTH')
         ]) {
-          checkout scm
-
           // Load Maven Repo Cache if available
           sh '''
           mkdir -p "${MVN_LOCAL_REPO}"
@@ -69,13 +70,12 @@ node('maven-bom-cacher') {
           fi
           '''
 
-          // Prepare local Maven Repo
           sh '''
-          mvn -v
-          mvn -ntp dependency:go-offline
+          mvn dependency:go-offline -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo
           '''
 
           sh '''
+          mvn -v
           bash prep.sh
           '''
         }
@@ -85,9 +85,13 @@ node('maven-bom-cacher') {
       dir('target') {
         sh '''
         mv plugins.txt plugins.txt.orig
-        head -n1 plugins.txt.orig > plugins.txt
-        cat plugins.txt
+
+        head -n50 plugins.txt.orig > plugins.txt
+        '''
+
+        sh '''
         cat lines.txt
+        cat plugins.txt
         '''
 
         def plugins = readFile('plugins.txt').split('\n')
@@ -106,33 +110,36 @@ node('maven-bom-cacher') {
         //   }
         // }
       }
-      // lines.each { line ->
-      //   stash name: line, includes: "pct.sh,excludes.txt,target/pct.jar,target/megawar-${line}.war"
-      // }
+      lines.each { line ->
+        stash name: line, includes: "pct.sh,excludes.txt,target/pct.jar,target/megawar-${line}.war"
+      }
       // infra.prepareToPublishIncrementals()
     }
   }
 
   // if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env.CHANGE_ID && (pullRequest.labels.contains('full-test') || pullRequest.labels.contains('weekly-test'))) {
-  branches = [failFast: false]
+  // branches = [failFast: false]
   lines.each {line ->
-    if (line != 'weekly' && (weeklyTestMarkerFile || env.CHANGE_ID && pullRequest.labels.contains('weekly-test'))) {
-      return
-    }
+    // if (line != 'weekly' && (weeklyTestMarkerFile || env.CHANGE_ID && pullRequest.labels.contains('weekly-test'))) {
+    //   return
+    // }
     pluginsByRepository.each { repository, plugins ->
-      branches["pct-$repository-$line"] = {
+      stage("pct-$repository-$line") {
+        // branches["pct-$repository-$line"] = {
         def jdk = line == 'weekly' ? 21 : 17
         mavenEnv(jdk: jdk, nodePool: true) {
-          // unstash line
+          unstash line
           withEnv([
             "PLUGINS=${plugins.join(',')}",
             "LINE=$line",
             'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
           ]) {
             sh '''
-              mvn -v
-              bash pct.sh
-              '''
+                mvn -v
+                du -sh "${MVN_LOCAL_REPO}"
+                bash pct.sh
+                du -sh "${MVN_LOCAL_REPO}"
+                '''
           }
           // withCredentials([string(credentialsId: 'launchable-jenkins-bom', variable: 'LAUNCHABLE_TOKEN')]) {
           //   def sessionFile = "launchable-session-${line}.txt"
@@ -141,24 +148,26 @@ node('maven-bom-cacher') {
           //   sh "launchable verify && launchable record tests --session ${session} --group ${repository} maven './**/target/surefire-reports' './**/target/failsafe-reports'"
           // }
         }
+        // }
       }
     }
-    // }
-    parallel branches
   }
 
-  // if (fullTestMarkerFile) {
-  //   error 'Remember to `git rm full-test` before taking out of draft'
-  // }
-
-  // infra.maybePublishIncrementals()
-
-  // Write (partially) Maven Repo Cache
   sh '''
-  if test -d /cache-rw;
-  then
-    time tar czf ../maven-bom-local-repo.tar.gz ./
-    time cp ../maven-bom-local-repo.tar.gz /cache-rw/maven-bom-local-repo.tar.gz
-  fi
+  cd "${MVN_LOCAL_REPO}"
+  df -h .
+  du -sh .
+  time tar czf ../maven-bom-local-repo.tar.gz ./
+  du -sh /cache-rw/*
+  time cp ../maven-bom-local-repo.tar.gz /cache-rw/maven-bom-local-repo.tar.gz
+  du -sh /cache-rw/*
   '''
 }
+// parallel branches
+// }
+
+// if (fullTestMarkerFile) {
+//   error 'Remember to `git rm full-test` before taking out of draft'
+// }
+
+// infra.maybePublishIncrementals()
