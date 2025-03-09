@@ -71,7 +71,7 @@ node('maven-bom-cacher') {
           '''
 
           sh '''
-          mvn -ntp dependency:go-offline
+          mvn dependency:go-offline -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo
           '''
 
           sh '''
