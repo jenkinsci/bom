@@ -1012,7 +1012,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>electricflow</artifactId>
-        <version>1.1.39</version>
+        <version>1.1.40</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
