@@ -22,7 +22,7 @@ def mavenEnv(Map params = [:], Closure body) {
     infra.withArtifactCachingProxy {
       withEnv([
         'JAVA_HOME=/opt/jdk-' + params['jdk'],
-        "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B -ntp -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo",
+        "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo",
         "MVN_LOCAL_REPO=${WORKSPACE_TMP}/m2repo",
       ]) {
         body()
