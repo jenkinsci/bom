@@ -10,6 +10,8 @@ node('maven-bom-cacher') {
       'JAVA_HOME=/opt/jdk-21',
       "MVN_LOCAL_REPO=${WORKSPACE_TMP}/m2repo",
     ]) {
+      checkout scm
+
       sh '''
       mkdir -p "${MVN_LOCAL_REPO}"
       if test -f /cache-rw/maven-bom-local-repo.tar.gz;
