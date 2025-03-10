@@ -1114,7 +1114,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>google-kubernetes-engine</artifactId>
-        <version>0.430.v4cc1fa_1847a_9</version>
+        <version>0.436.v0064b_4a_da_a_7a_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
