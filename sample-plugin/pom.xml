@@ -1213,17 +1213,6 @@
       <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>reverse-proxy-auth-plugin</artifactId>
       <scope>test</scope>
-      <exclusions>
-        <!-- TODO Migrate from Acegi to Spring Security -->
-        <exclusion>
-          <groupId>org.acegisecurity</groupId>
-          <artifactId>acegi-security</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-dao</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
