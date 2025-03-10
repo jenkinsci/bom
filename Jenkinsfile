@@ -29,7 +29,10 @@ def mavenEnv(Map params = [:], Closure body) {
               mkdir -p "${MVN_LOCAL_REPO}"
               if test -f /cache/maven-bom-local-repo.tar.gz;
               then
-                time tar xzf /cache/maven-bom-local-repo.tar.gz -C "${MVN_LOCAL_REPO}"
+                pushd "${MVN_LOCAL_REPO}"
+                time cp /cache/maven-bom-local-repo.tar.gz ../
+                time tar xzf ../maven-bom-local-repo.tar.gz ./
+                popd
               fi
               '''
 
