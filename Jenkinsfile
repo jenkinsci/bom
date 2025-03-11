@@ -6,10 +6,7 @@ properties([
 
 node('maven-bom-cacher') {
   infra.withArtifactCachingProxy {
-    withEnv([
-      'JAVA_HOME=/opt/jdk-21',
-      "MVN_LOCAL_REPO=${WORKSPACE_TMP}/m2repo",
-    ]) {
+    withEnv(['JAVA_HOME=/opt/jdk-21', "MVN_LOCAL_REPO=${WORKSPACE_TMP}/m2repo",]) {
       checkout scm
 
       sh '''
@@ -25,7 +22,21 @@ node('maven-bom-cacher') {
       '''
 
       sh '''
-      mvn -pl sample-plugin dependency:go-offline -Dmaven.repo.local=${MVN_LOCAL_REPO}
+      LINES=("weekly" "2.479.x" "2.492.x")
+      for line in "${LINES[@]}"; do
+        echo "== $line"
+          if [[ $line != "weekly" ]]; then
+              MVN_OPTS="-P $line"
+          else
+              MVN_OPTS=
+          fi
+          mvn -pl sample-plugin\
+              dependency:go-offline \
+              -Dmaven.repo.local=./cache \
+              -DincludeScore=runtime,compile,test \
+              -Dmaven.repo.local="${MVN_LOCAL_REPO}" \
+              "${MVN_OPTS[@]}"
+      done
       '''
 
       sh '''
