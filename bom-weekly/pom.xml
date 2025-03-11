@@ -399,7 +399,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>generic-tool</artifactId>
-        <version>1.1</version>
+        <version>1.2</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -601,7 +601,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>warnings-ng</artifactId>
-        <version>12.3.0</version>
+        <version>12.4.1</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
@@ -811,7 +811,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>aws-credentials</artifactId>
-        <version>243.v41c19a_fb_5dcf</version>
+        <version>245.v8a_1b_7c11a_94d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1008,7 +1008,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ec2</artifactId>
-        <version>1872.v8757931fec80</version>
+        <version>1873.vf0b_f234b_e2f3</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1115,7 +1115,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>google-kubernetes-engine</artifactId>
-        <version>0.430.v4cc1fa_1847a_9</version>
+        <version>0.436.v0064b_4a_da_a_7a_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1155,7 +1155,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jackson2-api</artifactId>
-        <version>2.18.3-399.v74c9ce452ea_8</version>
+        <version>2.17.0-389.va_5c7e45cd806</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1528,7 +1528,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>unique-id</artifactId>
-        <version>2.107.v3fa_e48679298</version>
+        <version>2.113.va_25f74db_66a_b_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
