@@ -23,19 +23,17 @@ node('maven-bom-cacher') {
 
       sh '''
       LINES=("weekly" "2.479.x" "2.492.x")
+
       for line in "${LINES[@]}"; do
-        echo "== $line"
-          if [[ $line != "weekly" ]]; then
-              MVN_OPTS="-P $line"
-          else
-              MVN_OPTS=
-          fi
-          mvn -pl sample-plugin\
-              dependency:go-offline \
-              -Dmaven.repo.local=./cache \
-              -DincludeScore=runtime,compile,test \
-              -Dmaven.repo.local="${MVN_LOCAL_REPO}" \
-              "${MVN_OPTS[@]}"
+        MVN_OPTS=()
+        if [[ $line != "weekly" ]]; then
+            MVN_OPTS+=("-P $line")
+        fi
+        mvn -pl sample-plugin\
+            dependency:go-offline \
+            -DincludeScore=runtime,compile,test \
+            -Dmaven.repo.local="${MVN_LOCAL_REPO}" \
+            "${MVN_OPTS[@]}"
       done
       '''
 
