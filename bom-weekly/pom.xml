@@ -1089,7 +1089,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>github-scm-trait-notification-context</artifactId>
-        <version>40.vfa_7f31a_b_d7f8</version>
+        <version>45.v8ef831829589</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
