@@ -36,7 +36,7 @@
     <workflow-job-plugin.version>1505.vea_4b_20a_4a_495</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>803.v08103b_87c280</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>700.v6e45cb_a_5a_a_21</workflow-step-api-plugin.version>
-    <workflow-support-plugin.version>961.v51869f7b_d409</workflow-support-plugin.version>
+    <workflow-support-plugin.version>963.va_600813d04a_a_</workflow-support-plugin.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -296,7 +296,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>custom-folder-icon</artifactId>
-        <version>2.18</version>
+        <version>2.19</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1205,7 +1205,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>junit-attachments</artifactId>
-        <version>277.v2174c461cb_5c</version>
+        <version>282.vf662e91dc1e5</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
