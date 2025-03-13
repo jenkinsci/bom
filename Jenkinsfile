@@ -32,6 +32,7 @@ def mavenEnv(Map params = [:], Closure body) {
                 pushd "${MVN_LOCAL_REPO}"
                 time cp /cache/maven-bom-local-repo.tar.gz ../
                 time tar xzf ../maven-bom-local-repo.tar.gz ./
+                rm ../maven-bom-local-repo.tar.gz
                 popd
               fi
               '''
