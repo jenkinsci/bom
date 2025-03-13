@@ -114,6 +114,18 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
       return
     }
     pluginsByRepository.each { repository, plugins ->
+      // TODO remove when dropping support for 2.479.x
+      if (line == '2.479.x') {
+        if (repository == 'commons-compress-api-plugin') {
+          return
+        } else if (repository == 'htmlpublisher-plugin') {
+          return
+        } else if (repository == 'javadoc-plugin') {
+          return
+        } else if (repository == 'pipeline-utility-steps-plugin') {
+          return
+        }
+      }
       branches["pct-$repository-$line"] = {
         def jdk = line == 'weekly' ? 21 : 17
         mavenEnv(jdk: jdk) {
