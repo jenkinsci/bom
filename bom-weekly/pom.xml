@@ -1159,11 +1159,6 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
-        <artifactId>jacoco</artifactId>
-        <version>3.3.7</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>javadoc</artifactId>
         <version>310.v032f3f16b_0f8</version>
       </dependency>
