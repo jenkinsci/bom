@@ -1178,6 +1178,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>jobcacher</artifactId>
+        <version>640.v424a_7cc1087a_</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jsch</artifactId>
         <version>0.2.16-95.v3eecb_55fa_b_78</version>
       </dependency>
