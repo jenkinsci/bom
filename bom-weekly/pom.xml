@@ -1460,6 +1460,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>simple-theme-plugin</artifactId>
+        <version>202.v6367d3dea_73b_</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>skip-notifications-trait</artifactId>
         <version>490.v81b_0f37c3676</version>
       </dependency>
