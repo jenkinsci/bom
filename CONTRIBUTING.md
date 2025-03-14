@@ -8,16 +8,16 @@ For people potentially working on the BOM itself, not just consuming it.
 | ------------ | -------------------- |
 | 2025-02-28   | Bruno Verachten      |
 | 2025-03-14   | Bruno Verachten      |
-| 2025-03-21   | Kris Stern           |
-| 2025-03-28   | Kris Stern           |
+| 2025-03-21   | Mark Waite           |
+| 2025-03-28   | Mark Waite           |
 | 2025-04-04   | Basil Crow           |
 | 2025-04-11   | Basil Crow           |
 | 2025-04-18   | Darin Pope           |
 | 2025-04-25   | Darin Pope           |
 | 2025-05-02   | Adrien Lecharpentier |
 | 2025-05-09   | Adrien Lecharpentier |
-| 2025-05-16   | Mark Waite           |
-| 2025-05-23   | Mark Waite           |
+| 2025-05-16   | Kris Stern           |
+| 2025-05-23   | Kris Stern           |
 
 ## Updating a plugin
 
