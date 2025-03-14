@@ -24,7 +24,7 @@
     <git-plugin.version>5.7.0</git-plugin.version>
     <junit-plugin.version>1317.v5b_35d792b_06a_</junit-plugin.version>
     <!-- TODO: Replace with released version after testing is complete -->
-    <mina-sshd-api.version>2.15.0-157.v5e9d4d0860eb_</mina-sshd-api.version>
+    <mina-sshd-api.version>2.15.0-158.vc368a_4a_d8a_9a_</mina-sshd-api.version>
     <okhttp-api-plugin.version>4.11.0-183.va_87fc7a_89810</okhttp-api-plugin.version>
     <pipeline-maven-plugin.version>1508.v347c4b_692202</pipeline-maven-plugin.version>
     <pipeline-model-definition-plugin.version>2.2247.va_423189a_7dff</pipeline-model-definition-plugin.version>
@@ -1054,7 +1054,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>git-client</artifactId>
-        <version>6.2.0-rc3710.111f814fdc4b_</version>
+        <version>6.2.0-rc3714.865694da_b_cd7</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
