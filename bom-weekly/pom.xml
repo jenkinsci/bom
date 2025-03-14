@@ -1026,6 +1026,16 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>envinject</artifactId>
+        <version>2.926.v69c9b_3896a_96</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>envinject-api</artifactId>
+        <version>1.235.va_14c74f8f487</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>external-monitor-job</artifactId>
         <version>221.v35059272565b_</version>
       </dependency>
@@ -1531,6 +1541,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>urltrigger</artifactId>
+        <version>1.05</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>variant</artifactId>
         <version>70.va_d9f17f859e0</version>
       </dependency>
@@ -1553,6 +1568,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ws-cleanup</artifactId>
         <version>0.48</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>xtrigger-api</artifactId>
+        <version>1.2</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins.aws-java-sdk</groupId>
