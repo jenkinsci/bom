@@ -184,6 +184,11 @@
       <scope>test</scope>
     </dependency>
     <dependency>
+      <groupId>io.jenkins.docker</groupId>
+      <artifactId>docker-plugin</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <groupId>io.jenkins.plugins</groupId>
       <artifactId>adoptopenjdk</artifactId>
       <scope>test</scope>
