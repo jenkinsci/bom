@@ -74,6 +74,11 @@
       <scope>test</scope>
     </dependency>
     <dependency>
+      <groupId>de.esailors.jenkins</groupId>
+      <artifactId>test-stability</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <groupId>igalg.jenkins.plugins</groupId>
       <artifactId>multibranch-build-strategy-extension</artifactId>
       <scope>test</scope>

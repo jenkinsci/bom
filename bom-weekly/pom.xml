@@ -82,6 +82,11 @@
         <version>216.v0732cc7fb_076</version>
       </dependency>
       <dependency>
+        <groupId>de.esailors.jenkins</groupId>
+        <artifactId>test-stability</artifactId>
+        <version>2.4</version>
+      </dependency>
+      <dependency>
         <groupId>igalg.jenkins.plugins</groupId>
         <artifactId>multibranch-build-strategy-extension</artifactId>
         <version>60.vce1b_19770361</version>
