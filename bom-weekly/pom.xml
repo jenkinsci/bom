@@ -19,7 +19,7 @@
     <configuration-as-code-plugin.version>1932.v75cb_b_f1b_698d</configuration-as-code-plugin.version>
     <data-tables-api.version>2.2.2-1</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.5</declarative-pipeline-migration-assistant-plugin.version>
-    <forensics-api.version>3.0.0</forensics-api.version>
+    <forensics-api.version>3.1.0</forensics-api.version>
     <github-api-plugin.version>1.321-478.vc9ce627ce001</github-api-plugin.version>
     <git-plugin.version>5.7.0</git-plugin.version>
     <junit-plugin.version>1317.v5b_35d792b_06a_</junit-plugin.version>
@@ -192,6 +192,11 @@
         <groupId>io.jenkins.configuration-as-code</groupId>
         <artifactId>test-harness</artifactId>
         <version>${configuration-as-code-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.docker</groupId>
+        <artifactId>docker-plugin</artifactId>
+        <version>1274.vc0203fdf2e74</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -404,7 +409,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>git-forensics</artifactId>
-        <version>3.1.0</version>
+        <version>3.2.0</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1027,6 +1032,16 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>envinject</artifactId>
+        <version>2.926.v69c9b_3896a_96</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>envinject-api</artifactId>
+        <version>1.235.va_14c74f8f487</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>external-monitor-job</artifactId>
         <version>221.v35059272565b_</version>
       </dependency>
@@ -1179,13 +1194,18 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>jobcacher</artifactId>
+        <version>640.v424a_7cc1087a_</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jsch</artifactId>
         <version>0.2.16-95.v3eecb_55fa_b_78</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jsoup</artifactId>
-        <version>1.18.3-30.v952e9442d416</version>
+        <version>1.19.1-36.v63b_c859911d0</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1527,6 +1547,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>urltrigger</artifactId>
+        <version>1.05</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>variant</artifactId>
         <version>70.va_d9f17f859e0</version>
       </dependency>
@@ -1549,6 +1574,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ws-cleanup</artifactId>
         <version>0.48</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>xtrigger-api</artifactId>
+        <version>1.2</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins.aws-java-sdk</groupId>
