@@ -784,6 +784,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>ansible</artifactId>
+        <version>500.v7564a_db_8feec</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ansicolor</artifactId>
         <version>1.0.6</version>
       </dependency>
