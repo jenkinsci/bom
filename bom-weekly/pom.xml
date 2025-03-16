@@ -1876,6 +1876,11 @@
         <artifactId>instant-messaging</artifactId>
         <version>2.850.ve88c5a_f8b_b_f0</version>
       </dependency>
+      <dependency>
+        <groupId>org.jvnet.hudson.plugins</groupId>
+        <artifactId>thinBackup</artifactId>
+        <version>2.1.2</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 </project>
