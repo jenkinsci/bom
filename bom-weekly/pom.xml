@@ -271,7 +271,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>commons-compress-api</artifactId>
-        <version>1.27.1-2</version>
+        <version>1.27.1-3</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1169,7 +1169,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>htmlpublisher</artifactId>
-        <version>424.va_e57f1253461</version>
+        <version>425</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1235,7 +1235,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>junit-attachments</artifactId>
-        <version>282.vf662e91dc1e5</version>
+        <version>288.vcb_96b_d3a_b_350</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1265,7 +1265,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>matrix-auth</artifactId>
-        <version>3.2.4</version>
+        <version>3.2.5</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
