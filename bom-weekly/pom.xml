@@ -890,6 +890,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>built-on-column</artifactId>
+        <version>1.5</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>claim</artifactId>
         <version>595.vb_87b_8dfa_789a_</version>
       </dependency>
