@@ -1169,7 +1169,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>htmlpublisher</artifactId>
-        <version>424.va_e57f1253461</version>
+        <version>425</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
