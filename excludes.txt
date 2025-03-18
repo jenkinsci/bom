@@ -14,3 +14,6 @@ org.jenkinsci.plugins.durabletask.BourneShellScriptTest
 
 # TODO tends to run out of memory
 org.jenkinsci.plugins.pipeline.modeldefinition.TriggersTest
+
+# TODO https://github.com/jenkinsci/jenkins/pull/10408#issuecomment-2734698096
+org.jenkinsci.plugins.oic.OicSecurityRealmFipsTest#worksOnMigrationWithValidValuesTest
