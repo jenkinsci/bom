@@ -1,13 +1,13 @@
 // Do not trigger build regularly on change requests as it costs a lot
-def pipelineTriggers = []
+String cronTrigger = ''
 if(env.BRANCH_NAME == "master") {
-   pipelineTriggers << cron('45 07 * * 5')
+   cronTrigger = '45 07 * * 5'
 }
 
 properties([
   disableConcurrentBuilds(abortPrevious: true),
   buildDiscarder(logRotator(numToKeepStr: '7')),
-  pipelineTriggers(pipelineTriggers)
+  pipelineTriggers([cron(cronTrigger)])
 ])
 
 if (env.BRANCH_NAME == 'master' && currentBuild.buildCauses*._class == ['jenkins.branch.BranchEventCause']) {
