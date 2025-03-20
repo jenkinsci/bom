@@ -1,10 +1,16 @@
+// Do not trigger build regularly on change requests as it costs a lot
+def pipelineTriggers = []
+if(env.BRANCH_NAME == "master") {
+   pipelineTriggers << cron('45 07 * * 5')
+}
+
 properties([
   disableConcurrentBuilds(abortPrevious: true),
   buildDiscarder(logRotator(numToKeepStr: '7')),
-  pipelineTriggers([cron('45 07 * * 5')])
+  pipelineTriggers(pipelineTriggers)
 ])
 
-if (BRANCH_NAME == 'master' && currentBuild.buildCauses*._class == ['jenkins.branch.BranchEventCause']) {
+if (env.BRANCH_NAME == 'master' && currentBuild.buildCauses*._class == ['jenkins.branch.BranchEventCause']) {
   currentBuild.result = 'NOT_BUILT'
   error 'No longer running builds on response to master branch pushes. If you wish to cut a release, use “Re-run checks” from this failing check in https://github.com/jenkinsci/bom/commits/master'
 }
