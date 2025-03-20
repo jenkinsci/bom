@@ -1683,7 +1683,7 @@
       <id>2.492.x</id>
       <properties>
         <bom>2.492.x</bom>
-        <jenkins.version>2.492.2</jenkins.version>
+        <jenkins.version>2.492.3-rc35802.b_b_4a_1db_62911</jenkins.version>
       </properties>
     </profile>
     <profile>
