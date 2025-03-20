@@ -9,14 +9,14 @@
   <artifactId>bom-weekly</artifactId>
   <packaging>pom</packaging>
   <properties>
-    <aws-java-sdk-plugin.version>1.12.772-477.v650d756dcf6d</aws-java-sdk-plugin.version>
+    <aws-java-sdk-plugin.version>1.12.780-480.v4a_0819121a_9e</aws-java-sdk-plugin.version>
     <aws-java-sdk2-plugin.version>2.30.28-26.v649b_8df2f988</aws-java-sdk2-plugin.version>
     <gcp-java-sdk-plugin.version>26.23.0-31.va_efec42c4f8c</gcp-java-sdk-plugin.version>
     <blueocean-plugin.version>1.27.17</blueocean-plugin.version>
     <branch-api-plugin.version>2.1214.v3f652804588d</branch-api-plugin.version>
     <checks-api.version>367.v18b_7f530e54a_</checks-api.version>
     <cloudbees-folder-plugin.version>6.985.va_f1635030cc5</cloudbees-folder-plugin.version>
-    <configuration-as-code-plugin.version>1932.v75cb_b_f1b_698d</configuration-as-code-plugin.version>
+    <configuration-as-code-plugin.version>1947.v7d33fe23569c</configuration-as-code-plugin.version>
     <data-tables-api.version>2.2.2-1</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.5</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>3.1.0</forensics-api.version>
@@ -32,8 +32,8 @@
     <plugin-util-api.version>6.0.0</plugin-util-api.version>
     <scm-api-plugin.version>704.v3ce5c542825a_</scm-api-plugin.version>
     <subversion-plugin.version>1287.vd2d507146906</subversion-plugin.version>
-    <workflow-api-plugin.version>1363.v03f731255494</workflow-api-plugin.version>
-    <workflow-cps-plugin.version>4043.va_fb_de6a_a_8b_f5</workflow-cps-plugin.version>
+    <workflow-api-plugin.version>1366.vf1fb_e1a_f6b_22</workflow-api-plugin.version>
+    <workflow-cps-plugin.version>4045.v0efb_cb_7cea_e9</workflow-cps-plugin.version>
     <workflow-job-plugin.version>1505.vea_4b_20a_4a_495</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>803.v08103b_87c280</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>700.v6e45cb_a_5a_a_21</workflow-step-api-plugin.version>
@@ -272,7 +272,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>commons-compress-api</artifactId>
-        <version>1.27.1-2</version>
+        <version>1.27.1-3</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -785,6 +785,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>ansible</artifactId>
+        <version>524.v9fa_a_4c989224</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ansicolor</artifactId>
         <version>1.0.6</version>
       </dependency>
@@ -871,6 +876,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>build-name-setter</artifactId>
+        <version>2.5.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>build-timeout</artifactId>
         <version>1.36</version>
       </dependency>
@@ -878,6 +888,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>build-user-vars-plugin</artifactId>
         <version>195.v8c35f9d5c3dc</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>built-on-column</artifactId>
+        <version>1.5</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1013,7 +1028,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ec2</artifactId>
-        <version>1873.vf0b_f234b_e2f3</version>
+        <version>1881.vc14132ea_f042</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1160,7 +1175,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>htmlpublisher</artifactId>
-        <version>424.va_e57f1253461</version>
+        <version>425</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1199,6 +1214,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>jobConfigHistory</artifactId>
+        <version>1305.vf20a_356586b_8</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jsch</artifactId>
         <version>0.2.16-95.v3eecb_55fa_b_78</version>
       </dependency>
@@ -1221,7 +1241,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>junit-attachments</artifactId>
-        <version>282.vf662e91dc1e5</version>
+        <version>288.vcb_96b_d3a_b_350</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1251,7 +1271,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>matrix-auth</artifactId>
-        <version>3.2.4</version>
+        <version>3.2.5</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1290,13 +1310,23 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>nodelabelparameter</artifactId>
+        <version>759.vb_b_e95db_f3251</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>oauth-credentials</artifactId>
         <version>0.657.v7d8dd90b_0382</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>Office-365-Connector</artifactId>
+        <version>5.1.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>oic-auth</artifactId>
-        <version>4.487.v5eb_cdf31cf09</version>
+        <version>4.494.v6b_f419104767</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1385,6 +1415,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>powershell</artifactId>
+        <version>2.3</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>prometheus</artifactId>
         <version>819.v50953a_c560dd</version>
       </dependency>
@@ -1461,6 +1496,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>simple-theme-plugin</artifactId>
+        <version>202.v6367d3dea_73b_</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>skip-notifications-trait</artifactId>
         <version>490.v81b_0f37c3676</version>
       </dependency>
@@ -1496,6 +1536,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>ssh-steps</artifactId>
+        <version>2.0.79.v1d1b_5f76dda_8</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>structs</artifactId>
         <version>343.vdcf37b_a_c81d5</version>
       </dependency>
@@ -1514,6 +1559,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>support-core</artifactId>
         <version>1671.v1a_d55b_86706a_</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>swarm</artifactId>
+        <version>3.49</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1851,6 +1901,16 @@
         <groupId>org.jvnet.hudson.plugins</groupId>
         <artifactId>instant-messaging</artifactId>
         <version>2.850.ve88c5a_f8b_b_f0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jvnet.hudson.plugins</groupId>
+        <artifactId>postbuild-task</artifactId>
+        <version>72.v75dc459e4747</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jvnet.hudson.plugins</groupId>
+        <artifactId>thinBackup</artifactId>
+        <version>2.1.2</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
