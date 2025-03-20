@@ -13,6 +13,18 @@
     {
       "customType": "regex",
       "fileMatch": [
+        "pct.sh"
+      ],
+      "matchStrings": [
+        "JTH_VERSION=(?<currentValue>.*?)\\n"
+      ],
+      "depNameTemplate": "org.jenkins-ci.main:jenkins-test-harness",
+      "datasourceTemplate": "maven",
+      "registryUrlTemplate": "https://repo.jenkins-ci.org/releases/"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": [
         "prep-pct.sh"
       ],
       "matchStrings": [
@@ -47,6 +59,7 @@
     },
     {
       "matchDepNames": [
+        "org.jenkins-ci.main:jenkins-test-harness",
         "org.jenkins-ci.main:jenkins-war"
       ],
       "labels": [

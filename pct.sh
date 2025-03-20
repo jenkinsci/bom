@@ -20,7 +20,14 @@ if ! [[ $PLUGINS =~ blueocean || $PLUGINS =~ lockable-resources || $PLUGINS =~ p
 	PCT_D_ARGS+='-DforkCount=.75C '
 fi
 
+# Tracked by .github/renovate.json
+JTH_VERSION=2418.ve283b_a_b_79e37
+if [[ $LINE == weekly ]]; then
+	PCT_D_ARGS+="-Djenkins-test-harness.version=${JTH_VERSION} "
+fi
+
 exec java \
+	-Dorg.jenkins.tools.test.hook.JenkinsTestHarnessHook2.enabled \
 	-jar target/pct.jar \
 	test-plugins \
 	--war "$(pwd)/target/megawar-$LINE.war" \
