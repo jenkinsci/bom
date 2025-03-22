@@ -347,7 +347,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>eddsa-api</artifactId>
-        <version>0.3.0-13.v7cb_69ed68f00</version>
+        <version>0.3.0.1-19.vc432d923e5ee</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
