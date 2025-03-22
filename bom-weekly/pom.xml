@@ -1057,7 +1057,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>external-monitor-job</artifactId>
-        <version>221.v35059272565b_</version>
+        <version>223.vb_fddcf42c9b_3</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
