@@ -1208,6 +1208,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>job-import-plugin</artifactId>
+        <version>122.v35289550f1e6</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jobcacher</artifactId>
         <version>640.v424a_7cc1087a_</version>
       </dependency>
