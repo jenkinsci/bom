@@ -748,6 +748,11 @@
         <version>${mina-sshd-api.version}</version>
       </dependency>
       <dependency>
+        <groupId>jp.ikedam.jenkins.plugins</groupId>
+        <artifactId>extensible-choice-parameter</artifactId>
+        <version>237.v51568f37b_78e</version>
+      </dependency>
+      <dependency>
         <groupId>net.plavcak.jenkins</groupId>
         <artifactId>scmskip</artifactId>
         <version>72.vc2f9088d11e2</version>

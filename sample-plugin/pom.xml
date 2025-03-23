@@ -670,6 +670,11 @@
       <scope>test</scope>
     </dependency>
     <dependency>
+      <groupId>jp.ikedam.jenkins.plugins</groupId>
+      <artifactId>extensible-choice-parameter</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <groupId>net.plavcak.jenkins</groupId>
       <artifactId>scmskip</artifactId>
       <scope>test</scope>
