@@ -23,7 +23,8 @@
     <github-api-plugin.version>1.321-488.v9b_c0da_9533f8</github-api-plugin.version>
     <git-plugin.version>5.7.0</git-plugin.version>
     <junit-plugin.version>1319.v000471ca_e5e2</junit-plugin.version>
-    <mina-sshd-api.version>2.14.0-143.v2b_362fc39576</mina-sshd-api.version>
+    <!-- TODO https://github.com/jenkinsci/mina-sshd-api-plugin/pull/150 -->
+    <mina-sshd-api.version>2.15.0-158.vc368a_4a_d8a_9a_</mina-sshd-api.version>
     <okhttp-api-plugin.version>4.11.0-189.v976fa_d3379d6</okhttp-api-plugin.version>
     <pipeline-maven-plugin.version>1508.v347c4b_692202</pipeline-maven-plugin.version>
     <pipeline-model-definition-plugin.version>2.2247.va_423189a_7dff</pipeline-model-definition-plugin.version>
@@ -59,7 +60,8 @@
       <dependency>
         <groupId>com.coravy.hudson.plugins.github</groupId>
         <artifactId>github</artifactId>
-        <version>1.42.0</version>
+        <!-- TODO https://github.com/jenkinsci/github-plugin/pull/394 -->
+        <version>1.42.1-rc849.d58d1038f861</version>
       </dependency>
       <dependency>
         <groupId>com.paul8620.jenkins.plugins</groupId>
@@ -1124,7 +1126,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>github-oauth</artifactId>
-        <version>650.v0c171ce57f6b_</version>
+        <!-- TODO https://github.com/jenkinsci/github-oauth-plugin/pull/293 -->
+        <version>651.v269dd0fd03e3</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1526,7 +1529,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>sonar</artifactId>
-        <version>2.18</version>
+        <!-- TODO https://github.com/SonarSource/sonar-scanner-jenkins/pull/314 -->
+        <version>2.18.1-20250327.154543-2</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
