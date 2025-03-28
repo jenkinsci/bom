@@ -906,7 +906,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>claim</artifactId>
-        <version>595.vb_87b_8dfa_789a_</version>
+        <version>599.v95c2f92e1c88</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
