@@ -1,10 +1,16 @@
+// Do not trigger build regularly on change requests as it costs a lot
+String cronTrigger = ''
+if(env.BRANCH_NAME == "master") {
+  cronTrigger = '15 11 * * 5'
+}
+
 properties([
   disableConcurrentBuilds(abortPrevious: true),
   buildDiscarder(logRotator(numToKeepStr: '7')),
-  pipelineTriggers([cron('58 15 * * 5')])
+  pipelineTriggers([cron(cronTrigger)])
 ])
 
-if (BRANCH_NAME == 'master' && currentBuild.buildCauses*._class == ['jenkins.branch.BranchEventCause']) {
+if (env.BRANCH_NAME == 'master' && currentBuild.buildCauses*._class == ['jenkins.branch.BranchEventCause']) {
   currentBuild.result = 'NOT_BUILT'
   error 'No longer running builds on response to master branch pushes. If you wish to cut a release, use “Re-run checks” from this failing check in https://github.com/jenkinsci/bom/commits/master'
 }
@@ -15,14 +21,28 @@ def mavenEnv(Map params = [:], Closure body) {
   retry(count: attempts, conditions: [kubernetesAgent(handleNonKubernetes: true), nonresumable()]) {
     echo 'Attempt ' + ++attempt + ' of ' + attempts
     // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
-    node(params['nodePool'] ? 'maven-bom': 'maven-' + params['jdk']) {
+    node('maven-bom') {
       timeout(120) {
         withChecks(name: 'Tests', includeStage: true) {
           infra.withArtifactCachingProxy {
             withEnv([
               'JAVA_HOME=/opt/jdk-' + params['jdk'],
-              "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B -ntp -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo"
+              "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B -ntp -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo",
+              "MVN_LOCAL_REPO=${WORKSPACE_TMP}/m2repo",
             ]) {
+              // Load Maven Repo Cache if available
+              sh '''
+              mkdir -p "${MVN_LOCAL_REPO}"
+              if test -f /cache/maven-bom-local-repo.tar.gz;
+              then
+                pushd "${MVN_LOCAL_REPO}"
+                time cp /cache/maven-bom-local-repo.tar.gz ../
+                time tar xzf ../maven-bom-local-repo.tar.gz ./
+                rm ../maven-bom-local-repo.tar.gz
+                popd
+              fi
+              '''
+
               body()
             }
           }
@@ -100,9 +120,21 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
       return
     }
     pluginsByRepository.each { repository, plugins ->
+      // TODO remove when dropping support for 2.479.x
+      if (line == '2.479.x') {
+        if (repository == 'commons-compress-api-plugin') {
+          return
+        } else if (repository == 'htmlpublisher-plugin') {
+          return
+        } else if (repository == 'javadoc-plugin') {
+          return
+        } else if (repository == 'pipeline-utility-steps-plugin') {
+          return
+        }
+      }
       branches["pct-$repository-$line"] = {
         def jdk = line == 'weekly' ? 21 : 17
-        mavenEnv(jdk: jdk, nodePool: true) {
+        mavenEnv(jdk: jdk) {
           unstash line
           withEnv([
             "PLUGINS=${plugins.join(',')}",

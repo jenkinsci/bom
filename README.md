@@ -14,7 +14,7 @@ If you are interested in a Bill of Materials for Jenkins core components, see [t
 After [selecting your plugin’s LTS baseline](https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/):
 
 ```xml
-<jenkins.version>2.462.3</jenkins.version>
+<jenkins.version>2.479.3</jenkins.version>
 ```
 
 just import the [latest BOM](https://repo.jenkins-ci.org/public/io/jenkins/tools/bom) from that line:
@@ -24,7 +24,7 @@ just import the [latest BOM](https://repo.jenkins-ci.org/public/io/jenkins/tools
     <dependencies>
         <dependency>
             <groupId>io.jenkins.tools.bom</groupId>
-            <artifactId>bom-2.462.x</artifactId>
+            <artifactId>bom-2.479.x</artifactId>
             <version>…</version>
             <scope>import</scope>
             <type>pom</type>
@@ -100,6 +100,7 @@ When an older Jenkins version is used, then the matching older version of the pl
 | bom-2.426.x | 3208.vb_21177d4b_cd9  |                              |
 | bom-2.440.x | 3435.v238d66a_043fb_  |                              |
 | bom-2.452.x | 3944.v1a_e4f8b_452db_ |                              |
+| bom-2.462.x | 4228.v0a_71308d905b_  |                              |
 
 The latest versions of all BOM lines are available from the [Jenkins artifact repository](https://repo.jenkins-ci.org/public/io/jenkins/tools/bom).
 
