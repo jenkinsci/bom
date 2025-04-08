@@ -14,7 +14,8 @@
   <properties>
     <changelist>999999-SNAPSHOT</changelist>
     <bom>weekly</bom>
-    <jenkins.version>2.505-rc36601.22b_6f7027574</jenkins.version>
+    <!-- Revert RunIdMigrator removal https://github.com/jenkinsci/jenkins/pull/10517 -->
+    <jenkins.version>2.505-rc36602.2cf37a_11df58</jenkins.version>
     <spotless.check.skip>false</spotless.check.skip>
   </properties>
   <dependencyManagement>
