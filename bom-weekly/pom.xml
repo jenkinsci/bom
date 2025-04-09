@@ -13,25 +13,25 @@
     <aws-java-sdk2-plugin.version>2.30.28-26.v649b_8df2f988</aws-java-sdk2-plugin.version>
     <gcp-java-sdk-plugin.version>26.23.0-31.va_efec42c4f8c</gcp-java-sdk-plugin.version>
     <blueocean-plugin.version>1.27.17</blueocean-plugin.version>
-    <branch-api-plugin.version>2.1214.v3f652804588d</branch-api-plugin.version>
+    <branch-api-plugin.version>2.1217.v43d8b_b_d8b_2c7</branch-api-plugin.version>
     <checks-api.version>367.v18b_7f530e54a_</checks-api.version>
-    <cloudbees-folder-plugin.version>6.999.v42253c105443</cloudbees-folder-plugin.version>
-    <configuration-as-code-plugin.version>1950.v506f96a_69516</configuration-as-code-plugin.version>
+    <cloudbees-folder-plugin.version>6.1003.v5338b_c4d6992</cloudbees-folder-plugin.version>
+    <configuration-as-code-plugin.version>1953.v148f87d74b_1e</configuration-as-code-plugin.version>
     <data-tables-api.version>2.2.2-1</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.5</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>3.1.0</forensics-api.version>
     <github-api-plugin.version>1.321-488.v9b_c0da_9533f8</github-api-plugin.version>
     <git-plugin.version>5.7.0</git-plugin.version>
-    <junit-plugin.version>1319.v000471ca_e5e2</junit-plugin.version>
+    <junit-plugin.version>1321.v399b_3e395b_5a_</junit-plugin.version>
     <mina-sshd-api.version>2.15.0-161.vb_200831a_c15b_</mina-sshd-api.version>
     <okhttp-api-plugin.version>4.11.0-189.v976fa_d3379d6</okhttp-api-plugin.version>
     <pipeline-maven-plugin.version>1508.v347c4b_692202</pipeline-maven-plugin.version>
-    <pipeline-model-definition-plugin.version>2.2247.va_423189a_7dff</pipeline-model-definition-plugin.version>
+    <pipeline-model-definition-plugin.version>2.2254.v2a_978de46f35</pipeline-model-definition-plugin.version>
     <pipeline-stage-view-plugin.version>2.37</pipeline-stage-view-plugin.version>
     <plugin-util-api.version>6.1.0</plugin-util-api.version>
     <scm-api-plugin.version>704.v3ce5c542825a_</scm-api-plugin.version>
     <subversion-plugin.version>1287.vd2d507146906</subversion-plugin.version>
-    <workflow-api-plugin.version>1366.vf1fb_e1a_f6b_22</workflow-api-plugin.version>
+    <workflow-api-plugin.version>1371.ve334280b_d611</workflow-api-plugin.version>
     <workflow-cps-plugin.version>4080.va_15b_44a_91525</workflow-cps-plugin.version>
     <workflow-job-plugin.version>1508.v9cb_c3a_a_89dfd</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>803.v08103b_87c280</workflow-multibranch-plugin.version>
@@ -291,7 +291,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>coverage</artifactId>
-        <version>2.2.0</version>
+        <version>2.3.0</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -554,7 +554,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>oss-symbols-api</artifactId>
-        <version>308.v0c48656b_15c1</version>
+        <version>313.vd9dc470e16a_0</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1134,7 +1134,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>gitlab-logo</artifactId>
-        <version>166.v13de9593c018</version>
+        <version>174.v2b_cce43640b_d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
