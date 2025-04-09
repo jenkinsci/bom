@@ -1093,7 +1093,11 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>git-client</artifactId>
-        <version>6.1.2</version>
+        <!-- TODO: test in 6.1.2 fails with Apache Mina SSHD 2.15.0 -->
+        <!-- 6.1.3-rc3691.d370da_2808ef is the incremental before the assertion is disabled (fails) -->
+        <!-- TODO: assertion disabled in 6.1.3 incremental -->
+        <!-- 6.1.3-rc3692.0c73d1414381 is the incremental after the assertion is disabled (passes) -->
+        <version>6.1.3-rc3692.0c73d1414381</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
