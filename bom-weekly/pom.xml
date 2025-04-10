@@ -886,7 +886,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>build-timeout</artifactId>
-        <version>1.37</version>
+        <version>1.38</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
