@@ -15,7 +15,8 @@
     <blueocean-plugin.version>1.27.17</blueocean-plugin.version>
     <branch-api-plugin.version>2.1217.v43d8b_b_d8b_2c7</branch-api-plugin.version>
     <checks-api.version>367.v18b_7f530e54a_</checks-api.version>
-    <cloudbees-folder-plugin.version>6.1008.v5ed27a_3a_e475</cloudbees-folder-plugin.version>
+    <!-- TODO https://github.com/jenkinsci/cloudbees-folder-plugin/pull/487 -->
+    <cloudbees-folder-plugin.version>6.1009.v56181133b_4a_3</cloudbees-folder-plugin.version>
     <configuration-as-code-plugin.version>1953.v148f87d74b_1e</configuration-as-code-plugin.version>
     <data-tables-api.version>2.2.2-1</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.5</declarative-pipeline-migration-assistant-plugin.version>
