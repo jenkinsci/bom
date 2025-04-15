@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.jenkins-ci.plugins</groupId>
     <artifactId>plugin</artifactId>
-    <version>5.10</version>
+    <version>5.11</version>
     <relativePath />
   </parent>
   <groupId>io.jenkins.tools.bom</groupId>
@@ -14,7 +14,7 @@
   <properties>
     <changelist>999999-SNAPSHOT</changelist>
     <bom>weekly</bom>
-    <jenkins.version>2.505</jenkins.version>
+    <jenkins.version>2.504.1-rc36449.a_8de4e8075a_6</jenkins.version>
     <spotless.check.skip>false</spotless.check.skip>
   </properties>
   <dependencyManagement>
@@ -1694,13 +1694,6 @@
   </build>
   <profiles>
     <!-- Use .1 of most recent active line, and .3 (or later) of previous lines: https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/#choosing-a-version -->
-    <profile>
-      <id>2.504.x</id>
-      <properties>
-        <bom>2.504.x</bom>
-        <jenkins.version>2.504.1-rc36449.a_8de4e8075a_6</jenkins.version>
-      </properties>
-    </profile>
     <profile>
       <id>2.492.x</id>
       <properties>
