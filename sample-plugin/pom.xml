@@ -14,8 +14,11 @@
   <properties>
     <changelist>999999-SNAPSHOT</changelist>
     <bom>weekly</bom>
-    <jenkins.version>2.506</jenkins.version>
+    <!-- TODO https://github.com/jenkinsci/jenkins/pull/10461 -->
+    <jenkins.version>2.507-rc36680.0a_0b_3047a_929</jenkins.version>
     <spotless.check.skip>false</spotless.check.skip>
+    <!-- TODO https://github.com/SonarSource/sonar-scanner-jenkins/pull/314 -->
+    <enforcer.skip>true</enforcer.skip>
   </properties>
   <dependencyManagement>
     <dependencies>

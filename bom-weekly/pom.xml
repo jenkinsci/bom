@@ -1526,7 +1526,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>sonar</artifactId>
-        <version>2.18</version>
+        <!-- TODO https://github.com/SonarSource/sonar-scanner-jenkins/pull/314 -->
+        <version>2.18.1-20250327.154543-2</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
