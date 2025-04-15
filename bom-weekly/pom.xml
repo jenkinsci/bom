@@ -549,7 +549,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>opentelemetry-api</artifactId>
-        <version>1.46.0.54.v83ff2ff43a_c3</version>
+        <version>1.49.0.59.vc32561e77cf3</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -957,7 +957,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>copyartifact</artifactId>
-        <version>765.v0357cc6e6eb_3</version>
+        <version>770.va_6c69e063442</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1194,7 +1194,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jackson2-api</artifactId>
-        <version>2.17.0-389.va_5c7e45cd806</version>
+        <version>2.17.0-391.vf90e272e0cf2</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1214,7 +1214,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>job-dsl</artifactId>
-        <version>1.91</version>
+        <version>1.92</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1300,7 +1300,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>metrics</artifactId>
-        <version>4.2.21-464.vc9fa_a_0d6265d</version>
+        <version>4.2.30-468.v5973151f8cfc</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1365,7 +1365,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>parameterized-trigger</artifactId>
-        <version>840.v3c7d4a_a_5e6c7</version>
+        <version>859.vb_e3907a_07a_16</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
