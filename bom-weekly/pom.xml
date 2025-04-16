@@ -876,7 +876,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>build-monitor-plugin</artifactId>
-        <version>1.14-973.ve458d62e7c4f</version>
+        <version>1.14-979.v7d4d43828605</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
