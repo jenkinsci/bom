@@ -1440,7 +1440,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>promoted-builds</artifactId>
-        <version>992.v09e6920d6691</version>
+        <version>992.va_00888f21b_74</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1607,7 +1607,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>unique-id</artifactId>
-        <version>2.114.v852c64f74c32</version>
+        <version>2.117.v7a_81333a_584b_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
