@@ -1440,7 +1440,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>promoted-builds</artifactId>
-        <version>984.v90b_eb_99fc7b_4</version>
+        <version>992.va_00888f21b_74</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
