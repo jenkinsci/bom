@@ -372,7 +372,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>flyway-api</artifactId>
-        <version>11.7.0-267.v31ffb_dce2fea_</version>
+        <version>11.7.1-269.va_8db_e732616e</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
