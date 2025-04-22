@@ -554,7 +554,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>oss-symbols-api</artifactId>
-        <version>318.ve82d80c8e1c4</version>
+        <version>324.v432cce4172ca_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
