@@ -27,11 +27,6 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
-        <artifactId>customizable-header</artifactId>
-        <version>175.v07c36327359a_</version>
-      </dependency>
-      <dependency>
-        <groupId>io.jenkins.plugins</groupId>
         <artifactId>design-library</artifactId>
         <version>355.v0f007356e15d</version>
       </dependency>
