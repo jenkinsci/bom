@@ -1300,7 +1300,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>metrics</artifactId>
-        <version>4.2.30-468.v5973151f8cfc</version>
+        <version>4.2.30-471.v55fa_495f2b_f5</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
