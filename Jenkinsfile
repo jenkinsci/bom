@@ -132,6 +132,10 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
           return
         }
       }
+      // TODO https://github.com/SonarSource/sonar-scanner-jenkins/pull/314
+      if (repository == 'sonarqube-plugin') {
+        return
+      }
       branches["pct-$repository-$line"] = {
         def jdk = line == 'weekly' ? 21 : 17
         mavenEnv(jdk: jdk) {
