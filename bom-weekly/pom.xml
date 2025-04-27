@@ -342,7 +342,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>echarts-api</artifactId>
-        <version>5.6.0-3</version>
+        <version>5.6.0-4</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -372,7 +372,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>flyway-api</artifactId>
-        <version>11.7.2-275.ve20a_72447489</version>
+        <version>11.8.0-283.v6e1e6f0b_e461</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -559,7 +559,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
-        <version>464.v3d2a_ffcc717f</version>
+        <version>468.vf1b_4ec0fe463</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -770,7 +770,7 @@
       <dependency>
         <groupId>org.jenkins-ci.main</groupId>
         <artifactId>maven-plugin</artifactId>
-        <version>3.25</version>
+        <version>3.26</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.modules</groupId>
@@ -916,7 +916,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>cloudbees-bitbucket-branch-source</artifactId>
-        <version>935.1.3</version>
+        <version>936.0.1</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1037,7 +1037,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ec2</artifactId>
-        <version>1901.va_4a_a_4d4f699c</version>
+        <version>1911.vccb_5a_56f62e6</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1572,7 +1572,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>support-core</artifactId>
-        <version>1723.v63c3a_2f2c82c</version>
+        <version>1725.va_2a_9f06eed61</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
