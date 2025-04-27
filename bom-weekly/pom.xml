@@ -12,7 +12,7 @@
     <aws-java-sdk-plugin.version>1.12.780-480.v4a_0819121a_9e</aws-java-sdk-plugin.version>
     <aws-java-sdk2-plugin.version>2.31.26-37.vd178d9b_0558f</aws-java-sdk2-plugin.version>
     <gcp-java-sdk-plugin.version>26.23.0-31.va_efec42c4f8c</gcp-java-sdk-plugin.version>
-    <blueocean-plugin.version>1.27.18</blueocean-plugin.version>
+    <blueocean-plugin.version>1.27.19</blueocean-plugin.version>
     <branch-api-plugin.version>2.1217.v43d8b_b_d8b_2c7</branch-api-plugin.version>
     <checks-api.version>370.vb_61a_c57328f3</checks-api.version>
     <cloudbees-folder-plugin.version>6.1012.v79a_86a_1ea_c1f</cloudbees-folder-plugin.version>
@@ -916,7 +916,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>cloudbees-bitbucket-branch-source</artifactId>
-        <version>935.1.3</version>
+        <version>936.0.1</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
