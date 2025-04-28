@@ -1,7 +1,7 @@
 // Do not trigger build regularly on change requests as it costs a lot
 String cronTrigger = ''
 if(env.BRANCH_NAME == "master") {
-  cronTrigger = '50 8 * * 5'
+  cronTrigger = '37 13 * * 5'
 }
 
 properties([
@@ -131,6 +131,10 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
         } else if (repository == 'pipeline-utility-steps-plugin') {
           return
         }
+      }
+      // TODO https://github.com/SonarSource/sonar-scanner-jenkins/pull/314
+      if (repository == 'sonarqube-plugin') {
+        return
       }
       branches["pct-$repository-$line"] = {
         def jdk = line == 'weekly' ? 21 : 17
