@@ -952,7 +952,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>config-file-provider</artifactId>
-        <version>982.vb_a_e458a_37021</version>
+        <version>988.v0461fcc2b_9d1</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
