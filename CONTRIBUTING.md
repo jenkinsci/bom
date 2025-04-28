@@ -6,8 +6,6 @@ For people potentially working on the BOM itself, not just consuming it.
 
 | Release Date | Lead                 |
 | ------------ | -------------------- |
-| 2025-04-18   | Adrien Lecharpentier |
-| 2025-04-25   | Adrien Lecharpentier |
 | 2025-05-02   | Darin Pope           |
 | 2025-05-09   | Darin Pope           |
 | 2025-05-16   | Kris Stern           |
