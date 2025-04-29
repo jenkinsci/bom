@@ -589,6 +589,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>s3-jobcacher-storage</artifactId>
+        <version>16.v1f404a_3a_2377</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>snakeyaml-api</artifactId>
         <version>2.3-125.v4d77857a_b_402</version>
       </dependency>
