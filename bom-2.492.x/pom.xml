@@ -15,7 +15,7 @@
     <dependencies>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>bom-weekly</artifactId>
+        <artifactId>bom-2.504.x</artifactId>
         <version>${project.version}</version>
         <type>pom</type>
         <scope>import</scope>
@@ -24,11 +24,6 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>bootstrap5-api</artifactId>
         <version>5.3.3-2</version>
-      </dependency>
-      <dependency>
-        <groupId>io.jenkins.plugins</groupId>
-        <artifactId>customizable-header</artifactId>
-        <version>175.v07c36327359a_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
