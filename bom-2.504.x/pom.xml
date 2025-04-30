@@ -23,6 +23,11 @@
         <artifactId>customizable-header</artifactId>
         <version>175.v07c36327359a_</version>
       </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>design-library</artifactId>
+        <version>374.v9466b_9e00db_b_</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 </project>
