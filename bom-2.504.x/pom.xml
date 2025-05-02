@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>io.jenkins.tools.bom</groupId>
+    <artifactId>parent</artifactId>
+    <version>${changelist}</version>
+  </parent>
+  <artifactId>bom-2.504.x</artifactId>
+  <packaging>pom</packaging>
+  <properties />
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>bom-weekly</artifactId>
+        <version>${project.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>customizable-header</artifactId>
+        <version>175.v07c36327359a_</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>design-library</artifactId>
+        <version>374.v9466b_9e00db_b_</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+</project>
