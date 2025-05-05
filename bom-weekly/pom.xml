@@ -1919,7 +1919,7 @@
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
         <artifactId>instant-messaging</artifactId>
-        <version>2.850.ve88c5a_f8b_b_f0</version>
+        <version>2.858.v84187da_c9fa_7</version>
       </dependency>
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
