@@ -403,7 +403,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>generic-tool</artifactId>
-        <version>1.2</version>
+        <version>1.17.vb_8a_b_4e5600c9</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
