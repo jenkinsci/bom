@@ -120,15 +120,33 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
       return
     }
     pluginsByRepository.each { repository, plugins ->
+      // TODO remove when dropping support for 2.492.x
+      if (line == '2.492.x') {
+        if (repository == 'copyartifact-plugin') {
+          return
+        } else if (repository == 'mina-sshd-api-plugin') {
+          return
+        }
+      }
       // TODO remove when dropping support for 2.479.x
       if (line == '2.479.x') {
-        if (repository == 'commons-compress-api-plugin') {
+        if (repository == 'analysis-model-api-plugin') {
+          return
+        } else if (repository == 'azure-vm-agents-plugin') {
+          return
+        } else if (repository == 'commons-compress-api-plugin') {
+          return
+        } else if (repository == 'copyartifact-plugin') {
           return
         } else if (repository == 'htmlpublisher-plugin') {
           return
         } else if (repository == 'javadoc-plugin') {
           return
+        } else if (repository == 'mina-sshd-api-plugin') {
+          return
         } else if (repository == 'pipeline-utility-steps-plugin') {
+          return
+        } else if (repository == 'warnings-ng-plugin') {
           return
         }
       }
