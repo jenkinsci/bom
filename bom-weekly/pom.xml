@@ -220,7 +220,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>artifactory-artifact-manager</artifactId>
-        <version>198.v70e5f9e07b_22</version>
+        <version>222.v721418296a_b_1</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
