@@ -1390,7 +1390,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pipeline-graph-analysis</artifactId>
-        <version>235.vb_a_a_36b_f248c2</version>
+        <version>237.v2b_75640ca_888</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
