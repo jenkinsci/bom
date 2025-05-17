@@ -1139,7 +1139,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>gitlab-logo</artifactId>
-        <version>189.v5e1cea_57233a_</version>
+        <version>195.vb_b_4dd5cc0f54</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
