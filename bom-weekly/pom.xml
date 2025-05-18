@@ -10,7 +10,7 @@
   <packaging>pom</packaging>
   <properties>
     <aws-java-sdk-plugin.version>1.12.780-480.v4a_0819121a_9e</aws-java-sdk-plugin.version>
-    <aws-java-sdk2-plugin.version>2.31.26-37.vd178d9b_0558f</aws-java-sdk2-plugin.version>
+    <aws-java-sdk2-plugin.version>2.31.45-42.va_ffb_565de208</aws-java-sdk2-plugin.version>
     <gcp-java-sdk-plugin.version>26.23.0-31.va_efec42c4f8c</gcp-java-sdk-plugin.version>
     <blueocean-plugin.version>1.27.19</blueocean-plugin.version>
     <branch-api-plugin.version>2.1217.v43d8b_b_d8b_2c7</branch-api-plugin.version>
@@ -22,10 +22,10 @@
     <forensics-api.version>3.1.0</forensics-api.version>
     <github-api-plugin.version>1.321-488.v9b_c0da_9533f8</github-api-plugin.version>
     <git-plugin.version>5.7.0</git-plugin.version>
-    <junit-plugin.version>1334.vd3b_b_2094e438</junit-plugin.version>
+    <junit-plugin.version>1335.v6b_a_a_e18534e1</junit-plugin.version>
     <mina-sshd-api.version>2.15.0-161.vb_200831a_c15b_</mina-sshd-api.version>
     <okhttp-api-plugin.version>4.11.0-189.v976fa_d3379d6</okhttp-api-plugin.version>
-    <pipeline-maven-plugin.version>1508.v347c4b_692202</pipeline-maven-plugin.version>
+    <pipeline-maven-plugin.version>1530.v625a_45ca_0fdd</pipeline-maven-plugin.version>
     <pipeline-model-definition-plugin.version>2.2255.v56a_15e805f12</pipeline-model-definition-plugin.version>
     <pipeline-stage-view-plugin.version>2.38</pipeline-stage-view-plugin.version>
     <plugin-util-api.version>6.1.0</plugin-util-api.version>
@@ -215,7 +215,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>artifact-manager-s3</artifactId>
-        <version>902.v39b_3d56b_88b_5</version>
+        <version>917.ve48b_51064a_a_0</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -286,7 +286,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>commons-text-api</artifactId>
-        <version>1.13.0-153.v91dcd89e2a_22</version>
+        <version>1.13.1-176.v74d88f22034b_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -301,7 +301,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>custom-folder-icon</artifactId>
-        <version>2.19</version>
+        <version>2.20</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -372,7 +372,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>flyway-api</artifactId>
-        <version>11.8.1-289.v8ef002d664f2</version>
+        <version>11.8.2-295.v6e6f834ff5e9</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -533,7 +533,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>oidc-provider</artifactId>
-        <version>96.vee8ed882ec4d</version>
+        <version>111.v29fd614b_3617</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -559,7 +559,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
-        <version>521.v799963fd568a_</version>
+        <version>530.v559e613ec109</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -770,7 +770,7 @@
       <dependency>
         <groupId>org.csanchez.jenkins.plugins</groupId>
         <artifactId>kubernetes</artifactId>
-        <version>4336.v55d9a_494db_38</version>
+        <version>4340.v345364d31a_2a_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.main</groupId>
@@ -942,7 +942,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>cloudbees-jenkins-advisor</artifactId>
-        <version>374.v194b_d4f0c8c8</version>
+        <version>384.vf19423a_eb_9b_0</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1139,7 +1139,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>gitlab-logo</artifactId>
-        <version>189.v5e1cea_57233a_</version>
+        <version>195.vb_b_4dd5cc0f54</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1315,7 +1315,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>naginator</artifactId>
-        <version>1.496.v94260e77b_3f5</version>
+        <version>1.504.vfc3736332f16</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1390,7 +1390,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pipeline-graph-analysis</artifactId>
-        <version>235.vb_a_a_36b_f248c2</version>
+        <version>237.v2b_75640ca_888</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1415,7 +1415,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pipeline-milestone-step</artifactId>
-        <version>134.vdf60d179845f</version>
+        <version>138.v78ca_76831a_43</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1465,7 +1465,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>role-strategy</artifactId>
-        <version>756.v978cb_392eb_d3</version>
+        <version>764.v3c95b_fcb_32ee</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
