@@ -1315,7 +1315,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>naginator</artifactId>
-        <version>1.496.v94260e77b_3f5</version>
+        <version>1.504.vfc3736332f16</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
