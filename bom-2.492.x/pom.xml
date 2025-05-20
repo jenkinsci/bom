@@ -9,6 +9,7 @@
   <artifactId>bom-2.492.x</artifactId>
   <packaging>pom</packaging>
   <properties>
+    <configuration-as-code-plugin.version>1963.v24e046127a_3f</configuration-as-code-plugin.version>
     <mina-sshd-api.version>2.14.0-143.v2b_362fc39576</mina-sshd-api.version>
   </properties>
   <dependencyManagement>
@@ -21,9 +22,24 @@
         <scope>import</scope>
       </dependency>
       <dependency>
+        <groupId>io.jenkins</groupId>
+        <artifactId>configuration-as-code</artifactId>
+        <version>${configuration-as-code-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.configuration-as-code</groupId>
+        <artifactId>test-harness</artifactId>
+        <version>${configuration-as-code-plugin.version}</version>
+      </dependency>
+      <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>bootstrap5-api</artifactId>
         <version>5.3.3-2</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>custom-folder-icon</artifactId>
+        <version>2.19</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
