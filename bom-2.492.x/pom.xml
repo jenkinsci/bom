@@ -9,7 +9,6 @@
   <artifactId>bom-2.492.x</artifactId>
   <packaging>pom</packaging>
   <properties>
-    <configuration-as-code-plugin.version>1963.v24e046127a_3f</configuration-as-code-plugin.version>
     <mina-sshd-api.version>2.14.0-143.v2b_362fc39576</mina-sshd-api.version>
   </properties>
   <dependencyManagement>
@@ -20,16 +19,6 @@
         <version>${project.version}</version>
         <type>pom</type>
         <scope>import</scope>
-      </dependency>
-      <dependency>
-        <groupId>io.jenkins</groupId>
-        <artifactId>configuration-as-code</artifactId>
-        <version>${configuration-as-code-plugin.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>io.jenkins.configuration-as-code</groupId>
-        <artifactId>test-harness</artifactId>
-        <version>${configuration-as-code-plugin.version}</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
