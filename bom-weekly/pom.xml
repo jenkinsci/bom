@@ -306,7 +306,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>customizable-header</artifactId>
-        <version>184.v7d6a_b_330b_ee4</version>
+        <version>190.va_10db_8a_15e33</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -559,7 +559,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
-        <version>533.v1610543dc627</version>
+        <version>536.vd9674ce4b_46a_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -921,7 +921,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>cloudbees-bitbucket-branch-source</artifactId>
-        <version>936.1.1</version>
+        <version>936.2.0</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1637,7 +1637,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>view-job-filters</artifactId>
-        <version>399.v6c89d5e6ff54</version>
+        <version>401.va_809f6a_b_0c26</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
