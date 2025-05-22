@@ -215,7 +215,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>artifact-manager-s3</artifactId>
-        <version>917.ve48b_51064a_a_0</version>
+        <version>926.ve7c0b_ffccd20</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
