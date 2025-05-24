@@ -18,6 +18,11 @@
         <scope>import</scope>
       </dependency>
       <dependency>
+        <groupId>com.cloudbees.jenkins.plugins</groupId>
+        <artifactId>kubernetes-credentials-provider</artifactId>
+        <version>1.276.v99a_de03cb_076</version>
+      </dependency>
+      <dependency>
         <groupId>io.jenkins.blueocean</groupId>
         <artifactId>blueocean-parent</artifactId>
         <version>1.27.19</version>
@@ -61,11 +66,6 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>javadoc</artifactId>
         <version>280.v050b_5c849f69</version>
-      </dependency>
-      <dependency>
-        <groupId>com.cloudbees.jenkins.plugins</groupId>
-        <artifactId>kubernetes-credentials-provider</artifactId>
-        <version>1.276.v99a_de03cb_076</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
