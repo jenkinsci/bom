@@ -63,7 +63,7 @@
         <version>280.v050b_5c849f69</version>
       </dependency>
       <dependency>
-        <groupId>org.jenkins-ci.plugins</groupId>
+        <groupId>com.cloudbees.jenkins.plugins</groupId>
         <artifactId>kubernetes-credentials-provider</artifactId>
         <version>1.276.v99a_de03cb_076</version>
       </dependency>
