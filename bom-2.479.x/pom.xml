@@ -62,6 +62,11 @@
         <artifactId>pipeline-utility-steps</artifactId>
         <version>2.18.0</version>
       </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>kubernetes-credentials-provider</artifactId>
+        <version>1.276.v99a_de03cb_076</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 </project>
