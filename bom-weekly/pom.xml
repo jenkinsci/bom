@@ -765,7 +765,7 @@
       <dependency>
         <groupId>net.plavcak.jenkins</groupId>
         <artifactId>scmskip</artifactId>
-        <version>72.vc2f9088d11e2</version>
+        <version>79.v311ff68f9df1</version>
       </dependency>
       <dependency>
         <groupId>org.6wind.jenkins</groupId>
@@ -1919,7 +1919,7 @@
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
         <artifactId>favorite</artifactId>
-        <version>2.225.v68765b_b_a_1fa_3</version>
+        <version>2.235.v4d873c7d02e9</version>
       </dependency>
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
