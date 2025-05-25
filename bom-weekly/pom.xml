@@ -1204,6 +1204,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jackson2-api</artifactId>
+        <!-- TODO use latest release once kubernetes credentials provider plugin tests are fixed -->
+        <!-- https://github.com/jenkinsci/bom/issues/5076#issuecomment-2906906505 -->
         <version>2.18.3-402.v74c4eb_f122b_2</version>
       </dependency>
       <dependency>
