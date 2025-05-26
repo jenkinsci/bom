@@ -1485,7 +1485,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>s3</artifactId>
-        <version>498.v4c32ea_de55c2</version>
+        <version>505.v8f71dcce8639</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
