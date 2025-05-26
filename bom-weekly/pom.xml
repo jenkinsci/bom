@@ -503,7 +503,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>json-api</artifactId>
-        <version>20250107-125.v28b_a_ffa_eb_f01</version>
+        <version>20250517-153.vc8a_a_d87c0ce3</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
