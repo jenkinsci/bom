@@ -504,7 +504,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>json-api</artifactId>
-        <version>20250107-125.v28b_a_ffa_eb_f01</version>
+        <version>20250517-153.vc8a_a_d87c0ce3</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -514,7 +514,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>locale</artifactId>
-        <version>566.v3323643741cc</version>
+        <version>584.v41dc8d4f9377</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1476,7 +1476,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>role-strategy</artifactId>
-        <version>767.v4ffe48a_50303</version>
+        <version>771.v3fa_85a_df2c50</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
