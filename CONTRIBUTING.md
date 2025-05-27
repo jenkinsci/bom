@@ -17,7 +17,7 @@ For people potentially working on the BOM itself, not just consuming it.
 | 2025-07-11   | Darin Pope           |
 | 2025-07-18   | Darin Pope           |
 | 2025-07-25   | Adrien Lecharpentier |
-| 2025-08-06   | Adrien Lecharpentier |
+| 2025-08-01   | Adrien Lecharpentier |
 
 ## Updating a plugin
 
