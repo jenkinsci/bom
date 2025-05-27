@@ -10,7 +10,7 @@
   <packaging>pom</packaging>
   <properties>
     <aws-java-sdk-plugin.version>1.12.780-480.v4a_0819121a_9e</aws-java-sdk-plugin.version>
-    <aws-java-sdk2-plugin.version>2.31.45-42.va_ffb_565de208</aws-java-sdk2-plugin.version>
+    <aws-java-sdk2-plugin.version>2.31.45-46.v0b_147c322cfa_</aws-java-sdk2-plugin.version>
     <gcp-java-sdk-plugin.version>26.23.0-31.va_efec42c4f8c</gcp-java-sdk-plugin.version>
     <blueocean-plugin.version>1.27.19</blueocean-plugin.version>
     <branch-api-plugin.version>2.1217.v43d8b_b_d8b_2c7</branch-api-plugin.version>
@@ -514,7 +514,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>locale</artifactId>
-        <version>584.v41dc8d4f9377</version>
+        <version>585.va_126c410a_def</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -710,6 +710,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
+        <artifactId>aws-java-sdk2-netty-nio-client</artifactId>
+        <version>${aws-java-sdk2-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
         <artifactId>aws-java-sdk2-organizations</artifactId>
         <version>${aws-java-sdk2-plugin.version}</version>
       </dependency>
@@ -776,7 +781,7 @@
       <dependency>
         <groupId>org.csanchez.jenkins.plugins</groupId>
         <artifactId>kubernetes</artifactId>
-        <version>4340.v345364d31a_2a_</version>
+        <version>4347.va_c0cf1c32f38</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.main</groupId>
@@ -1486,7 +1491,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>s3</artifactId>
-        <version>498.v4c32ea_de55c2</version>
+        <version>505.v8f71dcce8639</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
