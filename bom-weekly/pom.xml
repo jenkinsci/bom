@@ -240,7 +240,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>azure-sdk</artifactId>
-        <version>211.vd3b_6c5504331</version>
+        <version>223.vff769b_ce66b_b_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -513,7 +513,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>locale</artifactId>
-        <version>585.va_126c410a_def</version>
+        <version>587.v7b_843928a_719</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -780,7 +780,7 @@
       <dependency>
         <groupId>org.csanchez.jenkins.plugins</groupId>
         <artifactId>kubernetes</artifactId>
-        <version>4349.v8fe8f2b_ee9f1</version>
+        <version>4350.va_0283de0d6d6</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.main</groupId>
