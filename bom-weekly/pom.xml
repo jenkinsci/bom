@@ -270,6 +270,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>commons-collections4-api</artifactId>
+        <version>4.5.0-8.va_d5448ef9011</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>commons-compress-api</artifactId>
         <version>1.27.1-3</version>
       </dependency>
