@@ -569,7 +569,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
-        <version>543.v7e391c24713d</version>
+        <version>544.v32014c99450f</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1415,7 +1415,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pipeline-input-step</artifactId>
-        <version>517.vf8e782ee645c</version>
+        <version>527.vd61b_1d3c5078</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1581,7 +1581,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>structs</artifactId>
-        <version>343.vdcf37b_a_c81d5</version>
+        <version>350.v3b_30f09f2363</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
