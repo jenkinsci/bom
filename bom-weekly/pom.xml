@@ -1042,7 +1042,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>docker-workflow</artifactId>
-        <version>611.v16e84da_6d3ff</version>
+        <version>621.va_73f881d9232</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
