@@ -1032,7 +1032,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>docker-commons</artifactId>
-        <version>451.vd12c371eeeb_3</version>
+        <version>457.v0f62a_94f11a_3</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
