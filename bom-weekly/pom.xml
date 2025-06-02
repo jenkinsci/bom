@@ -342,7 +342,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>design-library</artifactId>
-        <version>388.v5dc7c52ef99b_</version>
+        <version>392.v39c9a_b_da_4e71</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -574,7 +574,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
-        <version>550.v8602de61b_4b_f</version>
+        <version>551.vde72dc246b_c4</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1042,7 +1042,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>docker-java-api</artifactId>
-        <version>3.5.0-108.v211cdd21c383</version>
+        <version>3.5.1-116.v2798d5ed4ce7</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1415,7 +1415,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pipeline-graph-analysis</artifactId>
-        <version>237.v2b_75640ca_888</version>
+        <version>241.vc3d48fb_b_2582</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1490,7 +1490,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>role-strategy</artifactId>
-        <version>771.v3fa_85a_df2c50</version>
+        <version>775.vf7c4a_97194dd</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
