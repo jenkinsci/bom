@@ -563,6 +563,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>oras-java-api</artifactId>
+        <version>0.2.10-48.vc5cca_8d3f946</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>oss-symbols-api</artifactId>
         <version>324.v432cce4172ca_</version>
       </dependency>

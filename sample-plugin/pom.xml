@@ -506,6 +506,11 @@
     </dependency>
     <dependency>
       <groupId>io.jenkins.plugins</groupId>
+      <artifactId>oras-java-api</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.jenkins.plugins</groupId>
       <artifactId>oss-symbols-api</artifactId>
       <scope>test</scope>
     </dependency>
