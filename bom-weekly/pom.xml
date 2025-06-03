@@ -316,7 +316,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>dark-theme</artifactId>
-        <version>524.vd675b_22b_30cb_</version>
+        <version>564.vf07c6a_db_3a_27</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
