@@ -12,8 +12,8 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": [
-        "pct.sh"
+      "managerFilePatterns": [
+        "/pct.sh/"
       ],
       "matchStrings": [
         "JTH_VERSION=(?<currentValue>.*?)\\n"
@@ -24,8 +24,8 @@
     },
     {
       "customType": "regex",
-      "fileMatch": [
-        "prep-pct.sh"
+      "managerFilePatterns": [
+        "/prep-pct.sh/"
       ],
       "matchStrings": [
         "pct_version=(?<currentValue>.*?)\\n"
@@ -36,8 +36,8 @@
     },
     {
       "customType": "regex",
-      "fileMatch": [
-        "sample-plugin/pom.xml"
+      "managerFilePatterns": [
+        "/sample-plugin/pom.xml/"
       ],
       "matchStrings": [
         "\\n\\s{4}<jenkins\\.version>(?<currentValue>.*?)<\\/jenkins\\.version>\\n"

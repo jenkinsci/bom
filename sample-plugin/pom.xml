@@ -14,7 +14,7 @@
   <properties>
     <changelist>999999-SNAPSHOT</changelist>
     <bom>weekly</bom>
-    <jenkins.version>2.511</jenkins.version>
+    <jenkins.version>2.513</jenkins.version>
     <spotless.check.skip>false</spotless.check.skip>
   </properties>
   <dependencyManagement>
@@ -241,6 +241,11 @@
     <dependency>
       <groupId>io.jenkins.plugins</groupId>
       <artifactId>checks-api</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.jenkins.plugins</groupId>
+      <artifactId>commons-collections4-api</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -501,6 +506,11 @@
     </dependency>
     <dependency>
       <groupId>io.jenkins.plugins</groupId>
+      <artifactId>oras-java-api</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.jenkins.plugins</groupId>
       <artifactId>oss-symbols-api</artifactId>
       <scope>test</scope>
     </dependency>
@@ -637,6 +647,11 @@
     <dependency>
       <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
       <artifactId>aws-java-sdk2-lambda</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
+      <artifactId>aws-java-sdk2-netty-nio-client</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
