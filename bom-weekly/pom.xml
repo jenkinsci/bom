@@ -418,7 +418,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>gitea-checks</artifactId>
-        <version>530.v38d502df428f</version>
+        <version>551.vd306d7ca_b_18f</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
