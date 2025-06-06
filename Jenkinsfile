@@ -94,6 +94,7 @@ stage('prep') {
       pluginsByRepository = parsePlugins(plugins)
 
       lines = readFile('lines.txt').split('\n')
+      lines = [lines[0], lines[-1]] // Save resources by running PCT only on newest and oldest lines
       withCredentials([string(credentialsId: 'launchable-jenkins-bom', variable: 'LAUNCHABLE_TOKEN')]) {
         lines.each { line ->
           def commitHashes = readFile "commit-hashes-${line}.txt"
