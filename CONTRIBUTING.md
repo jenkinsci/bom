@@ -6,18 +6,18 @@ For people potentially working on the BOM itself, not just consuming it.
 
 | Release Date | Lead                 |
 | ------------ | -------------------- |
-| 2025-05-30   | Mark Waite           |
-| 2025-06-06   | Mark Waite           |
-| 2025-06-13   | Basil Crow           |
-| 2025-06-20   | Basil Crow           |
+| 2025-06-13   | Darin Pope           |
+| 2025-06-20   | Darin Pope           |
 | 2025-06-27   | Bruno Verachten      |
 | 2025-07-04   | Bruno Verachten      |
-| 2025-07-11   | Darin Pope           |
-| 2025-07-18   | Darin Pope           |
+| 2025-07-11   | Basil Crow           |
+| 2025-07-18   | Basil Crow           |
 | 2025-07-25   | Adrien Lecharpentier |
 | 2025-08-01   | Adrien Lecharpentier |
 | 2025-08-08   | Kris Stern           |
 | 2025-08-15   | Kris Stern           |
+| 2025-08-22   | Mark Waite           |
+| 2025-08-29   | Mark Waite           |
 
 ## Updating a plugin
 
