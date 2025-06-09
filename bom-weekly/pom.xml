@@ -1370,7 +1370,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>oic-auth</artifactId>
-        <version>4.517.v4a_538700c7d4</version>
+        <version>4.519.vfd806a_59b_47d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
