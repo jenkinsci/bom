@@ -311,12 +311,12 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>customizable-header</artifactId>
-        <version>204.v3b_e97b_a_194b_f</version>
+        <version>206.vcb_285113d9fd</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>dark-theme</artifactId>
-        <version>564.vf07c6a_db_3a_27</version>
+        <version>567.v9d3ca_a_3142f5</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -941,7 +941,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>cloudbees-bitbucket-branch-source</artifactId>
-        <version>936.3.1</version>
+        <version>936.4.0</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1254,7 +1254,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jobConfigHistory</artifactId>
-        <version>1309.vb_4360782b_d22</version>
+        <version>1320.v78fdb_e432a_7f</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1370,7 +1370,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>oic-auth</artifactId>
-        <version>4.494.v6b_f419104767</version>
+        <version>4.517.v4a_538700c7d4</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
