@@ -311,7 +311,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>customizable-header</artifactId>
-        <version>196.vc0ff775f5dcf</version>
+        <version>204.v3b_e97b_a_194b_f</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -574,7 +574,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
-        <version>558.vd30d5e81ffd7</version>
+        <version>565.vb_991078a_56d6</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1239,7 +1239,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>job-dsl</artifactId>
-        <version>1.92</version>
+        <version>1.93</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1254,7 +1254,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jobConfigHistory</artifactId>
-        <version>1305.vf20a_356586b_8</version>
+        <version>1309.vb_4360782b_d22</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1310,7 +1310,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>mask-passwords</artifactId>
-        <version>196.v7d505d39886e</version>
+        <version>199.va_0218b_a_59186</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
