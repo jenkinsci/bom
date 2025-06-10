@@ -12,7 +12,7 @@
     <aws-java-sdk-plugin.version>1.12.780-480.v4a_0819121a_9e</aws-java-sdk-plugin.version>
     <aws-java-sdk2-plugin.version>2.31.45-50.vee50cf9f54c3</aws-java-sdk2-plugin.version>
     <gcp-java-sdk-plugin.version>26.23.0-31.va_efec42c4f8c</gcp-java-sdk-plugin.version>
-    <blueocean-plugin.version>1.27.19</blueocean-plugin.version>
+    <blueocean-plugin.version>1.27.20</blueocean-plugin.version>
     <branch-api-plugin.version>2.1217.v43d8b_b_d8b_2c7</branch-api-plugin.version>
     <checks-api.version>370.vb_61a_c57328f3</checks-api.version>
     <cloudbees-folder-plugin.version>6.1023.v4fcb_72152519</cloudbees-folder-plugin.version>
@@ -1254,7 +1254,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jobConfigHistory</artifactId>
-        <version>1320.v78fdb_e432a_7f</version>
+        <version>1328.vb_24fa_565cfec</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1370,7 +1370,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>oic-auth</artifactId>
-        <version>4.517.v4a_538700c7d4</version>
+        <version>4.519.vfd806a_59b_47d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
