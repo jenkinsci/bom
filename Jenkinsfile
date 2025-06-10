@@ -74,7 +74,7 @@ def weeklyTestMarkerFile
 stage('prep') {
   mavenEnv(jdk: 21) {
     checkout scm
-    withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist']) {
+    withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist','JAVA_HOME=/opt/jdk-21','PATH+JDK21=/opt/jdk-21/bin']) {
       withCredentials([
         usernamePassword(credentialsId: 'app-ci.jenkins.io', usernameVariable: 'GITHUB_APP', passwordVariable: 'GITHUB_OAUTH')
       ]) {
@@ -144,7 +144,9 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
           withEnv([
             "PLUGINS=${plugins.join(',')}",
             "LINE=$line",
-            'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
+            'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1',
+            'JAVA_HOME=/opt/jdk-21',
+            'PATH+JDK21=/opt/jdk-21/bin'
           ]) {
             sh '''
             mvn -v
