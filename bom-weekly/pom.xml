@@ -574,7 +574,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
-        <version>565.vb_991078a_56d6</version>
+        <version>573.v7fc7fb_cfd029</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -595,7 +595,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>postgresql-api</artifactId>
-        <version>42.7.5-56.vc0921b_3cc11e</version>
+        <version>42.7.7-67.v70a_30b_84f58b_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1062,7 +1062,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ec2</artifactId>
-        <version>1917.v6f3dd5711d3b_</version>
+        <version>1935.v9b_77210472b_1</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1370,7 +1370,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>oic-auth</artifactId>
-        <version>4.519.vfd806a_59b_47d</version>
+        <version>4.520.v7208b_4ff730b_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
