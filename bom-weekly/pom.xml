@@ -1949,7 +1949,7 @@
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
         <artifactId>postbuild-task</artifactId>
-        <version>72.v75dc459e4747</version>
+        <version>78.v24529f1f5cdb_</version>
       </dependency>
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
