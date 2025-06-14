@@ -165,6 +165,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>cloudbees-bitbucket-branch-source</artifactId>
+        <version>936.3.1</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>copyartifact</artifactId>
         <version>757.v05365583a_455</version>
       </dependency>
