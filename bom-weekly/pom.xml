@@ -25,7 +25,7 @@
     <junit-plugin.version>1335.v6b_a_a_e18534e1</junit-plugin.version>
     <mina-sshd-api.version>2.15.0-161.vb_200831a_c15b_</mina-sshd-api.version>
     <okhttp-api-plugin.version>4.11.0-189.v976fa_d3379d6</okhttp-api-plugin.version>
-    <pipeline-maven-plugin.version>1530.v625a_45ca_0fdd</pipeline-maven-plugin.version>
+    <pipeline-maven-plugin.version>1538.v40eb_89e33cc6</pipeline-maven-plugin.version>
     <pipeline-model-definition-plugin.version>2.2255.v56a_15e805f12</pipeline-model-definition-plugin.version>
     <pipeline-stage-view-plugin.version>2.38</pipeline-stage-view-plugin.version>
     <plugin-util-api.version>6.1.0</plugin-util-api.version>
@@ -205,7 +205,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>analysis-model-api</artifactId>
-        <version>13.2.0</version>
+        <version>13.5.0</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1254,7 +1254,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jobConfigHistory</artifactId>
-        <version>1328.vb_24fa_565cfec</version>
+        <version>1330.vcb_8320ea_cdb_e</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1949,7 +1949,7 @@
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
         <artifactId>postbuild-task</artifactId>
-        <version>72.v75dc459e4747</version>
+        <version>78.v24529f1f5cdb_</version>
       </dependency>
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
