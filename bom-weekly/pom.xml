@@ -10,9 +10,9 @@
   <packaging>pom</packaging>
   <properties>
     <aws-java-sdk-plugin.version>1.12.780-480.v4a_0819121a_9e</aws-java-sdk-plugin.version>
-    <aws-java-sdk2-plugin.version>2.31.45-50.vee50cf9f54c3</aws-java-sdk2-plugin.version>
+    <aws-java-sdk2-plugin.version>2.31.63-54.vcf1e5a_c56c49</aws-java-sdk2-plugin.version>
     <gcp-java-sdk-plugin.version>26.23.0-31.va_efec42c4f8c</gcp-java-sdk-plugin.version>
-    <blueocean-plugin.version>1.27.20</blueocean-plugin.version>
+    <blueocean-plugin.version>1.27.21</blueocean-plugin.version>
     <branch-api-plugin.version>2.1217.v43d8b_b_d8b_2c7</branch-api-plugin.version>
     <checks-api.version>373.vfe7645102093</checks-api.version>
     <cloudbees-folder-plugin.version>6.1023.v4fcb_72152519</cloudbees-folder-plugin.version>
@@ -32,8 +32,8 @@
     <scm-api-plugin.version>704.v3ce5c542825a_</scm-api-plugin.version>
     <subversion-plugin.version>1287.vd2d507146906</subversion-plugin.version>
     <workflow-api-plugin.version>1373.v7b_813f10efa_b_</workflow-api-plugin.version>
-    <workflow-cps-plugin.version>4106.v7a_8a_8176d450</workflow-cps-plugin.version>
-    <workflow-job-plugin.version>1532.va_9a_d244074a_3</workflow-job-plugin.version>
+    <workflow-cps-plugin.version>4117.vc0f3c515a_a_a_0</workflow-cps-plugin.version>
+    <workflow-job-plugin.version>1537.v66038d35fc76</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>806.vb_b_688f609ee9</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>700.v6e45cb_a_5a_a_21</workflow-step-api-plugin.version>
     <workflow-support-plugin.version>968.v8f17397e87b_8</workflow-support-plugin.version>
@@ -250,7 +250,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>byte-buddy-api</artifactId>
-        <version>1.17.5-147.v9ce9318b_4ce8</version>
+        <version>1.17.6-165.vcd5ee8d19447</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -564,7 +564,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>oras-java-api</artifactId>
-        <version>0.2.11-64.va_d3e7ee471ef</version>
+        <version>0.2.12-66.va_b_5379fd76a_d</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
