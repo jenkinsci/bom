@@ -620,7 +620,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>sqlserver-api</artifactId>
-        <version>12.10.0.jre11-122.v521cb_cf25156</version>
+        <version>12.10.1.jre11-158.v4dde7ea_5c399</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
