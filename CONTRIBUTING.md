@@ -6,8 +6,6 @@ For people potentially working on the BOM itself, not just consuming it.
 
 | Release Date | Lead                 |
 | ------------ | -------------------- |
-| 2025-06-13   | Darin Pope           |
-| 2025-06-20   | Darin Pope           |
 | 2025-06-27   | Bruno Verachten      |
 | 2025-07-04   | Bruno Verachten      |
 | 2025-07-11   | Basil Crow           |
