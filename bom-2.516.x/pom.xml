@@ -6,32 +6,17 @@
     <artifactId>parent</artifactId>
     <version>${changelist}</version>
   </parent>
-  <artifactId>bom-2.504.x</artifactId>
+  <artifactId>bom-2.516.x</artifactId>
   <packaging>pom</packaging>
   <properties />
   <dependencyManagement>
     <dependencies>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>bom-2.516.x</artifactId>
+        <artifactId>bom-weekly</artifactId>
         <version>${project.version}</version>
         <type>pom</type>
         <scope>import</scope>
-      </dependency>
-      <dependency>
-        <groupId>io.jenkins.plugins</groupId>
-        <artifactId>customizable-header</artifactId>
-        <version>175.v07c36327359a_</version>
-      </dependency>
-      <dependency>
-        <groupId>io.jenkins.plugins</groupId>
-        <artifactId>dark-theme</artifactId>
-        <version>524.vd675b_22b_30cb_</version>
-      </dependency>
-      <dependency>
-        <groupId>io.jenkins.plugins</groupId>
-        <artifactId>design-library</artifactId>
-        <version>374.v9466b_9e00db_b_</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
