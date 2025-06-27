@@ -22,11 +22,6 @@
         <scope>import</scope>
       </dependency>
       <dependency>
-        <groupId>com.cloudbees.jenkins.plugins</groupId>
-        <artifactId>kubernetes-credentials-provider</artifactId>
-        <version>1.276.v99a_de03cb_076</version>
-      </dependency>
-      <dependency>
         <groupId>io.jenkins</groupId>
         <artifactId>configuration-as-code</artifactId>
         <version>${configuration-as-code-plugin.version}</version>
