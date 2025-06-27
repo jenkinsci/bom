@@ -800,7 +800,7 @@
       <dependency>
         <groupId>org.csanchez.jenkins.plugins</groupId>
         <artifactId>kubernetes</artifactId>
-        <version>4353.vb_47977da_9417</version>
+        <version>4356.vfa_556c21f086</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.main</groupId>
