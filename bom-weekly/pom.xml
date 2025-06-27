@@ -1465,7 +1465,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plain-credentials</artifactId>
-        <version>195.vb_906e9073dee</version>
+        <version>199.v9f8e1f741799</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
