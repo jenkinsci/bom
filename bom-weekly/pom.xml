@@ -54,7 +54,7 @@
       <dependency>
         <groupId>com.cloudbees.jenkins.plugins</groupId>
         <artifactId>kubernetes-credentials-provider</artifactId>
-        <version>1.281.v331e3f5a_05a_9</version>
+        <version>1.284.v003ef70a_a_9cd</version>
       </dependency>
       <dependency>
         <groupId>com.coravy.hudson.plugins.github</groupId>
@@ -377,7 +377,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>flyway-api</artifactId>
-        <version>11.8.2-295.v6e6f834ff5e9</version>
+        <version>11.10.0-307.va_fa_45b_31e8a_7</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -800,7 +800,7 @@
       <dependency>
         <groupId>org.csanchez.jenkins.plugins</groupId>
         <artifactId>kubernetes</artifactId>
-        <version>4353.vb_47977da_9417</version>
+        <version>4356.vfa_556c21f086</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.main</groupId>
@@ -1229,7 +1229,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jackson2-api</artifactId>
-        <version>2.18.3-402.v74c4eb_f122b_2</version>
+        <version>2.19.0-404.vb_b_0fd2fea_e10</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1300,7 +1300,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>kubernetes-client-api</artifactId>
-        <version>6.10.0-251.v556f5f100500</version>
+        <version>6.14.0-255.v44e4b_386fb_a_e</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1913,7 +1913,7 @@
       <dependency>
         <groupId>org.jenkinsci.plugins</groupId>
         <artifactId>kubernetes-credentials</artifactId>
-        <version>192.v4d5b_1c429d17</version>
+        <version>195.v0c273a_cfb_4f4</version>
       </dependency>
       <dependency>
         <groupId>org.jenkinsci.plugins</groupId>
