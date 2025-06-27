@@ -21,11 +21,6 @@ updates:
       # Should have been 1.27.0
       - dependency-name: "com.sonyericsson.jenkins.plugins.bfa:build-failure-analyzer"
         versions: ["2.27.0"]
-      # Jackson 2 API 2.19.0-404.vb_b_0fd2fea_e10 is harmful to Kubernetes agents
-      # https://github.com/fabric8io/kubernetes-client/issues/7107
-      # https://issues.jenkins.io/browse/JENKINS-75712
-      - dependency-name: "org.jenkins-ci.plugins:jackson2-api"
-        versions: ["2.19.0-404.vb_b_0fd2fea_e10"]
     labels:
       # dependency updates to plugin BOM are developer relevant changes
       # developer label assures CD process will release with this change
