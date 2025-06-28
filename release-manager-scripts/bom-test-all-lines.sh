@@ -9,6 +9,6 @@ if [[ $# -ne 1 ]]; then
 fi
 
 ${HERE}/bom-line-test.sh weekly $1
-${HERE}/bom-line-test.sh 2.479.x $1
-${HERE}/bom-line-test.sh 2.462.x $1
-${HERE}/bom-line-test.sh 2.452.x $1
+${HERE}/bom-line-test.sh 2.516.x $1
+${HERE}/bom-line-test.sh 2.504.x $1
+${HERE}/bom-line-test.sh 2.492.x $1

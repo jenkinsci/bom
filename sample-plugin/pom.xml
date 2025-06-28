@@ -1735,6 +1735,14 @@
   <profiles>
     <!-- Use .1 of most recent active line, and .3 (or later) of previous lines: https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/#choosing-a-version -->
     <profile>
+      <id>2.516.x</id>
+      <properties>
+        <bom>2.516.x</bom>
+        <!-- TODO: Replace with 2.516.1 https://github.com/jenkins-infra/release/issues/708 -->
+        <jenkins.version>2.516</jenkins.version>
+      </properties>
+    </profile>
+    <profile>
       <id>2.504.x</id>
       <properties>
         <bom>2.504.x</bom>
@@ -1746,13 +1754,6 @@
       <properties>
         <bom>2.492.x</bom>
         <jenkins.version>2.492.3</jenkins.version>
-      </properties>
-    </profile>
-    <profile>
-      <id>2.479.x</id>
-      <properties>
-        <bom>2.479.x</bom>
-        <jenkins.version>2.479.3</jenkins.version>
       </properties>
     </profile>
   </profiles>
