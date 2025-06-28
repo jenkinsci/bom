@@ -6,7 +6,6 @@ For people potentially working on the BOM itself, not just consuming it.
 
 | Release Date | Lead                 |
 | ------------ | -------------------- |
-| 2025-06-27   | Bruno Verachten      |
 | 2025-07-04   | Bruno Verachten      |
 | 2025-07-11   | Basil Crow           |
 | 2025-07-18   | Basil Crow           |
@@ -16,6 +15,9 @@ For people potentially working on the BOM itself, not just consuming it.
 | 2025-08-15   | Kris Stern           |
 | 2025-08-22   | Mark Waite           |
 | 2025-08-29   | Mark Waite           |
+| 2025-09-05   | Darin Pope           |
+| 2025-09-12   | Darin Pope           |
+| 2025-09-19   | Bruno Verachten      |
 
 ## Updating a plugin
 
