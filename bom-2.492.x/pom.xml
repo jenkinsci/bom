@@ -52,6 +52,11 @@
         <version>355.v0f007356e15d</version>
       </dependency>
       <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>gitlab-kubernetes-credentials</artifactId>
+        <version>424.vd4c848a_61813</version>
+      </dependency>
+      <dependency>
         <groupId>io.jenkins.plugins.mina-sshd-api</groupId>
         <artifactId>mina-sshd-api-common</artifactId>
         <version>${mina-sshd-api.version}</version>
