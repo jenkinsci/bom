@@ -13,10 +13,10 @@ For people potentially working on the BOM itself, not just consuming it.
 | 2025-08-01   | Adrien Lecharpentier |
 | 2025-08-08   | Kris Stern           |
 | 2025-08-15   | Kris Stern           |
-| 2025-08-22   | Mark Waite           |
-| 2025-08-29   | Mark Waite           |
-| 2025-09-05   | Darin Pope           |
-| 2025-09-12   | Darin Pope           |
+| 2025-08-22   | Darin Pope           |
+| 2025-08-29   | Darin Pope           |
+| 2025-09-05   | Mark Waite           |
+| 2025-09-12   | Mark Waite           |
 | 2025-09-19   | Bruno Verachten      |
 
 ## Updating a plugin
