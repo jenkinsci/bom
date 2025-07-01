@@ -1913,7 +1913,7 @@
       <dependency>
         <groupId>org.jenkinsci.plugins</groupId>
         <artifactId>kubernetes-credentials</artifactId>
-        <version>195.v0c273a_cfb_4f4</version>
+        <version>203.v85b_9836a_f44b_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkinsci.plugins</groupId>
