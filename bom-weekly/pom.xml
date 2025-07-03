@@ -579,7 +579,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
-        <version>589.v74b_6361e5234</version>
+        <version>590.v06d574696250</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -625,7 +625,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>theme-manager</artifactId>
-        <version>294.vf2c2fd783821</version>
+        <version>310.v234c7de84f9c</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1500,7 +1500,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>role-strategy</artifactId>
-        <version>783.ve14e9f60fc26</version>
+        <version>785.v8d262df0f607</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
