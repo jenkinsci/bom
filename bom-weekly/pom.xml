@@ -200,7 +200,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>adoptopenjdk</artifactId>
-        <version>1.7</version>
+        <version>146.v1898676a_f04e</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
