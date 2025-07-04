@@ -1,8 +1,8 @@
 // Do not trigger build regularly on change requests as it costs a lot
 String cronTrigger = ''
-if(env.BRANCH_NAME == "master") {
-  cronTrigger = '32 6 * * 5'
-}
+// if(env.BRANCH_NAME == "helpdesk-4688-aws-tests") {
+//   cronTrigger = '32 6 * * 5'
+// }
 
 properties([
   disableConcurrentBuilds(abortPrevious: true),
@@ -10,10 +10,10 @@ properties([
   pipelineTriggers([cron(cronTrigger)])
 ])
 
-if (env.BRANCH_NAME == 'master' && currentBuild.buildCauses*._class == ['jenkins.branch.BranchEventCause']) {
-  currentBuild.result = 'NOT_BUILT'
-  error 'No longer running builds on response to master branch pushes. If you wish to cut a release, use “Re-run checks” from this failing check in https://github.com/jenkinsci/bom/commits/master'
-}
+// if (env.BRANCH_NAME == 'helpdesk-4688-aws-tests' && currentBuild.buildCauses*._class == ['jenkins.branch.BranchEventCause']) {
+//   currentBuild.result = 'NOT_BUILT'
+//   error 'No longer running builds on response to master branch pushes. If you wish to cut a release, use “Re-run checks” from this failing check in https://github.com/jenkinsci/bom/commits/master'
+// }
 
 def mavenEnv(Map params = [:], Closure body) {
   def attempt = 0
@@ -23,16 +23,16 @@ def mavenEnv(Map params = [:], Closure body) {
     // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
     node('maven-bom') {
       timeout(120) {
-        withChecks(name: 'Tests', includeStage: true) {
-          infra.withArtifactCachingProxy {
-            withEnv([
-              'JAVA_HOME=/opt/jdk-' + params['jdk'],
-              'PATH+JDK=/opt/jdk-' + params['jdk'] + '/bin',
-              "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B -ntp -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo",
-              "MVN_LOCAL_REPO=${WORKSPACE_TMP}/m2repo",
-            ]) {
-              // Load Maven Repo Cache if available
-              sh '''
+        //         withChecks(name: 'Tests', includeStage: true) {
+        infra.withArtifactCachingProxy {
+          withEnv([
+            'JAVA_HOME=/opt/jdk-' + params['jdk'],
+            'PATH+JDK=/opt/jdk-' + params['jdk'] + '/bin',
+            "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B -ntp -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo",
+            "MVN_LOCAL_REPO=${WORKSPACE_TMP}/m2repo",
+          ]) {
+            // Load Maven Repo Cache if available
+            sh '''
               mkdir -p "${MVN_LOCAL_REPO}"
               if test -f /cache/maven-bom-local-repo.tar.gz;
               then
@@ -44,15 +44,15 @@ def mavenEnv(Map params = [:], Closure body) {
               fi
               '''
 
-              body()
-            }
-          }
-          if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount > 0) {
-            // TODO JENKINS-27092 throw up UNSTABLE status in this case
-            error 'Some test failures, not going to continue'
+            body()
           }
         }
+        if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount > 0) {
+          // TODO JENKINS-27092 throw up UNSTABLE status in this case
+          error 'Some test failures, not going to continue'
+        }
       }
+      //       }
     }
   }
 }
@@ -111,11 +111,11 @@ stage('prep') {
     lines.each { line ->
       stash name: line, includes: "pct.sh,excludes.txt,target/pct.jar,target/megawar-${line}.war"
     }
-    infra.prepareToPublishIncrementals()
+    //     infra.prepareToPublishIncrementals()
   }
 }
 
-if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env.CHANGE_ID && (pullRequest.labels.contains('full-test') || pullRequest.labels.contains('weekly-test'))) {
+if (BRANCH_NAME == 'helpdesk-4688-aws-tests' || fullTestMarkerFile || weeklyTestMarkerFile || env.CHANGE_ID && (pullRequest.labels.contains('full-test') || pullRequest.labels.contains('weekly-test'))) {
   branches = [failFast: false]
   lines.each {line ->
     if (line != 'weekly' && (weeklyTestMarkerFile || env.CHANGE_ID && pullRequest.labels.contains('weekly-test'))) {
@@ -169,4 +169,4 @@ if (fullTestMarkerFile) {
   error 'Remember to `git rm full-test` before taking out of draft'
 }
 
-infra.maybePublishIncrementals()
+// infra.maybePublishIncrementals()
