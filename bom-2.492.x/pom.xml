@@ -11,6 +11,7 @@
   <properties>
     <configuration-as-code-plugin.version>1963.v24e046127a_3f</configuration-as-code-plugin.version>
     <mina-sshd-api.version>2.14.0-143.v2b_362fc39576</mina-sshd-api.version>
+    <cloudbees-folder-plugin.version>6.1026.ve06dfa_cf31c3</cloudbees-folder-plugin.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -80,6 +81,17 @@
         <groupId>org.csanchez.jenkins.plugins</groupId>
         <artifactId>kubernetes</artifactId>
         <version>4353.vb_47977da_9417</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>cloudbees-folder</artifactId>
+        <version>${cloudbees-folder-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>cloudbees-folder</artifactId>
+        <version>${cloudbees-folder-plugin.version}</version>
+        <classifier>tests</classifier>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
