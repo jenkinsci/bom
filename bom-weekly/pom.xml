@@ -1219,7 +1219,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>htmlpublisher</artifactId>
-        <version>425</version>
+        <version>427</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
