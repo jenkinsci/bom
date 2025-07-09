@@ -35,7 +35,7 @@
     <workflow-cps-plugin.version>4151.v5406e29e3c90</workflow-cps-plugin.version>
     <workflow-job-plugin.version>1540.v295eccc9778f</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>806.vb_b_688f609ee9</workflow-multibranch-plugin.version>
-    <workflow-step-api-plugin.version>700.v6e45cb_a_5a_a_21</workflow-step-api-plugin.version>
+    <workflow-step-api-plugin.version>704.ve4f0967e98fa_</workflow-step-api-plugin.version>
     <workflow-support-plugin.version>968.v8f17397e87b_8</workflow-support-plugin.version>
   </properties>
   <dependencyManagement>
@@ -1903,7 +1903,7 @@
       <dependency>
         <groupId>org.jenkins-ci.tools</groupId>
         <artifactId>git-parameter</artifactId>
-        <version>439.vb_0e46ca_14534</version>
+        <version>444.vca_b_84d3703c2</version>
       </dependency>
       <dependency>
         <groupId>org.jenkinsci.plugins</groupId>
