@@ -795,7 +795,7 @@
       <dependency>
         <groupId>org.6wind.jenkins</groupId>
         <artifactId>lockable-resources</artifactId>
-        <version>1349.v8b_ccb_c5487f7</version>
+        <version>1406.vf7b_510dfd587</version>
       </dependency>
       <dependency>
         <groupId>org.csanchez.jenkins.plugins</groupId>
