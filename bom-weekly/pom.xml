@@ -1617,7 +1617,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>swarm</artifactId>
-        <version>3.49</version>
+        <version>3.50</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
