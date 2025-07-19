@@ -97,6 +97,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>cloudbees-bitbucket-branch-source</artifactId>
+        <version>936.4.3</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>cloudbees-folder</artifactId>
         <version>${cloudbees-folder-plugin.version}</version>
       </dependency>
