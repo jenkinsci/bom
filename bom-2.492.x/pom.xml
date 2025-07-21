@@ -30,6 +30,11 @@
         <version>1.276.v99a_de03cb_076</version>
       </dependency>
       <dependency>
+        <groupId>com.coravy.hudson.plugins.github</groupId>
+        <artifactId>github</artifactId>
+        <version>1.43.0</version>
+      </dependency>
+      <dependency>
         <groupId>io.jenkins</groupId>
         <artifactId>configuration-as-code</artifactId>
         <version>${configuration-as-code-plugin.version}</version>
