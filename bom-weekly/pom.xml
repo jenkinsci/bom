@@ -32,7 +32,7 @@
     <scm-api-plugin.version>704.v3ce5c542825a_</scm-api-plugin.version>
     <subversion-plugin.version>1287.vd2d507146906</subversion-plugin.version>
     <workflow-api-plugin.version>1380.ve03e7a_63d139</workflow-api-plugin.version>
-    <workflow-cps-plugin.version>4168.v7ea_f89c358b_d</workflow-cps-plugin.version>
+    <workflow-cps-plugin.version>4169.vb_7e492a_1c7b_e</workflow-cps-plugin.version>
     <workflow-job-plugin.version>1540.v295eccc9778f</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>806.vb_b_688f609ee9</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>704.ve4f0967e98fa_</workflow-step-api-plugin.version>
@@ -59,7 +59,7 @@
       <dependency>
         <groupId>com.coravy.hudson.plugins.github</groupId>
         <artifactId>github</artifactId>
-        <version>1.43.0</version>
+        <version>1.44.0</version>
       </dependency>
       <dependency>
         <groupId>com.paul8620.jenkins.plugins</groupId>
@@ -255,7 +255,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>caffeine-api</artifactId>
-        <version>3.2.0-166.v72a_6d74b_870f</version>
+        <version>3.2.2-178.v353b_8428ed56</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -579,7 +579,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
-        <version>600.vc287d1a_d4b_47</version>
+        <version>603.v23e636851f81</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1229,7 +1229,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jackson2-api</artifactId>
-        <version>2.19.0-404.vb_b_0fd2fea_e10</version>
+        <version>2.19.2-408.v18248a_324cfe</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1520,7 +1520,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>saml</artifactId>
-        <version>4.544.v264eea_ed3eed</version>
+        <version>4.568.v78a_9a_db_8dc9b_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
