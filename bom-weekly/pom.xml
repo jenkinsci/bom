@@ -1002,7 +1002,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>credentials-binding</artifactId>
-        <version>696.v256688029804</version>
+        <version>702.vfe613e537e88</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
