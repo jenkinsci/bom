@@ -142,6 +142,11 @@
         <version>489.vd4b_25144138f</version>
       </dependency>
       <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>saml</artifactId>
+        <version>4.544.v264eea_ed3eed</version>
+      </dependency>
+      <dependency>
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
         <artifactId>workflow-api</artifactId>
         <version>${workflow-api-plugin.version}</version>
