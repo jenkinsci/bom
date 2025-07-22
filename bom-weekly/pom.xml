@@ -26,7 +26,7 @@
     <mina-sshd-api.version>2.15.0-161.vb_200831a_c15b_</mina-sshd-api.version>
     <okhttp-api-plugin.version>4.11.0-189.v976fa_d3379d6</okhttp-api-plugin.version>
     <pipeline-maven-plugin.version>1541.vc01544b_d27e8</pipeline-maven-plugin.version>
-    <pipeline-model-definition-plugin.version>2.2255.v56a_15e805f12</pipeline-model-definition-plugin.version>
+    <pipeline-model-definition-plugin.version>2.2258.v4e96d2b_da_f9b_</pipeline-model-definition-plugin.version>
     <pipeline-stage-view-plugin.version>2.38</pipeline-stage-view-plugin.version>
     <plugin-util-api.version>6.1.0</plugin-util-api.version>
     <scm-api-plugin.version>704.v3ce5c542825a_</scm-api-plugin.version>
@@ -215,7 +215,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>artifact-manager-s3</artifactId>
-        <version>942.vc32d61381d05</version>
+        <version>949.v2567c4c52d79</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1002,7 +1002,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>credentials-binding</artifactId>
-        <version>696.v256688029804</version>
+        <version>702.vfe613e537e88</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1072,7 +1072,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ec2</artifactId>
-        <version>1949.vf7e0fa_c3b_5b_c</version>
+        <version>1950.v4a_a_04b_84b_c74</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1520,7 +1520,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>saml</artifactId>
-        <version>4.568.v78a_9a_db_8dc9b_</version>
+        <version>4.569.vcff838e19ed1</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
