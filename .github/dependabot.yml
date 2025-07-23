@@ -6,12 +6,6 @@ updates:
     directory: "/sample-plugin"
     schedule:
       interval: "daily"
-    ignore:
-      # EE 10+ is not yet supported
-      # EE 9 is inherited from parent pom now
-      # EE 8 needs to remain until the 2.452.x line is retired
-      - dependency-name: "jakarta.servlet:jakarta.servlet-api"
-        versions: [">=5.0.0"]
   - package-ecosystem: "maven"
     open-pull-requests-limit: 25
     directory: "/bom-weekly"
