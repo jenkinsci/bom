@@ -1264,7 +1264,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jobConfigHistory</artifactId>
-        <version>1330.vcb_8320ea_cdb_e</version>
+        <version>1343.v4b_e819a_ecdc2</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
