@@ -225,7 +225,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>artifactory-client-api</artifactId>
-        <version>2.19.0-92.v57b_50df9c76f</version>
+        <version>2.19.0-116.vc6e7efff0e6b_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
