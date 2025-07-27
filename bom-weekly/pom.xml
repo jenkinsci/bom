@@ -523,7 +523,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>mariadb-api</artifactId>
-        <version>3.5.3-129.v941f87fa_d251</version>
+        <version>3.5.4-147.vb_6fc046ef86a_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
