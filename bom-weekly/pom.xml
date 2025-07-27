@@ -1274,7 +1274,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jsoup</artifactId>
-        <version>1.21.1-52.v96e4041b_60fd</version>
+        <version>1.21.1-58.vfc578e6e2610</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
