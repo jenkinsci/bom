@@ -513,7 +513,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>json-path-api</artifactId>
-        <version>2.9.0-148.v22a_7ffe323ce</version>
+        <version>2.9.0-178.vca_b_c71881321</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
