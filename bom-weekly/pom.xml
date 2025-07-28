@@ -508,7 +508,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>json-api</artifactId>
-        <version>20250517-153.vc8a_a_d87c0ce3</version>
+        <version>20250517-163.v1c5da_e99c775</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
