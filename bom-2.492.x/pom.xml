@@ -148,6 +148,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>metrics</artifactId>
+        <version>4.2.32-476.v5042e1c1edd7</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>saml</artifactId>
         <version>4.544.v264eea_ed3eed</version>
       </dependency>
