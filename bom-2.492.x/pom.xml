@@ -133,6 +133,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>github-branch-source</artifactId>
+        <version>1824.v046257273408</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jackson2-api</artifactId>
         <version>2.18.3-402.v74c4eb_f122b_2</version>
       </dependency>
