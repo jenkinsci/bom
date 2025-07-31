@@ -14,7 +14,8 @@
   <properties>
     <changelist>999999-SNAPSHOT</changelist>
     <bom>weekly</bom>
-    <jenkins.version>2.521</jenkins.version>
+    <!-- TODO https://github.com/jenkinsci/jenkins/pull/8608 -->
+    <jenkins.version>2.522-rc37252.669a_13296d46</jenkins.version>
     <spotless.check.skip>false</spotless.check.skip>
   </properties>
   <dependencyManagement>

@@ -1849,7 +1849,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
         <artifactId>workflow-durable-task-step</artifactId>
-        <version>1442.vb_a_b_f5f3da_9f9</version>
+        <!-- TODO https://github.com/jenkinsci/workflow-durable-task-step-plugin/pull/467 -->
+        <version>1443.v94c6467e00a_0</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
