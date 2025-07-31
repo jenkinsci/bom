@@ -36,7 +36,7 @@
     <workflow-job-plugin.version>1540.v295eccc9778f</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>810.v6b_6e77da_7058</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>706.v518c5dcb_24c0</workflow-step-api-plugin.version>
-    <workflow-support-plugin.version>968.v8f17397e87b_8</workflow-support-plugin.version>
+    <workflow-support-plugin.version>976.vb_d9493c2eb_09</workflow-support-plugin.version>
   </properties>
   <dependencyManagement>
     <dependencies>
