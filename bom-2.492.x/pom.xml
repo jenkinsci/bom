@@ -70,6 +70,11 @@
         <version>424.vd4c848a_61813</version>
       </dependency>
       <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>ionicons-api</artifactId>
+        <version>88.va_4187cb_eddf1</version>
+      </dependency>
+      <dependency>
         <groupId>io.jenkins.plugins.mina-sshd-api</groupId>
         <artifactId>mina-sshd-api-common</artifactId>
         <version>${mina-sshd-api.version}</version>
