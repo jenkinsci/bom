@@ -1234,7 +1234,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>javadoc</artifactId>
-        <version>327.vdfe586651ee0</version>
+        <version>354.vee1a_660b_4990</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
