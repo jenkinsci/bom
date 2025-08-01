@@ -164,6 +164,15 @@ If that build passes, a release should be published automatically when PRs match
 For the common case that only lots of `dependencies` PRs have been merged,
 the release can be triggered manually from the **Actions** tab after a `master` build has succeeded.
 
+If a `master` build succeeds but does not notify GitHub of the success, the release process will not run.
+In one case where that happened, we were able to replay the Pipeline on the `master` branch to show the failing test was passing.
+The Pipeline replay was:
+
+```
+publishChecks(name: 'pct-blueocean-plugin-weekly')
+echo 'OK'
+```
+
 ## Incrementals
 
 This repository is integrated with “Incrementals” [JEP-305](https://jenkins.io/jep/305):
