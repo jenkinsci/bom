@@ -21,7 +21,7 @@
     <declarative-pipeline-migration-assistant-plugin.version>1.6.5</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>3.1.0</forensics-api.version>
     <github-api-plugin.version>1.321-488.v9b_c0da_9533f8</github-api-plugin.version>
-    <git-plugin.version>5.7.0</git-plugin.version>
+    <git-plugin.version>5.7.1-rc5454.fa_ee06b_847ec</git-plugin.version>
     <junit-plugin.version>1335.v6b_a_a_e18534e1</junit-plugin.version>
     <mina-sshd-api.version>2.15.0-161.vb_200831a_c15b_</mina-sshd-api.version>
     <okhttp-api-plugin.version>4.11.0-189.v976fa_d3379d6</okhttp-api-plugin.version>
@@ -1052,7 +1052,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>docker-java-api</artifactId>
-        <version>3.5.2-119.v54c784c71fa_3</version>
+        <version>3.5.3-120.v7040fa_ec0d71</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1128,7 +1128,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>git-client</artifactId>
-        <version>6.2.0</version>
+        <version>6.2.1-rc3761.0ec8ffc3f299</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
