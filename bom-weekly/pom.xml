@@ -1290,7 +1290,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>junit-attachments</artifactId>
-        <version>323.v438b_00dcdb_fb_</version>
+        <version>330.v25180b_263160</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
