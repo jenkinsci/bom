@@ -276,7 +276,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>commons-compress-api</artifactId>
-        <version>1.27.1-3</version>
+        <version>1.28.0-1</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -850,7 +850,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>authentication-tokens</artifactId>
-        <version>1.131.v7199556c3004</version>
+        <version>1.144.v5ff4a_5ec5c33</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1082,7 +1082,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>email-ext</artifactId>
-        <version>1922.v5c93c9e80a_f9</version>
+        <version>1925.v1598902b_58dd</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1627,7 +1627,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>throttle-concurrents</artifactId>
-        <version>2.16</version>
+        <version>2.17</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
