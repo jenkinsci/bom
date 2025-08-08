@@ -32,7 +32,7 @@
     <scm-api-plugin.version>707.v749f968369d4</scm-api-plugin.version>
     <subversion-plugin.version>1287.vd2d507146906</subversion-plugin.version>
     <workflow-api-plugin.version>1382.veca_a_efe062fa_</workflow-api-plugin.version>
-    <workflow-cps-plugin.version>4175.ve65b_fa_663eed</workflow-cps-plugin.version>
+    <workflow-cps-plugin.version>4177.vb_203fe395445</workflow-cps-plugin.version>
     <workflow-job-plugin.version>1540.v295eccc9778f</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>810.v6b_6e77da_7058</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>706.v518c5dcb_24c0</workflow-step-api-plugin.version>
@@ -503,7 +503,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>jquery3-api</artifactId>
-        <version>3.7.1-3</version>
+        <version>3.7.1-583.vda_6ca_102270d</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -795,7 +795,7 @@
       <dependency>
         <groupId>org.6wind.jenkins</groupId>
         <artifactId>lockable-resources</artifactId>
-        <version>1408.vb_7d1f371781d</version>
+        <version>1412.v3f305a_fb_a_117</version>
       </dependency>
       <dependency>
         <groupId>org.csanchez.jenkins.plugins</groupId>
@@ -1087,7 +1087,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>embeddable-build-status</artifactId>
-        <version>548.v5653c6e28c41</version>
+        <version>602.v766a_264519c7</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
