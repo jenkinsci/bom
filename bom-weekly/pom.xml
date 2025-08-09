@@ -987,7 +987,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>config-file-provider</artifactId>
-        <version>988.v0461fcc2b_9d1</version>
+        <version>994.v3d4a_5fa_f353a_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1405,7 +1405,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>parameterized-trigger</artifactId>
-        <version>859.vb_e3907a_07a_16</version>
+        <version>873.v8b_e37dd8418f</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
