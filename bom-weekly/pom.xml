@@ -825,7 +825,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ansible</artifactId>
-        <version>524.v9fa_a_4c989224</version>
+        <version>588.v2a_a_a_f345e34f</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
