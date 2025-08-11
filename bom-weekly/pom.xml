@@ -1259,7 +1259,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jobcacher</artifactId>
-        <version>724.veb_f3d7221449</version>
+        <version>732.ve164e3059a_a_a_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
