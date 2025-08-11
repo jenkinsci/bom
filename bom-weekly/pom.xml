@@ -25,7 +25,7 @@
     <junit-plugin.version>1335.v6b_a_a_e18534e1</junit-plugin.version>
     <mina-sshd-api.version>2.15.0-161.vb_200831a_c15b_</mina-sshd-api.version>
     <okhttp-api-plugin.version>4.11.0-189.v976fa_d3379d6</okhttp-api-plugin.version>
-    <pipeline-maven-plugin.version>1559.vb_03b_1b_f1a_25c</pipeline-maven-plugin.version>
+    <pipeline-maven-plugin.version>1563.v2e75645a_7d43</pipeline-maven-plugin.version>
     <pipeline-model-definition-plugin.version>2.2258.v4e96d2b_da_f9b_</pipeline-model-definition-plugin.version>
     <pipeline-stage-view-plugin.version>2.38</pipeline-stage-view-plugin.version>
     <plugin-util-api.version>6.1.0</plugin-util-api.version>
@@ -825,7 +825,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ansible</artifactId>
-        <version>524.v9fa_a_4c989224</version>
+        <version>588.v2a_a_a_f345e34f</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -885,7 +885,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>basic-branch-build-strategies</artifactId>
-        <version>228.v68c089762a_db_</version>
+        <version>275.vde2351b_4a_58b_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1259,7 +1259,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jobcacher</artifactId>
-        <version>724.veb_f3d7221449</version>
+        <version>732.ve164e3059a_a_a_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1335,7 +1335,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>mercurial</artifactId>
-        <version>1309.v6802b_f0efb_b_9</version>
+        <version>1323.ve69d2a_db_8a_b_d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
