@@ -25,14 +25,14 @@
     <junit-plugin.version>1335.v6b_a_a_e18534e1</junit-plugin.version>
     <mina-sshd-api.version>2.15.0-161.vb_200831a_c15b_</mina-sshd-api.version>
     <okhttp-api-plugin.version>4.11.0-189.v976fa_d3379d6</okhttp-api-plugin.version>
-    <pipeline-maven-plugin.version>1556.vd9051b_d6ef5d</pipeline-maven-plugin.version>
+    <pipeline-maven-plugin.version>1559.vb_03b_1b_f1a_25c</pipeline-maven-plugin.version>
     <pipeline-model-definition-plugin.version>2.2258.v4e96d2b_da_f9b_</pipeline-model-definition-plugin.version>
     <pipeline-stage-view-plugin.version>2.38</pipeline-stage-view-plugin.version>
     <plugin-util-api.version>6.1.0</plugin-util-api.version>
     <scm-api-plugin.version>707.v749f968369d4</scm-api-plugin.version>
     <subversion-plugin.version>1287.vd2d507146906</subversion-plugin.version>
     <workflow-api-plugin.version>1382.veca_a_efe062fa_</workflow-api-plugin.version>
-    <workflow-cps-plugin.version>4175.ve65b_fa_663eed</workflow-cps-plugin.version>
+    <workflow-cps-plugin.version>4177.vb_203fe395445</workflow-cps-plugin.version>
     <workflow-job-plugin.version>1540.v295eccc9778f</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>810.v6b_6e77da_7058</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>706.v518c5dcb_24c0</workflow-step-api-plugin.version>
@@ -205,7 +205,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>analysis-model-api</artifactId>
-        <version>13.7.0</version>
+        <version>13.8.0-902.v26f80296f743</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -296,7 +296,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>coverage</artifactId>
-        <version>2.7.1</version>
+        <version>2.8.0</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -311,7 +311,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>customizable-header</artifactId>
-        <version>220.v7d040122e432</version>
+        <version>222.v59c31852cf3a_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -503,7 +503,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>jquery3-api</artifactId>
-        <version>3.7.1-3</version>
+        <version>3.7.1-583.vda_6ca_102270d</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -630,7 +630,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>warnings-ng</artifactId>
-        <version>12.9.0</version>
+        <version>12.10.0</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
@@ -795,7 +795,7 @@
       <dependency>
         <groupId>org.6wind.jenkins</groupId>
         <artifactId>lockable-resources</artifactId>
-        <version>1408.vb_7d1f371781d</version>
+        <version>1412.v3f305a_fb_a_117</version>
       </dependency>
       <dependency>
         <groupId>org.csanchez.jenkins.plugins</groupId>
@@ -916,7 +916,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>build-name-setter</artifactId>
-        <version>2.5.0</version>
+        <version>2.5.1</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -987,7 +987,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>config-file-provider</artifactId>
-        <version>988.v0461fcc2b_9d1</version>
+        <version>994.v3d4a_5fa_f353a_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1087,7 +1087,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>embeddable-build-status</artifactId>
-        <version>548.v5653c6e28c41</version>
+        <version>602.v766a_264519c7</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1320,12 +1320,12 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>mask-passwords</artifactId>
-        <version>199.va_0218b_a_59186</version>
+        <version>204.v24d863065180</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>matrix-auth</artifactId>
-        <version>3.2.6</version>
+        <version>3.2.7</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1405,7 +1405,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>parameterized-trigger</artifactId>
-        <version>859.vb_e3907a_07a_16</version>
+        <version>873.v8b_e37dd8418f</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1430,7 +1430,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pipeline-input-step</artifactId>
-        <version>532.v9e7466cb_4406</version>
+        <version>534.v352f0a_e98918</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1627,7 +1627,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>throttle-concurrents</artifactId>
-        <version>2.17</version>
+        <version>2.18</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1954,7 +1954,7 @@
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
         <artifactId>instant-messaging</artifactId>
-        <version>2.858.v84187da_c9fa_7</version>
+        <version>2.868.v404b_2669f077</version>
       </dependency>
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
