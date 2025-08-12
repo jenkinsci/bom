@@ -31,7 +31,7 @@
     <plugin-util-api.version>6.1.0</plugin-util-api.version>
     <scm-api-plugin.version>707.v749f968369d4</scm-api-plugin.version>
     <subversion-plugin.version>1292.ve8cf25770ee3</subversion-plugin.version>
-    <workflow-api-plugin.version>1382.veca_a_efe062fa_</workflow-api-plugin.version>
+    <workflow-api-plugin.version>1384.vdc05a_48f535f</workflow-api-plugin.version>
     <workflow-cps-plugin.version>4183.v94b_6fd39da_c1</workflow-cps-plugin.version>
     <workflow-job-plugin.version>1540.v295eccc9778f</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>811.vcd33d074c2a_0</workflow-multibranch-plugin.version>
