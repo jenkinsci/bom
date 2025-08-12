@@ -1677,7 +1677,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ws-cleanup</artifactId>
-        <version>0.48</version>
+        <version>0.49</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
