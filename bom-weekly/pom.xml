@@ -785,7 +785,7 @@
       <dependency>
         <groupId>jp.ikedam.jenkins.plugins</groupId>
         <artifactId>extensible-choice-parameter</artifactId>
-        <version>237.v51568f37b_78e</version>
+        <version>239.v5f5c278708cf</version>
       </dependency>
       <dependency>
         <groupId>net.plavcak.jenkins</groupId>
