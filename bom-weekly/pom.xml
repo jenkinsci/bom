@@ -1612,7 +1612,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>support-core</artifactId>
-        <version>1756.v5b_e146d607fd</version>
+        <version>1758.v87f0f880c067</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
