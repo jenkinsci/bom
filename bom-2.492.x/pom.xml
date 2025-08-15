@@ -66,6 +66,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>gitea-checks</artifactId>
+        <version>559.va_d764b_5edf3e</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>gitlab-kubernetes-credentials</artifactId>
         <version>424.vd4c848a_61813</version>
       </dependency>
