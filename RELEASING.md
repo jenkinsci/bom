@@ -2,8 +2,8 @@
 
 The plugin bill of materials rotates release lead responsibilities between different volunteers as listed in [BOM release leads](#bom-release-leads).
 Release leads serve for two weeks, then the release lead assignment is rotated to another person.
-Release leads resolve dependency update failures during their release lead assignment by following the instructions in the [contributing guide](CONTRIBUTING.md).
-Details are described in [a week in the life of a BOM release manager](#a-week-in-the-life-of-a-bom-release-manager)
+Release leads resolve dependency update failures during their release lead assignment.
+Details are described in [a week in the life of a BOM release manager](#a-week-in-the-life-of-a-bom-release-manager) with some additional information in the [plugin compatibility tester (PCT) section](CONTRIBUTING.md#pct) of the contributing guide.
 
 ## BOM release leads
 
