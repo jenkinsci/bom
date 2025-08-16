@@ -27,8 +27,8 @@ just import the [latest BOM](https://repo.jenkins-ci.org/public/io/jenkins/tools
             <groupId>io.jenkins.tools.bom</groupId>
             <artifactId>bom-${jenkins.baseline}.x</artifactId>
             <version>…</version>
-            <scope>import</scope>
             <type>pom</type>
+            <scope>import</scope>
         </dependency>
     </dependencies>
 </dependencyManagement>
