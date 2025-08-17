@@ -28,7 +28,7 @@
     <pipeline-maven-plugin.version>1563.v2e75645a_7d43</pipeline-maven-plugin.version>
     <pipeline-model-definition-plugin.version>2.2265.v140e610fe9d5</pipeline-model-definition-plugin.version>
     <pipeline-stage-view-plugin.version>2.38</pipeline-stage-view-plugin.version>
-    <plugin-util-api.version>6.1.0</plugin-util-api.version>
+    <plugin-util-api.version>6.1154.ved7e7d3035a_5</plugin-util-api.version>
     <scm-api-plugin.version>707.v749f968369d4</scm-api-plugin.version>
     <subversion-plugin.version>1292.ve8cf25770ee3</subversion-plugin.version>
     <workflow-api-plugin.version>1384.vdc05a_48f535f</workflow-api-plugin.version>
@@ -250,7 +250,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>byte-buddy-api</artifactId>
-        <version>1.17.6-171.ve8cb_b_432ea_b_f</version>
+        <version>1.17.7-181.ve4f4387cb_a_86</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -296,7 +296,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>coverage</artifactId>
-        <version>2.2875.ve560756ff429</version>
+        <version>2.2879.v7434570a_8b_94</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -517,13 +517,18 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>jspecify-api</artifactId>
+        <version>1.0.0-1.ve7231e6d0d15</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>locale</artifactId>
         <version>597.v7781ce70d4cf</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>mariadb-api</artifactId>
-        <version>3.5.4-147.vb_6fc046ef86a_</version>
+        <version>3.5.5-157.vb_6b_0b_12949f1</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1169,7 +1174,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>gitlab-logo</artifactId>
-        <version>195.vb_b_4dd5cc0f54</version>
+        <version>219.v451a_3b_74b_7a_a_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
