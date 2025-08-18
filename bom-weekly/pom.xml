@@ -1345,7 +1345,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>metrics</artifactId>
-        <version>4.2.32-481.v75f035fdc894</version>
+        <version>4.2.33-484.v2fcd689980d1</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
