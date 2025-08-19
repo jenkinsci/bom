@@ -1133,7 +1133,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>git-client</artifactId>
-        <version>6.3.0</version>
+        <version>6.3.1-rc3772.34a_cdc7c6693</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
