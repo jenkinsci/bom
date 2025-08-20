@@ -1315,7 +1315,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>mailer</artifactId>
-        <version>515.vd788654779b_1</version>
+        <version>522.va_995fa_cfb_8b_d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
