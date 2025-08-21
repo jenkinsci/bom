@@ -25,7 +25,7 @@
     <junit-plugin.version>1335.v6b_a_a_e18534e1</junit-plugin.version>
     <mina-sshd-api.version>2.15.0-161.vb_200831a_c15b_</mina-sshd-api.version>
     <okhttp-api-plugin.version>4.11.0-189.v976fa_d3379d6</okhttp-api-plugin.version>
-    <pipeline-maven-plugin.version>1563.v2e75645a_7d43</pipeline-maven-plugin.version>
+    <pipeline-maven-plugin.version>1567.vb_2c3a_2116860</pipeline-maven-plugin.version>
     <pipeline-model-definition-plugin.version>2.2265.v140e610fe9d5</pipeline-model-definition-plugin.version>
     <pipeline-stage-view-plugin.version>2.38</pipeline-stage-view-plugin.version>
     <plugin-util-api.version>6.1157.vc75ef7129d86</plugin-util-api.version>
@@ -296,7 +296,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>coverage</artifactId>
-        <version>2.2879.v7434570a_8b_94</version>
+        <version>2.2901.v47e734811a_92</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -347,7 +347,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>echarts-api</artifactId>
-        <version>6.0.0-1</version>
+        <version>6.0.0-1137.vfd5f348e1952</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -413,7 +413,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>git-forensics</artifactId>
-        <version>3.2.0</version>
+        <version>3.2083.vd36f32376929</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -635,7 +635,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>warnings-ng</artifactId>
-        <version>12.9749.va_2c1361722d3</version>
+        <version>12.9772.v77058c8ea_646</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
@@ -1133,7 +1133,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>git-client</artifactId>
-        <version>6.3.0</version>
+        <version>6.3.1</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
