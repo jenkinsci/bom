@@ -635,7 +635,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>warnings-ng</artifactId>
-        <version>12.9749.va_2c1361722d3</version>
+        <version>12.9772.v77058c8ea_646</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
