@@ -11,10 +11,10 @@ Details are described in [a week in the life of a BOM release manager](#a-week-i
 | ------------ | -------------------- |
 | 2025-08-22   | Darin Pope           |
 | 2025-08-29   | Darin Pope           |
-| 2025-09-05   | Mark Waite           |
-| 2025-09-12   | Mark Waite           |
-| 2025-09-19   | Bruno Verachten      |
-| 2025-09-26   | Bruno Verachten      |
+| 2025-09-05   | Bruno Verachten      |
+| 2025-09-12   | Bruno Verachten      |
+| 2025-09-19   | Mark Waite           |
+| 2025-09-26   | Mark Waite           |
 | 2025-10-03   | Basil Crow           |
 | 2025-10-10   | Basil Crow           |
 | 2025-10-17   | Adrien Lecharpentier |
