@@ -1743,7 +1743,7 @@
       <id>2.516.x</id>
       <properties>
         <bom>2.516.x</bom>
-        <jenkins.version>2.516.1</jenkins.version>
+        <jenkins.version>2.516.2</jenkins.version>
       </properties>
     </profile>
     <profile>
