@@ -1617,7 +1617,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>support-core</artifactId>
-        <version>1758.v87f0f880c067</version>
+        <version>1763.ve4ce0d10a_3f0</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
