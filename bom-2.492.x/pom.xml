@@ -10,9 +10,12 @@
   <packaging>pom</packaging>
   <properties>
     <configuration-as-code-plugin.version>1963.v24e046127a_3f</configuration-as-code-plugin.version>
+    <data-tables-api.version>2.3.2-3</data-tables-api.version>
     <mina-sshd-api.version>2.14.0-143.v2b_362fc39576</mina-sshd-api.version>
     <cloudbees-folder-plugin.version>6.1026.ve06dfa_cf31c3</cloudbees-folder-plugin.version>
+    <forensics-api.version>3.1.0</forensics-api.version>
     <branch-api-plugin.version>2.1229.ve86b_d02b_5e56</branch-api-plugin.version>
+    <plugin-util-api.version>6.1.0</plugin-util-api.version>
     <workflow-api-plugin.version>1373.v7b_813f10efa_b_</workflow-api-plugin.version>
   </properties>
   <dependencyManagement>
@@ -56,13 +59,55 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>coverage</artifactId>
+        <version>2.8.0</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>custom-folder-icon</artifactId>
         <version>2.19</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>data-tables-api</artifactId>
+        <version>${data-tables-api.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>data-tables-api</artifactId>
+        <version>${data-tables-api.version}</version>
+        <classifier>tests</classifier>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>design-library</artifactId>
         <version>355.v0f007356e15d</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>echarts-api</artifactId>
+        <version>6.0.0-1</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>font-awesome-api</artifactId>
+        <version>7.0.0-1</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>forensics-api</artifactId>
+        <version>${forensics-api.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>forensics-api</artifactId>
+        <version>${forensics-api.version}</version>
+        <classifier>tests</classifier>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>git-forensics</artifactId>
+        <version>3.2.0</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -83,6 +128,27 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>opentelemetry-api</artifactId>
         <version>1.49.0.77.va_c69ec2472c0</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>plugin-util-api</artifactId>
+        <version>${plugin-util-api.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>plugin-util-api</artifactId>
+        <version>${plugin-util-api.version}</version>
+        <classifier>tests</classifier>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>prism-api</artifactId>
+        <version>1.30.0-1</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>warnings-ng</artifactId>
+        <version>12.10.0</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins.mina-sshd-api</groupId>
