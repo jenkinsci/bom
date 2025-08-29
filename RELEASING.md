@@ -9,8 +9,6 @@ Details are described in [a week in the life of a BOM release manager](#a-week-i
 
 | Release Date | Lead                 |
 | ------------ | -------------------- |
-| 2025-08-22   | Darin Pope           |
-| 2025-08-29   | Darin Pope           |
 | 2025-09-05   | Bruno Verachten      |
 | 2025-09-12   | Bruno Verachten      |
 | 2025-09-19   | Mark Waite           |
@@ -21,6 +19,8 @@ Details are described in [a week in the life of a BOM release manager](#a-week-i
 | 2025-10-24   | Adrien Lecharpentier |
 | 2025-10-31   | Kris Stern           |
 | 2025-11-07   | Kris Stern           |
+| 2025-11-14   | Darin Pope           |
+| 2025-11-21   | Darin Pope           |
 
 ## Releasing the BOM
 
