@@ -105,7 +105,7 @@ Consider rolling back a dependency update when:
 
 When a problematic dependency update needs to be rolled back, follow these steps:
 
-####### 1. Notify the Author
+1. Notify the Author
 
 **Notify the author of the problematic change as close as possible to the actual problem area.** Leave a comment on the original PR or commit that introduced the issue, explaining the specific problems encountered.
 
@@ -126,7 +126,7 @@ As noted, when I locally go back to github-branch-source 1834.v857721ea_74c6 bot
 
 **Reference:** See [this example notification](https://github.com/jenkinsci/github-branch-source-plugin/pull/822#issuecomment-3238052920) to the plugin author.
 
-####### 2. Revert the Change
+2. Revert the Change
 
 Create a revert commit that rolls back the problematic dependency update. In your commit message, include a link to the notification you sent to the author.
 
@@ -138,15 +138,15 @@ Rolling back due to compatibility issues with downstream plugins.
 See notification to author: https://github.com/jenkinsci/github-branch-source-plugin/pull/822#issuecomment-3238052920
 ```
 
-####### 3. Trigger Dependabot
+3. Trigger Dependabot
 
 Comment `@dependabot rebase` on the reverted PR to trigger Dependabot to reprocess the change.
 
-####### 4. Disable Automerge
+4. Disable Automerge
 
 Disable automerge for the PR to prevent it from being automatically merged again while the issue is being investigated.
 
-####### 5. Request Changes Review
+5. Request Changes Review
 
 1. Click on **"Files changed"** tab in the PR
 2. Click **"Review changes"** 
@@ -154,18 +154,18 @@ Disable automerge for the PR to prevent it from being automatically merged again
 4. Add a comment explaining why changes are requested (reference the compatibility issues)
 5. Click **"Submit review"**
 
-####### 6. Add weekly-test Label
+6. Add weekly-test Label
 
 Add the `weekly-test` label to the PR to ensure it gets additional testing before being considered for merge again.
 
-####### 7. Leave the PR Open
+7. Leave the PR Open
 
 Do not close the PR. Leave it open so that:
 - The issue remains visible and can be tracked
 - The author can address the compatibility issues
 - Testing can be re-run once fixes are implemented
 
-####### 8. Convert to Draft
+8. Convert to Draft
 
 Convert the PR to draft status by clicking the **"Convert to draft"** link at the bottom of the Reviewers block. This signals that the PR is not ready for merge.
 
