@@ -154,7 +154,7 @@ Disable automerge for the PR to prevent it from being automatically merged again
 - Add a comment explaining why changes are requested (reference the compatibility issues)
 - Click **"Submit review"**
 
-6. Add weekly-test Label
+6. Add `weekly-test` Label
 
 Add the `weekly-test` label to the PR to ensure it gets additional testing before being considered for merge again.
 
@@ -177,7 +177,7 @@ For a complete example of this rollback process in action, see [BOM PR #5611](ht
 - Revert commit with reference to the notification
 - PR converted to draft status
 - Changes requested with clear explanation
-- Weekly-test label applied
+- `weekly-test` label applied
 - Automerge disabled
 
 ###### After the Rollback
