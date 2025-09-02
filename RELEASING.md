@@ -148,11 +148,11 @@ Disable automerge for the PR to prevent it from being automatically merged again
 
 5. Request Changes Review
 
-  1. Click on **"Files changed"** tab in the PR
-  2. Click **"Review changes"** 
-  3. Select **"Request changes"**
-  4. Add a comment explaining why changes are requested (reference the compatibility issues)
-  5. Click **"Submit review"**
+- Click on **"Files changed"** tab in the PR
+- Click **"Review changes"** 
+- Select **"Request changes"**
+- Add a comment explaining why changes are requested (reference the compatibility issues)
+- Click **"Submit review"**
 
 6. Add weekly-test Label
 
