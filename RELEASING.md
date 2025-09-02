@@ -196,7 +196,6 @@ When performing rollbacks:
 - Provide helpful details like failing tests or error messages  
 - Reference specific versions that work vs. versions that fail
 - Be respectful and collaborative - rollbacks are about maintaining stability, not blame
-- Keep all stakeholders informed about the timeline and resolution plan
 
 ##### Dependency requires Jenkins 2.xxx.y or higher
 
