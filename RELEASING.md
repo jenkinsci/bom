@@ -118,8 +118,8 @@ tl;dr...two plugins that passed on the Tuesday weekly-test (foo-plugin and bar-p
 For the moment so I can get the BOM release out today, I'm going to revert the PR that put in github-branch-source 1844.v4a_9883d49126.
 
 The local BOM commands I'm running that are failing are:
-- ./bom-line-test.sh foo-plugin 2.479.x
-- ./bom-line-test.sh bar-plugin 2.479.x
+- `LINE=weekly PLUGINS=bar-plugin bash local-test.sh`
+- `LINE=weekly PLUGINS=foo-plugin bash local-test.sh`
 
 As noted, when I locally go back to github-branch-source 1834.v857721ea_74c6 both tests are passing.
 ```
