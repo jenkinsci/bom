@@ -116,6 +116,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>github-checks</artifactId>
+        <version>602.v264a_83610da_6</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>gitlab-kubernetes-credentials</artifactId>
         <version>424.vd4c848a_61813</version>
       </dependency>
@@ -215,7 +220,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>git-client</artifactId>
-        <version>6.1.3</version>
+        <version>6.1.4</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
