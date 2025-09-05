@@ -14,6 +14,7 @@
     <mina-sshd-api.version>2.14.0-143.v2b_362fc39576</mina-sshd-api.version>
     <cloudbees-folder-plugin.version>6.1026.ve06dfa_cf31c3</cloudbees-folder-plugin.version>
     <forensics-api.version>3.1.0</forensics-api.version>
+    <github-api-plugin.version>1.321-488.v9b_c0da_9533f8</github-api-plugin.version>
     <branch-api-plugin.version>2.1229.ve86b_d02b_5e56</branch-api-plugin.version>
     <plugin-util-api.version>6.1.0</plugin-util-api.version>
     <workflow-api-plugin.version>1373.v7b_813f10efa_b_</workflow-api-plugin.version>
@@ -221,6 +222,17 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>git-client</artifactId>
         <version>6.1.4</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>github-api</artifactId>
+        <version>${github-api-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>github-api</artifactId>
+        <version>${github-api-plugin.version}</version>
+        <classifier>tests</classifier>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
