@@ -1184,7 +1184,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>gitlab-plugin</artifactId>
-        <version>1.9.8</version>
+        <!-- https://github.com/jenkinsci/gitlab-plugin/pull/1807 -->
+        <version>1.9.9-rc2006.a_c2d581562f1</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1234,6 +1235,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jackson2-api</artifactId>
+        <!-- TODO https://github.com/jenkinsci/jackson2-api-plugin/pull/311 -->
         <version>2.20.0-411.v7dfccf367705</version>
       </dependency>
       <dependency>
