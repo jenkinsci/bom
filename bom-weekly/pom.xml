@@ -1249,7 +1249,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>JiraTestResultReporter</artifactId>
-        <version>300.v7a_d8b_cee2906</version>
+        <version>323.vb_cc947025ef6</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
