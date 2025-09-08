@@ -15,7 +15,7 @@
     <blueocean-plugin.version>1.27.21</blueocean-plugin.version>
     <branch-api-plugin.version>2.1244.vf95c81f1641c</branch-api-plugin.version>
     <checks-api.version>373.vfe7645102093</checks-api.version>
-    <cloudbees-folder-plugin.version>6.1037.v4cb_8573b_72a_a_</cloudbees-folder-plugin.version>
+    <cloudbees-folder-plugin.version>6.1040.v8a_e6330a_54e3</cloudbees-folder-plugin.version>
     <configuration-as-code-plugin.version>1985.vdda_32d0c4ea_b_</configuration-as-code-plugin.version>
     <data-tables-api.version>2.3.3-1383.va_5607a_a_3f3c2</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.5</declarative-pipeline-migration-assistant-plugin.version>
@@ -59,7 +59,7 @@
       <dependency>
         <groupId>com.coravy.hudson.plugins.github</groupId>
         <artifactId>github</artifactId>
-        <version>1.44.0</version>
+        <version>1.45.0</version>
       </dependency>
       <dependency>
         <groupId>com.paul8620.jenkins.plugins</groupId>
@@ -377,7 +377,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>flyway-api</artifactId>
-        <version>11.11.2-341.v95c9fa_65115b_</version>
+        <version>11.12.0-345.v1695a_fd5399e</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -584,7 +584,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
-        <version>628.va_6f6a_1d12848</version>
+        <version>637.vb_6105ed84508</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -956,7 +956,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>cloudbees-bitbucket-branch-source</artifactId>
-        <version>936.4.4</version>
+        <version>937.0.1</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1174,7 +1174,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>gitlab-logo</artifactId>
-        <version>219.v451a_3b_74b_7a_a_</version>
+        <version>221.v4041f5e65573</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1184,8 +1184,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>gitlab-plugin</artifactId>
-        <!-- https://github.com/jenkinsci/gitlab-plugin/pull/1807 -->
-        <version>1.9.9-rc2006.a_c2d581562f1</version>
+        <version>1.9.9</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1251,7 +1250,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>JiraTestResultReporter</artifactId>
-        <version>300.v7a_d8b_cee2906</version>
+        <version>323.vb_cc947025ef6</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1527,7 +1526,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>saml</artifactId>
-        <version>4.569.vcff838e19ed1</version>
+        <version>4.580.v4cb_5b_9ec2cc2</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1951,7 +1950,7 @@
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
         <artifactId>favorite</artifactId>
-        <version>2.237.v79163ca_8b_892</version>
+        <version>2.253.v9b_413168133b_</version>
       </dependency>
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
