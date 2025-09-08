@@ -22,7 +22,7 @@
     <forensics-api.version>3.1754.v2a_6613b_77002</forensics-api.version>
     <github-api-plugin.version>1.330-492.v3941a_032db_2a_</github-api-plugin.version>
     <git-plugin.version>5.7.0</git-plugin.version>
-    <junit-plugin.version>1354.v5b_348580de7f</junit-plugin.version>
+    <junit-plugin.version>1355.v45e2ea_65863c</junit-plugin.version>
     <mina-sshd-api.version>2.16.0-167.va_269f38cc024</mina-sshd-api.version>
     <okhttp-api-plugin.version>4.11.0-189.v976fa_d3379d6</okhttp-api-plugin.version>
     <pipeline-maven-plugin.version>1567.vb_2c3a_2116860</pipeline-maven-plugin.version>
@@ -956,7 +956,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>cloudbees-bitbucket-branch-source</artifactId>
-        <version>937.0.1</version>
+        <version>936.4.4</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1077,7 +1077,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ec2</artifactId>
-        <version>2018.vc13c882e22db_</version>
+        <version>2029.v50458f410ef9</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1526,7 +1526,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>saml</artifactId>
-        <version>4.580.v4cb_5b_9ec2cc2</version>
+        <version>4.582.v79858eef4044</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
