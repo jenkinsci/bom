@@ -1627,7 +1627,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>text-finder</artifactId>
-        <version>1.32</version>
+        <version>1.33</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
