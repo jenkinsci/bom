@@ -137,6 +137,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>pipeline-graph-view</artifactId>
+        <version>628.va_6f6a_1d12848</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>plugin-util-api</artifactId>
         <version>${plugin-util-api.version}</version>
       </dependency>
