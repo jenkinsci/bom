@@ -800,7 +800,7 @@
       <dependency>
         <groupId>net.plavcak.jenkins</groupId>
         <artifactId>scmskip</artifactId>
-        <version>79.v311ff68f9df1</version>
+        <version>82.v24fc1c6f381b_</version>
       </dependency>
       <dependency>
         <groupId>org.6wind.jenkins</groupId>
