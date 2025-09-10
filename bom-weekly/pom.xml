@@ -357,7 +357,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>emoji-symbols-api</artifactId>
-        <version>16.0-26.v9818ff7423f0</version>
+        <version>17.0-57.v8d44b_9a_b_d5ea_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
