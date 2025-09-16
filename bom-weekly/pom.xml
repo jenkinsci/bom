@@ -17,7 +17,7 @@
     <checks-api.version>373.vfe7645102093</checks-api.version>
     <cloudbees-folder-plugin.version>6.1040.v8a_e6330a_54e3</cloudbees-folder-plugin.version>
     <configuration-as-code-plugin.version>1985.vdda_32d0c4ea_b_</configuration-as-code-plugin.version>
-    <data-tables-api.version>2.3.3-1383.va_5607a_a_3f3c2</data-tables-api.version>
+    <data-tables-api.version>2.3.4-1400.vb_1e3e3c4dfc8</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.5</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>3.1754.v2a_6613b_77002</forensics-api.version>
     <github-api-plugin.version>1.330-492.v3941a_032db_2a_</github-api-plugin.version>
@@ -245,7 +245,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>bootstrap5-api</artifactId>
-        <version>5.3.7-860.v1251c115c90c</version>
+        <version>5.3.8-876.vb_c62a_27d9a_77</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -296,7 +296,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>coverage</artifactId>
-        <version>2.2933.v84e9b_19d9e6f</version>
+        <version>2.2941.v08df75b_767f1</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -382,7 +382,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>font-awesome-api</artifactId>
-        <version>7.0.0-851.vd1feb_218a_a_63</version>
+        <version>7.0.1-859.v128d3a_efb_6e5</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -589,7 +589,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
-        <version>637.vb_6105ed84508</version>
+        <version>642.v39f37c8e1e70</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -961,7 +961,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>cloudbees-bitbucket-branch-source</artifactId>
-        <version>937.0.3</version>
+        <version>936.4.4</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1082,7 +1082,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ec2</artifactId>
-        <version>2029.v50458f410ef9</version>
+        <version>2032.v92a_4b_e703974</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
