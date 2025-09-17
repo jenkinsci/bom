@@ -1886,7 +1886,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
         <artifactId>workflow-scm-step</artifactId>
-        <version>437.v05a_f66b_e5ef8</version>
+        <version>452.vdf1ca_c8d3a_87</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
