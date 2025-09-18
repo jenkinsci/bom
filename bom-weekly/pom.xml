@@ -1077,7 +1077,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>durable-task</artifactId>
-        <version>595.ve87b_f1318d67</version>
+        <version>605.v9a_b_9040c9970</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1087,7 +1087,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>electricflow</artifactId>
-        <version>1.1.40</version>
+        <version>1.1.41</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
