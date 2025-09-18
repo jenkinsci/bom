@@ -294,6 +294,11 @@
         <classifier>tests</classifier>
       </dependency>
       <dependency>
+        <groupId>org.jenkins-ci.plugins.workflow</groupId>
+        <artifactId>workflow-scm-step</artifactId>
+        <version>437.v05a_f66b_e5ef8</version>
+      </dependency>
+      <dependency>
         <groupId>org.jenkinsci.plugins</groupId>
         <artifactId>kubernetes-credentials</artifactId>
         <version>192.v4d5b_1c429d17</version>
