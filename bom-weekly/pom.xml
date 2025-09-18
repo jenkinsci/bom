@@ -26,7 +26,7 @@
     <mina-sshd-api.version>2.16.0-167.va_269f38cc024</mina-sshd-api.version>
     <okhttp-api-plugin.version>4.11.0-189.v976fa_d3379d6</okhttp-api-plugin.version>
     <pipeline-maven-plugin.version>1567.vb_2c3a_2116860</pipeline-maven-plugin.version>
-    <pipeline-model-definition-plugin.version>2.2265.v140e610fe9d5</pipeline-model-definition-plugin.version>
+    <pipeline-model-definition-plugin.version>2.2273.v643f36ed9e94</pipeline-model-definition-plugin.version>
     <pipeline-stage-view-plugin.version>2.38</pipeline-stage-view-plugin.version>
     <plugin-util-api.version>6.1167.v022176c7e0ca_</plugin-util-api.version>
     <scm-api-plugin.version>707.v749f968369d4</scm-api-plugin.version>
@@ -34,7 +34,7 @@
     <workflow-api-plugin.version>1384.vdc05a_48f535f</workflow-api-plugin.version>
     <workflow-cps-plugin.version>4183.v94b_6fd39da_c1</workflow-cps-plugin.version>
     <workflow-job-plugin.version>1546.v62a_c59c112dd</workflow-job-plugin.version>
-    <workflow-multibranch-plugin.version>811.vcd33d074c2a_0</workflow-multibranch-plugin.version>
+    <workflow-multibranch-plugin.version>821.vc3b_4ea_780798</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>706.v518c5dcb_24c0</workflow-step-api-plugin.version>
     <workflow-support-plugin.version>976.vb_d9493c2eb_09</workflow-support-plugin.version>
   </properties>
@@ -1082,7 +1082,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ec2</artifactId>
-        <version>2032.v92a_4b_e703974</version>
+        <version>2034.v0a_11fb_792b_ee</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1164,7 +1164,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>github-branch-source</artifactId>
-        <version>1862.v1a_fc22a_d3788</version>
+        <version>1864.v411feec5e78e</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1859,7 +1859,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
         <artifactId>workflow-durable-task-step</artifactId>
-        <version>1458.va_2e10a_a_b_7c4d</version>
+        <version>1464.v2d3f5c68f84c</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins.workflow</groupId>

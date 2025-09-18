@@ -18,6 +18,8 @@
     <branch-api-plugin.version>2.1229.ve86b_d02b_5e56</branch-api-plugin.version>
     <plugin-util-api.version>6.1.0</plugin-util-api.version>
     <workflow-api-plugin.version>1373.v7b_813f10efa_b_</workflow-api-plugin.version>
+    <workflow-multibranch-plugin.version>811.vcd33d074c2a_0</workflow-multibranch-plugin.version>
+    <pipeline-model-definition-plugin.version>2.2265.v140e610fe9d5</pipeline-model-definition-plugin.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -286,9 +288,46 @@
         <version>437.v05a_f66b_e5ef8</version>
       </dependency>
       <dependency>
+        <groupId>org.jenkins-ci.plugins.workflow</groupId>
+        <artifactId>workflow-multibranch</artifactId>
+        <version>${workflow-multibranch-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins.workflow</groupId>
+        <artifactId>workflow-multibranch</artifactId>
+        <version>${workflow-multibranch-plugin.version}</version>
+        <classifier>tests</classifier>
+      </dependency>
+      <dependency>
         <groupId>org.jenkinsci.plugins</groupId>
         <artifactId>kubernetes-credentials</artifactId>
         <version>192.v4d5b_1c429d17</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkinsci.plugins</groupId>
+        <artifactId>pipeline-model-api</artifactId>
+        <version>${pipeline-model-definition-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkinsci.plugins</groupId>
+        <artifactId>pipeline-model-definition</artifactId>
+        <version>${pipeline-model-definition-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkinsci.plugins</groupId>
+        <artifactId>pipeline-model-definition</artifactId>
+        <version>${pipeline-model-definition-plugin.version}</version>
+        <classifier>tests</classifier>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkinsci.plugins</groupId>
+        <artifactId>pipeline-model-extensions</artifactId>
+        <version>${pipeline-model-definition-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkinsci.plugins</groupId>
+        <artifactId>pipeline-stage-tags-metadata</artifactId>
+        <version>${pipeline-model-definition-plugin.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
