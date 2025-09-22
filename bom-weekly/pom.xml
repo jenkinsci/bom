@@ -997,7 +997,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>config-file-provider</artifactId>
-        <version>994.v3d4a_5fa_f353a_</version>
+        <version>1002.v93e06b_792d44</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
