@@ -20,9 +20,9 @@
   </licenses>
   <modules>
     <module>bom-weekly</module>
+    <module>bom-2.528.x</module>
     <module>bom-2.516.x</module>
     <module>bom-2.504.x</module>
-    <module>bom-2.492.x</module>
     <module>sample-plugin</module>
   </modules>
   <scm child.scm.connection.inherit.append.path="false" child.scm.developerConnection.inherit.append.path="false" child.scm.url.inherit.append.path="false">
