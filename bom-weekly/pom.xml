@@ -13,7 +13,7 @@
     <aws-java-sdk2-plugin.version>2.33.4-62.vc1a_8df64b_4c9</aws-java-sdk2-plugin.version>
     <gcp-java-sdk-plugin.version>26.23.0-31.va_efec42c4f8c</gcp-java-sdk-plugin.version>
     <blueocean-plugin.version>1.27.21</blueocean-plugin.version>
-    <branch-api-plugin.version>2.1244.vf95c81f1641c</branch-api-plugin.version>
+    <branch-api-plugin.version>2.1253.v6e7f7519f710</branch-api-plugin.version>
     <checks-api.version>373.vfe7645102093</checks-api.version>
     <cloudbees-folder-plugin.version>6.1042.v37b_8229708e4</cloudbees-folder-plugin.version>
     <configuration-as-code-plugin.version>1985.vdda_32d0c4ea_b_</configuration-as-code-plugin.version>
@@ -538,7 +538,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>mcp-server</artifactId>
-        <version>0.57.vc17d46a_5d10b_</version>
+        <version>0.77.veb_c7b_a_b_f0445</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -997,7 +997,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>config-file-provider</artifactId>
-        <version>994.v3d4a_5fa_f353a_</version>
+        <version>1002.v93e06b_792d44</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
