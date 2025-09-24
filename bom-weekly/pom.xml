@@ -24,12 +24,12 @@
     <git-plugin.version>5.7.0</git-plugin.version>
     <junit-plugin.version>1355.v45e2ea_65863c</junit-plugin.version>
     <mina-sshd-api.version>2.16.0-167.va_269f38cc024</mina-sshd-api.version>
-    <okhttp-api-plugin.version>4.11.0-189.v976fa_d3379d6</okhttp-api-plugin.version>
+    <okhttp-api-plugin.version>4.12.0-195.vc02552c04ffd</okhttp-api-plugin.version>
     <pipeline-maven-plugin.version>1567.vb_2c3a_2116860</pipeline-maven-plugin.version>
     <pipeline-model-definition-plugin.version>2.2273.v643f36ed9e94</pipeline-model-definition-plugin.version>
     <pipeline-stage-view-plugin.version>2.38</pipeline-stage-view-plugin.version>
     <plugin-util-api.version>6.1167.v022176c7e0ca_</plugin-util-api.version>
-    <scm-api-plugin.version>707.v749f968369d4</scm-api-plugin.version>
+    <scm-api-plugin.version>709.v6c27075a_b_1c7</scm-api-plugin.version>
     <subversion-plugin.version>1292.ve8cf25770ee3</subversion-plugin.version>
     <workflow-api-plugin.version>1384.vdc05a_48f535f</workflow-api-plugin.version>
     <workflow-cps-plugin.version>4204.v2894b_cd7b_92f</workflow-cps-plugin.version>
