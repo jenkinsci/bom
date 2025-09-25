@@ -10,6 +10,7 @@
   <packaging>pom</packaging>
   <properties>
     <data-tables-api.version>2.3.4-1400.vb_1e3e3c4dfc8</data-tables-api.version>
+    <plugin-util-api.version>6.1167.v022176c7e0ca_</plugin-util-api.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -50,6 +51,17 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>jquery3-api</artifactId>
         <version>3.7.1-594.vb_3864f326cf0</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>plugin-util-api</artifactId>
+        <version>${plugin-util-api.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>plugin-util-api</artifactId>
+        <version>${plugin-util-api.version}</version>
+        <classifier>tests</classifier>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
