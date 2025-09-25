@@ -8,7 +8,9 @@
   </parent>
   <artifactId>bom-2.504.x</artifactId>
   <packaging>pom</packaging>
-  <properties />
+  <properties>
+    <data-tables-api.version>2.3.4-1400.vb_1e3e3c4dfc8</data-tables-api.version>
+  </properties>
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -27,6 +29,17 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>dark-theme</artifactId>
         <version>524.vd675b_22b_30cb_</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>data-tables-api</artifactId>
+        <version>${data-tables-api.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>data-tables-api</artifactId>
+        <version>${data-tables-api.version}</version>
+        <classifier>tests</classifier>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
