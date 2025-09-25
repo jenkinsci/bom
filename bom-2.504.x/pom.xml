@@ -8,7 +8,11 @@
   </parent>
   <artifactId>bom-2.504.x</artifactId>
   <packaging>pom</packaging>
-  <properties />
+  <properties>
+    <data-tables-api.version>2.3.4-1400.vb_1e3e3c4dfc8</data-tables-api.version>
+    <forensics-api.version>3.1754.v2a_6613b_77002</forensics-api.version>
+    <plugin-util-api.version>6.1167.v022176c7e0ca_</plugin-util-api.version>
+  </properties>
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -30,8 +34,56 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>data-tables-api</artifactId>
+        <version>${data-tables-api.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>data-tables-api</artifactId>
+        <version>${data-tables-api.version}</version>
+        <classifier>tests</classifier>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>design-library</artifactId>
         <version>374.v9466b_9e00db_b_</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>forensics-api</artifactId>
+        <version>${forensics-api.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>forensics-api</artifactId>
+        <version>${forensics-api.version}</version>
+        <classifier>tests</classifier>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>git-forensics</artifactId>
+        <version>3.2088.v3a_896f5e4937</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>jquery3-api</artifactId>
+        <version>3.7.1-594.vb_3864f326cf0</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>plugin-util-api</artifactId>
+        <version>${plugin-util-api.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>plugin-util-api</artifactId>
+        <version>${plugin-util-api.version}</version>
+        <classifier>tests</classifier>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>prism-api</artifactId>
+        <version>1.30.0-609.vf0a_df102d9a_f</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
