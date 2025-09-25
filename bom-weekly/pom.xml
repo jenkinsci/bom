@@ -17,7 +17,7 @@
     <checks-api.version>373.vfe7645102093</checks-api.version>
     <cloudbees-folder-plugin.version>6.1045.vb_ddd55e2d03f</cloudbees-folder-plugin.version>
     <configuration-as-code-plugin.version>1995.v540b_50a_eb_0c1</configuration-as-code-plugin.version>
-    <data-tables-api.version>2.3.4-1400.vb_1e3e3c4dfc8</data-tables-api.version>
+    <data-tables-api.version>2.3.4-1413.va_57c35d0a_9ec</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.5</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>3.1754.v2a_6613b_77002</forensics-api.version>
     <github-api-plugin.version>1.330-492.v3941a_032db_2a_</github-api-plugin.version>
@@ -32,7 +32,7 @@
     <scm-api-plugin.version>709.v6c27075a_b_1c7</scm-api-plugin.version>
     <subversion-plugin.version>1292.ve8cf25770ee3</subversion-plugin.version>
     <workflow-api-plugin.version>1384.vdc05a_48f535f</workflow-api-plugin.version>
-    <workflow-cps-plugin.version>4204.v2894b_cd7b_92f</workflow-cps-plugin.version>
+    <workflow-cps-plugin.version>4209.v83c4e257f1e9</workflow-cps-plugin.version>
     <workflow-job-plugin.version>1546.v62a_c59c112dd</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>821.vc3b_4ea_780798</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>706.v518c5dcb_24c0</workflow-step-api-plugin.version>
@@ -503,7 +503,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>jquery3-api</artifactId>
-        <version>3.7.1-594.vb_3864f326cf0</version>
+        <version>3.7.1-619.vdb_10e002501a_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -961,7 +961,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>cloudbees-bitbucket-branch-source</artifactId>
-        <version>937.0.3</version>
+        <version>937.0.4</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
