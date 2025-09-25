@@ -205,7 +205,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>analysis-model-api</artifactId>
-        <version>13.9.0-909.v97dd3a_07c53e</version>
+        <version>13.9.0-911.v94cd6dcdedf7</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
