@@ -111,6 +111,11 @@
         <version>1.30.0-609.vf0a_df102d9a_f</version>
       </dependency>
       <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>warnings-ng</artifactId>
+        <version>12.9783.ve1cb_9f060738</version>
+      </dependency>
+      <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>azure-vm-agents</artifactId>
         <version>1050.v45467b_03322a_</version>
