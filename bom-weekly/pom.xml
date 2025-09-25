@@ -205,7 +205,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>analysis-model-api</artifactId>
-        <version>13.9.0-909.v97dd3a_07c53e</version>
+        <version>13.9.0-911.v94cd6dcdedf7</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -347,7 +347,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>echarts-api</artifactId>
-        <version>6.0.0-1146.v5c8f3b_8f0573</version>
+        <version>6.0.0-1165.vd1283a_3e37d4</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>

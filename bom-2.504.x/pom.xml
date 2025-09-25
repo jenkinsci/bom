@@ -24,6 +24,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>analysis-model-api</artifactId>
+        <version>13.9.0-909.v97dd3a_07c53e</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>bootstrap5-api</artifactId>
         <version>5.3.8-890.v1c5cf4fa_178e</version>
       </dependency>
@@ -52,6 +57,11 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>design-library</artifactId>
         <version>374.v9466b_9e00db_b_</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>echarts-api</artifactId>
+        <version>6.0.0-1146.v5c8f3b_8f0573</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
