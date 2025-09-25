@@ -34,6 +34,11 @@
         <version>374.v9466b_9e00db_b_</version>
       </dependency>
       <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>jquery3-api</artifactId>
+        <version>3.7.1-594.vb_3864f326cf0</version>
+      </dependency>
+      <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>azure-vm-agents</artifactId>
         <version>1050.v45467b_03322a_</version>
