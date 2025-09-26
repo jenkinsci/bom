@@ -115,6 +115,11 @@
         <artifactId>azure-vm-agents</artifactId>
         <version>1050.v45467b_03322a_</version>
       </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>ldap</artifactId>
+        <version>780.vcb_33c9a_e4332</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 </project>
