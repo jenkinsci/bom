@@ -594,7 +594,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-groovy-lib</artifactId>
-        <version>763.v13008816b_de7</version>
+        <version>766.v2b_e08c2e6ff2</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
