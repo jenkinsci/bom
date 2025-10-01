@@ -17,3 +17,9 @@ org.jenkinsci.plugins.pipeline.modeldefinition.TriggersTest
 
 # TODO Blue Ocean Bitbucket test fails for Wiremock mismatch: https://github.com/jenkinsci/blueocean-plugin/pull/2654
 io.jenkins.blueocean.blueocean_bitbucket_pipeline.server.BitbucketPipelineCreateRequestTest
+
+# TODO Remove when 2.504.x line is dropped https://github.com/jenkinsci/bom/pull/5751#issuecomment-3338544666
+# CasC output updated in new release but the ldap and azure-vm-agents releases with the updated test require 2.516.x or newer
+com.microsoft.azure.vmagent.test.jcasc.AdvancedConfigAsCodeTest#exportExportConfiguration
+com.microsoft.azure.vmagent.test.jcasc.BasicConfigAsCodeTest#exportBasicConfiguration
+jenkins.security.plugins.ldap.CascSecurityRealmTest#export_ldap_no_secret
