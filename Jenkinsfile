@@ -1,7 +1,7 @@
 // Do not trigger build regularly on change requests as it costs a lot
 String cronTrigger = ''
 if(env.BRANCH_NAME == "master") {
-  cronTrigger = '57 23 * * 4' // Thursday evening in Dallas, Texas, USA (almost midnight UTC)
+  cronTrigger = '15 12 * * 5' // 7:15am Friday morning in Dallas, Texas, USA (12:15 UTC)
 }
 
 properties([
