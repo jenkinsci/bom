@@ -1022,7 +1022,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>dashboard-view</artifactId>
-        <version>2.537.v5132851f6ca_f</version>
+        <version>2.543.vca_9da_3cb_9c60</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
