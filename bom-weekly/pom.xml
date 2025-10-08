@@ -457,6 +457,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>jackson3-api</artifactId>
+        <version>3.0.0-3.v69a_efc2288d6</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>jakarta-activation-api</artifactId>
         <version>2.1.3-2</version>
       </dependency>
