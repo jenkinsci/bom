@@ -240,7 +240,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>azure-sdk</artifactId>
-        <version>248.v0c922122245c</version>
+        <version>254.v895ca_4461c94</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
