@@ -40,7 +40,6 @@
   </properties>
   <dependencyManagement>
     <dependencies>
-      <!-- Plugins (sorted): -->
       <dependency>
         <groupId>au.com.versent.jenkins.plugins</groupId>
         <artifactId>ignore-committer-strategy</artifactId>
@@ -494,6 +493,12 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>jersey2-api</artifactId>
         <version>2.47-165.ve7809a_3e87e0</version>
+      </dependency>
+      <!-- Plugins (sorted): -->
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>jersey3-api</artifactId>
+        <version>3.1.11-4.v77818819c2e1</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
