@@ -18,6 +18,11 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>pipeline-graph-view</artifactId>
+        <version>661.v6003f4542123</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 </project>
