@@ -1761,8 +1761,7 @@
       <id>2.528.x</id>
       <properties>
         <bom>2.528.x</bom>
-        <!-- TODO: Replace with 2.528.1 when released https://github.com/jenkins-infra/release/issues/762 -->
-        <jenkins.version>2.528</jenkins.version>
+        <jenkins.version>2.528.1</jenkins.version>
       </properties>
     </profile>
     <profile>
