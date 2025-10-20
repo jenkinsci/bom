@@ -1112,7 +1112,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>embeddable-build-status</artifactId>
-        <version>602.v766a_264519c7</version>
+        <version>627.v0249270b_488e</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
