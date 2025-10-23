@@ -8,7 +8,9 @@
   </parent>
   <artifactId>bom-2.528.x</artifactId>
   <packaging>pom</packaging>
-  <properties />
+  <properties>
+    <workflow-api-plugin.version>1384.vdc05a_48f535f</workflow-api-plugin.version>
+  </properties>
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -22,6 +24,17 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
         <version>661.v6003f4542123</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins.workflow</groupId>
+        <artifactId>workflow-api</artifactId>
+        <version>${workflow-api-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins.workflow</groupId>
+        <artifactId>workflow-api</artifactId>
+        <version>${workflow-api-plugin.version}</version>
+        <classifier>tests</classifier>
       </dependency>
     </dependencies>
   </dependencyManagement>
