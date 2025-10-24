@@ -1345,7 +1345,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>mask-passwords</artifactId>
-        <version>204.v24d863065180</version>
+        <version>212.v4967a_a_73b_506</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
