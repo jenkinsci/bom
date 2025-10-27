@@ -457,7 +457,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>jackson3-api</artifactId>
-        <version>3.0.0-7.vee2f20796c77</version>
+        <version>3.0.1-11.v1db_b_61c8b_e4d</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
