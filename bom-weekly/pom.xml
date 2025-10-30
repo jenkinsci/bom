@@ -599,7 +599,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>oss-symbols-api</artifactId>
-        <version>412.v719e66895255</version>
+        <version>418.v9fb_72b_63a_d2b_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -890,7 +890,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>azure-credentials</artifactId>
-        <version>395.vb_a_9203343ef5</version>
+        <version>404.vd0fb_33a_8a_14e</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -905,7 +905,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>badge</artifactId>
-        <version>2.11</version>
+        <version>2.12</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1545,7 +1545,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>saml</artifactId>
-        <version>4.583.vc68232f7018a_</version>
+        <version>4.590.v6170b_1013da_f</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
