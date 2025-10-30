@@ -2,10 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>org.jenkins-ci</groupId>
-    <artifactId>jenkins</artifactId>
-    <version>1.141</version>
-    <relativePath />
+    <groupId>io.jenkins.tools.bom</groupId>
+    <artifactId>parent</artifactId>
+    <version>999999-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
+    <!-- <relativePath /> -->
   </parent>
   <groupId>io.jenkins.tools.bom</groupId>
   <artifactId>parent</artifactId>
@@ -35,6 +36,7 @@
     <changelist>999999-SNAPSHOT</changelist>
     <gitHubRepo>jenkinsci/bom</gitHubRepo>
     <spotless.check.skip>false</spotless.check.skip>
+    <hpi-plugin.version>3.1749.v2ce5383a_7f9a_</hpi-plugin.version>
   </properties>
   <repositories>
     <repository>
@@ -49,6 +51,15 @@
     </pluginRepository>
   </pluginRepositories>
   <build>
+    <pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.jenkins-ci.tools</groupId>
+        <artifactId>maven-hpi-plugin</artifactId>
+        <version>${hpi-plugin.version}</version>
+      </plugin>
+    </plugins>
+    </pluginManagement>
     <plugins>
       <plugin>
         <groupId>com.diffplug.spotless</groupId>
@@ -103,3 +114,4 @@
     </plugins>
   </build>
 </project>
+
