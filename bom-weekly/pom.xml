@@ -1239,7 +1239,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>hidden-parameter</artifactId>
-        <version>494.v9d2513a_9994d</version>
+        <version>504.v610a_b_b_c05003</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
