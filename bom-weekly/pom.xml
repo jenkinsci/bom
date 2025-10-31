@@ -635,7 +635,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>s3-jobcacher-storage</artifactId>
-        <version>46.v54b_1e939c810</version>
+        <version>62.v260cb_8db_5b_fa_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
