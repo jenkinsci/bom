@@ -1581,7 +1581,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>skip-notifications-trait</artifactId>
-        <version>542.vf379a_767ced7</version>
+        <version>576.v7a_67396e2e0b_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
