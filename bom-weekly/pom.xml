@@ -538,7 +538,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>locale</artifactId>
-        <version>597.v7781ce70d4cf</version>
+        <version>614.va_6a_5a_1a_f2b_38</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
