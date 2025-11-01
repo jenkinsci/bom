@@ -558,7 +558,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>mysql-api</artifactId>
-        <version>9.4.0-69.va_d35f1c8187a_</version>
+        <version>9.5.0-79.v891c57fc3b_3f</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
