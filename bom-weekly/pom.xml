@@ -1037,7 +1037,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>database</artifactId>
-        <version>274.vea_2e859b_2661</version>
+        <version>309.vf39a_d78a_cb_e8</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
