@@ -13,7 +13,7 @@
     <aws-java-sdk2-plugin.version>2.33.4-62.vc1a_8df64b_4c9</aws-java-sdk2-plugin.version>
     <gcp-java-sdk-plugin.version>26.23.0-31.va_efec42c4f8c</gcp-java-sdk-plugin.version>
     <blueocean-plugin.version>1.27.23</blueocean-plugin.version>
-    <branch-api-plugin.version>2.1255.v2f5fe203584a_</branch-api-plugin.version>
+    <branch-api-plugin.version>2.1259.v45c101731c76</branch-api-plugin.version>
     <checks-api.version>373.vfe7645102093</checks-api.version>
     <cloudbees-folder-plugin.version>6.1062.v2877b_d6b_b_eeb_</cloudbees-folder-plugin.version>
     <configuration-as-code-plugin.version>2006.v001a_2ca_6b_574</configuration-as-code-plugin.version>
@@ -239,7 +239,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>azure-sdk</artifactId>
-        <version>254.v895ca_4461c94</version>
+        <version>259.vf079c96088a_f</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -553,7 +553,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>mcp-server</artifactId>
-        <version>0.102.vf677b_eb_da_e4f</version>
+        <version>0.104.v935c459ca_ee2</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1179,7 +1179,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>github-branch-source</artifactId>
-        <version>1911.vc09e01781005</version>
+        <version>1917.v9ee8a_39b_3d0d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1254,7 +1254,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jackson2-api</artifactId>
-        <version>2.20.0-420.v8a_08b_d57ca_05</version>
+        <version>2.20.1-423.v13951f6b_6532</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1284,7 +1284,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jobcacher</artifactId>
-        <version>732.ve164e3059a_a_a_</version>
+        <version>764.v098c635e4315</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1672,7 +1672,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>unique-id</artifactId>
-        <version>2.117.v7a_81333a_584b_</version>
+        <version>2.125.vf125c93a_f982</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
