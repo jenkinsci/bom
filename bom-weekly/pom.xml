@@ -254,7 +254,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>caffeine-api</artifactId>
-        <version>3.2.2-178.v353b_8428ed56</version>
+        <version>3.2.3-194.v31a_b_f7a_b_5a_81</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1092,7 +1092,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>durable-task</artifactId>
-        <version>605.v9a_b_9040c9970</version>
+        <version>633.va_107d74732ce</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1901,7 +1901,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
         <artifactId>workflow-scm-step</artifactId>
-        <version>452.vdf1ca_c8d3a_87</version>
+        <version>466.va_d69e602552b_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
