@@ -15,7 +15,7 @@
     <blueocean-plugin.version>1.27.23</blueocean-plugin.version>
     <branch-api-plugin.version>2.1259.v45c101731c76</branch-api-plugin.version>
     <checks-api.version>373.vfe7645102093</checks-api.version>
-    <cloudbees-folder-plugin.version>6.1062.v2877b_d6b_b_eeb_</cloudbees-folder-plugin.version>
+    <cloudbees-folder-plugin.version>6.1073.va_7888eb_dd514</cloudbees-folder-plugin.version>
     <configuration-as-code-plugin.version>2006.v001a_2ca_6b_574</configuration-as-code-plugin.version>
     <data-tables-api.version>2.3.4-1451.vb_0b_5238f9054</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.6</declarative-pipeline-migration-assistant-plugin.version>
@@ -376,7 +376,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>flyway-api</artifactId>
-        <version>11.15.0-366.v466fe48914c2</version>
+        <version>11.16.0-370.v8608d20b_4fa_b_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -553,7 +553,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>mcp-server</artifactId>
-        <version>0.104.v935c459ca_ee2</version>
+        <version>0.109.vea_d3ec3083f1</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -825,7 +825,7 @@
       <dependency>
         <groupId>org.csanchez.jenkins.plugins</groupId>
         <artifactId>kubernetes</artifactId>
-        <version>4384.v1b_6367f393d9</version>
+        <version>4392.v19cea_fdb_5913</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.main</groupId>
@@ -1092,7 +1092,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>durable-task</artifactId>
-        <version>633.va_107d74732ce</version>
+        <version>635.v3733cef34b_5e</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1204,7 +1204,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>gitlab-plugin</artifactId>
-        <version>1.9.9</version>
+        <version>1.9.10</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
