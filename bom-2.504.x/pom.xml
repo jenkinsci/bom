@@ -91,6 +91,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>gitea-checks</artifactId>
+        <version>595.vcec3b_27d9ca_e</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>jquery3-api</artifactId>
         <version>3.7.1-594.vb_3864f326cf0</version>
       </dependency>
