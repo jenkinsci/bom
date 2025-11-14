@@ -427,7 +427,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>gitlab-api</artifactId>
-        <version>5.8.1-106.vef1de800710e</version>
+        <version>6.2.0-111.vf174d6b_8c12e</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
