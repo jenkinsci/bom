@@ -21,7 +21,7 @@ if ! [[ $PLUGINS =~ blueocean || $PLUGINS =~ lockable-resources || $PLUGINS =~ p
 fi
 
 # Tracked by .github/renovate.json
-JTH_VERSION=2516.vc8fe6b_362b_19
+JTH_VERSION=2520.v0559e74fcf96
 if [[ $LINE == weekly ]]; then
 	PCT_D_ARGS+="-Djenkins-test-harness.version=${JTH_VERSION} "
 fi
