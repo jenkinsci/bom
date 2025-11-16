@@ -38,7 +38,7 @@ for LINE in $LINEZ; do
 			${PROFILE:-} \
 			-DoverrideWar="../target/megawar-${LINE}.war" \
 			-DuseUpperBounds \
-			-Dhpi-plugin.version=3.1778.v0e8e79e2b_844 \
+			-Dhpi-plugin.version=3.1781.va_f66b_9d60fa_7 \
 			-DcommitHashes=target/commit-hashes.txt
 		mv sample-plugin/target/commit-hashes.txt "target/commit-hashes-${LINE}.txt"
 	fi
