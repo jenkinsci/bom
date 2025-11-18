@@ -645,7 +645,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>sqlserver-api</artifactId>
-        <version>13.2.1.jre11-188.v3150e358d9e7</version>
+        <version>13.3.0.jre11-preview-192.v599148126a_8f</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
