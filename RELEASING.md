@@ -92,7 +92,7 @@ Sometimes a dependency update that was merged and released causes compatibility 
 
 ###### When to Consider a Rollback
 
-A dependency update should be reverted when it results in persistent test failures in the plugin BOM.
+A dependency update should be reverted when it results in persistent test failures in the plugin BOM.  It is even better if the persistent test failure can be fixed by updating to a newer version of the dependency that fixes the test failure.
 
 ###### Rollback Process
 
