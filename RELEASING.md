@@ -238,7 +238,7 @@ Alternatively, you can call them from wherever you want, just know that they are
 * on the newly created issue, manually set `Type` to `Task`
   * at the time of writing (2024-10-14), there is no `gh` option to set the Type
 * check the CRON expression to see if the pre-release build will be executed at a time suited for you
-  * this can also be used to change when the release happened if you prefer the release to be made on thurday
+  * this can also be used to change when the release happened if you prefer the release to be made on Thursday
   * run `./bom-release-issue-complete-task.sh 1`
 * Locally run tests for `warnings-ng` for all current LINEs and weekly
   * `./bom-test-all-lines.sh warnings-ng`
