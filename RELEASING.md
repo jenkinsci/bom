@@ -92,12 +92,7 @@ Sometimes a dependency update that was merged and released causes compatibility 
 
 ###### When to Consider a Rollback
 
-Consider rolling back a dependency update when:
-
-- The updated dependency causes test failures in downstream plugins
-- The update introduces breaking changes that affect plugin compatibility
-- Critical functionality is broken after the dependency update
-- The issue cannot be quickly resolved and is blocking the release process
+A dependency update should be reverted when it results in persistent test failures in the plugin BOM.
 
 ###### Rollback Process
 
@@ -147,7 +142,7 @@ Disable automerge for the PR to prevent it from being automatically merged again
 5. Request Changes Review
 
 - Click on **"Files changed"** tab in the PR
-- Click **"Review changes"** 
+- Click **"Review changes"**
 - Select **"Request changes"**
 - Add a comment explaining why changes are requested (reference the compatibility issues)
 - Click **"Submit review"**
@@ -191,7 +186,7 @@ Once the rollback is complete:
 When performing rollbacks:
 
 - Be clear and specific about the issues encountered
-- Provide helpful details like failing tests or error messages  
+- Provide helpful details like failing tests or error messages
 - Reference specific versions that work vs. versions that fail
 - Be respectful and collaborative - rollbacks are about maintaining stability, not blame
 
