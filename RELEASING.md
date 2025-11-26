@@ -102,6 +102,8 @@ When a problematic dependency update needs to be rolled back, follow these steps
 
 **Notify the author of the problematic change as close as possible to the actual problem area.** Leave a comment on the original PR or commit that introduced the issue, explaining the specific problems encountered.
 
+Where possible, provide an example that the plugin developer can use to see the problem from within the plugin repository.  Most plugin developers are not familiar with maintaining the plugin BOM, so they will struggle with using the plugin BOM repository to duplicate the problem.  A plugin developer is more likely to resolve a problem when they can see it with `mvn clean verify` in their plugin repository.
+
 **Example:**
 ```
 Looks like these changes are causing issues with doing a BOM release this week. For reference:
