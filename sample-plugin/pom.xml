@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.jenkins-ci.plugins</groupId>
     <artifactId>plugin</artifactId>
-    <version>5.24</version>
+    <version>5.28</version>
     <relativePath />
   </parent>
   <groupId>io.jenkins.tools.bom</groupId>
@@ -14,7 +14,7 @@
   <properties>
     <changelist>999999-SNAPSHOT</changelist>
     <bom>weekly</bom>
-    <jenkins.version>2.526</jenkins.version>
+    <jenkins.version>2.539</jenkins.version>
     <spotless.check.skip>false</spotless.check.skip>
   </properties>
   <dependencyManagement>
@@ -29,6 +29,14 @@
     </dependencies>
   </dependencyManagement>
   <dependencies>
+    <dependency>
+      <groupId>io.jenkins.plugins</groupId>
+      <artifactId>jakarta-xml-bind-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.jenkins.plugins</groupId>
+      <artifactId>jersey3-api</artifactId>
+    </dependency>
     <dependency>
       <groupId>org.jenkins-ci.plugins.workflow</groupId>
       <artifactId>workflow-step-api</artifactId>
@@ -410,6 +418,11 @@
     </dependency>
     <dependency>
       <groupId>io.jenkins.plugins</groupId>
+      <artifactId>jackson3-api</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.jenkins.plugins</groupId>
       <artifactId>jakarta-activation-api</artifactId>
       <scope>test</scope>
     </dependency>
@@ -481,6 +494,11 @@
     <dependency>
       <groupId>io.jenkins.plugins</groupId>
       <artifactId>markdown-formatter</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.jenkins.plugins</groupId>
+      <artifactId>mcp-server</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -1740,10 +1758,17 @@
   <profiles>
     <!-- Use .1 of most recent active line, and .3 (or later) of previous lines: https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/#choosing-a-version -->
     <profile>
+      <id>2.528.x</id>
+      <properties>
+        <bom>2.528.x</bom>
+        <jenkins.version>2.528.2</jenkins.version>
+      </properties>
+    </profile>
+    <profile>
       <id>2.516.x</id>
       <properties>
         <bom>2.516.x</bom>
-        <jenkins.version>2.516.2</jenkins.version>
+        <jenkins.version>2.516.3</jenkins.version>
       </properties>
     </profile>
     <profile>
@@ -1751,13 +1776,6 @@
       <properties>
         <bom>2.504.x</bom>
         <jenkins.version>2.504.3</jenkins.version>
-      </properties>
-    </profile>
-    <profile>
-      <id>2.492.x</id>
-      <properties>
-        <bom>2.492.x</bom>
-        <jenkins.version>2.492.3</jenkins.version>
       </properties>
     </profile>
   </profiles>

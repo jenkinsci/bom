@@ -8,19 +8,17 @@ Details are described in [a week in the life of a BOM release manager](#a-week-i
 ## BOM release leads
 
 | Release Date | Lead                 |
-| ------------ | -------------------- |
-| 2025-09-05   | Bruno Verachten      |
-| 2025-09-12   | Bruno Verachten      |
-| 2025-09-19   | Mark Waite           |
-| 2025-09-26   | Mark Waite           |
-| 2025-10-03   | Basil Crow           |
-| 2025-10-10   | Basil Crow           |
-| 2025-10-17   | Adrien Lecharpentier |
-| 2025-10-24   | Adrien Lecharpentier |
-| 2025-10-31   | Kris Stern           |
-| 2025-11-07   | Kris Stern           |
-| 2025-11-14   | Darin Pope           |
-| 2025-11-21   | Darin Pope           |
+|--------------| -------------------- |
+| 2025-11-28   | Mark Waite           |
+| 2025-12-05   | Mark Waite           |
+| 2025-12-12   | Darin Pope           |
+| 2025-12-19   | Darin Pope           |
+| 2025-12-26   | Adrien Lecharpentier |
+| 2026-01-02   | Adrien Lecharpentier |
+| 2026-01-09   | Kris Stern           |
+| 2026-01-16   | Kris Stern           |
+| 2025-01-23   | Bruno Verachten      |
+| 2025-11-30   | Bruno Verachten      |
 
 ## Releasing the BOM
 
