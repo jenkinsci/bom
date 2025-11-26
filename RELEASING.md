@@ -88,7 +88,7 @@ There are some known issues that commonly need to be addressed by the BOM releas
 
 ##### Handling Rollbacks
 
-Sometimes a dependency update that was merged and released causes compatibility issues or test failures that are discovered after the BOM release. When this happens, a rollback process is needed to temporarily revert the problematic change while the issue is investigated and resolved.
+Sometimes a dependency update that was merged and released causes compatibility issues or test failures that are discovered before the BOM release. When this happens, a rollback process is needed to temporarily revert the problematic change while the issue is investigated and resolved.
 
 ###### When to Consider a Rollback
 
