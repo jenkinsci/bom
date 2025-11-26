@@ -106,17 +106,21 @@ Where possible, provide an example that the plugin developer can use to see the 
 
 **Example:**
 ```
-Looks like these changes are causing issues with doing a BOM release this week. For reference:
+Looks like these changes are causing issues with doing a BOM release
+this week. For reference:
 
-tl;dr...two plugins that passed on the Tuesday weekly-test (foo-plugin and bar-plugin) are now failing.
+tl;dr...two plugins that passed on the Tuesday weekly-test (foo-plugin
+and bar-plugin) are now failing.
 
-For the moment so I can get the BOM release out today, I'm going to revert the PR that put in github-branch-source 1844.v4a_9883d49126.
+For the moment so I can get the BOM release out today, I'm going to
+revert the PR that put in github-branch-source 1844.v4a_9883d49126.
 
 The local BOM commands I'm running that are failing are:
 - `LINE=weekly PLUGINS=bar-plugin bash local-test.sh`
 - `LINE=weekly PLUGINS=foo-plugin bash local-test.sh`
 
-As noted, when I locally go back to github-branch-source 1834.v857721ea_74c6 both tests are passing.
+As noted, when I locally go back to github-branch-source
+1834.v857721ea_74c6 both tests are passing.
 ```
 
 **Reference:** See [this example notification](https://github.com/jenkinsci/github-branch-source-plugin/pull/822#issuecomment-3238052920) to the plugin author.
@@ -127,7 +131,7 @@ Create a revert commit that rolls back the problematic dependency update. In the
 
 **Example commit message:**
 ```
-Revert "chore(deps): bump org.jenkins-ci.plugins:github-branch-source from 1834.v857721ea_74c6 to 1844.v4a_9883d49126 in /bom-weekly"
+Revert "chore(deps): bump github-branch-source to 1844.v4a_9883d49126 in /bom-weekly"
 
 Rolling back due to compatibility issues with downstream plugins.
 See notification to author: https://github.com/jenkinsci/github-branch-source-plugin/pull/822#issuecomment-3238052920
