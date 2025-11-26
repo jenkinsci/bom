@@ -86,6 +86,116 @@ Then you can work on the PR. Once done, push your changes back to the PR. If eve
 
 There are some known issues that commonly need to be addressed by the BOM release manager.
 
+##### Handling Rollbacks
+
+Sometimes a dependency update that was merged and released causes compatibility issues or test failures that are discovered before the BOM release. When this happens, a rollback process is needed to temporarily revert the problematic change while the issue is investigated and resolved.
+
+###### When to Consider a Rollback
+
+A dependency update should be reverted when it results in persistent test failures in the plugin BOM.  It is even better if the persistent test failure can be fixed by updating to a newer version of the dependency that fixes the test failure.
+
+###### Rollback Process
+
+When a problematic dependency update needs to be rolled back, follow these steps:
+
+1. Notify the Author
+
+**Notify the author of the problematic change as close as possible to the actual problem area.** Leave a comment on the original PR or commit that introduced the issue, explaining the specific problems encountered.
+
+Where possible, provide an example that the plugin developer can use to see the problem from within the plugin repository.  Most plugin developers are not familiar with maintaining the plugin BOM, so they will struggle with using the plugin BOM repository to duplicate the problem.  A plugin developer is more likely to resolve a problem when they can see it with `mvn clean verify` in their plugin repository.
+
+**Example:**
+```
+Looks like these changes are causing issues with doing a BOM release
+this week. For reference:
+
+tl;dr...two plugins that passed on the Tuesday weekly-test (foo-plugin
+and bar-plugin) are now failing.
+
+For the moment so I can get the BOM release out today, I'm going to
+revert the PR that put in github-branch-source 1844.v4a_9883d49126.
+
+The local BOM commands I'm running that are failing are:
+- `LINE=weekly PLUGINS=bar-plugin bash local-test.sh`
+- `LINE=weekly PLUGINS=foo-plugin bash local-test.sh`
+
+As noted, when I locally go back to github-branch-source
+1834.v857721ea_74c6 both tests are passing.
+```
+
+**Reference:** See [this example notification](https://github.com/jenkinsci/github-branch-source-plugin/pull/822#issuecomment-3238052920) to the plugin author.
+
+2. Revert the Change
+
+Create a revert commit that rolls back the problematic dependency update. In the commit message and the pull request description, include a link to the notification that was sent to the author.
+
+**Example commit message:**
+```
+Revert "chore(deps): bump github-branch-source to 1844.v4a_9883d49126 in /bom-weekly"
+
+Rolling back due to compatibility issues with downstream plugins.
+See notification to author: https://github.com/jenkinsci/github-branch-source-plugin/pull/822#issuecomment-3238052920
+```
+
+3. Trigger Dependabot
+
+Comment `@dependabot rebase` on the reverted PR to trigger Dependabot to reprocess the change.
+
+4. Disable Automerge
+
+Disable automerge for the PR to prevent it from being automatically merged again while the issue is being investigated.
+
+5. Request Changes Review
+
+- Click on **"Files changed"** tab in the PR
+- Click **"Review changes"**
+- Select **"Request changes"**
+- Add a comment explaining why changes are requested (reference the compatibility issues)
+- Click **"Submit review"**
+
+6. Add `weekly-test` Label
+
+Add the `weekly-test` label to the PR to ensure it gets additional testing before being considered for merge again.
+
+7. Leave the PR Open
+
+Do not close the PR. Leave it open so that:
+- The issue remains visible and can be tracked
+- The author can address the compatibility issues
+- Testing can be re-run once fixes are implemented
+
+8. Convert to Draft
+
+Convert the PR to draft status by clicking the **"Convert to draft"** link at the bottom of the Reviewers block. This signals that the PR is not ready for merge.
+
+###### Example Rollback
+
+For a complete example of this rollback process in action, see [BOM PR #5611](https://github.com/jenkinsci/bom/pull/5611), which demonstrates:
+
+- Author notification with specific failure details
+- Revert commit with reference to the notification
+- PR converted to draft status
+- Changes requested with clear explanation
+- `weekly-test` label applied
+- Automerge disabled
+
+###### After the Rollback
+
+Once the rollback is complete:
+
+1. **Monitor the Issue**: Keep track of whether the author addresses the compatibility problems
+2. **Re-test When Ready**: Once fixes are implemented, the PR can be converted back from draft and re-tested
+3. **Coordinate Release**: Ensure the fixed version is properly tested before including it in the next BOM release
+
+###### Communication
+
+When performing rollbacks:
+
+- Be clear and specific about the issues encountered
+- Provide helpful details like failing tests or error messages
+- Reference specific versions that work vs. versions that fail
+- Be respectful and collaborative - rollbacks are about maintaining stability, not blame
+
 ##### Dependency requires Jenkins 2.xxx.y or higher
 
 This message shows that a plugin requires a newer Jenkins LTS than one or more of the LTS lines supported by the BOM. Pin the older version to the correct LTS line to resolve the issue.  Some pull requests that pin older plugin versions include:
@@ -132,7 +242,7 @@ Alternatively, you can call them from wherever you want, just know that they are
 * on the newly created issue, manually set `Type` to `Task`
   * at the time of writing (2024-10-14), there is no `gh` option to set the Type
 * check the CRON expression to see if the pre-release build will be executed at a time suited for you
-  * this can also be used to change when the release happened if you prefer the release to be made on thurday
+  * this can also be used to change when the release happened if you prefer the release to be made on Thursday
   * run `./bom-release-issue-complete-task.sh 1`
 * Locally run tests for `warnings-ng` for all current LINEs and weekly
   * `./bom-test-all-lines.sh warnings-ng`
