@@ -126,7 +126,7 @@ As noted, when I locally go back to github-branch-source 1834.v857721ea_74c6 bot
 
 2. Revert the Change
 
-Create a revert commit that rolls back the problematic dependency update. In your commit message, include a link to the notification you sent to the author.
+Create a revert commit that rolls back the problematic dependency update. In the commit message and the pull request description, include a link to the notification that was sent to the author.
 
 **Example commit message:**
 ```
