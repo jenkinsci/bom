@@ -249,7 +249,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>byte-buddy-api</artifactId>
-        <version>1.18.1-201.v23b_93a_e3c65b_</version>
+        <version>1.18.2-203.v84a_b_22655d53</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -376,7 +376,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>flyway-api</artifactId>
-        <version>11.17.2-376.vb_e2c1a_2c5c15</version>
+        <version>11.18.0-378.vf3d226f7a_4a_8</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1022,7 +1022,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>credentials</artifactId>
-        <version>1447.v4cb_b_539b_5321</version>
+        <version>1453.v9b_a_29777a_b_fd</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
