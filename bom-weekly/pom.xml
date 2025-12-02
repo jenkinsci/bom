@@ -21,7 +21,7 @@
     <declarative-pipeline-migration-assistant-plugin.version>1.6.6</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>3.1772.v99ca_3d83b_9fa_</forensics-api.version>
     <github-api-plugin.version>1.330-492.v3941a_032db_2a_</github-api-plugin.version>
-    <git-plugin.version>5.8.0</git-plugin.version>
+    <git-plugin.version>5.8.1</git-plugin.version>
     <junit-plugin.version>1380.v491ff054cd35</junit-plugin.version>
     <mina-sshd-api.version>2.16.0-167.va_269f38cc024</mina-sshd-api.version>
     <okhttp-api-plugin.version>4.12.0-195.vc02552c04ffd</okhttp-api-plugin.version>
@@ -310,7 +310,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>customizable-header</artifactId>
-        <version>245.v116a_b_3e69d02</version>
+        <version>247.vb_371b_ea_cc8d7</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1012,7 +1012,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>config-file-provider</artifactId>
-        <version>1002.v93e06b_792d44</version>
+        <version>1006.vc7366c201f57</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1335,7 +1335,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>mailer</artifactId>
-        <version>522.va_995fa_cfb_8b_d</version>
+        <version>525.v2458b_d8a_1a_71</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1525,7 +1525,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>role-strategy</artifactId>
-        <version>840.v206ff7f7312e</version>
+        <version>848.va_a_ea_673cf0b_c</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
