@@ -1012,7 +1012,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>config-file-provider</artifactId>
-        <version>1002.v93e06b_792d44</version>
+        <version>1006.vc7366c201f57</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
