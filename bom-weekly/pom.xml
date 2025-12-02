@@ -437,7 +437,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>gitlab-kubernetes-credentials</artifactId>
-        <version>484.v2fea_0cc92b_d3</version>
+        <version>538.v99cc6503c421</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
