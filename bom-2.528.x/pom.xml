@@ -48,6 +48,11 @@
         <classifier>tests</classifier>
       </dependency>
       <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>oic-auth</artifactId>
+        <version>4.609.v9de140f63d01</version>
+      </dependency>
+      <dependency>
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
         <artifactId>workflow-api</artifactId>
         <version>${workflow-api-plugin.version}</version>
