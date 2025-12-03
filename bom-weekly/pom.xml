@@ -1667,7 +1667,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>trilead-api</artifactId>
-        <version>2.209.v0e69b_c43c245</version>
+        <!-- TODO: Replace with released version https://github.com/jenkinsci/trilead-api-plugin/pull/259 -->
+        <version>2.274.v130a_a_df321f7</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
