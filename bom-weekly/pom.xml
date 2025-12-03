@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="2.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
@@ -1668,7 +1668,7 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>trilead-api</artifactId>
         <!-- TODO: Replace with released version https://github.com/jenkinsci/trilead-api-plugin/pull/259 -->
-        <version>2.274.v130a_a_df321f7</version>
+        <version>2.284.v7e977124098f</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
