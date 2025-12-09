@@ -280,7 +280,8 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>commons-lang3-api</artifactId>
-        <version>3.19.0-104.v12125f33a_255</version>
+        <!-- TODO: https://github.com/jenkinsci/commons-lang3-api-plugin/pull/98 -->
+        <version>3.20.0-109.v8b_873e63e48a_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
