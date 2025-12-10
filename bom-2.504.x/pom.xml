@@ -35,7 +35,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>coverage</artifactId>
-        <version>2.2941.v08df75b_767f1</version>
+        <version>2.3056.v1dfe888b_0249</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
