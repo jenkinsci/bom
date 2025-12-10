@@ -28,6 +28,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>customizable-header</artifactId>
+        <version>250.vdb_c6dcb_5c515</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>mcp-server</artifactId>
         <version>0.116.v335308141e4e</version>
       </dependency>
