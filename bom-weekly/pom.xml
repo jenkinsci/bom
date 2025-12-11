@@ -905,7 +905,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>badge</artifactId>
-        <version>2.12</version>
+        <version>2.560.v5135054c2e76</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
