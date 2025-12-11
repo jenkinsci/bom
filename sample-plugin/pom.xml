@@ -1761,7 +1761,7 @@
       <id>2.528.x</id>
       <properties>
         <bom>2.528.x</bom>
-        <jenkins.version>2.528.2</jenkins.version>
+        <jenkins.version>2.528.3</jenkins.version>
       </properties>
     </profile>
     <profile>
