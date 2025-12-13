@@ -14,7 +14,9 @@
   <properties>
     <changelist>999999-SNAPSHOT</changelist>
     <bom>weekly</bom>
-    <jenkins.version>2.541</jenkins.version>
+    <!-- TODO: https://github.com/jenkinsci/jenkins/pull/11335 -->
+    <!-- junit plugin upgrade needs to bundle prism-api as dependency -->
+    <jenkins.version>2.542-rc37802.c626a_a_32a_09c</jenkins.version>
     <spotless.check.skip>false</spotless.check.skip>
   </properties>
   <dependencyManagement>
