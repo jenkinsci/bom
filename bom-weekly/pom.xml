@@ -17,7 +17,7 @@
     <checks-api.version>373.vfe7645102093</checks-api.version>
     <cloudbees-folder-plugin.version>6.1073.va_7888eb_dd514</cloudbees-folder-plugin.version>
     <configuration-as-code-plugin.version>2006.v001a_2ca_6b_574</configuration-as-code-plugin.version>
-    <data-tables-api.version>2.3.5-1497.v38449eb_7d5a_1</data-tables-api.version>
+    <data-tables-api.version>2.3.5-1482.vb_47a_3c19f78c</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.6</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>3.1772.v99ca_3d83b_9fa_</forensics-api.version>
     <github-api-plugin.version>1.330-492.v3941a_032db_2a_</github-api-plugin.version>
@@ -209,7 +209,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>apache-httpcomponents-client-5-api</artifactId>
-        <version>5.6-183.ve5a_8a_b_e71e59</version>
+        <version>5.5-170.v023de017ccd7</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -249,7 +249,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>byte-buddy-api</artifactId>
-        <version>1.18.3-207.v3e9992b_a_e0b_e</version>
+        <version>1.18.2-203.v84a_b_22655d53</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -655,7 +655,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>warnings-ng</artifactId>
-        <version>12.9957.v418f12633413</version>
+        <version>12.9936.vda_5743ded29a_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
