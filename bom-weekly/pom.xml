@@ -412,7 +412,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>git-forensics</artifactId>
-        <version>3.2138.vf25ea_d549e33</version>
+        <version>3.2088.v3a_896f5e4937</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1153,7 +1153,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>git-client</artifactId>
-        <version>6.5.0-rc3841.f225e903d379</version>
+        <version>6.5.0-rc3842.4de3b_c6d6cc3</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1204,7 +1204,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>gitlab-plugin</artifactId>
-        <version>1.9.10</version>
+        <version>1.9.9</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
