@@ -17,7 +17,7 @@
     <checks-api.version>373.vfe7645102093</checks-api.version>
     <cloudbees-folder-plugin.version>6.1073.va_7888eb_dd514</cloudbees-folder-plugin.version>
     <configuration-as-code-plugin.version>2006.v001a_2ca_6b_574</configuration-as-code-plugin.version>
-    <data-tables-api.version>2.3.5-1497.v38449eb_7d5a_1</data-tables-api.version>
+    <data-tables-api.version>2.3.5-1482.vb_47a_3c19f78c</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.6</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>3.1772.v99ca_3d83b_9fa_</forensics-api.version>
     <github-api-plugin.version>1.330-492.v3941a_032db_2a_</github-api-plugin.version>
