@@ -31,6 +31,7 @@ for LINE in $LINEZ; do
 			PROFILE="-P${LINE}"
 		fi
 		# TODO https://github.com/jenkinsci/maven-hpi-plugin/pull/464
+		# TODO https://github.com/jenkinsci/maven-hpi-plugin/pull/847
 		mvn \
 			-f sample-plugin \
 			hpi:resolve-test-dependencies \
@@ -38,7 +39,7 @@ for LINE in $LINEZ; do
 			${PROFILE:-} \
 			-DoverrideWar="../target/megawar-${LINE}.war" \
 			-DuseUpperBounds \
-			-Dhpi-plugin.version=3.1781.va_f66b_9d60fa_7 \
+			-Dhpi-plugin.version=3.1788.va_c6f817440f3 \
 			-DcommitHashes=target/commit-hashes.txt
 		mv sample-plugin/target/commit-hashes.txt "target/commit-hashes-${LINE}.txt"
 	fi
