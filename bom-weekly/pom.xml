@@ -523,7 +523,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>json-api</artifactId>
-        <version>20251224-185.v0cc18490c62c</version>
+        <version>20250517-173.v596efb_962a_31</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
