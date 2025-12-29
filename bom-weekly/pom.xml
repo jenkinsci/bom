@@ -1652,7 +1652,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>throttle-concurrents</artifactId>
-        <version>2.18</version>
+        <version>624.vc427fa_e0e503</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
