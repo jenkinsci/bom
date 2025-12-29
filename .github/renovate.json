@@ -25,6 +25,18 @@
     {
       "customType": "regex",
       "managerFilePatterns": [
+        "/pct.sh/"
+      ],
+      "matchStrings": [
+        "HPI_VERSION=(?<currentValue>.*?)\\n"
+      ],
+      "depNameTemplate": "org.jenkins-ci.tools:maven-hpi-plugin",
+      "datasourceTemplate": "maven",
+      "registryUrlTemplate": "https://repo.jenkins-ci.org/releases/"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
         "/prep-pct.sh/"
       ],
       "matchStrings": [
