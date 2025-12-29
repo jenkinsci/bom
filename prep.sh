@@ -28,8 +28,8 @@ for LINE in $LINEZ; do
 	if [[ -n ${CI-} ]]; then
 		if [[ ${LINE} != weekly ]]; then
 			LINE=$LINE bash prep-megawar.sh
-			PROFILE="-P${LINE}"
 		fi
+	fi
 done
 
 # produces: target/{plugins.txt,lines.txt}
