@@ -30,6 +30,7 @@ for LINE in $LINEZ; do
 			LINE=$LINE bash prep-megawar.sh
 			PROFILE="-P${LINE}"
 		fi
+	fi
 done
 
 # produces: target/{plugins.txt,lines.txt}
