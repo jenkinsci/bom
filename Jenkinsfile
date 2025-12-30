@@ -1,7 +1,6 @@
 // Do not trigger build regularly on change requests as it costs a lot
 String cronTrigger = ''
 if(env.BRANCH_NAME == "master") {
-  cronTrigger = '00 09 * * 5'
 }
 
 properties([
@@ -76,17 +75,13 @@ stage('prep') {
   mavenEnv(jdk: 21) {
     checkout scm
     withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist']) {
-      withCredentials([
-        usernamePassword(credentialsId: 'app-ci.jenkins.io', usernameVariable: 'GITHUB_APP', passwordVariable: 'GITHUB_OAUTH')
-      ]) {
-        sh '''
-        mvn -v
-        echo "Starting artifact caching proxy pre-heat"
-        mvn -ntp dependency:go-offline
-        echo "Finished artifact caching proxy pre-heat"
-        bash prep.sh
-        '''
-      }
+      sh '''
+      mvn -v
+      echo "Starting artifact caching proxy pre-heat"
+      mvn -ntp dependency:go-offline
+      echo "Finished artifact caching proxy pre-heat"
+      bash prep.sh
+      '''
     }
     fullTestMarkerFile = fileExists 'full-test'
     weeklyTestMarkerFile = fileExists 'weekly-test'
@@ -96,17 +91,6 @@ stage('prep') {
 
       lines = readFile('lines.txt').split('\n')
       lines = [lines[0], lines[-1]] // Save resources by running PCT only on newest and oldest lines
-      withCredentials([string(credentialsId: 'launchable-jenkins-bom', variable: 'LAUNCHABLE_TOKEN')]) {
-        lines.each { line ->
-          def commitHashes = readFile "commit-hashes-${line}.txt"
-          sh "launchable verify && launchable record build --name ${env.BUILD_TAG}-${line} --no-commit-collection " + commitHashes
-
-          def sessionFile = "launchable-session-${line}.txt"
-          def jdk = line == 'weekly' ? 21 : 17
-          sh "launchable record session --build ${env.BUILD_TAG}-${line} --flavor platform=linux --flavor jdk=${jdk} >${sessionFile}"
-          stash name: sessionFile, includes: sessionFile
-        }
-      }
     }
     lines.each { line ->
       stash name: line, includes: "pct.sh,excludes.txt,target/pct.jar,target/megawar-${line}.war"
@@ -139,12 +123,6 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
             mvn -v
             bash pct.sh
             '''
-          }
-          withCredentials([string(credentialsId: 'launchable-jenkins-bom', variable: 'LAUNCHABLE_TOKEN')]) {
-            def sessionFile = "launchable-session-${line}.txt"
-            unstash sessionFile
-            def session = readFile(sessionFile).trim()
-            sh "launchable verify && launchable record tests --session ${session} --group ${repository} maven './**/target/surefire-reports' './**/target/failsafe-reports'"
           }
         }
       }

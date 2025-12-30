@@ -28,20 +28,8 @@ for LINE in $LINEZ; do
 	if [[ -n ${CI-} ]]; then
 		if [[ ${LINE} != weekly ]]; then
 			LINE=$LINE bash prep-megawar.sh
-			PROFILE="-P${LINE}"
 		fi
-		# TODO https://github.com/jenkinsci/maven-hpi-plugin/pull/464
-		mvn \
-			-f sample-plugin \
-			hpi:resolve-test-dependencies \
-			${SAMPLE_PLUGIN_OPTS:-} \
-			${PROFILE:-} \
-			-DoverrideWar="../target/megawar-${LINE}.war" \
-			-DuseUpperBounds \
-			-Dhpi-plugin.version=3.1781.va_f66b_9d60fa_7 \
-			-DcommitHashes=target/commit-hashes.txt
-		mv sample-plugin/target/commit-hashes.txt "target/commit-hashes-${LINE}.txt"
 	fi
 done
 
-# produces: target/{commit-hashes-*.txt,plugins.txt,lines.txt}
+# produces: target/{plugins.txt,lines.txt}
