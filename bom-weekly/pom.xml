@@ -910,7 +910,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>basic-branch-build-strategies</artifactId>
-        <version>275.vde2351b_4a_58b_</version>
+        <version>317.v85b_331d6cc42</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
