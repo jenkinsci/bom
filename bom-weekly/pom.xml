@@ -1938,7 +1938,7 @@
       <dependency>
         <groupId>org.jenkinsci.plugins</groupId>
         <artifactId>kubernetes-credentials</artifactId>
-        <version>206.vde31a_b_0f71a_c</version>
+        <version>207.v492f58828b_ed</version>
       </dependency>
       <dependency>
         <groupId>org.jenkinsci.plugins</groupId>
