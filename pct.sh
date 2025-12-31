@@ -20,6 +20,12 @@ if ! [[ $PLUGINS =~ blueocean || $PLUGINS =~ lockable-resources || $PLUGINS =~ p
 	PCT_D_ARGS+='-DforkCount=.75C '
 fi
 
+JTH_VERSION=2558.vfb_661a_769eeb_
+if [[ $LINE == weekly ]]; then
+	PCT_D_ARGS+="-Djenkins-test-harness.version=${JTH_VERSION} "
+fi
+
+
 exec java \
 	-Dorg.jenkins.tools.test.hook.JenkinsTestHarnessHook2.enabled \
 	-jar target/pct.jar \
