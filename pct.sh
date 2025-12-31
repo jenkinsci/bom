@@ -21,8 +21,9 @@ if ! [[ $PLUGINS =~ blueocean || $PLUGINS =~ lockable-resources || $PLUGINS =~ p
 fi
 
 JTH_VERSION=2558.vfb_661a_769eeb_
+HPI_VERSION=3.1787.vd08d76c755ef
 if [[ $LINE == weekly ]]; then
-	PCT_D_ARGS+="-Djenkins-test-harness.version=${JTH_VERSION} "
+	PCT_D_ARGS+="-Djenkins-test-harness.version=${JTH_VERSION} -Dhpi-plugin.version=${HPI_VERSION} "
 fi
 
 
