@@ -41,6 +41,11 @@
         <version>${cloudbees-folder-plugin.version}</version>
         <classifier>tests</classifier>
       </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>envinject</artifactId>
+        <version>2.926.v69c9b_3896a_96</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 </project>
