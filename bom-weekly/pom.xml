@@ -1425,7 +1425,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>parameterized-scheduler</artifactId>
-        <version>285.ve611986d4c48</version>
+        <version>371.v8d2a_3e227b_ff</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
