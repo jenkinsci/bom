@@ -63,7 +63,7 @@
       <dependency>
         <groupId>com.paul8620.jenkins.plugins</groupId>
         <artifactId>pipeline-aggregator-view</artifactId>
-        <version>119.v4b_ec11953552</version>
+        <version>121.v23de4a_f2420f</version>
       </dependency>
       <dependency>
         <groupId>com.sonyericsson.hudson.plugins.rebuild</groupId>
