@@ -584,7 +584,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>opentelemetry</artifactId>
-        <version>3.1543.1545.vf5a_4ec123769</version>
+        <version>3.1571.v1a_3c3b_f2d73a_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
