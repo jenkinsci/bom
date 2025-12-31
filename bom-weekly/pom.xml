@@ -43,7 +43,7 @@
       <dependency>
         <groupId>au.com.versent.jenkins.plugins</groupId>
         <artifactId>ignore-committer-strategy</artifactId>
-        <version>37.v0d3157c4a_ef8</version>
+        <version>55.v51410e712e0c</version>
       </dependency>
       <dependency>
         <groupId>com.cloudbees.jenkins.plugins</groupId>
