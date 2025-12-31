@@ -1022,7 +1022,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>credentials</artifactId>
-        <version>1458.v7291f840651c</version>
+        <version>1460.v48765a_c7d849</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
