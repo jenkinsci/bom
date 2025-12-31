@@ -1687,7 +1687,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>versioncolumn</artifactId>
-        <version>320.v6b_b_814ca_01f7</version>
+        <version>400.v3c5c3004f31d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
