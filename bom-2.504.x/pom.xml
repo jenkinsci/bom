@@ -12,6 +12,7 @@
     <data-tables-api.version>2.3.4-1400.vb_1e3e3c4dfc8</data-tables-api.version>
     <forensics-api.version>3.1754.v2a_6613b_77002</forensics-api.version>
     <plugin-util-api.version>6.1167.v022176c7e0ca_</plugin-util-api.version>
+    <pipeline-maven-plugin.version>1567.vb_2c3a_2116860</pipeline-maven-plugin.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -149,6 +150,21 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ldap</artifactId>
         <version>780.vcb_33c9a_e4332</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>pipeline-maven</artifactId>
+        <version>${pipeline-maven-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>pipeline-maven-api</artifactId>
+        <version>${pipeline-maven-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>pipeline-maven-database</artifactId>
+        <version>${pipeline-maven-plugin.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
