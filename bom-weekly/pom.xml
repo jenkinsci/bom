@@ -1229,7 +1229,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>google-storage-plugin</artifactId>
-        <version>1.371.vc3434e76e0c4</version>
+        <version>1.372.vdb_857a_f19629</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
