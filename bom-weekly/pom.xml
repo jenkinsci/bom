@@ -1320,7 +1320,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>junit-realtime-test-reporter</artifactId>
-        <version>166.v889e7b_0e23a_a_</version>
+        <version>195.v25b_5f237c6b_4</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
