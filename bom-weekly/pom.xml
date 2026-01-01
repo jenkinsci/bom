@@ -1299,7 +1299,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jsoup</artifactId>
-        <version>1.21.2-66.v6ea_38164b_8a_2</version>
+        <version>1.22.1-76.v9cdb_2456c0e3</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
