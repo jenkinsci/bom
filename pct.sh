@@ -20,6 +20,12 @@ if ! [[ $PLUGINS =~ blueocean || $PLUGINS =~ lockable-resources || $PLUGINS =~ p
 	PCT_D_ARGS+='-DforkCount=.75C '
 fi
 
+# Tracked by .github/renovate.json
+if [[ $LINE == weekly ]]; then
+	PCT_D_ARGS+="-Djenkins-test-harness.version=2554.v93a_806a_1d194 "
+  PCT_D_ARGS+='-Dhpi-plugin.version=3.1798.vcca_69b_075372 '
+fi
+
 exec java \
 	-Dorg.jenkins.tools.test.hook.JenkinsTestHarnessHook2.enabled \
 	-jar target/pct.jar \
