@@ -281,8 +281,8 @@ For tasks that don't have a specific script, i.e. tasks 1, 5, 6, 8 and 11, you c
 * run the Renovate dependency graph checks
   * open [Dependency Dashboard](https://github.com/jenkinsci/bom/issues/2500)
   * click the checkbox for "Check this box to trigger a request for Renovate to run again on this repository" to check for all dependency updates
-* wait for the Renovate dependency graph checks to complete
-* check to see if any new PRs were opened. If there were, make sure they clear and merge before continuing.
+  * wait for the Renovate dependency graph checks to complete
+  * click the checkboxes for any new PRs in the Dependency Dashboard. If there were any entries, make sure they clear and merge before continuing.
 * Open the pinned [Dependency Dashboard](https://github.com/jenkinsci/bom/issues/2500) issue
 * Once the weekly build has completed, you will see a line that says "Update dependency org.jenkins-ci.main:jenkins-war to v2.`XYZ`", where `XYZ` is the weekly build number. Click the checkbox next to that line to start the weekly test.
 * Once the box is checked, a new PR will be created by renovate named "Update dependency org.jenkins-ci.main:jenkins-war to v2.`XYZ`" where `XYZ` is the weekly build number. This will fire off a full `weekly` build that will take about 1 hour to complete.
