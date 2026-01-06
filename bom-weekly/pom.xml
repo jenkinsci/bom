@@ -1616,7 +1616,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ssh-steps</artifactId>
-        <version>2.0.89.v8f758c756546</version>
+        <version>2.0.91.v76620e7082d0</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
