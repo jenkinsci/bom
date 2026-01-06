@@ -6,10 +6,10 @@ For people working on the BOM itself, not just consuming it.
 
 You can try just incrementing plugin versions in `bom/pom.xml`.
 If CI passes, great!
-Dependabot will try doing this as well.
+Renovate will try doing this as well.
 
-In cases where two or more plugins must be updated as a unit
-([JENKINS-49651](https://issues.jenkins-ci.org/browse/JENKINS-49651)),
+In cases where two or more plugins must be updated as a unit as noted in
+[JENKINS-49651](https://github.com/jenkinsci/jenkins/issues/22601),
 file a PR changing the versions of both.
 
 ## When to add a new plugin
@@ -45,8 +45,8 @@ In the worst case, such plugins can be excluded from the managed set.
 
 Insert a new `dependency` in _sorted_ order to `bom-weekly/pom.xml`.
 
-[!TIP]
-You can use `mvn spotless:apply` to sort the pom.xmls.
+> [!TIP]
+> You can use `mvn spotless:apply` to sort the pom.xmls.
 
 Make sure it is used (perhaps transitively) in `sample-plugin/pom.xml`.
 Ideally, also update the sample plugin’s tests to actually exercise it,
