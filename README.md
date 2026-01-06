@@ -3,7 +3,7 @@
 This repository implements a [Maven BOM](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Importing_Dependencies)
 which can be used in a plugin POM to more easily manage dependencies on other common plugins.
 This is important because version management is a [common annoyance](https://jenkins.io/doc/developer/plugin-development/updating-parent/#understanding-requireupperbounddeps-failures-and-fixes).
-See [JENKINS-47498](https://issues.jenkins-ci.org/browse/JENKINS-47498) for the background.
+See [JENKINS-47498](https://issues.jenkins.io/browse/JENKINS-47498) for the background.
 
 A secondary purpose of this repository is to regularly perform plugin compatibility testing (PCT) against new or forthcoming releases of core and plugins.
 
@@ -81,7 +81,7 @@ Some examples of when you would use it:
 
 You would not use it:
 - When you are temporarily depending on the weekly line but do not plan to update it on every release
-  - This would cause dependabot build failures when a plugin is updated only on the weekly line (if you depend on it)
+  - This would cause dependency update build failures when a plugin is updated only on the weekly line (if you depend on it)
 
 ## Depending on older versions
 

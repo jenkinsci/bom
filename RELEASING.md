@@ -50,7 +50,7 @@ Together these behaviors should make it easier to verify compatibility of code c
 
 ## GitHub tooling
 
-This repository uses Dependabot to be notified automatically of available updates, mainly to plugins.
+This repository uses Renovate to be notified automatically of available updates, mainly to plugins.
 (It is not currently possible for Jenkins core updates to be tracked this way.)
 
 Release Drafter is also used to prepare changelogs for the releases page.
@@ -63,13 +63,13 @@ As a BOM release manager, you'll be working directly with the `jenkinsci/bom` re
 
 ### Task handling
 
-#### Dependabot created PRs
+#### Renovate created PRs
 
 This will probably be the majority of work you'll do.
 
-In a perfect world, a Dependabot PR will just auto-merge into `master` and you won't have to do anything.
+In a perfect world, a Renovate PR will just auto-merge into `master` and you won't have to do anything.
 
-In a not so perfect world, a Dependabot PR will fail to build. Most of the time, it's because a plugin is too new for older LTS lines. The way you'll resolve this issue is to pin the older version to the correct LTS line.
+In a not so perfect world, a Renovate PR will fail to build. Most of the time, it's because a plugin is too new for older LTS lines. The way you'll resolve this issue is to pin the older version to the correct LTS line.
 
 [!TIP]
 If you do have to do work on a PR, make sure to assign the PR to yourself so others can see that you are actively looking at the PR.
@@ -137,9 +137,9 @@ Rolling back due to compatibility issues with downstream plugins.
 See notification to author: https://github.com/jenkinsci/github-branch-source-plugin/pull/822#issuecomment-3238052920
 ```
 
-3. Trigger Dependabot
+3. Trigger Renovate
 
-Comment `@dependabot rebase` on the reverted PR to trigger Dependabot to reprocess the change.
+Click the `If you want to rebase/retry this PR, check this box`on the reverted PR to trigger Renovate to reprocess the change.
 
 4. Disable Automerge
 
@@ -278,16 +278,14 @@ For tasks that don't have a specific script, i.e. tasks 1, 5, 6, 8 and 11, you c
 
 #### Tuesday (test the new weekly)
 
-* run the Dependabot dependency graph checks
-  * open [Dependency graph for sample-plugin/pom.xml](https://github.com/jenkinsci/bom/network/updates/5427365/jobs)
-  * click on "Check for updates" button in upper right hand corner of table
-  * open [Dependency graph for bom-weekly/pom.xml](https://github.com/jenkinsci/bom/network/updates/10189727/jobs)
-  * click on "Check for updates" button in upper right hand corner of table
-* wait for both of the Dependabot dependency graph checks to complete
-* check to see if any new dependabot PRs were opened. If there were, make sure they clear and merge before continuing.
+* run the Renovate dependency graph checks
+  * open [Dependency Dashboard](https://github.com/jenkinsci/bom/issues/2500)
+  * click the checkbox for "Check this box to trigger a request for Renovate to run again on this repository" to check for all dependency updates
+* wait for the Renovate dependency graph checks to complete
+* check to see if any new PRs were opened. If there were, make sure they clear and merge before continuing.
 * Open the pinned [Dependency Dashboard](https://github.com/jenkinsci/bom/issues/2500) issue
-* Once the weekly build has completed, you will see a line that says "Update dependency org.jenkins-ci.main:jenkins-war to v2.`XYZ`", where `XYZ` is the weekly build number. Click the checkbox next to that line to start the full test.
-* Once the box is checked, a new PR will be created by renovate named "Update dependency org.jenkins-ci.main:jenkins-war to v2.`XYZ`" where `XYZ` is the weekly build number. This will fire off a full `weekly` build that will take about 1.5-2 hours to complete.
+* Once the weekly build has completed, you will see a line that says "Update dependency org.jenkins-ci.main:jenkins-war to v2.`XYZ`", where `XYZ` is the weekly build number. Click the checkbox next to that line to start the weekly test.
+* Once the box is checked, a new PR will be created by renovate named "Update dependency org.jenkins-ci.main:jenkins-war to v2.`XYZ`" where `XYZ` is the weekly build number. This will fire off a full `weekly` build that will take about 1 hour to complete.
 * If everything succeeds, the PR will auto-merge.
 * Once the auto-merge completes, go back to the [Dependency Dashboard](https://github.com/jenkinsci/bom/issues/2500) issue and check the box for "Check this box to trigger a request for Renovate to run again on this repository". This will remove the "Update dependency..." line from the issue.
 
