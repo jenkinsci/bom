@@ -45,8 +45,8 @@ In the worst case, such plugins can be excluded from the managed set.
 
 Insert a new `dependency` in _sorted_ order to `bom-weekly/pom.xml`.
 
-[!TIP]
-You can use `mvn spotless:apply` to sort the pom.xmls.
+> [!TIP]
+> You can use `mvn spotless:apply` to sort the pom.xmls.
 
 Make sure it is used (perhaps transitively) in `sample-plugin/pom.xml`.
 Ideally, also update the sample plugin’s tests to actually exercise it,

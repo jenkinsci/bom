@@ -71,8 +71,8 @@ In a perfect world, a Renovate PR will just auto-merge into `master` and you won
 
 In a not so perfect world, a Renovate PR will fail to build. Most of the time, it's because a plugin is too new for older LTS lines. The way you'll resolve this issue is to pin the older version to the correct LTS line.
 
-[!TIP]
-If you do have to do work on a PR, make sure to assign the PR to yourself so others can see that you are actively looking at the PR.
+> [!TIP]
+> If you do have to do work on a PR, make sure to assign the PR to yourself so others can see that you are actively looking at the PR.
 
 The easiest way to work on the PR is to use the `gh` CLI to checkout the PR:
 
