@@ -20,6 +20,7 @@
   </licenses>
   <modules>
     <module>bom-weekly</module>
+    <module>bom-2.541.x</module>
     <module>bom-2.528.x</module>
     <module>bom-2.516.x</module>
     <module>bom-2.504.x</module>
