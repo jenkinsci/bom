@@ -12,4 +12,3 @@ ${HERE}/bom-line-test.sh weekly $1
 ${HERE}/bom-line-test.sh 2.541.x $1
 ${HERE}/bom-line-test.sh 2.528.x $1
 ${HERE}/bom-line-test.sh 2.516.x $1
-${HERE}/bom-line-test.sh 2.504.x $1

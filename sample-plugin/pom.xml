@@ -1778,12 +1778,5 @@
         <jenkins.version>2.516.3</jenkins.version>
       </properties>
     </profile>
-    <profile>
-      <id>2.504.x</id>
-      <properties>
-        <bom>2.504.x</bom>
-        <jenkins.version>2.504.3</jenkins.version>
-      </properties>
-    </profile>
   </profiles>
 </project>
