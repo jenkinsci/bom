@@ -32,6 +32,11 @@
         <version>250.vdb_c6dcb_5c515</version>
       </dependency>
       <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>credentials</artifactId>
+        <version>1465.ve8c9516d78b_f</version>
+      </dependency>
+      <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>design-library</artifactId>
         <version>403.v0787db_1c972b_</version>
