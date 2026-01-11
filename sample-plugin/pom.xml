@@ -248,6 +248,11 @@
     </dependency>
     <dependency>
       <groupId>io.jenkins.plugins</groupId>
+      <artifactId>calendar-view</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.jenkins.plugins</groupId>
       <artifactId>checks-api</artifactId>
       <scope>test</scope>
     </dependency>
@@ -334,6 +339,11 @@
     <dependency>
       <groupId>io.jenkins.plugins</groupId>
       <artifactId>emoji-symbols-api</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.jenkins.plugins</groupId>
+      <artifactId>extended-timer-trigger</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -926,6 +936,11 @@
     </dependency>
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>cron_column</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>dashboard-view</artifactId>
       <scope>test</scope>
     </dependency>
@@ -1215,6 +1230,11 @@
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>naginator</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>next-executions</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
