@@ -513,7 +513,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>joda-time-api</artifactId>
-        <version>2.14.0-149.v1c3ce991d1b_9</version>
+        <version>2.14.0-177.vd7e9347b_e7d5</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
