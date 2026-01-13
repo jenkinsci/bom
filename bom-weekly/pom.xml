@@ -1179,7 +1179,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>github-branch-source</artifactId>
-        <version>1925.v62fb_7ffb_08ce</version>
+        <version>1934.v23cf60a_47fc3</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
