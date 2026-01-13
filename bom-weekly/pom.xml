@@ -1535,7 +1535,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>s3</artifactId>
-        <version>516.v1b_869085b_fc4</version>
+        <version>517.va_43007f79db_a_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
