@@ -1677,7 +1677,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>urltrigger</artifactId>
-        <version>1.05</version>
+        <version>1.06</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
