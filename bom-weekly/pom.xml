@@ -32,7 +32,7 @@
     <scm-api-plugin.version>724.v7d839074eb_5c</scm-api-plugin.version>
     <subversion-plugin.version>1303.vcfd9679fb_c12</subversion-plugin.version>
     <workflow-api-plugin.version>1398.v67030756d3fb_</workflow-api-plugin.version>
-    <workflow-cps-plugin.version>4238.va_6fb_65c1f699</workflow-cps-plugin.version>
+    <workflow-cps-plugin.version>4250.v2eecc0881a_e6</workflow-cps-plugin.version>
     <workflow-job-plugin.version>1559.va_a_533730b_ea_d</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>821.vc3b_4ea_780798</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>710.v3e456cc85233</workflow-step-api-plugin.version>
@@ -563,7 +563,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>mcp-server</artifactId>
-        <version>0.119.v479294b_419a_7</version>
+        <version>0.130.v7837b_2a_5447e</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -573,7 +573,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>netty-api</artifactId>
-        <version>4.1.128.Final-14.v3a_f80ce4b_522</version>
+        <version>4.1.130.Final-21.v5a_db_3eb_ea_034</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -835,7 +835,7 @@
       <dependency>
         <groupId>org.csanchez.jenkins.plugins</groupId>
         <artifactId>kubernetes</artifactId>
-        <version>4398.vb_b_33d9e7fe23</version>
+        <version>4416.v2ea_b_5372da_a_e</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.main</groupId>
@@ -860,7 +860,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ansible</artifactId>
-        <version>588.v2a_a_a_f345e34f</version>
+        <version>635.v34b_48e979c86</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1032,7 +1032,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>credentials</artifactId>
-        <version>1465.ve8c9516d78b_f</version>
+        <version>1480.v2246fd131e83</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1107,7 +1107,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>durable-task</artifactId>
-        <version>639.vefb_3d8372f6d</version>
+        <version>651.v1f5e074fc83f</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1194,7 +1194,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>github-branch-source</artifactId>
-        <version>1925.v62fb_7ffb_08ce</version>
+        <version>1934.v23cf60a_47fc3</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1299,7 +1299,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jobcacher</artifactId>
-        <version>764.v098c635e4315</version>
+        <version>808.v153db_9fd7b_d2</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1555,7 +1555,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>s3</artifactId>
-        <version>515.vc2f8153c5dc6</version>
+        <version>517.va_43007f79db_a_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1631,7 +1631,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ssh-slaves</artifactId>
-        <version>3.1085.vc64d040efa_85</version>
+        <version>3.1095.veec561d48a_a_c</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1657,7 +1657,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>support-core</artifactId>
-        <version>1766.vd0e334b_f6b_3a_</version>
+        <version>1795.v8935198c272d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
