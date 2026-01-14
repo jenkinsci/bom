@@ -951,7 +951,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>build-timestamp</artifactId>
-        <version>1.1.0</version>
+        <!-- TODO https://github.com/jenkinsci/build-timestamp-plugin/pull/109 -->
+        <version>1.1.1-rc169.fe49118c729e</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
