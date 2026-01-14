@@ -26,5 +26,5 @@ jenkins.security.plugins.ldap.CascSecurityRealmTest#export_ldap_no_secret
 
 # TODO Remove when https://github.com/jenkins-infra/crawler/pull/165 is merged and tool installer list is updated
 # https://updates.jenkins.io/updates/org.jvnet.hudson.plugins.SbtPluginBuilder.SbtInstaller.json must contain valid entries before tests will pass
-org.jvnet.hudson.plugins.SbtPluginBuilderTest.testFreestyle
-org.jvnet.hudson.plugins.SbtPluginBuilderTest.testPipeline
+org.jvnet.hudson.plugins.SbtPluginBuilderTest#testFreestyle
+org.jvnet.hudson.plugins.SbtPluginBuilderTest#testPipeline
