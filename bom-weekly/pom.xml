@@ -1928,7 +1928,7 @@
       <dependency>
         <groupId>org.jenkins-ci.tools</groupId>
         <artifactId>git-parameter</artifactId>
-        <version>460.v71e7583a_c099</version>
+        <version>462.vdcf3df2ed2ca_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkinsci.plugins</groupId>
