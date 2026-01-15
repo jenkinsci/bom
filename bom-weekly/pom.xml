@@ -1576,7 +1576,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>simple-theme-plugin</artifactId>
-        <version>211.v5424a_5510e47</version>
+        <version>230.v8b_fd91b_b_800c</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
