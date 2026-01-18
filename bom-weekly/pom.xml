@@ -371,7 +371,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>flatpickr-api</artifactId>
-        <version>4.6.13-18.vcf5f6a_5b_8468</version>
+        <version>4.6.13-32.v60a_51029c136</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
