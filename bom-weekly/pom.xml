@@ -1017,7 +1017,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>copyartifact</artifactId>
-        <version>770.va_6c69e063442</version>
+        <version>795.ve8e151429b_27</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
