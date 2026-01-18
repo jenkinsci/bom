@@ -1969,7 +1969,7 @@
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
         <artifactId>favorite</artifactId>
-        <version>2.253.v9b_413168133b_</version>
+        <version>2.263.v941d21defef7</version>
       </dependency>
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
