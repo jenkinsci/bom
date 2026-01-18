@@ -16,7 +16,7 @@
     <branch-api-plugin.version>2.1268.v044a_87612da_8</branch-api-plugin.version>
     <checks-api.version>402.vca_263b_f200e3</checks-api.version>
     <cloudbees-folder-plugin.version>6.1073.va_7888eb_dd514</cloudbees-folder-plugin.version>
-    <configuration-as-code-plugin.version>2006.v001a_2ca_6b_574</configuration-as-code-plugin.version>
+    <configuration-as-code-plugin.version>2031.veb_a_fdda_b_3ffd</configuration-as-code-plugin.version>
     <data-tables-api.version>2.3.5-1497.v38449eb_7d5a_1</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.6</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>3.1832.va_1179842528b_</forensics-api.version>
@@ -249,7 +249,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>byte-buddy-api</artifactId>
-        <version>1.18.3-207.v3e9992b_a_e0b_e</version>
+        <version>1.18.4-221.vca_790da_e08fc</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -295,7 +295,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>coverage</artifactId>
-        <version>2.3060.v035a_5557cdb_c</version>
+        <version>2.3120.v73353a_97726e</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -310,7 +310,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>customizable-header</artifactId>
-        <version>259.v42704419a_143</version>
+        <version>261.va_95557fc5e92</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -432,7 +432,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>gitlab-branch-source</artifactId>
-        <version>739.v9781b_1cdb_72a_</version>
+        <version>740.v04f287f9194d</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -548,7 +548,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>markdown-formatter</artifactId>
-        <version>312.va_b_3dea_1413a_f</version>
+        <version>331.vf411395008f9</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -589,7 +589,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>opentelemetry-api</artifactId>
-        <version>1.49.0.82.vf56234f0d9c1</version>
+        <version>1.49.0.94.v5fc5325d5e7a_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -815,7 +815,7 @@
       <dependency>
         <groupId>net.plavcak.jenkins</groupId>
         <artifactId>scmskip</artifactId>
-        <version>82.v24fc1c6f381b_</version>
+        <version>84.v50575d32b_23f</version>
       </dependency>
       <dependency>
         <groupId>org.6wind.jenkins</groupId>
@@ -895,7 +895,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>azure-keyvault</artifactId>
-        <version>336.v8963a_7c18c7b_</version>
+        <version>346.v75201ddefa_e0</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1017,7 +1017,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>copyartifact</artifactId>
-        <version>770.va_6c69e063442</version>
+        <version>795.ve8e151429b_27</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1122,7 +1122,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>envinject-api</artifactId>
-        <version>1.236.v35fd4d7eb_515</version>
+        <version>1.237.v82803a_511906</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1199,7 +1199,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>gitlab-oauth</artifactId>
-        <version>1.24</version>
+        <version>1.25</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1370,7 +1370,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>msbuild</artifactId>
-        <version>1.37</version>
+        <version>1.38</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1390,7 +1390,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>nodelabelparameter</artifactId>
-        <version>759.vb_b_e95db_f3251</version>
+        <version>851.vd94e5048d321</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1420,7 +1420,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>parameter-separator</artifactId>
-        <version>322.vc4a_ff1cde55a_</version>
+        <version>334.v1fc0e534c71d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1652,7 +1652,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>throttle-concurrents</artifactId>
-        <version>624.vc427fa_e0e503</version>
+        <version>625.vc8b_e469e9a_b_c</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1969,7 +1969,7 @@
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
         <artifactId>favorite</artifactId>
-        <version>2.253.v9b_413168133b_</version>
+        <version>2.263.v941d21defef7</version>
       </dependency>
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
