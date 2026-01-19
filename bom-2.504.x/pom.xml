@@ -181,6 +181,11 @@
         <artifactId>pipeline-maven-database</artifactId>
         <version>${pipeline-maven-plugin.version}</version>
       </dependency>
+      <dependency>
+        <groupId>org.jvnet.hudson.plugins</groupId>
+        <artifactId>favorite</artifactId>
+        <version>2.253.v9b_413168133b_</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 </project>
