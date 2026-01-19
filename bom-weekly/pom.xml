@@ -1933,7 +1933,7 @@
       <dependency>
         <groupId>org.jenkinsci.plugins</groupId>
         <artifactId>emailext-template</artifactId>
-        <version>233.v1eb_88fc160b_5</version>
+        <version>249.v81d6ea_f33f2e</version>
       </dependency>
       <dependency>
         <groupId>org.jenkinsci.plugins</groupId>
