@@ -1284,7 +1284,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jobcacher</artifactId>
-        <version>808.v153db_9fd7b_d2</version>
+        <version>816.vb_582c458726f</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
