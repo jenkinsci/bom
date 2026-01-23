@@ -310,7 +310,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>customizable-header</artifactId>
-        <version>261.va_95557fc5e92</version>
+        <version>267.v8b_74097f488d</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
