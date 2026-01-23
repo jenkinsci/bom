@@ -1979,7 +1979,8 @@
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
         <artifactId>instant-messaging</artifactId>
-        <version>2.882.v5363d4fd02fb_</version>
+        <!-- TODO: https://github.com/jenkinsci/instant-messaging-plugin/pull/308 -->
+        <version>2.884.veda_553935c84</version>
       </dependency>
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
