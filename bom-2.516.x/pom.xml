@@ -28,7 +28,8 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>gitea-checks</artifactId>
-        <version>601.607.vcea_0049b_27e5</version>
+        <!-- TODO: https://github.com/jenkinsci/gitea-checks-plugin/pull/307 -->
+        <version>601.609.v7b_5ee1a_655f2</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
