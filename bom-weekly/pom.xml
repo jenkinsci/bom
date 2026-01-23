@@ -33,7 +33,8 @@
     <subversion-plugin.version>1303.vcfd9679fb_c12</subversion-plugin.version>
     <workflow-api-plugin.version>1398.v67030756d3fb_</workflow-api-plugin.version>
     <workflow-cps-plugin.version>4254.v0c8e228524ea_</workflow-cps-plugin.version>
-    <workflow-job-plugin.version>1570.v75b_888a_138a_3</workflow-job-plugin.version>
+    <!-- TODO: https://github.com/jenkinsci/workflow-job-plugin/pull/741 -->
+    <workflow-job-plugin.version>1572.v4a_176c455367</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>821.vc3b_4ea_780798</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>710.v3e456cc85233</workflow-step-api-plugin.version>
     <workflow-support-plugin.version>1010.vb_b_39488a_9841</workflow-support-plugin.version>
