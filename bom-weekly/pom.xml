@@ -1979,7 +1979,7 @@
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
         <artifactId>instant-messaging</artifactId>
-        <version>2.875.v954b_d3f33534</version>
+        <version>2.882.v5363d4fd02fb_</version>
       </dependency>
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
