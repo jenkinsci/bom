@@ -33,8 +33,7 @@
     <subversion-plugin.version>1303.vcfd9679fb_c12</subversion-plugin.version>
     <workflow-api-plugin.version>1398.v67030756d3fb_</workflow-api-plugin.version>
     <workflow-cps-plugin.version>4254.v0c8e228524ea_</workflow-cps-plugin.version>
-    <!-- TODO: https://github.com/jenkinsci/workflow-job-plugin/pull/741 -->
-    <workflow-job-plugin.version>1572.v4a_176c455367</workflow-job-plugin.version>
+    <workflow-job-plugin.version>1571.vb_423c255d6d9</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>821.vc3b_4ea_780798</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>710.v3e456cc85233</workflow-step-api-plugin.version>
     <workflow-support-plugin.version>1010.vb_b_39488a_9841</workflow-support-plugin.version>
@@ -311,7 +310,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>customizable-header</artifactId>
-        <version>261.va_95557fc5e92</version>
+        <version>267.v8b_74097f488d</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -418,7 +417,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>gitea-checks</artifactId>
-        <version>603.621.vc708da_fb_371d</version>
+        <version>603.625.v731f4b_ecf7d5</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -605,7 +604,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
-        <version>752.v01113dc49630</version>
+        <version>763.v0e91db_e845ee</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -656,7 +655,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>warnings-ng</artifactId>
-        <version>12.9995.v136a_ccb_6ea_4d</version>
+        <version>12.9996.va_151fb_d6d757</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
@@ -1980,8 +1979,12 @@
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
         <artifactId>instant-messaging</artifactId>
+<<<<<<< HEAD
         <!-- TODO: https://github.com/jenkinsci/instant-messaging-plugin/pull/308 -->
         <version>2.884.veda_553935c84</version>
+=======
+        <version>2.875.v954b_d3f33534</version>
+>>>>>>> master
       </dependency>
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
