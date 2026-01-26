@@ -258,6 +258,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>calendar-view</artifactId>
+        <version>0.4.1</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>checks-api</artifactId>
         <version>${checks-api.version}</version>
       </dependency>
@@ -357,6 +362,11 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>emoji-symbols-api</artifactId>
         <version>17.0-57.v8d44b_9a_b_d5ea_</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>extended-timer-trigger</artifactId>
+        <version>50.v1dde6750f820</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1031,6 +1041,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>cron_column</artifactId>
+        <version>106.v492da_45b_051b_</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>dashboard-view</artifactId>
         <version>2.558.v96b_901978e47</version>
       </dependency>
@@ -1376,6 +1391,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>naginator</artifactId>
         <version>1.530.vb_6d120f250b_1</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>next-executions</artifactId>
+        <version>517.vc2c2ca_1b_c808</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
