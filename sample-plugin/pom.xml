@@ -1781,7 +1781,7 @@
       <id>2.541.x</id>
       <properties>
         <bom>2.541.x</bom>
-        <jenkins.version>2.541.1-rc37778.ff54607d5228</jenkins.version>
+        <jenkins.version>2.541.1</jenkins.version>
       </properties>
     </profile>
     <profile>
