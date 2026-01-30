@@ -915,11 +915,6 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>org.jvnet.hudson.plugins</groupId>
-      <artifactId>favorite</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>flaky-test-handler</artifactId>
       <scope>test</scope>
@@ -1604,6 +1599,11 @@
       <groupId>org.jenkinsci.plugins</groupId>
       <artifactId>pipeline-model-definition</artifactId>
       <classifier>tests</classifier>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jvnet.hudson.plugins</groupId>
+      <artifactId>favorite</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
