@@ -92,101 +92,6 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>blueocean-bitbucket-pipeline</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>blueocean-commons</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>blueocean-config</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>blueocean-core-js</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>blueocean-dashboard</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>blueocean-events</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>blueocean-executor-info</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>blueocean-git-pipeline</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>blueocean-github-pipeline</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>blueocean-i18n</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>blueocean-jwt</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>blueocean-personalization</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>blueocean-pipeline-api-impl</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>blueocean-pipeline-editor</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>blueocean-pipeline-scm-api</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>blueocean-rest</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>blueocean-rest-impl</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>blueocean-web</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>jenkins-design-language</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
       <groupId>io.jenkins.configuration-as-code</groupId>
       <artifactId>test-harness</artifactId>
       <scope>test</scope>
@@ -825,11 +730,6 @@
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>basic-branch-build-strategies</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.jenkins-ci.plugins</groupId>
-      <artifactId>blueocean-display-url</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -1699,6 +1599,11 @@
       <groupId>org.jenkinsci.plugins</groupId>
       <artifactId>pipeline-model-definition</artifactId>
       <classifier>tests</classifier>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jvnet.hudson.plugins</groupId>
+      <artifactId>favorite</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
