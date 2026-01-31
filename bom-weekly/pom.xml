@@ -497,7 +497,8 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>opentelemetry</artifactId>
-        <version>3.1573.v72f1a_711ca_98</version>
+        <!-- TODO https://github.com/jenkinsci/opentelemetry-plugin/pull/1213 -->
+        <version>3.1575.v6a_a_0fc291d1f</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
