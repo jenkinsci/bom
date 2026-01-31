@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.jenkins-ci.plugins</groupId>
     <artifactId>plugin</artifactId>
-    <version>6.2116.v7501b_67dc517</version>
+    <version>6.2122.v70b_7b_f659d72</version>
     <relativePath />
   </parent>
   <groupId>io.jenkins.tools.bom</groupId>
@@ -15,7 +15,7 @@
     <changelist>999999-SNAPSHOT</changelist>
     <bom>weekly</bom>
     <!-- Testing https://github.com/jenkinsci/jenkins/pull/26105 -->
-    <jenkins.version>2.548-rc37917.50093ee726b_6</jenkins.version>
+    <jenkins.version>2.549-rc37946.27a_9c5162f85</jenkins.version>
     <spotless.check.skip>false</spotless.check.skip>
   </properties>
   <dependencyManagement>
@@ -93,101 +93,6 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>blueocean-bitbucket-pipeline</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>blueocean-commons</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>blueocean-config</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>blueocean-core-js</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>blueocean-dashboard</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>blueocean-events</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>blueocean-executor-info</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>blueocean-git-pipeline</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>blueocean-github-pipeline</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>blueocean-i18n</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>blueocean-jwt</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>blueocean-personalization</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>blueocean-pipeline-api-impl</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>blueocean-pipeline-editor</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>blueocean-pipeline-scm-api</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>blueocean-rest</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>blueocean-rest-impl</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>blueocean-web</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jenkins.blueocean</groupId>
-      <artifactId>jenkins-design-language</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
       <groupId>io.jenkins.configuration-as-code</groupId>
       <artifactId>test-harness</artifactId>
       <scope>test</scope>
@@ -245,6 +150,11 @@
     <dependency>
       <groupId>io.jenkins.plugins</groupId>
       <artifactId>byte-buddy-api</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.jenkins.plugins</groupId>
+      <artifactId>calendar-view</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -335,6 +245,11 @@
     <dependency>
       <groupId>io.jenkins.plugins</groupId>
       <artifactId>emoji-symbols-api</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.jenkins.plugins</groupId>
+      <artifactId>extended-timer-trigger</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -820,11 +735,6 @@
     </dependency>
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
-      <artifactId>blueocean-display-url</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>bouncycastle-api</artifactId>
       <scope>test</scope>
     </dependency>
@@ -923,6 +833,11 @@
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>credentials-binding</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>cron_column</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -1216,6 +1131,11 @@
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>naginator</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>next-executions</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -1684,6 +1604,11 @@
     </dependency>
     <dependency>
       <groupId>org.jvnet.hudson.plugins</groupId>
+      <artifactId>favorite</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jvnet.hudson.plugins</groupId>
       <artifactId>groovy-postbuild</artifactId>
       <scope>test</scope>
     </dependency>
@@ -1759,6 +1684,13 @@
   <profiles>
     <!-- Use .1 of most recent active line, and .3 (or later) of previous lines: https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/#choosing-a-version -->
     <profile>
+      <id>2.541.x</id>
+      <properties>
+        <bom>2.541.x</bom>
+        <jenkins.version>2.541.1</jenkins.version>
+      </properties>
+    </profile>
+    <profile>
       <id>2.528.x</id>
       <properties>
         <bom>2.528.x</bom>
@@ -1770,13 +1702,6 @@
       <properties>
         <bom>2.516.x</bom>
         <jenkins.version>2.516.3</jenkins.version>
-      </properties>
-    </profile>
-    <profile>
-      <id>2.504.x</id>
-      <properties>
-        <bom>2.504.x</bom>
-        <jenkins.version>2.504.3</jenkins.version>
       </properties>
     </profile>
   </profiles>

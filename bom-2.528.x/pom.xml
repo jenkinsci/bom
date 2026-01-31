@@ -9,6 +9,7 @@
   <artifactId>bom-2.528.x</artifactId>
   <packaging>pom</packaging>
   <properties>
+    <configuration-as-code-plugin.version>2036.v0b_c2de701dcb_</configuration-as-code-plugin.version>
     <junit-plugin.version>1369.v15da_00283f06</junit-plugin.version>
     <workflow-api-plugin.version>1384.vdc05a_48f535f</workflow-api-plugin.version>
   </properties>
@@ -16,10 +17,20 @@
     <dependencies>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>bom-weekly</artifactId>
+        <artifactId>bom-2.541.x</artifactId>
         <version>${project.version}</version>
         <type>pom</type>
         <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins</groupId>
+        <artifactId>configuration-as-code</artifactId>
+        <version>${configuration-as-code-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.configuration-as-code</groupId>
+        <artifactId>test-harness</artifactId>
+        <version>${configuration-as-code-plugin.version}</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
