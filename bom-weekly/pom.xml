@@ -35,7 +35,7 @@
     <workflow-job-plugin.version>1571.vb_423c255d6d9</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>821.vc3b_4ea_780798</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>710.v3e456cc85233</workflow-step-api-plugin.version>
-    <workflow-support-plugin.version>1010.vb_b_39488a_9841</workflow-support-plugin.version>
+    <workflow-support-plugin.version>1015.v785e5a_b_b_8b_22</workflow-support-plugin.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -52,7 +52,7 @@
       <dependency>
         <groupId>com.cloudbees.jenkins.plugins</groupId>
         <artifactId>kubernetes-credentials-provider</artifactId>
-        <version>1.301.v2eed6d439a_79</version>
+        <version>1.303.vdfcf47fb_b_fef</version>
       </dependency>
       <dependency>
         <groupId>com.coravy.hudson.plugins.github</groupId>
@@ -289,7 +289,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>flyway-api</artifactId>
-        <version>11.20.3-409.vef84459a_6ee3</version>
+        <version>12.0.0-411.va_40875c6116c</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -466,12 +466,12 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>mcp-server</artifactId>
-        <version>0.138.v7c6a_22ee9160</version>
+        <version>0.149.ve5cd2f59de01</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>mysql-api</artifactId>
-        <version>9.5.0-79.v891c57fc3b_3f</version>
+        <version>9.6.0-83.v04c82b_70c653</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -518,7 +518,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
-        <version>763.v0e91db_e845ee</version>
+        <version>772.vb_b_19985c0b_8b_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1419,7 +1419,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>prometheus</artifactId>
-        <version>847.v8440e5c21e7c</version>
+        <version>852.v317db_5d17a_b_0</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1515,7 +1515,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>sse-gateway</artifactId>
-        <version>1.28</version>
+        <version>1.29</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
