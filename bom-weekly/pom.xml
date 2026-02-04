@@ -753,7 +753,7 @@
       <dependency>
         <groupId>org.jenkins-ci.modules</groupId>
         <artifactId>sshd</artifactId>
-        <version>3.374.v19b_d59ce6610</version>
+        <version>3.384.vc89b_5e138cf9</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
