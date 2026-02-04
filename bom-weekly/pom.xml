@@ -1615,7 +1615,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>windows-azure-storage</artifactId>
-        <version>519.vd15db_1004122</version>
+        <version>534.v3964f6b_f4338</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
