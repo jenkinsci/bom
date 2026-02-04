@@ -218,7 +218,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>customizable-header</artifactId>
-        <version>267.v8b_74097f488d</version>
+        <version>284.vf03012f0b_961</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
