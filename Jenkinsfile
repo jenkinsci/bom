@@ -1,7 +1,7 @@
 // Do not trigger build regularly on change requests as it costs a lot
 String cronTrigger = ''
 if(env.BRANCH_NAME == "master") {
-  cronTrigger = '49 13 * * 5'
+  cronTrigger = '22 14 * * 5'
 }
 
 properties([
