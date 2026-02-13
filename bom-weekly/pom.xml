@@ -1413,7 +1413,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>powershell</artifactId>
-        <version>2.3</version>
+        <version>178.v4b_3a_9f214ea_2</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
