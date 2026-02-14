@@ -1529,7 +1529,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ssh-slaves</artifactId>
-        <version>3.1096.v0b_cc466e4323</version>
+        <version>3.1097.v868116049892</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
