@@ -864,7 +864,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>build-user-vars-plugin</artifactId>
-        <version>212.vd6b_e9f6d0cdb_</version>
+        <version>214.va_eed2ed849ca_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
