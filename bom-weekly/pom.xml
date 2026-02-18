@@ -930,7 +930,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>credentials</artifactId>
-        <version>1489.v375944c125ee</version>
+        <version>1490.ve7532596f1fd</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
