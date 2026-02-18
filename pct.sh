@@ -12,9 +12,9 @@ if [[ -n ${EXTRA_MAVEN_PROPERTIES-} ]]; then
 		PCT_D_ARGS+="-D${prop} "
 	done
 fi
-if ! [[ $PLUGINS =~ blueocean || $PLUGINS =~ lockable-resources || $PLUGINS =~ pipeline-maven ]]; then
+if ! [[ $PLUGINS =~ lockable-resources || $PLUGINS =~ pipeline-maven ]]; then
 	#
-	# The Blue Ocean, Lockable Resources, and Pipeline Maven Integration
+	# The Lockable Resources and Pipeline Maven Integration
 	# test suites use a lot of memory and cannot handle parallelism.
 	#
 	PCT_D_ARGS+='-DforkCount=.75C '

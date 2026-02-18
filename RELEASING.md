@@ -33,7 +33,7 @@ In one case where that happened, we were able to replay the Pipeline on the `mas
 The Pipeline replay was:
 
 ```
-publishChecks(name: 'pct-blueocean-plugin-weekly')
+publishChecks(name: 'pct-git-plugin-weekly')
 echo 'OK'
 ```
 
