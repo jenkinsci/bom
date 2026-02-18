@@ -1,3 +1,6 @@
+# TODO https://github.com/jenkinsci/instant-messaging-plugin/pull/309
+hudson.plugins.im.bot.BuildCommandTest
+
 # TODO cryptic PCT-only errors: https://github.com/jenkinsci/bom/pull/251#issuecomment-645012427
 hudson.matrix.AxisTest#emptyAxisValueListResultInNoConfigurations
 hudson.matrix.AxisTest#submitEmptyAxisName
