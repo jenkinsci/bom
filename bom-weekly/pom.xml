@@ -1897,7 +1897,8 @@
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
         <artifactId>instant-messaging</artifactId>
-        <version>2.885.v1e66747893e5</version>
+        <!-- TODO: https://github.com/jenkinsci/instant-messaging-plugin/pull/309 -->
+        <version>2.886.v1d5cd07b_9a_ea_</version>
       </dependency>
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
