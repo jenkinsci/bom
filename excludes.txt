@@ -1,10 +1,10 @@
+# TODO https://github.com/jenkinsci/instant-messaging-plugin/pull/309
+hudson.plugins.im.bot.BuildCommandTest
+
 # TODO cryptic PCT-only errors: https://github.com/jenkinsci/bom/pull/251#issuecomment-645012427
 hudson.matrix.AxisTest#emptyAxisValueListResultInNoConfigurations
 hudson.matrix.AxisTest#submitEmptyAxisName
 hudson.matrix.AxisTest#submitInvalidAxisName
-
-# TODO cryptic PCT-only errors: https://github.com/jenkinsci/bom/issues/2645#issue-1984697087
-io.jenkins.blueocean.service.embedded.PipelineApiTest#testOrganizationFolder
 
 # TODO tends to time out
 jenkins.plugins.http_request.HttpRequestStepRoundTripTest
@@ -14,6 +14,3 @@ org.jenkinsci.plugins.durabletask.BourneShellScriptTest
 
 # TODO tends to run out of memory
 org.jenkinsci.plugins.pipeline.modeldefinition.TriggersTest
-
-# TODO Blue Ocean Bitbucket test fails for Wiremock mismatch: https://github.com/jenkinsci/blueocean-plugin/pull/2654
-io.jenkins.blueocean.blueocean_bitbucket_pipeline.server.BitbucketPipelineCreateRequestTest
