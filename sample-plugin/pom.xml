@@ -14,7 +14,11 @@
   <properties>
     <changelist>999999-SNAPSHOT</changelist>
     <bom>weekly</bom>
-    <jenkins.version>2.554</jenkins.version>
+    <!-- TODO: Spring v7 -->
+    <!-- TODO: https://github.com/jenkinsci/jenkins/pull/26450 -->
+    <!-- TODO: https://github.com/jenkinsci/jenkins/pull/11304 -->
+    <!-- TODO: https://github.com/jenkinsci/jenkins/pull/11292 -->
+    <jenkins.version>2.555-rc38092.77e70ef29712</jenkins.version>
     <spotless.check.skip>false</spotless.check.skip>
   </properties>
   <dependencyManagement>
