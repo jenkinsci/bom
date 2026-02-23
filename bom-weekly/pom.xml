@@ -441,7 +441,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>json-path-api</artifactId>
-        <version>2.10.0-202.va_9cc16c1e476</version>
+        <version>3.0.0-218.vcd4dd1355de2</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
