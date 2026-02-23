@@ -269,7 +269,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>extended-timer-trigger</artifactId>
-        <version>50.v1dde6750f820</version>
+        <version>52.v6d7f99f29306</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
