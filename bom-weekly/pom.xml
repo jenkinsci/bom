@@ -97,7 +97,7 @@
       <dependency>
         <groupId>io.jenkins.docker</groupId>
         <artifactId>docker-plugin</artifactId>
-        <version>1308.vff6e33248305</version>
+        <version>1316.v75635a_002b_0a_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
