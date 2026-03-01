@@ -1117,7 +1117,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>gitlab-oauth</artifactId>
-        <version>1.25</version>
+        <version>1.26</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
