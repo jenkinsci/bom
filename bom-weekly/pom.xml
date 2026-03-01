@@ -557,6 +557,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>snakeyaml-engine-api</artifactId>
+        <version>3.0.1-5.vd98ea_ff3b_92e</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>sqlserver-api</artifactId>
         <version>13.3.0.jre11-preview-192.v599148126a_8f</version>
       </dependency>
