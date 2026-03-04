@@ -1010,7 +1010,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>durable-task</artifactId>
-        <version>651.v1f5e074fc83f</version>
+        <version>664.v2b_e7a_dfff66c</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
