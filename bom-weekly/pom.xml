@@ -330,7 +330,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>gitea-checks</artifactId>
-        <version>603.625.v731f4b_ecf7d5</version>
+        <version>604.638.ve9e5472551b_3</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
