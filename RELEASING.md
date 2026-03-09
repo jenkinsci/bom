@@ -17,8 +17,6 @@ Details are described in [a week in the life of a BOM release manager](#a-week-i
 | 2026-04-17   | Darin Pope           |
 | 2026-04-24   | Mark Waite           |
 | 2026-05-01   | Mark Waite           |
-| 2026-05-08   | Bruno Verachten      |
-| 2026-05-15   | Bruno Verachten      |
 
 ## Releasing the BOM
 
