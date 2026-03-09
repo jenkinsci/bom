@@ -9,7 +9,7 @@
   <artifactId>bom-2.528.x</artifactId>
   <packaging>pom</packaging>
   <properties>
-    <configuration-as-code-plugin.version>2051.v3b_f72a_228b_7d</configuration-as-code-plugin.version>
+    <configuration-as-code-plugin.version>2036.v0b_c2de701dcb_</configuration-as-code-plugin.version>
     <junit-plugin.version>1369.v15da_00283f06</junit-plugin.version>
     <workflow-api-plugin.version>1384.vdc05a_48f535f</workflow-api-plugin.version>
   </properties>
