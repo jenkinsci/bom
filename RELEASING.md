@@ -9,8 +9,6 @@ Details are described in [a week in the life of a BOM release manager](#a-week-i
 
 | Release Date | Lead                 |
 |--------------| -------------------- |
-| 2026-02-27   | Bruno Verachten      |
-| 2026-03-06   | Bruno Verachten      |
 | 2026-03-13   | Adrien Lecharpentier |
 | 2026-03-20   | Adrien Lecharpentier |
 | 2026-03-27   | Kris Stern           |
