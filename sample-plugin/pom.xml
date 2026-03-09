@@ -14,8 +14,7 @@
   <properties>
     <changelist>999999-SNAPSHOT</changelist>
     <bom>weekly</bom>
-    <!-- Testing https://github.com/jenkinsci/jenkins/pull/26105 -->
-    <jenkins.version>2.552-rc38028.443999848639</jenkins.version>
+    <jenkins.version>2.554-rc38068.fea_13b_14a_334</jenkins.version>
     <spotless.check.skip>false</spotless.check.skip>
   </properties>
   <dependencyManagement>
@@ -486,6 +485,11 @@
     <dependency>
       <groupId>io.jenkins.plugins</groupId>
       <artifactId>snakeyaml-api</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.jenkins.plugins</groupId>
+      <artifactId>snakeyaml-engine-api</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>

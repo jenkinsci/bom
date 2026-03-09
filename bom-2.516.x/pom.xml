@@ -10,6 +10,7 @@
   <packaging>pom</packaging>
   <properties>
     <cloudbees-folder-plugin.version>6.1053.vd62fb_b_f7367b_</cloudbees-folder-plugin.version>
+    <pipeline-maven-plugin.version>1611.v6a_00c04177b_b_</pipeline-maven-plugin.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -45,6 +46,21 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>envinject</artifactId>
         <version>2.926.v69c9b_3896a_96</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>pipeline-maven</artifactId>
+        <version>${pipeline-maven-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>pipeline-maven-api</artifactId>
+        <version>${pipeline-maven-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>pipeline-maven-database</artifactId>
+        <version>${pipeline-maven-plugin.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
