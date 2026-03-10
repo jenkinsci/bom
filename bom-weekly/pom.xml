@@ -512,7 +512,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>oras-java-api</artifactId>
-        <version>0.4.2-167.v790a_9f6f113d</version>
+        <version>0.5.0-171.v3a_b_b_986a_7890</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
