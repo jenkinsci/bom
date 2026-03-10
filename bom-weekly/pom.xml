@@ -470,6 +470,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>micrometer-core-api</artifactId>
+        <version>1.16.4-4.vb_dfa_edea_107c</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>mysql-api</artifactId>
         <version>9.6.0-83.v04c82b_70c653</version>
       </dependency>
