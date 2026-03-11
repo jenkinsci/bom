@@ -15,7 +15,7 @@
     <branch-api-plugin.version>2.1280.v0d4e5b_b_460ef</branch-api-plugin.version>
     <checks-api.version>402.vca_263b_f200e3</checks-api.version>
     <cloudbees-folder-plugin.version>6.1079.vc0975c2de294</cloudbees-folder-plugin.version>
-    <configuration-as-code-plugin.version>2037.v8e5349845172</configuration-as-code-plugin.version>
+    <configuration-as-code-plugin.version>2053.vb_0da_47381a_25</configuration-as-code-plugin.version>
     <data-tables-api.version>2.3.7-1534.v539d4edf109d</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.6</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>3.1832.va_1179842528b_</forensics-api.version>
@@ -289,7 +289,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>flyway-api</artifactId>
-        <version>12.0.3-424.v59932c2dde36</version>
+        <version>12.1.0-426.v44774708f090</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -471,7 +471,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>micrometer-core-api</artifactId>
-        <version>1.16.4-4.vb_dfa_edea_107c</version>
+        <version>1.16.4-7.v317a_961b_8da_2</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -512,7 +512,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>oras-java-api</artifactId>
-        <version>0.4.2-167.v790a_9f6f113d</version>
+        <version>0.5.0-171.v3a_b_b_986a_7890</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1323,7 +1323,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>oauth-credentials</artifactId>
-        <version>0.657.v7d8dd90b_0382</version>
+        <version>0.660.vce7c108f1f3a_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
