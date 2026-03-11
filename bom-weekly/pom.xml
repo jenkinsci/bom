@@ -1323,7 +1323,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>oauth-credentials</artifactId>
-        <version>0.657.v7d8dd90b_0382</version>
+        <version>0.660.vce7c108f1f3a_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
