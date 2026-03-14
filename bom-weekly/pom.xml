@@ -162,7 +162,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>calendar-view</artifactId>
-        <version>0.5.0</version>
+        <version>0.5.1</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
