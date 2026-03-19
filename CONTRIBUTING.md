@@ -108,7 +108,7 @@ To minimize cloud resources, PCT is not run at all by default on pull requests, 
 
 ### Running weekly tests
 
-Add the label `weekly-test` to run the tests against one the latest weekly Jenkins version - This is what you want most of the time.
+Add the label `weekly-test` to run the tests against the latest weekly Jenkins version - This is what you want most of the time.
 
 If you lack triage permission and so cannot add this label, then you may instead:
 
@@ -125,7 +125,7 @@ Keep the PR in draft until tests pass and this file can be deleted.
 To run all lines then add the label `full-test` to run PCT in a PR - You would do this when adding a new plugin to the bom.
 
 > [!IMPORTANT]
-> Running the full test suite consumes a lot of cloud resources only do this if its definitely required.
+> Running the full test suite consumes a lot of cloud resources. Only do this if its definitely required.
 
 If you lack triage permission and so cannot add this label, then you may instead
 
