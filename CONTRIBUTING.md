@@ -120,7 +120,10 @@ git commit -m 'Run weekly tests'
 
 ### Running all tests
 
-To run all lines then add the label `full-test` to run PCT in a PR - You would do this when adding a new plugin to the bom, generally you wouldn't do this apart from that as its quite expensive to run.
+To run all lines then add the label `full-test` to run PCT in a PR - You would do this when adding a new plugin to the bom.
+
+> [!IMPORTANT]
+> Running the full test suite consumes a lot of cloud resources only do this if its definitely required.
 
 If you lack triage permission and so cannot add this label, then you may instead
 
