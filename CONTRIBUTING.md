@@ -105,7 +105,22 @@ to check a local patch without waiting for incrementals deployment,
 if you have switched the version in `bom-weekly/pom.xml` to a `*-SNAPSHOT`.
 
 To minimize cloud resources, PCT is not run at all by default on pull requests, only some basic sanity checks.
-Add the label `full-test` to run PCT in a PR.
+
+### Running weekly tests
+
+Add the label `weekly-test` to run the tests against one the latest weekly Jenkins version - This is what you want most of the time.
+
+If you lack triage permission and so cannot add this label, then you may instead:
+
+```bash
+echo 'TODO delete me' > weekly-test
+git add weekly-test
+git commit -m 'Run weekly tests'
+```
+
+### Running all tests
+
+To run all lines then add the label `full-test` to run PCT in a PR - You would do this when adding a new plugin to the bom, generally you wouldn't do this apart from that as its quite expensive to run.
 
 If you lack triage permission and so cannot add this label, then you may instead
 
