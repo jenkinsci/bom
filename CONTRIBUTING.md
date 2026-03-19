@@ -118,6 +118,8 @@ git add weekly-test
 git commit -m 'Run weekly tests'
 ```
 
+Keep the PR in draft until tests pass and this file can be deleted.
+
 ### Running all tests
 
 To run all lines then add the label `full-test` to run PCT in a PR - You would do this when adding a new plugin to the bom.
@@ -133,9 +135,7 @@ git add full-test
 git commit -m 'Run full tests'
 ```
 
-while keeping the PR in draft until tests pass and this file can be deleted.
-
-Similarly, the `weekly-test` label (or marker file) can be used to run tests on weekly releases in isolation.
+Keep the PR in draft until tests pass and this file can be deleted.
 
 To further minimize build time, tests are run only on Linux, against Java 11, and without Docker support.
 It is unusual but possible for cross-component incompatibilities to only be visible in more specialized environments (such as Windows).
