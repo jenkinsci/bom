@@ -502,7 +502,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>opentelemetry</artifactId>
-        <version>3.1584.v4f6307b_3766f</version>
+        <version>3.1589.ve81b_b_fa_927d5</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
