@@ -940,7 +940,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>credentials</artifactId>
-        <version>1496.vf6821f162d4e</version>
+        <version>1497.v6ea_e85a_ce970</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
