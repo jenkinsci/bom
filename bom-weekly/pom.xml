@@ -1258,7 +1258,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>mailer</artifactId>
-        <version>525.v2458b_d8a_1a_71</version>
+        <version>534.v1b_36f5864073</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
