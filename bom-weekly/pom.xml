@@ -335,7 +335,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>github-checks</artifactId>
-        <version>676.v48c732b_52951</version>
+        <version>679.v74133da_b_435a_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
