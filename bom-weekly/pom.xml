@@ -77,7 +77,7 @@
       <dependency>
         <groupId>com.synopsys.arc.jenkinsci.plugins</groupId>
         <artifactId>job-restrictions</artifactId>
-        <version>216.v0732cc7fb_076</version>
+        <version>242.v6edda_c9e4ca_f</version>
       </dependency>
       <dependency>
         <groupId>igalg.jenkins.plugins</groupId>
