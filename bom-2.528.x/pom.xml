@@ -49,6 +49,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>customizable-header</artifactId>
+        <version>293.v754cfe8036d5</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>design-library</artifactId>
         <version>403.v0787db_1c972b_</version>
       </dependency>
