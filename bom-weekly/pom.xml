@@ -10,17 +10,17 @@
   <packaging>pom</packaging>
   <properties>
     <aws-java-sdk-plugin.version>1.12.780-480.v4a_0819121a_9e</aws-java-sdk-plugin.version>
-    <aws-java-sdk2-plugin.version>2.33.4-62.vc1a_8df64b_4c9</aws-java-sdk2-plugin.version>
+    <aws-java-sdk2-plugin.version>2.38.2-66.v466fe61729d1</aws-java-sdk2-plugin.version>
     <gcp-java-sdk-plugin.version>26.23.0-31.va_efec42c4f8c</gcp-java-sdk-plugin.version>
     <branch-api-plugin.version>2.1280.v0d4e5b_b_460ef</branch-api-plugin.version>
     <checks-api.version>402.vca_263b_f200e3</checks-api.version>
     <cloudbees-folder-plugin.version>6.1079.vc0975c2de294</cloudbees-folder-plugin.version>
-    <configuration-as-code-plugin.version>2053.vb_0da_47381a_25</configuration-as-code-plugin.version>
+    <configuration-as-code-plugin.version>2056.v6a_e126e16620</configuration-as-code-plugin.version>
     <data-tables-api.version>2.3.7-1534.v539d4edf109d</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.6</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>3.1832.va_1179842528b_</forensics-api.version>
     <github-api-plugin.version>1.330-492.v3941a_032db_2a_</github-api-plugin.version>
-    <git-plugin.version>5.10.0</git-plugin.version>
+    <git-plugin.version>5.10.1</git-plugin.version>
     <junit-plugin.version>1403.vd9d1413fd205</junit-plugin.version>
     <mina-sshd-api.version>2.16.0-167.va_269f38cc024</mina-sshd-api.version>
     <okhttp-api-plugin.version>5.3.2-200.vedb_720a_cf1f8</okhttp-api-plugin.version>
@@ -31,7 +31,7 @@
     <scm-api-plugin.version>728.vc30dcf7a_0df5</scm-api-plugin.version>
     <subversion-plugin.version>1303.vcfd9679fb_c12</subversion-plugin.version>
     <workflow-api-plugin.version>1398.v67030756d3fb_</workflow-api-plugin.version>
-    <workflow-cps-plugin.version>4259.vf653c2b_8a_b_69</workflow-cps-plugin.version>
+    <workflow-cps-plugin.version>4262.va_74628df1ff2</workflow-cps-plugin.version>
     <workflow-job-plugin.version>1571.vb_423c255d6d9</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>821.vc3b_4ea_780798</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>710.v3e456cc85233</workflow-step-api-plugin.version>
@@ -77,7 +77,7 @@
       <dependency>
         <groupId>com.synopsys.arc.jenkinsci.plugins</groupId>
         <artifactId>job-restrictions</artifactId>
-        <version>216.v0732cc7fb_076</version>
+        <version>242.v6edda_c9e4ca_f</version>
       </dependency>
       <dependency>
         <groupId>igalg.jenkins.plugins</groupId>
@@ -117,7 +117,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>artifact-manager-s3</artifactId>
-        <version>962.v15f7000205fa_</version>
+        <version>973.v6a_51253e896b_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -218,12 +218,12 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>customizable-header</artifactId>
-        <version>292.v401b_17c12e68</version>
+        <version>293.v754cfe8036d5</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>dark-theme</artifactId>
-        <version>574.va_19f05d54df5</version>
+        <version>652.vea_da_dfea_e769</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -335,7 +335,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>github-checks</artifactId>
-        <version>676.v48c732b_52951</version>
+        <version>679.v74133da_b_435a_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -502,12 +502,12 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>opentelemetry</artifactId>
-        <version>3.1584.v4f6307b_3766f</version>
+        <version>3.1589.ve81b_b_fa_927d5</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>opentelemetry-api</artifactId>
-        <version>1.49.0.99.vd48c9e6c4fa_b_</version>
+        <version>1.54.1.102.v276c93ee966d</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -828,7 +828,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>badge</artifactId>
-        <version>2.562.vc3c0b_6925377</version>
+        <version>3.583.vdc8d4a_a_1d586</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -940,7 +940,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>credentials</artifactId>
-        <version>1495.v2cc3d2266b_75</version>
+        <version>1498.vd852f8831d79</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1172,7 +1172,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>http_request</artifactId>
-        <version>1.24</version>
+        <version>1.25</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1258,7 +1258,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>mailer</artifactId>
-        <version>525.v2458b_d8a_1a_71</version>
+        <version>534.v1b_36f5864073</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
