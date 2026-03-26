@@ -20,7 +20,7 @@
     <declarative-pipeline-migration-assistant-plugin.version>1.6.6</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>3.1832.va_1179842528b_</forensics-api.version>
     <github-api-plugin.version>1.330-492.v3941a_032db_2a_</github-api-plugin.version>
-    <git-plugin.version>5.10.0</git-plugin.version>
+    <git-plugin.version>5.10.1</git-plugin.version>
     <junit-plugin.version>1403.vd9d1413fd205</junit-plugin.version>
     <mina-sshd-api.version>2.16.0-167.va_269f38cc024</mina-sshd-api.version>
     <okhttp-api-plugin.version>5.3.2-200.vedb_720a_cf1f8</okhttp-api-plugin.version>
@@ -31,7 +31,7 @@
     <scm-api-plugin.version>728.vc30dcf7a_0df5</scm-api-plugin.version>
     <subversion-plugin.version>1303.vcfd9679fb_c12</subversion-plugin.version>
     <workflow-api-plugin.version>1398.v67030756d3fb_</workflow-api-plugin.version>
-    <workflow-cps-plugin.version>4261.va_1fa_c7e4db_da_</workflow-cps-plugin.version>
+    <workflow-cps-plugin.version>4262.va_74628df1ff2</workflow-cps-plugin.version>
     <workflow-job-plugin.version>1571.vb_423c255d6d9</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>821.vc3b_4ea_780798</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>710.v3e456cc85233</workflow-step-api-plugin.version>
@@ -1172,7 +1172,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>http_request</artifactId>
-        <version>1.24</version>
+        <version>1.25</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
