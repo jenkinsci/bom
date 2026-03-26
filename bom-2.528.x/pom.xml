@@ -64,6 +64,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>badge</artifactId>
+        <version>2.562.vc3c0b_6925377</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>credentials</artifactId>
         <version>1491.v6d6145e96e1c</version>
       </dependency>
