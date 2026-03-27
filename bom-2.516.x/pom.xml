@@ -28,6 +28,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>oidc-provider</artifactId>
+        <version>170.v15f73e25a_e28</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>dark-theme</artifactId>
         <version>574.va_19f05d54df5</version>
       </dependency>
