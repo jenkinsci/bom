@@ -486,8 +486,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>oidc-provider</artifactId>
-        <!-- TODO: https://github.com/jenkinsci/oidc-provider-plugin/pull/155 -->
-        <version>191.v0b_9eb_585b_2f6</version>
+        <version>198.v82d8e0426355</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
