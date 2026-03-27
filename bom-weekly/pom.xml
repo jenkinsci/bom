@@ -996,7 +996,7 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>docker-commons</artifactId>
         <!-- TODO https://github.com/jenkinsci/docker-commons-plugin/pull/183 -->
-        <version>466.vffa_95b_97b_8f7</version>
+        <version>468.ve2cdd7c7a_c0f</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
