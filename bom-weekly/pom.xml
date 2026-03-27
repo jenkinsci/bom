@@ -32,7 +32,7 @@
     <subversion-plugin.version>1303.vcfd9679fb_c12</subversion-plugin.version>
     <workflow-api-plugin.version>1398.v67030756d3fb_</workflow-api-plugin.version>
     <workflow-cps-plugin.version>4262.va_74628df1ff2</workflow-cps-plugin.version>
-    <workflow-job-plugin.version>1571.vb_423c255d6d9</workflow-job-plugin.version>
+    <workflow-job-plugin.version>1573.v1465f6f78810</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>821.vc3b_4ea_780798</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>710.v3e456cc85233</workflow-step-api-plugin.version>
     <workflow-support-plugin.version>1015.v785e5a_b_b_8b_22</workflow-support-plugin.version>
@@ -523,7 +523,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
-        <version>803.vb_88f7a_a_1cb_47</version>
+        <version>819.ved496c19e082</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1133,7 +1133,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>google-compute-engine</artifactId>
-        <version>4.683.v0ce26579a_ee7</version>
+        <version>4.703.v43c3a_b_d0e284</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
