@@ -31,7 +31,7 @@
     <scm-api-plugin.version>728.vc30dcf7a_0df5</scm-api-plugin.version>
     <subversion-plugin.version>1303.vcfd9679fb_c12</subversion-plugin.version>
     <workflow-api-plugin.version>1398.v67030756d3fb_</workflow-api-plugin.version>
-    <workflow-cps-plugin.version>4262.va_74628df1ff2</workflow-cps-plugin.version>
+    <workflow-cps-plugin.version>4263.vd2edf31c1db_0</workflow-cps-plugin.version>
     <workflow-job-plugin.version>1573.v1465f6f78810</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>821.vc3b_4ea_780798</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>710.v3e456cc85233</workflow-step-api-plugin.version>
@@ -486,7 +486,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>oidc-provider</artifactId>
-        <version>170.v15f73e25a_e28</version>
+        <version>198.v82d8e0426355</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -823,7 +823,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>azure-vm-agents</artifactId>
-        <version>1093.va_9cd2dd11158</version>
+        <version>1102.vb_f208c08039b_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -940,7 +940,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>credentials</artifactId>
-        <version>1498.vd852f8831d79</version>
+        <version>1499.va_f0e811253a_6</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1902,7 +1902,7 @@
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
         <artifactId>groovy-postbuild</artifactId>
-        <version>301.v1b_207df0cdf8</version>
+        <version>303.v5fe3da_6233f0</version>
       </dependency>
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
