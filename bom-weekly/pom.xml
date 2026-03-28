@@ -823,7 +823,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>azure-vm-agents</artifactId>
-        <version>1093.va_9cd2dd11158</version>
+        <version>1102.vb_f208c08039b_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -940,7 +940,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>credentials</artifactId>
-        <version>1498.vd852f8831d79</version>
+        <version>1499.va_f0e811253a_6</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1903,7 +1903,7 @@
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
         <artifactId>groovy-postbuild</artifactId>
-        <version>302.vf65c646304b_a_</version>
+        <version>303.v5fe3da_6233f0</version>
       </dependency>
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
