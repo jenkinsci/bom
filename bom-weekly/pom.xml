@@ -1253,7 +1253,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>kubernetes-client-api</artifactId>
-        <version>7.3.1-256.v788a_0b_787114</version>
+        <version>7.6.1-274.vd953b_d6a_b_9e8</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
