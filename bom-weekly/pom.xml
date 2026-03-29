@@ -1000,7 +1000,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>docker-commons</artifactId>
-        <version>457.v0f62a_94f11a_3</version>
+        <!-- TODO https://github.com/jenkinsci/docker-commons-plugin/pull/183 -->
+        <version>468.ve2cdd7c7a_c0f</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
