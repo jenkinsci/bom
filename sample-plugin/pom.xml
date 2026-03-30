@@ -1701,7 +1701,8 @@
       <id>2.555.x</id>
       <properties>
         <bom>2.555.x</bom>
-        <jenkins.version>2.555.1</jenkins.version>
+        <!-- TODO: Replace with 2.555.1 after release of 2.555.1 -->
+        <jenkins.version>2.555</jenkins.version>
       </properties>
     </profile>
     <profile>
