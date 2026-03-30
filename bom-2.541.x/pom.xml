@@ -20,17 +20,6 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-      <dependency>
-        <groupId>org.jenkins-ci.plugins.workflow</groupId>
-        <artifactId>workflow-job</artifactId>
-        <version>${workflow-job-plugin.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jenkins-ci.plugins.workflow</groupId>
-        <artifactId>workflow-job</artifactId>
-        <version>${workflow-job-plugin.version}</version>
-        <classifier>tests</classifier>
-      </dependency>
     </dependencies>
   </dependencyManagement>
 </project>
