@@ -418,6 +418,11 @@
     </dependency>
     <dependency>
       <groupId>io.jenkins.plugins</groupId>
+      <artifactId>micrometer-core-api</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.jenkins.plugins</groupId>
       <artifactId>mysql-api</artifactId>
       <scope>test</scope>
     </dependency>
@@ -505,6 +510,11 @@
     <dependency>
       <groupId>io.jenkins.plugins</groupId>
       <artifactId>warnings-ng</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.jenkins.plugins</groupId>
+      <artifactId>woodstox-core-api</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -1691,7 +1701,7 @@
       <id>2.541.x</id>
       <properties>
         <bom>2.541.x</bom>
-        <jenkins.version>2.541.1</jenkins.version>
+        <jenkins.version>2.541.3</jenkins.version>
       </properties>
     </profile>
     <profile>

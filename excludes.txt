@@ -1,6 +1,3 @@
-# TODO https://github.com/jenkinsci/instant-messaging-plugin/pull/309
-hudson.plugins.im.bot.BuildCommandTest
-
 # TODO cryptic PCT-only errors: https://github.com/jenkinsci/bom/pull/251#issuecomment-645012427
 hudson.matrix.AxisTest#emptyAxisValueListResultInNoConfigurations
 hudson.matrix.AxisTest#submitEmptyAxisName
@@ -14,3 +11,15 @@ org.jenkinsci.plugins.durabletask.BourneShellScriptTest
 
 # TODO tends to run out of memory
 org.jenkinsci.plugins.pipeline.modeldefinition.TriggersTest
+
+# TODO https://github.com/jenkinsci/bom/pull/6504#issuecomment-4127652429
+hudson.matrix.MatrixProjectTest#deletedLockedChildrenBuild
+hudson.matrix.MatrixProjectTest#deletedLockedParentBuild
+
+# TODO https://github.com/jenkinsci/docker-commons-plugin/pull/183
+org.jenkinsci.plugins.docker.commons.credentials.DockerServerCredentialsTest
+org.jenkinsci.plugins.docker.commons.credentials.DockerServerDomainSpecificationTest
+
+# TODO Revise https://github.com/jenkinsci/oidc-provider-plugin/pull/157
+# Test change in that pull request fails intermittently
+io.jenkins.plugins.oidc_provider.IdTokenCredentialsTest#persistence
