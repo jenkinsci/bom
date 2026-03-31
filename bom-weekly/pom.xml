@@ -15,7 +15,7 @@
     <branch-api-plugin.version>2.1280.v0d4e5b_b_460ef</branch-api-plugin.version>
     <checks-api.version>402.vca_263b_f200e3</checks-api.version>
     <cloudbees-folder-plugin.version>6.1079.vc0975c2de294</cloudbees-folder-plugin.version>
-    <configuration-as-code-plugin.version>2056.v6a_e126e16620</configuration-as-code-plugin.version>
+    <configuration-as-code-plugin.version>2061.vc08919f7fc37</configuration-as-code-plugin.version>
     <data-tables-api.version>2.3.7-1534.v539d4edf109d</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.6</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>3.1832.va_1179842528b_</forensics-api.version>
@@ -370,7 +370,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>jackson3-api</artifactId>
-        <version>3.1.0-64.v37e742c35905</version>
+        <version>3.1.1-68.v2a_4b_025ea_657</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -579,6 +579,11 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>warnings-ng</artifactId>
         <version>12.10012.v753ff0d0363a_</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>woodstox-core-api</artifactId>
+        <version>7.1.1-1.v4d297985f397</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
@@ -823,7 +828,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>azure-vm-agents</artifactId>
-        <version>1102.vb_f208c08039b_</version>
+        <version>1103.ve4a_50ca_2c617</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1177,7 +1182,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jackson2-api</artifactId>
-        <version>2.21.1-428.vf8dd988fa_d8d</version>
+        <version>2.21.1-431.v30a_74465f776</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
