@@ -24,8 +24,9 @@
          * https://github.com/jenkinsci/jenkins/pull/26569
          * https://github.com/jenkinsci/jenkins/pull/26570
          * https://github.com/jenkinsci/jenkins/pull/26571
+         * https://github.com/jenkinsci/jenkins/pull/26546
          -->
-    <jenkins.version>2.558-rc38151.0a_d2b_24b_cc0e</jenkins.version>
+    <jenkins.version>2.558-rc38153.fa_f471f91601</jenkins.version>
     <spotless.check.skip>false</spotless.check.skip>
   </properties>
   <dependencyManagement>
