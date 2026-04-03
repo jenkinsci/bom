@@ -15,7 +15,3 @@ org.jenkinsci.plugins.pipeline.modeldefinition.TriggersTest
 # TODO https://github.com/jenkinsci/bom/pull/6504#issuecomment-4127652429
 hudson.matrix.MatrixProjectTest#deletedLockedChildrenBuild
 hudson.matrix.MatrixProjectTest#deletedLockedParentBuild
-
-# TODO Revise https://github.com/jenkinsci/oidc-provider-plugin/pull/157
-# Test change in that pull request fails intermittently
-io.jenkins.plugins.oidc_provider.IdTokenCredentialsTest#persistence
