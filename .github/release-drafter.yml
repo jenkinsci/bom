@@ -1,1 +1,1 @@
-_extends: .github/workflows/cd.yaml
+_extends: .github/release-drafter.yml
