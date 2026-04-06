@@ -1539,7 +1539,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ssh-credentials</artifactId>
-        <version>361.vb_f6760818e8c</version>
+        <version>372.va_250881b_08cd</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
