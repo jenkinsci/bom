@@ -834,7 +834,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>badge</artifactId>
-        <version>3.583.vdc8d4a_a_1d586</version>
+        <version>3.586.v96c477844983</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1429,7 +1429,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>powershell</artifactId>
-        <version>182.v905646d861a_7</version>
+        <version>185.v7a_026da_c54ee</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
