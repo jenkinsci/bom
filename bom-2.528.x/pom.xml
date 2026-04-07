@@ -55,7 +55,8 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>mcp-server</artifactId>
-        <version>0.116.v335308141e4e</version>
+        <!-- TODO https://github.com/jenkinsci/mcp-server-plugin/pull/173 -->
+        <version>0.168.vdf903a_655b_f0</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
