@@ -1428,7 +1428,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>powershell</artifactId>
-        <version>182.v905646d861a_7</version>
+        <version>185.v7a_026da_c54ee</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
