@@ -466,7 +466,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>mcp-server</artifactId>
-        <version>0.167.v7c50149715fa_</version>
+        <version>0.168.v13951585050d</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
