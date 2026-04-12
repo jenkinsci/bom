@@ -74,6 +74,11 @@
         <artifactId>prism-api</artifactId>
         <version>1.30.0-717.vb_f8360844b_53</version>
       </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>warnings-ng</artifactId>
+        <version>12.10012.v753ff0d0363a_</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 </project>
