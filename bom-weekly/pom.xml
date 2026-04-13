@@ -833,7 +833,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>badge</artifactId>
-        <version>3.586.v96c477844983</version>
+        <version>3.590.v1c3de0b_d2fb_2</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
