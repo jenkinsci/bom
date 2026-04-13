@@ -11,6 +11,7 @@
   <properties>
     <data-tables-api.version>2.3.7-1534.v539d4edf109d</data-tables-api.version>
     <forensics-api.version>3.1832.va_1179842528b_</forensics-api.version>
+    <plugin-util-api.version>6.1192.v30fe6e2837ff</plugin-util-api.version>
     <workflow-job-plugin.version>1571.vb_423c255d6d9</workflow-job-plugin.version>
   </properties>
   <dependencyManagement>
@@ -31,6 +32,11 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>bootstrap5-api</artifactId>
         <version>5.3.8-895.v4d0d8e47fea_d</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>coverage</artifactId>
+        <version>2.3139.v731d2e83ea_8a_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -68,6 +74,17 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>jquery3-api</artifactId>
         <version>3.7.1-619.vdb_10e002501a_</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>plugin-util-api</artifactId>
+        <version>${plugin-util-api.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>plugin-util-api</artifactId>
+        <version>${plugin-util-api.version}</version>
+        <classifier>tests</classifier>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
