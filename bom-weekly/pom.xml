@@ -325,7 +325,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>git-forensics</artifactId>
-        <version>4.2364.v354a_d1b_f2114</version>
+        <version>4.2367.vb_399b_30a_e8fb_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
