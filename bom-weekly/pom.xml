@@ -27,7 +27,7 @@
     <pipeline-maven-plugin.version>1672.v1b_d4c0435b_20</pipeline-maven-plugin.version>
     <pipeline-model-definition-plugin.version>2.2277.v00573e73ddf1</pipeline-model-definition-plugin.version>
     <pipeline-stage-view-plugin.version>2.39</pipeline-stage-view-plugin.version>
-    <plugin-util-api.version>7.1320.v684dd26fca_19</plugin-util-api.version>
+    <plugin-util-api.version>7.1328.v9b_cc5d0c1c14</plugin-util-api.version>
     <scm-api-plugin.version>728.vc30dcf7a_0df5</scm-api-plugin.version>
     <subversion-plugin.version>1303.vcfd9679fb_c12</subversion-plugin.version>
     <workflow-api-plugin.version>1413.v2ff1a_5e720fa_</workflow-api-plugin.version>
