@@ -1533,11 +1533,6 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
-        <artifactId>sse-gateway</artifactId>
-        <version>1.29</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ssh-agent</artifactId>
         <version>386.v36cc0c7582f0</version>
       </dependency>
