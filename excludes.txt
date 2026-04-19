@@ -15,13 +15,3 @@ org.jenkinsci.plugins.pipeline.modeldefinition.TriggersTest
 # TODO https://github.com/jenkinsci/bom/pull/6504#issuecomment-4127652429
 hudson.matrix.MatrixProjectTest#deletedLockedChildrenBuild
 hudson.matrix.MatrixProjectTest#deletedLockedParentBuild
-
-# TODO https://github.com/jenkinsci/forensics-api-plugin/pull/715
-io.jenkins.plugins.forensics.miner.AddedVersusDeletedLinesTrendChartTest
-io.jenkins.plugins.forensics.miner.CodeMetricTrendChartTest
-io.jenkins.plugins.forensics.miner.CommitStatisticsJobActionTest
-io.jenkins.plugins.forensics.miner.FilesCountSeriesBuilderTest
-io.jenkins.plugins.forensics.miner.FilesCountTrendChartTest
-io.jenkins.plugins.forensics.miner.ForensicsTableModelTest
-io.jenkins.plugins.forensics.miner.ForensicsViewModelTest
-io.jenkins.plugins.forensics.miner.RelativeCountTrendChartTest
