@@ -1281,11 +1281,6 @@
     </dependency>
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
-      <artifactId>pubsub-light</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>reverse-proxy-auth-plugin</artifactId>
       <scope>test</scope>
     </dependency>
@@ -1348,11 +1343,6 @@
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>sonar</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.jenkins-ci.plugins</groupId>
-      <artifactId>sse-gateway</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
