@@ -421,7 +421,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>jjwt-api</artifactId>
-        <version>0.11.5-120.v0268cf544b_89</version>
+        <version>0.13.0-141.vd58b_a_9592b_6c</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -491,7 +491,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>oidc-provider</artifactId>
-        <version>206.v0a_5b_09149886</version>
+        <version>212.v7657c4d7b_29f</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
