@@ -16,9 +16,9 @@
     <checks-api.version>402.vca_263b_f200e3</checks-api.version>
     <cloudbees-folder-plugin.version>6.1100.ve9eed61d16c4</cloudbees-folder-plugin.version>
     <configuration-as-code-plugin.version>2077.v41f1011a_5110</configuration-as-code-plugin.version>
-    <data-tables-api.version>2.3.7-1554.v6113418a_6935</data-tables-api.version>
+    <data-tables-api.version>2.3.7-1558.vf82fa_133ce1c</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.6</declarative-pipeline-migration-assistant-plugin.version>
-    <forensics-api.version>4.1875.vefb_f97cb_4987</forensics-api.version>
+    <forensics-api.version>4.1881.v79c6e496c613</forensics-api.version>
     <github-api-plugin.version>1.330-492.v3941a_032db_2a_</github-api-plugin.version>
     <git-plugin.version>5.10.1</git-plugin.version>
     <junit-plugin.version>1403.vd9d1413fd205</junit-plugin.version>
@@ -26,8 +26,8 @@
     <okhttp-api-plugin.version>5.3.2-200.vedb_720a_cf1f8</okhttp-api-plugin.version>
     <pipeline-maven-plugin.version>1672.v1b_d4c0435b_20</pipeline-maven-plugin.version>
     <pipeline-model-definition-plugin.version>2.2277.v00573e73ddf1</pipeline-model-definition-plugin.version>
-    <pipeline-stage-view-plugin.version>2.39</pipeline-stage-view-plugin.version>
-    <plugin-util-api.version>7.1320.v684dd26fca_19</plugin-util-api.version>
+    <pipeline-stage-view-plugin.version>2.41</pipeline-stage-view-plugin.version>
+    <plugin-util-api.version>7.1330.v47b_46ee2047a_</plugin-util-api.version>
     <scm-api-plugin.version>728.vc30dcf7a_0df5</scm-api-plugin.version>
     <subversion-plugin.version>1303.vcfd9679fb_c12</subversion-plugin.version>
     <workflow-api-plugin.version>1413.v2ff1a_5e720fa_</workflow-api-plugin.version>
@@ -107,7 +107,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>analysis-model-api</artifactId>
-        <version>14.2.0-964.v3eb_80540a_92f</version>
+        <version>14.5.0-968.v4b_155edf8f68</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -203,7 +203,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>coverage</artifactId>
-        <version>3.3208.v500334516e20</version>
+        <version>3.3212.vd0f86de315fe</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -254,7 +254,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>echarts-api</artifactId>
-        <version>6.0.0-1273.v36fc9fe89332</version>
+        <version>6.0.0-1281.vd3d21a_1ca_cb_4</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -289,7 +289,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>flyway-api</artifactId>
-        <version>12.3.0-432.v031f000b_0a_a_b_</version>
+        <version>12.4.0-437.vddefa_820d5df</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -461,7 +461,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>mariadb-api</artifactId>
-        <version>3.5.7-175.v7e6f9d93127d</version>
+        <version>3.5.8-192.v334b_a_162947e</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -527,7 +527,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
-        <version>836.v68ef091500dd</version>
+        <version>837.vb_2654da_2a_fa_b_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -753,7 +753,7 @@
       <dependency>
         <groupId>org.6wind.jenkins</groupId>
         <artifactId>lockable-resources</artifactId>
-        <version>1493.v0db_447235039</version>
+        <version>1504.v8561d98a_104c</version>
       </dependency>
       <dependency>
         <groupId>org.csanchez.jenkins.plugins</groupId>
@@ -1232,7 +1232,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jsoup</artifactId>
-        <version>1.22.1-76.v9cdb_2456c0e3</version>
+        <version>1.22.2-95.vc5d00f1eb_42d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1447,11 +1447,6 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
-        <artifactId>pubsub-light</artifactId>
-        <version>1.19</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>resource-disposer</artifactId>
         <version>0.25</version>
       </dependency>
@@ -1533,13 +1528,8 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
-        <artifactId>sse-gateway</artifactId>
-        <version>1.29</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ssh-agent</artifactId>
-        <version>386.v36cc0c7582f0</version>
+        <version>396.vcc7d84e622ec</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
