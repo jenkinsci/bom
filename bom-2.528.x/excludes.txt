@@ -1,5 +1,3 @@
-## TODO Remove this file when 2.528.x line is dropped
-
 # TODO https://github.com/jenkinsci/bom/issues/6703
 io.jenkins.plugins.forensics.miner.AddedVersusDeletedLinesTrendChartTest
 io.jenkins.plugins.forensics.miner.CodeMetricTrendChartTest
