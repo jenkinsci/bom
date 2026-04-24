@@ -1,0 +1,9 @@
+# TODO https://github.com/jenkinsci/bom/issues/6703
+io.jenkins.plugins.forensics.miner.AddedVersusDeletedLinesTrendChartTest
+io.jenkins.plugins.forensics.miner.CodeMetricTrendChartTest
+io.jenkins.plugins.forensics.miner.CommitStatisticsJobActionTest
+io.jenkins.plugins.forensics.miner.FilesCountSeriesBuilderTest
+io.jenkins.plugins.forensics.miner.FilesCountTrendChartTest
+io.jenkins.plugins.forensics.miner.ForensicsTableModelTest
+io.jenkins.plugins.forensics.miner.ForensicsViewModelTest
+io.jenkins.plugins.forensics.miner.RelativeCountTrendChartTest
