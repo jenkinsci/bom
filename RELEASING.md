@@ -224,7 +224,7 @@ Sometimes a plugin update introduces a test failure but the test failure does no
 In that case, individual test failures can be ignored by adding entries to the `excludes.txt` file.
 The `excludes.txt` file format is described in the [Maven surefire plugin documentation](https://maven.apache.org/components/surefire/maven-surefire-plugin/test-mojo.html#excludesFile).
 
-If a test only fails on a specific line of the BOM, it can be listed in an exclusion file that is specific to the line, as in `bom-2.541.x/excludes.txt`.  
+If a test only fails on a specific line of the BOM, it can be listed in an exclusion file that is specific to the line, as in `bom-2.541.x/excludes.txt`.
 If an exclusions file exists for a specific line of the plugin BOM it is merged with the general `excludes.txt` file.
 
 #### Manually created PRs
