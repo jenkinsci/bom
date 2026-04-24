@@ -21,7 +21,7 @@ if ! [[ $PLUGINS =~ lockable-resources || $PLUGINS =~ pipeline-maven ]]; then
 fi
 
 EXCLUDES_FILE="$(pwd)/excludes.txt"
-if [ -f "$(pwd)/excludes-${LINE}.txt" ]; then
+if [ -f "$(pwd)/bom-${LINE}/excludes.txt" ]; then
 	# Create a temporary excludes file, remove it when the shell exits
 	MYTMPDIR="$(mktemp -d)"
 	trap 'rm -rf -- "$MYTMPDIR"' EXIT
