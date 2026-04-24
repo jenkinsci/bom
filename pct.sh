@@ -20,6 +20,9 @@ if ! [[ $PLUGINS =~ lockable-resources || $PLUGINS =~ pipeline-maven ]]; then
 	PCT_D_ARGS+='-DforkCount=.75C '
 fi
 
+EXCLUDES_FILE="$(pwd)/excludes.txt"
+[ -f "$(pwd)/excludes-${LINE}.txt" ] && EXCLUDES_FILE="$(pwd)/excludes-${LINE}.txt"
+
 exec java \
 	-Dorg.jenkins.tools.test.hook.JenkinsTestHarnessHook2.enabled \
 	-jar target/pct.jar \
@@ -29,6 +32,6 @@ exec java \
 	--working-dir "$(pwd)/target/pct-work" \
 	$PCT_D_ARGS \
 	${PCT_OPTS-} \
-	-Dsurefire.excludesFile="$(pwd)/excludes.txt"
+	-Dsurefire.excludesFile="${EXCLUDES_FILE}"
 
 # produces: **/target/surefire-reports/TEST-*.xml

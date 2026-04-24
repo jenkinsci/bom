@@ -218,6 +218,12 @@ A pull request that pins an older version of the optional plugin is:
 
 * [Pin htmlpublisher 1.36 for older lines](https://github.com/jenkinsci/bom/pull/3975)
 
+##### Excluding a failing test
+
+Sometimes a plugin update introduces a test failure but the test failure does not justify a rollback of the plugin update in the BOM.  In that case, individual test failures can be ignored by adding entries to the `excludes.txt` file.  The `excludes.txt` file format is described in the [Maven surefire plugin documentation](https://maven.apache.org/components/surefire/maven-surefire-plugin/test-mojo.html#excludesFile).
+
+If a test only fails on a specific line of the BOM, it can be listed in an exclusion file that is specific to the line, as in `excludes-2.541.x.txt`.  If an exclusions file exists for a specific line of the plugin BOM it is used instead of the general `excludes.txt` file.
+
 #### Manually created PRs
 
 When there is a manually generated PR, there's probably a pretty good chance as the BOM release manager you won't have to do anything. The person opening the PR should open the PR as `draft`. As a BOM release manager, feel free to look at a `draft` PR, but don't spend much time on it.
