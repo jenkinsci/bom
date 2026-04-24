@@ -21,7 +21,13 @@ if ! [[ $PLUGINS =~ lockable-resources || $PLUGINS =~ pipeline-maven ]]; then
 fi
 
 EXCLUDES_FILE="$(pwd)/excludes.txt"
-[ -f "$(pwd)/excludes-${LINE}.txt" ] && EXCLUDES_FILE="$(pwd)/excludes-${LINE}.txt"
+if [ -f "$(pwd)/excludes-${LINE}.txt" ]; then
+	# Create a temporary excludes file, remove it when the shell exits
+	MYTMPDIR="$(mktemp -d)"
+	trap 'rm -rf -- "$MYTMPDIR"' EXIT
+	EXCLUDES_FILE="${MYTMPDIR}/excludes-${LINE}.txt"
+	cat excludes.txt excludes-${LINE}.txt > "${EXCLUDES_FILE}"
+fi
 
 exec java \
 	-Dorg.jenkins.tools.test.hook.JenkinsTestHarnessHook2.enabled \
