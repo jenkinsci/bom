@@ -23,9 +23,8 @@ fi
 EXCLUDES_FILE="$(pwd)/excludes.txt"
 if [ -f "$(pwd)/bom-${LINE}/excludes.txt" ]; then
 	# Create a temporary excludes file, remove it when the shell exits
-	MYTMPDIR="$(mktemp -d)"
-	trap 'rm -rf -- "$MYTMPDIR"' EXIT
-	EXCLUDES_FILE="${MYTMPDIR}/excludes-${LINE}.txt"
+	EXCLUDES_FILE="$(mktemp -t excludes-${LINE}-XXX.txt)"
+	trap 'rm -f -- "$EXCLUDES_FILE"' EXIT
 	cat excludes.txt bom-${LINE}/excludes.txt > "${EXCLUDES_FILE}"
 fi
 
