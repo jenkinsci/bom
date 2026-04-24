@@ -26,7 +26,7 @@ if [ -f "$(pwd)/bom-${LINE}/excludes.txt" ]; then
 	MYTMPDIR="$(mktemp -d)"
 	trap 'rm -rf -- "$MYTMPDIR"' EXIT
 	EXCLUDES_FILE="${MYTMPDIR}/excludes-${LINE}.txt"
-	cat excludes.txt excludes-${LINE}.txt > "${EXCLUDES_FILE}"
+	cat excludes.txt bom-${LINE}/excludes.txt > "${EXCLUDES_FILE}"
 fi
 
 exec java \
