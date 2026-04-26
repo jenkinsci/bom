@@ -1055,7 +1055,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>envinject-api</artifactId>
-        <version>1.237.v82803a_511906</version>
+        <version>1.241.vdd714803b_403</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
