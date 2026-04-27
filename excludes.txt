@@ -15,6 +15,3 @@ org.jenkinsci.plugins.pipeline.modeldefinition.TriggersTest
 # TODO https://github.com/jenkinsci/bom/pull/6504#issuecomment-4127652429
 hudson.matrix.MatrixProjectTest#deletedLockedChildrenBuild
 hudson.matrix.MatrixProjectTest#deletedLockedParentBuild
-
-# TODO https://github.com/jenkinsci/lockable-resources-plugin/issues/1026
-org.jenkins.plugins.lockableresources.FreeStyleTimeoutTest#freestyleLockTimeoutCancelsQueueItem

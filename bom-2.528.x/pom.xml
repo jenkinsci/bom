@@ -68,6 +68,11 @@
         <version>661.v6003f4542123</version>
       </dependency>
       <dependency>
+        <groupId>org.6wind.jenkins</groupId>
+        <artifactId>lockable-resources</artifactId>
+        <version>1509.va_6b_5b_5cb_0b_40</version>
+      </dependency>
+      <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>badge</artifactId>
         <version>2.562.vc3c0b_6925377</version>

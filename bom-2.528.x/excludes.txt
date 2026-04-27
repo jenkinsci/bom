@@ -7,3 +7,7 @@ io.jenkins.plugins.forensics.miner.FilesCountTrendChartTest
 io.jenkins.plugins.forensics.miner.ForensicsTableModelTest
 io.jenkins.plugins.forensics.miner.ForensicsViewModelTest
 io.jenkins.plugins.forensics.miner.RelativeCountTrendChartTest
+
+# TODO https://github.com/jenkinsci/lockable-resources-plugin/issues/1026
+# Release with the fix is for 2.541.x and later
+org.jenkins.plugins.lockableresources.FreeStyleTimeoutTest#freestyleLockTimeoutCancelsQueueItem
