@@ -9,7 +9,7 @@
   <artifactId>bom-2.555.x</artifactId>
   <packaging>pom</packaging>
   <properties>
-    <workflow-job-plugin.version>1571.vb_423c255d6d9</workflow-job-plugin.version>
+    <workflow-job-plugin.version>1571.1580.v18e46842c125</workflow-job-plugin.version>
   </properties>
   <dependencyManagement>
     <dependencies>

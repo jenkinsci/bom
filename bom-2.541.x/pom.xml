@@ -12,7 +12,6 @@
     <data-tables-api.version>2.3.7-1534.v539d4edf109d</data-tables-api.version>
     <forensics-api.version>3.1832.va_1179842528b_</forensics-api.version>
     <plugin-util-api.version>6.1192.v30fe6e2837ff</plugin-util-api.version>
-    <workflow-job-plugin.version>1571.vb_423c255d6d9</workflow-job-plugin.version>
   </properties>
   <dependencyManagement>
     <dependencies>
