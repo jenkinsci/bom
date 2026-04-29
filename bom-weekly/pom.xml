@@ -1177,7 +1177,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>htmlpublisher</artifactId>
-        <version>427</version>
+        <version>427.1</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
