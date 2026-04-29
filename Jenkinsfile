@@ -92,6 +92,7 @@ stage('prep') {
 
       lines = readFile('lines.txt').split('\n')
       lines = [lines[0], lines[-1]] // Save resources by running PCT only on newest and oldest lines
+      lines = ['2.555.x', ] // Save resources by running PCT only on the exact line that changed
     }
     lines.each { line ->
       stash name: line, includes: "pct.sh,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-${line}.war"
