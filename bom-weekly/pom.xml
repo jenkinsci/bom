@@ -955,7 +955,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>credentials-binding</artifactId>
-        <version>719.v80e905ef14eb_</version>
+        <version>720.v3f6decef43ea_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
