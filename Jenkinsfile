@@ -108,7 +108,7 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
     }
     pluginsByRepository.each { repository, plugins ->
       branches["pct-$repository-$line"] = {
-        def jdk = line == 'weekly' ? 21 : 17
+        def jdk = line == 'weekly' || line == '2.555.x' ? 21 : 17
         mavenEnv(jdk: jdk) {
           unstash line
           withEnv([
