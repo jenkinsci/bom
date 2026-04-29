@@ -1499,7 +1499,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>script-security</artifactId>
-        <version>1399.ve6a_66547f6e1</version>
+        <version>1402.v94c9ce464861</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
