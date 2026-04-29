@@ -1703,7 +1703,7 @@
       <id>2.555.x</id>
       <properties>
         <bom>2.555.x</bom>
-        <jenkins.version>2.555.1</jenkins.version>
+        <jenkins.version>2.555.2-rc38072.d30e97d46962</jenkins.version>
       </properties>
     </profile>
     <profile>

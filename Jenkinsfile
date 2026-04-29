@@ -92,6 +92,7 @@ stage('prep') {
 
       lines = readFile('lines.txt').split('\n')
       lines = [lines[0], lines[-1]] // Save resources by running PCT only on newest and oldest lines
+      lines = ['2.555.x', ] // Save resources by running PCT only on the exact line that changed
     }
     lines.each { line ->
       stash name: line, includes: "pct.sh,excludes.txt,target/pct.jar,target/megawar-${line}.war"
@@ -108,7 +109,7 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
     }
     pluginsByRepository.each { repository, plugins ->
       branches["pct-$repository-$line"] = {
-        def jdk = line == 'weekly' ? 21 : 17
+        def jdk = line == 'weekly' || line == '2.555.x' ? 21 : 17
         mavenEnv(jdk: jdk) {
           unstash line
           withEnv([
