@@ -94,7 +94,7 @@ stage('prep') {
       lines = [lines[0], lines[-1]] // Save resources by running PCT only on newest and oldest lines
     }
     lines.each { line ->
-      stash name: line, includes: "pct.sh,excludes.txt,target/pct.jar,target/megawar-${line}.war"
+      stash name: line, includes: "pct.sh,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-${line}.war"
     }
     infra.prepareToPublishIncrementals()
   }
