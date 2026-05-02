@@ -274,7 +274,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>extra-tool-installers</artifactId>
-        <version>211.v880567f652f0</version>
+        <version>234.v67a_eca_496b_8b_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
