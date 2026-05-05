@@ -213,7 +213,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>custom-folder-icon</artifactId>
-        <version>2.938.vb_42c40c33ea_5</version>
+        <version>2.969.v365a_90fb_5d3b_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
