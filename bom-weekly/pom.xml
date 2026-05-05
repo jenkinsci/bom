@@ -553,7 +553,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>prism-api</artifactId>
-        <version>1.30.0-726.v81a_cd0f1e53b_</version>
+        <version>1.30.0-727.vc475481f034d</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
