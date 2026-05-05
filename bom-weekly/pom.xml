@@ -16,9 +16,9 @@
     <checks-api.version>402.vca_263b_f200e3</checks-api.version>
     <cloudbees-folder-plugin.version>6.1100.ve9eed61d16c4</cloudbees-folder-plugin.version>
     <configuration-as-code-plugin.version>2077.v41f1011a_5110</configuration-as-code-plugin.version>
-    <data-tables-api.version>2.3.7-1566.v3f104e6d13ea_</data-tables-api.version>
+    <data-tables-api.version>2.3.8-1570.v1cb_1cd2a_0fb_c</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.6</declarative-pipeline-migration-assistant-plugin.version>
-    <forensics-api.version>4.1881.v79c6e496c613</forensics-api.version>
+    <forensics-api.version>4.1891.v5e60f3377506</forensics-api.version>
     <github-api-plugin.version>1.330-492.v3941a_032db_2a_</github-api-plugin.version>
     <git-plugin.version>5.10.1</git-plugin.version>
     <junit-plugin.version>1403.vd9d1413fd205</junit-plugin.version>
@@ -107,7 +107,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>analysis-model-api</artifactId>
-        <version>14.5.0-968.v4b_155edf8f68</version>
+        <version>14.5.0-972.v41833a_663046</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -553,7 +553,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>prism-api</artifactId>
-        <version>1.30.0-726.v81a_cd0f1e53b_</version>
+        <version>1.30.0-727.vc475481f034d</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
