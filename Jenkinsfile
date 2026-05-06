@@ -1,7 +1,7 @@
 // Do not trigger build regularly on change requests as it costs a lot
 String cronTrigger = ''
 if(env.BRANCH_NAME == "master") {
-  cronTrigger = '30 14 * * 5'
+  cronTrigger = '01 12 * * 5'
 }
 
 properties([
@@ -94,7 +94,7 @@ stage('prep') {
       lines = [lines[0], lines[-1]] // Save resources by running PCT only on newest and oldest lines
     }
     lines.each { line ->
-      stash name: line, includes: "pct.sh,excludes.txt,target/pct.jar,target/megawar-${line}.war"
+      stash name: line, includes: "pct.sh,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-${line}.war"
     }
     infra.prepareToPublishIncrementals()
   }
@@ -107,12 +107,8 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
       return
     }
     pluginsByRepository.each { repository, plugins ->
-      // TODO https://github.com/SonarSource/sonar-scanner-jenkins/pull/314
-      if (repository == 'sonarqube-plugin') {
-        return
-      }
       branches["pct-$repository-$line"] = {
-        def jdk = line == 'weekly' ? 21 : 17
+        def jdk = line == 'weekly' || line == '2.555.x' ? 21 : 17
         mavenEnv(jdk: jdk) {
           unstash line
           withEnv([

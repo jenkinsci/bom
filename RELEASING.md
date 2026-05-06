@@ -9,14 +9,14 @@ Details are described in [a week in the life of a BOM release manager](#a-week-i
 
 | Release Date | Lead                 |
 |--------------| -------------------- |
-| 2026-03-27   | Kris Stern           |
-| 2026-04-03   | Kris Stern           |
-| 2026-04-10   | Darin Pope           |
-| 2026-04-17   | Darin Pope           |
-| 2026-04-24   | Mark Waite           |
-| 2026-05-01   | Mark Waite           |
-| 2026-03-08   | Adrien Lecharpentier |
-| 2026-03-15   | Adrien Lecharpentier |
+| 2026-05-08   | Adrien Lecharpentier |
+| 2026-05-15   | Adrien Lecharpentier |
+| 2026-05-22   | Kris Stern           |
+| 2026-05-29   | Kris Stern           |
+| 2026-06-05   | Darin Pope           |
+| 2026-06-12   | Darin Pope           |
+| 2026-06-19   | Mark Waite           |
+| 2026-06-26   | Mark Waite           |
 
 ## Releasing the BOM
 
@@ -217,6 +217,15 @@ Some pull requests that add the optional dependency in test scope include:
 A pull request that pins an older version of the optional plugin is:
 
 * [Pin htmlpublisher 1.36 for older lines](https://github.com/jenkinsci/bom/pull/3975)
+
+##### Excluding a failing test
+
+Sometimes a plugin update introduces a test failure but the test failure does not justify a rollback of the plugin update in the BOM.
+In that case, individual test failures can be ignored by adding entries to the `excludes.txt` file.
+The `excludes.txt` file format is described in the [Maven surefire plugin documentation](https://maven.apache.org/components/surefire/maven-surefire-plugin/test-mojo.html#excludesFile).
+
+If a test only fails on a specific line of the BOM, it can be listed in an exclusion file that is specific to the line, as in `bom-2.541.x/excludes.txt`.
+If an exclusions file exists for a specific line of the plugin BOM it is merged with the general `excludes.txt` file.
 
 #### Manually created PRs
 

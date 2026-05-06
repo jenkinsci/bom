@@ -54,13 +54,28 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>gitea-checks</artifactId>
+        <version>604.638.ve9e5472551b_3</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>mcp-server</artifactId>
         <version>0.116.v335308141e4e</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>oidc-provider</artifactId>
+        <version>206.210.v1d53c0295b_2f</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
         <version>661.v6003f4542123</version>
+      </dependency>
+      <dependency>
+        <groupId>org.6wind.jenkins</groupId>
+        <artifactId>lockable-resources</artifactId>
+        <version>1509.va_6b_5b_5cb_0b_40</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -69,8 +84,13 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>cloudbees-bitbucket-branch-source</artifactId>
+        <version>937.3.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>credentials</artifactId>
-        <version>1491.v6d6145e96e1c</version>
+        <version>1496.vf6821f162d4e</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
