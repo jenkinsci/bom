@@ -548,7 +548,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>postgresql-api</artifactId>
-        <version>42.7.7-67.v70a_30b_84f58b_</version>
+        <version>42.7.11-94.v50c5c1c8f3b_d</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
