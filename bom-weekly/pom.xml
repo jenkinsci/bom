@@ -249,7 +249,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>design-library</artifactId>
-        <version>417.vce0571393f5b_</version>
+        <version>434.v01b_a_5a_27a_53c</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
