@@ -1423,7 +1423,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pipeline-utility-steps</artifactId>
-        <version>2.20.0</version>
+        <version>3.810.va_7672d206740</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
