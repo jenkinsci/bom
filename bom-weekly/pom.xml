@@ -1302,6 +1302,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>mock-slave</artifactId>
+        <version>217.v67c790ca_a_c31</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>msbuild</artifactId>
         <version>1.41</version>
       </dependency>
