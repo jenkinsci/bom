@@ -15,3 +15,6 @@ org.jenkinsci.plugins.pipeline.modeldefinition.TriggersTest
 # TODO https://github.com/jenkinsci/bom/pull/6504#issuecomment-4127652429
 hudson.matrix.MatrixProjectTest#deletedLockedChildrenBuild
 hudson.matrix.MatrixProjectTest#deletedLockedParentBuild
+
+# TODO https://issues.jenkins.io/browse/JENKINS-75133
+com.cloudbees.workflow.ui.view.WorkflowStageViewActionTest#testTimezoneRespectedInStageStartTime
