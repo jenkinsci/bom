@@ -1570,7 +1570,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>support-core</artifactId>
-        <version>1801.v76b_389d2deec</version>
+        <version>1830.v95660efff726</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
