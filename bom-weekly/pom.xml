@@ -486,7 +486,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>netty-api</artifactId>
-        <version>4.2.12.Final-25.v1b_911a_364383</version>
+        <version>4.2.13.Final-26.vf73cd217f71f</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
