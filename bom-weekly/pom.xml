@@ -486,7 +486,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>netty-api</artifactId>
-        <version>4.2.12.Final-25.v1b_911a_364383</version>
+        <version>4.2.13.Final-26.vf73cd217f71f</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -517,7 +517,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>oras-java-api</artifactId>
-        <version>0.6.2-193.v7c63347b_24d3</version>
+        <version>0.6.3-195.vcf0c6b_f05149</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -527,7 +527,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
-        <version>896.v29722831939d</version>
+        <version>901.v88c4d3163e1a_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -583,7 +583,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>warnings-ng</artifactId>
-        <version>13.10096.v17c62a_53a_689</version>
+        <version>13.10097.v277a_958a_b_c09</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1142,7 +1142,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>google-compute-engine</artifactId>
-        <version>4.789.vb_3a_0e26d54eb_</version>
+        <version>4.797.v39c7a_b_533819</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
