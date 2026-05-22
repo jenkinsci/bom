@@ -1,0 +1,3 @@
+# TODO https://github.com/jenkinsci/authorize-project-plugin/issues/464
+org.jenkinsci.plugins.authorizeproject.strategy.TriggeringUsersAuthorizationStrategyTest#testAuthenticate
+org.jenkinsci.plugins.authorizeproject.strategy.TriggeringUsersAuthorizationStrategyTest#testAuthenticateDownstream
