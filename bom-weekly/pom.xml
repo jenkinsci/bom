@@ -1264,7 +1264,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ldap</artifactId>
-        <version>807.v7d7de30930cf</version>
+        <version>807.809.vd3a_4e5e4ec98</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
