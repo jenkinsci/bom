@@ -26,7 +26,7 @@
     <mina-sshd-api.version>2.17.1-187.v0341274c2905</mina-sshd-api.version>
     <okhttp-api-plugin.version>5.3.2-200.vedb_720a_cf1f8</okhttp-api-plugin.version>
     <pipeline-maven-plugin.version>1724.vfcd808f49a_0c</pipeline-maven-plugin.version>
-    <pipeline-model-definition-plugin.version>2.2289.v6f731d0a_02da_</pipeline-model-definition-plugin.version>
+    <pipeline-model-definition-plugin.version>2.2277.v00573e73ddf1</pipeline-model-definition-plugin.version>
     <pipeline-stage-view-plugin.version>2.41</pipeline-stage-view-plugin.version>
     <plugin-util-api.version>7.1341.v039f146993d9</plugin-util-api.version>
     <scm-api-plugin.version>728.vc30dcf7a_0df5</scm-api-plugin.version>
@@ -1464,7 +1464,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>role-strategy</artifactId>
-        <version>861.v4f04587b_b_7e9</version>
+        <version>848.va_a_ea_673cf0b_c</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1571,7 +1571,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>support-core</artifactId>
-        <version>1830.v95660efff726</version>
+        <version>1840.v08d78d1b_4db_c</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
