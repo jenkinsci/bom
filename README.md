@@ -9,7 +9,7 @@ A secondary purpose of this repository is to regularly perform plugin compatibil
 
 If you are interested in a Bill of Materials for Jenkins core components, see [this page](https://jenkins.io/doc/developer/plugin-development/dependency-management/#jenkins-core-bom).
 
-# Usage
+# How to use?
 
 After [selecting your plugin’s LTS baseline](https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/):
 
