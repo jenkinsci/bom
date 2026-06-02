@@ -6,7 +6,9 @@
   ],
   "automerge": true,
   "ignoreDeps": [
-    "io.jenkins.tools.bom:parent"
+    "io.jenkins.tools.bom:parent",
+    "org.codehaus.groovy:groovy-all",
+    "org.apache.groovy:groovy-all"
   ],
   "ignorePaths": [
     "bom-*.x/pom.xml"
