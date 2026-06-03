@@ -1203,7 +1203,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>JiraTestResultReporter</artifactId>
-        <version>363.vdd3b_7e00de8d</version>
+        <version>372.vc7c7d897c344</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
