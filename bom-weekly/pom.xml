@@ -108,7 +108,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>analysis-model-api</artifactId>
-        <version>14.10.0-980.v408a_383cb_94d</version>
+        <version>14.11.0-988.vd59f73b_68dd9</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
