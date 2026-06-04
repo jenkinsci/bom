@@ -10,7 +10,7 @@ if [[ ! -d sample-plugin/target/test-classes/test-dependencies || ! -d sample-pl
 	else
 		PROFILE=-P$LINE
 	fi
-	mvn -pl sample-plugin clean test -Dtest=InjectedTest $PROFILE
+	mvn -pl sample-plugin -Djenkins.test.timeout=360 clean test -Dtest=InjectedTest $PROFILE
 fi
 
 cd sample-plugin/target

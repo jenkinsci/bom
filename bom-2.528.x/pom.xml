@@ -54,6 +54,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>gitea-checks</artifactId>
+        <version>604.638.ve9e5472551b_3</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>mcp-server</artifactId>
         <version>0.116.v335308141e4e</version>
       </dependency>
@@ -107,6 +112,11 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>oic-auth</artifactId>
         <version>4.609.v9de140f63d01</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>support-core</artifactId>
+        <version>1830.v95660efff726</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
