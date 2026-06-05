@@ -472,7 +472,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>mcp-server</artifactId>
-        <version>0.172.v9db_cb_43cdb_cc</version>
+        <version>0.174.v2747878a_eedb_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
