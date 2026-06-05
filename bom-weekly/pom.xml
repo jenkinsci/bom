@@ -290,7 +290,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>flyway-api</artifactId>
-        <version>12.7.0-447.v558c9d32434f</version>
+        <version>12.8.0-449.v780b_9a_4359b_d</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
