@@ -11,7 +11,6 @@
   <properties>
     <configuration-as-code-plugin.version>2036.v0b_c2de701dcb_</configuration-as-code-plugin.version>
     <junit-plugin.version>1369.v15da_00283f06</junit-plugin.version>
-    <pipeline-model-definition-plugin.version>2.2277.v00573e73ddf1</pipeline-model-definition-plugin.version>
     <workflow-api-plugin.version>1384.vdc05a_48f535f</workflow-api-plugin.version>
   </properties>
   <dependencyManagement>
@@ -129,32 +128,6 @@
         <artifactId>workflow-api</artifactId>
         <version>${workflow-api-plugin.version}</version>
         <classifier>tests</classifier>
-      </dependency>
-      <dependency>
-        <groupId>org.jenkinsci.plugins</groupId>
-        <artifactId>pipeline-model-api</artifactId>
-        <version>${pipeline-model-definition-plugin.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jenkinsci.plugins</groupId>
-        <artifactId>pipeline-model-definition</artifactId>
-        <version>${pipeline-model-definition-plugin.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jenkinsci.plugins</groupId>
-        <artifactId>pipeline-model-definition</artifactId>
-        <version>${pipeline-model-definition-plugin.version}</version>
-        <classifier>tests</classifier>
-      </dependency>
-      <dependency>
-        <groupId>org.jenkinsci.plugins</groupId>
-        <artifactId>pipeline-model-extensions</artifactId>
-        <version>${pipeline-model-definition-plugin.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jenkinsci.plugins</groupId>
-        <artifactId>pipeline-stage-tags-metadata</artifactId>
-        <version>${pipeline-model-definition-plugin.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
