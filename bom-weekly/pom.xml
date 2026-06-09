@@ -589,7 +589,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>woodstox-core-api</artifactId>
-        <version>7.1.1-1.v4d297985f397</version>
+        <version>7.2.1-6.v3718a_a_11f5c4</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
