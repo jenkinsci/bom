@@ -673,14 +673,14 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>org.awaitility</groupId>
-      <artifactId>awaitility</artifactId>
-      <version>4.3.0</version>
+      <groupId>org.6wind.jenkins</groupId>
+      <artifactId>lockable-resources</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>org.6wind.jenkins</groupId>
-      <artifactId>lockable-resources</artifactId>
+      <groupId>org.awaitility</groupId>
+      <artifactId>awaitility</artifactId>
+      <version>4.3.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
