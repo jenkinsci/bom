@@ -89,6 +89,11 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>cloudbees-jenkins-advisor</artifactId>
+        <version>392.v6ca_b_ff4e12fa_</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>credentials</artifactId>
         <version>1496.vf6821f162d4e</version>
       </dependency>
