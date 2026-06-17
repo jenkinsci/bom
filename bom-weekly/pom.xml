@@ -123,7 +123,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>artifactory-artifact-manager</artifactId>
-        <version>318.v89d9642e6690</version>
+        <version>320.v6d1b_a_84b_16db_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
