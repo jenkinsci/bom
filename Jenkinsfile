@@ -31,18 +31,7 @@ def mavenEnv(Map params = [:], Closure body) {
               "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B -ntp -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo",
               "MVN_LOCAL_REPO=${WORKSPACE_TMP}/m2repo",
             ]) {
-              // Load Maven Repo Cache if available
-              sh '''
-              mkdir -p "${MVN_LOCAL_REPO}"
-              if test -f /cache/maven-bom-local-repo.tar.gz;
-              then
-                pushd "${MVN_LOCAL_REPO}"
-                time cp /cache/maven-bom-local-repo.tar.gz ../
-                time tar xzf ../maven-bom-local-repo.tar.gz ./
-                rm ../maven-bom-local-repo.tar.gz
-                popd
-              fi
-              '''
+              infra.loadMavenLocalCacheIfAny(env.MVN_LOCAL_REPO)
 
               body()
             }
