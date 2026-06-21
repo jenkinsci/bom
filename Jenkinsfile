@@ -1,7 +1,7 @@
 // Do not trigger build regularly on change requests as it costs a lot
 String cronTrigger = ''
 if(env.BRANCH_NAME == "master") {
-  cronTrigger = '00 16 * * 5'
+  cronTrigger = '53 22 * * 5'
 }
 
 properties([
@@ -79,7 +79,7 @@ stage('prep') {
       sh '''
       mvn -v
       echo "Starting artifact caching proxy pre-heat"
-      mvn -ntp dependency:go-offline
+      mvn -ntp org.apache.maven.plugins:maven-dependency-plugin:3.9.0:go-offline
       echo "Finished artifact caching proxy pre-heat"
       bash prep.sh
       '''

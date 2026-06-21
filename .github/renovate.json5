@@ -68,6 +68,12 @@
     },
     {
       "matchDepNames": [
+        "org.jenkins-ci.plugins:JiraTestResultReporter"
+      ],
+      "allowedVersions": "!/^378\\./" // skip 378.x line, see PR #6918
+    },
+    {
+      "matchDepNames": [
         "org.jenkins-ci.tests:plugins-compat-tester-cli"
       ],
       "labels": [

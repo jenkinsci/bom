@@ -678,6 +678,12 @@
       <scope>test</scope>
     </dependency>
     <dependency>
+      <groupId>org.awaitility</groupId>
+      <artifactId>awaitility</artifactId>
+      <version>4.3.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <groupId>org.csanchez.jenkins.plugins</groupId>
       <artifactId>kubernetes</artifactId>
       <scope>test</scope>
@@ -1708,7 +1714,7 @@
       <id>2.555.x</id>
       <properties>
         <bom>2.555.x</bom>
-        <jenkins.version>2.555.1</jenkins.version>
+        <jenkins.version>2.555.3</jenkins.version>
       </properties>
     </profile>
     <profile>
