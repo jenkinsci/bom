@@ -1143,7 +1143,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>google-compute-engine</artifactId>
-        <version>4.814.v531c47649a_5f</version>
+        <version>4.815.v9a_de97053e3a_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
