@@ -69,9 +69,6 @@ stage('prep') {
     withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist']) {
       sh '''
       mvn -v
-      echo "Starting artifact caching proxy pre-heat"
-      mvn -ntp org.apache.maven.plugins:maven-dependency-plugin:3.9.0:go-offline
-      echo "Finished artifact caching proxy pre-heat"
       bash prep.sh
       '''
     }
