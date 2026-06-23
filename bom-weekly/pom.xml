@@ -204,7 +204,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>coverage</artifactId>
-        <version>3.3276.vc2fb_7461d406</version>
+        <version>3.3277.v65df46531e43</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -528,7 +528,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
-        <version>942.v87b_d1b_0a_c040</version>
+        <version>949.v1cf0f01ca_cfa_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1143,7 +1143,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>google-compute-engine</artifactId>
-        <version>4.814.v531c47649a_5f</version>
+        <version>4.815.v9a_de97053e3a_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1203,7 +1203,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>JiraTestResultReporter</artifactId>
-        <version>387.vb_27a_51a_a_3d1d</version>
+        <version>389.v8a_a_c44f09e22</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
