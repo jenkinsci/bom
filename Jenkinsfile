@@ -4,6 +4,8 @@ if(env.BRANCH_NAME == "master") {
   cronTrigger = '53 22 * * 5'
 }
 
+env.MAVEN_NTP = true
+
 properties([
   disableConcurrentBuilds(abortPrevious: true),
   buildDiscarder(logRotator(numToKeepStr: '7')),
@@ -28,21 +30,10 @@ def mavenEnv(Map params = [:], Closure body) {
             withEnv([
               'JAVA_HOME=/opt/jdk-' + params['jdk'],
               'PATH+JDK=/opt/jdk-' + params['jdk'] + '/bin',
-              "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B -ntp -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo",
+              "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B ${env.MAVEN_NTP != null ? '-ntp' : ''} -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo",
               "MVN_LOCAL_REPO=${WORKSPACE_TMP}/m2repo",
             ]) {
-              // Load Maven Repo Cache if available
-              sh '''
-              mkdir -p "${MVN_LOCAL_REPO}"
-              if test -f /cache/maven-bom-local-repo.tar.gz;
-              then
-                pushd "${MVN_LOCAL_REPO}"
-                time cp /cache/maven-bom-local-repo.tar.gz ../
-                time tar xzf ../maven-bom-local-repo.tar.gz ./
-                rm ../maven-bom-local-repo.tar.gz
-                popd
-              fi
-              '''
+              infra.loadMavenLocalCacheIfAny(env.MVN_LOCAL_REPO)
 
               body()
             }
@@ -78,9 +69,6 @@ stage('prep') {
     withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist']) {
       sh '''
       mvn -v
-      echo "Starting artifact caching proxy pre-heat"
-      mvn -ntp org.apache.maven.plugins:maven-dependency-plugin:3.9.0:go-offline
-      echo "Finished artifact caching proxy pre-heat"
       bash prep.sh
       '''
     }
