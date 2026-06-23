@@ -15,7 +15,7 @@
     <dependencies>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>bom-weekly</artifactId>
+        <artifactId>bom-2.568.x</artifactId>
         <version>${project.version}</version>
         <type>pom</type>
         <scope>import</scope>
@@ -29,17 +29,6 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>role-strategy</artifactId>
         <version>867.vd09254229f9b_</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jenkins-ci.plugins.workflow</groupId>
-        <artifactId>workflow-job</artifactId>
-        <version>${workflow-job-plugin.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jenkins-ci.plugins.workflow</groupId>
-        <artifactId>workflow-job</artifactId>
-        <version>${workflow-job-plugin.version}</version>
-        <classifier>tests</classifier>
       </dependency>
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
