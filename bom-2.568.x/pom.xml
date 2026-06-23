@@ -6,7 +6,7 @@
     <artifactId>parent</artifactId>
     <version>${changelist}</version>
   </parent>
-  <artifactId>bom-2.555.x</artifactId>
+  <artifactId>bom-2.568.x</artifactId>
   <packaging>pom</packaging>
   <properties>
     <workflow-job-plugin.version>1571.1580.v18e46842c125</workflow-job-plugin.version>
@@ -15,25 +15,21 @@
     <dependencies>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>bom-2.568.x</artifactId>
+        <artifactId>bom-weekly</artifactId>
         <version>${project.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
       <dependency>
-        <groupId>io.jenkins.plugins</groupId>
-        <artifactId>design-library</artifactId>
-        <version>417.vce0571393f5b_</version>
+        <groupId>org.jenkins-ci.plugins.workflow</groupId>
+        <artifactId>workflow-job</artifactId>
+        <version>${workflow-job-plugin.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.jenkins-ci.plugins</groupId>
-        <artifactId>role-strategy</artifactId>
-        <version>867.vd09254229f9b_</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jvnet.hudson.plugins</groupId>
-        <artifactId>favorite</artifactId>
-        <version>2.263.v941d21defef7</version>
+        <groupId>org.jenkins-ci.plugins.workflow</groupId>
+        <artifactId>workflow-job</artifactId>
+        <version>${workflow-job-plugin.version}</version>
+        <classifier>tests</classifier>
       </dependency>
     </dependencies>
   </dependencyManagement>
