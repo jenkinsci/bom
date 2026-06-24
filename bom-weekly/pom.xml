@@ -1862,7 +1862,7 @@
       <dependency>
         <groupId>org.jenkins-ci.tools</groupId>
         <artifactId>git-parameter</artifactId>
-        <version>462.vdcf3df2ed2ca_</version>
+        <version>462.463.v496a_59f698e5</version>
       </dependency>
       <dependency>
         <groupId>org.jenkinsci.plugins</groupId>
