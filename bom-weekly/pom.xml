@@ -1223,7 +1223,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jobConfigHistory</artifactId>
-        <version>1356.ve360da_6c523a_</version>
+        <version>1367.vc8fa_b_15101dc</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
