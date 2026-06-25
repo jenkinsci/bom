@@ -103,7 +103,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>adoptopenjdk</artifactId>
-        <version>166.v7b_215d91b_68f</version>
+        <version>167.vf71ff2140e23</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -584,7 +584,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>warnings-ng</artifactId>
-        <version>13.10097.v277a_958a_b_c09</version>
+        <version>13.10153.v011f47a_3ef01</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
