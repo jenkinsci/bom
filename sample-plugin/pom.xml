@@ -1715,7 +1715,7 @@
       <properties>
         <bom>2.568.x</bom>
         <!-- TODO: Replace with 2.568.1 after release of 2.568.1 -->
-        <jenkins.version>2.568</jenkins.version>
+        <jenkins.version>2.568.1-rc38343.e89fb_806b_fa_7</jenkins.version>
       </properties>
     </profile>
     <profile>
