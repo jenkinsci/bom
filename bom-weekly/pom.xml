@@ -204,7 +204,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>coverage</artifactId>
-        <version>3.3277.v65df46531e43</version>
+        <version>3.3278.va_04d3e352354</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -467,7 +467,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>markdown-formatter</artifactId>
-        <version>338.v5fe99848b_193</version>
+        <version>346.v3c6828ddd39e</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -523,7 +523,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>oss-symbols-api</artifactId>
-        <version>463.vff8a_5631a_09d</version>
+        <version>465.v25d9fdc88c26</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1036,7 +1036,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>electricflow</artifactId>
-        <version>1.1.42</version>
+        <version>1.1.43</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
