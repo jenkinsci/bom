@@ -103,7 +103,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>adoptopenjdk</artifactId>
-        <version>166.v7b_215d91b_68f</version>
+        <version>167.vf71ff2140e23</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
