@@ -23,6 +23,7 @@
     <git-plugin.version>5.10.1</git-plugin.version>
     <junit-plugin.version>1413.v736fa_5b_61d80</junit-plugin.version>
     <matrix-project-plugin.version>870.v9db_fcfc2f45b_</matrix-project-plugin.version>
+    <mcp-server.version>0.178.vffe5a_e770f3b_</mcp-server.version>
     <mina-sshd-api.version>2.17.1-187.v0341274c2905</mina-sshd-api.version>
     <okhttp-api-plugin.version>5.3.2-200.vedb_720a_cf1f8</okhttp-api-plugin.version>
     <pipeline-maven-plugin.version>1735.v63b_5b_1b_d25d9</pipeline-maven-plugin.version>
@@ -472,7 +473,13 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>mcp-server</artifactId>
-        <version>0.178.vffe5a_e770f3b_</version>
+        <version>${mcp-server.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
+        <artifactId>mcp-server</artifactId>
+        <version>${mcp-server.version}</version>
+        <classifier>tests</classifier>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
