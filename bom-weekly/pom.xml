@@ -159,7 +159,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>caffeine-api</artifactId>
-        <version>3.2.3-194.v31a_b_f7a_b_5a_81</version>
+        <version>3.2.4-208.v7e2da_a_7db_82b_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -327,7 +327,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>git-forensics</artifactId>
-        <version>4.2385.va_e15df49d352</version>
+        <version>4.2416.v46d45e29f28f</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -428,7 +428,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>jnr-posix-api</artifactId>
-        <version>3.1.22-204.v925e2b_09a_42c</version>
+        <version>3.2.1-213.v7401d99f6220</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -463,7 +463,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>mariadb-api</artifactId>
-        <version>3.5.8-192.v334b_a_162947e</version>
+        <version>3.5.9-198.v7c48f744d427</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -494,7 +494,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>netty-api</artifactId>
-        <version>4.2.13.Final-26.vf73cd217f71f</version>
+        <version>4.2.15.Final-27.va_a_7872799c63</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1195,7 +1195,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jackson2-api</artifactId>
-        <version>2.21.2-436.v29efdb_7418ff</version>
+        <version>2.22.0-439.vb_b_43658d6176</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
