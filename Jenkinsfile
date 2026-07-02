@@ -90,7 +90,7 @@ stage('prep') {
 }
 
 if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env.CHANGE_ID && (pullRequest.labels.contains('full-test') || pullRequest.labels.contains('weekly-test'))) {
-  branches = [failFast: false]
+  def branches = [failFast: false]
   lines.each {line ->
     if (line != 'weekly' && (weeklyTestMarkerFile || env.CHANGE_ID && pullRequest.labels.contains('weekly-test'))) {
       return
