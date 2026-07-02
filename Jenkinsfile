@@ -161,7 +161,7 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
       def reportLines = ''
       durations.each { branch, time ->
         totalTime += time as Double
-        reportLines += '<testcase name="'+branch+'" classname="pct-duration.'+branch+'" time="'+time+'"/>\n'
+        reportLines += '<testcase name="' + branch + '" classname="pct-duration.' + branch + '" time="' + time + '"/>\n'
       }
       if (reportLines) {
         def content = """<?xml version="1.0" encoding="UTF-8"?>
