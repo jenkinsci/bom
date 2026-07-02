@@ -76,7 +76,9 @@ stage('prep') {
     fullTestMarkerFile = fileExists 'full-test'
     weeklyTestMarkerFile = fileExists 'weekly-test'
     dir('target') {
-      def plugins = readFile('plugins.txt').split('\n')
+      // def plugins = readFile('plugins.txt').split('\n')
+      // TODO: remove before merging, for debugging only
+      def plugins = readFile('plugins_debug.txt').split('\n')
       pluginsByRepository = parsePlugins(plugins)
 
       lines = readFile('lines.txt').split('\n')
