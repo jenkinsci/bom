@@ -134,6 +134,7 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
             } finally {
               // Generate duration of all tests executed in this branch
               def duration = sh(returnStdout:true, script: '''#!/bin/bash
+              set -x
               duration=0
               while IFS= read -r file; do
                 time=$(xmllint --xpath "string(/testsuite/@time)" "${file}" 2>/dev/null || true)
