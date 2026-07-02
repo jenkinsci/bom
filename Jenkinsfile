@@ -90,6 +90,7 @@ stage('prep') {
         'jenkinsci/badge-plugin	badge',
         'jenkinsci/basic-branch-build-strategies-plugin	basic-branch-build-strategies',
         'jenkinsci/bitbucket-branch-source-plugin	cloudbees-bitbucket-branch-source',
+        'jenkinsci/pipeline-model-definition-plugin	pipeline-model-api,pipeline-model-definition,pipeline-model-extensions,pipeline-stage-tags-metadata',
       ]
       pluginsByRepository = parsePlugins(plugins)
 
