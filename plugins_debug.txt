@@ -1,8 +1,0 @@
-jenkinsci/aws-credentials-plugin	aws-credentials
-jenkinsci/aws-global-configuration-plugin	aws-global-configuration
-jenkinsci/aws-java-sdk-plugin	aws-java-sdk-api-gateway,aws-java-sdk-autoscaling,aws-java-sdk-cloudformation,aws-java-sdk-cloudfront,aws-java-sdk-cloudwatch,aws-java-sdk-codebuild,aws-java-sdk-codedeploy,aws-java-sdk-ec2,aws-java-sdk-ecr,aws-java-sdk-ecs,aws-java-sdk-efs,aws-java-sdk-elasticbeanstalk,aws-java-sdk-elasticloadbalancingv2,aws-java-sdk-iam,aws-java-sdk-kinesis,aws-java-sdk-lambda,aws-java-sdk-logs,aws-java-sdk-minimal,aws-java-sdk-organizations,aws-java-sdk-secretsmanager,aws-java-sdk-sns,aws-java-sdk-sqs,aws-java-sdk-ssm
-jenkinsci/aws-java-sdk2-plugin	aws-java-sdk2-apigateway,aws-java-sdk2-autoscaling,aws-java-sdk2-cloudformation,aws-java-sdk2-cloudfront,aws-java-sdk2-cloudwatch,aws-java-sdk2-cloudwatchlogs,aws-java-sdk2-codebuild,aws-java-sdk2-codedeploy,aws-java-sdk2-core,aws-java-sdk2-ec2,aws-java-sdk2-ecr,aws-java-sdk2-ecs,aws-java-sdk2-efs,aws-java-sdk2-elasticbeanstalk,aws-java-sdk2-elasticloadbalancingv2,aws-java-sdk2-iam,aws-java-sdk2-kinesis,aws-java-sdk2-lambda,aws-java-sdk2-netty-nio-client,aws-java-sdk2-organizations,aws-java-sdk2-s3,aws-java-sdk2-secretsmanager,aws-java-sdk2-sns,aws-java-sdk2-sqs,aws-java-sdk2-ssm,aws-java-sdk2-sso
-jenkinsci/azure-credentials-plugin	azure-credentials
-jenkinsci/azure-keyvault-plugin	azure-keyvault
-jenkinsci/azure-sdk-plugin	azure-sdk
-jenkinsci/azure-storage-plugin	windows-azure-storage
