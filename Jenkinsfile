@@ -62,6 +62,7 @@ def pluginsByRepository
 def lines
 def fullTestMarkerFile
 def weeklyTestMarkerFile
+def durations
 
 stage('prep') {
   mavenEnv(jdk: 21) {
@@ -104,16 +105,59 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
             "LINE=$line",
             'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
           ]) {
-            sh '''
-            mvn -v
-            bash pct.sh
-            '''
+            try {
+              sh '''
+              mvn -v
+              bash pct.sh
+              '''
+            } catch (e) {
+              if (!(e instanceof InterruptedException) && !(e instanceof org.jenkinsci.plugins.workflow.support.steps.AgentOfflineException)) {
+                unstable('PCT failed in ' + repository + ' - line ' + line)
+              } else {
+                throw e
+              }
+            }
+            finally {
+              // Generate duration of all tests executed in this branch
+              def duration = sh(returnStdout:true, script: '''#!/bin/bash
+              duration=0
+              while IFS= read -r file; do
+                time=$(xmllint --xpath "string(/testsuite/@time)" "${file}" 2>/dev/null || true)
+                if [ -n "${time}" ]; then
+                  duration=$(bc <<< "scale=2; ${duration} + ${time}")
+                  if [[ "${duration}" == .* ]]; then
+                    duration="0${duration}"
+                  fi
+                fi
+              done <<< $(find . -path '*/target/surefire-reports/*' -name 'TEST-*.xml')
+              echo "${duration}"
+              ''').trim()
+              durations["pct-$repository-$line"] = duration.toFloat()
+            }
           }
         }
       }
     }
   }
   parallel branches
+  stage('duration report') {
+    Double totalTime = 0
+    def reportLines = ''
+    durations.each { branch, time ->
+        totalTime += time as Double
+        reportLines += '<testcase name="'+branch+'" classname="pct-duration.'+branch+'" time="'+time+'"/>\n'
+    }
+    if (reportLines) {
+        def content = """<?xml version="1.0" encoding="UTF-8"?>
+            <testsuite name="bom" time="${totalTime}">
+            ${reportLines}
+            </testsuite>
+        """
+        writeFile file: 'bom-report.xml', text: content
+        archiveArtifacts artifacts: 'bom-report.xml'
+        junit allowEmptyResults: true, testResults: 'bom-report.xml'
+    }
+  }
 }
 
 if (fullTestMarkerFile) {
