@@ -76,7 +76,13 @@ stage('prep') {
     fullTestMarkerFile = fileExists 'full-test'
     weeklyTestMarkerFile = fileExists 'weekly-test'
     dir('target') {
-      def plugins = readFile('plugins.txt').split('\n')
+      // def plugins = readFile('plugins.txt').split('\n')
+      // TODO: for debug only, to remove
+      def plugins = [
+        'jenkinsci/aws-credentials-plugin	aws-credentials',
+        'jenkinsci/aws-global-configuration-plugin	aws-global-configuration',
+        'jenkinsci/aws-java-sdk-plugin	aws-java-sdk-api-gateway,aws-java-sdk-autoscaling,aws-java-sdk-cloudformation,aws-java-sdk-cloudfront,aws-java-sdk-cloudwatch,aws-java-sdk-codebuild,aws-java-sdk-codedeploy,aws-java-sdk-ec2,aws-java-sdk-ecr,aws-java-sdk-ecs,aws-java-sdk-efs,aws-java-sdk-elasticbeanstalk,aws-java-sdk-elasticloadbalancingv2,aws-java-sdk-iam,aws-java-sdk-kinesis,aws-java-sdk-lambda,aws-java-sdk-logs,aws-java-sdk-minimal,aws-java-sdk-organizations,aws-java-sdk-secretsmanager,aws-java-sdk-sns,aws-java-sdk-sqs,aws-java-sdk-ssm'
+      ]
       pluginsByRepository = parsePlugins(plugins)
 
       lines = readFile('lines.txt').split('\n')
