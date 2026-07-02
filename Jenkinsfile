@@ -118,8 +118,7 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
               } else {
                 throw e
               }
-            }
-            finally {
+            } finally {
               // Generate duration of all tests executed in this branch
               def duration = sh(returnStdout:true, script: '''#!/bin/bash
               duration=0
