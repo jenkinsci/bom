@@ -144,18 +144,18 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
     Double totalTime = 0
     def reportLines = ''
     durations.each { branch, time ->
-        totalTime += time as Double
-        reportLines += '<testcase name="'+branch+'" classname="pct-duration.'+branch+'" time="'+time+'"/>\n'
+      totalTime += time as Double
+      reportLines += '<testcase name="'+branch+'" classname="pct-duration.'+branch+'" time="'+time+'"/>\n'
     }
     if (reportLines) {
-        def content = """<?xml version="1.0" encoding="UTF-8"?>
-            <testsuite name="bom" time="${totalTime}">
-            ${reportLines}
-            </testsuite>
-        """
-        writeFile file: 'bom-report.xml', text: content
-        archiveArtifacts artifacts: 'bom-report.xml'
-        junit allowEmptyResults: true, testResults: 'bom-report.xml'
+      def content = """<?xml version="1.0" encoding="UTF-8"?>
+        <testsuite name="bom" time="${totalTime}">
+        ${reportLines}
+        </testsuite>
+      """
+      writeFile file: 'bom-report.xml', text: content
+      archiveArtifacts artifacts: 'bom-report.xml'
+      junit allowEmptyResults: true, testResults: 'bom-report.xml'
     }
   }
 }
