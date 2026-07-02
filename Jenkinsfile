@@ -62,7 +62,7 @@ def pluginsByRepository
 def lines
 def fullTestMarkerFile
 def weeklyTestMarkerFile
-def durations
+def durations = [:]
 
 stage('prep') {
   mavenEnv(jdk: 21) {
