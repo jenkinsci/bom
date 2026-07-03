@@ -105,6 +105,7 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
             "LINE=$line",
             'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
           ]) {
+            def start = System.currentTimeMillis()
             try {
               sh '''
               mvn -v
@@ -117,22 +118,8 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
                 throw e
               }
             } finally {
-              // Generate duration of all tests executed in this branch
-              def duration = sh(returnStdout:true, script: '''#!/bin/bash
-              set -x
-              duration=0
-              while IFS= read -r file; do
-                time=$(xmllint --xpath "string(/testsuite/@time)" "${file}" 2>/dev/null || true)
-                if [ -n "${time}" ]; then
-                  duration=$(bc <<< "scale=2; ${duration} + ${time}")
-                  if [[ "${duration}" == .* ]]; then
-                    duration="0${duration}"
-                  fi
-                fi
-              done <<< $(find . -path '*/target/surefire-reports/*' -name 'TEST-*.xml')
-              echo "${duration}"
-              ''').trim()
-              durations["pct-$repository-$line"] = duration.toFloat()
+              def elapsed = System.currentTimeMillis() - start
+              durations["pct-$repository-$line"] = (elapsed / 1000.0)
             }
           }
         }
