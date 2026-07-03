@@ -63,6 +63,7 @@ def lines
 def fullTestMarkerFile
 def weeklyTestMarkerFile
 def durations = [:]
+def MAX_SPLITS = 10
 
 stage('prep') {
   mavenEnv(jdk: 21) {
@@ -90,6 +91,9 @@ stage('prep') {
 }
 
 if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env.CHANGE_ID && (pullRequest.labels.contains('full-test') || pullRequest.labels.contains('weekly-test'))) {
+  def splits = splitTests parallelism: count(MAX_SPLITS), stage: 'duration report'
+  echo "${splits}"
+
   def branches = [failFast: false]
   lines.each {line ->
     if (line != 'weekly' && (weeklyTestMarkerFile || env.CHANGE_ID && pullRequest.labels.contains('weekly-test'))) {
