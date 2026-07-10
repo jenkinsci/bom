@@ -57,6 +57,41 @@ def mavenEnv(Map params = [:], Closure body) {
     }
   }
 }
+// def mavenNode(Map params = [:], Closure body) {
+//   def attempt = 0
+//   def attempts = 6
+//   retry(count: attempts, conditions: [kubernetesAgent(handleNonKubernetes: true), nonresumable()]) {
+//     echo 'Attempt ' + ++attempt + ' of ' + attempts
+//     // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
+//     node('maven-bom') {
+//       timeout(120) {
+//         mavenEnv(params, body)
+//       }
+//     }
+//   }
+// }
+
+// def mavenEnv(Map params = [:], Closure body) {
+//   withChecks(name: 'Tests', includeStage: true) {
+//     infra.withArtifactCachingProxy {
+//       withEnv([
+//         'JAVA_HOME=/opt/jdk-' + params['jdk'],
+//         'PATH+JDK=/opt/jdk-' + params['jdk'] + '/bin',
+//         "MAVEN_ARGS=${env.MAVEN_ARGS != null ? env.MAVEN_ARGS : ''} -B ${env.MAVEN_NTP != null ? '-ntp' : ''} -Dmaven.repo.local=${env.WORKSPACE_TMP}/m2repo",
+//         "MVN_LOCAL_REPO=${env.WORKSPACE_TMP}/m2repo",
+//       ]) {
+//         infra.loadMavenLocalCacheIfAny(env.MVN_LOCAL_REPO)
+
+//         body()
+//       }
+//     }
+//     try {
+//       if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount > 0) {
+//         unstable('Some test failures, marking the build as unstable')
+//       }
+//     } catch(e) {}
+//   }
+// }
 
 def copyArtifactsFromAnyPreviousBuild(archiveName, jobName) {
   def foundInBuildNumber = 0
@@ -259,6 +294,7 @@ mavenEnv(jdk: 21) {
           echo "  - ${it.name}: ${it.plugins} (${it.duration})"
         }
       }
+      // TODO: if there is a time for a repo-line but not repo-anotherLine, use that first time as default estimation
     }
     sh "cat ${reportName}.txt || true"
   }
