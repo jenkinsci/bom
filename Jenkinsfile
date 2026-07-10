@@ -67,7 +67,11 @@ def MAX_SPLITS = 10
 
 stage ('debug') {
   def splits = splitTests parallelism: count(MAX_SPLITS), stage: 'duration report'
-  echo "${splits}"
+  echo "splits.size(): ${splits.size()}"
+  splits.eachWithIndex { split, idx ->
+    echo "splits[${idx}].size(): ${split.size()}"
+    echo "splits[${idx}]: ${split}"
+  }
 }
 
 stage('prep') {
