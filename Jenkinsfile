@@ -145,14 +145,14 @@ def splitReports(List items, int maxSplits) {
   return buckets
 }
 
-stage ('debug') {
-  def splits = splitTests parallelism: count(MAX_SPLITS), stage: 'results report'
-  echo "splits.size(): ${splits.size()}"
-  splits.eachWithIndex { split, idx ->
-    echo "splits[${idx}].size(): ${split.size()}"
-    echo "splits[${idx}]: ${split}"
-  }
-}
+// stage ('debug splitTests') {
+//   def splits = splitTests parallelism: count(MAX_SPLITS), stage: 'results report'
+//   echo "splits.size(): ${splits.size()}"
+//   splits.eachWithIndex { split, idx ->
+//     echo "splits[${idx}].size(): ${split.size()}"
+//     echo "splits[${idx}]: ${split}"
+//   }
+// }
 
 stage('prep') {
   mavenEnv(jdk: 21) {
