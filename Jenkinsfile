@@ -158,7 +158,8 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
       return
     }
     pluginsByRepository.each { repository, plugins ->
-      branches["pct-$repository-$line"] = {
+      def branchName = "${repository}_${line.replaceAll('\\.', '-')}"
+      branches[branchName] = {
         def jdk = line == 'weekly' || line == '2.555.x' ? 21 : 17
         mavenEnv(jdk: jdk) {
           unstash line
@@ -181,7 +182,9 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
               }
             } finally {
               def elapsed = System.currentTimeMillis() - start
-              durations["pct-$repository-$line"] = (elapsed / 1000.0)
+              durations[branchName] = [:]
+              durations[branchName]['duration'] = (elapsed / 1000.0)
+              durations[branchName]['failed'] = junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount > 0
             }
           }
         }
@@ -193,9 +196,11 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
     node('maven-bom') {
       Double totalTime = 0
       def reportLines = ''
-      durations.each { branch, time ->
-        totalTime += time as Double
-        reportLines += '<testcase name="' + branch + '" classname="pct-duration.' + branch + '" time="' + time + '"/>\n'
+      durations.each { branch, result ->
+        Double time = result['duration']
+        def failed = result['failed']
+        totalTime += time
+        reportLines += '<testcase name="' + branch + '" classname="pct-duration.' + branch + '" time="' + time + '" failed="' + failed + '"/>\n'
       }
       if (reportLines) {
         def content = """<?xml version="1.0" encoding="UTF-8"?>
