@@ -79,20 +79,17 @@ stage('prep') {
     def archiveGlob = 'pct.sh excludes.txt bom-*/excludes.txt target/pct.jar target/plugins.txt target/lines.txt'
 
     copyArtifacts(
-      projectName: env.JOB_NAME,
-      selector: lastWithArtifacts(),
-      filter: archiveName,
-      fingerprintArtifacts: true,
-      optional: true,
-    )
+        projectName: env.JOB_NAME,
+        selector: lastWithArtifacts(),
+        filter: archiveName,
+        fingerprintArtifacts: true,
+        optional: true,
+        )
     archiveExists = fileExists(archiveName)
 
     if (!archiveExists) {
       echo "Cache miss for ${archiveName}"
-      withEnv([
-        'SAMPLE_PLUGIN_OPTS=-Dset.changelist',
-        "ARCHIVE_NAME=${archiveName}",
-      ]) {
+      withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist', "ARCHIVE_NAME=${archiveName}",]) {
         sh '''
         mvn -v
         bash prep.sh
@@ -137,14 +134,11 @@ stage('prep') {
     }
     echo archiveGlob
     if (!archiveExists) {
-        // Prepare prep archive
-        withEnv([
-          "ARCHIVE_NAME=${archiveName}",
-          "ARCHIVE_GLOB=${archiveGlob}",
-        ]) {
-          sh 'tar czfv "${ARCHIVE_NAME}" "${ARCHIVE_GLOB}"'
-          archiveArtifacts artifacts: archiveName, fingerprint: true
-        }
+      // Prepare prep archive
+      withEnv(["ARCHIVE_NAME=${archiveName}", "ARCHIVE_GLOB=${archiveGlob}",]) {
+        sh 'tar czfv "${ARCHIVE_NAME}" "${ARCHIVE_GLOB}"'
+        archiveArtifacts artifacts: archiveName, fingerprint: true
+      }
     }
   }
 }
