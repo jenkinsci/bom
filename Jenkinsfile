@@ -178,6 +178,7 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
               durations[branchName] = [:]
               durations[branchName]['duration'] = (elapsed / 1000.0)
               durations[branchName]['failed'] = junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount > 0
+              echo duration[branchName]
             }
           }
         }
