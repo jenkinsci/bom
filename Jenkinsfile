@@ -7,7 +7,7 @@ if(env.BRANCH_NAME == "master") {
 env.MAVEN_NTP = true
 
 properties([
-  disableConcurrentBuilds(abortPrevious: true),
+  // disableConcurrentBuilds(abortPrevious: true),
   buildDiscarder(logRotator(numToKeepStr: '7')),
   pipelineTriggers([cron(cronTrigger)])
 ])
