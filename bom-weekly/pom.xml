@@ -963,7 +963,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>credentials-binding</artifactId>
-        <version>725.ve52b_2328a_fde</version>
+        <version>728.v902a_273b_8947</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
