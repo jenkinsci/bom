@@ -70,13 +70,15 @@ def copyArtifactsFromAnyPreviousBuild(archiveName, jobName) {
     def limit = jobName.endsWith('master') ? buildNumber - 10 : 0
     while (!archiveExists && checkBuildNumber > limit) {
       echo "Trying to retrieve prep archive from buid #${checkBuildNumber}..."
-      copyArtifacts(projectName: jobName,
-      selector: specific("${checkBuildNumber}"),
-      filter: archiveName,
-      fingerprintArtifacts: true,
-      optional: true,
-      )
-      archiveExists = fileExists(archiveName)
+      try {
+        copyArtifacts(projectName: jobName,
+        selector: specific("${checkBuildNumber}"),
+        filter: archiveName,
+        fingerprintArtifacts: true,
+        optional: false,
+        )
+        archiveExists = true
+      } catch(e) {}
       if (!archiveExists) {
         checkBuildNumber = checkBuildNumber - 1
       }
