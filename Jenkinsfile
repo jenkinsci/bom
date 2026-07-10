@@ -117,7 +117,7 @@ stage('prep') {
       def plugins = [
         'jenkinsci/aws-credentials-plugin	aws-credentials',
         'jenkinsci/aws-global-configuration-plugin	aws-global-configuration',
-        'jenkinsci/aws-java-sdk-plugin	aws-java-sdk-api-gateway,aws-java-sdk-autoscaling,aws-java-sdk-cloudformation,aws-java-sdk-cloudfront,aws-java-sdk-cloudwatch,aws-java-sdk-codebuild,aws-java-sdk-codedeploy,aws-java-sdk-ec2,aws-java-sdk-ecr,aws-java-sdk-ecs,aws-java-sdk-efs,aws-java-sdk-elasticbeanstalk,aws-java-sdk-elasticloadbalancingv2,aws-java-sdk-iam,aws-java-sdk-kinesis,aws-java-sdk-lambda,aws-java-sdk-logs,aws-java-sdk-minimal,aws-java-sdk-organizations,aws-java-sdk-secretsmanager,aws-java-sdk-sns,aws-java-sdk-sqs,aws-java-sdk-ssm',
+        'jenkinsci/pipeline-maven-plugin	pipeline-maven,pipeline-maven-api,pipeline-maven-database',
         'jenkinsci/azure-credentials-plugin	azure-credentials',
         'jenkinsci/azure-keyvault-plugin	azure-keyvault',
         'jenkinsci/azure-sdk-plugin	azure-sdk',
@@ -125,8 +125,6 @@ stage('prep') {
         'jenkinsci/azure-vm-agents-plugin	azure-vm-agents',
         'jenkinsci/badge-plugin	badge',
         'jenkinsci/basic-branch-build-strategies-plugin	basic-branch-build-strategies',
-        'jenkinsci/bitbucket-branch-source-plugin	cloudbees-bitbucket-branch-source',
-        'jenkinsci/pipeline-model-definition-plugin	pipeline-model-api,pipeline-model-definition,pipeline-model-extensions,pipeline-stage-tags-metadata',
       ]
       pluginsByRepository = parsePlugins(plugins)
 
