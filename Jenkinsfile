@@ -181,6 +181,7 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
                 throw e
               }
             } finally {
+              archiveArtifacts artifacts: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml'
               def elapsed = System.currentTimeMillis() - start
               durations[branchName] = [:]
               durations[branchName]['duration'] = (elapsed / 1000.0)
