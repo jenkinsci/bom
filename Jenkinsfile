@@ -112,11 +112,13 @@ def parseReport(String content) {
     def name = parts[0]
     Double duration = parts[1].toDouble()
     int failures = parts[2].toInteger()
+    def plugins = parts[3]
 
     [
       name: name,
       duration: duration,
-      failures: failures
+      failures: failures,
+      plugins: plugins,
     ]
   }
 }
@@ -360,7 +362,7 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
       writeFile file: "${reportName}.json", text: contentJson
 
       def reportLinesTxt = results.collect { branch, result ->
-        "${branch}:${result['elapsed']}:${result['failCount']}"
+        "${branch}:${result['elapsed']}:${result['failCount']}:${result['plugins']}"
       }.join('\n')
       writeFile file: "${reportName}.txt", text: reportLinesTxt
 
