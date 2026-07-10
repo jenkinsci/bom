@@ -357,18 +357,9 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
       }.join('\n')
       writeFile file: "${reportName}.txt", text: reportLinesTxt
 
-      try {
-        def serialized = serialize(results)
-        echo serialized
-        writeFile file: "${reportName}.log", text: serialized
-      } catch(e) {
-        echo "error: ${e}"
-      }
-
       sh "cat ${reportName}.xml || true"
       sh "cat ${reportName}.json || true"
       sh "cat ${reportName}.txt || true"
-      sh "cat ${reportName}.log || true"
       archiveArtifacts artifacts: "${reportName}.*", allowEmpty: true
     }
   }
