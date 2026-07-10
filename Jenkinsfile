@@ -6,7 +6,7 @@ if(env.BRANCH_NAME == "master") {
 
 env.MAVEN_NTP = true
 def MAX_SPLITS = 10
-def limitedPluginSet = false
+def limitedPluginSet = pullRequest.labels.contains('limited-plugin-set')
 def reportName = 'bom-report'
 def pluginsByRepository
 def lines
@@ -154,112 +154,113 @@ def splitReports(List items, int maxSplits) {
 //   }
 // }
 
-stage('prep') {
-  mavenEnv(jdk: 21) {
-    def scmVars = checkout scm
-    // Ensure prep archive corresponds to the current state
-    def prepArchiveName = "bom-prep-${scmVars.GIT_COMMIT}.tar.gz"
-    def prepArchiveExists = false
-    def prepArchiveGlob = 'pct.sh excludes.txt bom-*/excludes.txt target/pct.jar target/plugins.txt target/lines.txt'
-    def prepFoundInBuildNumber = 0
-    def reportprepFoundInBuildNumber = 0
+mavenEnv(jdk: 21) {
+  def scmVars = checkout scm
+  // Ensure prep archive corresponds to the current state
+  def prepArchiveName = "bom-prep-${scmVars.GIT_COMMIT}.tar.gz"
+  def prepArchiveExists = false
+  def prepArchiveGlob = 'pct.sh excludes.txt bom-*/excludes.txt target/pct.jar target/plugins.txt target/lines.txt'
+  def prepFoundInBuildNumber = 0
+  def reportprepFoundInBuildNumber = 0
 
-    stage('search prep') {
-      prepFoundInBuildNumber = copyArtifactsFromAnyPreviousBuild(prepArchiveName, env.JOB_NAME)
+  stage('search prep') {
+    prepFoundInBuildNumber = copyArtifactsFromAnyPreviousBuild(prepArchiveName, env.JOB_NAME)
+  }
+
+  stage('prep') {
+    if (prepFoundInBuildNumber == 0) {
+      withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist', "ARCHIVE_NAME=${prepArchiveName}",]) {
+        sh '''
+        mvn -v
+        bash prep.sh
+        '''
+        // Publish incrementals before prep archive preparation to avoid dirty git status
+        infra.prepareToPublishIncrementals()
+      }
+    } else {
+      withEnv(["ARCHIVE_NAME=${prepArchiveName}"]) {
+        sh '''
+        tar xzfv "${ARCHIVE_NAME}"
+        rm "${ARCHIVE_NAME}"
+        '''
+        echo "INFO: ${prepArchiveName} retrieved from build #${prepFoundInBuildNumber}"
+      }
     }
+  }
 
-    stage('prep.sh') {
-      if (prepFoundInBuildNumber == 0) {
-        withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist', "ARCHIVE_NAME=${prepArchiveName}",]) {
-          sh '''
-          mvn -v
-          bash prep.sh
-          '''
-          // Publish incrementals before prep archive preparation to avoid dirty git status
-          infra.prepareToPublishIncrementals()
-        }
+  stage('parse prep') {
+    fullTestMarkerFile = fileExists 'full-test'
+    weeklyTestMarkerFile = fileExists 'weekly-test'
+    dir('target') {
+      def plugins = []
+      if (limitedPluginSet) {
+        // TODO: check why unstable seems to break pipeline graph view
+        // unstable('WARNING: running on a limited set of plugins')
+        echo('WARNING: running on a limited set of plugins')
+        plugins = [
+          'jenkinsci/aws-credentials-plugin	aws-credentials',
+          'jenkinsci/aws-global-configuration-plugin	aws-global-configuration',
+          'jenkinsci/azure-credentials-plugin	azure-credentials',
+          'jenkinsci/azure-keyvault-plugin	azure-keyvault',
+          'jenkinsci/azure-sdk-plugin	azure-sdk',
+          'jenkinsci/azure-storage-plugin	windows-azure-storage',
+          'jenkinsci/azure-vm-agents-plugin	azure-vm-agents',
+          'jenkinsci/badge-plugin	badge',
+          'jenkinsci/basic-branch-build-strategies-plugin	basic-branch-build-strategies',
+          'jenkinsci/pipeline-maven-plugin	pipeline-maven,pipeline-maven-api,pipeline-maven-database',
+        ]
       } else {
-        withEnv(["ARCHIVE_NAME=${prepArchiveName}"]) {
-          sh '''
-          tar xzfv "${ARCHIVE_NAME}"
-          rm "${ARCHIVE_NAME}"
-          '''
-          echo "INFO: ${prepArchiveName} retrieved from build #${prepFoundInBuildNumber}"
+        plugins = readFile('plugins.txt').split('\n')
+      }
+      pluginsByRepository = parsePlugins(plugins)
+
+      lines = readFile('lines.txt').split('\n')
+      lines = [lines[0], lines[-1]] // Save resources by running PCT only on newest and oldest lines
+    }
+    lines.each { line ->
+      stash name: line, includes: "pct.sh,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-${line}.war"
+      prepArchiveGlob += " target/megawar-${line}.war"
+    }
+    def from = limitedPluginSet ? 'a limited set of plugins' : 'plugins.txt'
+    echo "INFO: ${pluginsByRepository.size()} repositories retrieved from ${from}"
+    echo "INFO: ${lines.size()} lines retrieved from plugins.txt"
+  }
+
+  stage('archive prep') {
+    if (prepFoundInBuildNumber == 0) {
+      // Prepare prep archive
+      withEnv(["ARCHIVE_NAME=${prepArchiveName}", "ARCHIVE_GLOB=${prepArchiveGlob}",]) {
+        sh 'tar czfv "${ARCHIVE_NAME}" ${ARCHIVE_GLOB}'
+        archiveArtifacts artifacts: prepArchiveName, fingerprint: true
+        echo "INFO: new ${prepArchiveName} archived"
+      }
+    } else {
+      echo "INFO: no new prep to archive"
+    }
+  }
+
+  stage('search previous report') {
+    reportprepFoundInBuildNumber = copyArtifactsFromAnyPreviousBuild("${reportName}.txt", env.JOB_NAME)
+    // If not found in current build fallback to master
+    if (reportprepFoundInBuildNumber == 0) {
+      // TODO: use a direct copyArtifact with an appropriate selector? (lastSuccessful(), lastArchived(), etc.)
+      reportprepFoundInBuildNumber = copyArtifactsFromAnyPreviousBuild("${reportName}.txt", 'Tools/bom/master')
+    }
+  }
+
+  stage('splits') {
+    if (reportprepFoundInBuildNumber > 0) {
+      def content = readFile("${reportName}.txt")
+      def tests = parseReport(content)
+      def buckets = splitReports(tests, MAX_SPLITS)
+      buckets.eachWithIndex { bucket, i ->
+        echo "Split #${i} (total: ${bucket.total})"
+        bucket.items.each {
+          echo "  - ${it.name}: ${it.plugins} (${it.duration})"
         }
       }
     }
-
-    stage('archive prep') {
-      if (prepFoundInBuildNumber == 0) {
-        // Prepare prep archive
-        withEnv(["ARCHIVE_NAME=${prepArchiveName}", "ARCHIVE_GLOB=${prepArchiveGlob}",]) {
-          sh 'tar czfv "${ARCHIVE_NAME}" ${ARCHIVE_GLOB}'
-          archiveArtifacts artifacts: prepArchiveName, fingerprint: true
-          echo "INFO: new ${prepArchiveName} archived"
-        }
-      } else {
-        echo "INFO: no new prep to archive"
-      }
-    }
-
-    stage('search previous report') {
-      reportprepFoundInBuildNumber = copyArtifactsFromAnyPreviousBuild("${reportName}.txt", env.JOB_NAME)
-      // If not found in current build fallback to master
-      if (reportprepFoundInBuildNumber == 0) {
-        // TODO: use a direct copyArtifact with an appropriate selector? (lastSuccessful(), lastArchived(), etc.)
-        reportprepFoundInBuildNumber = copyArtifactsFromAnyPreviousBuild("${reportName}.txt", 'Tools/bom/master')
-      }
-    }
-
-    stage('split report') {
-      if (reportprepFoundInBuildNumber > 0) {
-        def content = readFile("${reportName}.txt")
-        def tests = parseReport(content)
-        def buckets = splitReports(tests, MAX_SPLITS)
-        buckets.eachWithIndex { bucket, i ->
-          echo "Split #${i} (total: ${bucket.total})"
-          bucket.items.each {
-            echo "  - ${it.name} (${it.duration})"
-          }
-        }
-      }
-      sh "cat ${reportName}.txt || true"
-    }
-
-    stage('parse prep') {
-      fullTestMarkerFile = fileExists 'full-test'
-      weeklyTestMarkerFile = fileExists 'weekly-test'
-      dir('target') {
-        def plugins = []
-        if (limitedPluginSet || pullRequest.labels.contains('limited-plugin-set')) {
-          // TODO: check why unstable seems to break pipeline graph view
-          // unstable('WARNING: running on a limited set of plugins')
-          echo('WARNING: running on a limited set of plugins')
-          plugins = [
-            'jenkinsci/aws-credentials-plugin	aws-credentials',
-            'jenkinsci/aws-global-configuration-plugin	aws-global-configuration',
-            'jenkinsci/azure-credentials-plugin	azure-credentials',
-            'jenkinsci/azure-keyvault-plugin	azure-keyvault',
-            'jenkinsci/azure-sdk-plugin	azure-sdk',
-            'jenkinsci/azure-storage-plugin	windows-azure-storage',
-            'jenkinsci/azure-vm-agents-plugin	azure-vm-agents',
-            'jenkinsci/badge-plugin	badge',
-            'jenkinsci/basic-branch-build-strategies-plugin	basic-branch-build-strategies',
-            'jenkinsci/pipeline-maven-plugin	pipeline-maven,pipeline-maven-api,pipeline-maven-database',
-          ]
-        } else {
-          plugins = readFile('plugins.txt').split('\n')
-        }
-        pluginsByRepository = parsePlugins(plugins)
-
-        lines = readFile('lines.txt').split('\n')
-        lines = [lines[0], lines[-1]] // Save resources by running PCT only on newest and oldest lines
-      }
-      lines.each { line ->
-        stash name: line, includes: "pct.sh,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-${line}.war"
-        prepArchiveGlob += " target/megawar-${line}.war"
-      }
-    }
+    sh "cat ${reportName}.txt || true"
   }
 }
 
