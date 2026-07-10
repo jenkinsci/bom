@@ -6,6 +6,7 @@ if(env.BRANCH_NAME == "master") {
 
 env.MAVEN_NTP = true
 def MAX_SPLITS = 10
+def limitedPluginSet = false
 def reportName = 'bom-report'
 def pluginsByRepository
 def lines
@@ -227,20 +228,24 @@ stage('prep') {
       fullTestMarkerFile = fileExists 'full-test'
       weeklyTestMarkerFile = fileExists 'weekly-test'
       dir('target') {
-        // def plugins = readFile('plugins.txt').split('\n')
-        // TODO: for debug, remove before merging
-        def plugins = [
-          'jenkinsci/aws-credentials-plugin	aws-credentials',
-          'jenkinsci/aws-global-configuration-plugin	aws-global-configuration',
-          'jenkinsci/azure-credentials-plugin	azure-credentials',
-          'jenkinsci/azure-keyvault-plugin	azure-keyvault',
-          'jenkinsci/azure-sdk-plugin	azure-sdk',
-          'jenkinsci/azure-storage-plugin	windows-azure-storage',
-          'jenkinsci/azure-vm-agents-plugin	azure-vm-agents',
-          'jenkinsci/badge-plugin	badge',
-          'jenkinsci/basic-branch-build-strategies-plugin	basic-branch-build-strategies',
-          'jenkinsci/pipeline-maven-plugin	pipeline-maven,pipeline-maven-api,pipeline-maven-database',
-        ]
+        def plugins = []
+        if (limitedPluginSet || pullRequest.labels.contains('limited-plugin-set')) {
+          echo "WARNING: running on a limited set of plugins"
+          plugins = [
+            'jenkinsci/aws-credentials-plugin	aws-credentials',
+            'jenkinsci/aws-global-configuration-plugin	aws-global-configuration',
+            'jenkinsci/azure-credentials-plugin	azure-credentials',
+            'jenkinsci/azure-keyvault-plugin	azure-keyvault',
+            'jenkinsci/azure-sdk-plugin	azure-sdk',
+            'jenkinsci/azure-storage-plugin	windows-azure-storage',
+            'jenkinsci/azure-vm-agents-plugin	azure-vm-agents',
+            'jenkinsci/badge-plugin	badge',
+            'jenkinsci/basic-branch-build-strategies-plugin	basic-branch-build-strategies',
+            'jenkinsci/pipeline-maven-plugin	pipeline-maven,pipeline-maven-api,pipeline-maven-database',
+          ]
+        } else {
+          plugins = readFile('plugins.txt').split('\n')
+        }
         pluginsByRepository = parsePlugins(plugins)
 
         lines = readFile('lines.txt').split('\n')
