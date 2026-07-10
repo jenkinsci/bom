@@ -159,6 +159,7 @@ stage('prep') {
     def prepArchiveExists = false
     def prepArchiveGlob = 'pct.sh excludes.txt bom-*/excludes.txt target/pct.jar target/plugins.txt target/lines.txt'
     def prepFoundInBuildNumber = 0
+    def reportprepFoundInBuildNumber = 0
 
     stage('search prep') {
       prepFoundInBuildNumber = copyArtifactsFromAnyPreviousBuild(prepArchiveName, env.JOB_NAME)
@@ -185,13 +186,29 @@ stage('prep') {
       }
     }
 
-    stage('search bom reports') {
-      def reportprepFoundInBuildNumber = copyArtifactsFromAnyPreviousBuild("${reportName}.txt", env.JOB_NAME)
+    stage('archive prep') {
+      if (prepFoundInBuildNumber == 0) {
+        // Prepare prep archive
+        withEnv(["ARCHIVE_NAME=${prepArchiveName}", "ARCHIVE_GLOB=${prepArchiveGlob}",]) {
+          sh 'tar czfv "${ARCHIVE_NAME}" ${ARCHIVE_GLOB}'
+          archiveArtifacts artifacts: prepArchiveName, fingerprint: true
+          echo "INFO: new ${prepArchiveName} archived"
+        }
+      } else {
+        echo "INFO: no new prep to archive"
+      }
+    }
+
+    stage('search previous report') {
+      reportprepFoundInBuildNumber = copyArtifactsFromAnyPreviousBuild("${reportName}.txt", env.JOB_NAME)
       // If not found in current build fallback to master
       if (reportprepFoundInBuildNumber == 0) {
         // TODO: use a direct copyArtifact with an appropriate selector? (lastSuccessful(), lastArchived(), etc.)
         reportprepFoundInBuildNumber = copyArtifactsFromAnyPreviousBuild("${reportName}.txt", 'Tools/bom/master')
       }
+    }
+
+    stage('split report') {
       if (reportprepFoundInBuildNumber > 0) {
         def content = readFile("${reportName}.txt")
         def tests = parseReport(content)
@@ -206,7 +223,7 @@ stage('prep') {
       sh "cat ${reportName}.txt || true"
     }
 
-    stage('parse prep results') {
+    stage('parse prep') {
       fullTestMarkerFile = fileExists 'full-test'
       weeklyTestMarkerFile = fileExists 'weekly-test'
       dir('target') {
@@ -232,14 +249,6 @@ stage('prep') {
       lines.each { line ->
         stash name: line, includes: "pct.sh,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-${line}.war"
         prepArchiveGlob += " target/megawar-${line}.war"
-      }
-      if (prepFoundInBuildNumber == 0) {
-        // Prepare prep archive
-        withEnv(["ARCHIVE_NAME=${prepArchiveName}", "ARCHIVE_GLOB=${prepArchiveGlob}",]) {
-          sh 'tar czfv "${ARCHIVE_NAME}" ${ARCHIVE_GLOB}'
-          archiveArtifacts artifacts: prepArchiveName, fingerprint: true
-          echo "INFO: new ${prepArchiveName} archived"
-        }
       }
     }
   }
