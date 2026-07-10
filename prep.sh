@@ -14,7 +14,7 @@ echo "${LINEZ}" >target/lines.txt
 rebuild=false
 for LINE in $LINEZ; do
 	if $rebuild; then
-		mvn -f sample-plugin -Djenkins.test.timeout=360 clean package ${SAMPLE_PLUGIN_OPTS:-} "-P${LINE}"
+		mvn -f sample-plugin -Djenkins.test.timeout=360 -DskipTests clean package ${SAMPLE_PLUGIN_OPTS:-} "-P${LINE}"
 	else
 		rebuild=true
 		bash prep-pct.sh
