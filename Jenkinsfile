@@ -230,7 +230,9 @@ stage('prep') {
       dir('target') {
         def plugins = []
         if (limitedPluginSet || pullRequest.labels.contains('limited-plugin-set')) {
-          echo "WARNING: running on a limited set of plugins"
+          // TODO: check why unstable seems to break pipeline graph view
+          // unstable('WARNING: running on a limited set of plugins')
+          echo('WARNING: running on a limited set of plugins')
           plugins = [
             'jenkinsci/aws-credentials-plugin	aws-credentials',
             'jenkinsci/aws-global-configuration-plugin	aws-global-configuration',
