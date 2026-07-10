@@ -72,12 +72,42 @@ stage ('debug') {
 
 stage('prep') {
   mavenEnv(jdk: 21) {
-    checkout scm
-    withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist']) {
-      sh '''
-      mvn -v
-      bash prep.sh
-      '''
+    def scmVars = checkout scm
+    // Ensure prep archive corresponds to the current state
+    def archiveName = "bom-prep-${scmVars.GIT_COMMIT}.tar.gz"
+    def archiveExists = false
+    def archiveGlob = 'pct.sh excludes.txt bom-*/excludes.txt target/pct.jar target/plugins.txt target/lines.txt'
+
+    copyArtifacts(
+      projectName: env.JOB_NAME,
+      selector: lastWithArtifacts(),
+      filter: archiveName,
+      fingerprintArtifacts: true,
+      optional: true,
+    )
+    archiveExists = fileExists(archiveName)
+
+    if (!archiveExists) {
+      echo "Cache miss for ${archiveName}"
+      withEnv([
+        'SAMPLE_PLUGIN_OPTS=-Dset.changelist',
+        "ARCHIVE_NAME=${archiveName}",
+      ]) {
+        sh '''
+        mvn -v
+        bash prep.sh
+        '''
+        // Publish incrementals before prep archive preparation to avoid dirty git status
+        infra.prepareToPublishIncrementals()
+      }
+    } else {
+      echo "INFO: prep retrieved from ${archiveName}"
+      withEnv(["ARCHIVE_NAME=${archiveName}"]) {
+        sh '''
+        tar xzfv "${ARCHIVE_NAME}"
+        rm "${ARCHIVE_NAME}"
+        '''
+      }
     }
     fullTestMarkerFile = fileExists 'full-test'
     weeklyTestMarkerFile = fileExists 'weekly-test'
@@ -105,8 +135,19 @@ stage('prep') {
     }
     lines.each { line ->
       stash name: line, includes: "pct.sh,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-${line}.war"
+      archiveGlob += " target/megawar-${line}.war"
     }
-    infra.prepareToPublishIncrementals()
+    echo archiveGlob
+    if (!archiveExists) {
+        // Prepare prep archive
+        withEnv([
+          "ARCHIVE_NAME=${archiveName}",
+          "ARCHIVE_GLOB=${archiveGlob}",
+        ]) {
+          sh 'tar czfv "${ARCHIVE_NAME}" "${ARCHIVE_GLOB}"'
+          archiveArtifacts artifacts: archiveName, fingerprint: true
+        }
+    }
   }
 }
 
