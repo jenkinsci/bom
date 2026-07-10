@@ -136,7 +136,7 @@ stage('prep') {
     if (!archiveExists) {
       // Prepare prep archive
       withEnv(["ARCHIVE_NAME=${archiveName}", "ARCHIVE_GLOB=${archiveGlob}",]) {
-        sh 'tar czfv "${ARCHIVE_NAME}" "${ARCHIVE_GLOB}"'
+        sh 'tar czfv "${ARCHIVE_NAME}" ${ARCHIVE_GLOB}'
         archiveArtifacts artifacts: archiveName, fingerprint: true
       }
     }
