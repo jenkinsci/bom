@@ -436,12 +436,6 @@ mavenNode(jdk: 21) {
     }
   }
 
-  stage('stash prep lines') {
-    lines.each { line ->
-      stash name: line, includes: "pct.sh,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-${line}.war"
-    }
-  }
-
   stage('archive new prep') {
     if (prepFoundInBuildNumber == 0) {
       // Newest and oldest lines only in the prep archive, in case labels change on PR accross builds
@@ -536,6 +530,16 @@ mavenNode(jdk: 21) {
         def batchCombinationNames = combinations.collect { combination, plugins -> combination } as Set
         echo "batchCombinationNames[${batch}]: ${batchCombinationNames.join(' / ')}"
       }
+    }
+  }
+
+  stage('stash prep lines') {
+    if (batches.size() > 0) {
+      lines.each { line ->
+        stash name: line, includes: "pct.sh,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-${line}.war"
+      }
+    } else {
+      echo 'No batch, no need to stash any line'
     }
   }
 }
