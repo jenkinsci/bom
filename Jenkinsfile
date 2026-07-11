@@ -17,7 +17,7 @@ env.MAVEN_NTP = true
 def MAX_SPLITS = 20
 def borkedReport = false // set this to true if the previous report is borked and causes failure
 def reportName = '' // can be overriden
-def reportResults = false
+def reportResults = true
 // TODO: get limited set from a marker file?
 def limitedPluginSet = [
   'jenkinsci/aws-credentials-plugin	aws-credentials',
@@ -509,16 +509,26 @@ mavenNode(jdk: 21) {
         def seen = actualReports.collect { it.name } as Set
 
         // Add missing combinations (no fakeReports needed)
-        def missingReports = allCombinations
+        // def missingReports = allCombinations
+        //   .findAll { !seen.contains(it.key) }
+        //   .collect { combination, plugins ->
+        //     [
+        //       name: combination,
+        //       elapsed: 1.0,
+        //       failures: 0,
+        //       plugins: plugins
+        //     ]
+        //   }
+        def missingReports = fakeReports
           .findAll { !seen.contains(it.key) }
-          .collect { combination, plugins ->
-            [
-              name: combination,
-              elapsed: 1.0,
-              failures: 0,
-              plugins: plugins
-            ]
-          }
+          // .collect { combination, plugins ->
+          //   [
+          //     name: combination,
+          //     elapsed: 1.0,
+          //     failures: 0,
+          //     plugins: plugins
+          //   ]
+          // }
 
         echo "actualReports.size(): ${actualReports.size()}"
         echo "missingReports.size(): ${missingReports.size()}"
@@ -619,7 +629,7 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || ful
             // Note: line is currrently never set to '2.555.x'
             // as we're keeping only the first ('weekly') and the last lines from lines.txt in 'prep' stage
             def jdk = line == 'weekly' || line == '2.555.x' ? 21 : 17
-            echo "combination ${combination}/${totalCombination}: ${combination} (plugins: ${plugins})"
+            echo "INFO: combination ${combinationCount}/${totalCombination}: ${combination} (plugins: ${plugins})"
 
             def combinationAlreadySucceeded = false
             // Check if combination already in results, in case of aborted build due to a reclaimed spot instance for ex
