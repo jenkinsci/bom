@@ -105,7 +105,7 @@ def copyArtifactsFromAnyPreviousBuild(archiveName, jobName) {
     // Don't loop until the first build of master '^^
     def limit = jobName.endsWith('master') ? buildNumber - 10 : 0
     while (!archiveExists && checkBuildNumber > limit) {
-      echo "Trying to retrieve prep archive from buid #${checkBuildNumber}..."
+      echo "Trying to retrieve ${archiveName} from buid #${checkBuildNumber}..."
       try {
         copyArtifacts(projectName: jobName,
         selector: specific("${checkBuildNumber}"),
