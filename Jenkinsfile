@@ -144,15 +144,21 @@ def parseReport(String content) {
 }
 
 @NonCPS
-def splitReports(List items, int maxSplits) {
-  echo "splitReports..."
+def splitReports(List items, int maxSplits, allCombinations) {
+  echo "items.size(): ${items.size()}"
+  // Keep only items whose combination still exists
+  def filteredItems = items.findAll { item ->
+    allCombinations.containsKey(item.name)
+  }
+  echo "filteredItems.size(): ${filteredItems.size()}"
+
   // initialize buckets
   def buckets = (0..<maxSplits).collect {
     [total: 0.0, items: []]
   }
 
   // sort by longest first
-  def sorted = items.sort { -it.duration }
+  def sorted = filteredItems.sort { -it.duration }
 
   sorted.each { item ->
     // pick the bucket with smallest duration
@@ -176,6 +182,7 @@ def getAllCombinations(pluginsByRepository, lines, weeklyOnly, combinationSepara
     def normalizedLine = line.replaceAll('\\.', '-')
     pluginsByRepository.each { repository, plugins ->
       combinations["${repository}${combinationSeparator}${normalizedLine}"] = plugins.join(',')
+      // TODO: alert if repository or plugins isn't valid (a-Z_-)
     }
   }
   combinations
@@ -209,12 +216,10 @@ def getBucketCombinations(buckets, allCombinations) {
     if (!seen.contains(combination)) {
       seen.add(combination)
       def newCombination = "new_${combination}"
-      bucketCombinations[newCombination] = [:]
-      bucketCombinations[newCombination][combination] = allCombinations[combination]
+      bucketCombinations[combination] = [:]
+      bucketCombinations[combination][combination] = allCombinations[combination]
     }
   }
-
-  // TODO: remove what's not in allCombinations
 
   // TODO: do the merge before the splitTest (?)
 
@@ -434,7 +439,7 @@ mavenNode(jdk: 21) {
       def content = readFile("${reportName}.txt")
       previousResults = parseReport(content)
       echo "previousResults: ${previousResults}"
-      def buckets = splitReports(previousResults, MAX_SPLITS)
+      def buckets = splitReports(previousResults, MAX_SPLITS, allCombinations)
       buckets.eachWithIndex { bucket, i ->
         echo "Split #${i} (total: ${bucket.total})"
         bucket.items.each {
