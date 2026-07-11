@@ -304,7 +304,9 @@ def getReportsFromResults(results, combinationSeparator) {
 
   def xmlReportContent
   def reportLines = ''
-  results.each { combination, result ->
+  def sortedResult = results.sort { it }
+  sortedResult.each { combination, result ->
+  // results.each { combination, result ->
     Double elapsed = result['elapsed']
     Double duration = result['duration']
     int failCount = result['failCount']
