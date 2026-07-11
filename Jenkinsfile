@@ -514,6 +514,7 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || ful
                     }
                   } finally {
                     def elapsed = System.currentTimeMillis() - start
+                    def junitResults
                     try {
                       junitResults = junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml')
                     } catch(e) {
