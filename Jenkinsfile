@@ -125,17 +125,27 @@ def parsePlugins(plugins) {
   pluginsByRepository
 }
 
+// old
 @NonCPS
-def parseReport(String content) {
-  content.readLines().collect { line ->
-    def parts = line.trim().split(':')
-    [
-      name: parts[0],
-      elapsed: parts[1].toDouble(),
-      failures: parts[2].toInteger(),
-      plugins: parts[3],
-    ]
+def splitReports(List items, int maxSplits) {
+  echo "splitReports..."
+  // initialize buckets
+  def buckets = (0..<maxSplits).collect {
+    [total: 0.0, items: []]
   }
+
+  // sort by duration DESC (largest first)
+  def sorted = items.sort { -it.elapsed }
+
+  sorted.each { item ->
+    // pick the bucket with smallest total elapsed time
+    def target = buckets.min { it.total }
+
+    target.items << item
+    target.total += item.elapsed
+  }
+
+  return buckets
 }
 
 // @NonCPS
@@ -143,10 +153,11 @@ def parseReport(String content) {
 //   def buckets = [:]
 //   // Keep only items whose combination still exists
 //   def filteredItems = items.findAll { item ->
-//     allCombinations.contains(item.name)
+//     allCombinations.containsKey(item.name)
+//     echo "item: ${item}"
 //   }
-//   if (filteredItems.size()) {
-
+//   if (filteredItems.size() > 0) {
+//     echo "filteredItems: ${filteredItems}"
 //     // initialize buckets
 //     buckets = (0..<maxSplits).collect {
 //       [total: 0.0, items: []]
@@ -163,7 +174,7 @@ def parseReport(String content) {
 //       target.total += item.elapsed
 //     }
 //   }
-//   buckets
+//   return buckets
 // }
 
 // // TODO: check what happens if MAX_SPLITS > repositories
@@ -172,39 +183,39 @@ def parseReport(String content) {
 //   echo "more ${maxSplit} specified than expected"
 // }
 
-// @NonCPS
-def splitReports(List items, int maxSplits, allCombinations) {
-  def buckets = [:]
+// def splitReports(List items, int maxSplits, allCombinations) {
+//   def buckets = [:]
 
-  // Keep only items whose combination still exists
-  def filteredItems = items.findAll { item ->
-    allCombinations.containsKey(item.name)
-  }
+//   // Keep only items whose combination still exists
+//   def filteredItems = items.findAll { item ->
+//     allCombinations.containsKey(item.name)
+//   }
 
-  if (filteredItems.size()) {
-    // initialize buckets
-    buckets = (0..<maxSplits).collect {
-      [total: 0.0, items: []]
-    }
+//   if (filteredItems.size()) {
+//     // initialize buckets
+//     buckets = (0..<maxSplits).collect {
+//       [total: 0.0, items: []]
+//     }
 
-    // sort by longest first
-    def sorted = filteredItems.sort { -it.elapsed }
+//     // sort by longest first
+//     def sorted = filteredItems.sort { -it.elapsed }
 
-    sorted.each { item ->
-      def target = buckets[0]
-      // pick the bucket with smallest elapsed time
-      for (b in buckets) {
-        if (b.total < target.total) {
-          target = b
-        }
-      }
+//     sorted.each { item ->
+//       // pick the bucket with smallest elapsed time
+//       def target = buckets.min { it.total }
+//       // def target = buckets[0]
+//       // for (b in buckets) {
+//       //   if (b.total < target.total) {
+//       //     target = b
+//       //   }
+//       // }
 
-      target.items << item
-      target.total += item.elapsed
-    }
-  }
-  buckets
-}
+//       target.items << item
+//       target.total += item.elapsed
+//     }
+//   }
+//   buckets
+// }
 
 // TODO: replace by args[:]
 @NonCPS
@@ -356,7 +367,7 @@ mavenNode(jdk: 21) {
   def prepFoundInBuildNumber = 0
   def reportprepFoundInBuildNumber = 0
 
-  stage('search prep archive') {
+  stage('retrieve prep archive') {
     prepFoundInBuildNumber = copyArtifactsFromAnyPreviousBuild(prepArchiveName, env.JOB_NAME)
   }
 
@@ -436,7 +447,7 @@ mavenNode(jdk: 21) {
     }
   }
 
-  stage('search report') {
+  stage('retrieve report') {
     // TODO: include commit in reportName? Only in PR and search on master with simple name?
     reportprepFoundInBuildNumber = copyArtifactsFromAnyPreviousBuild("${reportName}.txt", env.JOB_NAME)
     // If not found in current build fallback to master
@@ -488,7 +499,12 @@ mavenNode(jdk: 21) {
       }
       if (reports) {
         echo 'reports'
-        def reportBuckets = splitReports(reports, MAX_SPLITS, allCombinations)
+        echo "reports.size(): ${reports.size()}"
+        def actualReports = reports.findAll { report ->
+          allCombinations.containsKey(report.name)
+        }
+        echo "actualReports.size(): ${actualReports.size()}"
+        def reportBuckets = splitReports(actualReports, MAX_SPLITS, allCombinations)
         echo "reportBuckets.size(): ${reportBuckets.size()}"
         reportBuckets.eachWithIndex { bucket, i ->
           echo "Split #${i} (total: ${bucket.total})"
