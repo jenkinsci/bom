@@ -200,10 +200,13 @@ def getBucketCombinations(buckets, allCombinations) {
   allCombinations.each { combination, plugins ->
     if (!seen.contains(combination)) {
       seen.add(combination)
-      bucketCombinations["new_${combination}"][combination] = allCombinations[combination]
+      def newCombination = "new_${combination}"
+      bucketCombinations[newCombination] = [:]
+      bucketCombinations[newCombination][combination] = allCombinations[combination]
       echo "${combination} added to new"
     }
   }
+}
   echo "seen.size() after completion: ${seen.size()}"
   echo "bucketCombinations.size() after completion: ${bucketCombinations.size()}"
 
