@@ -4,8 +4,8 @@ if(env.BRANCH_NAME == "master") {
   cronTrigger = '57 11 * * 5'
 }
 
-def weeklyTestLabel = pullRequest.labels.contains('weekly-test')
 def fullTestLabel = pullRequest.labels.contains('full-test')
+def weeklyTestLabel = pullRequest.labels.contains('weekly-test')
 def limitedPluginSetLabel = pullRequest.labels.contains('limited-plugin-set')
 
 env.MAVEN_NTP = true
@@ -144,11 +144,11 @@ def splitReports(List items, int maxSplits) {
     [total: 0.0, items: []]
   }
 
-  // sort by duration DESC (largest first)
+  // sort by longest first
   def sorted = items.sort { -it.duration }
 
   sorted.each { item ->
-    // pick the bucket with smallest total duration
+    // pick the bucket with smallest duration
     def target = buckets.min { it.total }
 
     target.items << item
@@ -188,9 +188,6 @@ def getBucketCombinations(buckets, allCombinations) {
       if (!seen.contains(combination)) {
         seen.add(combination)
         bucketCombinations[splitIndex][combination] = allCombinations[combination]
-        echo "${combination} added to ${splitIndex} (plugins: ${it.plugins})"
-      } else {
-        echo "${combination} already seen in a split"
       }
     }
   }
@@ -208,7 +205,6 @@ def getBucketCombinations(buckets, allCombinations) {
   }
   echo "seen.size() after completion: ${seen.size()}"
   echo "bucketCombinations.size() after completion: ${bucketCombinations.size()}"
-  echo "final bucketCombinations: ${bucketCombinations}"
 
   bucketCombinations
 }
@@ -224,7 +220,6 @@ def getResult(junitResults, elapsed, plugins) {
   result['passCount'] = junitResults.passCount
   result['totalCount'] = junitResults.totalCount
   result['duration'] = junitResults.duration
-  echo "result: ${result}"
   result
 }
 
@@ -361,8 +356,8 @@ mavenNode(jdk: 21) {
 
   stage('stash prep lines') {
     lines.each { line ->
-      if (line != 'weekly' && (weeklyTestMarkerFile || env.CHANGE_ID && weeklyTestLabel )) {
-        echo "INFO: not stashing ${line} line as there is a 'weekly-test' label on PR or a marker file"
+      if (line != 'weekly' && (weeklyTestMarkerFile || weeklyTestLabel )) {
+        echo "INFO: not stashing ${line} line as there is a 'weekly-test' label or a marker file"
       } else {
         stash name: line, includes: "pct.sh,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-${line}.war"
       }
@@ -422,7 +417,7 @@ mavenNode(jdk: 21) {
   }
 }
 
-if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env.CHANGE_ID && (fullTestLabel || weeklyTestLabel )) {
+if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || fullTestLabel || weeklyTestLabel ) {
   stage('parallel') {
     def branches = [failFast: false]
 
@@ -470,6 +465,7 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
                   def elapsed = System.currentTimeMillis() - start
                   junitResults = junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml')
                   results[combination] = getResult(junitResults, elapsed, plugins)
+                  echo "results[${combination}]: ${results[combination]}"
                 }
               }
             }
