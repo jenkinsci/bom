@@ -347,6 +347,7 @@ def getReportsFromResults(results, combinationSeparator) {
 
 @NonCPS
 def getBuildDescription(args = [:]) {
+  // TODO: merge user args & default values ala pipeline lib
   def originalDesc = args['description']
   def desc = ''
   def labels = []
@@ -388,8 +389,10 @@ def getBuildDescription(args = [:]) {
 
 def pluginsByRepository
 def lines
-def allCombinations
 def newestAndOldestLines
+def allCombinations
+def reports = [:]
+def fakeReports
 def fullTestMarkerFile
 def weeklyTestMarkerFile
 def results = [:]
@@ -483,7 +486,7 @@ mavenNode(jdk: 21) {
 
       def allLines = readFile('lines.txt').split('\n')
       newestAndOldestLines = [allLines[0], allLines[-1]] // Save resources by running PCT only on newest and oldest lines
-      echo "INFO: ${allLines.size()} retrieved lines from lines.txt: ${allLines.join(' ')} "
+      echo "INFO: ${allLines.size()} lines retrieved from lines.txt: ${allLines.join(' ')} "
 
       // For archival, keep track of newest and oldest lines as PR labels or marker files may change accross builds
       // For stashes, we only care about the lines of the current build
@@ -541,37 +544,10 @@ mavenNode(jdk: 21) {
       // TODO: use a direct copyArtifact with an appropriate selector? (lastSuccessful(), lastArchived(), etc.)
       reportprepFoundInBuildNumber = copyArtifactsFromAnyPreviousBuild("${reportName}.txt", 'Tools/bom/master')
     }
-    sh "cat ${reportName}.txt || true"
-  }
-
-  stage('splits') {
-    // debug
-    def combinationNames = allCombinations.collect { combination, _ -> combination } as Set
-    echo "all combinations: ${combinationNames.join('\n')}"
-
-    def fakeReports = allCombinations.collect { combination, plugins ->
-      [
-        name: combination,
-        elapsed: 0.0001,
-        failures: 0,
-        plugins: plugins
-      ]
-    }
-
-    if (reportprepFoundInBuildNumber == 0 || borkedReport) {
-      echo "INFO: ${reportName}.txt not found or borked, faking balanced splits"
-      def unknownBuckets = splitReports(fakeReports, MAX_SPLITS)
-      unknownBuckets.eachWithIndex { bucket, i ->
-        echo "Split #${i} (total: ${bucket.total})"
-        bucket.items.each {
-          echo " ---> ${it.name}: ${it.plugins} (${it.elapsed})"
-        }
-      }
-      batches = getBatches(unknownBuckets, allCombinations, 'unknown')
-    } else {
-      echo "INFO: ${reportName}.txt found, balancing splits"
+    if (reportprepFoundInBuildNumber > 0) {
+      echo "INFO: ${reportName}.txt found, parsing its content"
       def content = readFile("${reportName}.txt")
-      def reports = content.readLines().collect { line ->
+      reports = content.readLines().collect { line ->
         def parts = line.trim().split(':')
         [
           name: parts[0],
@@ -580,11 +556,27 @@ mavenNode(jdk: 21) {
           plugins: parts[3],
         ]
       }
+    }
+    echo "INFO: ${reports.size()} reports"
+  }
 
-      if (reports) {
-        echo "reports.size(): ${reports.size()}"
+  stage('splits') {
+    def what
 
-        // Keep only valid combinations
+    if (reports.size() == 0 || borkedReport) {
+      echo "INFO: ${reportName}.txt not found, empty or borked, faking reports for all combinations"
+      fakeReports = allCombinations.collect { combination, plugins ->
+        [
+          name: combination,
+          elapsed: 0.0001,
+          failures: 0,
+          plugins: plugins
+        ]
+      }
+      def fakeBuckets = splitReports(fakeReports, MAX_SPLITS)
+      batches += getBatches(fakeBuckets, allCombinations, 'fake')
+    } else {
+        // Keep only current combinations
         def actualReports = reports.findAll {
           allCombinations.containsKey(it.name)
         }
@@ -600,15 +592,17 @@ mavenNode(jdk: 21) {
 
         if (actualReports.size() > 0) {
           def reportBuckets = splitReports(actualReports, MAX_SPLITS)
-          batches = getBatches(reportBuckets, allCombinations, 'report')
+          batches += getBatches(reportBuckets, allCombinations, 'report')
         }
 
         if (missingReports.size() > 0) {
           def missingBuckets = splitReports(missingReports, MAX_SPLITS)
           batches += getBatches(missingBuckets, allCombinations, 'missing')
         }
-      }
     }
+
+    // debug
+    echo "batches.size(): ${batches.size()}"
     batches.each { batch, combinations -> 
       if (combinations.size() == 0) {
         echo "batch: ${batch}"
