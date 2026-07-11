@@ -274,7 +274,7 @@ mavenEnv(jdk: 21) {
     }
   }
 
-  stage('search previous report') {
+  stage("search previous ${reportName}") {
     reportprepFoundInBuildNumber = copyArtifactsFromAnyPreviousBuild("${reportName}.txt", env.JOB_NAME)
     // If not found in current build fallback to master
     if (reportprepFoundInBuildNumber == 0) {
