@@ -388,6 +388,7 @@ def getBuildDescription(args = [:]) {
 
 def pluginsByRepository
 def lines
+def allCombinations
 def newestAndOldestLines
 def fullTestMarkerFile
 def weeklyTestMarkerFile
@@ -476,16 +477,13 @@ mavenNode(jdk: 21) {
       }
       pluginsByRepository = parsePlugins(plugins)
 
-      def allLines = readFile('lines.txt').split('\n')
-      newestAndOldestLines = [allLines[0], allLines[-1]] // Save resources by running PCT only on newest and oldest lines
-
-      // debug
-      sh 'cat plugins.txt || true'
-      sh 'cat lines.txt || true'
-      
       def from = limitedPluginSetLabel ? 'a limited set of plugins' : 'plugins.txt'
       echo "INFO: ${pluginsByRepository.size()} repositories retrieved from ${from}"
-      echo "INFO: lines retrieved from lines.txt: ${allLines.join(' ')} "
+      echo "INFO: retrieved repositories and their plugins:\n${plugins.join('\n')}"
+
+      def allLines = readFile('lines.txt').split('\n')
+      newestAndOldestLines = [allLines[0], allLines[-1]] // Save resources by running PCT only on newest and oldest lines
+      echo "INFO: ${allLines.size()} retrieved lines from lines.txt: ${allLines.join(' ')} "
 
       // For archival, keep track of newest and oldest lines as PR labels or marker files may change accross builds
       // For stashes, we only care about the lines of the current build
@@ -496,6 +494,12 @@ mavenNode(jdk: 21) {
       } else {
         echo "INFO: keeping only newest and oldest lines to save resources: ${lines.join(' ')} "
       }
+
+      // Generating all combinations of repository x lines
+      allCombinations = getAllCombinations(pluginsByRepository, lines, (weeklyTestMarkerFile || weeklyTestLabel), combinationSeparator)
+      echo "allCombinations.size(): ${allCombinations.size()}"
+      def allCombinationNames = allCombinations.collect { combination, _ -> combination } as Set
+      echo "INFO: resulting combinations:\n${allCombinationNames.join('\n')}"
     }
   }
 
@@ -542,8 +546,6 @@ mavenNode(jdk: 21) {
   }
 
   stage('splits') {
-    def allCombinations = getAllCombinations(pluginsByRepository, lines, (weeklyTestMarkerFile || weeklyTestLabel), combinationSeparator)
-    echo "allCombinations.size(): ${allCombinations.size()}"
     // debug
     def combinationNames = allCombinations.collect { combination, _ -> combination } as Set
     echo "all combinations: ${combinationNames.join('\n')}"
