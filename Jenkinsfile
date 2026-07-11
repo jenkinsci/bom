@@ -4,19 +4,23 @@ if(env.BRANCH_NAME == "master") {
   cronTrigger = '57 11 * * 5'
 }
 
-// def fullTestLabel = pullRequest.labels.contains('full-test')
-// def weeklyTestLabel = pullRequest.labels.contains('weekly-test')
-// def limitedPluginSetLabel = pullRequest.labels.contains('limited-plugin-set')
+def fullTestLabel = pullRequest.labels.contains('full-test')
+def weeklyTestLabel = pullRequest.labels.contains('weekly-test')
+def limitedPluginSetLabel = pullRequest.labels.contains('limited-plugin-set')
 
-// Test limited-plugin-set weekly-test
-def fullTestLabel = false
-def weeklyTestLabel = true
-def limitedPluginSetLabel = true
-
-// // Test limited-plugin-set full-test
-// def fullTestLabel = true
-// def weeklyTestLabel = false
-// def limitedPluginSetLabel = true
+def testingCase = ''
+if (testingCase == 'limited-weekly') {
+  currentBuild.description = 'Test limited-plugin-set weekly-test'
+  fullTestLabel = false
+  weeklyTestLabel = true
+  limitedPluginSetLabel = true
+}
+if (testingCase == 'limited-full') {
+  currentBuild.description = 'Test limited-plugin-set full-test'
+  fullTestLabel = true
+  weeklyTestLabel = false
+  limitedPluginSetLabel = true
+}
 
 env.MAVEN_NTP = true
 def MAX_SPLITS = 20
@@ -516,28 +520,7 @@ mavenNode(jdk: 21) {
 
         // Track what we already have
         def seen = actualReports.collect { it.name } as Set
-
-        // Add missing combinations (no fakeReports needed)
-        // def missingReports = allCombinations
-        //   .findAll { !seen.contains(it.key) }
-        //   .collect { combination, plugins ->
-        //     [
-        //       name: combination,
-        //       elapsed: 1.0,
-        //       failures: 0,
-        //       plugins: plugins
-        //     ]
-        //   }
-        def missingReports = fakeReports
-          .findAll { !seen.contains(it.key) }
-          // .collect { combination, plugins ->
-          //   [
-          //     name: combination,
-          //     elapsed: 1.0,
-          //     failures: 0,
-          //     plugins: plugins
-          //   ]
-          // }
+        def missingReports = fakeReports.findAll { !seen.contains(it.key) }
 
         echo "actualReports.size(): ${actualReports.size()}"
         echo "missingReports.size(): ${missingReports.size()}"
@@ -551,60 +534,7 @@ mavenNode(jdk: 21) {
           def missingBuckets = splitReports(missingReports, MAX_SPLITS)
           batches += getBatches(missingBuckets, allCombinations, 'missing')
         }
-        // buckets.eachWithIndex { bucket, i ->
-        //   echo "Split #${i} (total: ${bucket.total})"
-        //   bucket.items.each {
-        //     echo " ---> ${it.name}: ${it.plugins} (${it.elapsed})"
-        //   }
-        // }
       }
-
-
-      // // Mine
-      // def content = readFile("${reportName}.txt")
-      // // def reports = parseReport(content)
-      // def reports = content.readLines().collect { line ->
-      //   def parts = line.trim().split(':')
-      //   [
-      //     name: parts[0],
-      //     elapsed: parts[1].toDouble(),
-      //     failures: parts[2].toInteger(),
-      //     plugins: parts[3],
-      //   ]
-      // }
-      // if (reports) {
-      //   echo 'reports'
-      //   echo "reports.size(): ${reports.size()}"
-      //   def actualReports = reports.findAll { report ->
-      //     allCombinations.containsKey(report.name)
-      //   }
-      //   echo "actualReports.size(): ${actualReports.size()}"
-      //   def reportBuckets = splitReports(actualReports, MAX_SPLITS, allCombinations)
-      //   echo "reportBuckets.size(): ${reportBuckets.size()}"
-      //   reportBuckets.eachWithIndex { bucket, i ->
-      //     echo "Split #${i} (total: ${bucket.total})"
-      //     bucket.items.each {
-      //       echo " ---> ${it.name}: ${it.plugins} (${it.elapsed})"
-      //     }
-      //   }
-      //   batches = getBatches(reportBuckets, allCombinations, 'reports')
-      // }
-
-      // def previousCombinations = reports.collect { it.name } as Set
-      // def missingReports = fakeReports.findAll { item -> !previousCombinations.contains(item.name) }
-
-      // if (missingReports) {
-      //   echo 'missingReports'
-      //   def missingBuckets = splitReports(missingReports, MAX_SPLITS, allCombinations)
-      //   echo "missingBuckets.size(): ${missingBuckets.size()}"
-      //   missingBuckets.eachWithIndex { bucket, i ->
-      //     echo "Split #${i} (total: ${bucket.total})"
-      //     bucket.items.each {
-      //       echo " ---> ${it.name}: ${it.plugins} (${it.elapsed})"
-      //     }
-      //   }
-      //   batches += getBatches(missingBuckets, allCombinations, 'missing')
-      // }
     }
   }
 }
