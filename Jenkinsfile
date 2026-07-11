@@ -206,7 +206,7 @@ def getBucketCombinations(buckets, allCombinations) {
       echo "${combination} added to new"
     }
   }
-}
+
   echo "seen.size() after completion: ${seen.size()}"
   echo "bucketCombinations.size() after completion: ${bucketCombinations.size()}"
 
