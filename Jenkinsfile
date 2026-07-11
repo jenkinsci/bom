@@ -9,7 +9,7 @@ def fullTestLabel = pullRequest.labels.contains('full-test')
 def limitedPluginSetLabel = pullRequest.labels.contains('limited-plugin-set')
 
 env.MAVEN_NTP = true
-def MAX_SPLITS = 10
+def MAX_SPLITS = 5
 def reportName = '' // can be overriden
 // TODO: get limited set from a marker file?
 def limitedPluginSet = [
