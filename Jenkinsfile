@@ -492,7 +492,7 @@ mavenNode(jdk: 21) {
     def fakeReports = allCombinations.collect { combination, plugins ->
       [
         name: combination,
-        elapsed: 1.0,
+        elapsed: 0.0001,
         failures: 0,
         plugins: plugins
       ]
