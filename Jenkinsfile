@@ -545,6 +545,7 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || ful
                     }
                     results[combination] = getResult(junitResults, elapsed, plugins)
                     try {
+                      // TODO: review, KO (always = 6)
                       results[combination]['attempt'] = env.CURRENT_ATTEMPT
                     } catch(e) {
                       echo "error result attemtp: ${e}"
