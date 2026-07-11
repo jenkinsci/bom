@@ -223,11 +223,19 @@ def getResult(junitResults, elapsed, plugins) {
   result['elapsed'] = (elapsed / 1000.0)
   result['plugins'] = plugins
   result['pluginCount'] = plugins.count(',')
-  result['failCount'] = junitResults.failCount
-  result['skipCount'] = junitResults.skipCount
-  result['passCount'] = junitResults.passCount
-  result['totalCount'] = junitResults.totalCount
-  result['duration'] = junitResults.duration
+  if (junitResults) {
+    result['failCount'] = junitResults.failCount
+    result['skipCount'] = junitResults.skipCount
+    result['passCount'] = junitResults.passCount
+    result['totalCount'] = junitResults.totalCount
+    result['duration'] = junitResults.duration
+  } else {
+    result['failCount'] = 0
+    result['skipCount'] = 0
+    result['passCount'] = 0
+    result['totalCount'] = 0
+    result['duration'] = 0
+  }
   result
 }
 
@@ -499,16 +507,23 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || ful
                     }
                   } finally {
                     def elapsed = System.currentTimeMillis() - start
-                    junitResults = junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml')
+                    try {
+                      junitResults = junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml')
+                    } catch(e) {
+                      echo "error junitResult: ${e}"
+                    }
                     results[combination] = getResult(junitResults, elapsed, plugins)
                     try {
                       results[combination]['attempt'] = env.CURRENT_ATTEMPT
-                    } catch(e) {}
+                    } catch(e) {
+                      echo "error result attemtp: ${e}"
+                    }
                     echo "results[${combination}]: ${results[combination]}"
                   }
                 }
               }
             }
+            combinationCount = combinationCount + 1
           }
         }
       }
