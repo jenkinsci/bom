@@ -362,7 +362,7 @@ def getBuildDescription(args = [:]) {
   if (markers.size() > 0) { elts.add("<b>markers</b>:${markers.join(',')}") }
   if (args['testingCase']) { elts.add("<b>test</b>:${args['testingCase']}") }
   if (elts.size() > 0) { desc = '<i><small>' + elts.join('<br>') + '</small></i>' }
-  if (originalDesc) { desc = (originalDesc + '<hr>' + desc).trim() }
+  if (originalDesc) { desc = (originalDesc + '<br>' + desc).trim() }
   return desc
 }
 
