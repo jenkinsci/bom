@@ -296,9 +296,15 @@ mavenNode(jdk: 21) {
   // Report name depending on labels and marker files, by order of prevalence
   // or reportName if not empty
   if (!reportName) {
-    if (fullTestLabel || fullTestMarkerFile) { reportName = 'bom-report-full' }
-    if (weeklyTestLabel || weeklyTestMarkerFile) { reportName = 'bom-report-weekly' }
-    if (limitedPluginSetLabel) { reportName = 'bom-report-limited' }
+    if (fullTestLabel || fullTestMarkerFile) {
+      reportName = 'bom-report-full'
+    }
+    if (weeklyTestLabel || weeklyTestMarkerFile) {
+      reportName = 'bom-report-weekly'
+    }
+    if (limitedPluginSetLabel) {
+      reportName = 'bom-report-limited'
+    }
   }
 
   // Ensure prep archive corresponds to the current state
