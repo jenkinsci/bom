@@ -141,7 +141,7 @@ def parseReport(String content) {
 // TODO: check whata happens if MAX_SPLITS > repositories
 @NonCPS
 def splitReports(List items, int maxSplits, allCombinations) {
-  def buckets
+  def buckets = [:]
   echo "items.size(): ${items.size()}"
   // Keep only items whose combination still exists
   def filteredItems = items.findAll { item ->
@@ -166,8 +166,7 @@ def splitReports(List items, int maxSplits, allCombinations) {
       target.total += item.duration
     }
   }
-
-  return buckets
+  buckets
 }
 
 // TODO: replace by args[:]
