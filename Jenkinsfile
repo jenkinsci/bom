@@ -457,32 +457,53 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || ful
             // as we're keeping only the first ('weekly') and the last lines from lines.txt in 'prep' stage
             def jdk = line == 'weekly' || line == '2.555.x' ? 21 : 17
             echo "combination: ${combination} (plugins: ${plugins})"
-            mavenEnv(jdk: jdk) {
-              withEnv([
-                "PLUGINS=${plugins}",
-                "LINE=${line}",
-                'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
-              ]) {
-                def start = System.currentTimeMillis()
+
+            def combinationAlreadySucceeded = false
+            // If combination already in results, in case of aborted build due to a reclaimed spot instance for ex
+            if (results.containsKey(combination)) {
+              def previousFailCount = results[combination]['failCount']
+              def previousElapsed = results[combination]['elapsed']
+              if (previousFailCount == 0) {
+                combinationAlreadySucceeded = true
+                echo "${combination} has already succeeded (elapsed: ${previousElapsed})"
                 try {
-                  sh '''
-                  mvn -v
-                  bash pct.sh
-                  '''
-                } catch (e) {
-                  if (!(e instanceof InterruptedException) && !(e instanceof org.jenkinsci.plugins.workflow.support.steps.AgentOfflineException)) {
-                    unstable('PCT failed in ' + repository + ' - line ' + line)
-                  } else {
-                    throw e
-                  }
-                } finally {
-                  def elapsed = System.currentTimeMillis() - start
-                  junitResults = junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml')
-                  results[combination] = getResult(junitResults, elapsed, plugins)
+                  echo "env.CURRENT_ATTEMPT: ${env.CURRENT_ATTEMPT}"
+                } catch(e) {}
+              } else {
+                echo "${combination} had previously ${previousFailCount} failure(s) (elapsed: ${previousElapsed})"
+              }
+            }
+
+            if (combinationAlreadySucceeded) {
+              echo "INFO: skipping ${combination}, already succeeded"
+            } else {
+              mavenEnv(jdk: jdk) {
+                withEnv([
+                  "PLUGINS=${plugins}",
+                  "LINE=${line}",
+                  'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
+                ]) {
+                  def start = System.currentTimeMillis()
                   try {
-                    results[combination]['attempt'] = env.CURRENT_ATTEMPT
-                  } catch(e) {}
-                  echo "results[${combination}]: ${results[combination]}"
+                    sh '''
+                    mvn -v
+                    bash pct.sh
+                    '''
+                  } catch (e) {
+                    if (!(e instanceof InterruptedException) && !(e instanceof org.jenkinsci.plugins.workflow.support.steps.AgentOfflineException)) {
+                      unstable('PCT failed in ' + repository + ' - line ' + line)
+                    } else {
+                      throw e
+                    }
+                  } finally {
+                    def elapsed = System.currentTimeMillis() - start
+                    junitResults = junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml')
+                    results[combination] = getResult(junitResults, elapsed, plugins)
+                    try {
+                      results[combination]['attempt'] = env.CURRENT_ATTEMPT
+                    } catch(e) {}
+                    echo "results[${combination}]: ${results[combination]}"
+                  }
                 }
               }
             }
