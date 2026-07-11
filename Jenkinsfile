@@ -435,7 +435,7 @@ mavenNode(jdk: 21) {
     if (reportprepFoundInBuildNumber == 0 || borkedReport) {
       echo "INFO: ${reportName}.txt not found or borked, no balanced splits"
       def bucketsAll = [:]
-      def bucketsAll.items = [:]
+      def bucketsAll['items'] = [:]
       allCombinations.each { combination, plugins ->
         bucketsAll.items.add([
           name: combination,
