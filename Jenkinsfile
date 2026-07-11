@@ -366,9 +366,9 @@ mavenNode(jdk: 21) {
     testingCase: testingCase,
   ])
   currentBuild.description = desc
-  echo "desc: ${desc}"
 
   // Report name depending on labels and marker files, by order of prevalence
+  // We chould add more info in the reportName, like which lines/one per line
   // or reportName if not empty
   if (!reportName) {
     if (fullTestLabel || fullTestMarkerFile) {
@@ -511,6 +511,7 @@ mavenNode(jdk: 21) {
           name: combination,
           elapsed: 0.0001,
           failures: 0,
+          count: 0, // 0 failure 0 count == fake
           plugins: plugins
         ]
       }
@@ -545,7 +546,7 @@ mavenNode(jdk: 21) {
     // debug
     echo "batches.size(): ${batches.size()}"
     batches.each { batch, combinations ->
-      if (combinations.size() == 0) {
+      if (combinations.size() > 0) {
         echo "batch: ${batch}"
         def batchCombinationNames = combinations.collect { combination, plugins -> combination } as Set
         echo "batchCombinationNames[${batch}]: ${batchCombinationNames.join(' / ')}"
