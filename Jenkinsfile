@@ -465,6 +465,15 @@ mavenNode(jdk: 21) {
   stage('retrieve report') {
     // TODO: include commit in reportName? Only in PR and search on master with simple name?
     reportprepFoundInBuildNumber = copyArtifactsFromAnyPreviousBuild("${reportName}.txt", env.JOB_NAME)
+
+    // TODO: always retrieve from master (unless reports contain all combinations?)
+    // so we can merge all
+
+    // TODO: save/retrieve a more generic report name on master for easier retrieval?
+
+    // NOTE: we can retrieve elapsed time from everywhere.
+    // If we want previous failure counts, it will have to be restricted to the commit (save one generic, one "themed" [weekly/full/limited/custom], one including commit then retrieve all)
+
     // If not found in current build fallback to master
     if (reportprepFoundInBuildNumber == 0) {
       // TODO: use a direct copyArtifact with an appropriate selector? (lastSuccessful(), lastArchived(), etc.)
