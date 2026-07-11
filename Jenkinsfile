@@ -212,7 +212,7 @@ def getBucketCombinations(buckets, allCombinations) {
 }
 
 @NonCPS
-def resultFromJunitResults(junitResults, plugins) {
+def getResult(junitResults, elapsed, plugins) {
   def result = [:]
   result['elapsed'] = (elapsed / 1000.0)
   result['plugins'] = plugins
@@ -224,6 +224,58 @@ def resultFromJunitResults(junitResults, plugins) {
   result['duration'] = junitResults.duration
   echo "result: ${result}"
   result
+}
+
+@NonCPS
+def getReportsFromResults(results) {
+  Double totalElapsed = 0
+  Double totalDuration = 0
+  int totalFailCount = 0
+  int totalSkipCount = 0
+  int totalPassCount = 0
+  int totalTotalCount = 0
+
+  def xmlReportContent
+  def reportLines = ''
+  results.each { branch, result ->
+    Double elapsed = result['elapsed']
+    Double duration = result['duration']
+    int failCount = result['failCount']
+    int skipCount = result['skipCount']
+    int passCount = result['passCount']
+    int totalCount = result['totalCount']
+    totalElapsed += elapsed
+    totalDuration += duration
+    totalFailCount += failCount
+    totalSkipCount += skipCount
+    totalPassCount += passCount
+    totalTotalCount += totalCount
+    def normalizedBranch = branch.replaceAll('-', '_')
+    reportLines += '<testcase name="' + branch + '" classname="pct-duration.' + normalizedBranch + '" time="' + elapsed + '" failures="' + failCount + '"/>\n'
+    // TODO: try after only setting name, no classname
+  }
+  if (reportLines) {
+    xmlReportContent = """<?xml version="1.0" encoding="UTF-8"?>
+      <testsuite name="org.jenkins.ci.bom" time="${totalElapsed}" tests="${totalTotalCount}" skipped="${totalSkipCount}" failures="${totalFailCount}">
+      ${reportLines}
+      </testsuite>
+    """
+  }
+
+  def reportLinesJson = results.collect { branch, result ->
+    """{"name":"${branch}","elapsed":${result['elapsed']},"duration":${result['duration']},"failCount":${result['failCount']},"skipCount":${result['skipCount']},"passCount":${result['passCount']},"totalCount":${result['totalCount']}}"""
+  }.join(',')
+  def jsonReportContent = """{"jobs": [${reportLinesJson}]}"""
+
+  def txtReportContent = results.collect { branch, result ->
+    "${branch}:${result['elapsed']}:${result['failCount']}:${result['plugins']}"
+  }.join('\n')
+
+  [
+    xmlReportContent: xmlReportContent,
+    jsonReportContent: jsonReportContent,
+    txtReportContent: txtReportContent,
+  ]
 }
 
 def pluginsByRepository
@@ -424,7 +476,7 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
                 } finally {
                   def elapsed = System.currentTimeMillis() - start
                   junitResults = junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml')
-                  results[combination] = resultFromJunitResults(junitResults, plugins)
+                  results[combination] = getResult(junitResults, elapsed, plugins)
                 }
               }
             }
