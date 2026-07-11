@@ -138,20 +138,49 @@ def parseReport(String content) {
   }
 }
 
+// @NonCPS
+// def splitReports(List items, int maxSplits, allCombinations) {
+//   def buckets = [:]
+//   // Keep only items whose combination still exists
+//   def filteredItems = items.findAll { item ->
+//     allCombinations.contains(item.name)
+//   }
+//   if (filteredItems.size()) {
+
+//     // initialize buckets
+//     buckets = (0..<maxSplits).collect {
+//       [total: 0.0, items: []]
+//     }
+
+//     // sort by longest first
+//     def sorted = filteredItems.sort { -it.duration }
+
+//     sorted.each { item ->
+//       // pick the bucket with smallest duration
+//       def target = buckets.min { it.total }
+
+//       target.items << item
+//       target.total += item.duration
+//     }
+//   }
+//   buckets
+// }
+
+// // TODO: check what happens if MAX_SPLITS > repositories
+// if (maxSplit > filteredItemsSize) {
+//   maxSplit = filteredItemsSize
+//   echo "more ${maxSplit} specified than expected"
+// }
 @NonCPS
 def splitReports(List items, int maxSplits, allCombinations) {
   def buckets = [:]
+
   // Keep only items whose combination still exists
   def filteredItems = items.findAll { item ->
     allCombinations.contains(item.name)
   }
-  if (filteredItems.size()) {
-    // // TODO: check what happens if MAX_SPLITS > repositories
-    // if (maxSplit > filteredItemsSize) {
-    //   maxSplit = filteredItemsSize
-    //   echo "more ${maxSplit} specified than expected"
-    // }
 
+  if (filteredItems.size()) {
     // initialize buckets
     buckets = (0..<maxSplits).collect {
       [total: 0.0, items: []]
@@ -161,8 +190,13 @@ def splitReports(List items, int maxSplits, allCombinations) {
     def sorted = filteredItems.sort { -it.duration }
 
     sorted.each { item ->
+      def target = buckets[0]
       // pick the bucket with smallest duration
-      def target = buckets.min { it.total }
+      for (b in buckets) {
+        if (b.total < target.total) {
+          target = b
+        }
+      }
 
       target.items << item
       target.total += item.duration
