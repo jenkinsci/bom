@@ -346,40 +346,43 @@ def getReportsFromResults(results, combinationSeparator) {
 }
 
 @NonCPS
-def setBuildDescription(args = [:]) {
+def getBuildDescription(args = [:]) {
   def originalDesc = args['description']
-  def desc
-  def labels
-  def markerFiles
-  if (args['fullTestLabel']) {
-    labels += ' full-test'
-  }
-  if (args['weeklyTestLabel']) {
-    labels += ' weekly-test'
-  }
-  if (args['limitedPluginSetLabel']) {
-    labels += ' limited-plugin-set'
-  }
-  if (args['fullTestMarkerFile']) {
-    markerFiles += ' full-test'
-  }
-  if (args['weeklyTestMarkerFile']) {
-    markerFiles += ' weekly-test'
-  }
-  def trimedLabels = labels.trim()
-  def trimedMarkers = markerFiles.trim()
-  if (trimedLabels) {
-    desc += "[labels: ${trimedLabels}]"
-  }
-  if (markerFiles) {
-    desc += "[markers: ${trimedLabels}]"
-  }
-  if (args['testingCase']) {
-    desc += "[test ${args['testingCase']}]"
-  }
-  desc = originalDesc + ' ' + desc
-  return desc.trim()
+  def desc = ''
+  def labels = []
+  def markers = []
+  if (args['fullTestLabel']) { labels.add('full-test') }
+  if (args['weeklyTestLabel']) { labels.add('weekly-test') }
+  if (args['limitedPluginSetLabel']) { labels.add('limited-plugin-set') }
+  if (args['fullTestMarkerFile']) { markers.add('full-test') }
+  if (args['weeklyTestMarkerFile']) { markers.add('weekly-test') }
+  if (labels.size() > 0) { desc += "[labels:${labels.join(',')}]" }
+  if (markers.size() > 0) { desc += "[markers:${markers.join(',')}]" }
+  if (args['testingCase']) { desc += "[test:${args['testingCase']}]" }
+  if (originalDesc) { desc = (originalDesc + ' ' + desc).trim() }
+  return desc
 }
+
+// def getBuildDescription(Map args = [:]) {
+//   def labels = [
+//     (args.fullTestLabel): 'full-test',
+//     (args.weeklyTestLabel): 'weekly-test',
+//     (args.limitedPluginSetLabel): 'limited-plugin-set'
+//   ].findAll { it.key }.values()
+
+//   def markers = [
+//     (args.fullTestMarkerFile): 'full-test',
+//     (args.weeklyTestMarkerFile): 'weekly-test'
+//   ].findAll { it.key }.values()
+
+//   def parts = []
+
+//   if (labels)  parts << "[labels:${labels.join(',')}]"
+//   if (markers) parts << "[markers:${markers.join(',')}]"
+//   if (args.testingCase) parts << "[test ${args.testingCase}]"
+
+//   return ([args.description, parts.join(' ')].findAll { it } ).join(' ').trim()
+// }
 
 def pluginsByRepository
 def lines
@@ -405,6 +408,7 @@ mavenNode(jdk: 21) {
     testingCase: testingCase,
   ])
   currentBuild.description = desc
+  echo "desc: ${desc}"
 
   // Report name depending on labels and marker files, by order of prevalence
   // or reportName if not empty
