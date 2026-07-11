@@ -164,7 +164,7 @@ def results = [:]
 def previousResults = [:]
 
 // stage ('debug splitTests') {
-//   def splits = splitTests parallelism: count(MAX_SPLITS), stage: 'results report'
+//   def splits = splitTests parallelism: count(MAX_SPLITS), stage: 'report results'
 //   echo "splits.size(): ${splits.size()}"
 //   splits.eachWithIndex { split, idx ->
 //     echo "splits[${idx}].size(): ${split.size()}"
@@ -270,7 +270,7 @@ mavenEnv(jdk: 21) {
     }
   }
 
-  stage("search ${reportName}") {
+  stage('search report') {
     // TODO: include commit in reportName? Only in PR and search on master with simple name?
     reportprepFoundInBuildNumber = copyArtifactsFromAnyPreviousBuild("${reportName}.txt", env.JOB_NAME)
     // If not found in current build fallback to master
@@ -353,7 +353,7 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
     }
     parallel branches
   }
-  stage('results report') {
+  stage('report results') {
     node('maven-bom') {
       // TODO: export to its own @NonCPS function
       Double totalElapsed = 0
