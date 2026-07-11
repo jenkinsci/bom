@@ -49,6 +49,7 @@ def mavenNode(Map params = [:], Closure body) {
         withEnv([
           "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B ${env.MAVEN_NTP != null ? '-ntp' : ''} -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo",
           "MVN_LOCAL_REPO=${WORKSPACE_TMP}/m2repo",
+          "CURRENT_ATTEMPT=${attempts}",
         ]) {
           infra.loadMavenLocalCacheIfAny(env.MVN_LOCAL_REPO)
           mavenEnv(params, body)
@@ -465,6 +466,9 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || ful
                   def elapsed = System.currentTimeMillis() - start
                   junitResults = junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml')
                   results[combination] = getResult(junitResults, elapsed, plugins)
+                  try {
+                    results[combination]['attempt'] = env.CURRENT_ATTEMPT
+                  } catch(e) {}
                   echo "results[${combination}]: ${results[combination]}"
                 }
               }
