@@ -533,6 +533,8 @@ mavenNode(jdk: 21) {
         def seen = actualReports.collect { it.name } as Set
         def missingReports = fakeReports.findAll { !seen.contains(it.key) }
 
+        // TODO: search missing repo in reports repos, and deduce elapsed from there (keeping totalCound = 0 to indicate it's not a real result?)
+
         echo "actualReports.size(): ${actualReports.size()}"
         echo "missingReports.size(): ${missingReports.size()}"
 
@@ -648,6 +650,8 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || ful
     }
     parallel branches
   }
+  // TODO: consolidate with previous/master reports
+  // TODO: add 'src' of report? (results, previous reports ['pr-N', 'master-N'], deduced) to know which of these reports are retrieved from elsewhere than actual tests elapsed time?
   stage('report results') {
     if (reportResults) {
       node('maven-bom') {
