@@ -207,20 +207,6 @@ def getBatches(buckets, allCombinations, bucketType) {
   echo "seen.size(): ${seen.size()}"
   echo "batches.size(): ${batches.size()}"
 
-
-  // // TODO: do the merge before getBatches (buckets + remainingCombinationsFakeBucket)
-  // // Ensure all combinations are present in batches
-  // // Each in their own bucket
-  // // TODO: set default duration of N and set total to N x missing then splitReport
-  // allCombinations.each { combination, plugins ->
-  //   if (!seen.contains(combination)) {
-  //     seen.add(combination)
-  //     def newCombination = "new_${combination}"
-  //     batches[combination] = [:]
-  //     batches[combination][combination] = allCombinations[combination]
-  //   }
-  // }
-
   batches
 }
 
