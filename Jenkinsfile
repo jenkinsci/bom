@@ -9,9 +9,14 @@ if(env.BRANCH_NAME == "master") {
 // def limitedPluginSetLabel = pullRequest.labels.contains('limited-plugin-set')
 
 // Test limited-plugin-set weekly-test
-def fullTestLabel = true
-def weeklyTestLabel = false
+def fullTestLabel = false
+def weeklyTestLabel = true
 def limitedPluginSetLabel = true
+
+// // Test limited-plugin-set full-test
+// def fullTestLabel = true
+// def weeklyTestLabel = false
+// def limitedPluginSetLabel = true
 
 env.MAVEN_NTP = true
 def MAX_SPLITS = 20
@@ -145,6 +150,8 @@ def splitReports(List items, int maxSplits) {
     target.items << item
     target.total += item.elapsed
   }
+
+  // TODO: trim empty buckets
 
   return buckets
 }
@@ -281,6 +288,7 @@ def getResult(junitResults, elapsed, plugins) {
   result
 }
 
+// TODO: complete results with previous (successful) reports
 @NonCPS
 def getReportsFromResults(results, combinationSeparator) {
   Double totalElapsed = 0
