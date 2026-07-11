@@ -433,7 +433,7 @@ mavenNode(jdk: 21) {
     echo "allCombinations.size(): ${allCombinations.size()}"
 
     if (reportprepFoundInBuildNumber == 0 || borkedReport) {
-      echo "INFO: ${reportName}.txt not found or borked, no balanced split -> one branch per combination of repo/line"
+      echo "INFO: ${reportName}.txt not found or borked, no balanced splits"
       def bucketsAll = [:]
       def bucketsAll.items = [:]
       allCombinations.each { combination, plugins ->
@@ -451,6 +451,7 @@ mavenNode(jdk: 21) {
       }
       batches = getBucketCombinations(bucketsAll, allCombinations)
     } else {
+      echo "INFO: ${reportName}.txt found, balancing splits"
       def content = readFile("${reportName}.txt")
       previousResults = parseReport(content)
       echo "previousResults: ${previousResults}"
