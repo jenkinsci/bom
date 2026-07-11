@@ -476,7 +476,7 @@ mavenNode(jdk: 21) {
       pluginsByRepository = parsePlugins(plugins)
 
       def allLines = readFile('lines.txt').split('\n')
-      newestAndOldestLines = [lines[0], lines[-1]] // Save resources by running PCT only on newest and oldest lines
+      newestAndOldestLines = [allLines[0], allLines[-1]] // Save resources by running PCT only on newest and oldest lines
 
       // debug
       sh 'cat plugins.txt || true'
@@ -491,9 +491,9 @@ mavenNode(jdk: 21) {
       lines = newestAndOldestLines
       if (weeklyTestMarkerFile || weeklyTestLabel ) {
         echo "INFO: keeping only 'weekly' line as there is a 'weekly-test' label or marker file"
-        lines = 'weekly'
+        lines = ['weekly']
       } else {
-        echo "INFO: keeping only newest and oldest lines to save resources: ${newestAndOldestLines.join(' ')} "
+        echo "INFO: keeping only newest and oldest lines to save resources: ${lines.join(' ')} "
       }
     }
   }
