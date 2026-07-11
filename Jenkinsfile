@@ -25,6 +25,7 @@ def limitedPluginSet = [
   'jenkinsci/basic-branch-build-strategies-plugin	basic-branch-build-strategies',
   'jenkinsci/pipeline-maven-plugin	pipeline-maven,pipeline-maven-api,pipeline-maven-database',
 ]
+def limitedMaxSplits = 3
 
 properties([
   // disableConcurrentBuilds(abortPrevious: true),
@@ -179,7 +180,8 @@ def getBucketCombinations(buckets, allCombinations) {
   def bucketCombinations = [:]
   def seen = new HashSet()
   buckets.eachWithIndex { bucket, idx ->
-    def splitIndex = "split${idx}-${bucket.size()}"
+    def counter = idx + 1
+    def splitIndex = "split${counter}-${bucket.items.size()}"
     bucketCombinations[splitIndex] = [:]
     bucket.items.each {
       def combination = it.name
@@ -286,15 +288,6 @@ def results = [:]
 def previousResults = [:]
 def batches = [:]
 
-// stage ('debug splitTests') {
-//   def splits = splitTests parallelism: count(MAX_SPLITS), stage: 'report results'
-//   echo "splits.size(): ${splits.size()}"
-//   splits.eachWithIndex { split, idx ->
-//     echo "splits[${idx}].size(): ${split.size()}"
-//     echo "splits[${idx}]: ${split}"
-//   }
-// }
-
 mavenNode(jdk: 21) {
   def scmVars = checkout scm
 
@@ -304,15 +297,9 @@ mavenNode(jdk: 21) {
   // Report name depending on labels and marker files, by order of prevalence
   // or reportName if not empty
   if (!reportName) {
-    if (fullTestLabel || fullTestMarkerFile) {
-      reportName = 'bom-report-full'
-    }
-    if (weeklyTestLabel || weeklyTestMarkerFile) {
-      reportName = 'bom-report-weekly'
-    }
-    if (limitedPluginSetLabel) {
-      reportName = 'bom-report-limited'
-    }
+    if (fullTestLabel || fullTestMarkerFile) { reportName = 'bom-report-full' }
+    if (weeklyTestLabel || weeklyTestMarkerFile) { reportName = 'bom-report-weekly' }
+    if (limitedPluginSetLabel) { reportName = 'bom-report-limited' }
   }
 
   // Ensure prep archive corresponds to the current state
@@ -334,8 +321,7 @@ mavenNode(jdk: 21) {
         bash prep.sh
         '''
         if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount > 0) {
-          // TODO JENKINS-27092 throw up UNSTABLE status in this case
-          error 'Some test failures, not going to continue'
+          error 'Some test failures during prep.sh, not going to continue'
         }
         // Publish incrementals before prep archive preparation to avoid dirty git status
         infra.prepareToPublishIncrementals()
@@ -359,6 +345,7 @@ mavenNode(jdk: 21) {
         // unstable('WARNING: running on a limited set of plugins')
         echo('WARNING: running on a limited set of plugins')
         plugins = limitedPluginSet
+        MAX_SPLITS = limitedMaxSplits
       } else {
         plugins = readFile('plugins.txt').split('\n')
       }
@@ -424,6 +411,12 @@ mavenNode(jdk: 21) {
       previousResults = parseReport(content)
       echo "previousResults: ${previousResults}"
       def buckets = splitReports(previousResults, MAX_SPLITS)
+      buckets.eachWithIndex { bucket, i ->
+        echo "Split #${i} (total: ${bucket.total})"
+        bucket.items.each {
+          echo " ---> ${it.name}: ${it.plugins} (${it.duration})"
+        }
+      }
       batches = getBucketCombinations(buckets, allCombinations)
     }
   }
@@ -488,51 +481,13 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
   }
   stage('report results') {
     node('maven-bom') {
-      // TODO: export to its own @NonCPS function
-      Double totalElapsed = 0
-      Double totalDuration = 0
-      int totalFailCount = 0
-      int totalSkipCount = 0
-      int totalPassCount = 0
-      int totalTotalCount = 0
-      def reportLines = ''
-      results.each { branch, result ->
-        Double elapsed = result['elapsed']
-        Double duration = result['duration']
-        int failCount = result['failCount']
-        int skipCount = result['skipCount']
-        int passCount = result['passCount']
-        int totalCount = result['totalCount']
-        totalElapsed += elapsed
-        totalDuration += duration
-        totalFailCount += failCount
-        totalSkipCount += skipCount
-        totalPassCount += passCount
-        totalTotalCount += totalCount
-        def normalizedBranch = branch.replaceAll('-', '_')
-        reportLines += '<testcase name="' + branch + '" classname="pct-duration.' + normalizedBranch + '" time="' + elapsed + '" failures="' + failCount + '"/>\n'
-        // TODO: try after only setting name, no classname
-      }
-      if (reportLines) {
-        def content = """<?xml version="1.0" encoding="UTF-8"?>
-          <testsuite name="org.jenkins.ci.bom" time="${totalElapsed}" tests="${totalTotalCount}" skipped="${totalSkipCount}" failures="${totalFailCount}">
-          ${reportLines}
-          </testsuite>
-        """
-        writeFile file: "${reportName}.xml", text: content
+      def contents = getReportsFromResults(results)
+      if (contents['xmlReportContent']) {
+        writeFile file: "${reportName}.xml", text: contents['xmlReportContent']
         junit allowEmptyResults: true, testResults: "${reportName}.xml"
       }
-
-      def reportLinesJson = results.collect { branch, result ->
-        """{"name":"${branch}","elapsed":${result['elapsed']},"duration":${result['duration']},"failCount":${result['failCount']},"skipCount":${result['skipCount']},"passCount":${result['passCount']},"totalCount":${result['totalCount']}}"""
-      }.join(',')
-      def contentJson = """{"jobs": [${reportLinesJson}]}"""
-      writeFile file: "${reportName}.json", text: contentJson
-
-      def reportLinesTxt = results.collect { branch, result ->
-        "${branch}:${result['elapsed']}:${result['failCount']}:${result['plugins']}"
-      }.join('\n')
-      writeFile file: "${reportName}.txt", text: reportLinesTxt
+      writeFile file: "${reportName}.json", text: contents['jsonReportContent']
+      writeFile file: "${reportName}.txt", text: contents['txtReportContent']
 
       sh "cat ${reportName}.xml || true"
       sh "cat ${reportName}.json || true"
