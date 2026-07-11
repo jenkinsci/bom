@@ -554,17 +554,13 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || ful
       }
       branches[batch] = {
         mavenNode() {
-          def unstashLines = []
-          lines.each { line ->
-            combinations.each { combination, _ ->
-              def parts = combination.split(combinationSeparator)
-              def combinationLine = parts[1].replaceAll('-', '.')
-              if (combinationLine == line && !unstashLines.contains(combinationLine)) {
-                unstash combinationLine
-                unstashLines.add(combinationLine)
-              }
-            }
-          }
+          // Unstash all lines used in this batch
+          def unstashLines = combinations
+            .keySet()
+            .collect { it.split(combinationSeparator)[1].replaceAll('-', '.') }
+            .unique()
+          unstashLines.each { unstash it }
+
           def combinationCount = 1
           def totalCombination = combinations.size()
           def batchCombinationNames = combinations.collect { combination, plugins -> combination } as Set
