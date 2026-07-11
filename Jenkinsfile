@@ -26,6 +26,7 @@ def limitedPluginSet = [
   'jenkinsci/pipeline-maven-plugin	pipeline-maven,pipeline-maven-api,pipeline-maven-database',
 ]
 def limitedMaxSplits = 3
+def combinationSeparator = '~'
 
 properties([
   // disableConcurrentBuilds(abortPrevious: true),
@@ -168,7 +169,7 @@ def getAllCombinations(pluginsByRepository, lines, weeklyOnly) {
     }
     def normalizedLine = line.replaceAll('\\.', '-')
     pluginsByRepository.each { repository, plugins ->
-      combinations["${repository}_${normalizedLine}"] = plugins.join(',')
+      combinations["${repository}${combinationSeparator}${normalizedLine}"] = plugins.join(',')
     }
   }
   combinations
@@ -250,7 +251,7 @@ def getReportsFromResults(results) {
 
   def xmlReportContent
   def reportLines = ''
-  results.each { branch, result ->
+  results.each { combination, result ->
     Double elapsed = result['elapsed']
     Double duration = result['duration']
     int failCount = result['failCount']
@@ -263,8 +264,8 @@ def getReportsFromResults(results) {
     totalSkipCount += skipCount
     totalPassCount += passCount
     totalTotalCount += totalCount
-    def normalizedBranch = branch.replaceAll('-', '_')
-    reportLines += '<testcase name="' + branch + '" classname="pct-duration.' + normalizedBranch + '" time="' + elapsed + '" failures="' + failCount + '"/>\n'
+    def normalizedCombination = combination.replaceAll('-', '_').replaceAll(combinationSeparator, '_')
+    reportLines += '<testcase name="' + combination + '" classname="pct-duration.' + normalizedCombination + '" time="' + elapsed + '" failures="' + failCount + '"/>\n'
     // TODO: try after only setting name, no classname
   }
   if (reportLines) {
@@ -275,13 +276,13 @@ def getReportsFromResults(results) {
     """
   }
 
-  def reportLinesJson = results.collect { branch, result ->
-    """{"name":"${branch}","elapsed":${result['elapsed']},"duration":${result['duration']},"failCount":${result['failCount']},"skipCount":${result['skipCount']},"passCount":${result['passCount']},"totalCount":${result['totalCount']}}"""
+  def reportLinesJson = results.collect { combination, result ->
+    """{"name":"${combination}","elapsed":${result['elapsed']},"duration":${result['duration']},"failCount":${result['failCount']},"skipCount":${result['skipCount']},"passCount":${result['passCount']},"totalCount":${result['totalCount']}}"""
   }.join(',')
   def jsonReportContent = """{"jobs": [${reportLinesJson}]}"""
 
-  def txtReportContent = results.collect { branch, result ->
-    "${branch}:${result['elapsed']}:${result['failCount']}:${result['plugins']}"
+  def txtReportContent = results.collect { combination, result ->
+    "${combination}:${result['elapsed']}:${result['failCount']}:${result['plugins']}"
   }.join('\n')
 
   [
@@ -449,7 +450,7 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || ful
           def unstashLines = []
           lines.each { line ->
             combinations.each { combination, _ ->
-              def parts = combination.split('_')
+              def parts = combination.split(combinationSeparator)
               def combinationLine = parts[1].replaceAll('-', '.')
               if (combinationLine == line && !unstashLines.contains(combinationLine)) {
                 unstash combinationLine
@@ -460,7 +461,7 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || ful
           def combinationCount = 1
           def totalCombination = combinations.size()
           combinations.each { combination, plugins ->
-            def parts = combination.split('_')
+            def parts = combination.split(combinationSeparator)
             def repository = parts[0]
             def line = parts[1].replaceAll('-', '.')
             // Note: line is currrently never set to '2.555.x'
