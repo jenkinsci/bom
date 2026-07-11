@@ -4,9 +4,14 @@ if(env.BRANCH_NAME == "master") {
   cronTrigger = '57 11 * * 5'
 }
 
-def fullTestLabel = pullRequest.labels.contains('full-test')
-def weeklyTestLabel = pullRequest.labels.contains('weekly-test')
-def limitedPluginSetLabel = pullRequest.labels.contains('limited-plugin-set')
+// def fullTestLabel = pullRequest.labels.contains('full-test')
+// def weeklyTestLabel = pullRequest.labels.contains('weekly-test')
+// def limitedPluginSetLabel = pullRequest.labels.contains('limited-plugin-set')
+
+// Test limited-plugin-set weekly-test
+def fullTestLabel = false
+def weeklyTestLabel = true
+def limitedPluginSetLabel = true
 
 env.MAVEN_NTP = true
 def MAX_SPLITS = 10
