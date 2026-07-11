@@ -434,10 +434,22 @@ mavenNode(jdk: 21) {
 
     if (reportprepFoundInBuildNumber == 0 || borkedReport) {
       echo "INFO: ${reportName}.txt not found or borked, no balanced split -> one branch per combination of repo/line"
+      def bucketsAll = [:]
+      def bucketsAll.items = [:]
       allCombinations.each { combination, plugins ->
-        batches[combination] = [:]
-        batches[combination][combination] = plugins
+        bucketsAll.items.add([
+          name: combination,
+          plugins: plugins
+          duration: 1
+        ])
       }
+      bucketsAll.eachWithIndex { bucket, i ->
+        echo "Split #${i} (total: ${bucket.total})"
+        bucket.items.each {
+          echo " ---> ${it.name}: ${it.plugins} (${it.duration})"
+        }
+      }
+      batches = getBucketCombinations(bucketsAll, allCombinations)
     } else {
       def content = readFile("${reportName}.txt")
       previousResults = parseReport(content)
