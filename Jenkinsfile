@@ -249,8 +249,9 @@ mavenEnv(jdk: 21) {
     lines.each { line ->
       if (line != 'weekly' && (weeklyTestMarkerFile || env.CHANGE_ID && weeklyTestLabel )) {
         echo "INFO: not stashing ${line} line as there is a 'weekly-test' label on PR or a marker file"
+      } else {
+        stash name: line, includes: "pct.sh,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-${line}.war"
       }
-      stash name: line, includes: "pct.sh,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-${line}.war"
     }
   }
 
