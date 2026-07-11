@@ -165,6 +165,7 @@ def splitReports(List items, int maxSplits) {
   return buckets
 }
 
+// TODO: replace by args[:]
 @NonCPS
 def getAllCombinations(pluginsByRepository, lines, weeklyOnly, combinationSeparator) {
   def combinations = [:]
