@@ -497,9 +497,8 @@ mavenNode(jdk: 21) {
 
       // Generating all combinations of repository x lines
       allCombinations = getAllCombinations(pluginsByRepository, lines, (weeklyTestMarkerFile || weeklyTestLabel), combinationSeparator)
-      echo "allCombinations.size(): ${allCombinations.size()}"
       def allCombinationNames = allCombinations.collect { combination, _ -> combination } as Set
-      echo "INFO: resulting combinations:\n${allCombinationNames.join('\n')}"
+      echo "INFO: ${allCombinations.size()} resulting combinations:\n${allCombinationNames.join('\n')}"
     }
   }
 
