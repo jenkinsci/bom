@@ -181,7 +181,7 @@ def getBucketCombinations(buckets, allCombinations) {
   def seen = new HashSet()
   buckets.eachWithIndex { bucket, idx ->
     def counter = idx + 1
-    def splitIndex = "split${counter}-${bucket.items.size()}"
+    def splitIndex = "split${counter} (${bucket.items.size()})"
     bucketCombinations[splitIndex] = [:]
     bucket.items.each {
       def combination = it.name
