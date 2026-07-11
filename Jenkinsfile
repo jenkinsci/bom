@@ -260,6 +260,7 @@ mavenEnv(jdk: 21) {
   }
 
   stage("search previous ${reportName}") {
+    // TODO: include commit in reportName? Only in PR and search on master with simple name?
     reportprepFoundInBuildNumber = copyArtifactsFromAnyPreviousBuild("${reportName}.txt", env.JOB_NAME)
     // If not found in current build fallback to master
     if (reportprepFoundInBuildNumber == 0) {
