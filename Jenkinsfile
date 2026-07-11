@@ -291,7 +291,7 @@ mavenEnv(jdk: 21) {
       buckets.eachWithIndex { bucket, i ->
         echo "Split #${i} (total: ${bucket.total})"
         bucket.items.each {
-          echo "     - ${it.name}: ${it.plugins} (${it.duration})"
+          echo " ---> ${it.name}: ${it.plugins} (${it.duration})"
         }
       }
       // TODO: if there is a time for a repo-line but not repo-anotherLine, use that first time as default estimation
