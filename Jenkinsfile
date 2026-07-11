@@ -17,6 +17,7 @@ env.MAVEN_NTP = true
 def MAX_SPLITS = 20
 def borkedReport = false // set this to true if the previous report is borked and causes failure
 def reportName = '' // can be overriden
+def reportResults = true
 // TODO: get limited set from a marker file?
 def limitedPluginSet = [
   'jenkinsci/aws-credentials-plugin	aws-credentials',
@@ -553,19 +554,23 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || ful
     parallel branches
   }
   stage('report results') {
-    node('maven-bom') {
-      def contents = getReportsFromResults(results, combinationSeparator)
-      if (contents['xmlReportContent']) {
-        writeFile file: "${reportName}.xml", text: contents['xmlReportContent']
-        junit allowEmptyResults: true, testResults: "${reportName}.xml"
-      }
-      writeFile file: "${reportName}.json", text: contents['jsonReportContent']
-      writeFile file: "${reportName}.txt", text: contents['txtReportContent']
+    if (reportResults) {
+      node('maven-bom') {
+        def contents = getReportsFromResults(results, combinationSeparator)
+        if (contents['xmlReportContent']) {
+          writeFile file: "${reportName}.xml", text: contents['xmlReportContent']
+          junit allowEmptyResults: true, testResults: "${reportName}.xml"
+        }
+        writeFile file: "${reportName}.json", text: contents['jsonReportContent']
+        writeFile file: "${reportName}.txt", text: contents['txtReportContent']
 
-      sh "cat ${reportName}.xml || true"
-      sh "cat ${reportName}.json || true"
-      sh "cat ${reportName}.txt || true"
-      archiveArtifacts artifacts: "${reportName}.*", allowEmpty: true
+        sh "cat ${reportName}.xml || true"
+        sh "cat ${reportName}.json || true"
+        sh "cat ${reportName}.txt || true"
+        archiveArtifacts artifacts: "${reportName}.*", allowEmpty: true
+      }
+    } else {
+      echo 'WARNING: reportResults set to false, skipping'
     }
   }
 }
