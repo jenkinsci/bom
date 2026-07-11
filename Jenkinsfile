@@ -614,6 +614,9 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || ful
     def branches = [failFast: false]
 
     batches.each { batch, combinations ->
+      if (combinations.size() == 0) {
+        return
+      }
       branches[batch] = {
         mavenNode() {
           def unstashLines = []
