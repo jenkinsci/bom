@@ -133,99 +133,30 @@ def parsePlugins(plugins) {
   pluginsByRepository
 }
 
-// old
+// TODO: check what happens if MAX_SPLITS > repositories
 @NonCPS
 def splitReports(List items, int maxSplits) {
-  echo "splitReports..."
   // initialize buckets
   def buckets = (0..<maxSplits).collect {
     [total: 0.0, items: []]
   }
 
-  // sort by duration DESC (largest first)
+  // sort by elapsed time, largest first
   def sorted = items.sort { -it.elapsed }
 
   sorted.each { item ->
-    // pick the bucket with smallest total elapsed time
+    // pick the bucket with the smallest total elapsed time
     def target = buckets.min { it.total }
 
     target.items << item
     target.total += item.elapsed
   }
 
-  // TODO: trim empty buckets
+  // Trim empty buckets
+  buckets = buckets.findAll { it.items.size() > 0 }
 
   return buckets
 }
-
-// @NonCPS
-// def splitReports(List items, int maxSplits, allCombinations) {
-//   def buckets = [:]
-//   // Keep only items whose combination still exists
-//   def filteredItems = items.findAll { item ->
-//     allCombinations.containsKey(item.name)
-//     echo "item: ${item}"
-//   }
-//   if (filteredItems.size() > 0) {
-//     echo "filteredItems: ${filteredItems}"
-//     // initialize buckets
-//     buckets = (0..<maxSplits).collect {
-//       [total: 0.0, items: []]
-//     }
-
-//     // sort by longest first
-//     def sorted = filteredItems.sort { -it.elapsed }
-
-//     sorted.each { item ->
-//       // pick the bucket with smallest elapsed time
-//       def target = buckets.min { it.total }
-
-//       target.items << item
-//       target.total += item.elapsed
-//     }
-//   }
-//   return buckets
-// }
-
-// // TODO: check what happens if MAX_SPLITS > repositories
-// if (maxSplit > filteredItemsSize) {
-//   maxSplit = filteredItemsSize
-//   echo "more ${maxSplit} specified than expected"
-// }
-
-// def splitReports(List items, int maxSplits, allCombinations) {
-//   def buckets = [:]
-
-//   // Keep only items whose combination still exists
-//   def filteredItems = items.findAll { item ->
-//     allCombinations.containsKey(item.name)
-//   }
-
-//   if (filteredItems.size()) {
-//     // initialize buckets
-//     buckets = (0..<maxSplits).collect {
-//       [total: 0.0, items: []]
-//     }
-
-//     // sort by longest first
-//     def sorted = filteredItems.sort { -it.elapsed }
-
-//     sorted.each { item ->
-//       // pick the bucket with smallest elapsed time
-//       def target = buckets.min { it.total }
-//       // def target = buckets[0]
-//       // for (b in buckets) {
-//       //   if (b.total < target.total) {
-//       //     target = b
-//       //   }
-//       // }
-
-//       target.items << item
-//       target.total += item.elapsed
-//     }
-//   }
-//   buckets
-// }
 
 // TODO: replace by args[:]
 @NonCPS
@@ -527,15 +458,13 @@ mavenNode(jdk: 21) {
     }
   }
 
-  stage('retrieve report') {
+  stage('retrieve reports') {
     // TODO: include commit in reportName? Only in PR and search on master with simple name?
     reportprepFoundInBuildNumber = copyArtifactsFromAnyPreviousBuild("${reportName}.txt", env.JOB_NAME)
 
     // TODO: always retrieve from master (unless reports contain all combinations?)
     // so we can merge all
-
     // TODO: save/retrieve a more generic report name on master for easier retrieval?
-
     // NOTE: we can retrieve elapsed time from everywhere.
     // If we want previous failure counts, it will have to be restricted to the commit (save one generic, one "themed" [weekly/full/limited/custom], one including commit then retrieve all)
 
@@ -560,9 +489,7 @@ mavenNode(jdk: 21) {
     echo "INFO: ${reports.size()} reports"
   }
 
-  stage('splits') {
-    def what
-
+  stage('generate batches') {
     if (reports.size() == 0 || borkedReport) {
       echo "INFO: ${reportName}.txt not found, empty or borked, faking reports for all combinations"
       fakeReports = allCombinations.collect { combination, plugins ->
