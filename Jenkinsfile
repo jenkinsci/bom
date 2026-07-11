@@ -17,7 +17,7 @@ env.MAVEN_NTP = true
 def MAX_SPLITS = 20
 def borkedReport = false // set this to true if the previous report is borked and causes failure
 def reportName = '' // can be overriden
-def reportResults = true
+def reportResults = false
 // TODO: get limited set from a marker file?
 def limitedPluginSet = [
   'jenkinsci/aws-credentials-plugin	aws-credentials',
@@ -138,18 +138,28 @@ def parseReport(String content) {
   }
 }
 
-// TODO: check whata happens if MAX_SPLITS > repositories
 @NonCPS
 def splitReports(List items, int maxSplits, allCombinations) {
   def buckets = [:]
   echo "items.size(): ${items.size()}"
   // Keep only items whose combination still exists
   def filteredItems = items.findAll { item ->
-    allCombinations.containsKey(item.name)
+    echo "item: ${item}"
+    allCombinations.contains(item.name)
   }
-  echo "filteredItems.size(): ${filteredItems.size()}"
+  def filteredItemsSize = filteredItems.size
+  def diff = items.size() - filteredItemsSize
+  if (diff > 0) {
+    echo "${diff} reports combinations filtered out as not present in this build"
+  }
 
-  if (filteredItems.size()) {
+  if (filteredItemsSize > 0) {
+    // // TODO: check what happens if MAX_SPLITS > repositories
+    // if (maxSplit > filteredItemsSize) {
+    //   maxSplit = filteredItemsSize
+    //   echo "more ${maxSplit} specified than expected"
+    // }
+
     // initialize buckets
     buckets = (0..<maxSplits).collect {
       [total: 0.0, items: []]
@@ -486,7 +496,7 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || ful
           def combinationCount = 1
           def totalCombination = combinations.size()
           def batchCombinationNames = combinations.collect { combination, plugins -> combination } as Set
-          echo "combinations in ${batch}: ${batchCombinationNames.join(' / ')}"
+          echo "combinations in '${batch}' batch: ${batchCombinationNames.join(' / ')}"
           combinations.each { combination, plugins ->
             def parts = combination.split(combinationSeparator)
             def repository = parts[0]
