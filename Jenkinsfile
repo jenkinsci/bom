@@ -147,7 +147,7 @@ def splitReports(List items, int maxSplits, allCombinations) {
     echo "item: ${item}"
     allCombinations.contains(item.name)
   }
-  def filteredItemsSize = filteredItems.size
+  def filteredItemsSize = filteredItems.size()
   def diff = items.size() - filteredItemsSize
   if (diff > 0) {
     echo "${diff} reports combinations filtered out as not present in this build"
