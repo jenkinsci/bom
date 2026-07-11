@@ -190,42 +190,39 @@ def getAllCombinations(pluginsByRepository, lines, weeklyOnly, combinationSepara
 // TODO: if there is a time for a repo-line but not repo-anotherLine,
 // use that first time as default estimation and resplit from there
 @NonCPS
-def getBucketCombinations(buckets, allCombinations) {
-  def bucketCombinations = [:]
+def getBatches(buckets, allCombinations, bucketType) {
+  def batches = [:]
   def seen = new HashSet()
   buckets.eachWithIndex { bucket, idx ->
     def counter = idx + 1
-    def splitIndex = "split${counter} (${bucket.items.size()})"
-    bucketCombinations[splitIndex] = [:]
+    def splitIndex = "${bucketType}-${counter} (${bucket.items.size()})"
+    batches[splitIndex] = [:]
     bucket.items.each {
       def combination = it.name
       if (!seen.contains(combination)) {
         seen.add(combination)
-        bucketCombinations[splitIndex][combination] = allCombinations[combination]
+        batches[splitIndex][combination] = allCombinations[combination]
       }
     }
   }
-  echo "seen.size() before completion: ${seen.size()}"
-  echo "bucketCombinations.size() after completion: ${bucketCombinations.size()}"
+  echo "seen.size(): ${seen.size()}"
+  echo "batches.size(): ${batches.size()}"
 
-  // Ensure all combinations are present in bucketCombinations
-  // Each in their own bucket
-  // TODO: set default duration of N and set total to N x missing then splitReport
-  allCombinations.each { combination, plugins ->
-    if (!seen.contains(combination)) {
-      seen.add(combination)
-      def newCombination = "new_${combination}"
-      bucketCombinations[combination] = [:]
-      bucketCombinations[combination][combination] = allCombinations[combination]
-    }
-  }
 
-  // TODO: do the merge before the splitTest (?)
+  // // TODO: do the merge before getBatches (buckets + remainingCombinationsFakeBucket)
+  // // Ensure all combinations are present in batches
+  // // Each in their own bucket
+  // // TODO: set default duration of N and set total to N x missing then splitReport
+  // allCombinations.each { combination, plugins ->
+  //   if (!seen.contains(combination)) {
+  //     seen.add(combination)
+  //     def newCombination = "new_${combination}"
+  //     batches[combination] = [:]
+  //     batches[combination][combination] = allCombinations[combination]
+  //   }
+  // }
 
-  echo "seen.size() after completion: ${seen.size()}"
-  echo "bucketCombinations.size() after completion: ${bucketCombinations.size()}"
-
-  bucketCombinations
+  batches
 }
 
 @NonCPS
@@ -429,30 +426,60 @@ mavenNode(jdk: 21) {
     def allCombinations = getAllCombinations(pluginsByRepository, lines, (weeklyTestMarkerFile || weeklyTestLabel), combinationSeparator)
     echo "allCombinations.size(): ${allCombinations.size()}"
 
+    def fakeRepords = allCombinations.collect { combination, plugins ->
+      [
+        name: combination,
+        duration: 1.0,
+        failures: 0,
+        plugins: plugins
+      ]
+    }
+
     if (reportprepFoundInBuildNumber == 0 || borkedReport) {
       echo "INFO: ${reportName}.txt not found or borked, faking balanced splits"
-      def fakePreviousReports = allCombinations.collect { combination, plugins ->
-        [
-          name: combination,
-          duration: 1.0,
-          failures: 0,
-          plugins: plugins
-        ]
+      bucket = splitReports(fakeRepords, MAX_SPLITS, allCombinations)
+      buckets.eachWithIndex { bucket, i ->
+        echo "Split #${i} (total: ${bucket.total})"
+        bucket.items.each {
+          echo " ---> ${it.name}: ${it.plugins} (${it.duration})"
+        }
       }
-      bucket = splitReports(fakePreviousReports, MAX_SPLITS, allCombinations)
+      batches = getBatches(buckets, allCombinations, 'unknown')
     } else {
       echo "INFO: ${reportName}.txt found, balancing splits"
       def content = readFile("${reportName}.txt")
-      previousReports = parseReport(content)
-      buckets = splitReports(previousReports, MAX_SPLITS, allCombinations)
-    }
-    buckets.eachWithIndex { bucket, i ->
-      echo "Split #${i} (total: ${bucket.total})"
-      bucket.items.each {
-        echo " ---> ${it.name}: ${it.plugins} (${it.duration})"
+      def previousReports = parseReport(content)
+      def previousCombinations = previousReports.collect { it.name } as Set
+      def missingReports = fakeRepords.findAll { item ->
+        !previousCombinations.contains(item.name)
       }
+      def previousReportBatches
+      if (previousReports) {
+        bucketsPreviousReports = splitReports(previousReports, MAX_SPLITS, allCombinations)
+        echo "bucketsPreviousReports.size(): ${bucketsPreviousReports.size()}"
+        bucketsPreviousReports.eachWithIndex { bucket, i ->
+          echo "Split #${i} (total: ${bucket.total})"
+          bucket.items.each {
+            echo " ---> ${it.name}: ${it.plugins} (${it.duration})"
+          }
+        }
+        previousReportBatches = getBatches(bucketsPreviousReports, allCombinations, 'reports')
+      }
+
+      def missingReportBatches
+      if (missingReports) {
+        bucketsMissingReports = splitReports(missingReports, MAX_SPLITS, allCombinations)
+        echo "bucketsMissingReports.size(): ${bucketsMissingReports.size()}"
+        bucketsMissingReports.eachWithIndex { bucket, i ->
+          echo "Split #${i} (total: ${bucket.total})"
+          bucket.items.each {
+            echo " ---> ${it.name}: ${it.plugins} (${it.duration})"
+          }
+        }
+        missingReportBatches = getBatches(bucketsMissingReports, allCombinations, 'missing')
+      }
+      batches = previousReportBatches + missingReportBatches
     }
-    batches = getBucketCombinations(buckets, allCombinations)
   }
 }
 
