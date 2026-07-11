@@ -10,6 +10,7 @@ def limitedPluginSetLabel = pullRequest.labels.contains('limited-plugin-set')
 
 env.MAVEN_NTP = true
 def MAX_SPLITS = 5
+def borkedReport = false // set this to true if the previous report is borked and causes failure
 def reportName = '' // can be overriden
 // TODO: get limited set from a marker file?
 def limitedPluginSet = [
@@ -360,18 +361,18 @@ mavenNode(jdk: 21) {
     def allCombinations = getAllCombinations(pluginsByRepository, lines, (weeklyTestMarkerFile || weeklyTestLabel))
     echo "allCombinations.size(): ${allCombinations.size()}"
 
-    if (reportprepFoundInBuildNumber > 0) {
+    if (reportprepFoundInBuildNumber == 0 || borkedReport) {
+      echo "INFO: ${reportName}.txt not found or borked, no balanced split -> one branch per combination of repo/line"
+      allCombinations.each { combination, plugins ->
+        batches[combination] = [:]
+        batches[combination][combination] = plugins
+      }
+    } else {
       def content = readFile("${reportName}.txt")
       previousResults = parseReport(content)
       echo "previousResults: ${previousResults}"
       def buckets = splitReports(previousResults, MAX_SPLITS)
       batches = getBucketCombinations(buckets, allCombinations)
-    } else {
-      echo "INFO: no ${reportName}.txt found, no balanced split -> one branch per combination of repo/line"
-      allCombinations.each { combination, plugins ->
-        batches[combination] = [:]
-        batches[combination][combination] = plugins
-      }
     }
   }
 }
