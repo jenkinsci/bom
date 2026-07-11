@@ -247,12 +247,16 @@ mavenEnv(jdk: 21) {
 
   stage('stash prep lines') {
     lines.each { line ->
+      if (line != 'weekly' && (weeklyTestMarkerFile || env.CHANGE_ID && weeklyTestLabel )) {
+        echo "INFO: not stashing ${line} line as there is a 'weekly-test' label on PR or a marker file"
+      }
       stash name: line, includes: "pct.sh,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-${line}.war"
     }
   }
 
   stage('archive new prep') {
     if (prepFoundInBuildNumber == 0) {
+      // Keeping all lines in the prep archive in case labels change on PR
       lines.each { line ->
         prepArchiveGlob += " target/megawar-${line}.war"
       }
