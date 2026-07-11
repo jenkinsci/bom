@@ -181,7 +181,7 @@ mavenEnv(jdk: 21) {
   def prepFoundInBuildNumber = 0
   def reportprepFoundInBuildNumber = 0
 
-  stage('search prep') {
+  stage('search prep archive') {
     prepFoundInBuildNumber = copyArtifactsFromAnyPreviousBuild(prepArchiveName, env.JOB_NAME)
   }
 
@@ -213,18 +213,7 @@ mavenEnv(jdk: 21) {
         // TODO: check why unstable seems to break pipeline graph view
         // unstable('WARNING: running on a limited set of plugins')
         echo('WARNING: running on a limited set of plugins')
-        plugins = [
-          'jenkinsci/aws-credentials-plugin	aws-credentials',
-          'jenkinsci/aws-global-configuration-plugin	aws-global-configuration',
-          'jenkinsci/azure-credentials-plugin	azure-credentials',
-          'jenkinsci/azure-keyvault-plugin	azure-keyvault',
-          'jenkinsci/azure-sdk-plugin	azure-sdk',
-          'jenkinsci/azure-storage-plugin	windows-azure-storage',
-          'jenkinsci/azure-vm-agents-plugin	azure-vm-agents',
-          'jenkinsci/badge-plugin	badge',
-          'jenkinsci/basic-branch-build-strategies-plugin	basic-branch-build-strategies',
-          'jenkinsci/pipeline-maven-plugin	pipeline-maven,pipeline-maven-api,pipeline-maven-database',
-        ]
+        plugins = limitedPdluginSet
       } else {
         plugins = readFile('plugins.txt').split('\n')
       }
