@@ -447,9 +447,7 @@ mavenNode(jdk: 21) {
       }
 
       def previousCombinations = previousReports.collect { it.name } as Set
-      def missingReports = fakeRepords.findAll { item ->
-        !previousCombinations.contains(item.name)
-      }
+      def missingReports = fakeRepords.findAll { item -> !previousCombinations.contains(item.name) }
 
       if (missingReports) {
         echo 'missingReports'
