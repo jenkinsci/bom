@@ -9,8 +9,8 @@ if(env.BRANCH_NAME == "master") {
 // def limitedPluginSetLabel = pullRequest.labels.contains('limited-plugin-set')
 
 // Test limited-plugin-set weekly-test
-def fullTestLabel = false
-def weeklyTestLabel = true
+def fullTestLabel = true
+def weeklyTestLabel = false
 def limitedPluginSetLabel = true
 
 env.MAVEN_NTP = true
@@ -79,6 +79,7 @@ def mavenEnv(Map params = [:], Closure body) {
   }
 }
 
+// TODO: copyArtifactsFromAllPreviousBuilds and merge results?
 def copyArtifactsFromAnyPreviousBuild(archiveName, jobName) {
   def foundInBuildNumber = 0
   def archiveExists = false
