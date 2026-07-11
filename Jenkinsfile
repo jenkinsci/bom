@@ -290,10 +290,12 @@ mavenEnv(jdk: 21) {
       buckets.eachWithIndex { bucket, i ->
         echo "Split #${i} (total: ${bucket.total})"
         bucket.items.each {
-          echo "  - ${it.name}: ${it.plugins} (${it.duration})"
+          echo "     - ${it.name}: ${it.plugins} (${it.duration})"
         }
       }
       // TODO: if there is a time for a repo-line but not repo-anotherLine, use that first time as default estimation
+    } else {
+      echo "INFO: no ${reportName}.txt found, no split"
     }
   }
 }
@@ -302,6 +304,7 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
   stage('parallel') {
     def branches = [failFast: false]
     lines.each {line ->
+      // TODO: simplify 'env.CHANGE_ID && weeklyTestLabel' to 'weeklyTestLabel' as there cant't be a label when CHANGE_ID (iow not on a PR) is null
       if (line != 'weekly' && (weeklyTestMarkerFile || env.CHANGE_ID && weeklyTestLabel )) {
         return
       }
