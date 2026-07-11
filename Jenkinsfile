@@ -429,41 +429,34 @@ mavenNode(jdk: 21) {
   }
 
   stage('splits') {
+    def buckets
     def allCombinations = getAllCombinations(pluginsByRepository, lines, (weeklyTestMarkerFile || weeklyTestLabel), combinationSeparator)
     echo "allCombinations.size(): ${allCombinations.size()}"
 
     if (reportprepFoundInBuildNumber == 0 || borkedReport) {
-      echo "INFO: ${reportName}.txt not found or borked, no balanced splits"
-      def bucketsAll = [:]
-      def bucketsAll['items'] = [:]
-      allCombinations.each { combination, plugins ->
-        bucketsAll.items.add([
+      echo "INFO: ${reportName}.txt not found or borked, faking balanced splits"
+      def fakePreviousReports = allCombinations.collect { combination, plugins ->
+        [
           name: combination,
+          duration: 1.0,
+          failures: 0,
           plugins: plugins
-          duration: 1
-        ])
+        ]
       }
-      bucketsAll.eachWithIndex { bucket, i ->
-        echo "Split #${i} (total: ${bucket.total})"
-        bucket.items.each {
-          echo " ---> ${it.name}: ${it.plugins} (${it.duration})"
-        }
-      }
-      batches = getBucketCombinations(bucketsAll, allCombinations)
+      bucket = splitReports(fakePreviousReports, MAX_SPLITS, allCombinations)
     } else {
       echo "INFO: ${reportName}.txt found, balancing splits"
       def content = readFile("${reportName}.txt")
-      previousResults = parseReport(content)
-      echo "previousResults: ${previousResults}"
-      def buckets = splitReports(previousResults, MAX_SPLITS, allCombinations)
-      buckets.eachWithIndex { bucket, i ->
-        echo "Split #${i} (total: ${bucket.total})"
-        bucket.items.each {
-          echo " ---> ${it.name}: ${it.plugins} (${it.duration})"
-        }
-      }
-      batches = getBucketCombinations(buckets, allCombinations)
+      previousReports = parseReport(content)
+      buckets = splitReports(previousReports, MAX_SPLITS, allCombinations)
     }
+    buckets.eachWithIndex { bucket, i ->
+      echo "Split #${i} (total: ${bucket.total})"
+      bucket.items.each {
+        echo " ---> ${it.name}: ${it.plugins} (${it.duration})"
+      }
+    }
+    batches = getBucketCombinations(buckets, allCombinations)
   }
 }
 
