@@ -386,6 +386,7 @@ def getBuildDescription(args = [:]) {
 
 def pluginsByRepository
 def lines
+def newestAndOldestLines
 def fullTestMarkerFile
 def weeklyTestMarkerFile
 def results = [:]
@@ -473,32 +474,39 @@ mavenNode(jdk: 21) {
       }
       pluginsByRepository = parsePlugins(plugins)
 
-      lines = readFile('lines.txt').split('\n')
-      lines = [lines[0], lines[-1]] // Save resources by running PCT only on newest and oldest lines
+      def allLines = readFile('lines.txt').split('\n')
+      newestAndOldestLines = [lines[0], lines[-1]] // Save resources by running PCT only on newest and oldest lines
 
       // debug
       sh 'cat plugins.txt || true'
       sh 'cat lines.txt || true'
+      
+      def from = limitedPluginSetLabel ? 'a limited set of plugins' : 'plugins.txt'
+      echo "INFO: ${pluginsByRepository.size()} repositories retrieved from ${from}"
+      echo "INFO: lines retrieved from lines.txt: ${allLines.join(' ')} "
+
+      // For archival, keep track of newest and oldest lines as PR labels or marker files may change accross builds
+      // For stashes, we only care about the lines of the current build
+      lines = newestAndOldestLines
+      if (weeklyTestMarkerFile || weeklyTestLabel ) {
+        echo "INFO: keeping only 'weekly' line as there is a 'weekly-test' label or marker file"
+        lines = 'weekly'
+      } else {
+        echo "INFO: keeping only newest and oldest lines to save resources: ${newestAndOldestLines.join(' ')} "
+      }
     }
-    def from = limitedPluginSetLabel ? 'a limited set of plugins' : 'plugins.txt'
-    echo "INFO: ${pluginsByRepository.size()} repositories retrieved from ${from}"
-    echo "INFO: ${lines.size()} lines retrieved from plugins.txt"
   }
 
   stage('stash prep lines') {
     lines.each { line ->
-      if (line != 'weekly' && (weeklyTestMarkerFile || weeklyTestLabel )) {
-        echo "INFO: not stashing ${line} line as there is a 'weekly-test' label or a marker file"
-      } else {
-        stash name: line, includes: "pct.sh,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-${line}.war"
-      }
+      stash name: line, includes: "pct.sh,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-${line}.war"
     }
   }
 
   stage('archive new prep') {
     if (prepFoundInBuildNumber == 0) {
-      // Keeping all lines in the prep archive in case labels change on PR
-      lines.each { line ->
+      // Newest and oldest lines only in the prep archive, in case labels change on PR accross builds
+      newestAndOldestLines.each { line ->
         prepArchiveGlob += " target/megawar-${line}.war"
       }
       withEnv(["ARCHIVE_NAME=${prepArchiveName}", "ARCHIVE_GLOB=${prepArchiveGlob}",]) {
