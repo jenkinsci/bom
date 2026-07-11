@@ -89,7 +89,7 @@ def copyArtifactsFromAnyPreviousBuild(archiveName, jobName) {
     // Loop over builds to retrieve the prep archive as previous build can have (only) other archive(s)
     def checkBuildNumber = buildNumber - 1
     // Don't loop until the first build of master '^^
-    def limit = jobName.endsWith('master') ? buildNumber - 10 : 0
+    def limit = jobName.endsWith('master') ? buildNumber - 50 : 0
     while (!archiveExists && checkBuildNumber > limit) {
       echo "Trying to retrieve ${archiveName} from ${jobName}#${checkBuildNumber}..."
       try {
@@ -131,7 +131,7 @@ def parseReport(String content) {
     def parts = line.trim().split(':')
     [
       name: parts[0],
-      duration: parts[1].toDouble(),
+      elapsed: parts[1].toDouble(),
       failures: parts[2].toInteger(),
       plugins: parts[3],
     ]
@@ -153,14 +153,14 @@ def parseReport(String content) {
 //     }
 
 //     // sort by longest first
-//     def sorted = filteredItems.sort { -it.duration }
+//     def sorted = filteredItems.sort { -it.elapsed }
 
 //     sorted.each { item ->
-//       // pick the bucket with smallest duration
+//       // pick the bucket with smallest elapsed time
 //       def target = buckets.min { it.total }
 
 //       target.items << item
-//       target.total += item.duration
+//       target.total += item.elapsed
 //     }
 //   }
 //   buckets
@@ -171,13 +171,14 @@ def parseReport(String content) {
 //   maxSplit = filteredItemsSize
 //   echo "more ${maxSplit} specified than expected"
 // }
-@NonCPS
+
+// @NonCPS
 def splitReports(List items, int maxSplits, allCombinations) {
   def buckets = [:]
 
   // Keep only items whose combination still exists
   def filteredItems = items.findAll { item ->
-    allCombinations.contains(item.name)
+    allCombinations.containsKey(item.name)
   }
 
   if (filteredItems.size()) {
@@ -187,11 +188,11 @@ def splitReports(List items, int maxSplits, allCombinations) {
     }
 
     // sort by longest first
-    def sorted = filteredItems.sort { -it.duration }
+    def sorted = filteredItems.sort { -it.elapsed }
 
     sorted.each { item ->
       def target = buckets[0]
-      // pick the bucket with smallest duration
+      // pick the bucket with smallest elapsed time
       for (b in buckets) {
         if (b.total < target.total) {
           target = b
@@ -199,7 +200,7 @@ def splitReports(List items, int maxSplits, allCombinations) {
       }
 
       target.items << item
-      target.total += item.duration
+      target.total += item.elapsed
     }
   }
   buckets
@@ -399,6 +400,10 @@ mavenNode(jdk: 21) {
 
       lines = readFile('lines.txt').split('\n')
       lines = [lines[0], lines[-1]] // Save resources by running PCT only on newest and oldest lines
+
+      // debug
+      sh 'cat plugins.txt || true'
+      sh 'cat lines.txt || true'
     }
     def from = limitedPluginSetLabel ? 'a limited set of plugins' : 'plugins.txt'
     echo "INFO: ${pluginsByRepository.size()} repositories retrieved from ${from}"
@@ -452,7 +457,7 @@ mavenNode(jdk: 21) {
     def fakeReports = allCombinations.collect { combination, plugins ->
       [
         name: combination,
-        duration: 1.0,
+        elapsed: 1.0,
         failures: 0,
         plugins: plugins
       ]
@@ -464,7 +469,7 @@ mavenNode(jdk: 21) {
       unknownBuckets.eachWithIndex { bucket, i ->
         echo "Split #${i} (total: ${bucket.total})"
         bucket.items.each {
-          echo " ---> ${it.name}: ${it.plugins} (${it.duration})"
+          echo " ---> ${it.name}: ${it.plugins} (${it.elapsed})"
         }
       }
       batches = getBatches(unknownBuckets, allCombinations, 'unknown')
@@ -472,12 +477,13 @@ mavenNode(jdk: 21) {
       echo "INFO: ${reportName}.txt found, balancing splits"
       def content = readFile("${reportName}.txt")
       // def reports = parseReport(content)
-      def reports = content.readLines().collect { r ->
+      def reports = content.readLines().collect { line ->
+        def parts = line.trim().split(':')
         [
-          name: r.name,
-          duration: r.duration as Double,
-          failures: r.failures as Integer,
-          plugins: r.plugins as String
+          name: parts[0],
+          elapsed: parts[1].toDouble(),
+          failures: parts[2].toInteger(),
+          plugins: parts[3],
         ]
       }
       if (reports) {
@@ -487,7 +493,7 @@ mavenNode(jdk: 21) {
         reportBuckets.eachWithIndex { bucket, i ->
           echo "Split #${i} (total: ${bucket.total})"
           bucket.items.each {
-            echo " ---> ${it.name}: ${it.plugins} (${it.duration})"
+            echo " ---> ${it.name}: ${it.plugins} (${it.elapsed})"
           }
         }
         batches = getBatches(reportBuckets, allCombinations, 'reports')
@@ -503,7 +509,7 @@ mavenNode(jdk: 21) {
         missingBuckets.eachWithIndex { bucket, i ->
           echo "Split #${i} (total: ${bucket.total})"
           bucket.items.each {
-            echo " ---> ${it.name}: ${it.plugins} (${it.duration})"
+            echo " ---> ${it.name}: ${it.plugins} (${it.elapsed})"
           }
         }
         batches += getBatches(missingBuckets, allCombinations, 'missing')
