@@ -145,6 +145,7 @@ def parseReport(String content) {
 
 @NonCPS
 def splitReports(List items, int maxSplits, allCombinations) {
+  def buckets
   echo "items.size(): ${items.size()}"
   // Keep only items whose combination still exists
   def filteredItems = items.findAll { item ->
@@ -152,20 +153,22 @@ def splitReports(List items, int maxSplits, allCombinations) {
   }
   echo "filteredItems.size(): ${filteredItems.size()}"
 
-  // initialize buckets
-  def buckets = (0..<maxSplits).collect {
-    [total: 0.0, items: []]
-  }
+  if (filteredItems.size()) {
+    // initialize buckets
+    buckets = (0..<maxSplits).collect {
+      [total: 0.0, items: []]
+    }
 
-  // sort by longest first
-  def sorted = filteredItems.sort { -it.duration }
+    // sort by longest first
+    def sorted = filteredItems.sort { -it.duration }
 
-  sorted.each { item ->
-    // pick the bucket with smallest duration
-    def target = buckets.min { it.total }
+    sorted.each { item ->
+      // pick the bucket with smallest duration
+      def target = buckets.min { it.total }
 
-    target.items << item
-    target.total += item.duration
+      target.items << item
+      target.total += item.duration
+    }
   }
 
   return buckets
