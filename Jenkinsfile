@@ -36,7 +36,7 @@ if (env.BRANCH_NAME == 'master' && currentBuild.buildCauses*._class == ['jenkins
   error 'No longer running builds on response to master branch pushes. If you wish to cut a release, use “Re-run checks” from this failing check in https://github.com/jenkinsci/bom/commits/master'
 }
 
-def mavenEnv(Map params = [:], Closure body) {
+def mavenNode(Map params = [:], Closure body) {
   def attempt = 0
   def attempts = 6
   retry(count: attempts, conditions: [kubernetesAgent(handleNonKubernetes: true), nonresumable()]) {
@@ -44,26 +44,26 @@ def mavenEnv(Map params = [:], Closure body) {
     // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
     node('maven-bom') {
       timeout(120) {
-        withChecks(name: 'Tests', includeStage: true) {
-          infra.withArtifactCachingProxy {
-            withEnv([
-              'JAVA_HOME=/opt/jdk-' + params['jdk'],
-              'PATH+JDK=/opt/jdk-' + params['jdk'] + '/bin',
-              "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B ${env.MAVEN_NTP != null ? '-ntp' : ''} -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo",
-              "MVN_LOCAL_REPO=${WORKSPACE_TMP}/m2repo",
-            ]) {
-              infra.loadMavenLocalCacheIfAny(env.MVN_LOCAL_REPO)
-
-              body()
-            }
-          }
-          // TODO: only when param.prep == false, fail with -DskipTests otherwise
-          // TODO: put that in the branch loop, as unstable
-          // if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount > 0) {
-          //   // TODO JENKINS-27092 throw up UNSTABLE status in this case
-          //   error 'Some test failures, not going to continue'
-          // }
+        withEnv([
+          "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B ${env.MAVEN_NTP != null ? '-ntp' : ''} -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo",
+          "MVN_LOCAL_REPO=${WORKSPACE_TMP}/m2repo",
+        ]) {
+          infra.loadMavenLocalCacheIfAny(env.MVN_LOCAL_REPO)
+          mavenEnv(params, body)
         }
+      }
+    }
+  }
+}
+
+def mavenEnv(Map params = [:], Closure body) {
+  withChecks(name: 'Tests', includeStage: true) {
+    infra.withArtifactCachingProxy {
+      withEnv([
+        'JAVA_HOME=/opt/jdk-' + params['jdk'],
+        'PATH+JDK=/opt/jdk-' + params['jdk'] + '/bin',
+      ]) {
+        body()
       }
     }
   }
@@ -172,7 +172,7 @@ def previousResults = [:]
 //   }
 // }
 
-mavenEnv(jdk: 21) {
+mavenNode(jdk: 21) {
   def scmVars = checkout scm
 
   fullTestMarkerFile = fileExists 'full-test'
@@ -210,6 +210,10 @@ mavenEnv(jdk: 21) {
         mvn -v
         bash prep.sh
         '''
+        if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount > 0) {
+          // TODO JENKINS-27092 throw up UNSTABLE status in this case
+          error 'Some test failures, not going to continue'
+        }
         // Publish incrementals before prep archive preparation to avoid dirty git status
         infra.prepareToPublishIncrementals()
       }
@@ -313,7 +317,7 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
         def branchName = "${repository}_${line.replaceAll('\\.', '-')}"
         branches[branchName] = {
           def jdk = line == 'weekly' || line == '2.555.x' ? 21 : 17
-          mavenEnv(jdk: jdk) {
+          mavenNode(jdk: jdk) {
             unstash line
             withEnv([
               "PLUGINS=${plugins.join(',')}",
