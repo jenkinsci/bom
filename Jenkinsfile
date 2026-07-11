@@ -166,7 +166,7 @@ def splitReports(List items, int maxSplits) {
 }
 
 @NonCPS
-def getAllCombinations(pluginsByRepository, lines, weeklyOnly) {
+def getAllCombinations(pluginsByRepository, lines, weeklyOnly, combinationSeparator) {
   def combinations = [:]
   lines.each {line ->
     if (line != 'weekly' && weeklyOnly) {
@@ -246,7 +246,7 @@ def getResult(junitResults, elapsed, plugins) {
 }
 
 @NonCPS
-def getReportsFromResults(results) {
+def getReportsFromResults(results, combinationSeparator) {
   Double totalElapsed = 0
   Double totalDuration = 0
   int totalFailCount = 0
@@ -420,7 +420,7 @@ mavenNode(jdk: 21) {
   }
 
   stage('splits') {
-    def allCombinations = getAllCombinations(pluginsByRepository, lines, (weeklyTestMarkerFile || weeklyTestLabel))
+    def allCombinations = getAllCombinations(pluginsByRepository, lines, (weeklyTestMarkerFile || weeklyTestLabel), combinationSeparator)
     echo "allCombinations.size(): ${allCombinations.size()}"
 
     if (reportprepFoundInBuildNumber == 0 || borkedReport) {
@@ -538,7 +538,7 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || ful
   }
   stage('report results') {
     node('maven-bom') {
-      def contents = getReportsFromResults(results)
+      def contents = getReportsFromResults(results, combinationSeparator)
       if (contents['xmlReportContent']) {
         writeFile file: "${reportName}.xml", text: contents['xmlReportContent']
         junit allowEmptyResults: true, testResults: "${reportName}.xml"
