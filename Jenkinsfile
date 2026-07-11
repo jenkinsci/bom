@@ -357,9 +357,9 @@ def getBuildDescription(args = [:]) {
   if (args['limitedPluginSetLabel']) { labels.add('limited-plugin-set') }
   if (args['fullTestMarkerFile']) { markers.add('full-test') }
   if (args['weeklyTestMarkerFile']) { markers.add('weekly-test') }
-  if (labels.size() > 0) { elts.add("[<b>labels</b>:${labels.join(',')}]") }
-  if (markers.size() > 0) { elts.add("[<b>markers</b>:${markers.join(',')}]") }
-  if (args['testingCase']) { elts.add("[<b>test</b>:${args['testingCase']}]") }
+  if (labels.size() > 0) { elts.add("<b>labels</b>:${labels.join(',')}") }
+  if (markers.size() > 0) { elts.add("<b>markers</b>:${markers.join(',')}") }
+  if (args['testingCase']) { elts.add("<b>test</b>:${args['testingCase']}") }
   if (elts.size() > 0) { desc = '<i><small>' + elts.join('<br>') + '</small></i>' }
   if (originalDesc) { desc = (originalDesc + '<hr>' + desc).trim() }
   return desc
