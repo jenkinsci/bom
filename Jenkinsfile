@@ -156,12 +156,82 @@ def splitReports(List items, int maxSplits) {
   return buckets
 }
 
+@NonCPS
+def getAllCombinations(pluginsByRepository, lines, weeklyOnly) {
+  def combinations = [:]
+  lines.each {line ->
+    if (line != 'weekly' && weeklyOnly) {
+      return
+    }
+    def normalizedLine = line.replaceAll('\\.', '-')
+    pluginsByRepository.each { repository, plugins ->
+      combinations["${repository}_${normalizedLine}"] = plugins.join(',')
+    }
+  }
+  combinations
+}
+
+// TODO: if there is a time for a repo-line but not repo-anotherLine,
+// use that first time as default estimation and resplit from there
+@NonCPS
+def getBucketCombinations(buckets, allCombinations) {
+  def bucketCombinations = [:]
+  def seen = new HashSet()
+  buckets.eachWithIndex { bucket, idx ->
+    def splitIndex = "split${idx}-${bucket.size()}"
+    bucketCombinations[splitIndex] = [:]
+    bucket.items.each {
+      def combination = it.name
+      if (!seen.contains(combination)) {
+        seen.add(combination)
+        bucketCombinations[splitIndex][combination] = allCombinations[combination]
+        echo "${combination} added to ${splitIndex} (plugins: ${it.plugins})"
+      } else {
+        echo "${combination} already seen in a split"
+      }
+    }
+  }
+  echo "seen.size() before completion: ${seen.size()}"
+  echo "bucketCombinations.size() after completion: ${bucketCombinations.size()}"
+
+  // Ensure all combinations are present in bucketCombinations
+  // Each in their own bucket
+  allCombinations.each { combination, plugins ->
+    if (!seen.contains(combination)) {
+      seen.add(combination)
+      bucketCombinations["new_${combination}"][combination] = allCombinations[combination]
+      echo "${combination} added to new"
+    }
+  }
+  echo "seen.size() after completion: ${seen.size()}"
+  echo "bucketCombinations.size() after completion: ${bucketCombinations.size()}"
+  echo "final bucketCombinations: ${bucketCombinations}"
+
+  bucketCombinations
+}
+
+@NonCPS
+def resultFromJunitResults(junitResults, plugins) {
+  def result = [:]
+  result['elapsed'] = (elapsed / 1000.0)
+  result['plugins'] = plugins
+  result['pluginCount'] = plugins.count(',')
+  result['failCount'] = junitResults.failCount
+  result['skipCount'] = junitResults.skipCount
+  result['passCount'] = junitResults.passCount
+  result['totalCount'] = junitResults.totalCount
+  result['duration'] = junitResults.duration
+  echo "result: ${result}"
+  result
+}
+
 def pluginsByRepository
 def lines
 def fullTestMarkerFile
 def weeklyTestMarkerFile
 def results = [:]
 def previousResults = [:]
+def batches = [:]
 
 // stage ('debug splitTests') {
 //   def splits = splitTests parallelism: count(MAX_SPLITS), stage: 'report results'
@@ -287,20 +357,21 @@ mavenNode(jdk: 21) {
   }
 
   stage('splits') {
+    def allCombinations = getAllCombinations(pluginsByRepository, lines, (weeklyTestMarkerFile || weeklyTestLabel))
+    echo "allCombinations.size(): ${allCombinations.size()}"
+
     if (reportprepFoundInBuildNumber > 0) {
       def content = readFile("${reportName}.txt")
       previousResults = parseReport(content)
       echo "previousResults: ${previousResults}"
       def buckets = splitReports(previousResults, MAX_SPLITS)
-      buckets.eachWithIndex { bucket, i ->
-        echo "Split #${i} (total: ${bucket.total})"
-        bucket.items.each {
-          echo " ---> ${it.name}: ${it.plugins} (${it.duration})"
-        }
-      }
-      // TODO: if there is a time for a repo-line but not repo-anotherLine, use that first time as default estimation
+      batches = getBucketCombinations(buckets, allCombinations)
     } else {
-      echo "INFO: no ${reportName}.txt found, no split"
+      echo "INFO: no ${reportName}.txt found, no balanced split -> one branch per combination of repo/line"
+      allCombinations.each { combination, plugins ->
+        batches[combination] = [:]
+        batches[combination][combination] = plugins
+      }
     }
   }
 }
@@ -308,50 +379,51 @@ mavenNode(jdk: 21) {
 if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env.CHANGE_ID && (fullTestLabel || weeklyTestLabel )) {
   stage('parallel') {
     def branches = [failFast: false]
-    lines.each {line ->
-      // TODO: simplify 'env.CHANGE_ID && weeklyTestLabel' to 'weeklyTestLabel' as there cant't be a label when CHANGE_ID (iow not on a PR) is null
-      if (line != 'weekly' && (weeklyTestMarkerFile || env.CHANGE_ID && weeklyTestLabel )) {
-        return
-      }
-      pluginsByRepository.each { repository, plugins ->
-        def branchName = "${repository}_${line.replaceAll('\\.', '-')}"
-        branches[branchName] = {
-          def jdk = line == 'weekly' || line == '2.555.x' ? 21 : 17
-          mavenNode(jdk: jdk) {
-            unstash line
-            withEnv([
-              "PLUGINS=${plugins.join(',')}",
-              "LINE=$line",
-              'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
-            ]) {
-              def start = System.currentTimeMillis()
-              try {
-                sh '''
-                mvn -v
-                bash pct.sh
-                '''
-              } catch (e) {
-                if (!(e instanceof InterruptedException) && !(e instanceof org.jenkinsci.plugins.workflow.support.steps.AgentOfflineException)) {
-                  unstable('PCT failed in ' + repository + ' - line ' + line)
-                } else {
-                  throw e
-                }
-              } finally {
-                def elapsed = System.currentTimeMillis() - start
-                junitResults = junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml')
-                results[branchName] = [:]
-                results[branchName]['elapsed'] = (elapsed / 1000.0)
-                results[branchName]['pluginCount'] = plugins.size()
-                results[branchName]['plugins'] = plugins.join(',')
-                results[branchName]['failCount'] = junitResults.failCount
-                results[branchName]['skipCount'] = junitResults.skipCount
-                results[branchName]['passCount'] = junitResults.passCount
-                results[branchName]['totalCount'] = junitResults.totalCount
-                results[branchName]['duration'] = junitResults.duration
+
+    batches.each { batch, combinations ->
+      branches[batch] = {
+        mavenNode() {
+          def unstashLines = []
+          lines.each { line ->
+            combinations.each { combination, _ ->
+              def parts = combination.split('_')
+              def combinationLine = parts[1].replaceAll('-', '.')
+              if (combinationLine == line && !unstashLines.contains(combinationLine)) {
+                unstash combinationLine
+                unstashLines.add(combinationLine)
+              }
+            }
+          }
+          combinations.each { combination, plugins ->
+            def parts = combination.split('_')
+            def repository = parts[0]
+            def line = parts[1].replaceAll('-', '.')
+            // Note: line is currrently never set to '2.555.x'
+            // as we're keeping only the first ('weekly') and the last lines from lines.txt in 'prep' stage
+            def jdk = line == 'weekly' || line == '2.555.x' ? 21 : 17
+            echo "combination: ${combination} (plugins: ${plugins})"
+            mavenEnv(jdk: jdk) {
+              withEnv([
+                "PLUGINS=${plugins}",
+                "LINE=${line}",
+                'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
+              ]) {
+                def start = System.currentTimeMillis()
                 try {
-                  echo "results[${branchName}]: ${results[branchName]}"
-                } catch(e) {
-                  echo "error: ${e}"
+                  sh '''
+                  mvn -v
+                  bash pct.sh
+                  '''
+                } catch (e) {
+                  if (!(e instanceof InterruptedException) && !(e instanceof org.jenkinsci.plugins.workflow.support.steps.AgentOfflineException)) {
+                    unstable('PCT failed in ' + repository + ' - line ' + line)
+                  } else {
+                    throw e
+                  }
+                } finally {
+                  def elapsed = System.currentTimeMillis() - start
+                  junitResults = junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml')
+                  results[combination] = resultFromJunitResults(junitResults, plugins)
                 }
               }
             }
