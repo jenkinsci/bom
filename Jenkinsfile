@@ -235,7 +235,7 @@ def getReportsFromResults(results, combinationSeparator) {
   def reportLines = ''
   def sortedResult = results.sort { it }
   sortedResult.each { combination, result ->
-  // results.each { combination, result ->
+    // results.each { combination, result ->
     Double elapsed = result['elapsed']
     Double duration = result['duration']
     int failCount = result['failCount']
@@ -284,16 +284,36 @@ def getBuildDescription(args = [:]) {
   def labels = []
   def markers = []
   def elts = []
-  if (args['fullTestLabel']) { labels.add('full-test') }
-  if (args['weeklyTestLabel']) { labels.add('weekly-test') }
-  if (args['limitedPluginSetLabel']) { labels.add('limited-plugin-set') }
-  if (args['fullTestMarkerFile']) { markers.add('full-test') }
-  if (args['weeklyTestMarkerFile']) { markers.add('weekly-test') }
-  if (args['testingCase']) { elts.add("<b>test</b>:${args['testingCase']}") }
-  if (labels.size() > 0) { elts.add("<b>labels</b>:${labels.join(',')}") }
-  if (markers.size() > 0) { elts.add("<b>markers</b>:${markers.join(',')}") }
-  if (elts.size() > 0) { desc = '<i><small>' + elts.join('<br>') + '</small></i>' }
-  if (originalDesc) { desc = (originalDesc + '<br>' + desc).trim() }
+  if (args['fullTestLabel']) {
+    labels.add('full-test')
+  }
+  if (args['weeklyTestLabel']) {
+    labels.add('weekly-test')
+  }
+  if (args['limitedPluginSetLabel']) {
+    labels.add('limited-plugin-set')
+  }
+  if (args['fullTestMarkerFile']) {
+    markers.add('full-test')
+  }
+  if (args['weeklyTestMarkerFile']) {
+    markers.add('weekly-test')
+  }
+  if (args['testingCase']) {
+    elts.add("<b>test</b>:${args['testingCase']}")
+  }
+  if (labels.size() > 0) {
+    elts.add("<b>labels</b>:${labels.join(',')}")
+  }
+  if (markers.size() > 0) {
+    elts.add("<b>markers</b>:${markers.join(',')}")
+  }
+  if (elts.size() > 0) {
+    desc = '<i><small>' + elts.join('<br>') + '</small></i>'
+  }
+  if (originalDesc) {
+    desc = (originalDesc + '<br>' + desc).trim()
+  }
   return desc
 }
 
@@ -497,34 +517,34 @@ mavenNode(jdk: 21) {
       def fakeBuckets = splitReports(fakeReports, MAX_SPLITS)
       batches += getBatches(fakeBuckets, allCombinations, 'fake')
     } else {
-        // Keep only current combinations
-        def actualReports = reports.findAll {
-          allCombinations.containsKey(it.name)
-        }
+      // Keep only current combinations
+      def actualReports = reports.findAll {
+        allCombinations.containsKey(it.name)
+      }
 
-        // Track what we already have
-        def seen = actualReports.collect { it.name } as Set
-        def missingReports = fakeReports.findAll { !seen.contains(it.key) }
+      // Track what we already have
+      def seen = actualReports.collect { it.name } as Set
+      def missingReports = fakeReports.findAll { !seen.contains(it.key) }
 
-        // TODO: search missing repo in reports repos, and deduce elapsed from there (keeping totalCound = 0 to indicate it's not a real result?)
+      // TODO: search missing repo in reports repos, and deduce elapsed from there (keeping totalCound = 0 to indicate it's not a real result?)
 
-        echo "actualReports.size(): ${actualReports.size()}"
-        echo "missingReports.size(): ${missingReports.size()}"
+      echo "actualReports.size(): ${actualReports.size()}"
+      echo "missingReports.size(): ${missingReports.size()}"
 
-        if (actualReports.size() > 0) {
-          def reportBuckets = splitReports(actualReports, MAX_SPLITS)
-          batches += getBatches(reportBuckets, allCombinations, 'report')
-        }
+      if (actualReports.size() > 0) {
+        def reportBuckets = splitReports(actualReports, MAX_SPLITS)
+        batches += getBatches(reportBuckets, allCombinations, 'report')
+      }
 
-        if (missingReports.size() > 0) {
-          def missingBuckets = splitReports(missingReports, MAX_SPLITS)
-          batches += getBatches(missingBuckets, allCombinations, 'missing')
-        }
+      if (missingReports.size() > 0) {
+        def missingBuckets = splitReports(missingReports, MAX_SPLITS)
+        batches += getBatches(missingBuckets, allCombinations, 'missing')
+      }
     }
 
     // debug
     echo "batches.size(): ${batches.size()}"
-    batches.each { batch, combinations -> 
+    batches.each { batch, combinations ->
       if (combinations.size() == 0) {
         echo "batch: ${batch}"
         def batchCombinationNames = combinations.collect { combination, plugins -> combination } as Set
@@ -556,9 +576,9 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || ful
         mavenNode() {
           // Unstash all lines used in this batch
           def unstashLines = combinations
-            .keySet()
-            .collect { it.split(combinationSeparator)[1].replaceAll('-', '.') }
-            .unique()
+              .keySet()
+              .collect { it.split(combinationSeparator)[1].replaceAll('-', '.') }
+              .unique()
           unstashLines.each { unstash it }
 
           def combinationCount = 1
