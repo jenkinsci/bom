@@ -476,7 +476,7 @@ mavenNode(jdk: 21) {
 
     if (reportprepFoundInBuildNumber == 0 || borkedReport) {
       echo "INFO: ${reportName}.txt not found or borked, faking balanced splits"
-      def unknownBuckets = splitReports(fakeReports, MAX_SPLITS, allCombinations)
+      def unknownBuckets = splitReports(fakeReports, MAX_SPLITS)
       unknownBuckets.eachWithIndex { bucket, i ->
         echo "Split #${i} (total: ${bucket.total})"
         bucket.items.each {
@@ -487,7 +487,6 @@ mavenNode(jdk: 21) {
     } else {
       echo "INFO: ${reportName}.txt found, balancing splits"
       def content = readFile("${reportName}.txt")
-      // def reports = parseReport(content)
       def reports = content.readLines().collect { line ->
         def parts = line.trim().split(':')
         [
@@ -497,39 +496,96 @@ mavenNode(jdk: 21) {
           plugins: parts[3],
         ]
       }
+
       if (reports) {
-        echo 'reports'
         echo "reports.size(): ${reports.size()}"
-        def actualReports = reports.findAll { report ->
-          allCombinations.containsKey(report.name)
+
+        // Keep only valid combinations
+        def actualReports = reports.findAll {
+          allCombinations.containsKey(it.name)
         }
+
+        // Track what we already have
+        def seen = actualReports.collect { it.name } as Set
+
+        // Add missing combinations (no fakeReports needed)
+        def missingReports = allCombinations
+          .findAll { !seen.contains(it.key) }
+          .collect { combination, plugins ->
+            [
+              name: combination,
+              elapsed: 1.0,
+              failures: 0,
+              plugins: plugins
+            ]
+          }
+
         echo "actualReports.size(): ${actualReports.size()}"
-        def reportBuckets = splitReports(actualReports, MAX_SPLITS, allCombinations)
-        echo "reportBuckets.size(): ${reportBuckets.size()}"
-        reportBuckets.eachWithIndex { bucket, i ->
-          echo "Split #${i} (total: ${bucket.total})"
-          bucket.items.each {
-            echo " ---> ${it.name}: ${it.plugins} (${it.elapsed})"
-          }
+        echo "missingReports.size(): ${missingReports.size()}"
+
+        if (actualReports.size() > 0) {
+          def reportBuckets = splitReports(actualReports, MAX_SPLITS)
+          batches = getBatches(reportBuckets, allCombinations, 'report')
         }
-        batches = getBatches(reportBuckets, allCombinations, 'reports')
+
+        if (missingReports.size() > 0) {
+          def missingBuckets = splitReports(missingReports, MAX_SPLITS)
+          batches += getBatches(missingBuckets, allCombinations, 'missing')
+        }
+        // buckets.eachWithIndex { bucket, i ->
+        //   echo "Split #${i} (total: ${bucket.total})"
+        //   bucket.items.each {
+        //     echo " ---> ${it.name}: ${it.plugins} (${it.elapsed})"
+        //   }
+        // }
       }
 
-      def previousCombinations = reports.collect { it.name } as Set
-      def missingReports = fakeReports.findAll { item -> !previousCombinations.contains(item.name) }
 
-      if (missingReports) {
-        echo 'missingReports'
-        def missingBuckets = splitReports(missingReports, MAX_SPLITS, allCombinations)
-        echo "missingBuckets.size(): ${missingBuckets.size()}"
-        missingBuckets.eachWithIndex { bucket, i ->
-          echo "Split #${i} (total: ${bucket.total})"
-          bucket.items.each {
-            echo " ---> ${it.name}: ${it.plugins} (${it.elapsed})"
-          }
-        }
-        batches += getBatches(missingBuckets, allCombinations, 'missing')
-      }
+      // // Mine
+      // def content = readFile("${reportName}.txt")
+      // // def reports = parseReport(content)
+      // def reports = content.readLines().collect { line ->
+      //   def parts = line.trim().split(':')
+      //   [
+      //     name: parts[0],
+      //     elapsed: parts[1].toDouble(),
+      //     failures: parts[2].toInteger(),
+      //     plugins: parts[3],
+      //   ]
+      // }
+      // if (reports) {
+      //   echo 'reports'
+      //   echo "reports.size(): ${reports.size()}"
+      //   def actualReports = reports.findAll { report ->
+      //     allCombinations.containsKey(report.name)
+      //   }
+      //   echo "actualReports.size(): ${actualReports.size()}"
+      //   def reportBuckets = splitReports(actualReports, MAX_SPLITS, allCombinations)
+      //   echo "reportBuckets.size(): ${reportBuckets.size()}"
+      //   reportBuckets.eachWithIndex { bucket, i ->
+      //     echo "Split #${i} (total: ${bucket.total})"
+      //     bucket.items.each {
+      //       echo " ---> ${it.name}: ${it.plugins} (${it.elapsed})"
+      //     }
+      //   }
+      //   batches = getBatches(reportBuckets, allCombinations, 'reports')
+      // }
+
+      // def previousCombinations = reports.collect { it.name } as Set
+      // def missingReports = fakeReports.findAll { item -> !previousCombinations.contains(item.name) }
+
+      // if (missingReports) {
+      //   echo 'missingReports'
+      //   def missingBuckets = splitReports(missingReports, MAX_SPLITS, allCombinations)
+      //   echo "missingBuckets.size(): ${missingBuckets.size()}"
+      //   missingBuckets.eachWithIndex { bucket, i ->
+      //     echo "Split #${i} (total: ${bucket.total})"
+      //     bucket.items.each {
+      //       echo " ---> ${it.name}: ${it.plugins} (${it.elapsed})"
+      //     }
+      //   }
+      //   batches += getBatches(missingBuckets, allCombinations, 'missing')
+      // }
     }
   }
 }
