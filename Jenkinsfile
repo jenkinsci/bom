@@ -6,13 +6,20 @@ if(env.BRANCH_NAME == "master") {
 
 env.MAVEN_NTP = true
 def MAX_SPLITS = 10
-def limitedPluginSet = pullRequest.labels.contains('limited-plugin-set')
+def limitPluginSet = pullRequest.labels.contains('limited-plugin-set')
 def reportName = 'bom-report'
-def pluginsByRepository
-def lines
-def fullTestMarkerFile
-def weeklyTestMarkerFile
-def results = [:]
+def limitedPdluginSet = [
+  'jenkinsci/aws-credentials-plugin	aws-credentials',
+  'jenkinsci/aws-global-configuration-plugin	aws-global-configuration',
+  'jenkinsci/azure-credentials-plugin	azure-credentials',
+  'jenkinsci/azure-keyvault-plugin	azure-keyvault',
+  'jenkinsci/azure-sdk-plugin	azure-sdk',
+  'jenkinsci/azure-storage-plugin	windows-azure-storage',
+  'jenkinsci/azure-vm-agents-plugin	azure-vm-agents',
+  'jenkinsci/badge-plugin	badge',
+  'jenkinsci/basic-branch-build-strategies-plugin	basic-branch-build-strategies',
+  'jenkinsci/pipeline-maven-plugin	pipeline-maven,pipeline-maven-api,pipeline-maven-database',
+]
 
 properties([
   // disableConcurrentBuilds(abortPrevious: true),
@@ -57,55 +64,20 @@ def mavenEnv(Map params = [:], Closure body) {
     }
   }
 }
-// def mavenNode(Map params = [:], Closure body) {
-//   def attempt = 0
-//   def attempts = 6
-//   retry(count: attempts, conditions: [kubernetesAgent(handleNonKubernetes: true), nonresumable()]) {
-//     echo 'Attempt ' + ++attempt + ' of ' + attempts
-//     // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
-//     node('maven-bom') {
-//       timeout(120) {
-//         mavenEnv(params, body)
-//       }
-//     }
-//   }
-// }
-
-// def mavenEnv(Map params = [:], Closure body) {
-//   withChecks(name: 'Tests', includeStage: true) {
-//     infra.withArtifactCachingProxy {
-//       withEnv([
-//         'JAVA_HOME=/opt/jdk-' + params['jdk'],
-//         'PATH+JDK=/opt/jdk-' + params['jdk'] + '/bin',
-//         "MAVEN_ARGS=${env.MAVEN_ARGS != null ? env.MAVEN_ARGS : ''} -B ${env.MAVEN_NTP != null ? '-ntp' : ''} -Dmaven.repo.local=${env.WORKSPACE_TMP}/m2repo",
-//         "MVN_LOCAL_REPO=${env.WORKSPACE_TMP}/m2repo",
-//       ]) {
-//         infra.loadMavenLocalCacheIfAny(env.MVN_LOCAL_REPO)
-
-//         body()
-//       }
-//     }
-//     try {
-//       if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount > 0) {
-//         unstable('Some test failures, marking the build as unstable')
-//       }
-//     } catch(e) {}
-//   }
-// }
 
 def copyArtifactsFromAnyPreviousBuild(archiveName, jobName) {
   def foundInBuildNumber = 0
   def archiveExists = false
   def buildNumber = env.BUILD_NUMBER.toInteger()
   if (buildNumber == 1) {
-    echo 'INFO: first build, no prep archive available yet'
+    echo "INFO: first build of ${jobName}, no ${archiveName} available yet"
   } else {
     // Loop over builds to retrieve the prep archive as previous build can have (only) other archive(s)
     def checkBuildNumber = buildNumber - 1
     // Don't loop until the first build of master '^^
     def limit = jobName.endsWith('master') ? buildNumber - 10 : 0
     while (!archiveExists && checkBuildNumber > limit) {
-      echo "Trying to retrieve ${archiveName} from buid #${checkBuildNumber}..."
+      echo "Trying to retrieve ${archiveName} from ${jobName}#${checkBuildNumber}..."
       try {
         copyArtifacts(projectName: jobName,
         selector: specific("${checkBuildNumber}"),
@@ -123,7 +95,7 @@ def copyArtifactsFromAnyPreviousBuild(archiveName, jobName) {
       echo "No ${archiveName} found in any build of ${jobName}"
     } else {
       foundInBuildNumber = checkBuildNumber
-      echo "${archiveName} found in build #${foundInBuildNumber} of ${jobName}"
+      echo "${archiveName} found in ${jobName}#${checkBuildNumber}"
     }
   }
   return foundInBuildNumber
@@ -180,6 +152,12 @@ def splitReports(List items, int maxSplits) {
   return buckets
 }
 
+def pluginsByRepository
+def lines
+def fullTestMarkerFile
+def weeklyTestMarkerFile
+def results = [:]
+
 // stage ('debug splitTests') {
 //   def splits = splitTests parallelism: count(MAX_SPLITS), stage: 'results report'
 //   echo "splits.size(): ${splits.size()}"
@@ -191,6 +169,10 @@ def splitReports(List items, int maxSplits) {
 
 mavenEnv(jdk: 21) {
   def scmVars = checkout scm
+
+  fullTestMarkerFile = fileExists 'full-test'
+  weeklyTestMarkerFile = fileExists 'weekly-test'
+
   // Ensure prep archive corresponds to the current state
   def prepArchiveName = "bom-prep-${scmVars.GIT_COMMIT}.tar.gz"
   def prepArchiveExists = false
@@ -218,17 +200,15 @@ mavenEnv(jdk: 21) {
         tar xzfv "${ARCHIVE_NAME}"
         rm "${ARCHIVE_NAME}"
         '''
-        echo "INFO: ${prepArchiveName} retrieved from build #${prepFoundInBuildNumber}"
+        echo "INFO: ${prepArchiveName} retrieved and extracted, no need to run prep.sh"
       }
     }
   }
 
   stage('parse prep') {
-    fullTestMarkerFile = fileExists 'full-test'
-    weeklyTestMarkerFile = fileExists 'weekly-test'
     dir('target') {
       def plugins = []
-      if (limitedPluginSet) {
+      if (limitPluginSet) {
         // TODO: check why unstable seems to break pipeline graph view
         // unstable('WARNING: running on a limited set of plugins')
         echo('WARNING: running on a limited set of plugins')
@@ -252,18 +232,22 @@ mavenEnv(jdk: 21) {
       lines = readFile('lines.txt').split('\n')
       lines = [lines[0], lines[-1]] // Save resources by running PCT only on newest and oldest lines
     }
-    lines.each { line ->
-      stash name: line, includes: "pct.sh,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-${line}.war"
-      prepArchiveGlob += " target/megawar-${line}.war"
-    }
-    def from = limitedPluginSet ? 'a limited set of plugins' : 'plugins.txt'
+    def from = limitPluginSet ? 'a limited set of plugins' : 'plugins.txt'
     echo "INFO: ${pluginsByRepository.size()} repositories retrieved from ${from}"
     echo "INFO: ${lines.size()} lines retrieved from plugins.txt"
   }
 
-  stage('archive prep') {
+  stage('stash prep lines') {
+    lines.each { line ->
+      stash name: line, includes: "pct.sh,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-${line}.war"
+    }
+  }
+
+  stage('archive new prep') {
     if (prepFoundInBuildNumber == 0) {
-      // Prepare prep archive
+      lines.each { line ->
+        prepArchiveGlob += " target/megawar-${line}.war"
+      }
       withEnv(["ARCHIVE_NAME=${prepArchiveName}", "ARCHIVE_GLOB=${prepArchiveGlob}",]) {
         sh 'tar czfv "${ARCHIVE_NAME}" ${ARCHIVE_GLOB}'
         archiveArtifacts artifacts: prepArchiveName, fingerprint: true
@@ -281,6 +265,7 @@ mavenEnv(jdk: 21) {
       // TODO: use a direct copyArtifact with an appropriate selector? (lastSuccessful(), lastArchived(), etc.)
       reportprepFoundInBuildNumber = copyArtifactsFromAnyPreviousBuild("${reportName}.txt", 'Tools/bom/master')
     }
+    sh "cat ${reportName}.txt || true"
   }
 
   stage('splits') {
@@ -296,7 +281,6 @@ mavenEnv(jdk: 21) {
       }
       // TODO: if there is a time for a repo-line but not repo-anotherLine, use that first time as default estimation
     }
-    sh "cat ${reportName}.txt || true"
   }
 }
 
