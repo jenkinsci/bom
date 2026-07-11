@@ -487,8 +487,8 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || ful
           }
           def combinationCount = 1
           def totalCombination = combinations.size()
-          def batchCombinationNames = previousReports.collect { it.name } as Set
-          echo "combinations in ${batch}: ${batchCombinationNames.joint(' / ')}"
+          def batchCombinationNames = combinations.collect { combination, plugins -> combination } as Set
+          echo "combinations in ${batch}: ${batchCombinationNames.join(' / ')}"
           combinations.each { combination, plugins ->
             def parts = combination.split(combinationSeparator)
             def repository = parts[0]
