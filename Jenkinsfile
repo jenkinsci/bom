@@ -9,7 +9,7 @@ def fullTestLabel = pullRequest.labels.contains('full-test')
 def limitedPluginSetLabel = pullRequest.labels.contains('limited-plugin-set')
 
 env.MAVEN_NTP = true
-def MAX_SPLITS = 5
+def MAX_SPLITS = 3
 def borkedReport = false // set this to true if the previous report is borked and causes failure
 def reportName = '' // can be overriden
 // TODO: get limited set from a marker file?
