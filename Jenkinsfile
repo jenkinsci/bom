@@ -157,6 +157,7 @@ def lines
 def fullTestMarkerFile
 def weeklyTestMarkerFile
 def results = [:]
+def previousResults = [:]
 
 // stage ('debug splitTests') {
 //   def splits = splitTests parallelism: count(MAX_SPLITS), stage: 'results report'
@@ -271,8 +272,9 @@ mavenEnv(jdk: 21) {
   stage('splits') {
     if (reportprepFoundInBuildNumber > 0) {
       def content = readFile("${reportName}.txt")
-      def tests = parseReport(content)
-      def buckets = splitReports(tests, MAX_SPLITS)
+      previousResults = parseReport(content)
+      echo "previousResults: ${previousResults}"
+      def buckets = splitReports(previousResults, MAX_SPLITS)
       buckets.eachWithIndex { bucket, i ->
         echo "Split #${i} (total: ${bucket.total})"
         bucket.items.each {
