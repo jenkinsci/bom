@@ -471,7 +471,15 @@ mavenNode(jdk: 21) {
     } else {
       echo "INFO: ${reportName}.txt found, balancing splits"
       def content = readFile("${reportName}.txt")
-      def reports = parseReport(content)
+      // def reports = parseReport(content)
+      def reports = content.readLines().collect { r ->
+        [
+          name: r.name,
+          duration: r.duration as Double,
+          failures: r.failures as Integer,
+          plugins: r.plugins as String
+        ]
+      }
       if (reports) {
         echo 'reports'
         def reportBuckets = splitReports(reports, MAX_SPLITS, allCombinations)
