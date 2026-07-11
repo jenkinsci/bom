@@ -20,9 +20,9 @@ def limitedPluginSet = [
   'jenkinsci/azure-keyvault-plugin	azure-keyvault',
   'jenkinsci/azure-sdk-plugin	azure-sdk',
   'jenkinsci/azure-storage-plugin	windows-azure-storage',
-  'jenkinsci/azure-vm-agents-plugin	azure-vm-agents',
   'jenkinsci/badge-plugin	badge',
   'jenkinsci/basic-branch-build-strategies-plugin	basic-branch-build-strategies',
+  'jenkinsci/cron_column-plugin_weekly	cron_column',
   'jenkinsci/pipeline-maven-plugin	pipeline-maven,pipeline-maven-api,pipeline-maven-database',
 ]
 def limitedMaxSplits = 3
@@ -470,7 +470,7 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || ful
             echo "combination ${combination}/${totalCombination}: ${combination} (plugins: ${plugins})"
 
             def combinationAlreadySucceeded = false
-            // If combination already in results, in case of aborted build due to a reclaimed spot instance for ex
+            // Check if combination already in results, in case of aborted build due to a reclaimed spot instance for ex
             if (results.containsKey(combination)) {
               def previousFailCount = results[combination]['failCount']
               def previousElapsed = results[combination]['elapsed']
