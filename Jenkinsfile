@@ -178,9 +178,9 @@ def getAllCombinations(pluginsByRepository, lines, weeklyOnly, combinationSepara
       return
     }
     def normalizedLine = line.replaceAll('\\.', '-')
+    // TODO: alert if repository or plugins isn't valid (a-Z_-)
     pluginsByRepository.each { repository, plugins ->
       combinations["${repository}${combinationSeparator}${normalizedLine}"] = plugins.join(',')
-      // TODO: alert if repository or plugins isn't valid (a-Z_-)
     }
   }
   combinations
