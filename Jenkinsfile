@@ -207,6 +207,10 @@ def getBucketCombinations(buckets, allCombinations) {
     }
   }
 
+  // TODO: remove what's not in allCombinations
+
+  // TODO: do the merge before the splitTest (?)
+
   echo "seen.size() after completion: ${seen.size()}"
   echo "bucketCombinations.size() after completion: ${bucketCombinations.size()}"
 
