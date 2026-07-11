@@ -197,13 +197,13 @@ def getBucketCombinations(buckets, allCombinations) {
 
   // Ensure all combinations are present in bucketCombinations
   // Each in their own bucket
+  // TODO: set default duration of N and set total to N x missing then splitReport
   allCombinations.each { combination, plugins ->
     if (!seen.contains(combination)) {
       seen.add(combination)
       def newCombination = "new_${combination}"
       bucketCombinations[newCombination] = [:]
       bucketCombinations[newCombination][combination] = allCombinations[combination]
-      echo "${combination} added to new"
     }
   }
 
@@ -449,6 +449,8 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || ful
               }
             }
           }
+          def combinationCount = 1
+          def totalCombination = combinations.size()
           combinations.each { combination, plugins ->
             def parts = combination.split('_')
             def repository = parts[0]
@@ -456,7 +458,7 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || ful
             // Note: line is currrently never set to '2.555.x'
             // as we're keeping only the first ('weekly') and the last lines from lines.txt in 'prep' stage
             def jdk = line == 'weekly' || line == '2.555.x' ? 21 : 17
-            echo "combination: ${combination} (plugins: ${plugins})"
+            echo "combination ${combination}/${totalCombination}: ${combination} (plugins: ${plugins})"
 
             def combinationAlreadySucceeded = false
             // If combination already in results, in case of aborted build due to a reclaimed spot instance for ex
