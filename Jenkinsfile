@@ -10,13 +10,11 @@ def limitedPluginSetLabel = pullRequest.labels.contains('limited-plugin-set')
 
 def testingCase = ''
 if (testingCase == 'limited-weekly') {
-  currentBuild.description = 'Test limited-plugin-set weekly-test'
   fullTestLabel = false
   weeklyTestLabel = true
   limitedPluginSetLabel = true
 }
 if (testingCase == 'limited-full') {
-  currentBuild.description = 'Test limited-plugin-set full-test'
   fullTestLabel = true
   weeklyTestLabel = false
   limitedPluginSetLabel = true
@@ -347,6 +345,42 @@ def getReportsFromResults(results, combinationSeparator) {
   ]
 }
 
+@NonCPS
+def setBuildDescription(args = [:]) {
+  def originalDesc = args['description']
+  def desc
+  def labels
+  def markerFiles
+  if (args['fullTestLabel']) {
+    labels += ' full-test'
+  }
+  if (args['weeklyTestLabel']) {
+    labels += ' weekly-test'
+  }
+  if (args['limitedPluginSetLabel']) {
+    labels += ' limited-plugin-set'
+  }
+  if (args['fullTestMarkerFile']) {
+    markerFiles += ' full-test'
+  }
+  if (args['weeklyTestMarkerFile']) {
+    markerFiles += ' weekly-test'
+  }
+  def trimedLabels = labels.trim()
+  def trimedMarkers = markerFiles.trim()
+  if (trimedLabels) {
+    desc += "[labels: ${trimedLabels}]"
+  }
+  if (markerFiles) {
+    desc += "[markers: ${trimedLabels}]"
+  }
+  if (args['testingCase']) {
+    desc += "[test ${args['testingCase']}]"
+  }
+  desc = originalDesc + ' ' + desc
+  return desc.trim()
+}
+
 def pluginsByRepository
 def lines
 def fullTestMarkerFile
@@ -360,6 +394,17 @@ mavenNode(jdk: 21) {
 
   fullTestMarkerFile = fileExists 'full-test'
   weeklyTestMarkerFile = fileExists 'weekly-test'
+
+  def desc = getBuildDescription([
+    description: currentBuild.description,
+    fullTestLabel: fullTestLabel,
+    weeklyTestLabel: weeklyTestLabel,
+    limitedPluginSetLabel: limitedPluginSetLabel,
+    fullTestMarkerFile: fullTestMarkerFile,
+    weeklyTestMarkerFile: weeklyTestMarkerFile,
+    testingCase: testingCase,
+  ])
+  currentBuild.description = desc
 
   // Report name depending on labels and marker files, by order of prevalence
   // or reportName if not empty
