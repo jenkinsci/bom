@@ -4,11 +4,15 @@ if(env.BRANCH_NAME == "master") {
   cronTrigger = '57 11 * * 5'
 }
 
+def weeklyTestLabel = pullRequest.labels.contains('weekly-test')
+def fullTestLabel = pullRequest.labels.contains('full-test')
+def limitedPluginSetLabel = pullRequest.labels.contains('limited-plugin-set')
+
 env.MAVEN_NTP = true
 def MAX_SPLITS = 10
-def limitPluginSet = pullRequest.labels.contains('limited-plugin-set')
-def reportName = 'bom-report'
-def limitedPdluginSet = [
+def reportName = '' // can be overriden
+// TODO: get limited set from a marker file?
+def limitedPluginSet = [
   'jenkinsci/aws-credentials-plugin	aws-credentials',
   'jenkinsci/aws-global-configuration-plugin	aws-global-configuration',
   'jenkinsci/azure-credentials-plugin	azure-credentials',
@@ -174,6 +178,20 @@ mavenEnv(jdk: 21) {
   fullTestMarkerFile = fileExists 'full-test'
   weeklyTestMarkerFile = fileExists 'weekly-test'
 
+  // Report name depending on labels and marker files, by order of prevalence
+  // or reportName if not empty
+  if (!reportName) {
+    if (fullTestLabel || fullTestMarkerFile) {
+      reportName = 'bom-report-full'
+    }
+    if (weeklyTestLabel || weeklyTestMarkerFile) {
+      reportName = 'bom-report-weekly'
+    }
+    if (limitedPluginSetLabel) {
+      reportName = 'bom-report-limited'
+    }
+  }
+
   // Ensure prep archive corresponds to the current state
   def prepArchiveName = "bom-prep-${scmVars.GIT_COMMIT}.tar.gz"
   def prepArchiveExists = false
@@ -209,11 +227,11 @@ mavenEnv(jdk: 21) {
   stage('parse prep') {
     dir('target') {
       def plugins = []
-      if (limitPluginSet) {
+      if (limitedPluginSetLabel) {
         // TODO: check why unstable seems to break pipeline graph view
         // unstable('WARNING: running on a limited set of plugins')
         echo('WARNING: running on a limited set of plugins')
-        plugins = limitedPdluginSet
+        plugins = limitedPluginSet
       } else {
         plugins = readFile('plugins.txt').split('\n')
       }
@@ -222,7 +240,7 @@ mavenEnv(jdk: 21) {
       lines = readFile('lines.txt').split('\n')
       lines = [lines[0], lines[-1]] // Save resources by running PCT only on newest and oldest lines
     }
-    def from = limitPluginSet ? 'a limited set of plugins' : 'plugins.txt'
+    def from = limitedPluginSetLabel ? 'a limited set of plugins' : 'plugins.txt'
     echo "INFO: ${pluginsByRepository.size()} repositories retrieved from ${from}"
     echo "INFO: ${lines.size()} lines retrieved from plugins.txt"
   }
@@ -276,11 +294,11 @@ mavenEnv(jdk: 21) {
   }
 }
 
-if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env.CHANGE_ID && (pullRequest.labels.contains('full-test') || pullRequest.labels.contains('weekly-test'))) {
+if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env.CHANGE_ID && (fullTestLabel || weeklyTestLabel )) {
   stage('parallel') {
     def branches = [failFast: false]
     lines.each {line ->
-      if (line != 'weekly' && (weeklyTestMarkerFile || env.CHANGE_ID && pullRequest.labels.contains('weekly-test'))) {
+      if (line != 'weekly' && (weeklyTestMarkerFile || env.CHANGE_ID && weeklyTestLabel )) {
         return
       }
       pluginsByRepository.each { repository, plugins ->
