@@ -127,23 +127,18 @@ def parsePlugins(plugins) {
 
 @NonCPS
 def parseReport(String content) {
-  echo "parseReport..."
   content.readLines().collect { line ->
     def parts = line.trim().split(':')
-    def name = parts[0]
-    Double duration = parts[1].toDouble()
-    int failures = parts[2].toInteger()
-    def plugins = parts[3]
-
     [
-      name: name,
-      duration: duration,
-      failures: failures,
-      plugins: plugins,
+      name: parts[0],
+      duration: parts[1].toDouble(),
+      failures: parts[2].toInteger(),
+      plugins: parts[3],
     ]
   }
 }
 
+// TODO: check whata happens if MAX_SPLITS > repositories
 @NonCPS
 def splitReports(List items, int maxSplits, allCombinations) {
   def buckets
