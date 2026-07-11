@@ -445,6 +445,9 @@ mavenNode(jdk: 21) {
   stage('splits') {
     def allCombinations = getAllCombinations(pluginsByRepository, lines, (weeklyTestMarkerFile || weeklyTestLabel), combinationSeparator)
     echo "allCombinations.size(): ${allCombinations.size()}"
+    // debug
+    def combinationNames = allCombinations.collect { combination, _ -> combination } as Set
+    echo "all combinations: ${combinationNames.join('\n')}"
 
     def fakeReports = allCombinations.collect { combination, plugins ->
       [
