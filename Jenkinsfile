@@ -141,19 +141,11 @@ def parseReport(String content) {
 @NonCPS
 def splitReports(List items, int maxSplits, allCombinations) {
   def buckets = [:]
-  echo "items.size(): ${items.size()}"
   // Keep only items whose combination still exists
   def filteredItems = items.findAll { item ->
-    echo "item: ${item}"
     allCombinations.contains(item.name)
   }
-  def filteredItemsSize = filteredItems.size()
-  def diff = items.size() - filteredItemsSize
-  if (diff > 0) {
-    echo "${diff} reports combinations filtered out as not present in this build"
-  }
-
-  if (filteredItemsSize > 0) {
+  if (filteredItems.size()) {
     // // TODO: check what happens if MAX_SPLITS > repositories
     // if (maxSplit > filteredItemsSize) {
     //   maxSplit = filteredItemsSize
