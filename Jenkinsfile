@@ -478,7 +478,7 @@ mavenNode(jdk: 21) {
         }
         missingReportBatches = getBatches(bucketsMissingReports, allCombinations, 'missing')
       }
-      batches = previousReportBatches + missingReportBatches
+      batches = (previousReportBatches ?: [:]) + (missingReportBatches ?: [:])
     }
   }
 }
