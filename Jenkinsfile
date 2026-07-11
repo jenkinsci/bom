@@ -356,9 +356,10 @@ def getBuildDescription(args = [:]) {
   if (args['limitedPluginSetLabel']) { labels.add('limited-plugin-set') }
   if (args['fullTestMarkerFile']) { markers.add('full-test') }
   if (args['weeklyTestMarkerFile']) { markers.add('weekly-test') }
-  if (labels.size() > 0) { desc += "[labels:${labels.join(',')}]" }
-  if (markers.size() > 0) { desc += "[markers:${markers.join(',')}]" }
-  if (args['testingCase']) { desc += "[test:${args['testingCase']}]" }
+  if (labels.size() > 0) { desc += "[<b>labels</b>:${labels.join(',')}]" }
+  if (markers.size() > 0) { desc += "[<b>markers</b>:${markers.join(',')}]" }
+  if (args['testingCase']) { desc += "[<b>test</b>:${args['testingCase']}]" }
+  if (desc) { desc = '<i><small>' + desc + '</small></i>' }
   if (originalDesc) { desc = (originalDesc + ' ' + desc).trim() }
   return desc
 }
@@ -604,6 +605,13 @@ mavenNode(jdk: 21) {
           def missingBuckets = splitReports(missingReports, MAX_SPLITS)
           batches += getBatches(missingBuckets, allCombinations, 'missing')
         }
+      }
+    }
+    batches.each { batch, combinations -> 
+      if (combinations.size() == 0) {
+        echo "batch: ${batch}"
+        def batchCombinationNames = combinations.collect { combination, plugins -> combination } as Set
+        echo "batchCombinationNames[${batch}]: ${batchCombinationNames.join(' / ')}"
       }
     }
   }
