@@ -351,16 +351,17 @@ def getBuildDescription(args = [:]) {
   def desc = ''
   def labels = []
   def markers = []
+  def elts = []
   if (args['fullTestLabel']) { labels.add('full-test') }
   if (args['weeklyTestLabel']) { labels.add('weekly-test') }
   if (args['limitedPluginSetLabel']) { labels.add('limited-plugin-set') }
   if (args['fullTestMarkerFile']) { markers.add('full-test') }
   if (args['weeklyTestMarkerFile']) { markers.add('weekly-test') }
-  if (labels.size() > 0) { desc += "[<b>labels</b>:${labels.join(',')}]" }
-  if (markers.size() > 0) { desc += "[<b>markers</b>:${markers.join(',')}]" }
-  if (args['testingCase']) { desc += "[<b>test</b>:${args['testingCase']}]" }
-  if (desc) { desc = '<i><small>' + desc + '</small></i>' }
-  if (originalDesc) { desc = (originalDesc + ' ' + desc).trim() }
+  if (labels.size() > 0) { elts.add("[<b>labels</b>:${labels.join(',')}]") }
+  if (markers.size() > 0) { elts.add("[<b>markers</b>:${markers.join(',')}]") }
+  if (args['testingCase']) { elts.add("[<b>test</b>:${args['testingCase']}]") }
+  if (elts.size() > 0) { desc = '<i><small>' + elts.join('<br>') + '</small></i>' }
+  if (originalDesc) { desc = (originalDesc + '<hr>' + desc).trim() }
   return desc
 }
 
