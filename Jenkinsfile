@@ -395,6 +395,12 @@ mavenNode(jdk: 21) {
 
   stage('retrieve prep archive') {
     prepFoundInBuildNumber = copyArtifactsFromAnyPreviousBuild(prepArchiveName, env.JOB_NAME)
+    if (prepFoundInBuildNumber == 0) {
+      catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') {
+        error("${prepArchiveName} not found")
+      }
+      return
+    }
   }
 
   stage('prep') {
@@ -472,7 +478,10 @@ mavenNode(jdk: 21) {
         echo "INFO: new ${prepArchiveName} archived"
       }
     } else {
-      echo "INFO: no new prep to archive"
+      catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') {
+        error("INFO: no new prep to archive")
+      }
+      return
     }
   }
 
@@ -564,125 +573,146 @@ mavenNode(jdk: 21) {
         stash name: line, includes: "pct.sh,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-${line}.war"
       }
     } else {
-      echo 'No batch, no need to stash any line'
+      catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') {
+        error('No batch, no need to stash any line')
+      }
+      return
     }
   }
 }
 
-if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || fullTestLabel || weeklyTestLabel ) {
-  stage('run pct') {
-    def branches = [failFast: false]
+stage('run pct') {
+  def branches = [failFast: false]
 
-    batches.each { batch, combinations ->
-      if (combinations.size() == 0) {
-        return
+  if (BRANCH_NAME != 'master' && !(fullTestMarkerFile || weeklyTestMarkerFile || fullTestLabel || weeklyTestLabel )) {
+    catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') {
+      error('Not running on master or no weekly-test / full-test labels or markers')
+    }
+    return
+  }
+
+  batches.each { batch, combinations ->
+    if (combinations.size() == 0) {
+      catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') {
+        error('No batch, nothing to run')
       }
-      branches[batch] = {
-        mavenNode() {
-          // Unstash all lines used in this batch
-          def unstashLines = combinations
-              .keySet()
-              .collect { it.split(combinationSeparator)[1].replaceAll('-', '.') }
-              .unique()
-          unstashLines.each { unstash it }
+      return
+    }
+    branches[batch] = {
+      mavenNode() {
+        // Unstash all lines used in this batch
+        def unstashLines = combinations
+            .keySet()
+            .collect { it.split(combinationSeparator)[1].replaceAll('-', '.') }
+            .unique()
+        unstashLines.each { unstash it }
 
-          def combinationCount = 1
-          def totalCombination = combinations.size()
-          def batchCombinationNames = combinations.collect { combination, plugins -> combination } as Set
-          echo "combinations in '${batch}' batch: ${batchCombinationNames.join(' / ')}"
-          combinations.each { combination, plugins ->
-            def parts = combination.split(combinationSeparator)
-            def repository = parts[0]
-            def line = parts[1].replaceAll('-', '.')
-            // Note: line is currrently never set to '2.555.x'
-            // as we're keeping only the first ('weekly') and the last lines from lines.txt in 'prep' stage
-            def jdk = line == 'weekly' || line == '2.555.x' ? 21 : 17
-            echo "INFO: combination ${combinationCount}/${totalCombination}: ${combination} (plugins: ${plugins})"
+        def combinationCount = 1
+        def totalCombination = combinations.size()
+        def batchCombinationNames = combinations.collect { combination, plugins -> combination } as Set
+        echo "combinations in '${batch}' batch: ${batchCombinationNames.join(' / ')}"
+        combinations.each { combination, plugins ->
+          def parts = combination.split(combinationSeparator)
+          def repository = parts[0]
+          def line = parts[1].replaceAll('-', '.')
+          // Note: line is currrently never set to '2.555.x'
+          // as we're keeping only the first ('weekly') and the last lines from lines.txt in 'prep' stage
+          def jdk = line == 'weekly' || line == '2.555.x' ? 21 : 17
+          echo "INFO: combination ${combinationCount}/${totalCombination}: ${combination} (plugins: ${plugins})"
 
-            def combinationAlreadySucceeded = false
-            // Check if combination already in results, in case of aborted build due to a reclaimed spot instance for ex
-            if (results.containsKey(combination)) {
-              def previousFailCount = results[combination]['failCount']
-              def previousElapsed = results[combination]['elapsed']
-              if (previousFailCount == 0) {
-                combinationAlreadySucceeded = true
-                echo "${combination} has already succeeded (elapsed: ${previousElapsed})"
-                try {
-                  echo "env.CURRENT_ATTEMPT: ${env.CURRENT_ATTEMPT}"
-                } catch(e) {}
-              } else {
-                echo "${combination} had previously ${previousFailCount} failure(s) (elapsed: ${previousElapsed})"
-              }
-            }
-
-            if (combinationAlreadySucceeded) {
-              echo "INFO: skipping ${combination}, already succeeded"
+          def combinationAlreadySucceeded = false
+          // Check if combination already in results, in case of aborted build due to a reclaimed spot instance for ex
+          if (results.containsKey(combination)) {
+            def previousFailCount = results[combination]['failCount']
+            def previousElapsed = results[combination]['elapsed']
+            if (previousFailCount == 0) {
+              combinationAlreadySucceeded = true
+              echo "${combination} has already succeeded (elapsed: ${previousElapsed})"
+              try {
+                echo "env.CURRENT_ATTEMPT: ${env.CURRENT_ATTEMPT}"
+              } catch(e) {}
             } else {
-              mavenEnv(jdk: jdk) {
-                withEnv([
-                  "PLUGINS=${plugins}",
-                  "LINE=${line}",
-                  'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
-                ]) {
-                  def start = System.currentTimeMillis()
-                  try {
-                    sh '''
-                    mvn -v
-                    bash pct.sh
-                    '''
-                  } catch (e) {
-                    if (!(e instanceof InterruptedException) && !(e instanceof org.jenkinsci.plugins.workflow.support.steps.AgentOfflineException)) {
-                      unstable('PCT failed in ' + repository + ' - line ' + line)
-                    } else {
-                      throw e
-                    }
-                  } finally {
-                    def elapsed = System.currentTimeMillis() - start
-                    def junitResults
-                    try {
-                      junitResults = junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml')
-                    } catch(e) {
-                      echo "error junitResult: ${e}"
-                    }
-                    results[combination] = getResult(junitResults, elapsed, plugins)
-                    try {
-                      // TODO: review, KO (always = 6)
-                      results[combination]['attempt'] = env.CURRENT_ATTEMPT
-                    } catch(e) {
-                      echo "error result attemtp: ${e}"
-                    }
-                    echo "results[${combination}]: ${results[combination]}"
+              echo "${combination} had previously ${previousFailCount} failure(s) (elapsed: ${previousElapsed})"
+            }
+          }
+
+          if (combinationAlreadySucceeded) {
+            echo "INFO: skipping ${combination}, already succeeded"
+          } else {
+            mavenEnv(jdk: jdk) {
+              withEnv([
+                "PLUGINS=${plugins}",
+                "LINE=${line}",
+                'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
+              ]) {
+                def start = System.currentTimeMillis()
+                try {
+                  sh '''
+                  mvn -v
+                  bash pct.sh
+                  '''
+                } catch (e) {
+                  if (!(e instanceof InterruptedException) && !(e instanceof org.jenkinsci.plugins.workflow.support.steps.AgentOfflineException)) {
+                    unstable('PCT failed in ' + repository + ' - line ' + line)
+                  } else {
+                    throw e
                   }
+                } finally {
+                  def elapsed = System.currentTimeMillis() - start
+                  def junitResults
+                  try {
+                    junitResults = junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml')
+                  } catch(e) {
+                    echo "error junitResult: ${e}"
+                  }
+                  results[combination] = getResult(junitResults, elapsed, plugins)
+                  try {
+                    // TODO: review, KO (always = 6)
+                    results[combination]['attempt'] = env.CURRENT_ATTEMPT
+                  } catch(e) {
+                    echo "error result attemtp: ${e}"
+                  }
+                  echo "results[${combination}]: ${results[combination]}"
                 }
               }
             }
-            combinationCount = combinationCount + 1
           }
+          combinationCount = combinationCount + 1
         }
       }
     }
-    parallel branches
   }
-  // TODO: consolidate with previous/master reports
-  // TODO: add 'src' of report? (results, previous reports ['pr-N', 'master-N'], deduced) to know which of these reports are retrieved from elsewhere than actual tests elapsed time?
-  stage('report results') {
-    if (reportResults) {
-      node('maven-bom') {
-        def contents = getReportsFromResults(results, combinationSeparator)
-        if (contents['xmlReportContent']) {
-          writeFile file: "${reportName}.xml", text: contents['xmlReportContent']
-          junit allowEmptyResults: true, testResults: "${reportName}.xml"
-        }
-        writeFile file: "${reportName}.json", text: contents['jsonReportContent']
-        writeFile file: "${reportName}.txt", text: contents['txtReportContent']
+  parallel branches
+}
 
-        sh "cat ${reportName}.xml || true"
-        sh "cat ${reportName}.json || true"
-        sh "cat ${reportName}.txt || true"
-        archiveArtifacts artifacts: "${reportName}.*", allowEmpty: true
+// TODO: consolidate with previous/master reports
+// TODO: add 'src' of report? (results, previous reports ['pr-N', 'master-N'], deduced) to know which of these reports are retrieved from elsewhere than actual tests elapsed time?
+stage('report results') {
+  if (results.size() == 0) {
+    catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') {
+      error('No result to report')
+    }
+    return
+  }
+  if (!reportResults) {
+    catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') {
+      error('WARNING: reportResults set to false, skipping')
+    }
+    return
+  } else {
+    node('maven-bom') {
+      def contents = getReportsFromResults(results, combinationSeparator)
+      if (contents['xmlReportContent']) {
+        writeFile file: "${reportName}.xml", text: contents['xmlReportContent']
+        junit allowEmptyResults: true, testResults: "${reportName}.xml"
       }
-    } else {
-      echo 'WARNING: reportResults set to false, skipping'
+      writeFile file: "${reportName}.json", text: contents['jsonReportContent']
+      writeFile file: "${reportName}.txt", text: contents['txtReportContent']
+
+      sh "cat ${reportName}.xml || true"
+      sh "cat ${reportName}.json || true"
+      sh "cat ${reportName}.txt || true"
+      archiveArtifacts artifacts: "${reportName}.*", allowEmpty: true
     }
   }
 }
