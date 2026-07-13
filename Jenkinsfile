@@ -63,7 +63,7 @@ def mavenNode(Map params = [:], Closure body) {
         withEnv([
           "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B ${env.MAVEN_NTP != null ? '-ntp' : ''} -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo",
           "MVN_LOCAL_REPO=${WORKSPACE_TMP}/m2repo",
-          "CURRENT_ATTEMPT=${attempts}",
+          "CURRENT_ATTEMPT=${attempt}",
         ]) {
           infra.loadMavenLocalCacheIfAny(env.MVN_LOCAL_REPO)
           mavenEnv(params, body)
