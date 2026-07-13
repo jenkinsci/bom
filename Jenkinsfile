@@ -41,6 +41,8 @@ def limitedPluginSet = [
 def limitedMaxSplits = 3
 def combinationSeparator = '~'
 
+// TODO: seedRun, to just create an archive of results obtained from a PR for example
+
 properties([
   // disableConcurrentBuilds(abortPrevious: true),
   buildDiscarder(logRotator(numToKeepStr: '7')),
