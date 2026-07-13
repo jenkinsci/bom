@@ -261,7 +261,7 @@ def getReportsFromResults(results, combinationSeparator) {
   }
 
   def reportLinesJson = results.collect { combination, result ->
-    """{"name":"${combination}","elapsed":${result['elapsed']},"duration":${result['duration']},"failCount":${result['failCount']},"skipCount":${result['skipCount']},"passCount":${result['passCount']},"totalCount":${result['totalCount']}}"""
+    """{"name":"${combination}","elapsed":${result['elapsed']},"duration":${result['duration']},"failCount":${result['failCount']},"skipCount":${result['skipCount']},"passCount":${result['passCount']},"totalCount":${result['totalCount']},"attempt":${result['attempt']}}"""
   }.join(',')
   def jsonReportContent = """{"jobs": [${reportLinesJson}]}"""
 
