@@ -68,7 +68,9 @@ def mavenNode(Map params = [:], Closure body) {
           "CURRENT_ATTEMPT=${attempt}",
         ]) {
           infra.loadMavenLocalCacheIfAny(env.MVN_LOCAL_REPO)
-          mavenEnv(params, body)
+          infra.withArtifactCachingProxy {
+            mavenEnv(params, body)
+          }
         }
       }
     }
@@ -77,13 +79,11 @@ def mavenNode(Map params = [:], Closure body) {
 
 def mavenEnv(Map params = [:], Closure body) {
   withChecks(name: 'Tests', includeStage: true) {
-    infra.withArtifactCachingProxy {
-      withEnv([
-        'JAVA_HOME=/opt/jdk-' + params['jdk'],
-        'PATH+JDK=/opt/jdk-' + params['jdk'] + '/bin',
-      ]) {
-        body()
-      }
+    withEnv([
+      'JAVA_HOME=/opt/jdk-' + params['jdk'],
+      'PATH+JDK=/opt/jdk-' + params['jdk'] + '/bin',
+    ]) {
+      body()
     }
   }
 }
