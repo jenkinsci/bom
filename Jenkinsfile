@@ -566,7 +566,7 @@ mavenNode(jdk: 21) {
 }
 
 if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || fullTestLabel || weeklyTestLabel ) {
-  stage('parallel') {
+  stage('run pct') {
     def branches = [failFast: false]
 
     batches.each { batch, combinations ->
