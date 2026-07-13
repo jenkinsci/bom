@@ -608,34 +608,30 @@ stage('run pct') {
         def totalCombination = combinations.size()
         def batchCombinationNames = combinations.collect { combination, plugins -> combination } as Set
         echo "INFO: current attempt: ${env.CURRENT_ATTEMPT}"
-        echo "INFO: combinations in '${batch}' batch:\n${batchCombinationNames.join('\n')}"
+        echo "INFO: current batch combinations:\n${batchCombinationNames.join('\n')}"
         combinations.each { combination, plugins ->
+          echo "INFO: starting combination '${combination}' ${combinationCount}/${totalCombination} (plugins: ${plugins})"
           def parts = combination.split(combinationSeparator)
           def repository = parts[0]
           def line = parts[1].replaceAll('-', '.')
           // Note: line is currrently never set to '2.555.x'
           // as we're keeping only the first ('weekly') and the last lines from lines.txt in 'prep' stage
           def jdk = line == 'weekly' || line == '2.555.x' ? 21 : 17
-          echo "INFO: combination ${combinationCount}/${totalCombination}: ${combination} (plugins: ${plugins})"
-
-          def combinationAlreadySucceeded = false
+          def combinationAlreadySucceededInAttempt = 0
           // Check if combination already in results, in case of aborted build due to a reclaimed spot instance for ex
           if (results.containsKey(combination)) {
             def previousFailCount = results[combination]['failCount']
             def previousElapsed = results[combination]['elapsed']
             if (previousFailCount == 0) {
-              combinationAlreadySucceeded = true
-              echo "${combination} has already succeeded (elapsed: ${previousElapsed})"
-              try {
-                echo "env.CURRENT_ATTEMPT: ${env.CURRENT_ATTEMPT}"
-              } catch(e) {}
+              combinationAlreadySucceededInAttempt = results[combination]['attempt']
+              echo "INFO: ${combination} has already succeeded in attempt n°${combinationAlreadySucceededInAttempt} (elapsed: ${previousElapsed})"
             } else {
-              echo "${combination} had previously ${previousFailCount} failure(s) (elapsed: ${previousElapsed})"
+              echo "INFO: ${combination} had previously ${previousFailCount} failure(s) in attempt n°${results[combination]['attempt']} (elapsed: ${previousElapsed})"
             }
           }
 
-          if (combinationAlreadySucceeded) {
-            echo "INFO: skipping ${combination}, already succeeded"
+          if (combinationAlreadySucceededInAttempt > 0) {
+            echo "INFO: skipping ${combination}, already succeeded in attempt n°${combinationAlreadySucceededInAttempt}"
           } else {
             mavenEnv(jdk: jdk) {
               withEnv([
