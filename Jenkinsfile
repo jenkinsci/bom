@@ -542,9 +542,6 @@ mavenNode(jdk: 21) {
 
       // TODO: search missing repo in reports repos, and deduce elapsed from there (keeping totalCound = 0 to indicate it's not a real result?)
 
-      echo "actualReports.size(): ${actualReports.size()}"
-      echo "missingReports.size(): ${missingReports.size()}"
-
       if (actualReports.size() > 0) {
         def reportBuckets = splitReports(actualReports, MAX_SPLITS)
         batches += getBatches(reportBuckets, allCombinations, 'report')
@@ -557,12 +554,12 @@ mavenNode(jdk: 21) {
     }
 
     // debug
-    echo "batches.size(): ${batches.size()}"
+    echo "INFO: ${batches.size()} batches"
     batches.each { batch, combinations ->
       if (combinations.size() > 0) {
-        echo "batch: ${batch}"
+        // echo "batch: ${batch}"
         def batchCombinationNames = combinations.collect { combination, plugins -> combination } as Set
-        echo "batchCombinationNames[${batch}]: ${batchCombinationNames.join(' / ')}"
+        echo "INFO: '${batch}' batch, ${batchCombinationNames.size()} combinations:\n${batchCombinationNames.join('\n')}"
       }
     }
   }
