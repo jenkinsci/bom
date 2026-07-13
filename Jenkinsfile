@@ -373,6 +373,7 @@ mavenNode(jdk: 21) {
   // Report name depending on labels and marker files, by order of prevalence
   // We chould add more info in the reportName, like which lines/one per line
   // or reportName if not empty
+  // TODO: also report as <...>-PR_N_buildN
   if (!reportName) {
     if (fullTestLabel || fullTestMarkerFile) {
       reportName = 'bom-report-full'
