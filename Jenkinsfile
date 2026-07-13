@@ -356,16 +356,19 @@ mavenNode(jdk: 21) {
   fullTestMarkerFile = fileExists 'full-test'
   weeklyTestMarkerFile = fileExists 'weekly-test'
 
-  def desc = getBuildDescription([
-    description: currentBuild.description,
-    fullTestLabel: fullTestLabel,
-    weeklyTestLabel: weeklyTestLabel,
-    limitedPluginSetLabel: limitedPluginSetLabel,
-    fullTestMarkerFile: fullTestMarkerFile,
-    weeklyTestMarkerFile: weeklyTestMarkerFile,
-    testingCase: testingCase,
-  ])
-  currentBuild.description = desc
+  // Add current labels, marker files and testing case to the build description once
+  if (env.CURRENT_ATTEMPT == 1) {
+    def desc = getBuildDescription([
+      description: currentBuild.description,
+      fullTestLabel: fullTestLabel,
+      weeklyTestLabel: weeklyTestLabel,
+      limitedPluginSetLabel: limitedPluginSetLabel,
+      fullTestMarkerFile: fullTestMarkerFile,
+      weeklyTestMarkerFile: weeklyTestMarkerFile,
+      testingCase: testingCase,
+    ])
+    currentBuild.description = desc
+  }
 
   // Report name depending on labels and marker files, by order of prevalence
   // We chould add more info in the reportName, like which lines/one per line
