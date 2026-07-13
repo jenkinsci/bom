@@ -22,7 +22,7 @@ if (testingCase == 'limited-full') {
 
 env.MAVEN_NTP = true
 def MAX_SPLITS = 20
-def borkedReport = false // set this to true if the previous report is borked and causes failure
+def ignoreReports = false // set this to true if the previous report is borked and causes failure
 def reportName = '' // can be overriden
 def reportResults = true
 // TODO: get limited set from a marker file?
@@ -515,12 +515,12 @@ mavenNode(jdk: 21) {
         ]
       }
     }
-    echo "INFO: ${reports.size()} reports"
+    echo "INFO: ${reports.size()} reports,\n${reports.join('\n')}"
   }
 
   stage('generate batches') {
-    if (reports.size() == 0 || borkedReport) {
-      echo "INFO: ${reportName}.txt not found, empty or borked, faking reports for all combinations"
+    if (reports.size() == 0 || ignoreReports) {
+      echo "INFO: ${reportName}.txt not found, empty or ignored, faking reports for all combinations"
       fakeReports = allCombinations.collect { combination, plugins ->
         [
           name: combination,
