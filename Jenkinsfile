@@ -664,12 +664,7 @@ stage('run pct') {
                     echo "error junitResult: ${e}"
                   }
                   results[combination] = getResult(junitResults, elapsed, plugins)
-                  try {
-                    // TODO: review, KO (always = 6)
-                    results[combination]['attempt'] = env.CURRENT_ATTEMPT
-                  } catch(e) {
-                    echo "error result attemtp: ${e}"
-                  }
+                  results[combination]['attempt'] = env.CURRENT_ATTEMPT
                   echo "results[${combination}]: ${results[combination]}"
                 }
               }
