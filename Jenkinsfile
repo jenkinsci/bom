@@ -279,66 +279,25 @@ def getReportsFromResults(results, combinationSeparator) {
 }
 
 @NonCPS
-def getBuildDescription(args = [:]) {
-  // TODO: merge user args & default values ala pipeline lib
-  def originalDesc = args['description']
-  def desc = ''
-  def labels = []
-  def markers = []
-  def elts = []
-  if (args['fullTestLabel']) {
-    labels.add('full-test')
-  }
-  if (args['weeklyTestLabel']) {
-    labels.add('weekly-test')
-  }
-  if (args['limitedPluginSetLabel']) {
-    labels.add('limited-plugin-set')
-  }
-  if (args['fullTestMarkerFile']) {
-    markers.add('full-test')
-  }
-  if (args['weeklyTestMarkerFile']) {
-    markers.add('weekly-test')
-  }
-  if (args['testingCase']) {
-    elts.add("<b>test</b>:${args['testingCase']}")
-  }
-  if (labels.size() > 0) {
-    elts.add("<b>labels</b>:${labels.join(',')}")
-  }
-  if (markers.size() > 0) {
-    elts.add("<b>markers</b>:${markers.join(',')}")
-  }
-  if (elts.size() > 0) {
-    desc = '<i><small>' + elts.join('<br>') + '</small></i>'
-  }
-  if (originalDesc) {
-    desc = (originalDesc + '<br>' + desc).trim()
-  }
-  return desc
+def getBuildDescription(Map args = [:]) {
+  def labels = [
+    (args.fullTestLabel): 'full-test',
+    (args.weeklyTestLabel): 'weekly-test',
+    (args.limitedPluginSetLabel): 'limited-plugin-set'
+  ].findAll { it.key }.values()
+
+  def markers = [
+    (args.fullTestMarkerFile): 'full-test',
+    (args.weeklyTestMarkerFile): 'weekly-test'
+  ].findAll { it.key }.values()
+
+  def parts = []
+  if (labels)  parts << "[labels:${labels.join(',')}]"
+  if (markers) parts << "[markers:${markers.join(',')}]"
+  if (args.testingCase) parts << "[test ${args.testingCase}]"
+
+  return ([args.description, parts.join(' ')].findAll { it } ).join(' ').trim()
 }
-
-// def getBuildDescription(Map args = [:]) {
-//   def labels = [
-//     (args.fullTestLabel): 'full-test',
-//     (args.weeklyTestLabel): 'weekly-test',
-//     (args.limitedPluginSetLabel): 'limited-plugin-set'
-//   ].findAll { it.key }.values()
-
-//   def markers = [
-//     (args.fullTestMarkerFile): 'full-test',
-//     (args.weeklyTestMarkerFile): 'weekly-test'
-//   ].findAll { it.key }.values()
-
-//   def parts = []
-
-//   if (labels)  parts << "[labels:${labels.join(',')}]"
-//   if (markers) parts << "[markers:${markers.join(',')}]"
-//   if (args.testingCase) parts << "[test ${args.testingCase}]"
-
-//   return ([args.description, parts.join(' ')].findAll { it } ).join(' ').trim()
-// }
 
 def pluginsByRepository
 def lines
@@ -358,18 +317,21 @@ mavenNode(jdk: 21) {
   fullTestMarkerFile = fileExists 'full-test'
   weeklyTestMarkerFile = fileExists 'weekly-test'
 
-  // Add current labels, marker files and testing case to the build description once
-  if (env.CURRENT_ATTEMPT == 1) {
+  // Add current labels, marker files and testing case to the build description, once
+  if (env.CURRENT_ATTEMPT.toInteger() == 1) {
     def desc = getBuildDescription([
-      description: currentBuild.description,
-      fullTestLabel: fullTestLabel,
-      weeklyTestLabel: weeklyTestLabel,
-      limitedPluginSetLabel: limitedPluginSetLabel,
-      fullTestMarkerFile: fullTestMarkerFile,
-      weeklyTestMarkerFile: weeklyTestMarkerFile,
-      testingCase: testingCase,
+        description: currentBuild.description,
+        fullTestLabel: fullTestLabel,
+        weeklyTestLabel: weeklyTestLabel,
+        limitedPluginSetLabel: limitedPluginSetLabel,
+        fullTestMarkerFile: fullTestMarkerFile,
+        weeklyTestMarkerFile: weeklyTestMarkerFile,
+        testingCase: testingCase,
     ])
     currentBuild.description = desc
+    echo "INFO: build description set to:\n${desc}"
+  } else {
+    echo "INFO: build description already set"
   }
 
   // Report name depending on labels and marker files, by order of prevalence
