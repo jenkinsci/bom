@@ -494,14 +494,34 @@ mavenNode(jdk: 21) {
     if (reportprepFoundInBuildNumber > 0) {
       echo "[INFO] ${reportName}.txt found, parsing its content"
       def content = readFile("${reportName}.txt")
+      // TODO: separate function
       reports = content.readLines().collect { line ->
-        def parts = line.trim().split(':')
-        [
-          name: parts[0],
-          elapsed: parts[1].toDouble(),
-          failures: parts[2].toInteger(),
-          plugins: parts[3],
-        ]
+        def parts = line.trim().split(';')
+
+        def data = [:]
+        parts.each { entry ->
+          def kv = entry.split('=', 2)
+          if (kv.size() == 2) {
+            def key = kv[0]
+            def value = kv[1]
+
+            // generic type inference
+            if (value.isInteger()) {
+              data[key] = value.toInteger()
+            } else if (value.isDouble()) {
+              data[key] = value.toDouble()
+            } else {
+              data[key] = value
+            }
+          }
+        }
+
+        // // optional: provide legacy aliases if needed
+        // if (data.containsKey('failCount')) {
+        //   data['failures'] = data['failCount']
+        // }
+
+        return data
       }
     }
     if (reports.size() > 0) {
