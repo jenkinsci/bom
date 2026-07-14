@@ -79,10 +79,7 @@ def mavenNode(Map params = [:], Closure body) {
 }
 
 def mavenEnv(Map params = [:], Closure body) {
-  withEnv([
-    'JAVA_HOME=/opt/jdk-' + params['jdk'],
-    'PATH+JDK=/opt/jdk-' + params['jdk'] + '/bin',
-  ]) {
+  withEnv(['JAVA_HOME=/opt/jdk-' + params['jdk'], 'PATH+JDK=/opt/jdk-' + params['jdk'] + '/bin',]) {
     body()
   }
 }
@@ -201,11 +198,8 @@ def getBatches(buckets, allCombinations, bucketType) {
 }
 
 @NonCPS
-def getResult(junitResults, elapsed, plugins) {
+def getResult(junitResults) {
   def result = [:]
-  result['elapsed'] = (elapsed / 1000.0)
-  result['plugins'] = plugins
-  result['pluginCount'] = plugins.count(',')
   if (junitResults) {
     result['failCount'] = junitResults.failCount
     result['skipCount'] = junitResults.skipCount
