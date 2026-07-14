@@ -36,7 +36,7 @@ def limitedPluginSet = [
   'jenkinsci/azure-storage-plugin	windows-azure-storage',
   'jenkinsci/badge-plugin	badge',
   'jenkinsci/basic-branch-build-strategies-plugin	basic-branch-build-strategies',
-  'jenkinsci/cron_column-plugin_weekly	cron_column',
+  'jenkinsci/cron_column-plugin	cron_column',
   'jenkinsci/pipeline-maven-plugin	pipeline-maven,pipeline-maven-api,pipeline-maven-database',
 ]
 def limitedMaxSplits = 3
