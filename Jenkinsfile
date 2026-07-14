@@ -588,7 +588,7 @@ stage('run pct') {
         echo "INFO: current attempt: ${env.CURRENT_ATTEMPT}"
         echo "INFO: current batch combinations:\n${batchCombinationNames.join('\n')}"
         combinations.each { combination, plugins ->
-          echo "INFO: starting combination '${combination}' ${combinationCount}/${totalCombination} (plugins: ${plugins})"
+          echo "INFO: starting combination ${combinationCount}/${totalCombination} \"${combination}\" (plugins: ${plugins})"
           def parts = combination.split(combinationSeparator)
           def repository = parts[0]
           def line = parts[1].replaceAll('-', '.')
