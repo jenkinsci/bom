@@ -79,13 +79,11 @@ def mavenNode(Map params = [:], Closure body) {
 }
 
 def mavenEnv(Map params = [:], Closure body) {
-  withChecks(name: 'Tests', includeStage: true) {
-    withEnv([
-      'JAVA_HOME=/opt/jdk-' + params['jdk'],
-      'PATH+JDK=/opt/jdk-' + params['jdk'] + '/bin',
-    ]) {
-      body()
-    }
+  withEnv([
+    'JAVA_HOME=/opt/jdk-' + params['jdk'],
+    'PATH+JDK=/opt/jdk-' + params['jdk'] + '/bin',
+  ]) {
+    body()
   }
 }
 
@@ -383,16 +381,18 @@ mavenNode(jdk: 21) {
 
   stage('prep') {
     if (prepFoundInBuildNumber == 0) {
-      withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist', "ARCHIVE_NAME=${prepArchiveName}",]) {
-        sh '''
-        mvn -v
-        bash prep.sh
-        '''
-        if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount > 0) {
-          error 'Some test failures during prep.sh, not going to continue'
+      withChecks(name: 'Tests', includeStage: true) {
+        withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist', "ARCHIVE_NAME=${prepArchiveName}",]) {
+          sh '''
+          mvn -v
+          bash prep.sh
+          '''
+          if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount > 0) {
+            error 'Some test failures during prep.sh, not going to continue'
+          }
+          // Publish incrementals before prep archive preparation to avoid dirty git status
+          infra.prepareToPublishIncrementals()
         }
-        // Publish incrementals before prep archive preparation to avoid dirty git status
-        infra.prepareToPublishIncrementals()
       }
     } else {
       withEnv(["ARCHIVE_NAME=${prepArchiveName}"]) {
@@ -535,6 +535,8 @@ mavenNode(jdk: 21) {
       }
     }
 
+    // TODO: if batches.size() < MAX_SPLITS, add batches recording fake junit to get status passing on GitHub if not the first build
+
     // debug
     echo "[INFO] ${batches.size()} batches"
     batches.each { batch, combinations ->
@@ -569,6 +571,10 @@ stage('run pct') {
     }
     return
   }
+
+  // TODO: single map, with batches[batchName]['action'] or ['type'], ex: 'missing', 'fake', 'reports', 'already_succeeded', etc.
+  // so we can get constant batch parallel names
+  // TODO: how to reset status of previously failing batches?
 
   batches.each { batch, combinations ->
     if (combinations.size() == 0) {
@@ -605,6 +611,7 @@ stage('run pct') {
             def previousFailCount = results[combination]['failCount']
             def previousElapsed = results[combination]['elapsed']
             if (previousFailCount == 0) {
+              // TODO: record fake junit result to get the status passing on GitHub
               combinationAlreadySucceededInAttempt = results[combination]['attempt']
               echo "[INFO] ${combination} has already succeeded in attempt n°${combinationAlreadySucceededInAttempt} (elapsed: ${previousElapsed})"
             } else {
@@ -615,35 +622,39 @@ stage('run pct') {
           if (combinationAlreadySucceededInAttempt > 0) {
             echo "[INFO] Skipping ${combination}, already succeeded in attempt n°${combinationAlreadySucceededInAttempt}"
           } else {
-            mavenEnv(jdk: jdk) {
-              withEnv([
-                "PLUGINS=${plugins}",
-                "LINE=${line}",
-                'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
-              ]) {
-                def start = System.currentTimeMillis()
-                try {
-                  sh '''
-                  mvn -v
-                  bash pct.sh
-                  '''
-                } catch (e) {
-                  if (!(e instanceof InterruptedException) && !(e instanceof org.jenkinsci.plugins.workflow.support.steps.AgentOfflineException)) {
-                    unstable('PCT failed in ' + repository + ' - line ' + line)
-                  } else {
-                    throw e
+            stage(combination) {
+              withChecks(name: "Tests ${combination}") {
+                mavenEnv(jdk: jdk) {
+                  withEnv([
+                    "PLUGINS=${plugins}",
+                    "LINE=${line}",
+                    'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
+                  ]) {
+                    def start = System.currentTimeMillis()
+                    try {
+                      sh '''
+                      mvn -v
+                      bash pct.sh
+                      '''
+                    } catch (e) {
+                      if (!(e instanceof InterruptedException) && !(e instanceof org.jenkinsci.plugins.workflow.support.steps.AgentOfflineException)) {
+                        unstable('PCT failed in ' + repository + ' - line ' + line)
+                      } else {
+                        throw e
+                      }
+                    } finally {
+                      def elapsed = System.currentTimeMillis() - start
+                      def junitResults
+                      try {
+                        junitResults = junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml')
+                      } catch(e) {
+                        echo "error junitResult: ${e}"
+                      }
+                      results[combination] = getResult(junitResults, elapsed, plugins)
+                      results[combination]['attempt'] = env.CURRENT_ATTEMPT
+                      echo "[INFO] results[${combination}]: ${results[combination]}"
+                    }
                   }
-                } finally {
-                  def elapsed = System.currentTimeMillis() - start
-                  def junitResults
-                  try {
-                    junitResults = junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml')
-                  } catch(e) {
-                    echo "error junitResult: ${e}"
-                  }
-                  results[combination] = getResult(junitResults, elapsed, plugins)
-                  results[combination]['attempt'] = env.CURRENT_ATTEMPT
-                  echo "[INFO] results[${combination}]: ${results[combination]}"
                 }
               }
             }
