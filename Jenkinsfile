@@ -298,7 +298,7 @@ def getBuildDescription(Map args = [:]) {
   if (args.testingCase) parts << "<b>test</b>:${args.testingCase}"
 
   if (args.description) {
-    desc = args.description + '<br>' 
+    desc = args.description + '<br>'
   }
   if (parts.size() > 0) {
     desc += '<i><small>' + parts.join('<br>') + '</small></i>'
@@ -328,13 +328,13 @@ mavenNode(jdk: 21) {
   // Add current labels, marker files and testing case to the build description, once
   if (env.CURRENT_ATTEMPT.toInteger() == 1) {
     def desc = getBuildDescription([
-        description: currentBuild.description,
-        fullTestLabel: fullTestLabel,
-        weeklyTestLabel: weeklyTestLabel,
-        limitedPluginSetLabel: limitedPluginSetLabel,
-        fullTestMarkerFile: fullTestMarkerFile,
-        weeklyTestMarkerFile: weeklyTestMarkerFile,
-        testingCase: testingCase,
+      description: currentBuild.description,
+      fullTestLabel: fullTestLabel,
+      weeklyTestLabel: weeklyTestLabel,
+      limitedPluginSetLabel: limitedPluginSetLabel,
+      fullTestMarkerFile: fullTestMarkerFile,
+      weeklyTestMarkerFile: weeklyTestMarkerFile,
+      testingCase: testingCase,
     ])
     currentBuild.description = desc
     echo "[INFO] Build description set to:\n${desc}"
