@@ -356,6 +356,8 @@ mavenNode(jdk: 21) {
     if (limitedPluginSetLabel) {
       reportName = 'bom-report-limited'
     }
+    // TODO: remove above, we want more hits no less
+    reportName = 'bom-report'
   }
 
   // Ensure prep archive corresponds to the current state
