@@ -280,20 +280,27 @@ def getReportsFromResults(results, combinationSeparator) {
 @NonCPS
 def getBuildDescription(Map args = [:]) {
   def desc = ''
-  def labels = [
-    (args.fullTestLabel): 'full-test',
-    (args.weeklyTestLabel): 'weekly-test',
-    (args.limitedPluginSetLabel): 'limited-plugin-set'
-  ].findAll { it.key }.values()
-
-  def markers = [
-    (args.fullTestMarkerFile): 'full-test',
-    (args.weeklyTestMarkerFile): 'weekly-test'
-  ].findAll { it.key }.values()
+  def labels = []
+  def markers = []
+  if (args['fullTestLabel']) {
+    labels.add('full-test')
+  }
+  if (args['weeklyTestLabel']) {
+    labels.add('weekly-test')
+  }
+  if (args['limitedPluginSetLabel']) {
+    labels.add('limited-plugin-set')
+  }
+  if (args['fullTestMarkerFile']) {
+    markers.add('full-test')
+  }
+  if (args['weeklyTestMarkerFile']) {
+    markers.add('weekly-test')
+  }
 
   def parts = []
-  if (labels)  parts << "<b>labels</b>:${labels.join(',')}"
-  if (markers) parts << "<b>markers</b>:${markers.join(',')}"
+  if (labels.size() > 0)  parts << "<b>label(s)</b>:${labels.join(',')}"
+  if (markers.size() > 0) parts << "<b>marker(s)</b>:${markers.join(',')}"
   if (args.testingCase) parts << "<b>test</b>:${args.testingCase}"
 
   if (args.description) {
