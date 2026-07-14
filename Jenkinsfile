@@ -94,7 +94,7 @@ def copyArtifactsFromAnyPreviousBuild(archiveName, jobName) {
   def archiveExists = false
   def buildNumber = env.BUILD_NUMBER.toInteger()
   if (buildNumber == 1) {
-    echo "INFO: first build of ${jobName}, no ${archiveName} available yet"
+    echo "[INFO] First build of ${jobName}, no ${archiveName} available yet"
   } else {
     // Loop over builds to retrieve the prep archive as previous build can have (only) other archive(s)
     def checkBuildNumber = buildNumber - 1
@@ -337,9 +337,9 @@ mavenNode(jdk: 21) {
         testingCase: testingCase,
     ])
     currentBuild.description = desc
-    echo "INFO: build description set to:\n${desc}"
+    echo "[INFO] Build description set to:\n${desc}"
   } else {
-    echo "INFO: build description already set"
+    echo "[INFO] Build description already set"
   }
 
   // Report name depending on labels and marker files, by order of prevalence
@@ -396,7 +396,7 @@ mavenNode(jdk: 21) {
         tar xzfv "${ARCHIVE_NAME}"
         rm "${ARCHIVE_NAME}"
         '''
-        echo "INFO: ${prepArchiveName} retrieved and extracted, no need to run prep.sh"
+        echo "[INFO] ${prepArchiveName} retrieved and extracted, no need to run prep.sh"
       }
     }
   }
@@ -407,7 +407,7 @@ mavenNode(jdk: 21) {
       if (limitedPluginSetLabel) {
         // TODO: check why unstable seems to break pipeline graph view
         // unstable('WARNING: running on a limited set of plugins')
-        echo('WARNING: running on a limited set of plugins')
+        echo('[WARNING] Running on a limited set of plugins')
         plugins = limitedPluginSet
         MAX_SPLITS = limitedMaxSplits
       } else {
@@ -416,27 +416,27 @@ mavenNode(jdk: 21) {
       pluginsByRepository = parsePlugins(plugins)
 
       def from = limitedPluginSetLabel ? 'a limited set of plugins' : 'plugins.txt'
-      echo "INFO: ${pluginsByRepository.size()} repositories retrieved from ${from}"
-      echo "INFO: retrieved repositories and their plugins:\n${plugins.join('\n')}"
+      echo "[INFO] ${pluginsByRepository.size()} repositories retrieved from ${from}"
+      echo "[INFO] List of repositories and their plugins:\n${plugins.join('\n')}"
 
       def allLines = readFile('lines.txt').split('\n')
       newestAndOldestLines = [allLines[0], allLines[-1]] // Save resources by running PCT only on newest and oldest lines
-      echo "INFO: ${allLines.size()} lines retrieved from lines.txt: ${allLines.join(' ')} "
+      echo "[INFO] ${allLines.size()} lines retrieved from lines.txt: ${allLines.join(' ')} "
 
       // For archival, keep track of newest and oldest lines as PR labels or marker files may change accross builds
       // For stashes, we only care about the lines of the current build
       lines = newestAndOldestLines
       if (weeklyTestMarkerFile || weeklyTestLabel ) {
-        echo "INFO: keeping only 'weekly' line as there is a 'weekly-test' label or marker file"
+        echo "[INFO] Keeping only 'weekly' line as there is a 'weekly-test' label or marker file"
         lines = ['weekly']
       } else {
-        echo "INFO: keeping only newest and oldest lines to save resources: ${lines.join(' ')} "
+        echo "[INFO] Keeping only newest and oldest lines to save resources: ${lines.join(' ')} "
       }
 
       // Generating all combinations of repository x lines
       allCombinations = getAllCombinations(pluginsByRepository, lines, (weeklyTestMarkerFile || weeklyTestLabel), combinationSeparator)
       def allCombinationNames = allCombinations.collect { combination, _ -> combination } as Set
-      echo "INFO: ${allCombinations.size()} resulting combinations:\n${allCombinationNames.join('\n')}"
+      echo "[INFO] ${allCombinations.size()} resulting combinations:\n${allCombinationNames.join('\n')}"
     }
   }
 
@@ -449,11 +449,11 @@ mavenNode(jdk: 21) {
       withEnv(["ARCHIVE_NAME=${prepArchiveName}", "ARCHIVE_GLOB=${prepArchiveGlob}",]) {
         sh 'tar czfv "${ARCHIVE_NAME}" ${ARCHIVE_GLOB}'
         archiveArtifacts artifacts: prepArchiveName, fingerprint: true
-        echo "INFO: new ${prepArchiveName} archived"
+        echo "[INFO] New ${prepArchiveName} archived"
       }
     } else {
       catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') {
-        error("INFO: no new prep to archive")
+        error("[INFO] No new prep to archive")
       }
       return
     }
@@ -475,7 +475,7 @@ mavenNode(jdk: 21) {
       reportprepFoundInBuildNumber = copyArtifactsFromAnyPreviousBuild("${reportName}.txt", 'Tools/bom/master')
     }
     if (reportprepFoundInBuildNumber > 0) {
-      echo "INFO: ${reportName}.txt found, parsing its content"
+      echo "[INFO] ${reportName}.txt found, parsing its content"
       def content = readFile("${reportName}.txt")
       reports = content.readLines().collect { line ->
         def parts = line.trim().split(':')
@@ -488,15 +488,15 @@ mavenNode(jdk: 21) {
       }
     }
     if (reports.size() > 0) {
-      echo "INFO: ${reports.size()} reports,\n${reports.join('\n')}"
+      echo "[INFO] ${reports.size()} reports,\n${reports.join('\n')}"
     } else {
-      echo "INFO: no ${reportName}.txt found"
+      echo "[INFO] No ${reportName}.txt found"
     }
   }
 
   stage('generate batches') {
     if (reports.size() == 0 || ignoreReports) {
-      echo "INFO: ${reportName}.txt not found, empty or ignored, faking reports for all combinations"
+      echo "[INFO] ${reportName}.txt not found, empty or ignored, faking reports for all combinations"
       fakeReports = allCombinations.collect { combination, plugins ->
         [
           name: combination,
@@ -532,12 +532,12 @@ mavenNode(jdk: 21) {
     }
 
     // debug
-    echo "INFO: ${batches.size()} batches"
+    echo "[INFO] ${batches.size()} batches"
     batches.each { batch, combinations ->
       if (combinations.size() > 0) {
         // echo "batch: ${batch}"
         def batchCombinationNames = combinations.collect { combination, plugins -> combination } as Set
-        echo "INFO: '${batch}' batch, ${batchCombinationNames.size()} combinations:\n${batchCombinationNames.join('\n')}"
+        echo "[INFO] '${batch}' batch, ${batchCombinationNames.size()} combinations:\n${batchCombinationNames.join('\n')}"
       }
     }
   }
@@ -549,7 +549,7 @@ mavenNode(jdk: 21) {
       }
     } else {
       catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') {
-        error('No batch, no need to stash any line')
+        error('[INFO] No batch, no need to stash any line')
       }
       return
     }
@@ -561,7 +561,7 @@ stage('run pct') {
 
   if (BRANCH_NAME != 'master' && !(fullTestMarkerFile || weeklyTestMarkerFile || fullTestLabel || weeklyTestLabel )) {
     catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') {
-      error('Not running on master or no weekly-test / full-test labels or markers')
+      error('[INFO] Not running on master or no weekly-test / full-test labels or markers')
     }
     return
   }
@@ -569,7 +569,7 @@ stage('run pct') {
   batches.each { batch, combinations ->
     if (combinations.size() == 0) {
       catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') {
-        error('No batch, nothing to run')
+        error('[INFO] No batch, nothing to run')
       }
       return
     }
@@ -585,10 +585,10 @@ stage('run pct') {
         def combinationCount = 1
         def totalCombination = combinations.size()
         def batchCombinationNames = combinations.collect { combination, plugins -> combination } as Set
-        echo "INFO: current attempt: ${env.CURRENT_ATTEMPT}"
-        echo "INFO: current batch combinations:\n${batchCombinationNames.join('\n')}"
+        echo "[INFO] Current attempt: ${env.CURRENT_ATTEMPT}"
+        echo "[INFO] Current batch combinations:\n${batchCombinationNames.join('\n')}"
         combinations.each { combination, plugins ->
-          echo "INFO: starting combination ${combinationCount}/${totalCombination} \"${combination}\" (plugins: ${plugins})"
+          echo "[INFO] Starting combination ${combinationCount}/${totalCombination} \"${combination}\" (plugins: ${plugins})"
           def parts = combination.split(combinationSeparator)
           def repository = parts[0]
           def line = parts[1].replaceAll('-', '.')
@@ -602,14 +602,14 @@ stage('run pct') {
             def previousElapsed = results[combination]['elapsed']
             if (previousFailCount == 0) {
               combinationAlreadySucceededInAttempt = results[combination]['attempt']
-              echo "INFO: ${combination} has already succeeded in attempt n°${combinationAlreadySucceededInAttempt} (elapsed: ${previousElapsed})"
+              echo "[INFO] ${combination} has already succeeded in attempt n°${combinationAlreadySucceededInAttempt} (elapsed: ${previousElapsed})"
             } else {
-              echo "INFO: ${combination} had previously ${previousFailCount} failure(s) in attempt n°${results[combination]['attempt']} (elapsed: ${previousElapsed})"
+              echo "[INFO] ${combination} had previously ${previousFailCount} failure(s) in attempt n°${results[combination]['attempt']} (elapsed: ${previousElapsed})"
             }
           }
 
           if (combinationAlreadySucceededInAttempt > 0) {
-            echo "INFO: skipping ${combination}, already succeeded in attempt n°${combinationAlreadySucceededInAttempt}"
+            echo "[INFO] Skipping ${combination}, already succeeded in attempt n°${combinationAlreadySucceededInAttempt}"
           } else {
             mavenEnv(jdk: jdk) {
               withEnv([
@@ -639,7 +639,7 @@ stage('run pct') {
                   }
                   results[combination] = getResult(junitResults, elapsed, plugins)
                   results[combination]['attempt'] = env.CURRENT_ATTEMPT
-                  echo "results[${combination}]: ${results[combination]}"
+                  echo "[INFO] results[${combination}]: ${results[combination]}"
                 }
               }
             }
@@ -657,13 +657,13 @@ stage('run pct') {
 stage('report results') {
   if (results.size() == 0) {
     catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') {
-      error('No result to report')
+      error('[INFO] No result to report')
     }
     return
   }
   if (!reportResults) {
     catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') {
-      error('WARNING: reportResults set to false, skipping')
+      error('[WARNING] reportResults set to false, skipping')
     }
     return
   } else {
