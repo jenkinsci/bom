@@ -8,6 +8,13 @@ def fullTestLabel = pullRequest.labels.contains('full-test')
 def weeklyTestLabel = pullRequest.labels.contains('weekly-test')
 def limitedPluginSetLabel = pullRequest.labels.contains('limited-plugin-set')
 
+env.MAVEN_NTP = true
+def MAX_SPLITS = 20
+def fixedPrepArchiveName = 'bom-prep-90b7816400491b448fa6bae88c25aeec5f350b7e.tar.gz' // can be set to a specific prep archive name in case last commits aren't impacting it
+def ignoreReports = false // set this to true if the previous report is borked and causes failure
+def reportName = '' // can be overriden
+def reportResults = true
+
 def testingCase = ''
 if (testingCase == 'limited-weekly') {
   fullTestLabel = false
@@ -20,12 +27,6 @@ if (testingCase == 'limited-full') {
   limitedPluginSetLabel = true
 }
 
-env.MAVEN_NTP = true
-def MAX_SPLITS = 20
-def fixedPrepArchiveName = 'bom-prep-90b7816400491b448fa6bae88c25aeec5f350b7e.tar.gz' // can be set to a specific prep archive name in case last commits aren't impacting it
-def ignoreReports = false // set this to true if the previous report is borked and causes failure
-def reportName = '' // can be overriden
-def reportResults = true
 // TODO: get limited set from a marker file?
 def limitedPluginSet = [
   'jenkinsci/aws-credentials-plugin	aws-credentials',
