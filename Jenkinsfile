@@ -613,11 +613,13 @@ stage('run pct') {
           if (results.containsKey(combination)) {
             def previousFailCount = results[combination]['failCount']
             def previousElapsed = results[combination]['elapsed']
+            // TODO: record fake junit result to get the status passing on GitHub
+            // TODO: && same PR/branch; commenting out the results record below & [FWIW] instead of [INFO]
             if (previousFailCount == 0) {
-              // TODO: record fake junit result to get the status passing on GitHub
-              combinationAlreadySucceededInAttempt = results[combination]['attempt']
-              echo "[INFO] ${combination} has already succeeded in attempt n°${combinationAlreadySucceededInAttempt} (elapsed: ${previousElapsed})"
+              // combinationAlreadySucceededInAttempt = results[combination]['attempt']
+              echo "[FWIW] ${combination} has already succeeded in attempt n°${combinationAlreadySucceededInAttempt} (elapsed: ${previousElapsed})"
             } else {
+              // TODO: mention if new attempt and not "real" test failure(s)
               echo "[INFO] ${combination} had previously ${previousFailCount} failure(s) in attempt n°${results[combination]['attempt']} (elapsed: ${previousElapsed})"
             }
           }
