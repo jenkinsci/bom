@@ -676,6 +676,7 @@ stage('run pct') {
                       results[combination]['attempt'] = currentAttempt
                       results[combination]['build_id'] = env.BUILD_ID
                       results[combination]['job_base_name'] = env.JOB_BASE_NAME
+                      results[combination]['short_commit_id'] = commitId.substring(0, 7)
                       echo "[INFO] results[${combination}]: ${results[combination]}"
                     }
                   }
