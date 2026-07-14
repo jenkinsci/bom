@@ -280,6 +280,7 @@ def getReportsFromResults(results, combinationSeparator) {
 
 @NonCPS
 def getBuildDescription(Map args = [:]) {
+  def desc = ''
   def labels = [
     (args.fullTestLabel): 'full-test',
     (args.weeklyTestLabel): 'weekly-test',
@@ -292,11 +293,18 @@ def getBuildDescription(Map args = [:]) {
   ].findAll { it.key }.values()
 
   def parts = []
-  if (labels)  parts << "[labels:${labels.join(',')}]"
-  if (markers) parts << "[markers:${markers.join(',')}]"
-  if (args.testingCase) parts << "[test ${args.testingCase}]"
+  if (labels)  parts << "<b>labels</b>:${labels.join(',')}"
+  if (markers) parts << "<b>markers</b>:${markers.join(',')}"
+  if (args.testingCase) parts << "<b>test</b>:${args.testingCase}"
 
-  return ([args.description, parts.join(' ')].findAll { it } ).join(' ').trim()
+  if (args.description) {
+    desc = args.description + '<br>' 
+  }
+  if (parts.size() > 0) {
+    desc += '<i><small>' + parts.join('<br>') + '</small></i>'
+  }
+
+  return desc
 }
 
 def pluginsByRepository
