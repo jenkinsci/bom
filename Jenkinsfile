@@ -719,19 +719,17 @@ stage('report results') {
         writeFile file: "${reportName}.xml", text: contents['xmlReportContent']
         junit allowEmptyResults: true, testResults: "${reportName}.xml"
       }
-      writeFile file: "${reportName}.json", text: contents['jsonReportContent']
       writeFile file: "${reportName}.txt", text: contents['txtReportContent']
-      writeFile file: "${reportName}-better.txt", text: contents['betterTxtReportContent']
 
+      // TODO: remove, debug
       sh "cat ${reportName}.xml || true"
-      sh "cat ${reportName}.json || true"
       sh "cat ${reportName}.txt || true"
-      sh "cat ${reportName}-better.txt || true"
       archiveArtifacts artifacts: "${reportName}.*", allowEmpty: true
     }
   }
 }
 
+// TODO: || weeklyTestMarkerFile
 if (fullTestMarkerFile) {
   error 'Remember to `git rm full-test` before taking out of draft'
 }
