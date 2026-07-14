@@ -22,7 +22,7 @@ if (testingCase == 'limited-full') {
 
 env.MAVEN_NTP = true
 def MAX_SPLITS = 20
-def prepArchiveNameOverride = '' // can be set to a specific prep archive name in case last commits aren't impacting it
+def prepArchiveNameOverride = 'bom-prep-90b7816400491b448fa6bae88c25aeec5f350b7e.tar.gz' // can be set to a specific prep archive name in case last commits aren't impacting it
 def ignoreReports = false // set this to true if the previous report is borked and causes failure
 def reportName = '' // can be overriden
 def reportResults = true
