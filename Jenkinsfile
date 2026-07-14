@@ -41,7 +41,7 @@ def limitedPluginSet = [
   'jenkinsci/pipeline-maven-plugin	pipeline-maven,pipeline-maven-api,pipeline-maven-database',
 ]
 def limitedMaxSplits = 3
-def combinationSeparator = '~'
+def combinationSeparator = ':' // can't be: '_' (used in one repo name), ';' or '=' (used in txt reports)
 
 // TODO: seedRun, to just create an archive of results obtained from a PR for example
 
