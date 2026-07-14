@@ -487,7 +487,11 @@ mavenNode(jdk: 21) {
         ]
       }
     }
-    echo "INFO: ${reports.size()} reports,\n${reports.join('\n')}"
+    if (reports.size() > 0) {
+      echo "INFO: ${reports.size()} reports,\n${reports.join('\n')}"
+    } else {
+      echo "INFO: no ${reportName}.txt found"
+    }
   }
 
   stage('generate batches') {
