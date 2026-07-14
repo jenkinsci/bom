@@ -256,27 +256,13 @@ def getReportsFromResults(results, combinationSeparator) {
     """
   }
 
-  def reportLinesJson = results.collect { combination, result ->
-    """{"name":"${combination}","elapsed":${result['elapsed']},"duration":${result['duration']},"failCount":${result['failCount']},"skipCount":${result['skipCount']},"passCount":${result['passCount']},"totalCount":${result['totalCount']},"attempt":${result['attempt']}}"""
-  }.join(',')
-  def jsonReportContent = """{"jobs": [${reportLinesJson}]}"""
-
   def txtReportContent = results.collect { combination, result ->
-    "${combination}:${result['elapsed']}:${result['failCount']}:${result['plugins']}"
-  }.join('\n')
-
-  def betterTxtReportContent = results.collect { combination, result ->
-    def line = 'name=' + combination + ';' + result.collect { key, value ->
-      key + '=' + value
-    }.join(';')
-    line
+    'name=' + combination + ';' + result.collect { key, value -> key + '=' + value }.join(';')
   }.join('\n')
 
   [
     xmlReportContent: xmlReportContent,
-    jsonReportContent: jsonReportContent,
     txtReportContent: txtReportContent,
-    betterTxtReportContent: betterTxtReportContent,
   ]
 }
 
@@ -494,6 +480,8 @@ mavenNode(jdk: 21) {
     if (reportprepFoundInBuildNumber > 0) {
       echo "[INFO] ${reportName}.txt found, parsing its content"
       def content = readFile("${reportName}.txt")
+      // TODO: debug, remove
+      sh "cat ${reportName}.txt"
       // TODO: separate function
       reports = content.readLines().collect { line ->
         def parts = line.trim().split(';')
@@ -516,10 +504,7 @@ mavenNode(jdk: 21) {
           }
         }
 
-        // // optional: provide legacy aliases if needed
-        // if (data.containsKey('failCount')) {
-        //   data['failures'] = data['failCount']
-        // }
+        // TODO: complete with required keys if needed
 
         return data
       }
