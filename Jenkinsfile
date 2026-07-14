@@ -316,6 +316,7 @@ def getBuildDescription(Map args = [:]) {
   return desc
 }
 
+def commitId
 def pluginsByRepository
 def lines
 def newestAndOldestLines
@@ -330,7 +331,7 @@ def batches = [:]
 
 mavenNode(jdk: 21) {
   def scmVars = checkout scm
-  def commitId = scmVars.GIT_COMMIT
+  commitId = scmVars.GIT_COMMIT
 
   fullTestMarkerFile = fileExists 'full-test'
   weeklyTestMarkerFile = fileExists 'weekly-test'
