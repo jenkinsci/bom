@@ -298,7 +298,7 @@ def getBuildDescription(Map args = [:]) {
   if (args.testingCase) parts << "<b>test</b>:${args.testingCase}"
 
   if (args.description) {
-    desc = args.description + '<br>'
+    desc = args.description + '\n<br>'
   }
   if (parts.size() > 0) {
     desc += '<i><small>' + parts.join('<br>') + '</small></i>'
