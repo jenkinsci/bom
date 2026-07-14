@@ -586,11 +586,13 @@ stage('run pct') {
     branches[batch] = {
       mavenNode() {
         // Unstash all lines used in this batch
-        def unstashLines = combinations
-            .keySet()
-            .collect { it.split(combinationSeparator)[1].replaceAll('-', '.') }
-            .unique()
-        unstashLines.each { unstash it }
+        stage('unstash') {
+          def unstashLines = combinations
+              .keySet()
+              .collect { it.split(combinationSeparator)[1].replaceAll('-', '.') }
+              .unique()
+          unstashLines.each { unstash it }
+        }
 
         def combinationCount = 1
         def totalCombination = combinations.size()
