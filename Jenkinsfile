@@ -266,10 +266,9 @@ def getReportsFromResults(results, combinationSeparator) {
   }.join('\n')
 
   def betterTxtReportContent = results.collect { combination, result ->
-    def line = combination + ';' + result.collect { key, value ->
+    def line = 'name=' + combination + ';' + result.collect { key, value ->
       key + '=' + value
     }.join(';')
-    "${combination}:${result['elapsed']}:${result['failCount']}:${result['plugins']}"
     line
   }.join('\n')
 
