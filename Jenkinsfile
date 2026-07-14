@@ -330,6 +330,7 @@ def batches = [:]
 
 mavenNode(jdk: 21) {
   def scmVars = checkout scm
+  def commitId = scmVars.GIT_COMMIT
 
   fullTestMarkerFile = fileExists 'full-test'
   weeklyTestMarkerFile = fileExists 'weekly-test'
@@ -370,10 +371,10 @@ mavenNode(jdk: 21) {
   }
 
   // Ensure prep archive corresponds to the current state
-  def prepArchiveName = "bom-prep-${scmVars.GIT_COMMIT}.tar.gz"
+  def prepArchiveName = "bom-prep-${commitId}.tar.gz"
   if (fixedPrepArchiveName) {
     prepArchiveName = fixedPrepArchiveName
-    echo "[WARNING] Using fixed prep archive ${fixedPrepArchiveName}"
+    echo "[WARNING] Using fixed prep archive name ${fixedPrepArchiveName} instead of bom-prep-${commitId}.tar.gz"
   }
   def prepArchiveExists = false
   def prepArchiveGlob = 'pct.sh excludes.txt bom-*/excludes.txt target/pct.jar target/plugins.txt target/lines.txt'
