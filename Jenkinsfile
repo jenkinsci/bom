@@ -264,10 +264,19 @@ def getReportsFromResults(results, combinationSeparator) {
     "${combination}:${result['elapsed']}:${result['failCount']}:${result['plugins']}"
   }.join('\n')
 
+  def betterTxtReportContent = results.collect { combination, result ->
+    def line = combination + ';' + result.collect { key, value ->
+      key + '=' + value
+    }.join(';')
+    "${combination}:${result['elapsed']}:${result['failCount']}:${result['plugins']}"
+    line
+  }.join('\n')
+
   [
     xmlReportContent: xmlReportContent,
     jsonReportContent: jsonReportContent,
     txtReportContent: txtReportContent,
+    betterTxtReportContent: betterTxtReportContent,
   ]
 }
 
@@ -656,8 +665,13 @@ stage('run pct') {
                       } catch(e) {
                         echo "error junitResult: ${e}"
                       }
-                      results[combination] = getResult(junitResults, elapsed, plugins)
-                      results[combination]['attempt'] = env.CURRENT_ATTEMPT
+                      results[combination] = getResult(junitResults)
+                      results[combination]['elapsed'] = (elapsed / 1000.0)
+                      results[combination]['plugins'] = plugins
+                      results[combination]['pluginCount'] = plugins.count(',')
+                      results[combination]['attempt'] = currentAttempt
+                      results[combination]['build_id'] = env.BUILD_ID
+                      results[combination]['job_base_name'] = env.JOB_BASE_NAME
                       echo "[INFO] results[${combination}]: ${results[combination]}"
                     }
                   }
@@ -696,10 +710,12 @@ stage('report results') {
       }
       writeFile file: "${reportName}.json", text: contents['jsonReportContent']
       writeFile file: "${reportName}.txt", text: contents['txtReportContent']
+      writeFile file: "${reportName}-better.txt", text: contents['betterTxtReportContent']
 
       sh "cat ${reportName}.xml || true"
       sh "cat ${reportName}.json || true"
       sh "cat ${reportName}.txt || true"
+      sh "cat ${reportName}-better.txt || true"
       archiveArtifacts artifacts: "${reportName}.*", allowEmpty: true
     }
   }
