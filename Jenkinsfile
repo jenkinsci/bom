@@ -622,6 +622,7 @@ stage('run pct') {
           def combinationAlreadySucceededInAttempt = 0
           // Check if combination already in results, in case of aborted build due to a reclaimed spot instance for ex
           if (results.containsKey(combination)) {
+            // TODO: && same PR/branch
             def previousFailCount = results[combination]['failCount']
             def previousElapsed = results[combination]['elapsed']
             // TODO: record fake junit result to get the status passing on GitHub
@@ -636,6 +637,7 @@ stage('run pct') {
           }
 
           if (combinationAlreadySucceededInAttempt > 0) {
+            // TODO: if needed, withChecks(name: "Tests ${combination}") { echo "..." }
             echo "[INFO] Skipping ${combination}, already succeeded in attempt n°${combinationAlreadySucceededInAttempt}"
           } else {
             stage(combination) {
