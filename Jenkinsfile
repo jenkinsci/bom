@@ -19,7 +19,7 @@ def MAX_SPLITS = 20
 // TODO: def overrides = [...]
 def fixedPrepArchiveName = 'bom-prep-90b7816400491b448fa6bae88c25aeec5f350b7e.tar.gz' // can be set to a specific prep archive name in case last commits aren't impacting it
 def ignoreReports = false // set this to true if the previous report is borked and causes failure
-def reportName = '' // can be overriden
+def reportName = 'bom-report' // can be overriden
 def reportResults = true
 
 def testingCase = ''
@@ -33,24 +33,6 @@ if (testingCase == 'limited-full') {
   weeklyTestLabel = false
   limitedPluginSetLabel = true
 }
-
-// TODO: get limited set from a marker file?
-def limitedMaxSplits = 3
-def limitedPluginSet = [
-  'jenkinsci/aws-credentials-plugin	aws-credentials',
-  'jenkinsci/aws-global-configuration-plugin	aws-global-configuration',
-  'jenkinsci/azure-credentials-plugin	azure-credentials',
-  'jenkinsci/azure-keyvault-plugin	azure-keyvault',
-  'jenkinsci/azure-sdk-plugin	azure-sdk',
-  'jenkinsci/azure-storage-plugin	windows-azure-storage',
-  'jenkinsci/badge-plugin	badge',
-  'jenkinsci/basic-branch-build-strategies-plugin	basic-branch-build-strategies',
-  'jenkinsci/cron_column-plugin	cron_column',
-  'jenkinsci/pipeline-maven-plugin	pipeline-maven,pipeline-maven-api,pipeline-maven-database',
-]
-def combinationSeparator = ':' // can't be: '_' (used in one repo name), ';' or '=' (used in txt reports)
-
-// TODO: seedRun, to just create an archive of results obtained from a PR for example
 
 properties([
   // disableConcurrentBuilds(abortPrevious: true),
@@ -142,7 +124,7 @@ def parsePlugins(plugins) {
 
 // TODO: replace by args[:]
 @NonCPS
-def getAllCombinations(pluginsByRepository, lines, weeklyOnly, combinationSeparator) {
+def getAllCombinations(pluginsByRepository, lines, weeklyOnly) {
   def combinations = [:]
   lines.each {line ->
     if (line != 'weekly' && weeklyOnly) {
@@ -150,7 +132,7 @@ def getAllCombinations(pluginsByRepository, lines, weeklyOnly, combinationSepara
     }
     // TODO: alert if repository or plugins isn't valid (a-Z_-)
     pluginsByRepository.each { repository, plugins ->
-      combinations["${repository}${combinationSeparator}${line}"] = plugins.join(',')
+      combinations["${repository}:${line}"] = plugins.join(',')
     }
   }
   combinations
@@ -205,55 +187,6 @@ def getBatches(buckets, allCombinations, bucketType) {
   batches
 }
 
-// TODO: complete results with previous (successful) reports
-@NonCPS
-def getReportsFromResults(results, combinationSeparator) {
-  Double totalElapsed = 0
-  Double totalDuration = 0
-  int totalFailCount = 0
-  int totalSkipCount = 0
-  int totalPassCount = 0
-  int totalTotalCount = 0
-
-  def xmlReportContent
-  def reportLines = ''
-  def sortedResult = results.sort { it }
-  sortedResult.each { combination, result ->
-    // results.each { combination, result ->
-    Double elapsed = result['elapsed']
-    Double duration = result['duration']
-    int failCount = result['failCount']
-    int skipCount = result['skipCount']
-    int passCount = result['passCount']
-    int totalCount = result['totalCount']
-    totalElapsed += elapsed
-    totalDuration += duration
-    totalFailCount += failCount
-    totalSkipCount += skipCount
-    totalPassCount += passCount
-    totalTotalCount += totalCount
-    def normalizedCombination = combination.replaceAll('-', '_').replaceAll(combinationSeparator, '_').replaceAll('\\.', '_')
-    reportLines += '<testcase name="' + combination + '" classname="pct-duration.' + normalizedCombination + '" time="' + elapsed + '" failures="' + failCount + '"/>\n'
-    // TODO: try after only setting name, no classname
-  }
-  if (reportLines) {
-    xmlReportContent = """<?xml version="1.0" encoding="UTF-8"?>
-      <testsuite name="org.jenkins.ci.bom" time="${totalElapsed}" tests="${totalTotalCount}" skipped="${totalSkipCount}" failures="${totalFailCount}">
-      ${reportLines}
-      </testsuite>
-    """
-  }
-
-  def txtReportContent = results.collect { combination, result ->
-    'name=' + combination + ';' + result.collect { key, value -> key + '=' + value }.join(';')
-  }.join('\n')
-
-  [
-    xmlReportContent: xmlReportContent,
-    txtReportContent: txtReportContent,
-  ]
-}
-
 def commitId
 def pluginsByRepository
 def lines
@@ -263,6 +196,22 @@ def reports = [:]
 def fakeReports
 def fullTestMarkerFile
 def weeklyTestMarkerFile
+def limitedPluginSetMarkerFile
+
+def limitedMaxSplits = 3
+def limitedPluginSet = [
+  'jenkinsci/aws-credentials-plugin	aws-credentials',
+  'jenkinsci/aws-global-configuration-plugin	aws-global-configuration',
+  'jenkinsci/azure-credentials-plugin	azure-credentials',
+  'jenkinsci/azure-keyvault-plugin	azure-keyvault',
+  'jenkinsci/azure-sdk-plugin	azure-sdk',
+  'jenkinsci/azure-storage-plugin	windows-azure-storage',
+  'jenkinsci/badge-plugin	badge',
+  'jenkinsci/basic-branch-build-strategies-plugin	basic-branch-build-strategies',
+  'jenkinsci/cron_column-plugin	cron_column',
+  'jenkinsci/pipeline-maven-plugin	pipeline-maven,pipeline-maven-api,pipeline-maven-database',
+]
+
 def results = [:]
 def previousResults = [:]
 def batches = [:]
@@ -273,6 +222,7 @@ mavenNode(jdk: 21) {
 
   fullTestMarkerFile = fileExists 'full-test'
   weeklyTestMarkerFile = fileExists 'weekly-test'
+  limitedPluginSetMarkerFile = fileExists 'limited-plugin-set'
 
   // Add current labels, marker files and testing case to the build description, once
   if (env.CURRENT_ATTEMPT.toInteger() == 1) {
@@ -289,24 +239,6 @@ mavenNode(jdk: 21) {
     echo "[INFO] Build description set to:\n${desc}"
   } else {
     echo "[INFO] Build description already set"
-  }
-
-  // Report name depending on labels and marker files, by order of prevalence
-  // We chould add more info in the reportName, like which lines/one per line
-  // or reportName if not empty
-  // TODO: also report as <...>-PR_N_buildN
-  if (!reportName) {
-    if (fullTestLabel || fullTestMarkerFile) {
-      reportName = 'bom-report-full'
-    }
-    if (weeklyTestLabel || weeklyTestMarkerFile) {
-      reportName = 'bom-report-weekly'
-    }
-    if (limitedPluginSetLabel) {
-      reportName = 'bom-report-limited'
-    }
-    // TODO: remove above, we want more hits no less
-    reportName = 'bom-report'
   }
 
   // Ensure prep archive corresponds to the current state
@@ -330,7 +262,7 @@ mavenNode(jdk: 21) {
   stage('prep') {
     if (prepFoundInBuildNumber == 0) {
       withChecks(name: 'Tests', includeStage: true) {
-        withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist', "ARCHIVE_NAME=${prepArchiveName}",]) {
+        withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist']) {
           sh '''
           mvn -v
           bash prep.sh
@@ -341,14 +273,14 @@ mavenNode(jdk: 21) {
           // Publish incrementals before prep archive preparation to avoid dirty git status
           infra.prepareToPublishIncrementals()
         }
-      } else {
-        withEnv(["ARCHIVE_NAME=${prepArchiveName}"]) {
-          sh '''
-          tar xzfv "${ARCHIVE_NAME}"
-          rm "${ARCHIVE_NAME}"
-          '''
-          echo "[INFO] ${prepArchiveName} retrieved and extracted, no need to run prep.sh"
-        }
+      }
+    } else {
+      withEnv(["ARCHIVE_NAME=${prepArchiveName}"]) {
+        sh '''
+        tar xzfv "${ARCHIVE_NAME}"
+        rm "${ARCHIVE_NAME}"
+        '''
+        echo "[INFO] ${prepArchiveName} retrieved and extracted, no need to run prep.sh"
       }
     }
   }
@@ -356,26 +288,37 @@ mavenNode(jdk: 21) {
   stage('parse prep') {
     dir('target') {
       def plugins = []
-      if (limitedPluginSetLabel) {
-        // TODO: check why unstable seems to break pipeline graph view
-        // unstable('WARNING: running on a limited set of plugins')
+      def allLines = []
+      def from = 'plugins.txt'
+      if (limitedPluginSetLabel || limitedPluginSetMarkerFile) {
+        from = 'a limited set of plugins'
         echo('[WARNING] Running on a limited set of plugins')
+
+        // Limited set
         plugins = limitedPluginSet
         MAX_SPLITS = limitedMaxSplits
+        if (limitedPluginSetMarkerFile) {
+          plugins = readFile('../limited-plugin-set').split('\n')
+        }
+        // Lines from sample-plugin
+        allLines = sh (
+            script: '''
+              echo "weekly $(grep -F '.x</bom>' ../sample-plugin/pom.xml | sed -E 's, *<bom>(.+)</bom>,\\1,g' | sort -rn | xargs)"
+            ''',
+            returnStdout: true
+            ).trim().split(' ')
       } else {
         plugins = readFile('plugins.txt').split('\n')
+        allLines = readFile('lines.txt').split('\n')
       }
       pluginsByRepository = parsePlugins(plugins)
-
-      def from = limitedPluginSetLabel ? 'a limited set of plugins' : 'plugins.txt'
       echo "[INFO] ${pluginsByRepository.size()} repositories retrieved from ${from}"
       echo "[INFO] List of repositories and their plugins:\n${plugins.join('\n')}"
 
-      def allLines = readFile('lines.txt').split('\n')
       newestAndOldestLines = [allLines[0], allLines[-1]] // Save resources by running PCT only on newest and oldest lines
       echo "[INFO] ${allLines.size()} lines retrieved from lines.txt: ${allLines.join(' ')} "
 
-      // For archival, keep track of newest and oldest lines as PR labels may change accross builds
+      // For archival, keeping track of newest and oldest lines as PR labels may change accross builds
       // For stashes, we only care about the lines of the current build
       lines = newestAndOldestLines
       if (weeklyTestMarkerFile || weeklyTestLabel) {
@@ -386,7 +329,7 @@ mavenNode(jdk: 21) {
       }
 
       // Generating all combinations of repository x lines
-      allCombinations = getAllCombinations(pluginsByRepository, lines, (weeklyTestMarkerFile || weeklyTestLabel), combinationSeparator)
+      allCombinations = getAllCombinations(pluginsByRepository, lines, (weeklyTestMarkerFile || weeklyTestLabel))
       def allCombinationNames = allCombinations.collect { combination, _ -> combination } as Set
       echo "[INFO] ${allCombinations.size()} resulting combinations:\n${allCombinationNames.join('\n')}"
     }
@@ -537,7 +480,7 @@ mavenNode(jdk: 21) {
 stage('run pct') {
   def branches = [failFast: false]
 
-  if (BRANCH_NAME != 'master' && !(fullTestMarkerFile || weeklyTestMarkerFile || fullTestLabel || weeklyTestLabel )) {
+  if (BRANCH_NAME != 'master' && !(fullTestMarkerFile || weeklyTestMarkerFile || fullTestLabel || weeklyTestLabel)) {
     catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') {
       error('[INFO] Not running on master or no weekly-test / full-test labels or markers')
     }
@@ -546,7 +489,6 @@ stage('run pct') {
 
   // TODO: single map, with batches[batchName]['action'] or ['type'], ex: 'missing', 'fake', 'reports', 'already_succeeded', etc.
   // so we can get constant batch parallel names
-  // TODO: how to reset status of previously failing batches?
 
   batches.each { batch, combinations ->
     if (combinations.size() == 0) {
@@ -561,7 +503,7 @@ stage('run pct') {
         stage('unstash') {
           def unstashLines = combinations
               .keySet()
-              .collect { it.split(combinationSeparator)[1] }
+              .collect { it.split(':')[1] }
               .unique()
           unstashLines.each { unstash it }
         }
@@ -575,7 +517,7 @@ stage('run pct') {
         echo "[INFO] Current batch combinations:\n${batchCombinationNames.join('\n')}"
         combinations.each { combination, plugins ->
           echo "[INFO] Combination ${combinationCount}/${totalCombination} \"${combination}\", plugin(s): ${plugins}"
-          def parts = combination.split(combinationSeparator)
+          def parts = combination.split(':')
           def repository = parts[0]
           def line = parts[1]
           // Note: line is currrently never set to '2.555.x'
@@ -651,7 +593,6 @@ stage('run pct') {
                 }
               }
             }
-            // TODO: stage 'results'; if there was at least one test failure, mark batch as unstable
           }
           combinationCount = combinationCount + 1
         }
@@ -664,38 +605,61 @@ stage('run pct') {
 // TODO: consolidate with previous/master reports
 // TODO: add 'src' of report? (results, previous reports ['pr-N', 'master-N'], deduced) to know which of these reports are retrieved from elsewhere than actual tests elapsed time?
 stage('report results') {
-  if (results.size() == 0) {
+  if (results.size() == 0 || !reportResults) {
     catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') {
-      error('[INFO] No result to report')
-    }
-    return
-  }
-  if (!reportResults) {
-    catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') {
-      error('[WARNING] reportResults set to false, skipping')
+      error('[INFO] No result to report or reportResults set to false')
     }
     return
   } else {
     node('maven-bom') {
-      def contents = getReportsFromResults(results, combinationSeparator)
-      if (contents['xmlReportContent']) {
-        writeFile file: "${reportName}.xml", text: contents['xmlReportContent']
-        junit allowEmptyResults: true, testResults: "${reportName}.xml"
+      Double totalElapsed = 0
+      Double totalCount = 0
+      Double totalSkipCount = 0
+      Double totalFailCount = 0
+      def reportLines = ''
+      results.each { combination, result ->
+        totalElapsed += result['elapsed']
+        totalCount += result['totalCount']
+        totalSkipCount += result['skipCount']
+        totalFailCount += result['failCount']
+        def normalizedCombination = combination.replaceAll('-', '_').replaceAll(':', '_').replaceAll('\\.', '_')
+        reportLines += '<testcase name="' + combination + '" classname="pct-duration.' + normalizedCombination + '" time="' + result['elapsed'] + '" failures="' + result['failCount'] + '"/>\n'
       }
-      writeFile file: "${reportName}.txt", text: contents['txtReportContent']
+      if (reportLines) {
+        def xmlReport = """<?xml version="1.0" encoding="UTF-8"?>
+          <testsuite name="bom" time="${totalElapsed}" tests="${totalCount}" skipped="${totalSkipCount}" failures="${totalFailCount}">
+          ${reportLines}
+          </testsuite>
+        """
 
-      // TODO: remove, debug
-      sh "cat ${reportName}.xml || true"
-      sh "cat ${reportName}.txt || true"
-      archiveArtifacts artifacts: "${reportName}.*", allowEmpty: true
+        def txtReport = results.collect { combination, result ->
+          'name=' + combination + ';' + result.collect { key, value -> key + '=' + value }.join(';')
+        }.sort().join('\n')
+
+        writeFile file: "${reportName}.xml", text: xmlReport
+        writeFile file: "${reportName}.txt", text: txtReport
+        archiveArtifacts artifacts: "${reportName}.*"
+        junit allowEmptyResults: true, testResults: "${reportName}.xml"
+
+        // TODO: remove, debug
+        sh "cat ${reportName}.xml || true"
+        sh "cat ${reportName}.txt || true"
+      } else {
+        echo "[INFO] no reports"
+      }
     }
   }
 }
 
 stage('markers check') {
-  // TODO: || weeklyTestMarkerFile
   if (fullTestMarkerFile) {
     error 'Remember to `git rm full-test` before taking out of draft'
+  }
+  if (limitedPluginSetMarkerFile) {
+    error 'Remember to `git rm limited-plugin-set` before taking out of draft'
+  }
+  if (limitedPluginSetLabel) {
+    error 'Remember to remove `limited-plugin-set` label before taking out of draft'
   }
 }
 
