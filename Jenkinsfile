@@ -30,6 +30,7 @@ if (testingCase == 'limited-full') {
 }
 
 // TODO: get limited set from a marker file?
+def limitedMaxSplits = 3
 def limitedPluginSet = [
   'jenkinsci/aws-credentials-plugin	aws-credentials',
   'jenkinsci/aws-global-configuration-plugin	aws-global-configuration',
@@ -42,7 +43,6 @@ def limitedPluginSet = [
   'jenkinsci/cron_column-plugin	cron_column',
   'jenkinsci/pipeline-maven-plugin	pipeline-maven,pipeline-maven-api,pipeline-maven-database',
 ]
-def limitedMaxSplits = 3
 def combinationSeparator = ':' // can't be: '_' (used in one repo name), ';' or '=' (used in txt reports)
 
 // TODO: seedRun, to just create an archive of results obtained from a PR for example
