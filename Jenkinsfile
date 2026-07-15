@@ -30,7 +30,7 @@ if (testingCase == 'limited-full') {
 }
 
 // TODO: get limited set from a marker file?
-def limitedMaxSplits = 5
+def limitedMaxSplits = 3
 def limitedPluginSet = [
   'jenkinsci/aws-credentials-plugin	aws-credentials',
   'jenkinsci/aws-global-configuration-plugin	aws-global-configuration',
