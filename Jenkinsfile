@@ -8,9 +8,11 @@ env.MAVEN_NTP = true
 
 def fullTestLabel
 def weeklyTestLabel
+def limitedPluginSetLabel
 if (env.CHANGE_ID) {
   fullTestLabel = pullRequest.labels.contains('full-test')
   weeklyTestLabel = pullRequest.labels.contains('weekly-test')
+  limitedPluginSetLabel = pullRequest.labels.contains('limited-plugin-set')
 }
 
 def fixedPrepArchiveName = '' // can be set to a specific prep archive name in case last commits aren't impacting it
@@ -65,14 +67,28 @@ def pluginsByRepository
 def lines
 def fullTestMarkerFile
 def weeklyTestMarkerFile
+def limitedPluginSetMarkerFile
+def limitedPluginSet = [
+  'jenkinsci/aws-credentials-plugin	aws-credentials',
+  'jenkinsci/aws-global-configuration-plugin	aws-global-configuration',
+  'jenkinsci/azure-credentials-plugin	azure-credentials',
+  'jenkinsci/azure-keyvault-plugin	azure-keyvault',
+  'jenkinsci/azure-sdk-plugin	azure-sdk',
+  'jenkinsci/azure-storage-plugin	windows-azure-storage',
+  'jenkinsci/badge-plugin	badge',
+  'jenkinsci/basic-branch-build-strategies-plugin	basic-branch-build-strategies',
+  'jenkinsci/cron_column-plugin	cron_column',
+  'jenkinsci/pipeline-maven-plugin	pipeline-maven,pipeline-maven-api,pipeline-maven-database',
+]
 def durations = [:]
 
 mavenEnv(jdk: 21) {
   def scmVars = checkout scm
-  commitId = scmVars.GIT_COMMIT
+  def commitId = scmVars.GIT_COMMIT
 
   fullTestMarkerFile = fileExists 'full-test'
   weeklyTestMarkerFile = fileExists 'weekly-test'
+  limitedPluginSetMarkerFile = fileExists 'limited-plugin-set'
 
   // Ensure prep archive corresponds to the current state
   def prepArchiveName = "bom-prep-${commitId}.tar.gz"
@@ -120,14 +136,37 @@ mavenEnv(jdk: 21) {
 
   stage('parse prep') {
     dir('target') {
-      def plugins = readFile('plugins.txt').split('\n')
-      pluginsByRepository = parsePlugins(plugins)
+      def plugins = []
+      def allLines = []
+      def from = 'plugins.txt'
+      if (limitedPluginSetLabel || limitedPluginSetMarkerFile) {
+        from = 'a limited set of plugins'
+        echo('[WARNING] Running on a limited set of plugins')
 
-      def allLines = readFile('lines.txt').split('\n')
+        // Limited set
+        plugins = limitedPluginSet
+        if (limitedPluginSetMarkerFile) {
+          plugins = readFile('../limited-plugin-set').split('\n')
+        }
+        // Lines from sample-plugin
+        allLines = sh (
+            script: '''
+              echo "weekly $(grep -F '.x</bom>' ../sample-plugin/pom.xml | sed -E 's, *<bom>(.+)</bom>,\\1,g' | sort -rn | xargs)"
+            ''',
+            returnStdout: true
+            ).trim().split(' ')
+      } else {
+        plugins = readFile('plugins.txt').split('\n')
+        allLines = readFile('lines.txt').split('\n')
+      }
+      pluginsByRepository = parsePlugins(plugins)
+      echo "[INFO] ${pluginsByRepository.size()} repositories retrieved from ${from}"
+      echo "[INFO] List of repositories and their plugins:\n${plugins.join('\n')}"
+
       newestAndOldestLines = [allLines[0], allLines[-1]] // Save resources by running PCT only on newest and oldest lines
       echo "[INFO] ${allLines.size()} lines retrieved from lines.txt: ${allLines.join(' ')} "
 
-      // For archival, keep track of newest and oldest lines as PR labels may change accross builds
+      // For archival, keeping track of newest and oldest lines as PR labels may change accross builds
       // For stashes, we only care about the lines of the current build
       lines = newestAndOldestLines
       if (weeklyTestMarkerFile || weeklyTestLabel) {
@@ -236,8 +275,16 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
   }
 }
 
-if (fullTestMarkerFile) {
-  error 'Remember to `git rm full-test` before taking out of draft'
+stage('checks') {
+  if (fullTestMarkerFile) {
+    error 'Remember to `git rm full-test` before taking out of draft'
+  }
+  if (limitedPluginSetMarkerFile) {
+    error 'Remember to `git rm limited-plugin-set` before taking out of draft'
+  }
+  if (limitedPluginSetLabel) {
+    error 'Remember to remove `limited-plugin-set` label before taking out of draft'
+  }
 }
 
 infra.maybePublishIncrementals()
