@@ -653,7 +653,9 @@ stage('run pct') {
             // TODO: if needed, withChecks(name: "Tests ${combination}") { echo "..." }
             echo "[INFO] Skipping ${combination}, already succeeded in attempt n°${combinationAlreadySucceededInAttempt}"
           } else {
-            stage(combination) {
+            // def estimation = (total from reports)
+            def stageName = "${combination} (${combinationCount}/${totalCombination})"
+            stage(stageName) {
               withChecks(name: "Tests ${combination}") {
                 mavenEnv(jdk: jdk) {
                   withEnv([
