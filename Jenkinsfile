@@ -11,7 +11,6 @@ def limitedPluginSetLabel = pullRequest.labels.contains('limited-plugin-set')
 
 env.MAVEN_NTP = true
 def MAX_SPLITS = 20
-def MAX_SPLITS_FULL_TEST_MULTIPLIER = 2
 // TODO: def overrides = [...]
 def fixedPrepArchiveName = 'bom-prep-90b7816400491b448fa6bae88c25aeec5f350b7e.tar.gz' // can be set to a specific prep archive name in case last commits aren't impacting it
 def ignoreReports = false // set this to true if the previous report is borked and causes failure
@@ -522,8 +521,8 @@ mavenNode(jdk: 21) {
   stage('generate batches') {
     def splitCount = MAX_SPLITS
     if (fullTestLabel || fullTestMarkerFile) {
-      splitCount = (MAX_SPLITS * MAX_SPLITS_FULL_TEST_MULTIPLIER)
-      echo "[INFO] 'full-test' build, increasing MAX_SPLIT of ${MAX_SPLITS} by ${MAX_SPLITS_FULL_TEST_MULTIPLIER}x"
+      splitCount = (MAX_SPLITS * lines.size())
+      echo "[INFO] 'full-test' build, increasing MAX_SPLITS of ${MAX_SPLITS} by ${lines.size()}x (lines)"
     }
     if (reports.size() == 0 || ignoreReports) {
       echo "[INFO] ${reportName}.txt not found, empty or ignored, faking reports for all combinations"
