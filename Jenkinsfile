@@ -165,10 +165,9 @@ def getAllCombinations(pluginsByRepository, lines, weeklyOnly, combinationSepara
     if (line != 'weekly' && weeklyOnly) {
       return
     }
-    def normalizedLine = line.replaceAll('\\.', '-')
     // TODO: alert if repository or plugins isn't valid (a-Z_-)
     pluginsByRepository.each { repository, plugins ->
-      combinations["${repository}${combinationSeparator}${normalizedLine}"] = plugins.join(',')
+      combinations["${repository}${combinationSeparator}${line}"] = plugins.join(',')
     }
   }
   combinations
@@ -244,7 +243,7 @@ def getReportsFromResults(results, combinationSeparator) {
     totalSkipCount += skipCount
     totalPassCount += passCount
     totalTotalCount += totalCount
-    def normalizedCombination = combination.replaceAll('-', '_').replaceAll(combinationSeparator, '_')
+    def normalizedCombination = combination.replaceAll('-', '_').replaceAll(combinationSeparator, '_').replaceAll('\\.', '_')
     reportLines += '<testcase name="' + combination + '" classname="pct-duration.' + normalizedCombination + '" time="' + elapsed + '" failures="' + failCount + '"/>\n'
     // TODO: try after only setting name, no classname
   }
@@ -607,7 +606,7 @@ stage('run pct') {
         stage('unstash') {
           def unstashLines = combinations
               .keySet()
-              .collect { it.split(combinationSeparator)[1].replaceAll('-', '.') }
+              .collect { it.split(combinationSeparator)[1] }
               .unique()
           unstashLines.each { unstash it }
         }
@@ -616,13 +615,14 @@ stage('run pct') {
         def totalCombination = combinations.size()
         def batchCombinationNames = combinations.collect { combination, plugins -> combination } as Set
         def currentAttempt = env.CURRENT_ATTEMPT.toInteger()
+        // TODO: put in their own 'info' stage, and show estimated time from previous elapsed time
         echo "[INFO] Current attempt: ${currentAttempt}"
         echo "[INFO] Current batch combinations:\n${batchCombinationNames.join('\n')}"
         combinations.each { combination, plugins ->
           echo "[INFO] Combination ${combinationCount}/${totalCombination} \"${combination}\", plugin(s): ${plugins}"
           def parts = combination.split(combinationSeparator)
           def repository = parts[0]
-          def line = parts[1].replaceAll('-', '.')
+          def line = parts[1]
           // Note: line is currrently never set to '2.555.x'
           // as we're keeping only the first ('weekly') and the last lines from lines.txt in 'prep' stage
           def jdk = line == 'weekly' || line == '2.555.x' ? 21 : 17
