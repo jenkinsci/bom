@@ -87,44 +87,6 @@ def mavenEnv(Map params = [:], Closure body) {
   }
 }
 
-// TODO: copyArtifactsFromAllPreviousBuilds and merge results?
-def copyArtifactsFromAnyPreviousBuild(archiveName, jobName) {
-  def foundInBuildNumber = 0
-  def archiveExists = false
-  def buildNumber = env.BUILD_NUMBER.toInteger()
-  if (buildNumber == 1) {
-    echo "[INFO] First build of ${jobName}, no ${archiveName} available yet"
-  } else {
-    // Loop over builds to retrieve the prep archive as previous build can have (only) other archive(s)
-    def checkBuildNumber = buildNumber - 1
-    // Don't loop until the first build of master '^^
-    def limit = jobName.endsWith('master') ? buildNumber - 50 : 0
-    while (!archiveExists && checkBuildNumber > limit) {
-      echo "[INFO] Trying to retrieve ${archiveName} from ${jobName}#${checkBuildNumber}..."
-      try {
-        copyArtifacts(projectName: jobName,
-        selector: specific("${checkBuildNumber}"),
-        filter: archiveName,
-        fingerprintArtifacts: true,
-        optional: false,
-        )
-        archiveExists = true
-      } catch(e) {}
-      if (!archiveExists) {
-        checkBuildNumber = checkBuildNumber - 1
-      }
-    }
-    if (!archiveExists) {
-      echo "[INFO] No ${archiveName} found in any build of ${jobName}"
-    } else {
-      foundInBuildNumber = checkBuildNumber
-      echo "[INFO] ${archiveName} found in ${jobName}#${checkBuildNumber}"
-    }
-  }
-  return foundInBuildNumber
-}
-
-
 // TODO: buildType: 'weekly' (labels: ..., markers: ...)
 // ('full', 'limited-weekly', 'limited-full', 'weekly-ignore', etc.)
 @NonCPS
@@ -236,25 +198,6 @@ def getBatches(buckets, allCombinations, bucketType) {
   echo "batches.size(): ${batches.size()}"
 
   batches
-}
-
-@NonCPS
-def getResult(junitResults) {
-  def result = [:]
-  if (junitResults) {
-    result['failCount'] = junitResults.failCount
-    result['skipCount'] = junitResults.skipCount
-    result['passCount'] = junitResults.passCount
-    result['totalCount'] = junitResults.totalCount
-    result['duration'] = junitResults.duration
-  } else {
-    result['failCount'] = 0
-    result['skipCount'] = 0
-    result['passCount'] = 0
-    result['totalCount'] = 0
-    result['duration'] = 0
-  }
-  result
 }
 
 // TODO: complete results with previous (successful) reports
@@ -686,7 +629,7 @@ stage('run pct') {
                       } catch(e) {
                         echo "error junitResult: ${e}"
                       }
-                      results[combination] = getResult(junitResults)
+                      results[combination] = getResultFromJunit(junitResults)
                       results[combination]['elapsed'] = (elapsed / 1000.0)
                       results[combination]['plugins'] = plugins
                       results[combination]['pluginCount'] = plugins.count(',')
@@ -741,13 +684,76 @@ stage('report results') {
   }
 }
 
-stage('markers check')
+stage('markers check') {
   // TODO: || weeklyTestMarkerFile
   if (fullTestMarkerFile) {
     error 'Remember to `git rm full-test` before taking out of draft'
   }
 }
 
-stage('incremental maybe')
+stage('incremental maybe') {
   infra.maybePublishIncrementals()
 }
+
+// === Helper functions
+
+@NonCPS
+def getResultFromJunit(junitResults) {
+  def result = [
+    failCount: 0,
+    skipCount: 0,
+    passCount: 0,
+    totalCount: 0,
+    duration: 0,
+  ]
+  if (junitResults) {
+    result = [
+      failCount: junitResults.failCount,
+      skipCount: junitResults.skipCount,
+      passCount: junitResults.passCount,
+      totalCount: junitResults.totalCount,
+      duration: junitResults.duration,
+    ]
+  }
+  result
+}
+
+// TODO: copyArtifactsFromAllPreviousBuilds and merge results?
+// Search and copy an artifact from builds of a job
+// Returns the build number where it has been found, zero otherwise
+def copyArtifactsFromAnyPreviousBuild(archiveName, jobName) {
+  def foundInBuildNumber = 0
+  def archiveExists = false
+  def buildNumber = env.BUILD_NUMBER.toInteger()
+  if (buildNumber == 1) {
+    echo "[INFO] First build of ${jobName}, no ${archiveName} available yet"
+  } else {
+    // Loop over builds to retrieve the prep archive as previous build can have (only) other archive(s)
+    def checkBuildNumber = buildNumber - 1
+    // Don't loop until the first build of master '^^
+    def limit = jobName.endsWith('master') ? buildNumber - 50 : 0
+    while (!archiveExists && checkBuildNumber > limit) {
+      echo "[INFO] Trying to retrieve ${archiveName} from ${jobName}#${checkBuildNumber}..."
+      try {
+        copyArtifacts(projectName: jobName,
+        selector: specific("${checkBuildNumber}"),
+        filter: archiveName,
+        fingerprintArtifacts: true,
+        optional: false,
+        )
+        archiveExists = true
+      } catch(e) {}
+      if (!archiveExists) {
+        checkBuildNumber = checkBuildNumber - 1
+      }
+    }
+    if (!archiveExists) {
+      echo "[INFO] No ${archiveName} found in any build of ${jobName}"
+    } else {
+      foundInBuildNumber = checkBuildNumber
+      echo "[INFO] ${archiveName} found in ${jobName}#${checkBuildNumber}"
+    }
+  }
+  return foundInBuildNumber
+}
+
