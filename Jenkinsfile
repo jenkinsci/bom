@@ -326,8 +326,8 @@ mavenNode(jdk: 21) {
   }
 
   stage('prep') {
-    if (prepFoundInBuildNumber == 0) {
-      withChecks(name: 'Tests', includeStage: true) {
+    withChecks(name: 'Tests', includeStage: true) {
+      if (prepFoundInBuildNumber == 0) {
         withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist', "ARCHIVE_NAME=${prepArchiveName}",]) {
           sh '''
           mvn -v
@@ -339,14 +339,14 @@ mavenNode(jdk: 21) {
           // Publish incrementals before prep archive preparation to avoid dirty git status
           infra.prepareToPublishIncrementals()
         }
-      }
-    } else {
-      withEnv(["ARCHIVE_NAME=${prepArchiveName}"]) {
-        sh '''
-        tar xzfv "${ARCHIVE_NAME}"
-        rm "${ARCHIVE_NAME}"
-        '''
-        echo "[INFO] ${prepArchiveName} retrieved and extracted, no need to run prep.sh"
+      } else {
+        withEnv(["ARCHIVE_NAME=${prepArchiveName}"]) {
+          sh '''
+          tar xzfv "${ARCHIVE_NAME}"
+          rm "${ARCHIVE_NAME}"
+          '''
+          echo "[INFO] ${prepArchiveName} retrieved and extracted, no need to run prep.sh"
+        }
       }
     }
   }
