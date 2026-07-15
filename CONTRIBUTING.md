@@ -140,6 +140,24 @@ Keep the PR in draft until tests pass and this file can be deleted.
 To further minimize build time, tests are run only on Linux, against Java 11, and without Docker support.
 It is unusual but possible for cross-component incompatibilities to only be visible in more specialized environments (such as Windows).
 
+### Running on a limited plugin set
+
+To run on a limited plugin set, add the label `limited-plugin-set` to run PCT in a PR - You would do this when debugging pipeline changes.
+
+> [!NOTE]
+> By default the set contains 10 plugins to consume a low amount of cloud resources.
+
+If you lack triage permission and so cannot add this label, or if you want to run on your own set of plugins, then you may instead
+
+```bash
+# One per line
+echo 'jenkinsci/variant-plugin	variant' > limited-plugin-set
+git add limited-plugin-set
+git commit -m 'Run limited plugin set'
+```
+
+Keep the PR in draft until tests pass and this file can be deleted.
+
 ## LTS lines
 
 A separate BOM artifact is available for the latest weekly, current LTS line and a few historical lines.
