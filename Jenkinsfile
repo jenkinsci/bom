@@ -5,9 +5,14 @@ if(env.BRANCH_NAME == "master") {
 }
 
 // TODO: def labels = [:] & def impactingLabels
-def fullTestLabel = pullRequest.labels.contains('full-test')
-def weeklyTestLabel = pullRequest.labels.contains('weekly-test')
-def limitedPluginSetLabel = pullRequest.labels.contains('limited-plugin-set')
+def fullTestLabel
+def weeklyTestLabel
+def limitedPluginSetLabel
+if (env.CHANGE_ID) {
+  fullTestLabel = pullRequest.labels.contains('full-test')
+  weeklyTestLabel = pullRequest.labels.contains('weekly-test')
+  limitedPluginSetLabel = pullRequest.labels.contains('limited-plugin-set')
+}
 
 env.MAVEN_NTP = true
 def MAX_SPLITS = 20
@@ -306,28 +311,25 @@ mavenNode(jdk: 21) {
 
   // Ensure prep archive corresponds to the current state
   def prepArchiveName = "bom-prep-${commitId}.tar.gz"
-  if (fixedPrepArchiveName) {
-    prepArchiveName = fixedPrepArchiveName
-    echo "[WARNING] Using fixed prep archive name ${fixedPrepArchiveName} instead of bom-prep-${commitId}.tar.gz"
-  }
-  def prepArchiveExists = false
-  def prepArchiveGlob = 'pct.sh excludes.txt bom-*/excludes.txt target/pct.jar target/plugins.txt target/lines.txt'
   def prepFoundInBuildNumber = 0
-  def reportprepFoundInBuildNumber = 0
 
   stage('retrieve prep archive') {
+    if (fixedPrepArchiveName) {
+      prepArchiveName = fixedPrepArchiveName
+      echo "[WARNING] Using fixed prep archive name ${fixedPrepArchiveName} instead of bom-prep-${commitId}.tar.gz"
+    }
     prepFoundInBuildNumber = copyArtifactsFromAnyPreviousBuild(prepArchiveName, env.JOB_NAME)
     if (prepFoundInBuildNumber == 0) {
       catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') {
-        error("${prepArchiveName} not found")
+        error("[INFO] ${prepArchiveName} not found")
       }
       return
     }
   }
 
   stage('prep') {
-    withChecks(name: 'Tests', includeStage: true) {
-      if (prepFoundInBuildNumber == 0) {
+    if (prepFoundInBuildNumber == 0) {
+      withChecks(name: 'Tests', includeStage: true) {
         withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist', "ARCHIVE_NAME=${prepArchiveName}",]) {
           sh '''
           mvn -v
@@ -376,7 +378,7 @@ mavenNode(jdk: 21) {
       // For archival, keep track of newest and oldest lines as PR labels may change accross builds
       // For stashes, we only care about the lines of the current build
       lines = newestAndOldestLines
-      if (weeklyTestMarkerFile || weeklyTestLabel ) {
+      if (weeklyTestMarkerFile || weeklyTestLabel) {
         echo "[INFO] Keeping only 'weekly' line as there is a 'weekly-test' label or marker file"
         lines = ['weekly']
       } else {
@@ -392,6 +394,7 @@ mavenNode(jdk: 21) {
 
   stage('archive new prep') {
     if (prepFoundInBuildNumber == 0) {
+      def prepArchiveGlob = 'pct.sh excludes.txt bom-*/excludes.txt target/pct.jar target/plugins.txt target/lines.txt'
       // Both newest and oldest lines in the prep archive, in case labels change on PR accross builds
       // ex: from weekly-test to full-test
       newestAndOldestLines.each { line ->
@@ -761,4 +764,3 @@ def copyArtifactsFromAnyPreviousBuild(archiveName, jobName) {
   }
   return foundInBuildNumber
 }
-
