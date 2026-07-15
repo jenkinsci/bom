@@ -267,6 +267,9 @@ def getReportsFromResults(results, combinationSeparator) {
   ]
 }
 
+
+// TODO: buildType: 'weekly' (labels: ..., markers: ...)
+// ('full', 'limited-weekly', 'limited-full', 'weekly-ignore', etc.)
 @NonCPS
 def getBuildDescription(Map args = [:]) {
   def desc = ''
