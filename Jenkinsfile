@@ -694,6 +694,7 @@ stage('run pct') {
                   }
                 }
               }
+              // TODO: if there was at least one test failure, mark batch as unstable
             }
           }
           combinationCount = combinationCount + 1
