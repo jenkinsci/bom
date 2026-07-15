@@ -6,8 +6,12 @@ if(env.BRANCH_NAME == "master") {
 
 env.MAVEN_NTP = true
 
-def fullTestLabel = pullRequest.labels.contains('full-test')
-def weeklyTestLabel = pullRequest.labels.contains('weekly-test')
+def fullTestLabel
+def weeklyTestLabel
+if (env.CHANGE_ID) {
+  fullTestLabel = pullRequest.labels.contains('full-test')
+  weeklyTestLabel = pullRequest.labels.contains('weekly-test')
+}
 
 def fixedPrepArchiveName = '' // can be set to a specific prep archive name in case last commits aren't impacting it
 
