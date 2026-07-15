@@ -427,7 +427,7 @@ mavenNode(jdk: 21) {
       newestAndOldestLines = [allLines[0], allLines[-1]] // Save resources by running PCT only on newest and oldest lines
       echo "[INFO] ${allLines.size()} lines retrieved from lines.txt: ${allLines.join(' ')} "
 
-      // For archival, keep track of newest and oldest lines as PR labels or marker files may change accross builds
+      // For archival, keep track of newest and oldest lines as PR labels may change accross builds
       // For stashes, we only care about the lines of the current build
       lines = newestAndOldestLines
       if (weeklyTestMarkerFile || weeklyTestLabel ) {
@@ -446,7 +446,8 @@ mavenNode(jdk: 21) {
 
   stage('archive new prep') {
     if (prepFoundInBuildNumber == 0) {
-      // Newest and oldest lines only in the prep archive, in case labels change on PR accross builds
+      // Both newest and oldest lines in the prep archive, in case labels change on PR accross builds
+      // ex: from weekly-test to full-test
       newestAndOldestLines.each { line ->
         prepArchiveGlob += " target/megawar-${line}.war"
       }
