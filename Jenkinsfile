@@ -91,7 +91,7 @@ mavenEnv(jdk: 21) {
   stage('prep') {
     if (prepFoundInBuildNumber == 0) {
       withChecks(name: 'Tests', includeStage: true) {
-        withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist', "ARCHIVE_NAME=${prepArchiveName}",]) {
+        withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist']) {
           sh '''
           mvn -v
           bash prep.sh
