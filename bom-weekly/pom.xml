@@ -892,8 +892,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>build-token-root</artifactId>
-        <!-- TODO: https://github.com/jenkinsci/build-token-root-plugin/pull/251 -->
-        <version>361.vfcb_6a_3a_75957</version>
+        <version>365.v717f8685a_09e</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
