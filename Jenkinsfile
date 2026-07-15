@@ -74,44 +74,6 @@ def mavenEnv(Map params = [:], Closure body) {
   }
 }
 
-// TODO: buildType: 'weekly' (labels: ..., markers: ...)
-// ('full', 'limited-weekly', 'limited-full', 'weekly-ignore', etc.)
-@NonCPS
-def getBuildDescription(Map args = [:]) {
-  def desc = ''
-  def labels = []
-  def markers = []
-  if (args['fullTestLabel']) {
-    labels.add('full-test')
-  }
-  if (args['weeklyTestLabel']) {
-    labels.add('weekly-test')
-  }
-  if (args['limitedPluginSetLabel']) {
-    labels.add('limited-plugin-set')
-  }
-  if (args['fullTestMarkerFile']) {
-    markers.add('full-test')
-  }
-  if (args['weeklyTestMarkerFile']) {
-    markers.add('weekly-test')
-  }
-
-  def parts = []
-  if (labels.size() > 0)  parts << "<b>label(s)</b>:${labels.join(',')}"
-  if (markers.size() > 0) parts << "<b>marker(s)</b>:${markers.join(',')}"
-  if (args.testingCase) parts << "<b>test</b>:${args.testingCase}"
-
-  if (args.description) {
-    desc = args.description + '\n<br>'
-  }
-  if (parts.size() > 0) {
-    desc += '<i><small>' + parts.join('<br>') + '</small></i>'
-  }
-
-  return desc
-}
-
 @NonCPS
 def parsePlugins(plugins) {
   def pluginsByRepository = [:]
@@ -120,71 +82,6 @@ def parsePlugins(plugins) {
     pluginsByRepository[splits[0].split('/')[1]] = splits[1].split(',')
   }
   pluginsByRepository
-}
-
-// TODO: replace by args[:]
-@NonCPS
-def getAllCombinations(pluginsByRepository, lines, weeklyOnly) {
-  def combinations = [:]
-  lines.each {line ->
-    if (line != 'weekly' && weeklyOnly) {
-      return
-    }
-    // TODO: alert if repository or plugins isn't valid (a-Z_-)
-    pluginsByRepository.each { repository, plugins ->
-      combinations["${repository}:${line}"] = plugins.join(',')
-    }
-  }
-  combinations
-}
-
-// TODO: check what happens if MAX_SPLITS > repositories
-@NonCPS
-def splitReports(List items, int maxSplits) {
-  // initialize buckets
-  def buckets = (0..<maxSplits).collect {
-    [total: 0.0, items: []]
-  }
-
-  // sort by elapsed time, largest first
-  def sorted = items.sort { -it.elapsed }
-
-  sorted.each { item ->
-    // pick the bucket with the smallest total elapsed time
-    def target = buckets.min { it.total }
-
-    target.items << item
-    target.total += item.elapsed
-  }
-
-  // Trim empty buckets
-  buckets = buckets.findAll { it.items.size() > 0 }
-
-  return buckets
-}
-
-// TODO: if there is a time for a repo-line but not repo-anotherLine,
-// use that first time as default estimation and resplit from there
-@NonCPS
-def getBatches(buckets, allCombinations, bucketType) {
-  def batches = [:]
-  def seen = new HashSet()
-  buckets.eachWithIndex { bucket, idx ->
-    def counter = idx + 1
-    def splitIndex = "${bucketType}-${counter} (${bucket.items.size()})"
-    batches[splitIndex] = [:]
-    bucket.items.each {
-      def combination = it.name
-      if (!seen.contains(combination)) {
-        seen.add(combination)
-        batches[splitIndex][combination] = allCombinations[combination]
-      }
-    }
-  }
-  echo "seen.size(): ${seen.size()}"
-  echo "batches.size(): ${batches.size()}"
-
-  batches
 }
 
 def commitId
@@ -727,4 +624,108 @@ def copyArtifactsFromAnyPreviousBuild(archiveName, jobName) {
     }
   }
   return foundInBuildNumber
+}
+
+// TODO: buildType: 'weekly' (labels: ..., markers: ...)
+// ('full', 'limited-weekly', 'limited-full', 'weekly-ignore', etc.)
+// Return a build description including impacting labels and markers
+@NonCPS
+def getBuildDescription(Map args = [:]) {
+  def desc = ''
+  def labels = []
+  def markers = []
+  if (args['fullTestLabel']) {
+    labels.add('full-test')
+  }
+  if (args['weeklyTestLabel']) {
+    labels.add('weekly-test')
+  }
+  if (args['limitedPluginSetLabel']) {
+    labels.add('limited-plugin-set')
+  }
+  if (args['fullTestMarkerFile']) {
+    markers.add('full-test')
+  }
+  if (args['weeklyTestMarkerFile']) {
+    markers.add('weekly-test')
+  }
+
+  def parts = []
+  if (labels.size() > 0)  parts << "<b>label(s)</b>:${labels.join(',')}"
+  if (markers.size() > 0) parts << "<b>marker(s)</b>:${markers.join(',')}"
+  if (args.testingCase) parts << "<b>test</b>:${args.testingCase}"
+
+  if (args.description) {
+    desc = args.description + '\n<br>'
+  }
+  if (parts.size() > 0) {
+    desc += '<i><small>' + parts.join('<br>') + '</small></i>'
+  }
+
+  return desc
+}
+
+// TODO: replace by args[:]
+@NonCPS
+def getAllCombinations(pluginsByRepository, lines, weeklyOnly) {
+  def combinations = [:]
+  lines.each {line ->
+    if (line != 'weekly' && weeklyOnly) {
+      return
+    }
+    // TODO: alert if repository or plugins isn't valid (a-Z_-)
+    pluginsByRepository.each { repository, plugins ->
+      combinations["${repository}:${line}"] = plugins.join(',')
+    }
+  }
+  combinations
+}
+
+// TODO: check what happens if MAX_SPLITS > repositories
+@NonCPS
+def splitReports(List items, int maxSplits) {
+  // initialize buckets
+  def buckets = (0..<maxSplits).collect {
+    [total: 0.0, items: []]
+  }
+
+  // sort by elapsed time, largest first
+  def sorted = items.sort { -it.elapsed }
+
+  sorted.each { item ->
+    // pick the bucket with the smallest total elapsed time
+    def target = buckets.min { it.total }
+
+    target.items << item
+    target.total += item.elapsed
+  }
+
+  // Trim empty buckets
+  buckets = buckets.findAll { it.items.size() > 0 }
+
+  return buckets
+}
+
+// TODO: if there is a time for a repo-line but not repo-anotherLine,
+// use that first time as default estimation and resplit from there
+@NonCPS
+def getBatches(buckets, allCombinations, bucketType) {
+  def batches = [:]
+  def seen = new HashSet()
+  buckets.eachWithIndex { bucket, idx ->
+    def counter = idx + 1
+    def splitIndex = "${bucketType}-${counter} (${bucket.items.size()})"
+    batches[splitIndex] = [:]
+    bucket.items.each {
+      def combination = it.name
+      if (!seen.contains(combination)) {
+        seen.add(combination)
+        batches[splitIndex][combination] = allCombinations[combination]
+      }
+    }
+  }
+  echo "seen.size(): ${seen.size()}"
+  echo "batches.size(): ${batches.size()}"
+
+  batches
 }
