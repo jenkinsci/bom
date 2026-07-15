@@ -124,6 +124,45 @@ def copyArtifactsFromAnyPreviousBuild(archiveName, jobName) {
   return foundInBuildNumber
 }
 
+
+// TODO: buildType: 'weekly' (labels: ..., markers: ...)
+// ('full', 'limited-weekly', 'limited-full', 'weekly-ignore', etc.)
+@NonCPS
+def getBuildDescription(Map args = [:]) {
+  def desc = ''
+  def labels = []
+  def markers = []
+  if (args['fullTestLabel']) {
+    labels.add('full-test')
+  }
+  if (args['weeklyTestLabel']) {
+    labels.add('weekly-test')
+  }
+  if (args['limitedPluginSetLabel']) {
+    labels.add('limited-plugin-set')
+  }
+  if (args['fullTestMarkerFile']) {
+    markers.add('full-test')
+  }
+  if (args['weeklyTestMarkerFile']) {
+    markers.add('weekly-test')
+  }
+
+  def parts = []
+  if (labels.size() > 0)  parts << "<b>label(s)</b>:${labels.join(',')}"
+  if (markers.size() > 0) parts << "<b>marker(s)</b>:${markers.join(',')}"
+  if (args.testingCase) parts << "<b>test</b>:${args.testingCase}"
+
+  if (args.description) {
+    desc = args.description + '\n<br>'
+  }
+  if (parts.size() > 0) {
+    desc += '<i><small>' + parts.join('<br>') + '</small></i>'
+  }
+
+  return desc
+}
+
 @NonCPS
 def parsePlugins(plugins) {
   def pluginsByRepository = [:]
@@ -132,6 +171,22 @@ def parsePlugins(plugins) {
     pluginsByRepository[splits[0].split('/')[1]] = splits[1].split(',')
   }
   pluginsByRepository
+}
+
+// TODO: replace by args[:]
+@NonCPS
+def getAllCombinations(pluginsByRepository, lines, weeklyOnly, combinationSeparator) {
+  def combinations = [:]
+  lines.each {line ->
+    if (line != 'weekly' && weeklyOnly) {
+      return
+    }
+    // TODO: alert if repository or plugins isn't valid (a-Z_-)
+    pluginsByRepository.each { repository, plugins ->
+      combinations["${repository}${combinationSeparator}${line}"] = plugins.join(',')
+    }
+  }
+  combinations
 }
 
 // TODO: check what happens if MAX_SPLITS > repositories
@@ -157,22 +212,6 @@ def splitReports(List items, int maxSplits) {
   buckets = buckets.findAll { it.items.size() > 0 }
 
   return buckets
-}
-
-// TODO: replace by args[:]
-@NonCPS
-def getAllCombinations(pluginsByRepository, lines, weeklyOnly, combinationSeparator) {
-  def combinations = [:]
-  lines.each {line ->
-    if (line != 'weekly' && weeklyOnly) {
-      return
-    }
-    // TODO: alert if repository or plugins isn't valid (a-Z_-)
-    pluginsByRepository.each { repository, plugins ->
-      combinations["${repository}${combinationSeparator}${line}"] = plugins.join(',')
-    }
-  }
-  combinations
 }
 
 // TODO: if there is a time for a repo-line but not repo-anotherLine,
@@ -265,45 +304,6 @@ def getReportsFromResults(results, combinationSeparator) {
     xmlReportContent: xmlReportContent,
     txtReportContent: txtReportContent,
   ]
-}
-
-
-// TODO: buildType: 'weekly' (labels: ..., markers: ...)
-// ('full', 'limited-weekly', 'limited-full', 'weekly-ignore', etc.)
-@NonCPS
-def getBuildDescription(Map args = [:]) {
-  def desc = ''
-  def labels = []
-  def markers = []
-  if (args['fullTestLabel']) {
-    labels.add('full-test')
-  }
-  if (args['weeklyTestLabel']) {
-    labels.add('weekly-test')
-  }
-  if (args['limitedPluginSetLabel']) {
-    labels.add('limited-plugin-set')
-  }
-  if (args['fullTestMarkerFile']) {
-    markers.add('full-test')
-  }
-  if (args['weeklyTestMarkerFile']) {
-    markers.add('weekly-test')
-  }
-
-  def parts = []
-  if (labels.size() > 0)  parts << "<b>label(s)</b>:${labels.join(',')}"
-  if (markers.size() > 0) parts << "<b>marker(s)</b>:${markers.join(',')}"
-  if (args.testingCase) parts << "<b>test</b>:${args.testingCase}"
-
-  if (args.description) {
-    desc = args.description + '\n<br>'
-  }
-  if (parts.size() > 0) {
-    desc += '<i><small>' + parts.join('<br>') + '</small></i>'
-  }
-
-  return desc
 }
 
 def commitId
