@@ -375,8 +375,6 @@ mavenNode(jdk: 21) {
 }
 
 stage('run pct') {
-  def branches = [failFast: false]
-
   if (BRANCH_NAME != 'master' && !(fullTestMarkerFile || weeklyTestMarkerFile || fullTestLabel || weeklyTestLabel)) {
     catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') {
       error('[INFO] Not running on master or no weekly-test / full-test labels or markers')
@@ -386,6 +384,7 @@ stage('run pct') {
 
   // TODO: single map, with batches[batchName]['action'] or ['type'], ex: 'missing', 'fake', 'reports', 'already_succeeded', etc.
   // so we can get constant batch parallel names
+  def branches = [failFast: false]
 
   batches.each { batch, combinations ->
     if (combinations.size() == 0) {
@@ -566,27 +565,6 @@ stage('incremental maybe') {
 
 // === Helper functions
 
-@NonCPS
-def getResultFromJunit(junitResults) {
-  def result = [
-    failCount: 0,
-    skipCount: 0,
-    passCount: 0,
-    totalCount: 0,
-    duration: 0,
-  ]
-  if (junitResults) {
-    result = [
-      failCount: junitResults.failCount,
-      skipCount: junitResults.skipCount,
-      passCount: junitResults.passCount,
-      totalCount: junitResults.totalCount,
-      duration: junitResults.duration,
-    ]
-  }
-  result
-}
-
 // TODO: copyArtifactsFromAllPreviousBuilds and merge results?
 // Search and copy an artifact from builds of a job
 // Returns the build number where it has been found, zero otherwise
@@ -624,6 +602,26 @@ def copyArtifactsFromAnyPreviousBuild(archiveName, jobName) {
     }
   }
   return foundInBuildNumber
+}
+
+@NonCPS
+def getResultFromJunit(junitResults) {
+  if (!junitResults) {
+    return [
+      failCount: 0,
+      skipCount: 0,
+      passCount: 0,
+      totalCount: 0,
+      duration: 0,
+    ]
+  }
+  return [
+    failCount: junitResults.failCount ?: 0,
+    skipCount: junitResults.skipCount ?: 0,
+    passCount: junitResults.passCount ?: 0,
+    totalCount: junitResults.totalCount ?: 0,
+    duration: junitResults.duration ?: 0,
+  ]
 }
 
 // TODO: buildType: 'weekly' (labels: ..., markers: ...)
