@@ -1,7 +1,7 @@
 // Do not trigger build regularly on change requests as it costs a lot
 String cronTrigger = ''
 if(env.BRANCH_NAME == "master") {
-  cronTrigger = '57 11 * * 5'
+  cronTrigger = '0 6 * * 5'
 }
 
 // TODO: def labels = [:] & def impactingLabels
