@@ -9,14 +9,14 @@ Details are described in [a week in the life of a BOM release manager](#a-week-i
 
 | Release Date | Lead                 |
 |--------------| -------------------- |
-| 2026-05-08   | Adrien Lecharpentier |
-| 2026-05-15   | Adrien Lecharpentier |
-| 2026-05-22   | Kris Stern           |
-| 2026-05-29   | Kris Stern           |
-| 2026-06-05   | Darin Pope           |
-| 2026-06-12   | Darin Pope           |
-| 2026-06-19   | Mark Waite           |
-| 2026-06-26   | Mark Waite           |
+| 2026-07-17   | Kris Stern           |
+| 2026-07-24   | Kris Stern           |
+| 2026-07-31   | Darin Pope           |
+| 2026-08-07   | Darin Pope           |
+| 2026-08-14   | Mark Waite           |
+| 2026-08-21   | Mark Waite           |
+| 2026-08-28   | Adrien Lecharpentier |
+| 2026-09-04   | Adrien Lecharpentier |
 
 ## Releasing the BOM
 

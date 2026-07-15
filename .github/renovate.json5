@@ -6,7 +6,9 @@
   ],
   "automerge": true,
   "ignoreDeps": [
-    "io.jenkins.tools.bom:parent"
+    "io.jenkins.tools.bom:parent",
+    "org.codehaus.groovy:groovy-all",
+    "org.apache.groovy:groovy-all"
   ],
   "ignorePaths": [
     "bom-*.x/pom.xml"
@@ -63,6 +65,12 @@
         "com.sonyericsson.jenkins.plugins.bfa:build-failure-analyzer"
       ],
       "allowedVersions": "!/2.27.0$/" // should have been 1.27.0
+    },
+    {
+      "matchDepNames": [
+        "org.jenkins-ci.plugins:JiraTestResultReporter"
+      ],
+      "allowedVersions": "!/^378\\./" // skip 378.x line, see PR #6918
     },
     {
       "matchDepNames": [
