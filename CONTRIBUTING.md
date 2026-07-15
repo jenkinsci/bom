@@ -106,6 +106,11 @@ if you have switched the version in `bom-weekly/pom.xml` to a `*-SNAPSHOT`.
 
 To minimize cloud resources, PCT is not run at all by default on pull requests, only some basic sanity checks.
 
+> [!TIP]
+> If you need to restart a build without any change and if you can (ex: you're a maintainer),
+> prefer using replays and reruns from GitHub over empty commits to benefit from the prep archive built and saved in the previous builds.
+> It saves about half an hour of total build time, and resources.
+
 ### Running weekly tests
 
 Add the label `weekly-test` to run the tests against the latest weekly Jenkins version - This is what you want most of the time.
@@ -157,6 +162,26 @@ git commit -m 'Run limited plugin set'
 ```
 
 Keep the PR in draft until tests pass and this file can be deleted.
+
+### Replay any specific case
+
+If you want to test specific cases without ever changing labels or marker files, you can update the `flags` map on top of the pipeline in replays.
+
+Ex, to simulate a `full-test` marker with a `weekly-test` & `limited-plugin-set` labels, update this at the top of the pipeline:
+
+```diff
+// Test flags depending on the presence of corresponding labels or marker files
+// Can be modified to test specific cases independently of the current PR labels or markers
+// Possible value(s): 'label', 'marker'
+Map flags = [
+    -  'weekly-test': [] as Set,
++  'weekly-test': ['label'] as Set,
+-  'full-test': [] as Set,
++  'full-test': ['marker'] as Set,
+-  'limited-plugin-set': [] as Set,
++  'limited-plugin-set': ['label', 'marker'] as Set,
+]
+```
 
 ## LTS lines
 

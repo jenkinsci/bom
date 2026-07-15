@@ -4,18 +4,18 @@ if(env.BRANCH_NAME == "master") {
   cronTrigger = '0 15 * * 5'
 }
 
+// === Actionable in replay
 env.MAVEN_NTP = true
-
-def fullTestLabel
-def weeklyTestLabel
-def limitedPluginSetLabel
-if (env.CHANGE_ID) {
-  fullTestLabel = pullRequest.labels.contains('full-test')
-  weeklyTestLabel = pullRequest.labels.contains('weekly-test')
-  limitedPluginSetLabel = pullRequest.labels.contains('limited-plugin-set')
-}
-
-def fixedPrepArchiveName = '' // can be set to a specific prep archive name in case last commits aren't impacting it
+// Can be set to a specific prep archive name in case last commits aren't impacting it
+final String fixedPrepArchiveName = ''
+// Test flags depending on the presence of corresponding labels or marker files
+// Can be modified to test specific cases independently of the current PR labels or markers
+// Possible value(s): 'label', 'marker'
+Map flags = [
+  'weekly-test': [] as Set,
+  'full-test': [] as Set,
+  'limited-plugin-set': [] as Set,
+]
 
 properties([
   disableConcurrentBuilds(abortPrevious: true),
@@ -28,11 +28,20 @@ if (env.BRANCH_NAME == 'master' && currentBuild.buildCauses*._class == ['jenkins
   error 'No longer running builds on response to master branch pushes. If you wish to cut a release, use “Re-run checks” from this failing check in https://github.com/jenkinsci/bom/commits/master'
 }
 
-def mavenEnv(Map params = [:], Closure body) {
-  def attempt = 0
-  def attempts = 6
+// Collect flags from labels
+if (env.CHANGE_ID) {
+  flags.each { name, sources ->
+    if (pullRequest.labels.contains(name)) {
+      sources << 'label'
+    }
+  }
+}
+
+void mavenEnv(Map params = [:], Closure body) {
+  int attempt = 0
+  final int attempts = 6
   retry(count: attempts, conditions: [kubernetesAgent(handleNonKubernetes: true), nonresumable()]) {
-    echo 'Attempt ' + ++attempt + ' of ' + attempts
+    echo '[INFO] Attempt ' + ++attempt + ' of ' + attempts
     // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
     node('maven-bom') {
       timeout(120) {
@@ -45,7 +54,6 @@ def mavenEnv(Map params = [:], Closure body) {
             "CURRENT_ATTEMPT=${attempt}",
           ]) {
             infra.loadMavenLocalCacheIfAny(env.MVN_LOCAL_REPO)
-
             body()
           }
         }
@@ -54,23 +62,14 @@ def mavenEnv(Map params = [:], Closure body) {
   }
 }
 
-@NonCPS
-def parsePlugins(plugins) {
-  def pluginsByRepository = [:]
-  plugins.each { plugin ->
-    def splits = plugin.split('\t')
-    pluginsByRepository[splits[0].split('/')[1]] = splits[1].split(',')
-  }
-  pluginsByRepository
-}
+String commitId
+int prepFoundInBuildNumber = 0
+Map pluginsByRepository = [:]
+List lines = []
+List newestAndOldestLines = []
+Map results = [:]
 
-def commitId
-def pluginsByRepository
-def lines
-def fullTestMarkerFile
-def weeklyTestMarkerFile
-def limitedPluginSetMarkerFile
-def limitedPluginSet = [
+final String[] limitedPluginSet = [
   'jenkinsci/aws-credentials-plugin	aws-credentials',
   'jenkinsci/aws-global-configuration-plugin	aws-global-configuration',
   'jenkinsci/azure-credentials-plugin	azure-credentials',
@@ -80,32 +79,40 @@ def limitedPluginSet = [
   'jenkinsci/badge-plugin	badge',
   'jenkinsci/basic-branch-build-strategies-plugin	basic-branch-build-strategies',
   'jenkinsci/cron_column-plugin	cron_column',
-  'jenkinsci/pipeline-maven-plugin	pipeline-maven,pipeline-maven-api,pipeline-maven-database',
+  'jenkinsci/pipeline-maven-plugin	pipeline-maven,pipeline-maven-api,pipeline-maven-database', // longer than the others, multiple plugins
 ]
-def results = [:]
 
 mavenEnv(jdk: 21) {
-  def scmVars = checkout scm
-  commitId = scmVars.GIT_COMMIT
+  String prepArchiveName
+  stage('init') {
+    Map scmVars = checkout scm
 
-  fullTestMarkerFile = fileExists 'full-test'
-  weeklyTestMarkerFile = fileExists 'weekly-test'
-  limitedPluginSetMarkerFile = fileExists 'limited-plugin-set'
+    // Ensure prep archive corresponds to the current state
+    commitId = scmVars.GIT_COMMIT.substring(0, 7)
+    prepArchiveName = "bom-prep-${commitId}.tar.gz"
+    if (fixedPrepArchiveName) {
+      echo "[WARNING] Using fixed prep archive name ${fixedPrepArchiveName} instead of ${prepArchiveName}"
+      prepArchiveName = fixedPrepArchiveName
+    } else {
+      echo "[INFO] Using prep archive name ${prepArchiveName}"
+    }
 
-  // Ensure prep archive corresponds to the current state
-  def prepArchiveName = "bom-prep-${commitId}.tar.gz"
-  def prepFoundInBuildNumber = 0
+    // Collect flags from marker files
+    flags.each { name, sources ->
+      if (fileExists(name)) {
+        sources << 'marker'
+      }
+    }
+    echo '[INFO] Flags:\n' + flags.collect { name, conditions ->
+      final String desc = conditions ? conditions.join(' & ') : 'none'
+      "  - ${name.padRight(20)} : ${desc}"
+    }.join('\n')
+  }
 
   stage('retrieve prep archive') {
-    if (fixedPrepArchiveName) {
-      prepArchiveName = fixedPrepArchiveName
-      echo "[WARNING] Using fixed prep archive name ${fixedPrepArchiveName} instead of bom-prep-${commitId}.tar.gz"
-    }
-    prepFoundInBuildNumber = copyArtifactsFromAnyPreviousBuild(prepArchiveName, env.JOB_NAME)
+    prepFoundInBuildNumber = retrieveArtifactsFromPreviousBuilds(prepArchiveName, env.JOB_NAME)
     if (prepFoundInBuildNumber == 0) {
-      catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') {
-        error("[INFO] ${prepArchiveName} not found")
-      }
+      catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') { error("[SKIP] ${prepArchiveName} not found") }
       return
     }
   }
@@ -138,93 +145,96 @@ mavenEnv(jdk: 21) {
 
   stage('parse prep') {
     dir('target') {
-      def plugins = []
-      def allLines = []
-      def from = 'plugins.txt'
-      if (limitedPluginSetLabel || limitedPluginSetMarkerFile) {
+      String[] plugins = []
+      String[] allLines = []
+      String from = 'plugins.txt'
+
+      if (flagEnabled(flags, 'limited-plugin-set')) {
         from = 'a limited set of plugins'
         echo('[WARNING] Running on a limited set of plugins')
 
-        // Limited set
-        plugins = limitedPluginSet
-        if (limitedPluginSetMarkerFile) {
-          plugins = readFile('../limited-plugin-set').split('\n')
-        }
+        // Limited set from marker file if it exists
+        plugins = fileExists('../limited-plugin-set') ? readFile('../limited-plugin-set').readLines() : limitedPluginSet
         // Lines from sample-plugin
-        allLines = sh (
-            script: '''
-              echo "weekly $(grep -F '.x</bom>' ../sample-plugin/pom.xml | sed -E 's, *<bom>(.+)</bom>,\\1,g' | sort -rn | xargs)"
-            ''',
-            returnStdout: true
-            ).trim().split(' ')
+        allLines = sh (returnStdout: true, script: '''
+          echo "weekly $(grep -F '.x</bom>' ../sample-plugin/pom.xml | sed -E 's, *<bom>(.+)</bom>,\\1,g' | sort -rn | xargs)"
+        ''').trim().split(' ')
       } else {
-        plugins = readFile('plugins.txt').split('\n')
-        allLines = readFile('lines.txt').split('\n')
+        plugins = readFile('plugins.txt').readLines()
+        allLines = readFile('lines.txt').readLines()
       }
+
       pluginsByRepository = parsePlugins(plugins)
       echo "[INFO] ${pluginsByRepository.size()} repositories retrieved from ${from}"
       echo "[INFO] List of repositories and their plugins:\n${plugins.join('\n')}"
 
-      newestAndOldestLines = [allLines[0], allLines[-1]] // Save resources by running PCT only on newest and oldest lines
       echo "[INFO] ${allLines.size()} lines retrieved from lines.txt: ${allLines.join(' ')} "
 
       // For archival, keeping track of newest and oldest lines as PR labels may change accross builds
-      // For stashes, we only care about the lines of the current build
+      // For stashes, we only care about the final lines of the current build
+      newestAndOldestLines = [allLines.first(), allLines.last()] // Save resources by running PCT only on newest and oldest lines
       lines = newestAndOldestLines
-      if (weeklyTestMarkerFile || weeklyTestLabel) {
-        echo "[INFO] Keeping only 'weekly' line as there is a 'weekly-test' label or marker file"
+      echo "[INFO] Keeping only newest and oldest lines to save resources: ${lines.join(' ')} "
+      if (flagEnabled(flags, 'weekly-test')) {
         lines = ['weekly']
-      } else {
-        echo "[INFO] Keeping only newest and oldest lines to save resources: ${lines.join(' ')} "
+        echo "[WARNING] Keeping only 'weekly' line as there is a 'weekly-test' label or marker file"
+      }
+      if (BRANCH_NAME != 'master' && !(flagEnabled(flags, 'full-test') || flagEnabled(flags, 'weekly-test'))) {
+        lines = []
+        catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') {
+          error('[SKIP] Removing all lines, build not from master or running without any "weekly-test" / "full-test" flags')
+        }
+        return
       }
     }
   }
 
   stage('archive new prep') {
-    if (prepFoundInBuildNumber == 0) {
-      def prepArchiveGlob = 'pct.sh excludes.txt bom-*/excludes.txt target/pct.jar target/plugins.txt target/lines.txt'
-      // Both newest and oldest lines in the prep archive, in case labels change on PR accross builds
-      // ex: from weekly-test to full-test
-      newestAndOldestLines.each { line ->
-        prepArchiveGlob += " target/megawar-${line}.war"
-      }
-      withEnv(["ARCHIVE_NAME=${prepArchiveName}", "ARCHIVE_GLOB=${prepArchiveGlob}",]) {
-        sh 'tar czfv "${ARCHIVE_NAME}" ${ARCHIVE_GLOB}'
-        archiveArtifacts artifacts: prepArchiveName, fingerprint: true
-        echo "[INFO] New ${prepArchiveName} archived"
-      }
-    } else {
-      catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') {
-        error("[INFO] No new prep to archive")
-      }
+    if (prepFoundInBuildNumber > 0) {
+      catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') { error("[SKIP] No new prep to archive") }
       return
+    }
+
+    String prepArchiveGlob = 'pct.sh excludes.txt bom-*/excludes.txt target/pct.jar target/plugins.txt target/lines.txt'
+    // Both newest and oldest lines in the prep archive, in case labels change on PR accross builds
+    // ex: from weekly-test to full-test
+    newestAndOldestLines.each { line ->
+      prepArchiveGlob += " target/megawar-${line}.war"
+    }
+    withEnv(["ARCHIVE_NAME=${prepArchiveName}", "ARCHIVE_GLOB=${prepArchiveGlob}",]) {
+      sh 'tar czfv "${ARCHIVE_NAME}" ${ARCHIVE_GLOB}'
+      archiveArtifacts artifacts: prepArchiveName, fingerprint: true
+      echo "[INFO] New ${prepArchiveName} archived"
     }
   }
 
   stage('stash prep lines') {
-    if (lines.size() > 0) {
-      lines.each { line ->
-        stash name: line, includes: "pct.sh,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-${line}.war"
-      }
-    } else {
-      catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') {
-        error('[INFO] No line to stash')
-      }
+    if (lines.isEmpty()) {
+      catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') { error('[SKIP] No line to stash') }
       return
+    }
+
+    echo "[INFO] Stashing ${lines.join(' & ')}"
+    lines.each { line ->
+      stash name: line, includes: "pct.sh,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-${line}.war"
     }
   }
 }
 
-if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env.CHANGE_ID && (fullTestLabel || weeklyTestLabel)) {
-  def branches = [failFast: false]
-  lines.each {line ->
-    if (line != 'weekly' && (weeklyTestMarkerFile || env.CHANGE_ID && weeklyTestLabel)) {
-      return
+stage('run pct') {
+  if (lines.isEmpty()) {
+    catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') {
+      error('[SKIP] No line to run')
     }
+    return
+  }
+
+  Map branches = [failFast: false]
+  lines.each {line ->
     pluginsByRepository.each { repository, plugins ->
-      def branchName = "${repository}:${line}"
+      final String branchName = "${repository}:${line}"
       branches[branchName] = {
-        def jdk = line == 'weekly' || line == '2.555.x' ? 21 : 17
+        final int jdk = line == 'weekly' ? 21 : 17
         withChecks(name: 'Tests', includeStage: true) {
           mavenEnv(jdk: jdk) {
             unstash line
@@ -233,8 +243,8 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
               "LINE=$line",
               'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
             ]) {
-              def start = System.currentTimeMillis()
-              def currentAttempt = env.CURRENT_ATTEMPT.toInteger()
+              final long start = System.currentTimeMillis()
+              int currentAttempt = env.CURRENT_ATTEMPT.toInteger()
               echo "[INFO] Current attempt: ${currentAttempt}"
 
               try {
@@ -249,22 +259,30 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
                   throw e
                 }
               } finally {
-                def elapsed = System.currentTimeMillis() - start
+                final double elapsed = (System.currentTimeMillis() - start) / 1000.0
                 def junitResults
                 try {
                   junitResults = junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml')
                 } catch(e) {
-                  echo "error junitResult: ${e}"
+                  echo "[WARNING] Error junitResult: ${e}"
                 }
-                results[branchName] = getResultFromJunit(junitResults)
-                results[branchName]['elapsed'] = (elapsed / 1000.0)
-                results[branchName]['plugins'] = plugins
-                results[branchName]['pluginCount'] = plugins.size()
-                results[branchName]['attempt'] = currentAttempt
-                results[branchName]['build_id'] = env.BUILD_ID
-                results[branchName]['job_base_name'] = env.JOB_BASE_NAME
-                results[branchName]['short_commit_id'] = commitId.substring(0, 7)
-                echo "[INFO] results[${branchName}]: ${results[branchName]}"
+                Map result = [
+                  failCount : junitResults?.failCount  ?: 0,
+                  skipCount : junitResults?.skipCount  ?: 0,
+                  passCount : junitResults?.passCount  ?: 0,
+                  totalCount: junitResults?.totalCount ?: 0,
+                  duration  : junitResults?.duration   ?: 0,
+                ]
+                result.elapsed = elapsed
+                result.plugins = plugins.join(',')
+                result.pluginCount = plugins.size()
+                result.attempt = currentAttempt
+                result.build_id = env.BUILD_ID
+                result.job_base_name = env.JOB_BASE_NAME
+                result.short_commit_id = commitId.substring(0, 7)
+
+                results[branchName] = result
+                echo "[INFO] results for ${branchName}: ${result}"
               }
             }
           }
@@ -276,117 +294,125 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
 }
 
 stage('report results') {
-  if (results.size() == 0) {
-    catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') {
-      error('[INFO] No result to report')
-    }
+  if (results.isEmpty()) {
+    catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') { error('[SKIP] No result to report') }
     return
-  } else {
-    node('maven-bom') {
-      Double totalElapsed = 0
-      Double totalCount = 0
-      Double totalSkipCount = 0
-      Double totalFailCount = 0
-      def reportLines = ''
-      results.each { combination, result ->
-        totalElapsed += result['elapsed']
-        totalCount += result['totalCount']
-        totalSkipCount += result['skipCount']
-        totalFailCount += result['failCount']
-        def normalizedCombination = combination.replaceAll('-', '_').replaceAll(':', '_').replaceAll('\\.', '_')
-        reportLines += '<testcase name="' + combination + '" classname="pct-duration.' + normalizedCombination + '" time="' + result['elapsed'] + '" failures="' + result['failCount'] + '"/>\n'
-      }
-      if (reportLines) {
-        def xmlReport = """<?xml version="1.0" encoding="UTF-8"?>
-          <testsuite name="bom" time="${totalElapsed}" tests="${totalCount}" skipped="${totalSkipCount}" failures="${totalFailCount}">
-          ${reportLines}
-          </testsuite>
-        """
+  }
 
-        def txtReport = results.collect { combination, result ->
-          'name=' + combination + ';' + result.collect { key, value -> key + '=' + value }.join(';')
-        }.sort().join('\n')
-
-        writeFile file: 'bom-report.xml', text: xmlReport
-        writeFile file: 'bom-report.txt', text: txtReport
-        archiveArtifacts artifacts: 'bom-report.*'
-        junit allowEmptyResults: true, testResults: 'bom-report.xml'
-      }
+  node('maven-bom') {
+    Map totals = results.values().inject([
+      elapsed   : 0d,
+      totalCount: 0,
+      skipCount : 0,
+      failCount : 0
+    ]) { acc, r ->
+      acc.elapsed    += r.elapsed
+      acc.totalCount += r.totalCount
+      acc.skipCount  += r.skipCount
+      acc.failCount  += r.failCount
+      acc
     }
+    totals.resultsCount = results.size()
+
+    final String reportLines = results.collect { combination, result ->
+      final String normalized = combination.replaceAll('[-:.]', '_')
+      """<testcase name="${combination}" classname="pct-duration.${normalized}" time="${result.elapsed}" tests="${result.totalCount}" failures="${result.failCount}" skipped="${result.skipCount}"/>"""
+    }.join('\n')
+
+    final String xmlReport = """<?xml version="1.0" encoding="UTF-8"?>
+    <testsuite name="bom" time="${totals.elapsed}" tests="${totals.resultsCount}">
+      ${reportLines}
+    </testsuite>
+    """
+
+    final String txtReport = results.collect { combination, result ->
+      "name=${combination};" + result.collect { k, v -> "${k}=${v}" }.join(';')
+    }.sort().join('\n')
+
+    writeFile file: 'bom-report.xml', text: xmlReport
+    writeFile file: 'bom-report.txt', text: txtReport
+    archiveArtifacts artifacts: 'bom-report.*'
+    junit allowEmptyResults: true, testResults: 'bom-report.xml'
+
+    echo "[INFO] Aggregates from ${totals.resultsCount} result(s):\n${totals}"
   }
 }
 
-stage('checks') {
-  if (fullTestMarkerFile) {
-    error 'Remember to `git rm full-test` before taking out of draft'
+stage('flag checks') {
+  // Mark build as failed on any marker file
+  def markerErrors = flags.findAll { flag, sources -> 'marker' in sources }.keySet()
+  if (!markerErrors.isEmpty()) {
+    error "Remember to `git rm ${markerErrors.join(' ')}` before taking out of draft"
   }
-  if (limitedPluginSetMarkerFile) {
-    error 'Remember to `git rm limited-plugin-set` before taking out of draft'
-  }
-  if (limitedPluginSetLabel) {
-    error 'Remember to remove `limited-plugin-set` label before taking out of draft'
+
+  // Mark build as unstable on PR with limited-plugin-set
+  if (flagEnabled(flags, 'limited-plugin-set', 'label')) {
+    unstable 'Remember to remove `limited-plugin-set` label before taking out of draft'
   }
 }
 
-infra.maybePublishIncrementals()
-
+stage('publish incrementals') {
+  if (prepFoundInBuildNumber > 0) {
+    catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') { error('[SKIP] No new prep to publish to incrementals') }
+    return
+  }
+  infra.maybePublishIncrementals()
+}
 
 // === Helper functions
 
-// Search and copy an artifact from builds of a job
-// Returns the build number where it has been found, zero otherwise
-def copyArtifactsFromAnyPreviousBuild(archiveName, jobName) {
-  def foundInBuildNumber = 0
-  def archiveExists = false
-  def buildNumber = env.BUILD_NUMBER.toInteger()
-  if (buildNumber == 1) {
-    echo "[INFO] First build of ${jobName}, no ${archiveName} available yet"
-  } else {
-    // Loop over builds to retrieve the prep archive as previous build can have (only) other archive(s)
-    def checkBuildNumber = buildNumber - 1
-    // Don't loop until the first build of master '^^
-    def limit = jobName.endsWith('master') ? buildNumber - 50 : 0
-    while (!archiveExists && checkBuildNumber > limit) {
-      echo "[INFO] Trying to retrieve ${archiveName} from ${jobName}#${checkBuildNumber}..."
-      try {
-        copyArtifacts(projectName: jobName,
-        selector: specific("${checkBuildNumber}"),
-        filter: archiveName,
-        fingerprintArtifacts: true,
-        optional: false,
-        )
-        archiveExists = true
-      } catch(e) {}
-      if (!archiveExists) {
-        checkBuildNumber = checkBuildNumber - 1
-      }
-    }
-    if (!archiveExists) {
-      echo "[INFO] No ${archiveName} found in any build of ${jobName}"
-    } else {
-      foundInBuildNumber = checkBuildNumber
-      echo "[INFO] ${archiveName} found in ${jobName}#${checkBuildNumber}"
-    }
+@NonCPS
+Map parsePlugins(plugins) {
+  Map pluginsByRepository = [:]
+  plugins.each { plugin ->
+    String[] splits = plugin.split('\t')
+    pluginsByRepository[splits[0].split('/')[1]] = splits[1].split(',')
   }
-  return foundInBuildNumber
+  pluginsByRepository
 }
 
-@NonCPS
-def getResultFromJunit(junitResults) {
-  if (!junitResults) {
-    return [
-      failCount: 0,
-      skipCount: 0,
-      passCount: 0,
-      totalCount: 0,
-      duration: 0,
-    ]
+// Return if a test flag is set
+// If only a flag is passed, return true if there is a corresponding label and/or marker file
+// If a flag and a source like 'marker' or 'label' are passed, return true if there is that source
+boolean flagEnabled(Map flags, String flag, String source = null) {
+  source ? source in flags[flag] : !flags[flag].isEmpty()
+}
+
+// Search and copy an artifact from builds of a job
+// Returns the build number where it has been found, zero otherwise
+int retrieveArtifactsFromPreviousBuilds(String archiveName, String jobName) {
+  int foundInBuildNumber = 0
+  boolean archiveExists = false
+  final int buildNumber = env.BUILD_NUMBER.toInteger()
+  if (buildNumber == 1) {
+    echo "[INFO] First build of ${jobName}, no ${archiveName} available yet"
+    return 0
   }
-  return [
-    failCount: junitResults.failCount ?: 0,
-    skipCount: junitResults.skipCount ?: 0,
-    passCount: junitResults.passCount ?: 0,
-    totalCount: junitResults.totalCount ?: 0,
-    duration: junitResults.duration ?: 0,
-  ]
+
+  // Loop over builds to retrieve the prep archive as previous build can have (only) other archive(s)
+  int checkBuildNumber = buildNumber - 1
+  // Don't loop until the first build of master '^^
+  final int limit = jobName.endsWith('master') ? buildNumber - 50 : 0
+  while (!archiveExists && checkBuildNumber > limit) {
+    echo "[INFO] Trying to retrieve ${archiveName} from ${jobName}#${checkBuildNumber}..."
+    try {
+      copyArtifacts(projectName: jobName,
+      selector: specific("${checkBuildNumber}"),
+      filter: archiveName,
+      fingerprintArtifacts: true,
+      optional: false,
+      )
+      archiveExists = true
+    } catch(e) {}
+    if (!archiveExists) {
+      checkBuildNumber = checkBuildNumber - 1
+    }
+  }
+  if (!archiveExists) {
+    echo "[INFO] No ${archiveName} found in any build of ${jobName}"
+  } else {
+    foundInBuildNumber = checkBuildNumber
+    echo "[INFO] ${archiveName} found in ${jobName}#${checkBuildNumber}"
+  }
+  return foundInBuildNumber
 }
