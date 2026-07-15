@@ -72,13 +72,13 @@ mavenEnv(jdk: 21) {
 
   // Ensure prep archive corresponds to the current state
   def prepArchiveName = "bom-prep-${commitId}.tar.gz"
-  if (fixedPrepArchiveName) {
-    prepArchiveName = fixedPrepArchiveName
-    echo "[WARNING] Using fixed prep archive name ${fixedPrepArchiveName} instead of bom-prep-${commitId}.tar.gz"
-  }
   def prepFoundInBuildNumber = 0
 
   stage('retrieve prep archive') {
+    if (fixedPrepArchiveName) {
+      prepArchiveName = fixedPrepArchiveName
+      echo "[WARNING] Using fixed prep archive name ${fixedPrepArchiveName} instead of bom-prep-${commitId}.tar.gz"
+    }
     prepFoundInBuildNumber = copyArtifactsFromAnyPreviousBuild(prepArchiveName, env.JOB_NAME)
     if (prepFoundInBuildNumber == 0) {
       catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') {
