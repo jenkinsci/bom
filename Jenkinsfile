@@ -42,6 +42,7 @@ def mavenEnv(Map params = [:], Closure body) {
             'PATH+JDK=/opt/jdk-' + params['jdk'] + '/bin',
             "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B ${env.MAVEN_NTP != null ? '-ntp' : ''} -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo",
             "MVN_LOCAL_REPO=${WORKSPACE_TMP}/m2repo",
+            "CURRENT_ATTEMPT=${attempt}",
           ]) {
             infra.loadMavenLocalCacheIfAny(env.MVN_LOCAL_REPO)
 
@@ -63,6 +64,7 @@ def parsePlugins(plugins) {
   pluginsByRepository
 }
 
+def commitId
 def pluginsByRepository
 def lines
 def fullTestMarkerFile
@@ -80,11 +82,11 @@ def limitedPluginSet = [
   'jenkinsci/cron_column-plugin	cron_column',
   'jenkinsci/pipeline-maven-plugin	pipeline-maven,pipeline-maven-api,pipeline-maven-database',
 ]
-def durations = [:]
+def results = [:]
 
 mavenEnv(jdk: 21) {
   def scmVars = checkout scm
-  def commitId = scmVars.GIT_COMMIT
+  commitId = scmVars.GIT_COMMIT
 
   fullTestMarkerFile = fileExists 'full-test'
   weeklyTestMarkerFile = fileExists 'weekly-test'
@@ -220,7 +222,8 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
       return
     }
     pluginsByRepository.each { repository, plugins ->
-      branches["pct-$repository-$line"] = {
+      def branchName = "${repository}:${line}"
+      branches[branchName] = {
         def jdk = line == 'weekly' || line == '2.555.x' ? 21 : 17
         withChecks(name: 'Tests', includeStage: true) {
           mavenEnv(jdk: jdk) {
@@ -231,6 +234,9 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
               'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
             ]) {
               def start = System.currentTimeMillis()
+              def currentAttempt = env.CURRENT_ATTEMPT.toInteger()
+              echo "[INFO] Current attempt: ${currentAttempt}"
+
               try {
                 sh '''
                 mvn -v
@@ -244,7 +250,21 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
                 }
               } finally {
                 def elapsed = System.currentTimeMillis() - start
-                durations["pct-$repository-$line"] = (elapsed / 1000.0)
+                def junitResults
+                try {
+                  junitResults = junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml')
+                } catch(e) {
+                  echo "error junitResult: ${e}"
+                }
+                results[branchName] = getResultFromJunit(junitResults)
+                results[branchName]['elapsed'] = (elapsed / 1000.0)
+                results[branchName]['plugins'] = plugins
+                results[branchName]['pluginCount'] = plugins.size()
+                results[branchName]['attempt'] = currentAttempt
+                results[branchName]['build_id'] = env.BUILD_ID
+                results[branchName]['job_base_name'] = env.JOB_BASE_NAME
+                results[branchName]['short_commit_id'] = commitId.substring(0, 7)
+                echo "[INFO] results[${branchName}]: ${results[branchName]}"
               }
             }
           }
@@ -253,22 +273,43 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
     }
   }
   parallel branches
-  stage('duration report') {
+}
+
+stage('report results') {
+  if (results.size() == 0) {
+    catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') {
+      error('[INFO] No result to report')
+    }
+    return
+  } else {
     node('maven-bom') {
-      Double totalTime = 0
+      Double totalElapsed = 0
+      Double totalCount = 0
+      Double totalSkipCount = 0
+      Double totalFailCount = 0
       def reportLines = ''
-      durations.each { branch, time ->
-        totalTime += time as Double
-        reportLines += '<testcase name="' + branch + '" classname="pct-duration.' + branch + '" time="' + time + '"/>\n'
+      results.each { combination, result ->
+        totalElapsed += result['elapsed']
+        totalCount += result['totalCount']
+        totalSkipCount += result['skipCount']
+        totalFailCount += result['failCount']
+        def normalizedCombination = combination.replaceAll('-', '_').replaceAll(':', '_').replaceAll('\\.', '_')
+        reportLines += '<testcase name="' + combination + '" classname="pct-duration.' + normalizedCombination + '" time="' + result['elapsed'] + '" failures="' + result['failCount'] + '"/>\n'
       }
       if (reportLines) {
-        def content = """<?xml version="1.0" encoding="UTF-8"?>
-          <testsuite name="bom" time="${totalTime}">
+        def xmlReport = """<?xml version="1.0" encoding="UTF-8"?>
+          <testsuite name="bom" time="${totalElapsed}" tests="${totalCount}" skipped="${totalSkipCount}" failures="${totalFailCount}">
           ${reportLines}
           </testsuite>
         """
-        writeFile file: 'bom-report.xml', text: content
-        archiveArtifacts artifacts: 'bom-report.xml'
+
+        def txtReport = results.collect { combination, result ->
+          'name=' + combination + ';' + result.collect { key, value -> key + '=' + value }.join(';')
+        }.sort().join('\n')
+
+        writeFile file: 'bom-report.xml', text: xmlReport
+        writeFile file: 'bom-report.txt', text: txtReport
+        archiveArtifacts artifacts: 'bom-report.*'
         junit allowEmptyResults: true, testResults: 'bom-report.xml'
       }
     }
@@ -328,4 +369,24 @@ def copyArtifactsFromAnyPreviousBuild(archiveName, jobName) {
     }
   }
   return foundInBuildNumber
+}
+
+@NonCPS
+def getResultFromJunit(junitResults) {
+  if (!junitResults) {
+    return [
+      failCount: 0,
+      skipCount: 0,
+      passCount: 0,
+      totalCount: 0,
+      duration: 0,
+    ]
+  }
+  return [
+    failCount: junitResults.failCount ?: 0,
+    skipCount: junitResults.skipCount ?: 0,
+    passCount: junitResults.passCount ?: 0,
+    totalCount: junitResults.totalCount ?: 0,
+    duration: junitResults.duration ?: 0,
+  ]
 }
