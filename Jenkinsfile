@@ -741,9 +741,13 @@ stage('report results') {
   }
 }
 
-// TODO: || weeklyTestMarkerFile
-if (fullTestMarkerFile) {
-  error 'Remember to `git rm full-test` before taking out of draft'
+stage('markers check')
+  // TODO: || weeklyTestMarkerFile
+  if (fullTestMarkerFile) {
+    error 'Remember to `git rm full-test` before taking out of draft'
+  }
 }
 
-infra.maybePublishIncrementals()
+stage('incremental maybe')
+  infra.maybePublishIncrementals()
+}
