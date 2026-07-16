@@ -4,8 +4,7 @@ if(env.BRANCH_NAME == "master") {
   cronTrigger = '0 6 * * 5'
 }
 
-env.MAVEN_NTP = true
-
+// TODO: def labels = [:] & def impactingLabels
 def fullTestLabel
 def weeklyTestLabel
 def limitedPluginSetLabel
@@ -15,10 +14,28 @@ if (env.CHANGE_ID) {
   limitedPluginSetLabel = pullRequest.labels.contains('limited-plugin-set')
 }
 
-def fixedPrepArchiveName = '' // can be set to a specific prep archive name in case last commits aren't impacting it
+env.MAVEN_NTP = true
+def MAX_SPLITS = 20
+// TODO: def overrides = [...]
+def fixedPrepArchiveName = 'bom-prep-90b7816400491b448fa6bae88c25aeec5f350b7e.tar.gz' // can be set to a specific prep archive name in case last commits aren't impacting it
+def ignoreReports = false // set this to true if the previous report is borked and causes failure
+def reportName = 'bom-report' // can be overriden
+def reportResults = true
+
+def testingCase = ''
+if (testingCase == 'limited-weekly') {
+  fullTestLabel = false
+  weeklyTestLabel = true
+  limitedPluginSetLabel = true
+}
+if (testingCase == 'limited-full') {
+  fullTestLabel = true
+  weeklyTestLabel = false
+  limitedPluginSetLabel = true
+}
 
 properties([
-  disableConcurrentBuilds(abortPrevious: true),
+  // disableConcurrentBuilds(abortPrevious: true),
   buildDiscarder(logRotator(numToKeepStr: '7')),
   pipelineTriggers([cron(cronTrigger)])
 ])
@@ -28,29 +45,32 @@ if (env.BRANCH_NAME == 'master' && currentBuild.buildCauses*._class == ['jenkins
   error 'No longer running builds on response to master branch pushes. If you wish to cut a release, use “Re-run checks” from this failing check in https://github.com/jenkinsci/bom/commits/master'
 }
 
-def mavenEnv(Map params = [:], Closure body) {
+def mavenNode(Map params = [:], Closure body) {
   def attempt = 0
   def attempts = 6
   retry(count: attempts, conditions: [kubernetesAgent(handleNonKubernetes: true), nonresumable()]) {
-    echo 'Attempt ' + ++attempt + ' of ' + attempts
+    echo '[INFO] Attempt ' + ++attempt + ' of ' + attempts
     // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
     node('maven-bom') {
       timeout(120) {
-        infra.withArtifactCachingProxy {
-          withEnv([
-            'JAVA_HOME=/opt/jdk-' + params['jdk'],
-            'PATH+JDK=/opt/jdk-' + params['jdk'] + '/bin',
-            "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B ${env.MAVEN_NTP != null ? '-ntp' : ''} -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo",
-            "MVN_LOCAL_REPO=${WORKSPACE_TMP}/m2repo",
-            "CURRENT_ATTEMPT=${attempt}",
-          ]) {
-            infra.loadMavenLocalCacheIfAny(env.MVN_LOCAL_REPO)
-
-            body()
+        withEnv([
+          "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B ${env.MAVEN_NTP != null ? '-ntp' : ''} -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo",
+          "MVN_LOCAL_REPO=${WORKSPACE_TMP}/m2repo",
+          "CURRENT_ATTEMPT=${attempt}",
+        ]) {
+          infra.loadMavenLocalCacheIfAny(env.MVN_LOCAL_REPO)
+          infra.withArtifactCachingProxy {
+            mavenEnv(params, body)
           }
         }
       }
     }
+  }
+}
+
+def mavenEnv(Map params = [:], Closure body) {
+  withEnv(['JAVA_HOME=/opt/jdk-' + params['jdk'], 'PATH+JDK=/opt/jdk-' + params['jdk'] + '/bin',]) {
+    body()
   }
 }
 
@@ -67,9 +87,15 @@ def parsePlugins(plugins) {
 def commitId
 def pluginsByRepository
 def lines
+def newestAndOldestLines
+def allCombinations
+def reports = [:]
+def fakeReports
 def fullTestMarkerFile
 def weeklyTestMarkerFile
 def limitedPluginSetMarkerFile
+
+def limitedMaxSplits = 3
 def limitedPluginSet = [
   'jenkinsci/aws-credentials-plugin	aws-credentials',
   'jenkinsci/aws-global-configuration-plugin	aws-global-configuration',
@@ -82,15 +108,35 @@ def limitedPluginSet = [
   'jenkinsci/cron_column-plugin	cron_column',
   'jenkinsci/pipeline-maven-plugin	pipeline-maven,pipeline-maven-api,pipeline-maven-database',
 ]
-def results = [:]
 
-mavenEnv(jdk: 21) {
+def results = [:]
+def previousResults = [:]
+def batches = [:]
+
+mavenNode(jdk: 21) {
   def scmVars = checkout scm
   commitId = scmVars.GIT_COMMIT
 
   fullTestMarkerFile = fileExists 'full-test'
   weeklyTestMarkerFile = fileExists 'weekly-test'
   limitedPluginSetMarkerFile = fileExists 'limited-plugin-set'
+
+  // Add current labels, marker files and testing case to the build description, once
+  if (env.CURRENT_ATTEMPT.toInteger() == 1) {
+    def desc = getBuildDescription([
+      description: currentBuild.description,
+      fullTestLabel: fullTestLabel,
+      weeklyTestLabel: weeklyTestLabel,
+      limitedPluginSetLabel: limitedPluginSetLabel,
+      fullTestMarkerFile: fullTestMarkerFile,
+      weeklyTestMarkerFile: weeklyTestMarkerFile,
+      testingCase: testingCase,
+    ])
+    currentBuild.description = desc
+    echo "[INFO] Build description set to:\n${desc}"
+  } else {
+    echo "[INFO] Build description already set"
+  }
 
   // Ensure prep archive corresponds to the current state
   def prepArchiveName = "bom-prep-${commitId}.tar.gz"
@@ -147,6 +193,7 @@ mavenEnv(jdk: 21) {
 
         // Limited set
         plugins = limitedPluginSet
+        MAX_SPLITS = limitedMaxSplits
         if (limitedPluginSetMarkerFile) {
           plugins = readFile('../limited-plugin-set').split('\n')
         }
@@ -177,6 +224,11 @@ mavenEnv(jdk: 21) {
       } else {
         echo "[INFO] Keeping only newest and oldest lines to save resources: ${lines.join(' ')} "
       }
+
+      // Generating all combinations of repository x lines
+      allCombinations = getAllCombinations(pluginsByRepository, lines, (weeklyTestMarkerFile || weeklyTestLabel))
+      def allCombinationNames = allCombinations.collect { combination, _ -> combination } as Set
+      echo "[INFO] ${allCombinations.size()} resulting combinations:\n${allCombinationNames.join('\n')}"
     }
   }
 
@@ -201,73 +253,244 @@ mavenEnv(jdk: 21) {
     }
   }
 
+  stage('retrieve reports') {
+    // TODO: include commit in reportName? Only in PR and search on master with simple name?
+    reportprepFoundInBuildNumber = copyArtifactsFromAnyPreviousBuild("${reportName}.txt", env.JOB_NAME)
+
+    // TODO: always retrieve from master (unless reports contain all combinations?)
+    // so we can merge all
+    // TODO: save/retrieve a more generic report name on master for easier retrieval?
+    // NOTE: we can retrieve elapsed time from everywhere.
+    // If we want previous failure counts, it will have to be restricted to the commit (save one generic, one "themed" [weekly/full/limited/custom], one including commit then retrieve all)
+
+    // If not found in current build fallback to master
+    if (reportprepFoundInBuildNumber == 0) {
+      // TODO: use a direct copyArtifact with an appropriate selector? (lastSuccessful(), lastArchived(), etc.)
+      reportprepFoundInBuildNumber = copyArtifactsFromAnyPreviousBuild("${reportName}.txt", 'Tools/bom/master')
+    }
+    if (reportprepFoundInBuildNumber > 0) {
+      echo "[INFO] ${reportName}.txt found, parsing its content"
+      def content = readFile("${reportName}.txt")
+      // TODO: debug, remove
+      sh "cat ${reportName}.txt"
+      // TODO: separate function
+      reports = content.readLines().collect { line ->
+        def parts = line.trim().split(';')
+
+        def data = [:]
+        parts.each { entry ->
+          def kv = entry.split('=', 2)
+          if (kv.size() == 2) {
+            def key = kv[0]
+            def value = kv[1]
+
+            // generic type inference
+            if (value.isInteger()) {
+              data[key] = value.toInteger()
+            } else if (value.isDouble()) {
+              data[key] = value.toDouble()
+            } else {
+              data[key] = value
+            }
+          }
+        }
+
+        // TODO: complete with required keys if needed
+
+        return data
+      }
+    }
+    if (reports.size() > 0) {
+      echo "[INFO] ${reports.size()} reports,\n${reports.join('\n')}"
+    } else {
+      echo "[INFO] No ${reportName}.txt found"
+    }
+  }
+
+  stage('generate batches') {
+    def splitCount = MAX_SPLITS
+    if (fullTestLabel || fullTestMarkerFile) {
+      splitCount = (MAX_SPLITS * lines.size())
+      echo "[INFO] 'full-test' build, increasing MAX_SPLITS of ${MAX_SPLITS} by ${lines.size()}x (lines)"
+    }
+    if (reports.size() == 0 || ignoreReports) {
+      echo "[INFO] ${reportName}.txt not found, empty or ignored, faking reports for all combinations"
+      fakeReports = allCombinations.collect { combination, plugins ->
+        [
+          name: combination,
+          elapsed: 0.0001,
+          failures: 0,
+          count: 0, // 0 failure 0 count == fake
+          plugins: plugins
+        ]
+      }
+      def fakeBuckets = splitReports(fakeReports, splitCount)
+      batches += getBatches(fakeBuckets, allCombinations, 'fake')
+    } else {
+      // Keep only current combinations
+      def actualReports = reports.findAll {
+        allCombinations.containsKey(it.name)
+      }
+
+      // Track what we already have
+      def seen = actualReports.collect { it.name } as Set
+      def missingReports = fakeReports.findAll { !seen.contains(it.key) }
+
+      // TODO: search missing repo in reports repos, and deduce elapsed from there (keeping totalCound = 0 to indicate it's not a real result?)
+
+      if (actualReports.size() > 0) {
+        def reportBuckets = splitReports(actualReports, splitCount)
+        batches += getBatches(reportBuckets, allCombinations, 'report')
+      }
+
+      if (missingReports.size() > 0) {
+        def missingBuckets = splitReports(missingReports, splitCount)
+        batches += getBatches(missingBuckets, allCombinations, 'missing')
+      }
+    }
+
+    // debug
+    echo "[INFO] ${batches.size()} batches"
+    batches.each { batch, combinations ->
+      if (combinations.size() > 0) {
+        // echo "batch: ${batch}"
+        def batchCombinationNames = combinations.collect { combination, plugins -> combination } as Set
+        echo "[INFO] '${batch}' batch, ${batchCombinationNames.size()} combinations:\n${batchCombinationNames.join('\n')}"
+      }
+    }
+  }
+
   stage('stash prep lines') {
-    if (lines.size() > 0) {
+    if (batches.size() > 0) {
       lines.each { line ->
         stash name: line, includes: "pct.sh,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-${line}.war"
       }
     } else {
       catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') {
-        error('[INFO] No line to stash')
+        error('[INFO] No batch, no need to stash any line')
       }
       return
     }
   }
 }
 
-if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env.CHANGE_ID && (fullTestLabel || weeklyTestLabel)) {
+stage('run pct') {
+  if (BRANCH_NAME != 'master' && !(fullTestMarkerFile || weeklyTestMarkerFile || fullTestLabel || weeklyTestLabel)) {
+    catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') {
+      error('[INFO] Not running on master or no weekly-test / full-test labels or markers')
+    }
+    return
+  }
+
+  // TODO: single map, with batches[batchName]['action'] or ['type'], ex: 'missing', 'fake', 'reports', 'already_succeeded', etc.
+  // so we can get constant batch parallel names
   def branches = [failFast: false]
-  lines.each {line ->
-    if (line != 'weekly' && (weeklyTestMarkerFile || env.CHANGE_ID && weeklyTestLabel)) {
+
+  batches.each { batch, combinations ->
+    if (combinations.size() == 0) {
+      catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') {
+        error('[INFO] No batch, nothing to run')
+      }
       return
     }
-    pluginsByRepository.each { repository, plugins ->
-      def branchName = "${repository}:${line}"
-      branches[branchName] = {
-        def jdk = line == 'weekly' || line == '2.555.x' ? 21 : 17
-        withChecks(name: 'Tests', includeStage: true) {
-          mavenEnv(jdk: jdk) {
-            unstash line
-            withEnv([
-              "PLUGINS=${plugins.join(',')}",
-              "LINE=$line",
-              'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
-            ]) {
-              def start = System.currentTimeMillis()
-              def currentAttempt = env.CURRENT_ATTEMPT.toInteger()
-              echo "[INFO] Current attempt: ${currentAttempt}"
+    branches[batch] = {
+      mavenNode() {
+        // Unstash all lines used in this batch
+        stage('unstash') {
+          def unstashLines = combinations
+              .keySet()
+              .collect { it.split(':')[1] }
+              .unique()
+          unstashLines.each { unstash it }
+        }
 
-              try {
-                sh '''
-                mvn -v
-                bash pct.sh
-                '''
-              } catch (e) {
-                if (!(e instanceof InterruptedException) && !(e instanceof org.jenkinsci.plugins.workflow.support.steps.AgentOfflineException)) {
-                  unstable('PCT failed in ' + repository + ' - line ' + line)
-                } else {
-                  throw e
+        def combinationCount = 1
+        def totalCombination = combinations.size()
+        def batchCombinationNames = combinations.collect { combination, plugins -> combination } as Set
+        def currentAttempt = env.CURRENT_ATTEMPT.toInteger()
+        // TODO: put in their own 'info' stage, and show estimated time from previous elapsed time
+        echo "[INFO] Current attempt: ${currentAttempt}"
+        echo "[INFO] Current batch combinations:\n${batchCombinationNames.join('\n')}"
+        combinations.each { combination, plugins ->
+          echo "[INFO] Combination ${combinationCount}/${totalCombination} \"${combination}\", plugin(s): ${plugins}"
+          def parts = combination.split(':')
+          def repository = parts[0]
+          def line = parts[1]
+          // Note: line is currrently never set to '2.555.x'
+          // as we're keeping only the first ('weekly') and the last lines from lines.txt in 'prep' stage
+          def jdk = line == 'weekly' || line == '2.555.x' ? 21 : 17
+          def combinationAlreadySucceededInAttempt = 0
+          // Check if combination already in results, in case of aborted build due to a reclaimed spot instance for ex
+          if (results.containsKey(combination)) {
+            // TODO: && same PR/branch
+            def previousFailCount = results[combination]['failCount']
+            def previousTotalCount = results[combination]['totalCount']
+            def previousElapsed = results[combination]['elapsed']
+            // TODO: record fake junit result to get the status passing on GitHub
+            // TODO: && same PR/branch; commenting out the results record below & [FWIW] instead of [INFO]
+            if (previousFailCount == 0) {
+              if (previousTotalCount > 0 && results[combination]['build_id'] == env.BUILD_ID) {
+                combinationAlreadySucceededInAttempt = results[combination]['attempt']
+                echo "[FTW] ${combination} has already succeeded in attempt n°${combinationAlreadySucceededInAttempt} (elapsed: ${previousElapsed})"
+              } else {
+                echo "[FWIW] ${combination} has already ran in attempt n°${results[combination]['attempt']} (elapsed: ${previousElapsed})"
+              }
+            } else {
+              // TODO: mention if new attempt and not "real" test failure(s)
+              echo "[INFO] ${combination} had previously ${previousFailCount} failure(s) in attempt n°${results[combination]['attempt']} (elapsed: ${previousElapsed})"
+            }
+          }
+
+          if (combinationAlreadySucceededInAttempt > 0) {
+            // TODO: if needed, withChecks(name: "Tests ${combination}") { echo "..." }
+            echo "[INFO] Skipping ${combination}, already succeeded in attempt n°${combinationAlreadySucceededInAttempt}"
+          } else {
+            // def estimation = (total from reports)
+            def stageName = "${combination} (${combinationCount}/${totalCombination})"
+            stage(stageName) {
+              withChecks(name: "Tests ${combination}") {
+                mavenEnv(jdk: jdk) {
+                  withEnv([
+                    "PLUGINS=${plugins}",
+                    "LINE=${line}",
+                    'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
+                  ]) {
+                    def start = System.currentTimeMillis()
+                    try {
+                      sh '''
+                      mvn -v
+                      bash pct.sh
+                      '''
+                    } catch (e) {
+                      if (!(e instanceof InterruptedException) && !(e instanceof org.jenkinsci.plugins.workflow.support.steps.AgentOfflineException)) {
+                        unstable('PCT failed in ' + repository + ' - line ' + line)
+                      } else {
+                        throw e
+                      }
+                    } finally {
+                      def elapsed = System.currentTimeMillis() - start
+                      def junitResults
+                      try {
+                        junitResults = junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml')
+                      } catch(e) {
+                        echo "error junitResult: ${e}"
+                      }
+                      results[combination] = getResultFromJunit(junitResults)
+                      results[combination]['elapsed'] = (elapsed / 1000.0)
+                      results[combination]['plugins'] = plugins
+                      results[combination]['pluginCount'] = plugins.count(',')
+                      results[combination]['attempt'] = currentAttempt
+                      results[combination]['build_id'] = env.BUILD_ID
+                      results[combination]['job_base_name'] = env.JOB_BASE_NAME
+                      results[combination]['short_commit_id'] = commitId.substring(0, 7)
+                      echo "[INFO] results[${combination}]: ${results[combination]}"
+                    }
+                  }
                 }
-              } finally {
-                def elapsed = System.currentTimeMillis() - start
-                def junitResults
-                try {
-                  junitResults = junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml')
-                } catch(e) {
-                  echo "error junitResult: ${e}"
-                }
-                results[branchName] = getResultFromJunit(junitResults)
-                results[branchName]['elapsed'] = (elapsed / 1000.0)
-                results[branchName]['plugins'] = plugins
-                results[branchName]['pluginCount'] = plugins.size()
-                results[branchName]['attempt'] = currentAttempt
-                results[branchName]['build_id'] = env.BUILD_ID
-                results[branchName]['job_base_name'] = env.JOB_BASE_NAME
-                results[branchName]['short_commit_id'] = commitId.substring(0, 7)
-                echo "[INFO] results[${branchName}]: ${results[branchName]}"
               }
             }
           }
+          combinationCount = combinationCount + 1
         }
       }
     }
@@ -275,10 +498,12 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
   parallel branches
 }
 
+// TODO: consolidate with previous/master reports
+// TODO: add 'src' of report? (results, previous reports ['pr-N', 'master-N'], deduced) to know which of these reports are retrieved from elsewhere than actual tests elapsed time?
 stage('report results') {
-  if (results.size() == 0) {
+  if (results.size() == 0 || !reportResults) {
     catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') {
-      error('[INFO] No result to report')
+      error('[INFO] No result to report or reportResults set to false')
     }
     return
   } else {
@@ -307,16 +532,22 @@ stage('report results') {
           'name=' + combination + ';' + result.collect { key, value -> key + '=' + value }.join(';')
         }.sort().join('\n')
 
-        writeFile file: 'bom-report.xml', text: xmlReport
-        writeFile file: 'bom-report.txt', text: txtReport
-        archiveArtifacts artifacts: 'bom-report.*'
-        junit allowEmptyResults: true, testResults: 'bom-report.xml'
+        writeFile file: "${reportName}.xml", text: xmlReport
+        writeFile file: "${reportName}.txt", text: txtReport
+        archiveArtifacts artifacts: "${reportName}.*"
+        junit allowEmptyResults: true, testResults: "${reportName}.xml"
+
+        // TODO: remove, debug
+        sh "cat ${reportName}.xml || true"
+        sh "cat ${reportName}.txt || true"
+      } else {
+        echo "[INFO] no reports"
       }
     }
   }
 }
 
-stage('checks') {
+stage('markers check') {
   if (fullTestMarkerFile) {
     error 'Remember to `git rm full-test` before taking out of draft'
   }
@@ -328,11 +559,13 @@ stage('checks') {
   }
 }
 
-infra.maybePublishIncrementals()
-
+stage('incremental maybe') {
+  infra.maybePublishIncrementals()
+}
 
 // === Helper functions
 
+// TODO: copyArtifactsFromAllPreviousBuilds and merge results?
 // Search and copy an artifact from builds of a job
 // Returns the build number where it has been found, zero otherwise
 def copyArtifactsFromAnyPreviousBuild(archiveName, jobName) {
@@ -389,4 +622,108 @@ def getResultFromJunit(junitResults) {
     totalCount: junitResults.totalCount ?: 0,
     duration: junitResults.duration ?: 0,
   ]
+}
+
+// TODO: buildType: 'weekly' (labels: ..., markers: ...)
+// ('full', 'limited-weekly', 'limited-full', 'weekly-ignore', etc.)
+// Return a build description including impacting labels and markers
+@NonCPS
+def getBuildDescription(Map args = [:]) {
+  def desc = ''
+  def labels = []
+  def markers = []
+  if (args['fullTestLabel']) {
+    labels.add('full-test')
+  }
+  if (args['weeklyTestLabel']) {
+    labels.add('weekly-test')
+  }
+  if (args['limitedPluginSetLabel']) {
+    labels.add('limited-plugin-set')
+  }
+  if (args['fullTestMarkerFile']) {
+    markers.add('full-test')
+  }
+  if (args['weeklyTestMarkerFile']) {
+    markers.add('weekly-test')
+  }
+
+  def parts = []
+  if (labels.size() > 0)  parts << "<b>label(s)</b>:${labels.join(',')}"
+  if (markers.size() > 0) parts << "<b>marker(s)</b>:${markers.join(',')}"
+  if (args.testingCase) parts << "<b>test</b>:${args.testingCase}"
+
+  if (args.description) {
+    desc = args.description + '\n<br>'
+  }
+  if (parts.size() > 0) {
+    desc += '<i><small>' + parts.join('<br>') + '</small></i>'
+  }
+
+  return desc
+}
+
+// TODO: replace by args[:]
+@NonCPS
+def getAllCombinations(pluginsByRepository, lines, weeklyOnly) {
+  def combinations = [:]
+  lines.each {line ->
+    if (line != 'weekly' && weeklyOnly) {
+      return
+    }
+    // TODO: alert if repository or plugins isn't valid (a-Z_-)
+    pluginsByRepository.each { repository, plugins ->
+      combinations["${repository}:${line}"] = plugins.join(',')
+    }
+  }
+  combinations
+}
+
+// TODO: check what happens if MAX_SPLITS > repositories
+@NonCPS
+def splitReports(List items, int maxSplits) {
+  // initialize buckets
+  def buckets = (0..<maxSplits).collect {
+    [total: 0.0, items: []]
+  }
+
+  // sort by elapsed time, largest first
+  def sorted = items.sort { -it.elapsed }
+
+  sorted.each { item ->
+    // pick the bucket with the smallest total elapsed time
+    def target = buckets.min { it.total }
+
+    target.items << item
+    target.total += item.elapsed
+  }
+
+  // Trim empty buckets
+  buckets = buckets.findAll { it.items.size() > 0 }
+
+  return buckets
+}
+
+// TODO: if there is a time for a repo-line but not repo-anotherLine,
+// use that first time as default estimation and resplit from there
+@NonCPS
+def getBatches(buckets, allCombinations, bucketType) {
+  def batches = [:]
+  def seen = new HashSet()
+  buckets.eachWithIndex { bucket, idx ->
+    def counter = idx + 1
+    def splitIndex = "${bucketType}-${counter} (${bucket.items.size()})"
+    batches[splitIndex] = [:]
+    bucket.items.each {
+      def combination = it.name
+      if (!seen.contains(combination)) {
+        seen.add(combination)
+        batches[splitIndex][combination] = allCombinations[combination]
+      }
+    }
+  }
+  echo "seen.size(): ${seen.size()}"
+  echo "batches.size(): ${batches.size()}"
+
+  batches
 }
