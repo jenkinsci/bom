@@ -1,20 +1,10 @@
 // Do not trigger build regularly on change requests as it costs a lot
 String cronTrigger = ''
 if(env.BRANCH_NAME == "master") {
-  cronTrigger = '40 13 * * 5'
+  cronTrigger = '0 6 * * 5'
 }
 
-// === Actionable in replay
 env.MAVEN_NTP = true
-// Can be set to a specific prep archive name in case last commits aren't impacting it
-final String fixedPrepArchiveName = ''
-// Test flags depending on the presence of corresponding labels or marker files
-// Can be modified to test specific cases independently of the current PR labels or markers
-// Possible value(s): 'label', 'marker'
-Map flags = [
-  'weekly-test': [] as Set,
-  'full-test': [] as Set,
-]
 
 properties([
   disableConcurrentBuilds(abortPrevious: true),
@@ -27,33 +17,30 @@ if (env.BRANCH_NAME == 'master' && currentBuild.buildCauses*._class == ['jenkins
   error 'No longer running builds on response to master branch pushes. If you wish to cut a release, use “Re-run checks” from this failing check in https://github.com/jenkinsci/bom/commits/master'
 }
 
-// Collect flags from labels
-if (env.CHANGE_ID) {
-  flags.each { name, sources ->
-    if (pullRequest.labels.contains(name)) {
-      sources << 'label'
-    }
-  }
-}
-
-void mavenEnv(Map params = [:], Closure body) {
-  int attempt = 0
-  final int attempts = 6
+def mavenEnv(Map params = [:], Closure body) {
+  def attempt = 0
+  def attempts = 6
   retry(count: attempts, conditions: [kubernetesAgent(handleNonKubernetes: true), nonresumable()]) {
-    echo '[INFO] Attempt ' + ++attempt + ' of ' + attempts
+    echo 'Attempt ' + ++attempt + ' of ' + attempts
     // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
     node('maven-bom') {
       timeout(120) {
-        infra.withArtifactCachingProxy {
-          withEnv([
-            'JAVA_HOME=/opt/jdk-' + params['jdk'],
-            'PATH+JDK=/opt/jdk-' + params['jdk'] + '/bin',
-            "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B ${env.MAVEN_NTP != null ? '-ntp' : ''} -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo",
-            "MVN_LOCAL_REPO=${WORKSPACE_TMP}/m2repo",
-            "CURRENT_ATTEMPT=${attempt}",
-          ]) {
-            infra.loadMavenLocalCacheIfAny(env.MVN_LOCAL_REPO)
-            body()
+        withChecks(name: 'Tests', includeStage: true) {
+          infra.withArtifactCachingProxy {
+            withEnv([
+              'JAVA_HOME=/opt/jdk-' + params['jdk'],
+              'PATH+JDK=/opt/jdk-' + params['jdk'] + '/bin',
+              "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B ${env.MAVEN_NTP != null ? '-ntp' : ''} -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo",
+              "MVN_LOCAL_REPO=${WORKSPACE_TMP}/m2repo",
+            ]) {
+              infra.loadMavenLocalCacheIfAny(env.MVN_LOCAL_REPO)
+
+              body()
+            }
+          }
+          if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount > 0) {
+            // TODO JENKINS-27092 throw up UNSTABLE status in this case
+            error 'Some test failures, not going to continue'
           }
         }
       }
@@ -61,134 +48,78 @@ void mavenEnv(Map params = [:], Closure body) {
   }
 }
 
-String commitId
-int prepFoundInBuildNumber = 0
-Map pluginsByRepository = [:]
-List lines = []
-List newestAndOldestLines = []
-Map results = [:]
-
-mavenEnv(jdk: 21) {
-  stage('init') {
-    Map scmVars = checkout scm
-
-    // Collect flags from marker files
-    flags.each { name, sources ->
-      if (fileExists(name)) {
-        sources << 'marker'
-      }
-    }
-    echo '[INFO] Flags:\n' + flags.collect { name, conditions ->
-      final String desc = conditions ? conditions.join(' & ') : 'none'
-      "  - ${name.padRight(20)} : ${desc}"
-    }.join('\n')
+@NonCPS
+def parsePlugins(plugins) {
+  def pluginsByRepository = [:]
+  plugins.each { plugin ->
+    def splits = plugin.split('\t')
+    pluginsByRepository[splits[0].split('/')[1]] = splits[1].split(',')
   }
+  pluginsByRepository
+}
 
-  stage('prep') {
-    withChecks(name: 'Tests', includeStage: true) {
-      withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist']) {
-        sh '''
-        mvn -v
-        bash prep.sh
-        '''
-        if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount > 0) {
-          error 'Some test failures during prep.sh, not going to continue'
-        }
-      }
+def pluginsByRepository
+def lines
+def fullTestMarkerFile
+def weeklyTestMarkerFile
+def durations = [:]
+
+stage('prep') {
+  mavenEnv(jdk: 21) {
+    checkout scm
+    withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist']) {
+      sh '''
+      mvn -v
+      bash prep.sh
+      '''
     }
-  }
-
-  stage('parse prep') {
+    fullTestMarkerFile = fileExists 'full-test'
+    weeklyTestMarkerFile = fileExists 'weekly-test'
     dir('target') {
-      String[] plugins = []
-      String[] allLines = []
-      String from = 'plugins.txt'
-
-      plugins = readFile('plugins.txt').readLines()
-      allLines = readFile('lines.txt').readLines()
-
+      def plugins = readFile('plugins.txt').split('\n')
       pluginsByRepository = parsePlugins(plugins)
-      echo "[INFO] ${pluginsByRepository.size()} repositories retrieved from ${from}"
-      echo "[INFO] List of repositories and their plugins:\n${plugins.join('\n')}"
 
-      echo "[INFO] ${allLines.size()} lines retrieved from lines.txt: ${allLines.join(' ')} "
-
-      lines = [allLines.first(), allLines.last()] // Save resources by running PCT only on newest and oldest lines
-      echo "[INFO] Keeping only newest and oldest lines to save resources: ${lines.join(' ')} "
-      if (flagEnabled(flags, 'weekly-test')) {
-        lines = ['weekly']
-        echo "[WARNING] Keeping only 'weekly' line as there is a 'weekly-test' label or marker file"
-      }
-      if (BRANCH_NAME != 'master' && !(flagEnabled(flags, 'full-test') || flagEnabled(flags, 'weekly-test'))) {
-        lines = []
-        catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') {
-          error('[SKIP] Removing all lines, build not from master or running without any "weekly-test" / "full-test" flags')
-        }
-        return
-      }
+      lines = readFile('lines.txt').split('\n')
+      lines = [lines[0], lines[-1]] // Save resources by running PCT only on newest and oldest lines
     }
-  }
-
-  stage('stash prep lines') {
-    if (lines.isEmpty()) {
-      catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') { error('[SKIP] No line to stash') }
-      return
-    }
-
-    echo "[INFO] Stashing ${lines.join(' & ')}"
     lines.each { line ->
       stash name: line, includes: "pct.sh,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-${line}.war"
     }
-  }
-
-  stage('') {
     infra.prepareToPublishIncrementals()
   }
 }
 
-stage('run pct') {
-  if (lines.isEmpty()) {
-    catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') {
-      error('[SKIP] No line to run')
-    }
-    return
-  }
-
-  Map branches = [failFast: false]
+if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env.CHANGE_ID && (pullRequest.labels.contains('full-test') || pullRequest.labels.contains('weekly-test'))) {
+  def branches = [failFast: false]
   lines.each {line ->
+    if (line != 'weekly' && (weeklyTestMarkerFile || env.CHANGE_ID && pullRequest.labels.contains('weekly-test'))) {
+      return
+    }
     pluginsByRepository.each { repository, plugins ->
-      final String branchName = "${repository}:${line}"
-      branches[branchName] = {
-        final int jdk = line == 'weekly' ? 21 : 17
-        withChecks(name: 'Tests', includeStage: true) {
-          mavenEnv(jdk: jdk) {
-            unstash line
-            withEnv([
-              "PLUGINS=${plugins.join(',')}",
-              "LINE=$line",
-              'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
-            ]) {
-              final long start = System.currentTimeMillis()
-              int currentAttempt = env.CURRENT_ATTEMPT.toInteger()
-              echo "[INFO] Current attempt: ${currentAttempt}"
-
-              try {
-                sh '''
-                mvn -v
-                bash pct.sh
-                '''
-              } catch (e) {
-                if (!(e instanceof InterruptedException) && !(e instanceof org.jenkinsci.plugins.workflow.support.steps.AgentOfflineException)) {
-                  unstable('PCT failed in ' + repository + ' - line ' + line)
-                } else {
-                  throw e
-                }
-              } finally {
-                final double elapsed = (System.currentTimeMillis() - start) / 1000.0
-                results[branchName] = [:]
-                results[branchName]['elapsed'] = elapsed
-                echo "[INFO] results for ${branchName}: ${results[branchName]}"
+      branches["pct-$repository-$line"] = {
+        def jdk = line == 'weekly' || line == '2.555.x' ? 21 : 17
+        mavenEnv(jdk: jdk) {
+          unstash line
+          withEnv([
+            "PLUGINS=${plugins.join(',')}",
+            "LINE=$line",
+            'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
+          ]) {
+            def start = System.currentTimeMillis()
+            try {
+              sh '''
+              mvn -v
+              bash pct.sh
+              '''
+            } catch (e) {
+              if (!(e instanceof InterruptedException) && !(e instanceof org.jenkinsci.plugins.workflow.support.steps.AgentOfflineException)) {
+                unstable('PCT failed in ' + repository + ' - line ' + line)
+              } else {
+                throw e
               }
+            } finally {
+              def elapsed = System.currentTimeMillis() - start
+              durations["pct-$repository-$line"] = (elapsed / 1000.0)
             }
           }
         }
@@ -196,74 +127,30 @@ stage('run pct') {
     }
   }
   parallel branches
-}
-
-stage('report results') {
-  if (results.isEmpty()) {
-    catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') { error('[SKIP] No result to report') }
-    return
-  }
-
-  node('maven-bom') {
-    Map totals = results.values().inject([
-      elapsed   : 0d,
-    ]) { acc, r ->
-      acc.elapsed    += r.elapsed
-      acc
+  stage('duration report') {
+    node('maven-bom') {
+      Double totalTime = 0
+      def reportLines = ''
+      durations.each { branch, time ->
+        totalTime += time as Double
+        reportLines += '<testcase name="' + branch + '" classname="pct-duration.' + branch + '" time="' + time + '"/>\n'
+      }
+      if (reportLines) {
+        def content = """<?xml version="1.0" encoding="UTF-8"?>
+          <testsuite name="bom" time="${totalTime}">
+          ${reportLines}
+          </testsuite>
+        """
+        writeFile file: 'bom-report.xml', text: content
+        archiveArtifacts artifacts: 'bom-report.xml'
+        junit allowEmptyResults: true, testResults: 'bom-report.xml'
+      }
     }
-    totals.resultsCount = results.size()
-
-    final String reportLines = results.collect { combination, result ->
-      final String normalized = combination.replaceAll('[-:.]', '_')
-      """<testcase name="${combination}" classname="pct-duration.${normalized}" time="${result.elapsed}"/>"""
-    }.join('\n')
-
-    final String xmlReport = """<?xml version="1.0" encoding="UTF-8"?>
-    <testsuite name="bom" time="${totals.elapsed}" tests="${totals.resultsCount}">
-      ${reportLines}
-    </testsuite>
-    """
-
-    final String txtReport = results.collect { combination, result ->
-      "name=${combination};" + result.collect { k, v -> "${k}=${v}" }.join(';')
-    }.sort().join('\n')
-
-    writeFile file: 'bom-report.xml', text: xmlReport
-    writeFile file: 'bom-report.txt', text: txtReport
-    archiveArtifacts artifacts: 'bom-report.*'
-    junit allowEmptyResults: true, testResults: 'bom-report.xml'
-
-    echo "[INFO] Aggregates from ${totals.resultsCount} result(s):\n${totals}"
   }
 }
 
-stage('flag checks') {
-  // Mark build as failed on any marker file
-  def markerErrors = flags.findAll { flag, sources -> 'marker' in sources }.keySet()
-  if (!markerErrors.isEmpty()) {
-    error "Remember to `git rm ${markerErrors.join(' ')}` before taking out of draft"
-  }
+if (fullTestMarkerFile) {
+  error 'Remember to `git rm full-test` before taking out of draft'
 }
 
-stage('publish incrementals') {
-  infra.maybePublishIncrementals()
-}
-
-// === Helper functions
-
-@NonCPS
-Map parsePlugins(plugins) {
-  Map pluginsByRepository = [:]
-  plugins.each { plugin ->
-    String[] splits = plugin.split('\t')
-    pluginsByRepository[splits[0].split('/')[1]] = splits[1].split(',')
-  }
-  pluginsByRepository
-}
-
-// Return if a test flag is set
-// If only a flag is passed, return true if there is a corresponding label and/or marker file
-// If a flag and a source like 'marker' or 'label' are passed, return true if there is that source
-boolean flagEnabled(Map flags, String flag, String source = null) {
-  source ? source in flags[flag] : !flags[flag].isEmpty()
-}
+infra.maybePublishIncrementals()
