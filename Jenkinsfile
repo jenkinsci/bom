@@ -260,29 +260,9 @@ stage('run pct') {
                 }
               } finally {
                 final double elapsed = (System.currentTimeMillis() - start) / 1000.0
-                def junitResults
-                try {
-                  junitResults = junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml')
-                } catch(e) {
-                  echo "[WARNING] Error junitResult: ${e}"
-                }
-                Map result = [
-                  failCount : junitResults?.failCount  ?: 0,
-                  skipCount : junitResults?.skipCount  ?: 0,
-                  passCount : junitResults?.passCount  ?: 0,
-                  totalCount: junitResults?.totalCount ?: 0,
-                  duration  : junitResults?.duration   ?: 0,
-                ]
-                result.elapsed = elapsed
-                result.plugins = plugins.join(',')
-                result.pluginCount = plugins.size()
-                result.attempt = currentAttempt
-                result.build_id = env.BUILD_ID
-                result.job_base_name = env.JOB_BASE_NAME
-                result.short_commit_id = commitId
-
-                results[branchName] = result
-                echo "[INFO] results for ${branchName}: ${result}"
+                results[branchName] = [:]
+                results[branchName]['elapsed'] = elapsed
+                echo "[INFO] results for ${branchName}: ${results[branchName]}"
               }
             }
           }
@@ -302,21 +282,15 @@ stage('report results') {
   node('maven-bom') {
     Map totals = results.values().inject([
       elapsed   : 0d,
-      totalCount: 0,
-      skipCount : 0,
-      failCount : 0
     ]) { acc, r ->
       acc.elapsed    += r.elapsed
-      acc.totalCount += r.totalCount
-      acc.skipCount  += r.skipCount
-      acc.failCount  += r.failCount
       acc
     }
     totals.resultsCount = results.size()
 
     final String reportLines = results.collect { combination, result ->
       final String normalized = combination.replaceAll('[-:.]', '_')
-      """<testcase name="${combination}" classname="pct-duration.${normalized}" time="${result.elapsed}" tests="${result.totalCount}" failures="${result.failCount}" skipped="${result.skipCount}"/>"""
+      """<testcase name="${combination}" classname="pct-duration.${normalized}" time="${result.elapsed}"/>"""
     }.join('\n')
 
     final String xmlReport = """<?xml version="1.0" encoding="UTF-8"?>
