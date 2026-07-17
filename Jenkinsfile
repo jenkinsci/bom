@@ -313,23 +313,25 @@ stage('run pct') {
           stage("${combination} (${combinationCount}/${totalCombination})") {
             // Check if the combination has already been succeeded (in case of retry after spot instance reclaim for example)
             int combinationAlreadySucceededInAttempt = 0
-            if (testMatrix.results.current.containsKey(combination)) {
-              final Map previousAttemptResult = testMatrix.results.current[combination]
-              echo "[INFO] ${combination} has already been seen in attempt n°${combinationAlreadySucceededInAttempt} (elapsed: ${previousAttemptResult.elapsed})"
-              if (previousAttemptResult.failCount > 0) {
-                echo "[INFO] ${combination} had previously ${previousAttemptResult.failCount} failure(s)"
-              } else {
-                if (previousAttemptResult.totalCount > 0) {
-                  combinationAlreadySucceededInAttempt = previousAttemptResult.attempt
-                  echo "[INFO] ${combination} has already succeeded in attempt n°${combinationAlreadySucceededInAttempt}"
+            if (currentAttempt > 0) {
+              if (data?.results?.current != null) {
+                final Map previousAttemptResult = data.results.current
+                echo "[INFO] ${combination} has already been seen in attempt n°${combinationAlreadySucceededInAttempt} (elapsed: ${previousAttemptResult.elapsed})"
+                if (previousAttemptResult.failCount > 0) {
+                  echo "[INFO] ${combination} had previously ${previousAttemptResult.failCount} failure(s)"
                 } else {
-                  echo "[WARNING] ${combination} was in attempt n°${results[combination]['attempt']} but no test ran"
+                  if (previousAttemptResult.totalCount > 0) {
+                    combinationAlreadySucceededInAttempt = previousAttemptResult.attempt
+                    echo "[INFO] ${combination} has already succeeded in attempt n°${combinationAlreadySucceededInAttempt}"
+                  } else {
+                    echo "[WARNING] ${combination} was in attempt n°${results[combination]['attempt']} but no test ran"
+                  }
                 }
               }
-            }
-            if (combinationAlreadySucceededInAttempt > 0) {
-              echo "[INFO] Skipping ${combination}, already succeeded"
-              return
+              if (combinationAlreadySucceededInAttempt > 0) {
+                echo "[INFO] Not retesting ${combination}, already succeeded"
+                return
+              }
             }
 
             withChecks(name: "Tests ${combination}") {
