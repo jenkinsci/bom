@@ -14,7 +14,6 @@ final String fixedPrepArchiveName = ''
 Map flags = [
   'weekly-test': [] as Set,
   'full-test': [] as Set,
-  'limited-plugin-set': [] as Set,
 ]
 
 properties([
@@ -68,19 +67,6 @@ Map pluginsByRepository = [:]
 List lines = []
 List newestAndOldestLines = []
 Map results = [:]
-
-final String[] limitedPluginSet = [
-  'jenkinsci/aws-credentials-plugin	aws-credentials',
-  'jenkinsci/aws-global-configuration-plugin	aws-global-configuration',
-  'jenkinsci/azure-credentials-plugin	azure-credentials',
-  'jenkinsci/azure-keyvault-plugin	azure-keyvault',
-  'jenkinsci/azure-sdk-plugin	azure-sdk',
-  'jenkinsci/azure-storage-plugin	windows-azure-storage',
-  'jenkinsci/badge-plugin	badge',
-  'jenkinsci/basic-branch-build-strategies-plugin	basic-branch-build-strategies',
-  'jenkinsci/cron_column-plugin	cron_column',
-  'jenkinsci/pipeline-maven-plugin	pipeline-maven,pipeline-maven-api,pipeline-maven-database', // longer than the others, multiple plugins
-]
 
 mavenEnv(jdk: 21) {
   String prepArchiveName
@@ -149,20 +135,8 @@ mavenEnv(jdk: 21) {
       String[] allLines = []
       String from = 'plugins.txt'
 
-      if (flagEnabled(flags, 'limited-plugin-set')) {
-        from = 'a limited set of plugins'
-        echo('[WARNING] Running on a limited set of plugins')
-
-        // Limited set from marker file if it exists
-        plugins = fileExists('../limited-plugin-set') ? readFile('../limited-plugin-set').readLines() : limitedPluginSet
-        // Lines from sample-plugin
-        allLines = sh (returnStdout: true, script: '''
-          echo "weekly $(grep -F '.x</bom>' ../sample-plugin/pom.xml | sed -E 's, *<bom>(.+)</bom>,\\1,g' | sort -rn | xargs)"
-        ''').trim().split(' ')
-      } else {
-        plugins = readFile('plugins.txt').readLines()
-        allLines = readFile('lines.txt').readLines()
-      }
+      plugins = readFile('plugins.txt').readLines()
+      allLines = readFile('lines.txt').readLines()
 
       pluginsByRepository = parsePlugins(plugins)
       echo "[INFO] ${pluginsByRepository.size()} repositories retrieved from ${from}"
@@ -343,11 +317,6 @@ stage('flag checks') {
   def markerErrors = flags.findAll { flag, sources -> 'marker' in sources }.keySet()
   if (!markerErrors.isEmpty()) {
     error "Remember to `git rm ${markerErrors.join(' ')}` before taking out of draft"
-  }
-
-  // Mark build as unstable on PR with limited-plugin-set
-  if (flagEnabled(flags, 'limited-plugin-set', 'label')) {
-    unstable 'Remember to remove `limited-plugin-set` label before taking out of draft'
   }
 }
 
