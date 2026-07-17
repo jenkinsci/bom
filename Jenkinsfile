@@ -8,6 +8,7 @@ if(env.BRANCH_NAME == "master") {
 
 // === Actionable in replay
 env.MAVEN_NTP = true
+int maxSplits = 20
 // Can be set to a specific prep archive name in case last commits aren't impacting it
 final String fixedPrepArchiveName = 'bom-prep-dc9067a4dd575925e2d4a7d0c3b4ceb166d4798c.tar.gz'
 // Test flags depending on the presence of corresponding labels or marker files
@@ -39,7 +40,7 @@ if (env.CHANGE_ID) {
   }
 }
 
-void mavenEnv(Map params = [:], Closure body) {
+void mavenNode(Map params = [:], Closure body) {
   int attempt = 0
   final int attempts = 6
   retry(count: attempts, conditions: [kubernetesAgent(handleNonKubernetes: true), nonresumable()]) {
@@ -47,20 +48,24 @@ void mavenEnv(Map params = [:], Closure body) {
     // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
     node('maven-bom') {
       timeout(120) {
-        infra.withArtifactCachingProxy {
-          withEnv([
-            'JAVA_HOME=/opt/jdk-' + params['jdk'],
-            'PATH+JDK=/opt/jdk-' + params['jdk'] + '/bin',
-            "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B ${env.MAVEN_NTP != null ? '-ntp' : ''} -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo",
-            "MVN_LOCAL_REPO=${WORKSPACE_TMP}/m2repo",
-            "CURRENT_ATTEMPT=${attempt}",
-          ]) {
-            infra.loadMavenLocalCacheIfAny(env.MVN_LOCAL_REPO)
-            body()
+        withEnv([
+          "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B ${env.MAVEN_NTP != null ? '-ntp' : ''} -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo",
+          "MVN_LOCAL_REPO=${WORKSPACE_TMP}/m2repo",
+          "CURRENT_ATTEMPT=${attempt}",
+        ]) {
+          infra.loadMavenLocalCacheIfAny(env.MVN_LOCAL_REPO)
+          infra.withArtifactCachingProxy {
+            mavenEnv(params, body)
           }
         }
       }
     }
+  }
+}
+
+void mavenEnv(Map params = [:], Closure body) {
+  withEnv(['JAVA_HOME=/opt/jdk-' + params['jdk'], 'PATH+JDK=/opt/jdk-' + params['jdk'] + '/bin',]) {
+    body()
   }
 }
 
@@ -69,8 +74,10 @@ int prepFoundInBuildNumber = 0
 Map pluginsByRepository = [:]
 List lines = []
 List newestAndOldestLines = []
-Map results = [:]
+Map testMatrix = [:]
+Map splitPlan = [:]
 
+final int limitedMaxSplits = 3
 final String[] limitedPluginSet = [
   'jenkinsci/aws-credentials-plugin	aws-credentials',
   'jenkinsci/aws-global-configuration-plugin	aws-global-configuration',
@@ -84,7 +91,7 @@ final String[] limitedPluginSet = [
   'jenkinsci/pipeline-maven-plugin	pipeline-maven,pipeline-maven-api,pipeline-maven-database', // longer than the others, multiple plugins
 ]
 
-mavenEnv(jdk: 21) {
+mavenNode(jdk: 21) {
   String prepArchiveName
   stage('init') {
     Map scmVars = checkout scm
@@ -160,6 +167,7 @@ mavenEnv(jdk: 21) {
 
         // Limited set from marker file if it exists
         plugins = fileExists('../limited-plugin-set') ? readFile('../limited-plugin-set').readLines() : limitedPluginSet
+        maxSplits = limitedMaxSplits
         // Lines from sample-plugin
         allLines = sh (returnStdout: true, script: '''
           echo "weekly $(grep -F '.x</bom>' ../sample-plugin/pom.xml | sed -E 's, *<bom>(.+)</bom>,\\1,g' | sort -rn | xargs)"
@@ -191,6 +199,24 @@ mavenEnv(jdk: 21) {
         }
         return
       }
+
+      // Generating all combinations of repository x lines
+      lines.each { line ->
+        pluginsByRepository.each { repository, repoPlugins ->
+          testMatrix["${repository}:${line}"] = [
+            plugins: repoPlugins.join(','),
+            results: [
+              initial: [
+                elapsed: 0.0001,
+                failures: 0,
+                count: 0
+              ]
+            ]
+          ]
+        }
+      }
+      final String allCombinationNames = testMatrix.keySet().join('\n')
+      echo "[INFO] ${testMatrix.size()} resulting combinations:\n${allCombinationNames}"
     }
   }
 
@@ -213,9 +239,28 @@ mavenEnv(jdk: 21) {
     }
   }
 
+  stage('generate splits') {
+    if (testMatrix.isEmpty()) {
+      catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') { error('[SKIP] No combination to split') }
+      return
+    }
+
+    int splitCount = maxSplits
+
+    if (flagEnabled(flags, 'full-test')) {
+      splitCount = maxSplits * lines.size()
+      echo "[INFO] 'full-test' build, increasing maxSplits of ${maxSplits} by ${lines.size()}x (lines)"
+    }
+
+    splitPlan = splitReports(testMatrix, splitCount, 'blank')
+    splitPlan.each { name, split ->
+      echo "[INFO] '${name}' estimated ${split.total}s (${split.combinations.size()} combinations):\n${split.combinations.join('\n')}"
+    }
+  }
+
   stage('stash prep lines') {
-    if (lines.isEmpty()) {
-      catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') { error('[SKIP] No line to stash') }
+    if (splitPlan.isEmpty()) {
+      catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') { error('[SKIP] No split, no need to stash any line') }
       return
     }
 
@@ -235,62 +280,88 @@ stage('run pct') {
   }
 
   Map branches = [failFast: false]
-  lines.each {line ->
-    pluginsByRepository.each { repository, plugins ->
-      final String branchName = "${repository}:${line}"
-      branches[branchName] = {
-        final int jdk = line == 'weekly' ? 21 : 17
-        withChecks(name: 'Tests', includeStage: true) {
-          mavenEnv(jdk: jdk) {
-            unstash line
-            withEnv([
-              "PLUGINS=${plugins.join(',')}",
-              "LINE=$line",
-              'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
-            ]) {
-              final long start = System.currentTimeMillis()
-              int currentAttempt = env.CURRENT_ATTEMPT.toInteger()
-              echo "[INFO] Current attempt: ${currentAttempt}"
 
-              try {
-                sh '''
-                mvn -v
-                bash pct.sh
-                '''
-              } catch (e) {
-                if (!(e instanceof InterruptedException) && !(e instanceof org.jenkinsci.plugins.workflow.support.steps.AgentOfflineException)) {
-                  unstable('PCT failed in ' + repository + ' - line ' + line)
-                } else {
-                  throw e
-                }
-              } finally {
-                final double elapsed = (System.currentTimeMillis() - start) / 1000.0
-                def junitResults
-                try {
-                  junitResults = junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml')
-                } catch(e) {
-                  echo "[WARNING] Error junitResult: ${e}"
-                }
-                Map result = [
-                  failCount : junitResults?.failCount  ?: 0,
-                  skipCount : junitResults?.skipCount  ?: 0,
-                  passCount : junitResults?.passCount  ?: 0,
-                  totalCount: junitResults?.totalCount ?: 0,
-                  duration  : junitResults?.duration   ?: 0,
-                ]
-                result.elapsed = elapsed
-                result.plugins = plugins.join(',')
-                result.pluginCount = plugins.size()
-                result.attempt = currentAttempt
-                result.build_id = env.BUILD_ID
-                result.job_base_name = env.JOB_BASE_NAME
-                result.short_commit_id = commitId.substring(0, 7)
+  splitPlan.each { splitName, split ->
+    final String estimated = String.format("%.0fs", split.total)
+    final String stageName = (estimated == '0s') ? splitName : "${splitName} (~${estimated})"
+    branches[stageName] = {
+      mavenNode() {
+        final int totalCombination = split.combinations.size()
+        final String splitCombinationNames = split.combinations.join('\n')
+        int combinationCount = 1
+        int currentAttempt = env.CURRENT_ATTEMPT.toInteger()
 
-                results[branchName] = result
-                echo "[INFO] results for ${branchName}: ${result}"
+        echo "[INFO] Current split combinations, attempt n°${currentAttempt}:\n${splitCombinationNames}"
+
+        // Unstash all lines used in this split
+        stage('unstash') {
+          final List unstashLines = split.combinations.collect { it.split(':')[1] }.unique()
+          echo "[INFO] Unstashing ${unstashLines.join(' & ')}"
+          unstashLines.each { unstash it }
+        }
+
+        split.combinations.each { combination ->
+          Map data = testMatrix[combination]
+          final String combinationPlugins = data.plugins
+          final String[] parts = combination.split(':')
+          final String repository = parts[0]
+          final String line = parts[1]
+          final int jdk = line == 'weekly' ? 21 : 17
+
+          echo "[INFO] Combination ${combinationCount}/${totalCombination} \"${combination}\", plugin(s): ${combinationPlugins}"
+
+          stage("${combination} (${combinationCount}/${totalCombination})") {
+            withChecks(name: "Tests ${combination}") {
+              mavenEnv(jdk: jdk) {
+                withEnv([
+                  "PLUGINS=${combinationPlugins}",
+                  "LINE=${line}",
+                  'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
+                ]) {
+                  final long start = System.currentTimeMillis()
+                  try {
+                    sh '''
+                    mvn -v
+                    bash pct.sh
+                    '''
+                  } catch (e) {
+                    if (!(e instanceof InterruptedException) && !(e instanceof org.jenkinsci.plugins.workflow.support.steps.AgentOfflineException)) {
+                      unstable('PCT failed in ' + repository + ' - line ' + line)
+                    } else {
+                      throw e
+                    }
+                  } finally {
+                    final double elapsed = (System.currentTimeMillis() - start) / 1000.0
+                    def junitResults
+                    try {
+                      junitResults = junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml')
+                    } catch(e) {
+                      echo "[WARNING] Error junitResult: ${e}"
+                    }
+                    Map result = [
+                      failCount : junitResults?.failCount  ?: 0,
+                      skipCount : junitResults?.skipCount  ?: 0,
+                      passCount : junitResults?.passCount  ?: 0,
+                      totalCount: junitResults?.totalCount ?: 0,
+                      duration  : junitResults?.duration   ?: 0,
+                    ]
+                    result.elapsed = elapsed
+                    result.plugins = combinationPlugins
+                    result.pluginCount = combinationPlugins.count(',')
+                    result.attempt = currentAttempt
+                    result.build_id = env.BUILD_ID
+                    result.job_base_name = env.JOB_BASE_NAME
+                    result.short_commit_id = commitId
+
+                    testMatrix[combination].results.current = result
+
+                    echo "[INFO] results for ${combination}: ${result}"
+                  }
+                }
               }
             }
           }
+          combinationCount++
         }
       }
     }
@@ -299,6 +370,13 @@ stage('run pct') {
 }
 
 stage('report results') {
+  // Extract only combinations that have a result
+  Map results = testMatrix.findAll { key, data ->
+    data.results?.current
+  }.collectEntries { k, v ->
+    [k, v.results.current]
+  }
+
   if (results.isEmpty()) {
     catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') { error('[SKIP] No result to report') }
     return
