@@ -112,7 +112,10 @@ mavenEnv(jdk: 21) {
   }
 
   stage('retrieve prep archive') {
-    prepFoundInBuildNumber = retrieveArtifactsFromPreviousBuilds(prepArchiveName, env.JOB_NAME)
+    prepFoundInBuildNumber = infra.retrieveArtifactsFromPreviousBuilds([
+      archiveName: prepArchiveName,
+      jobName: env.JOB_NAME
+    ])
     if (prepFoundInBuildNumber == 0) {
       catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') { error("[SKIP] ${prepArchiveName} not found") }
       return
@@ -380,41 +383,26 @@ boolean flagEnabled(Map flags, String flag, String source = null) {
   source ? source in flags[flag] : !flags[flag].isEmpty()
 }
 
-// Search and copy an artifact from builds of a job
-// Returns the build number where it has been found, zero otherwise
-int retrieveArtifactsFromPreviousBuilds(String archiveName, String jobName) {
-  int foundInBuildNumber = 0
-  boolean archiveExists = false
-  final int buildNumber = env.BUILD_NUMBER.toInteger()
-  if (buildNumber == 1) {
-    echo "[INFO] First build of ${jobName}, no ${archiveName} available yet"
-    return 0
+// Return a map combinations split into maxSplits from a map of reports containing elapsed time per combination
+Map splitReports(Map matrix, int maxSplits, String reportType = 'unknown') {
+  List splits = (0..<maxSplits).collect { [total: 0.0, combinations: []] }
+  List combinations = matrix.keySet().toList()
+
+  // sort by elapsed time, largest first
+  combinations.sort { a, b ->
+    matrix[b].results.initial.elapsed <=> matrix[a].results.initial.elapsed
   }
 
-  // Loop over builds to retrieve the prep archive as previous build can have (only) other archive(s)
-  int checkBuildNumber = buildNumber - 1
-  // Don't loop until the first build of master '^^
-  final int limit = jobName.endsWith('master') ? buildNumber - 50 : 0
-  while (!archiveExists && checkBuildNumber > limit) {
-    echo "[INFO] Trying to retrieve ${archiveName} from ${jobName}#${checkBuildNumber}..."
-    try {
-      copyArtifacts(projectName: jobName,
-      selector: specific("${checkBuildNumber}"),
-      filter: archiveName,
-      fingerprintArtifacts: true,
-      optional: false,
-      )
-      archiveExists = true
-    } catch(e) {}
-    if (!archiveExists) {
-      checkBuildNumber = checkBuildNumber - 1
-    }
+  for (combination in combinations) {
+    Map target = splits.min { it.total }
+    target.combinations << combination
+    target.total += matrix[combination].results.initial.elapsed
   }
-  if (!archiveExists) {
-    echo "[INFO] No ${archiveName} found in any build of ${jobName}"
-  } else {
-    foundInBuildNumber = checkBuildNumber
-    echo "[INFO] ${archiveName} found in ${jobName}#${checkBuildNumber}"
+
+  Map result = [:]
+  splits.findAll { it.combinations }.eachWithIndex { split, idx ->
+    result["${reportType}-${idx + 1}"] = split
   }
-  return foundInBuildNumber
+
+  return result
 }
