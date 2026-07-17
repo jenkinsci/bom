@@ -10,7 +10,7 @@ if(env.BRANCH_NAME == "master") {
 env.MAVEN_NTP = true
 int maxSplits = 20
 // Can be set to a specific prep archive name in case last commits aren't impacting it
-final String fixedPrepArchiveName = 'bom-prep-dc9067a4dd575925e2d4a7d0c3b4ceb166d4798c.tar.gz'
+final String fixedPrepArchiveName = ''
 // Test flags depending on the presence of corresponding labels or marker files
 // Can be modified to test specific cases independently of the current PR labels or markers
 // Possible value(s): 'label', 'marker'
