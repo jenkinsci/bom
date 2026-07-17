@@ -1,3 +1,5 @@
+@Library('pipeline-library@pull/1034/head') _
+
 // Do not trigger build regularly on change requests as it costs a lot
 String cronTrigger = ''
 if(env.BRANCH_NAME == "master") {
@@ -6,8 +8,9 @@ if(env.BRANCH_NAME == "master") {
 
 // === Actionable in replay
 env.MAVEN_NTP = true
+int maxSplits = 20
 // Can be set to a specific prep archive name in case last commits aren't impacting it
-final String fixedPrepArchiveName = ''
+final String fixedPrepArchiveName = 'bom-prep-4fccd49.tar.gz'
 // Test flags depending on the presence of corresponding labels or marker files
 // Can be modified to test specific cases independently of the current PR labels or markers
 // Possible value(s): 'label', 'marker'
@@ -37,7 +40,7 @@ if (env.CHANGE_ID) {
   }
 }
 
-void mavenEnv(Map params = [:], Closure body) {
+void mavenNode(Map params = [:], Closure body) {
   int attempt = 0
   final int attempts = 6
   retry(count: attempts, conditions: [kubernetesAgent(handleNonKubernetes: true), nonresumable()]) {
@@ -45,20 +48,24 @@ void mavenEnv(Map params = [:], Closure body) {
     // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
     node('maven-bom') {
       timeout(120) {
-        infra.withArtifactCachingProxy {
-          withEnv([
-            'JAVA_HOME=/opt/jdk-' + params['jdk'],
-            'PATH+JDK=/opt/jdk-' + params['jdk'] + '/bin',
-            "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B ${env.MAVEN_NTP != null ? '-ntp' : ''} -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo",
-            "MVN_LOCAL_REPO=${WORKSPACE_TMP}/m2repo",
-            "CURRENT_ATTEMPT=${attempt}",
-          ]) {
-            infra.loadMavenLocalCacheIfAny(env.MVN_LOCAL_REPO)
-            body()
+        withEnv([
+          "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B ${env.MAVEN_NTP != null ? '-ntp' : ''} -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo",
+          "MVN_LOCAL_REPO=${WORKSPACE_TMP}/m2repo",
+          "CURRENT_ATTEMPT=${attempt}",
+        ]) {
+          infra.loadMavenLocalCacheIfAny(env.MVN_LOCAL_REPO)
+          infra.withArtifactCachingProxy {
+            mavenEnv(params, body)
           }
         }
       }
     }
+  }
+}
+
+void mavenEnv(Map params = [:], Closure body) {
+  withEnv(['JAVA_HOME=/opt/jdk-' + params['jdk'], 'PATH+JDK=/opt/jdk-' + params['jdk'] + '/bin',]) {
+    body()
   }
 }
 
@@ -67,8 +74,10 @@ int prepFoundInBuildNumber = 0
 Map pluginsByRepository = [:]
 List lines = []
 List newestAndOldestLines = []
-Map results = [:]
+Map testMatrix = [:]
+Map splitPlan = [:]
 
+final int limitedMaxSplits = 3
 final String[] limitedPluginSet = [
   'jenkinsci/aws-credentials-plugin	aws-credentials',
   'jenkinsci/aws-global-configuration-plugin	aws-global-configuration',
@@ -82,7 +91,7 @@ final String[] limitedPluginSet = [
   'jenkinsci/pipeline-maven-plugin	pipeline-maven,pipeline-maven-api,pipeline-maven-database', // longer than the others, multiple plugins
 ]
 
-mavenEnv(jdk: 21) {
+mavenNode(jdk: 21) {
   String prepArchiveName
   stage('init') {
     Map scmVars = checkout scm
@@ -110,7 +119,10 @@ mavenEnv(jdk: 21) {
   }
 
   stage('retrieve prep archive') {
-    prepFoundInBuildNumber = retrieveArtifactsFromPreviousBuilds(prepArchiveName, env.JOB_NAME)
+    prepFoundInBuildNumber = infra.retrieveArtifactsFromPreviousBuilds([
+      archiveName: prepArchiveName,
+      jobName: env.JOB_NAME
+    ])
     if (prepFoundInBuildNumber == 0) {
       catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') { error("[SKIP] ${prepArchiveName} not found") }
       return
@@ -155,6 +167,7 @@ mavenEnv(jdk: 21) {
 
         // Limited set from marker file if it exists
         plugins = fileExists('../limited-plugin-set') ? readFile('../limited-plugin-set').readLines() : limitedPluginSet
+        maxSplits = limitedMaxSplits
         // Lines from sample-plugin
         allLines = sh (returnStdout: true, script: '''
           echo "weekly $(grep -F '.x</bom>' ../sample-plugin/pom.xml | sed -E 's, *<bom>(.+)</bom>,\\1,g' | sort -rn | xargs)"
@@ -186,6 +199,24 @@ mavenEnv(jdk: 21) {
         }
         return
       }
+
+      // Generating all combinations of repository x lines
+      lines.each { line ->
+        pluginsByRepository.each { repository, repoPlugins ->
+          testMatrix["${repository}:${line}"] = [
+            plugins: repoPlugins.join(','),
+            results: [
+              initial: [
+                elapsed: 0.0001,
+                failures: 0,
+                count: 0
+              ]
+            ]
+          ]
+        }
+      }
+      final String allCombinationNames = testMatrix.keySet().join('\n')
+      echo "[INFO] ${testMatrix.size()} resulting combinations:\n${allCombinationNames}"
     }
   }
 
@@ -208,9 +239,28 @@ mavenEnv(jdk: 21) {
     }
   }
 
+  stage('generate splits') {
+    if (testMatrix.isEmpty()) {
+      catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') { error('[SKIP] No combination to split') }
+      return
+    }
+
+    int splitCount = maxSplits
+
+    if (flagEnabled(flags, 'full-test')) {
+      splitCount = maxSplits * lines.size()
+      echo "[INFO] 'full-test' build, increasing maxSplits of ${maxSplits} by ${lines.size()}x (lines)"
+    }
+
+    splitPlan = splitReports(testMatrix, splitCount, 'blank')
+    splitPlan.each { name, split ->
+      echo "[INFO] '${name}' estimated ${split.total}s (${split.combinations.size()} combinations):\n${split.combinations.join('\n')}"
+    }
+  }
+
   stage('stash prep lines') {
-    if (lines.isEmpty()) {
-      catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') { error('[SKIP] No line to stash') }
+    if (splitPlan.isEmpty()) {
+      catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') { error('[SKIP] No split, no need to stash any line') }
       return
     }
 
@@ -230,62 +280,109 @@ stage('run pct') {
   }
 
   Map branches = [failFast: false]
-  lines.each {line ->
-    pluginsByRepository.each { repository, plugins ->
-      final String branchName = "${repository}:${line}"
-      branches[branchName] = {
-        final int jdk = line == 'weekly' ? 21 : 17
-        withChecks(name: 'Tests', includeStage: true) {
-          mavenEnv(jdk: jdk) {
-            unstash line
-            withEnv([
-              "PLUGINS=${plugins.join(',')}",
-              "LINE=$line",
-              'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
-            ]) {
-              final long start = System.currentTimeMillis()
-              int currentAttempt = env.CURRENT_ATTEMPT.toInteger()
-              echo "[INFO] Current attempt: ${currentAttempt}"
 
-              try {
-                sh '''
-                mvn -v
-                bash pct.sh
-                '''
-              } catch (e) {
-                if (!(e instanceof InterruptedException) && !(e instanceof org.jenkinsci.plugins.workflow.support.steps.AgentOfflineException)) {
-                  unstable('PCT failed in ' + repository + ' - line ' + line)
+  splitPlan.each { splitName, split ->
+    final String estimated = String.format("%.0fs", split.total)
+    final String stageName = (estimated == '0s') ? splitName : "${splitName} (~${estimated})"
+    branches[stageName] = {
+      mavenNode() {
+        final int totalCombination = split.combinations.size()
+        final String splitCombinationNames = split.combinations.join('\n')
+        int combinationCount = 1
+        int currentAttempt = env.CURRENT_ATTEMPT.toInteger()
+
+        echo "[INFO] Current split combinations, attempt n°${currentAttempt}:\n${splitCombinationNames}"
+
+        // Unstash all lines used in this split
+        stage('unstash') {
+          final List unstashLines = split.combinations.collect { it.split(':')[1] }.unique()
+          echo "[INFO] Unstashing ${unstashLines.join(' & ')}"
+          unstashLines.each { unstash it }
+        }
+
+        split.combinations.each { combination ->
+          Map data = testMatrix[combination]
+          final String combinationPlugins = data.plugins
+          final String[] parts = combination.split(':')
+          final String repository = parts[0]
+          final String line = parts[1]
+          final int jdk = line == 'weekly' ? 21 : 17
+
+          echo "[INFO] Combination ${combinationCount}/${totalCombination} \"${combination}\", plugin(s): ${combinationPlugins}"
+
+          stage("${combination} (${combinationCount}/${totalCombination})") {
+            // Check if the combination has already been succeeded (in case of retry after spot instance reclaim for example)
+            int combinationAlreadySucceededInAttempt = 0
+            if (currentAttempt > 0 && testMatrix.results.current.containsKey(combination)) {
+              final Map previousAttemptResult = testMatrix.results.current[combination]
+              echo "[INFO] ${combination} has already been seen in attempt n°${combinationAlreadySucceededInAttempt} (elapsed: ${previousAttemptResult.elapsed})"
+              if (previousAttemptResult.failCount > 0) {
+                echo "[INFO] ${combination} had previously ${previousAttemptResult.failCount} failure(s)"
+              } else {
+                if (previousAttemptResult.totalCount > 0) {
+                  combinationAlreadySucceededInAttempt = previousAttemptResult.attempt
+                  echo "[INFO] ${combination} has already succeeded in attempt n°${combinationAlreadySucceededInAttempt}"
                 } else {
-                  throw e
+                  echo "[WARNING] ${combination} was in attempt n°${results[combination]['attempt']} but no test ran"
                 }
-              } finally {
-                final double elapsed = (System.currentTimeMillis() - start) / 1000.0
-                def junitResults
-                try {
-                  junitResults = junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml')
-                } catch(e) {
-                  echo "[WARNING] Error junitResult: ${e}"
-                }
-                Map result = [
-                  failCount : junitResults?.failCount  ?: 0,
-                  skipCount : junitResults?.skipCount  ?: 0,
-                  passCount : junitResults?.passCount  ?: 0,
-                  totalCount: junitResults?.totalCount ?: 0,
-                  duration  : junitResults?.duration   ?: 0,
-                ]
-                result.elapsed = elapsed
-                result.plugins = plugins.join(',')
-                result.pluginCount = plugins.size()
-                result.attempt = currentAttempt
-                result.build_id = env.BUILD_ID
-                result.job_base_name = env.JOB_BASE_NAME
-                result.short_commit_id = commitId
+              }
+            }
+            if (combinationAlreadySucceededInAttempt > 0) {
+              echo "[INFO] Skipping ${combination}, already succeeded"
+              return
+            }
 
-                results[branchName] = result
-                echo "[INFO] results for ${branchName}: ${result}"
+            withChecks(name: "Tests ${combination}") {
+              mavenEnv(jdk: jdk) {
+                withEnv([
+                  "PLUGINS=${combinationPlugins}",
+                  "LINE=${line}",
+                  'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
+                ]) {
+                  final long start = System.currentTimeMillis()
+                  try {
+                    sh '''
+                    mvn -v
+                    bash pct.sh
+                    '''
+                  } catch (e) {
+                    if (!(e instanceof InterruptedException) && !(e instanceof org.jenkinsci.plugins.workflow.support.steps.AgentOfflineException)) {
+                      unstable('PCT failed in ' + repository + ' - line ' + line)
+                    } else {
+                      throw e
+                    }
+                  } finally {
+                    final double elapsed = (System.currentTimeMillis() - start) / 1000.0
+                    def junitResults
+                    try {
+                      junitResults = junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml')
+                    } catch(e) {
+                      echo "[WARNING] Error junitResult: ${e}"
+                    }
+                    Map result = [
+                      failCount : junitResults?.failCount  ?: 0,
+                      skipCount : junitResults?.skipCount  ?: 0,
+                      passCount : junitResults?.passCount  ?: 0,
+                      totalCount: junitResults?.totalCount ?: 0,
+                      duration  : junitResults?.duration   ?: 0,
+                    ]
+                    result.elapsed = elapsed
+                    result.plugins = combinationPlugins
+                    result.pluginCount = combinationPlugins.count(',')
+                    result.attempt = currentAttempt
+                    result.build_id = env.BUILD_ID
+                    result.job_base_name = env.JOB_BASE_NAME
+                    result.short_commit_id = commitId
+
+                    testMatrix[combination].results.current = result
+
+                    echo "[INFO] results for ${combination}: ${result}"
+                  }
+                }
               }
             }
           }
+          combinationCount++
         }
       }
     }
@@ -294,6 +391,13 @@ stage('run pct') {
 }
 
 stage('report results') {
+  // Extract only combinations that have a result
+  Map results = testMatrix.findAll { key, data ->
+    data.results?.current
+  }.collectEntries { k, v ->
+    [k, v.results.current]
+  }
+
   if (results.isEmpty()) {
     catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') { error('[SKIP] No result to report') }
     return
@@ -378,41 +482,26 @@ boolean flagEnabled(Map flags, String flag, String source = null) {
   source ? source in flags[flag] : !flags[flag].isEmpty()
 }
 
-// Search and copy an artifact from builds of a job
-// Returns the build number where it has been found, zero otherwise
-int retrieveArtifactsFromPreviousBuilds(String archiveName, String jobName) {
-  int foundInBuildNumber = 0
-  boolean archiveExists = false
-  final int buildNumber = env.BUILD_NUMBER.toInteger()
-  if (buildNumber == 1) {
-    echo "[INFO] First build of ${jobName}, no ${archiveName} available yet"
-    return 0
+// Return a map combinations split into maxSplits from a map of reports containing elapsed time per combination
+Map splitReports(Map matrix, int maxSplits, String reportType = 'unknown') {
+  List splits = (0..<maxSplits).collect { [total: 0.0, combinations: []] }
+  List combinations = matrix.keySet().toList()
+
+  // sort by elapsed time, largest first
+  combinations.sort { a, b ->
+    matrix[b].results.initial.elapsed <=> matrix[a].results.initial.elapsed
   }
 
-  // Loop over builds to retrieve the prep archive as previous build can have (only) other archive(s)
-  int checkBuildNumber = buildNumber - 1
-  // Don't loop until the first build of master '^^
-  final int limit = jobName.endsWith('master') ? buildNumber - 50 : 0
-  while (!archiveExists && checkBuildNumber > limit) {
-    echo "[INFO] Trying to retrieve ${archiveName} from ${jobName}#${checkBuildNumber}..."
-    try {
-      copyArtifacts(projectName: jobName,
-      selector: specific("${checkBuildNumber}"),
-      filter: archiveName,
-      fingerprintArtifacts: true,
-      optional: false,
-      )
-      archiveExists = true
-    } catch(e) {}
-    if (!archiveExists) {
-      checkBuildNumber = checkBuildNumber - 1
-    }
+  for (combination in combinations) {
+    Map target = splits.min { it.total }
+    target.combinations << combination
+    target.total += matrix[combination].results.initial.elapsed
   }
-  if (!archiveExists) {
-    echo "[INFO] No ${archiveName} found in any build of ${jobName}"
-  } else {
-    foundInBuildNumber = checkBuildNumber
-    echo "[INFO] ${archiveName} found in ${jobName}#${checkBuildNumber}"
+
+  Map result = [:]
+  splits.findAll { it.combinations }.eachWithIndex { split, idx ->
+    result["${reportType}-${idx + 1}"] = split
   }
-  return foundInBuildNumber
+
+  return result
 }
