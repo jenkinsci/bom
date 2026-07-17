@@ -94,8 +94,6 @@ mavenEnv(jdk: 21) {
         if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount > 0) {
           error 'Some test failures during prep.sh, not going to continue'
         }
-        // Publish incrementals before prep archive preparation to avoid dirty git status
-        infra.prepareToPublishIncrementals()
       }
     }
   }
@@ -141,6 +139,10 @@ mavenEnv(jdk: 21) {
     lines.each { line ->
       stash name: line, includes: "pct.sh,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-${line}.war"
     }
+  }
+
+  stage('') {
+    infra.prepareToPublishIncrementals()
   }
 }
 
@@ -244,10 +246,6 @@ stage('flag checks') {
 }
 
 stage('publish incrementals') {
-  if (prepFoundInBuildNumber > 0) {
-    catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') { error('[SKIP] No new prep to publish to incrementals') }
-    return
-  }
   infra.maybePublishIncrementals()
 }
 
