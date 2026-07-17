@@ -106,11 +106,6 @@ if you have switched the version in `bom-weekly/pom.xml` to a `*-SNAPSHOT`.
 
 To minimize cloud resources, PCT is not run at all by default on pull requests, only some basic sanity checks.
 
-> [!TIP]
-> If you need to restart a build without any change and if you can (ex: you're a maintainer),
-> prefer using replays and reruns from GitHub over empty commits to benefit from the prep archive built and saved in the previous builds.
-> It saves about half an hour of total build time, and resources.
-
 ### Running weekly tests
 
 Add the label `weekly-test` to run the tests against the latest weekly Jenkins version - This is what you want most of the time.
