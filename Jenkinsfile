@@ -88,7 +88,7 @@ mavenEnv(jdk: 21) {
     Map scmVars = checkout scm
 
     // Ensure prep archive corresponds to the current state
-    commitId = scmVars.GIT_COMMIT
+    commitId = scmVars.GIT_COMMIT.substring(0, 7)
     prepArchiveName = "bom-prep-${commitId}.tar.gz"
     if (fixedPrepArchiveName) {
       echo "[WARNING] Using fixed prep archive name ${fixedPrepArchiveName} instead of ${prepArchiveName}"
@@ -179,6 +179,13 @@ mavenEnv(jdk: 21) {
         lines = ['weekly']
         echo "[WARNING] Keeping only 'weekly' line as there is a 'weekly-test' label or marker file"
       }
+      if (BRANCH_NAME != 'master' && !(flagEnabled(flags, 'full-test') || flagEnabled(flags, 'weekly-test'))) {
+        lines = []
+        catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') {
+          error('[SKIP] Removing all lines, build not from master or running without any "weekly-test" / "full-test" flags')
+        }
+        return
+      }
     }
   }
 
@@ -215,9 +222,9 @@ mavenEnv(jdk: 21) {
 }
 
 stage('run pct') {
-  if (BRANCH_NAME != 'master' && !(flagEnabled(flags, 'full-test') || flagEnabled(flags, 'weekly-test'))) {
+  if (lines.isEmpty()) {
     catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') {
-      error('[SKIP] Not running on master or without any "weekly-test" / "full-test" labels or markers')
+      error('[SKIP] No line to run')
     }
     return
   }
@@ -272,7 +279,7 @@ stage('run pct') {
                 result.attempt = currentAttempt
                 result.build_id = env.BUILD_ID
                 result.job_base_name = env.JOB_BASE_NAME
-                result.short_commit_id = commitId.substring(0, 7)
+                result.short_commit_id = commitId
 
                 results[branchName] = result
                 echo "[INFO] results for ${branchName}: ${result}"
