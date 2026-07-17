@@ -313,7 +313,7 @@ stage('run pct') {
           stage("${combination} (${combinationCount}/${totalCombination})") {
             // Check if the combination has already been succeeded (in case of retry after spot instance reclaim for example)
             int combinationAlreadySucceededInAttempt = 0
-            if (testMatrix.results.current.containsKey(combination)) {
+            if (currentAttempt > 0 && testMatrix.results.current.containsKey(combination)) {
               final Map previousAttemptResult = testMatrix.results.current[combination]
               echo "[INFO] ${combination} has already been seen in attempt n°${combinationAlreadySucceededInAttempt} (elapsed: ${previousAttemptResult.elapsed})"
               if (previousAttemptResult.failCount > 0) {
