@@ -1,3 +1,5 @@
+@Library('pipeline-library@pull/1034/head') _
+
 // Do not trigger build regularly on change requests as it costs a lot
 String cronTrigger = ''
 if(env.BRANCH_NAME == "master") {
@@ -7,7 +9,7 @@ if(env.BRANCH_NAME == "master") {
 // === Actionable in replay
 env.MAVEN_NTP = true
 // Can be set to a specific prep archive name in case last commits aren't impacting it
-final String fixedPrepArchiveName = ''
+final String fixedPrepArchiveName = 'bom-prep-dc9067a4dd575925e2d4a7d0c3b4ceb166d4798c.tar.gz'
 // Test flags depending on the presence of corresponding labels or marker files
 // Can be modified to test specific cases independently of the current PR labels or markers
 // Possible value(s): 'label', 'marker'
