@@ -922,7 +922,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>cloudbees-disk-usage-simple</artifactId>
-        <version>270.vfb_6898193d8d</version>
+        <version>272.v100a_b_a_d39d37</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
