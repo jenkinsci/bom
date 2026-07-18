@@ -831,7 +831,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>azure-credentials</artifactId>
-        <version>421.vb_ffd07e951a_2</version>
+        <version>426.v5627e6a_4c7a_7</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
