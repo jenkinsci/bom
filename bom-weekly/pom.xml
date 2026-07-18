@@ -498,6 +498,11 @@
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
+        <artifactId>nimbus-jose-jwt-api</artifactId>
+        <version>10.9.1-4.v58e0353801ec</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jenkins.plugins</groupId>
         <artifactId>oidc-provider</artifactId>
         <version>212.v7657c4d7b_29f</version>
       </dependency>
