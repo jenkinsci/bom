@@ -1038,7 +1038,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>dockerhub-notification</artifactId>
-        <version>222.v483263f10718</version>
+        <version>225.ve7d7c6a_4a_e35</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
