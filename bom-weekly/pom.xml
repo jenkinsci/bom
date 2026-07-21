@@ -21,7 +21,7 @@
     <forensics-api.version>4.1891.v5e60f3377506</forensics-api.version>
     <github-api-plugin.version>1.330-492.v3941a_032db_2a_</github-api-plugin.version>
     <git-plugin.version>5.10.1</git-plugin.version>
-    <junit-plugin.version>1415.vcb_3245e24402</junit-plugin.version>
+    <junit-plugin.version>1416.vd753e036de5e</junit-plugin.version>
     <matrix-project-plugin.version>870.v9db_fcfc2f45b_</matrix-project-plugin.version>
     <mcp-server.version>0.178.vffe5a_e770f3b_</mcp-server.version>
     <mina-sshd-api.version>2.17.1-187.v0341274c2905</mina-sshd-api.version>
@@ -124,7 +124,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>artifactory-artifact-manager</artifactId>
-        <version>320.v6d1b_a_84b_16db_</version>
+        <version>326.v9e025895153f</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
