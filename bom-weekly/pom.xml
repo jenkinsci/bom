@@ -31,6 +31,7 @@
     <pipeline-stage-view-plugin.version>2.41</pipeline-stage-view-plugin.version>
     <plugin-util-api.version>7.1341.v039f146993d9</plugin-util-api.version>
     <scm-api-plugin.version>728.vc30dcf7a_0df5</scm-api-plugin.version>
+    <ssh-slaves-plugin.version>3.1097.v868116049892</ssh-slaves-plugin.version>
     <subversion-plugin.version>1303.vcfd9679fb_c12</subversion-plugin.version>
     <workflow-api-plugin.version>1413.v2ff1a_5e720fa_</workflow-api-plugin.version>
     <workflow-cps-plugin.version>4350.vcc65d4958821</workflow-cps-plugin.version>
@@ -1562,7 +1563,13 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ssh-slaves</artifactId>
-        <version>3.1097.v868116049892</version>
+        <version>${ssh-slaves-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>ssh-slaves</artifactId>
+        <classifier>tests</classifier>
+        <version>${ssh-slaves-plugin.version}</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
