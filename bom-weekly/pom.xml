@@ -85,7 +85,7 @@
       <dependency>
         <groupId>igalg.jenkins.plugins</groupId>
         <artifactId>multibranch-build-strategy-extension</artifactId>
-        <version>71.va_359eeb_a_a_6f0</version>
+        <version>86.v57160c8c95a_1</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins</groupId>
