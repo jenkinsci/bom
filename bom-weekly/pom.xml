@@ -1502,7 +1502,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>saml</artifactId>
-        <version>4.605.vffa_2eb_029405</version>
+        <version>4.618.v441a_27fa_46d2</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
