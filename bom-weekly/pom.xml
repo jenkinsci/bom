@@ -772,7 +772,7 @@
       <dependency>
         <groupId>org.csanchez.jenkins.plugins</groupId>
         <artifactId>kubernetes</artifactId>
-        <version>4471.v5d389f893a_5d</version>
+        <version>4540.v612369217f87</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.main</groupId>
