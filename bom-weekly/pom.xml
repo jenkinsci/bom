@@ -832,7 +832,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>aws-credentials</artifactId>
-        <version>262.v0efb_28f71f94</version>
+        <version>265.v8422a_f384cd9</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
