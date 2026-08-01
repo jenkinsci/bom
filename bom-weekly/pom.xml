@@ -1307,7 +1307,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>matrix-project</artifactId>
-        <version>870.v9db_fcfc2f45b_</version>
+        <version>905.vcc6831e8760a_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
