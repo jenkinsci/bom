@@ -206,7 +206,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>coverage</artifactId>
-        <version>3.3305.vf8df16102f76</version>
+        <version>3.3311.v42c5a_f929e3e</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -495,7 +495,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>netty-api</artifactId>
-        <version>4.2.15.Final-27.va_a_7872799c63</version>
+        <version>4.2.16.Final-31.va_c87232a_b_67b_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
