@@ -1146,7 +1146,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>gitlab-logo</artifactId>
-        <version>232.v34a_9b_98d4eb_b_</version>
+        <version>260.v8274d26a_ccf3</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
