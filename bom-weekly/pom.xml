@@ -1105,7 +1105,8 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>git-client</artifactId>
-        <version>6.6.1</version>
+        <!-- TODO: https://github.com/jenkinsci/git-client-plugin/pull/1770 and more -->
+        <version>6.7.0-rc3901.1a_4b_a_2dd84a_c</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
