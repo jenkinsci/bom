@@ -15,7 +15,7 @@
     <branch-api-plugin.version>2.1280.v0d4e5b_b_460ef</branch-api-plugin.version>
     <checks-api.version>415.vf022234a_931d</checks-api.version>
     <cloudbees-folder-plugin.version>6.1100.ve9eed61d16c4</cloudbees-folder-plugin.version>
-    <configuration-as-code-plugin.version>2111.v475308a_6c93b_</configuration-as-code-plugin.version>
+    <configuration-as-code-plugin.version>2114.v67a_a_18696b_8f</configuration-as-code-plugin.version>
     <data-tables-api.version>2.3.8-1570.v1cb_1cd2a_0fb_c</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.7</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>4.1891.v5e60f3377506</forensics-api.version>
@@ -23,7 +23,7 @@
     <git-plugin.version>5.10.1</git-plugin.version>
     <junit-plugin.version>1416.vd753e036de5e</junit-plugin.version>
     <matrix-project-plugin.version>870.v9db_fcfc2f45b_</matrix-project-plugin.version>
-    <mcp-server.version>0.188.v42d9a_0194886</mcp-server.version>
+    <mcp-server.version>0.190.ve5a_6581ffc96</mcp-server.version>
     <mina-sshd-api.version>2.17.1-187.v0341274c2905</mina-sshd-api.version>
     <okhttp-api-plugin.version>5.3.2-200.vedb_720a_cf1f8</okhttp-api-plugin.version>
     <pipeline-maven-plugin.version>1760.v9a_a_e6dcb_0444</pipeline-maven-plugin.version>
@@ -348,7 +348,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>gitlab-branch-source</artifactId>
-        <version>740.v04f287f9194d</version>
+        <version>743.ve0c8154a_8da_b_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1467,7 +1467,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>promoted-builds</artifactId>
-        <version>992.va_00888f21b_74</version>
+        <version>1029.v979cc7835e39</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
