@@ -1357,7 +1357,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>oauth-credentials</artifactId>
-        <version>0.660.vce7c108f1f3a_</version>
+        <version>0.666.v3e42c3561266</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
