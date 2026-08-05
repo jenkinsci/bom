@@ -21,7 +21,7 @@
     <forensics-api.version>4.1891.v5e60f3377506</forensics-api.version>
     <github-api-plugin.version>1.330-492.v3941a_032db_2a_</github-api-plugin.version>
     <git-plugin.version>5.10.1</git-plugin.version>
-    <junit-plugin.version>1416.vd753e036de5e</junit-plugin.version>
+    <junit-plugin.version>1418.v67a_81935603c</junit-plugin.version>
     <matrix-project-plugin.version>870.v9db_fcfc2f45b_</matrix-project-plugin.version>
     <mcp-server.version>0.191.vb_d1125775e09</mcp-server.version>
     <mina-sshd-api.version>2.19.0-192.v2b_a_7b_2c1dc71</mina-sshd-api.version>
