@@ -1937,7 +1937,7 @@
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
         <artifactId>instant-messaging</artifactId>
-        <version>2.887.vccece34fa_615</version>
+        <version>2.898.v828a_b_5604a_82</version>
       </dependency>
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
