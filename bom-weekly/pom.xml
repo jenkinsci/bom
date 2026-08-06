@@ -24,7 +24,7 @@
     <junit-plugin.version>1418.v67a_81935603c</junit-plugin.version>
     <matrix-project-plugin.version>870.v9db_fcfc2f45b_</matrix-project-plugin.version>
     <!-- TODO 0.191 excludes jackson2-api from pipeline-model-definition, breaking InjectedTest;
-         see https://github.com/jenkinsci/mcp-server-plugin/pull/201 -->
+         see https://github.com/jenkinsci/mcp-server-plugin/issues/217-->
     <mcp-server.version>0.190.ve5a_6581ffc96</mcp-server.version>
     <mina-sshd-api.version>2.19.0-192.v2b_a_7b_2c1dc71</mina-sshd-api.version>
     <okhttp-api-plugin.version>5.3.2-200.vedb_720a_cf1f8</okhttp-api-plugin.version>
