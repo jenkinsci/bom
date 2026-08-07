@@ -6,8 +6,8 @@ if(env.BRANCH_NAME == "master") {
 
 env.MAVEN_NTP = true
 // Run pct tests on a limited set of repositories and their plugin(s) if not empty
-// Expected format: jenkinsci/<repo-name>, tab, <coma separated plugin(s)>
-// Ex: 'jenkinsci/pipeline-stage-view-plugin	pipeline-rest-api,pipeline-stage-view'
+// Expected list item format: jenkinsci/<repo-name>, tab, <coma separated plugin(s)>
+// Ex: 'jenkinsci/pipeline-stage-view-plugin\tpipeline-rest-api,pipeline-stage-view'
 final String[] limitedPluginSet = []
 
 properties([
