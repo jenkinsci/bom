@@ -66,12 +66,18 @@ def durations = [:]
 
 stage('prep') {
   mavenEnv(jdk: 21) {
-    checkout scm
-    withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist']) {
+    def scmVars = checkout scm
+    withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist', 'CURRENT_COMMIT_ID=' + scmVars.GIT_COMMIT]) {
       sh '''
       mvn -v
       bash prep.sh
+      # save current commit for future references
+      touch "target/commit-${CURRENT_COMMIT_ID}"
       '''
+      // archive tar of all files produced by prep.sh used after the "prep" stage of the main bom job
+      sh 'tar -czvf prep.tar.gz pct.sh excludes.txt bom-*/excludes.txt target **/target/surefire-reports/TEST-*.xml'
+      // also archive plugins.txt & lines.txt for future references
+      archiveArtifacts 'prep.tar.gz,target/plugins.txt,target/lines.txt'
     }
     fullTestMarkerFile = fileExists 'full-test'
     weeklyTestMarkerFile = fileExists 'weekly-test'
