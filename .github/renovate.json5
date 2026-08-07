@@ -76,9 +76,9 @@
       "matchDepNames": [
         "org.jenkins-ci.plugins:ssh-agent"
       ],
-      // skip 403.x through 413.x, see https://github.com/jenkinsci/ssh-agent-plugin/issues/290
-      // but allow 414.x and later so we pick up a fix when one ships
-      "allowedVersions": "!/^(40[3-9]|41[0-3])\\./"
+      // skip 403.x through 414.x, see https://github.com/jenkinsci/ssh-agent-plugin/issues/290
+      // but allow 415.x and later so we pick up a fix when one ships
+      "allowedVersions": "!/^(40[3-9]|41[0-4])\\./"
     },
     {
       "matchDepNames": [
