@@ -11,8 +11,9 @@ env.MAVEN_NTP = true
 final String[] limitedPluginSet = []
 
 properties([
-  disableConcurrentBuilds(abortPrevious: true),
-  buildDiscarder(logRotator(numToKeepStr: '7')),
+  // disableConcurrentBuilds(abortPrevious: true),
+  // buildDiscarder(logRotator(numToKeepStr: '7')),
+  buildDiscarder(logRotator(numToKeepStr: '20')),
   pipelineTriggers([cron(cronTrigger)])
 ])
 
