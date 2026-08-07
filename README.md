@@ -1,5 +1,9 @@
 # Bill of Materials for Jenkins plugins
 
+> [!IMPORTANT]
+> This branch is dedicated to a slimmed down version of the main pipeline running only its "prep" stage and archiving all files that are needed for its later stages.
+> This avoids rerunning prep.sh on every build, especially useful if none of its inputs have changed between builds.
+
 This repository implements a [Maven BOM](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Importing_Dependencies)
 which can be used in a plugin POM to more easily manage dependencies on other common plugins.
 This is important because version management is a [common annoyance](https://jenkins.io/doc/developer/plugin-development/updating-parent/#understanding-requireupperbounddeps-failures-and-fixes).
