@@ -64,15 +64,33 @@ def fullTestMarkerFile
 def weeklyTestMarkerFile
 def durations = [:]
 
+// debug
+def targetArchiveLink = ''
+
 stage('prep') {
   mavenEnv(jdk: 21) {
     checkout scm
-    withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist']) {
-      sh '''
-      mvn -v
-      bash prep.sh
-      '''
+
+    if (targetArchiveLink) {
+      withEnv(["TARGET_ARCHIVE_LINK=${targetArchiveLink}"]) {
+        sh '''
+        curl -L "${TARGET_ARCHIVE_LINK}" -o target.tar.gz
+        tar -xzf target.tar.gz
+        ls target
+        '''
+      }
+    } else {
+      withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist']) {
+        sh '''
+        mvn -v
+        bash prep.sh
+        '''
+      }
+      sh 'tar -czf target.tar.gz target'
+      archiveArtifacts 'target.tar.gz'
+      sh 'rm target.tar.gz'
     }
+
     fullTestMarkerFile = fileExists 'full-test'
     weeklyTestMarkerFile = fileExists 'weekly-test'
     dir('target') {
