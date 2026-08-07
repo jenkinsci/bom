@@ -85,6 +85,7 @@ stage('prep') {
         mvn -v
         bash prep.sh
         '''
+        archiveArtifacts 'target/*.txt'
       }
       sh 'tar -czf target.tar.gz target'
       archiveArtifacts 'target.tar.gz'
