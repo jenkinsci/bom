@@ -81,7 +81,7 @@ stage('prep') {
     weeklyTestMarkerFile = fileExists 'weekly-test'
     def plugins = readFile('target/plugins.txt').split('\n')
     if (limitedPluginSet) {
-      unstable 'WARNING: running on a limited plugin set'
+      unstable 'Running on a limited plugin set'
       plugins = limitedPluginSet
     }
     pluginsByRepository = parsePlugins(plugins)
