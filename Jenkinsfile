@@ -8,7 +8,18 @@ env.MAVEN_NTP = true
 // Run pct tests on a limited set of repositories and their plugin(s) if not empty
 // Expected list item format: jenkinsci/<repo-name>, tab, <coma separated plugin(s)>
 // Ex: 'jenkinsci/pipeline-stage-view-plugin\tpipeline-rest-api,pipeline-stage-view'
-final String[] limitedPluginSet = []
+final String[] limitedPluginSet = [
+  'jenkinsci/aws-credentials-plugin	aws-credentials',
+  'jenkinsci/aws-global-configuration-plugin	aws-global-configuration',
+  'jenkinsci/azure-credentials-plugin	azure-credentials',
+  'jenkinsci/azure-keyvault-plugin	azure-keyvault',
+  'jenkinsci/azure-sdk-plugin	azure-sdk',
+  'jenkinsci/azure-storage-plugin	windows-azure-storage',
+  'jenkinsci/badge-plugin	badge',
+  'jenkinsci/basic-branch-build-strategies-plugin	basic-branch-build-strategies',
+  'jenkinsci/cron_column-plugin	cron_column',
+  'jenkinsci/pipeline-maven-plugin	pipeline-maven,pipeline-maven-api,pipeline-maven-database',
+]
 
 properties([
   // disableConcurrentBuilds(abortPrevious: true),
@@ -84,7 +95,7 @@ mavenEnv(jdk: 21) {
     weeklyTestMarkerFile = fileExists 'weekly-test'
     def plugins = readFile('target/plugins.txt').split('\n')
     if (limitedPluginSet) {
-      unstable 'Running on a limited plugin set'
+      echo 'Running on a limited plugin set'
       plugins = limitedPluginSet
     }
     pluginsByRepository = parsePlugins(plugins)
