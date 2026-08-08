@@ -5,6 +5,10 @@ if(env.BRANCH_NAME == "master") {
 }
 
 env.MAVEN_NTP = true
+// Run pct tests on a limited set of repositories and their plugin(s) if not empty
+// Expected list item format: jenkinsci/<repo-name>, tab, <coma separated plugin(s)>
+// Ex: 'jenkinsci/pipeline-stage-view-plugin\tpipeline-rest-api,pipeline-stage-view'
+final String[] limitedPluginSet = []
 
 properties([
   disableConcurrentBuilds(abortPrevious: true),
@@ -75,16 +79,21 @@ stage('prep') {
     }
     fullTestMarkerFile = fileExists 'full-test'
     weeklyTestMarkerFile = fileExists 'weekly-test'
-    dir('target') {
-      def plugins = readFile('plugins.txt').split('\n')
-      pluginsByRepository = parsePlugins(plugins)
-
-      lines = readFile('lines.txt').split('\n')
-      lines = [lines[0], lines[-1]] // Save resources by running PCT only on newest and oldest lines
+    def plugins = readFile('target/plugins.txt').split('\n')
+    if (limitedPluginSet) {
+      unstable 'Running on a limited plugin set'
+      plugins = limitedPluginSet
     }
+    pluginsByRepository = parsePlugins(plugins)
+
+    lines = readFile('target/lines.txt').split('\n')
+    lines = [lines[0], lines[-1]] // Save resources by running PCT only on newest and oldest lines
     lines.each { line ->
       stash name: line, includes: "pct.sh,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-${line}.war"
     }
+    echo "${pluginsByRepository.size()} repositories:\n${plugins.join('\n')}"
+    echo "${lines.size()} lines: ${lines.join(' ')} "
+
     infra.prepareToPublishIncrementals()
   }
 }
