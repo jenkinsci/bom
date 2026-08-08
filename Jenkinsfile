@@ -82,13 +82,10 @@ def durations = [:]
 
 mavenEnv(jdk: 21) {
   stage('prep') {
-    checkout scm
-    withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist']) {
-      sh '''
-      mvn -v
-      bash prep.sh
-      '''
-    }
+    // debug: retrieve prep-only job archive instead of running prep.sh
+    copyArtifacts(projectName: 'Tools/bom/prep-only', selector: lastSuccessful(), filter: 'prep.tar.gz')
+    publishChecks(name: 'Tests / prep')
+    sh 'tar -xzvf prep.tar.gz && rm prep.tar.gz'
     infra.prepareToPublishIncrementals()
 
     fullTestMarkerFile = fileExists 'full-test'
