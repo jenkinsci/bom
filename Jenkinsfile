@@ -158,8 +158,12 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
   }
 }
 
-if (fullTestMarkerFile) {
-  error 'Remember to `git rm full-test` before taking out of draft'
+stage('checks') {
+  if (fullTestMarkerFile) {
+    error 'Remember to `git rm full-test` before taking out of draft'
+  }
 }
 
-infra.maybePublishIncrementals()
+stage('publish incrementals') {
+  infra.maybePublishIncrementals()
+}
