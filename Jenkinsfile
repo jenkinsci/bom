@@ -20,6 +20,7 @@ final String[] limitedPluginSet = [
   'jenkinsci/cron_column-plugin	cron_column',
   'jenkinsci/pipeline-maven-plugin	pipeline-maven,pipeline-maven-api,pipeline-maven-database',
 ]
+final int buildWithArchive = 1
 
 properties([
   // disableConcurrentBuilds(abortPrevious: true),
@@ -82,11 +83,27 @@ def durations = [:]
 
 mavenEnv(jdk: 21) {
   stage('prep') {
-    // debug: retrieve prep-only job archive instead of running prep.sh
-    copyArtifacts(projectName: 'Tools/bom/prep-only', selector: lastSuccessful(), filter: 'prep.tar.gz')
-    publishChecks(name: 'Tests / prep')
-    sh 'tar -xzvf prep.tar.gz && rm prep.tar.gz'
-    infra.prepareToPublishIncrementals()
+    try {
+      copyArtifacts(projectName: env.JOB_NAME, selector: lastWithArtifacts(), filter: 'prep.tar.gz')
+      // copyArtifacts(projectName: env.JOB_NAME, selector: specific("${buildWithArchive}"), filter: 'prep.tar.gz')
+      publishChecks(name: 'Tests / prep')
+      sh 'tar -xzvf prep.tar.gz && rm prep.tar.gz'
+    } catch(e) {
+      def scmVars = checkout scm
+      withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist']) {
+        sh '''
+        mvn -v
+        bash prep.sh
+        '''
+      }
+      // save current commit for future references
+      writeFile file: "target/commit-${scmVars.GIT_COMMIT}.txt", text: env.BUILD_URL
+      // archive tar of all files produced by prep.sh used after the "prep" stage of the main bom job
+      sh 'tar -czvf prep.tar.gz pct.sh excludes.txt bom-*/excludes.txt target/pct.jar target/megawar-* target/*.txt sample-plugin/target/surefire-reports/TEST-*.xml'
+      // distinct plugins.txt, lines.txt & commit-abcd.txt archives for future references
+      archiveArtifacts 'prep.tar.gz,target/*.txt'
+    }
+    // infra.prepareToPublishIncrementals()
 
     fullTestMarkerFile = fileExists 'full-test'
     weeklyTestMarkerFile = fileExists 'weekly-test'
@@ -167,9 +184,14 @@ if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env
           ${reportLines}
           </testsuite>
         """
-        writeFile file: 'bom-report.xml', text: content
-        archiveArtifacts artifacts: 'bom-report.xml'
-        junit allowEmptyResults: true, testResults: 'bom-report.xml'
+        writeFile file: 'results/bom-report.xml', text: content
+        writeFile file: 'results/bom-report_build-url.txt', text: env.BUILD_URL
+        writeFile file: "results/${env.JOB_BASE_NAME}/${env.BUILD_ID}/bom-report_${env.BUILD_ID}.xml", text: content
+        writeFile file: "results/${env.JOB_BASE_NAME}/${env.BUILD_ID}/bom-report_${env.BUILD_ID}_build-url.txt", text: env.BUILD_URL
+        // TODO: open PR with gh to update bom-report.xml in the repo instead (from a new branch)
+        // archiveArtifacts artifacts: 'results/bom-report.xml'
+        junit allowEmptyResults: true, testResults: 'results/bom-report.xml'
+        sh 'cat results/bom-report.xml'
       }
     }
   }
@@ -182,5 +204,5 @@ stage('checks') {
 }
 
 stage('publish incrementals') {
-  infra.maybePublishIncrementals()
+  // infra.maybePublishIncrementals()
 }
