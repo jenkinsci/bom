@@ -1,7 +1,7 @@
 // Do not trigger build regularly on change requests as it costs a lot
 String cronTrigger = ''
 if(env.BRANCH_NAME == "master") {
-  cronTrigger = '17 3 * * 6'
+  cronTrigger = '10 0 * * 5'
 }
 
 env.MAVEN_NTP = true
@@ -75,16 +75,17 @@ stage('prep') {
     }
     fullTestMarkerFile = fileExists 'full-test'
     weeklyTestMarkerFile = fileExists 'weekly-test'
-    dir('target') {
-      def plugins = readFile('plugins.txt').split('\n')
-      pluginsByRepository = parsePlugins(plugins)
+    def plugins = readFile('target/plugins.txt').split('\n')
+    pluginsByRepository = parsePlugins(plugins)
 
-      lines = readFile('lines.txt').split('\n')
-      lines = [lines[0], lines[-1]] // Save resources by running PCT only on newest and oldest lines
-    }
+    lines = readFile('target/lines.txt').split('\n')
+    lines = [lines[0], lines[-1]] // Save resources by running PCT only on newest and oldest lines
     lines.each { line ->
       stash name: line, includes: "pct.sh,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-${line}.war"
     }
+    echo "${pluginsByRepository.size()} repositories:\n${plugins.join('\n')}"
+    echo "${lines.size()} lines: ${lines.join(' ')} "
+
     infra.prepareToPublishIncrementals()
   }
 }

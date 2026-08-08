@@ -74,6 +74,24 @@
     },
     {
       "matchDepNames": [
+        "org.jenkins-ci.plugins:ssh-agent"
+      ],
+      // skip 403.x through 416.x, see https://github.com/jenkinsci/ssh-agent-plugin/issues/290
+      // 416 still does not address the issue, see https://github.com/jenkinsci/ssh-agent-plugin/releases/tag/416.v4d76015a_5d68
+      // but allow 417.x and later so we pick up a fix when one ships
+      "allowedVersions": "!/^(40[3-9]|41[0-6])\\./"
+    },
+    {
+      "matchDepNames": [
+        "io.jenkins.plugins:mcp-server"
+      ],
+      // skip 0.191.x, which excludes jackson2-api from pipeline-model-definition and breaks
+      // InjectedTest, see https://github.com/jenkinsci/mcp-server-plugin/pull/201
+      // but allow 0.192.x and later so we pick up a fix when one ships
+      "allowedVersions": "!/^0\\.191\\./"
+    },
+    {
+      "matchDepNames": [
         "org.jenkins-ci.tests:plugins-compat-tester-cli"
       ],
       "labels": [
