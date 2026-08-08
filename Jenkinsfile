@@ -5,6 +5,10 @@ if(env.BRANCH_NAME == "master") {
 }
 
 env.MAVEN_NTP = true
+// Run pct tests on a limited set of repositories and their plugin(s) if not empty
+// Expected list item format: jenkinsci/<repo-name>, tab, <coma separated plugin(s)>
+// Ex: 'jenkinsci/pipeline-stage-view-plugin\tpipeline-rest-api,pipeline-stage-view'
+final String[] limitedPluginSet = []
 
 properties([
   disableConcurrentBuilds(abortPrevious: true),
@@ -76,6 +80,10 @@ stage('prep') {
     fullTestMarkerFile = fileExists 'full-test'
     weeklyTestMarkerFile = fileExists 'weekly-test'
     def plugins = readFile('target/plugins.txt').split('\n')
+    if (limitedPluginSet) {
+      unstable 'Running on a limited plugin set'
+      plugins = limitedPluginSet
+    }
     pluginsByRepository = parsePlugins(plugins)
 
     lines = readFile('target/lines.txt').split('\n')
