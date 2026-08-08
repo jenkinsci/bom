@@ -68,8 +68,8 @@ def fullTestMarkerFile
 def weeklyTestMarkerFile
 def durations = [:]
 
-stage('prep') {
-  mavenEnv(jdk: 21) {
+mavenEnv(jdk: 21) {
+  stage('prep') {
     checkout scm
     withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist']) {
       sh '''
@@ -77,6 +77,11 @@ stage('prep') {
       bash prep.sh
       '''
     }
+  }
+  stage('prepare incrementals') {
+    infra.prepareToPublishIncrementals()
+  }
+  stage('parse prep') {
     fullTestMarkerFile = fileExists 'full-test'
     weeklyTestMarkerFile = fileExists 'weekly-test'
     def plugins = readFile('target/plugins.txt').split('\n')
@@ -88,13 +93,13 @@ stage('prep') {
 
     lines = readFile('target/lines.txt').split('\n')
     lines = [lines[0], lines[-1]] // Save resources by running PCT only on newest and oldest lines
+    echo "${pluginsByRepository.size()} repositories:\n${plugins.join('\n')}"
+    echo "${lines.size()} lines: ${lines.join(' ')} "
+  }
+  stage('stash lines') {
     lines.each { line ->
       stash name: line, includes: "pct.sh,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-${line}.war"
     }
-    echo "${pluginsByRepository.size()} repositories:\n${plugins.join('\n')}"
-    echo "${lines.size()} lines: ${lines.join(' ')} "
-
-    infra.prepareToPublishIncrementals()
   }
 }
 
