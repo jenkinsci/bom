@@ -99,43 +99,45 @@ stage('prep') {
 }
 
 if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env.CHANGE_ID && (pullRequest.labels.contains('full-test') || pullRequest.labels.contains('weekly-test'))) {
-  def branches = [failFast: false]
-  lines.each {line ->
-    if (line != 'weekly' && (weeklyTestMarkerFile || env.CHANGE_ID && pullRequest.labels.contains('weekly-test'))) {
-      return
-    }
-    pluginsByRepository.each { repository, plugins ->
-      branches["pct-$repository-$line"] = {
-        def jdk = line == 'weekly' || line == '2.555.x' ? 21 : 17
-        mavenEnv(jdk: jdk) {
-          unstash line
-          withEnv([
-            "PLUGINS=${plugins.join(',')}",
-            "LINE=$line",
-            'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
-          ]) {
-            def start = System.currentTimeMillis()
-            try {
-              sh '''
-              mvn -v
-              bash pct.sh
-              '''
-            } catch (e) {
-              if (!(e instanceof InterruptedException) && !(e instanceof org.jenkinsci.plugins.workflow.support.steps.AgentOfflineException)) {
-                unstable('PCT failed in ' + repository + ' - line ' + line)
-              } else {
-                throw e
+  stage('run pct') {
+    def branches = [failFast: false]
+    lines.each {line ->
+      if (line != 'weekly' && (weeklyTestMarkerFile || env.CHANGE_ID && pullRequest.labels.contains('weekly-test'))) {
+        return
+      }
+      pluginsByRepository.each { repository, plugins ->
+        branches["pct-$repository-$line"] = {
+          def jdk = line == 'weekly' || line == '2.555.x' ? 21 : 17
+          mavenEnv(jdk: jdk) {
+            unstash line
+            withEnv([
+              "PLUGINS=${plugins.join(',')}",
+              "LINE=$line",
+              'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
+            ]) {
+              def start = System.currentTimeMillis()
+              try {
+                sh '''
+                mvn -v
+                bash pct.sh
+                '''
+              } catch (e) {
+                if (!(e instanceof InterruptedException) && !(e instanceof org.jenkinsci.plugins.workflow.support.steps.AgentOfflineException)) {
+                  unstable('PCT failed in ' + repository + ' - line ' + line)
+                } else {
+                  throw e
+                }
+              } finally {
+                def elapsed = System.currentTimeMillis() - start
+                durations["pct-$repository-$line"] = (elapsed / 1000.0)
               }
-            } finally {
-              def elapsed = System.currentTimeMillis() - start
-              durations["pct-$repository-$line"] = (elapsed / 1000.0)
             }
           }
         }
       }
     }
+    parallel branches
   }
-  parallel branches
   stage('duration report') {
     node('maven-bom') {
       Double totalTime = 0
