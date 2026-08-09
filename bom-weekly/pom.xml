@@ -77,7 +77,7 @@
       <dependency>
         <groupId>com.sonyericsson.jenkins.plugins.bfa</groupId>
         <artifactId>build-failure-analyzer</artifactId>
-        <version>3.887.vc872cf1b_7dff</version>
+        <version>3.889.vda_d3b_30435fc</version>
       </dependency>
       <dependency>
         <groupId>com.synopsys.arc.jenkinsci.plugins</groupId>
