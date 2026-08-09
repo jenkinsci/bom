@@ -76,10 +76,10 @@
       "matchDepNames": [
         "org.jenkins-ci.plugins:ssh-agent"
       ],
-      // skip 403.x through 416.x, see https://github.com/jenkinsci/ssh-agent-plugin/issues/290
-      // 416 still does not address the issue, see https://github.com/jenkinsci/ssh-agent-plugin/releases/tag/416.v4d76015a_5d68
-      // but allow 417.x and later so we pick up a fix when one ships
-      "allowedVersions": "!/^(40[3-9]|41[0-6])\\./"
+      // skip 403.x through 417.x, see https://github.com/jenkinsci/ssh-agent-plugin/issues/290
+      // 417 still does not address the issue, see https://github.com/jenkinsci/ssh-agent-plugin/releases/tag/417.v1d50b_f28f0e0
+      // but allow 418.x and later so we pick up a fix when one ships
+      "allowedVersions": "!/^(40[3-9]|41[0-7])\\./"
     },
     {
       "matchDepNames": [
