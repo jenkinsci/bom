@@ -25,7 +25,7 @@
     <matrix-project-plugin.version>870.v9db_fcfc2f45b_</matrix-project-plugin.version>
     <!-- TODO 0.191 excludes jackson2-api from pipeline-model-definition, breaking InjectedTest;
          see https://github.com/jenkinsci/mcp-server-plugin/issues/217-->
-    <mcp-server.version>0.190.ve5a_6581ffc96</mcp-server.version>
+    <mcp-server.version>0.192.vfb_432174cf32</mcp-server.version>
     <mina-sshd-api.version>2.19.0-192.v2b_a_7b_2c1dc71</mina-sshd-api.version>
     <okhttp-api-plugin.version>5.3.2-200.vedb_720a_cf1f8</okhttp-api-plugin.version>
     <pipeline-maven-plugin.version>1760.v9a_a_e6dcb_0444</pipeline-maven-plugin.version>
@@ -77,7 +77,7 @@
       <dependency>
         <groupId>com.sonyericsson.jenkins.plugins.bfa</groupId>
         <artifactId>build-failure-analyzer</artifactId>
-        <version>3.887.vc872cf1b_7dff</version>
+        <version>3.889.vda_d3b_30435fc</version>
       </dependency>
       <dependency>
         <groupId>com.synopsys.arc.jenkinsci.plugins</groupId>
@@ -112,7 +112,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>analysis-model-api</artifactId>
-        <version>14.14.0-1004.vf53c9efb_f455</version>
+        <version>14.16.0-1014.v2802998b_7789</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -127,7 +127,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>artifactory-artifact-manager</artifactId>
-        <version>326.v9e025895153f</version>
+        <version>330.v3585ea_2f94c2</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -208,7 +208,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>coverage</artifactId>
-        <version>3.3316.v6a_d158309c7a_</version>
+        <version>3.3318.vdf8029e5c4cd</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -330,7 +330,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>git-forensics</artifactId>
-        <version>4.2449.vf7e3614b_30b_1</version>
+        <version>4.2463.vf6fecb_444a_b_3</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -890,7 +890,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>build-timeout</artifactId>
-        <version>1.40</version>
+        <version>1.41</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1198,7 +1198,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>htmlpublisher</artifactId>
-        <version>427.1</version>
+        <version>428</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1525,7 +1525,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>script-security</artifactId>
-        <version>1402.1405.vc96e74964250</version>
+        <version>1412.v7737b_3405f86</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
