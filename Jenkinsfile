@@ -66,6 +66,8 @@ def pluginsByRepository
 def lines
 def fullTestMarkerFile
 def weeklyTestMarkerFile
+boolean fullTest = false
+boolean weeklyTest = false
 def durations = [:]
 
 mavenEnv(jdk: 21) {
@@ -81,6 +83,9 @@ mavenEnv(jdk: 21) {
 
     fullTestMarkerFile = fileExists 'full-test'
     weeklyTestMarkerFile = fileExists 'weekly-test'
+    fullTest = fullTestMarkerFile || (env.CHANGE_ID && pullRequest.labels.contains('full-test'))
+    weeklyTest = weeklyTestMarkerFile || (env.CHANGE_ID && pullRequest.labels.contains('weekly-test'))
+
     def plugins = readFile('target/plugins.txt').split('\n')
     if (limitedPluginSet) {
       unstable 'Running on a limited plugin set'
@@ -90,23 +95,24 @@ mavenEnv(jdk: 21) {
 
     lines = readFile('target/lines.txt').split('\n')
     lines = [lines[0], lines[-1]] // Save resources by running PCT only on newest and oldest lines
+    if (weeklyTest && !(fullTest)) {
+      echo 'INFO: keeping only "weekly" line'
+      lines = ['weekly']
+    }
     echo "${pluginsByRepository.size()} repositories:\n${plugins.join('\n')}"
     echo "${lines.size()} lines: ${lines.join(' ')} "
   }
-  stage('stash lines') {
+  stage('stash line(s)') {
     lines.each { line ->
       stash name: line, includes: "pct.sh,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-${line}.war"
     }
   }
 }
 
-if (BRANCH_NAME == 'master' || fullTestMarkerFile || weeklyTestMarkerFile || env.CHANGE_ID && (pullRequest.labels.contains('full-test') || pullRequest.labels.contains('weekly-test'))) {
+if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
   stage('run pct') {
     def branches = [failFast: false]
     lines.each {line ->
-      if (line != 'weekly' && (weeklyTestMarkerFile || env.CHANGE_ID && pullRequest.labels.contains('weekly-test'))) {
-        return
-      }
       pluginsByRepository.each { repository, plugins ->
         branches["pct-$repository-$line"] = {
           def jdk = line == 'weekly' || line == '2.555.x' ? 21 : 17
