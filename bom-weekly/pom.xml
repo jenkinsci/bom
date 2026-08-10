@@ -25,7 +25,7 @@
     <matrix-project-plugin.version>870.v9db_fcfc2f45b_</matrix-project-plugin.version>
     <!-- TODO 0.191 excludes jackson2-api from pipeline-model-definition, breaking InjectedTest;
          see https://github.com/jenkinsci/mcp-server-plugin/issues/217-->
-    <mcp-server.version>0.192.vfb_432174cf32</mcp-server.version>
+    <mcp-server.version>0.193.vd79b_60b_39dcf</mcp-server.version>
     <mina-sshd-api.version>2.19.0-192.v2b_a_7b_2c1dc71</mina-sshd-api.version>
     <okhttp-api-plugin.version>5.3.2-200.vedb_720a_cf1f8</okhttp-api-plugin.version>
     <pipeline-maven-plugin.version>1760.v9a_a_e6dcb_0444</pipeline-maven-plugin.version>
@@ -117,7 +117,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>apache-httpcomponents-client-5-api</artifactId>
-        <version>5.6.3-202.v310919c85b_f6</version>
+        <version>5.6.4-204.vfa_29df89ffcf</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -127,7 +127,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>artifactory-artifact-manager</artifactId>
-        <version>330.v3585ea_2f94c2</version>
+        <version>333.v2d4063b_35b_8d</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -188,7 +188,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>commons-compress-api</artifactId>
-        <version>1.28.0-86.v905b_77d84797</version>
+        <version>1.28.0-87.v48a_8104cb_b_25</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -208,7 +208,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>coverage</artifactId>
-        <version>3.3318.vdf8029e5c4cd</version>
+        <version>3.3325.v2f3dd167a_b_e5</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -294,7 +294,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>flyway-api</artifactId>
-        <version>13.1.0-466.vd76c89c30392</version>
+        <version>13.2.0-468.ve3f2f9b_a_f5a_b_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -466,12 +466,12 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>mariadb-api</artifactId>
-        <version>3.5.9-198.v7c48f744d427</version>
+        <version>3.5.10-202.v20418813713a_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>markdown-formatter</artifactId>
-        <version>346.v3c6828ddd39e</version>
+        <version>350.v70f9a_06e71fc</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -584,7 +584,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>snakeyaml-engine-api</artifactId>
-        <version>3.0.1-5.vd98ea_ff3b_92e</version>
+        <version>3.1.1-12.v4320c7d6f89c</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -599,12 +599,12 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>warnings-ng</artifactId>
-        <version>13.10153.v011f47a_3ef01</version>
+        <version>13.10212.v247e4d8d9430</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>woodstox-core-api</artifactId>
-        <version>7.2.1-6.v3718a_a_11f5c4</version>
+        <version>7.2.2-10.vcb_629759b_2c2</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins.aws-java-sdk2</groupId>
@@ -804,7 +804,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ansicolor</artifactId>
-        <version>536.v13fa_b_860c267</version>
+        <version>542.v03d235fee02d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -925,7 +925,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>cloudbees-bitbucket-branch-source</artifactId>
-        <version>937.3.6</version>
+        <version>937.3.7</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -971,7 +971,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>credentials</artifactId>
-        <version>1506.v948b_b_b_7dec44</version>
+        <version>1511.v2e3cb_0008ef0</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1555,7 +1555,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ssh-agent</artifactId>
-        <version>402.vc9cec9230d4b_</version>
+        <version>418.v59904cc02b_71</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1652,7 +1652,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>view-job-filters</artifactId>
-        <version>406.va_0ec67147ee2</version>
+        <version>408.vb_ca_5e798e5b_5</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
