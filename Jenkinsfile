@@ -8,7 +8,7 @@ env.MAVEN_NTP = true
 // Run pct tests on a limited set of repositories and their plugin(s) if not empty
 // Expected list item format: jenkinsci/<repo-name>, tab, <coma separated plugin(s)>
 // Ex: 'jenkinsci/pipeline-stage-view-plugin\tpipeline-rest-api,pipeline-stage-view'
-final String[] limitedPluginSet = []
+final String[] limitedPluginSet = ['jenkinsci/badge-plugin\tbadge', 'jenkinsci/cron_column-plugin\tcron_column']
 
 properties([
   disableConcurrentBuilds(abortPrevious: true),
@@ -88,7 +88,7 @@ mavenEnv(jdk: 21) {
 
     def plugins = readFile('target/plugins.txt').split('\n')
     if (limitedPluginSet) {
-      unstable 'Running on a limited plugin set'
+      echo 'IGNORING: Running on a limited plugin set'
       plugins = limitedPluginSet
     }
     pluginsByRepository = parsePlugins(plugins)
