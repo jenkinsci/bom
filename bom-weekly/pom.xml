@@ -599,7 +599,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>warnings-ng</artifactId>
-        <version>13.10189.v05fe6b_5c4086</version>
+        <version>13.10192.v1d5a_0b_6da_fa_5</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
