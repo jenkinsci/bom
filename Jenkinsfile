@@ -5,6 +5,8 @@ if(env.BRANCH_NAME == "master") {
 }
 
 env.MAVEN_NTP = true
+def maxSplitsPerLine = 20
+
 // Run pct tests on a limited set of repositories and their plugin(s) if not empty
 // Expected list item format: jenkinsci/<repo-name>, tab, <coma separated plugin(s)>
 // Ex: 'jenkinsci/pipeline-stage-view-plugin\tpipeline-rest-api,pipeline-stage-view'
@@ -29,22 +31,16 @@ def mavenEnv(Map params = [:], Closure body) {
     // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
     node('maven-bom') {
       timeout(120) {
-        withChecks(name: 'Tests', includeStage: true) {
-          infra.withArtifactCachingProxy {
-            withEnv([
-              'JAVA_HOME=/opt/jdk-' + params['jdk'],
-              'PATH+JDK=/opt/jdk-' + params['jdk'] + '/bin',
-              "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B ${env.MAVEN_NTP != null ? '-ntp' : ''} -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo",
-              "MVN_LOCAL_REPO=${WORKSPACE_TMP}/m2repo",
-            ]) {
-              infra.loadMavenLocalCacheIfAny(env.MVN_LOCAL_REPO)
+        infra.withArtifactCachingProxy {
+          withEnv([
+            'JAVA_HOME=/opt/jdk-' + params['jdk'],
+            'PATH+JDK=/opt/jdk-' + params['jdk'] + '/bin',
+            "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B ${env.MAVEN_NTP != null ? '-ntp' : ''} -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo",
+            "MVN_LOCAL_REPO=${WORKSPACE_TMP}/m2repo",
+          ]) {
+            infra.loadMavenLocalCacheIfAny(env.MVN_LOCAL_REPO)
 
-              body()
-            }
-          }
-          if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount > 0) {
-            // TODO JENKINS-27092 throw up UNSTABLE status in this case
-            error 'Some test failures, not going to continue'
+            body()
           }
         }
       }
@@ -57,7 +53,7 @@ def parsePlugins(plugins) {
   def pluginsByRepository = [:]
   plugins.each { plugin ->
     def splits = plugin.split('\t')
-    pluginsByRepository[splits[0].split('/')[1]] = splits[1].split(',')
+    pluginsByRepository[splits[0].split('/')[1]] = splits[1]
   }
   pluginsByRepository
 }
@@ -68,16 +64,22 @@ def fullTestMarkerFile
 def weeklyTestMarkerFile
 boolean fullTest = false
 boolean weeklyTest = false
+def splits = [:]
 def durations = [:]
 
 mavenEnv(jdk: 21) {
   stage('prep') {
     checkout scm
-    withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist']) {
-      sh '''
-      mvn -v
-      bash prep.sh
-      '''
+    withChecks(name: 'Tests', includeStage: true) {
+      withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist']) {
+        sh '''
+        mvn -v
+        bash prep.sh
+        '''
+      }
+      if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount > 0) {
+        error 'Some test failures during prep.sh, not going to continue'
+      }
     }
     infra.prepareToPublishIncrementals()
 
@@ -88,8 +90,9 @@ mavenEnv(jdk: 21) {
 
     def plugins = readFile('target/plugins.txt').split('\n')
     if (limitedPluginSet) {
-      unstable 'Running on a limited plugin set'
       plugins = limitedPluginSet
+      maxSplitsPerLine = 3
+      unstable "Running on a limited plugin set (maxSplitsPerLine reduced to ${maxSplitsPerLine})"
     }
     pluginsByRepository = parsePlugins(plugins)
 
@@ -101,6 +104,20 @@ mavenEnv(jdk: 21) {
     }
     echo "${pluginsByRepository.size()} repositories:\n${plugins.join('\n')}"
     echo "${lines.size()} lines: ${lines.join(' ')} "
+
+    // Fixed splits, each split using only one line
+    lines.each { line ->
+      pluginsByRepository.eachWithIndex { repository, repoPlugins, idx ->
+        def index = (idx % maxSplitsPerLine) + 1 // to get split1 to split<maxSplitsPerLine>
+        def name = "split-${index}:${line}"
+        def repositoryAndPlugins = "${repository} ${repoPlugins}"
+
+        splits[name] = splits[name] ?: []
+        splits[name] << repositoryAndPlugins
+      }
+    }
+    echo "${splits.size()} splits"
+    echo splits.collect { split, combinations -> "split: ${split}, combinations: ${combinations}" }.join('\n')
   }
   stage('stash line(s)') {
     lines.each { line ->
@@ -112,35 +129,48 @@ mavenEnv(jdk: 21) {
 if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
   stage('run pct') {
     def branches = [failFast: false]
-    lines.each {line ->
-      pluginsByRepository.each { repository, plugins ->
-        branches["pct-$repository-$line"] = {
-          def jdk = line == 'weekly' || line == '2.555.x' ? 21 : 17
-          mavenEnv(jdk: jdk) {
-            stage('unstash line') {
-              unstash line
-            }
-            stage('pct tests') {
-              withEnv([
-                "PLUGINS=${plugins.join(',')}",
-                "LINE=$line",
-                'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
-              ]) {
-                def start = System.currentTimeMillis()
-                try {
-                  sh '''
-                  mvn -v
-                  bash pct.sh
-                  '''
-                } catch (e) {
-                  if (!(e instanceof InterruptedException) && !(e instanceof org.jenkinsci.plugins.workflow.support.steps.AgentOfflineException)) {
-                    unstable('PCT failed in ' + repository + ' - line ' + line)
-                  } else {
-                    throw e
+    splits.each { split, combinations ->
+      def line = split.split(':')[1]
+      def jdk = line == 'weekly' || line == '2.555.x' ? 21 : 17
+      branches[split] = {
+        mavenEnv(jdk: jdk) {
+          stage('unstash line') {
+            unstash line
+          }
+          combinations.eachWithIndex { repositoryAndPlugins, idx ->
+            def parts = repositoryAndPlugins.split(' ')
+            def repository = parts[0]
+            def plugins = parts[1]
+            def combination = "${repository}:${line}"
+            stage("${combination} (${idx + 1}/${combinations.size()})") {
+              withChecks(name: "PCT / ${combination}") {
+                withEnv([
+                  "PLUGINS=${plugins}",
+                  "LINE=$line",
+                  'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
+                ]) {
+                  def start = System.currentTimeMillis()
+                  try {
+                    sh '''
+                    mvn -v
+                    bash pct.sh
+                    '''
+                  } catch (e) {
+                    if (!(e instanceof InterruptedException) && !(e instanceof org.jenkinsci.plugins.workflow.support.steps.AgentOfflineException)) {
+                      unstable('PCT failed in ' + repository + ' - line ' + line)
+                    } else {
+                      throw e
+                    }
+                  } finally {
+                    def elapsed = System.currentTimeMillis() - start
+                    durations["pct-$repository-$line"] = (elapsed / 1000.0)
+                    try {
+                      // record test results (can be missing if the plugin couldn't be built)
+                      junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml')
+                    } catch(je) {
+                      unstable "error junitResult: ${je}"
+                    }
                   }
-                } finally {
-                  def elapsed = System.currentTimeMillis() - start
-                  durations["pct-$repository-$line"] = (elapsed / 1000.0)
                 }
               }
             }
