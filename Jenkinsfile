@@ -176,6 +176,9 @@ stage('checks') {
   if (fullTestMarkerFile) {
     error 'Remember to `git rm full-test` before taking out of draft'
   }
+  if (weeklyTestMarkerFile) {
+    error 'Remember to `git rm weekly-test` before taking out of draft'
+  }
 }
 
 stage('publish incrementals') {
