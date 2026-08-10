@@ -804,7 +804,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ansicolor</artifactId>
-        <version>536.v13fa_b_860c267</version>
+        <version>542.v03d235fee02d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
