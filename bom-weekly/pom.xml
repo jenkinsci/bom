@@ -1602,7 +1602,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>swarm</artifactId>
-        <version>3.51</version>
+        <version>1258.vda_14ddda_0613</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
