@@ -140,6 +140,27 @@ Keep the PR in draft until tests pass and this file can be deleted.
 To further minimize build time, tests are run only on Linux, against Java 11, and without Docker support.
 It is unusual but possible for cross-component incompatibilities to only be visible in more specialized environments (such as Windows).
 
+### Running a limited plugin set
+
+To run a build against a specific set of repository(ies) and their plugin(s), you can add it via a replay on top of the Jenkinsfile:
+```diff
+-def limitedPluginSetReplay = []
++def limitedPluginSetReplay = ['jenkinsci/badge-plugin\tbadge', 'jenkinsci/pipeline-stage-view-plugin\tpipeline-rest-api,pipeline-stage-view']
+```
+
+Don't commit that change: if you lack permission to replay a build, then you may instead
+
+```bash
+echo 'jenkinsci/badge-plugin\tbadge' > limited-plugin-set
+echo 'jenkinsci/pipeline-stage-view-plugin\tpipeline-rest-api,pipeline-stage-view' >> limited-plugin-set
+git add limited-plugin-set
+git commit -m 'Run tests on limited plugin set'
+```
+
+Expected line format: jenkinsci/<repo-name>, tab, <coma separated plugin(s)>
+
+Keep the PR in draft until tests pass and this file can be deleted.
+
 ## LTS lines
 
 A separate BOM artifact is available for the latest weekly, current LTS line and a few historical lines.

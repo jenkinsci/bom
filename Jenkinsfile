@@ -7,10 +7,9 @@ if(env.BRANCH_NAME == "master") {
 env.MAVEN_NTP = true
 def maxSplitsPerLine = 20
 
-// Run pct tests on a limited set of repositories and their plugin(s) if not empty
-// Expected list item format: jenkinsci/<repo-name>, tab, <coma separated plugin(s)>
-// Ex: 'jenkinsci/pipeline-stage-view-plugin\tpipeline-rest-api,pipeline-stage-view'
-final String[] limitedPluginSet = []
+// Run pct tests on a limited set of repositories and their plugin(s) if not empty (take precedence over `limited-plugin-set` marker)
+// Ex: ['jenkinsci/badge-plugin\tbadge', 'jenkinsci/pipeline-stage-view-plugin\tpipeline-rest-api,pipeline-stage-view']
+def limitedPluginSetReplay = []
 
 properties([
   disableConcurrentBuilds(abortPrevious: true),
@@ -85,14 +84,16 @@ mavenEnv(jdk: 21) {
 
     fullTestMarkerFile = fileExists 'full-test'
     weeklyTestMarkerFile = fileExists 'weekly-test'
+    limitedPluginSetMarkerFile = fileExists 'limited-plugin-set'
     fullTest = fullTestMarkerFile || (env.CHANGE_ID && pullRequest.labels.contains('full-test'))
     weeklyTest = weeklyTestMarkerFile || (env.CHANGE_ID && pullRequest.labels.contains('weekly-test'))
+    limitedPluginSet = limitedPluginSetReplay || limitedPluginSetMarkerFile
 
     def plugins = readFile('target/plugins.txt').split('\n')
     if (limitedPluginSet) {
-      plugins = limitedPluginSet
+      plugins = limitedPluginSetReplay ? limitedPluginSetReplay : readFile('limited-plugin-set').split('\n')
       maxSplitsPerLine = 3
-      unstable "Running on a limited plugin set (maxSplitsPerLine reduced to ${maxSplitsPerLine})"
+      echo "Running on a limited plugin set (maxSplitsPerLine reduced to ${maxSplitsPerLine})"
     }
     pluginsByRepository = parsePlugins(plugins)
 
@@ -208,6 +209,9 @@ stage('checks') {
   }
   if (weeklyTestMarkerFile) {
     unstable 'Remember to `git rm weekly-test` before taking out of draft'
+  }
+  if (limitedPluginSetMarkerFile) {
+    unstable 'Remember to `git rm limited-plugin-set` before taking out of draft'
   }
 }
 
