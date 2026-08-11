@@ -140,24 +140,6 @@ Keep the PR in draft until tests pass and this file can be deleted.
 To further minimize build time, tests are run only on Linux, against Java 11, and without Docker support.
 It is unusual but possible for cross-component incompatibilities to only be visible in more specialized environments (such as Windows).
 
-### Replay any specific case
-
-If you want to test specific cases without ever changing labels or marker files, you can update the `flags` map on top of the pipeline in replays.
-
-Ex, to simulate a `full-test` marker with a `weekly-test` label, update this at the top of the pipeline:
-
-```diff
-// Test flags depending on the presence of corresponding labels or marker files
-// Can be modified to test specific cases independently of the current PR labels or markers
-// Possible value(s): 'label', 'marker'
-Map flags = [
-    -  'weekly-test': [] as Set,
-+  'weekly-test': ['label'] as Set,
--  'full-test': [] as Set,
-+  'full-test': ['marker'] as Set,
-]
-```
-
 ## LTS lines
 
 A separate BOM artifact is available for the latest weekly, current LTS line and a few historical lines.
