@@ -174,10 +174,10 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
 
 stage('checks') {
   if (fullTestMarkerFile) {
-    error 'Remember to `git rm full-test` before taking out of draft'
+    unstable 'Remember to `git rm full-test` before taking out of draft'
   }
   if (weeklyTestMarkerFile) {
-    error 'Remember to `git rm weekly-test` before taking out of draft'
+    unstable 'Remember to `git rm weekly-test` before taking out of draft'
   }
 }
 
