@@ -117,7 +117,7 @@ mavenEnv(jdk: 21) {
       }
     }
     echo "${splits.size()} splits"
-    echo splits.collect { split, combinations -> "split: ${split}, combinations: ${combinations}" }.join('\n')
+    echo splits.collect { split, combinations -> "${split} ${combinations}" }.join('\n')
   }
   stage('stash line(s)') {
     lines.each { line ->
