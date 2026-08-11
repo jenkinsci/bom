@@ -446,7 +446,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>json-api</artifactId>
-        <version>20251224-185.v0cc18490c62c</version>
+        <version>20260719-223.va_81f828cdb_58</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
