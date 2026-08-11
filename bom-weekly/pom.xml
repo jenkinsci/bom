@@ -15,7 +15,7 @@
     <branch-api-plugin.version>2.1280.v0d4e5b_b_460ef</branch-api-plugin.version>
     <checks-api.version>415.vf022234a_931d</checks-api.version>
     <cloudbees-folder-plugin.version>6.1106.v3a_d9a_6d2465e</cloudbees-folder-plugin.version>
-    <configuration-as-code-plugin.version>2116.v98dde145b_dce</configuration-as-code-plugin.version>
+    <configuration-as-code-plugin.version>2117.vc05a_0b_e6b_f4e</configuration-as-code-plugin.version>
     <data-tables-api.version>2.3.8-1570.v1cb_1cd2a_0fb_c</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.7</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>4.1923.v445c56df9b_2e</forensics-api.version>
@@ -57,7 +57,7 @@
       <dependency>
         <groupId>com.cloudbees.jenkins.plugins</groupId>
         <artifactId>kubernetes-credentials-provider</artifactId>
-        <version>1.303.vdfcf47fb_b_fef</version>
+        <version>1.315.v92008589c044</version>
       </dependency>
       <dependency>
         <groupId>com.coravy.hudson.plugins.github</groupId>
@@ -254,7 +254,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>design-library</artifactId>
-        <version>444.v568b_174ece88</version>
+        <version>460.ve2a_a_b_066e678</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -446,7 +446,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>json-api</artifactId>
-        <version>20251224-185.v0cc18490c62c</version>
+        <version>20260719-223.va_81f828cdb_58</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -543,7 +543,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
-        <version>980.vb_db_0b_e5f683c</version>
+        <version>998.vc30deece0e36</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -880,7 +880,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>build-monitor-plugin</artifactId>
-        <version>1.14-985.v7b_f37b_3d0b_f5</version>
+        <version>1113.v841eb_e2ccda_5</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1602,7 +1602,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>swarm</artifactId>
-        <version>3.51</version>
+        <version>1258.vda_14ddda_0613</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
