@@ -9,7 +9,18 @@ def maxSplitsPerLine = 20
 
 // Run pct tests on a limited set of repositories and their plugin(s) if not empty
 // Ex: ['jenkinsci/badge-plugin\tbadge', 'jenkinsci/cron_column-plugin\tcron_column']
-def limitedPluginSet = []
+def limitedPluginSet = [
+  'jenkinsci/aws-credentials-plugin	aws-credentials',
+  'jenkinsci/aws-global-configuration-plugin	aws-global-configuration',
+  'jenkinsci/azure-credentials-plugin	azure-credentials',
+  'jenkinsci/azure-keyvault-plugin	azure-keyvault',
+  'jenkinsci/azure-sdk-plugin	azure-sdk',
+  'jenkinsci/azure-storage-plugin	windows-azure-storage',
+  'jenkinsci/badge-plugin	badge',
+  'jenkinsci/basic-branch-build-strategies-plugin	basic-branch-build-strategies',
+  'jenkinsci/cron_column-plugin	cron_column',
+  'jenkinsci/pipeline-maven-plugin	pipeline-maven,pipeline-maven-api,pipeline-maven-database',
+]
 
 properties([
   disableConcurrentBuilds(abortPrevious: true),
