@@ -115,19 +115,67 @@ mavenEnv(jdk: 21) {
     }
     echo "${pluginsByRepository.size()} repositories:\n${plugins.join('\n')}"
     echo "${lines.size()} lines: ${lines.join(' ')}"
-
-    // Fixed splits, each split using only one line
+  }
+  stage('split') {
+    def currentRepositories = pluginsByRepository.keySet().sort()
+    def firstLine = lines[0]
+    // Balanced splits, each split using only one line
     lines.each { line ->
-      pluginsByRepository.eachWithIndex { repository, repoPlugins, idx ->
-        def index = (idx % maxSplitsPerLine) + 1 // to get split1 to split<maxSplitsPerLine>
-        def name = "split-${index}:${line}"
-        splits[name] = splits[name] ?: []
-        splits[name] << repository
+      // Retrieve splits from last completed build's junit records from bom report stages
+      def splitType = 'split'
+      def splitsFromJunitRecords = splitTests(parallelism: count(maxSplitsPerLine), testMode: testCase(), stage: "bom-report_${line}")
+      // As splitTests returns exclusion lists, we need to list first all its test cases (repositories)
+      def previousRepositories = [] as Set
+      splitsFromJunitRecords.each { exclusions ->
+        exclusions.each { repository ->
+          // Keep one of each exclusion list items that are in current repositories
+          if (!previousRepositories.contains(repository) && currentRepositories.contains(repository)) previousRepositories << repository
+        }
+      }
+      def balancedSplits = splitsFromJunitRecords.collect { exclusions ->
+        previousRepositories - exclusions
+      }
+      def newRepositories = currentRepositories - previousRepositories
+      def newCount = newRepositories.size()
+      echo "INFO: ${previousRepositories.size()} repositories returned by splitTests from junit records for '${line}' line"
+      echo "INFO: ${newCount} new repositor${newCount <= 1 ? 'y' : 'ies' } not returned by splitTests for '${line}' line"
+
+      // Fallbacks in case splitTests output is unusable (ex: no junit records, or in unexpected stages)
+      if (newCount == currentRepositories.size()) {
+        echo "INFO: splitTests did not return any of the current repositories for '${line}'"
+        if (line == firstLine) {
+          def storedReportsPath = "reports/bom-report_${line}.xml"
+          echo "INFO: fallback to extracting splits from stored ${storedReportsPath}"
+          splitType = 'stored'
+          balancedSplits = getBalancedSplitsFromStoredReports(storedReportsPath, currentRepositories)
+        } else {
+          echo "INFO: fallback to extracting splits from first line '${firstLine}'"
+          splitType = firstLine
+          balancedSplits = splits.findAll { splitName, repositories ->
+            splitName.endsWith(":${firstLine}")
+          }
+        }
+        newRepositories = currentRepositories - balancedSplits.flatten().toSet()
+      }
+
+      // Generate current line's splits
+      balancedSplits.eachWithIndex { repositories, i ->
+        splits["${splitType}-${(i + 1).toString().padLeft(2, '0')}:${line}"] = repositories
+      }
+      if (newRepositories) {
+        splitType = 'new'
+        // Fixed splits by default for the remaining new repositories
+        newRepositories.eachWithIndex { repository, idx ->
+          def index = ((idx % maxSplitsPerLine) + 1).toString().padLeft(2, '0') // to get split01 to split<maxSplitsPerLine>
+          def name = "${splitType}-${index}:${line}"
+          splits[name] = splits[name] ?: []
+          splits[name] << repository
+        }
       }
     }
     echo "${splits.size()} split(s)"
     echo splits.collect { split, repositories ->
-      "${split} (${repositories.size()}) ${repositories}"
+      "${split} [${repositories.size()}]:\n - ${repositories.join('\n - ')}"
     }.join('\n')
   }
   stage('stash line(s)') {
@@ -258,4 +306,28 @@ stage('checks') {
 
 stage('publish incrementals') {
   infra.maybePublishIncrementals()
+}
+
+def getBalancedSplitsFromStoredReports(def reportPath = 'reports/bom-report_weekly.xml', def repositoriesUnderTest) {
+  def splits = [:]
+  try {
+    readFile(reportPath).split('\n').findAll {
+      it.contains('<testcase ')
+    }.each { line ->
+      def nameMatch = line =~ /\bname="([^"]+)"/
+      def splitMatch = line =~ /\bsplit="([^"]+)"/
+      if (nameMatch.find() && splitMatch.find()) {
+        def repository = nameMatch[0][1]
+        def split = splitMatch[0][1]
+        // Keep only repositories under test
+        if (repositoriesUnderTest.contains(repository)) {
+          splits[split] = splits[split] ?: []
+          splits[split] << repository
+        }
+      }
+    }
+  } catch (e) {
+    echo "WARNING: could not retrieve splits from ${reportPath}"
+  }
+  return splits.values().toList()
 }
