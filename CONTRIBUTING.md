@@ -106,6 +106,30 @@ if you have switched the version in `bom-weekly/pom.xml` to a `*-SNAPSHOT`.
 
 To minimize cloud resources, PCT is not run at all by default on pull requests, only some basic sanity checks.
 
+### Consuming incrementals
+
+By default the builds run with `-P-consume-incrementals`, so [incremental](https://jenkins.io/jep/305)
+versions of plugins cannot be resolved.
+To test an incremental version of Jenkins or a plugin, add the label `consume-incrementals` to the PR,
+which makes the builds run with `-Pconsume-incrementals` instead.
+
+If you lack triage permission and so cannot add this label, then you may instead:
+
+```bash
+echo 'TODO delete me' > consume-incrementals
+git add consume-incrementals
+git commit -m 'Consume incrementals'
+```
+
+Keep the PR in draft until the incremental versions have been switched to release versions
+and the label or file can be removed.
+
+Locally, run with `CONSUME_INCREMENTALS=true` (or create the marker file) to get the same effect:
+
+```sh
+CONSUME_INCREMENTALS=true PLUGINS=structs TEST=InjectedTest bash local-test.sh
+```
+
 ### Running weekly tests
 
 Add the label `weekly-test` to run the tests against the latest weekly Jenkins version - This is what you want most of the time.
@@ -139,6 +163,21 @@ Keep the PR in draft until tests pass and this file can be deleted.
 
 To further minimize build time, tests are run only on Linux, against Java 11, and without Docker support.
 It is unusual but possible for cross-component incompatibilities to only be visible in more specialized environments (such as Windows).
+
+### Running a limited plugin set
+
+To run a build against a specific set of repositories and their plugin(s), you can alter the Jenkinsfile via a commit or a replay (if you have permission to do so):
+```diff
+-def limitedPluginSet = []
++def limitedPluginSet = [
++  'jenkinsci/cron_column-plugin\tcron_column',
++  'jenkinsci/pipeline-stage-view-plugin\tpipeline-rest-api,pipeline-stage-view'
++]
+```
+
+Expected line format: jenkinsci/<repo-name>, tab, <coma separated plugin(s)>
+
+Keep the PR in draft until tests pass and this change can be reverted.
 
 ## LTS lines
 
