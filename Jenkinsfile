@@ -62,16 +62,23 @@ def pluginsByRepository
 def lines
 def fullTestMarkerFile
 def weeklyTestMarkerFile
+def consumeIncrementalsMarkerFile
 boolean fullTest = false
 boolean weeklyTest = false
+boolean consumeIncrementals = false
 def splits = [:]
 def durations = [:]
 
 mavenEnv(jdk: 21) {
   stage('prep') {
     checkout scm
+    consumeIncrementalsMarkerFile = fileExists 'consume-incrementals'
+    consumeIncrementals = consumeIncrementalsMarkerFile || (env.CHANGE_ID && pullRequest.labels.contains('consume-incrementals'))
+    if (!consumeIncrementals) {
+      echo 'Forbidding use of incremental dependencies. If you need to consume incrementals, add the `consume-incrementals` label, or add a file named `consume-incrementals` to the repository root if you lack triage permission. Then keep this PR in draft until the dependencies have been switched to release versions.'
+    }
     withChecks(name: 'Tests', includeStage: true) {
-      withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist']) {
+      withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist', "CONSUME_INCREMENTALS=${consumeIncrementals}"]) {
         sh '''
         mvn -v
         bash prep.sh
@@ -121,7 +128,7 @@ mavenEnv(jdk: 21) {
   }
   stage('stash line(s)') {
     lines.each { line ->
-      stash name: line, includes: "pct.sh,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-${line}.war"
+      stash name: line, includes: "pct.sh,incrementals.sh,consume-incrementals,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-${line}.war"
     }
   }
 }
@@ -147,6 +154,7 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
                 withEnv([
                   "PLUGINS=${plugins}",
                   "LINE=$line",
+                  "CONSUME_INCREMENTALS=${consumeIncrementals}",
                   'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
                 ]) {
                   def start = System.currentTimeMillis()
@@ -208,6 +216,9 @@ stage('checks') {
   }
   if (weeklyTestMarkerFile) {
     unstable 'Remember to `git rm weekly-test` before taking out of draft'
+  }
+  if (consumeIncrementalsMarkerFile) {
+    unstable 'Remember to `git rm consume-incrementals` before taking out of draft'
   }
 }
 
