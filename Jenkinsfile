@@ -10,7 +10,7 @@ def maxSplitsPerLine = 20
 // Run pct tests on a limited set of repositories and their plugin(s) if not empty
 // Expected list item format: jenkinsci/<repo-name>, tab, <coma separated plugin(s)>
 // Ex: 'jenkinsci/pipeline-stage-view-plugin\tpipeline-rest-api,pipeline-stage-view'
-final String[] limitedPluginSet = []
+final String[] limitedPluginSet = ['jenkinsci/warnings-ng-plugin\twarnings-ng']
 
 properties([
   disableConcurrentBuilds(abortPrevious: true),
