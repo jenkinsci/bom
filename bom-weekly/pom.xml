@@ -880,7 +880,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>build-monitor-plugin</artifactId>
-        <version>1113.v841eb_e2ccda_5</version>
+        <version>1116.v4d2f13e3a_a_a_6</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1479,7 +1479,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>reverse-proxy-auth-plugin</artifactId>
-        <version>245.v93f25b_b_b_3102</version>
+        <version>257.v7dc0e405b_624</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
