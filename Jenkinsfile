@@ -162,6 +162,7 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
                     '''
                   } catch (e) {
                     if (!(e instanceof InterruptedException) && !(e instanceof org.jenkinsci.plugins.workflow.support.steps.AgentOfflineException)) {
+                      publishChecks status: 'COMPLETED', conclusion: 'FAILURE', title: 'Tests could not be executed'
                       unstable('PCT failed in ' + repository + ' - line ' + line)
                     } else {
                       throw e
