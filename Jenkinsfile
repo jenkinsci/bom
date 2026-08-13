@@ -78,10 +78,11 @@ boolean weeklyTest = false
 boolean consumeIncrementals = false
 def splits = [:]
 def results = [:]
+def commitId
 
 mavenEnv(jdk: 21) {
   stage('prep') {
-    checkout scm
+    commitId = checkout(scm).GIT_COMMIT.take(7)
     consumeIncrementalsMarkerFile = fileExists 'consume-incrementals'
     consumeIncrementals = consumeIncrementalsMarkerFile || (env.CHANGE_ID && pullRequest.labels.contains('consume-incrementals'))
     if (!consumeIncrementals) {
@@ -159,9 +160,9 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
             def repository = parts[0]
             def plugins = parts[1]
             def combination = "${repository}:${line}"
-            // if the tests ran with success in a previous attempt, skip the combination (ex: in case of reclaimed spot agent)
-            def previousResult = results[combination] ?: [totalCount: 0, failCount: 0]
-            if (previousResult.totalCount > 0 && previousResult.failCount == 0) {
+            // if the tests ran with success in a previous attempt based on the same commit, skip the combination (ex: in case of reclaimed spot agent)
+            def previousResult = results[combination] ?: [totalCount: 0, failCount: 0, commitId: 'unknown']
+            if (previousResult.totalCount > 0 && previousResult.failCount == 0 && commitId == previousResult.commitId) {
               echo "${combination} has already ran ${previousResult.totalCount} test(s) with success in a previous attempt, skipping"
             } else {
               stage("${combination} (${idx + 1}/${combinations.size()})") {
@@ -189,6 +190,7 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
                       def junitResults = junit allowEmptyResults: true, testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml'
                       results[combination] = [
                         'elapsed': (System.currentTimeMillis() - start) / 1000.0,
+                        'commitId': commitId,
                         'totalCount': junitResults ? junitResults.totalCount : 0,
                         'failCount': junitResults ? junitResults.failCount : 0,
                       ]
@@ -214,7 +216,7 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
       }
       if (reportLines) {
         def content = """<?xml version="1.0" encoding="UTF-8"?>
-          <testsuite name="bom" time="${totalTime}">
+          <testsuite name="bom" time="${totalTime}" commit="${commitId}">
           ${reportLines}
           </testsuite>
         """
