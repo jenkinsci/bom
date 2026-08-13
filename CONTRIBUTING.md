@@ -164,6 +164,21 @@ Keep the PR in draft until tests pass and this file can be deleted.
 To further minimize build time, tests are run only on Linux, against Java 11, and without Docker support.
 It is unusual but possible for cross-component incompatibilities to only be visible in more specialized environments (such as Windows).
 
+### Running a limited plugin set
+
+To run a build against a specific set of repositories and their plugin(s), you can alter the Jenkinsfile via a commit or a replay (if you have permission to do so):
+```diff
+-def limitedPluginSet = []
++def limitedPluginSet = [
++  'jenkinsci/cron_column-plugin\tcron_column',
++  'jenkinsci/pipeline-stage-view-plugin\tpipeline-rest-api,pipeline-stage-view'
++]
+```
+
+Expected line format: jenkinsci/<repo-name>, tab, <coma separated plugin(s)>
+
+Keep the PR in draft until tests pass and this change can be reverted.
+
 ## LTS lines
 
 A separate BOM artifact is available for the latest weekly, current LTS line and a few historical lines.
