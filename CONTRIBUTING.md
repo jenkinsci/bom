@@ -106,6 +106,30 @@ if you have switched the version in `bom-weekly/pom.xml` to a `*-SNAPSHOT`.
 
 To minimize cloud resources, PCT is not run at all by default on pull requests, only some basic sanity checks.
 
+### Consuming incrementals
+
+By default the builds run with `-P-consume-incrementals`, so [incremental](https://jenkins.io/jep/305)
+versions of plugins cannot be resolved.
+To test an incremental version of a plugin, add the label `consume-incrementals` to the PR,
+which makes the builds run with `-Pconsume-incrementals` instead.
+
+If you lack triage permission and so cannot add this label, then you may instead:
+
+```bash
+echo 'TODO delete me' > consume-incrementals
+git add consume-incrementals
+git commit -m 'Consume incrementals'
+```
+
+Keep the PR in draft until the incremental versions have been switched to release versions
+and the label or file can be removed.
+
+Locally, run with `CONSUME_INCREMENTALS=true` (or create the marker file) to get the same effect:
+
+```sh
+CONSUME_INCREMENTALS=true PLUGINS=structs TEST=InjectedTest bash local-test.sh
+```
+
 ### Running weekly tests
 
 Add the label `weekly-test` to run the tests against the latest weekly Jenkins version - This is what you want most of the time.
