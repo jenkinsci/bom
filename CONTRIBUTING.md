@@ -110,7 +110,7 @@ To minimize cloud resources, PCT is not run at all by default on pull requests, 
 
 By default the builds run with `-P-consume-incrementals`, so [incremental](https://jenkins.io/jep/305)
 versions of plugins cannot be resolved.
-To test an incremental version of a plugin, add the label `consume-incrementals` to the PR,
+To test an incremental version of Jenkins or a plugin, add the label `consume-incrementals` to the PR,
 which makes the builds run with `-Pconsume-incrementals` instead.
 
 If you lack triage permission and so cannot add this label, then you may instead:
