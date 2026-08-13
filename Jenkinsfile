@@ -266,17 +266,17 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
         // Otherwise it would try to balance all repositories across all lines
         // While we want one line per split (agent)
         branches[testSuiteName] = {
-          def testCases = []
+          def allTestCases = []
           results.each { combination, result ->
             def repository = combination.split(':')[0]
             def resultLine = combination.split(':')[1]
             if (line == resultLine) {
-              testCases << '<testcase split="' + result['split'] + '" name="' + repository + '" classname="pct-report.' + repository + '" time="' + result['elapsed'] + '" readyin="' + result['readyIn'] + '" attempt="' + result['attempt'] + '"/>\n'
+              allTestCases << '<testcase split="' + result['split'] + '" name="' + repository + '" classname="pct-report.' + repository + '" time="' + result['elapsed'] + '" readyin="' + result['readyIn'] + '" attempt="' + result['attempt'] + '"/>\n'
             }
           }
           def content = """<?xml version="1.0" encoding="UTF-8"?>
             <testsuite name="${testSuiteName}" line="${line}" pctduration="${pctDuration}" commit="${commit}" build="${env.BUILD_URL}">
-            ${testCases.sort().join('\n')}
+            ${allTestCases.sort().join('\n')}
             </testsuite>
           """
           writeFile file: "${testSuiteName}.xml", text: content
