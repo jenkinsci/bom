@@ -102,7 +102,7 @@
       <dependency>
         <groupId>io.jenkins.docker</groupId>
         <artifactId>docker-plugin</artifactId>
-        <version>1324.v2fb_b_df97fe1d</version>
+        <version>1327.v9524f1ee134e</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
