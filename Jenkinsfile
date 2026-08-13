@@ -8,9 +8,8 @@ env.MAVEN_NTP = true
 def maxSplitsPerLine = 20
 
 // Run pct tests on a limited set of repositories and their plugin(s) if not empty
-// Expected list item format: jenkinsci/<repo-name>, tab, <coma separated plugin(s)>
-// Ex: 'jenkinsci/pipeline-stage-view-plugin\tpipeline-rest-api,pipeline-stage-view'
-final String[] limitedPluginSet = []
+// Ex: ['jenkinsci/badge-plugin\tbadge', 'jenkinsci/cron_column-plugin\tcron_column']
+def limitedPluginSet = []
 
 properties([
   disableConcurrentBuilds(abortPrevious: true),
@@ -92,7 +91,7 @@ mavenEnv(jdk: 21) {
     if (limitedPluginSet) {
       plugins = limitedPluginSet
       maxSplitsPerLine = 3
-      unstable "Running on a limited plugin set (maxSplitsPerLine reduced to ${maxSplitsPerLine})"
+      echo "INFO: running on a limited plugin set (maxSplitsPerLine reduced to ${maxSplitsPerLine})"
     }
     pluginsByRepository = parsePlugins(plugins)
 
@@ -208,6 +207,9 @@ stage('checks') {
   }
   if (weeklyTestMarkerFile) {
     unstable 'Remember to `git rm weekly-test` before taking out of draft'
+  }
+  if (limitedPluginSet) {
+    unstable 'Remember to empty `limitedPluginSet` in Jenkinsfile before taking out of draft'
   }
 }
 
