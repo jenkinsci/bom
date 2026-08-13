@@ -10,12 +10,7 @@ def maxSplitsPerLine = 20
 // Run pct tests on a limited set of repositories and their plugin(s) if not empty
 // Expected list item format: jenkinsci/<repo-name>, tab, <coma separated plugin(s)>
 // Ex: 'jenkinsci/pipeline-stage-view-plugin\tpipeline-rest-api,pipeline-stage-view'
-final String[] limitedPluginSet = [
-  'jenkinsci/warnings-ng-plugin	warnings-ng',
-  'jenkinsci/coverage-plugin	coverage',
-  'jenkinsci/mcp-server-plugin	mcp-server',
-  'jenkinsci/cron_column-plugin	cron_column',
-]
+final String[] limitedPluginSet = []
 
 properties([
   disableConcurrentBuilds(abortPrevious: true),
@@ -97,7 +92,7 @@ mavenEnv(jdk: 21) {
     if (limitedPluginSet) {
       plugins = limitedPluginSet
       maxSplitsPerLine = 3
-      echo "Running on a limited plugin set (maxSplitsPerLine reduced to ${maxSplitsPerLine})"
+      unstable "Running on a limited plugin set (maxSplitsPerLine reduced to ${maxSplitsPerLine})"
     }
     pluginsByRepository = parsePlugins(plugins)
 
