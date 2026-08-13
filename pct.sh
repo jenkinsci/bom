@@ -4,6 +4,8 @@ cd "$(dirname "$0")"
 
 # expects: excludes.txt, target/megawar-$LINE.war, target/pct.jar, $PLUGINS, $LINE
 
+source incrementals.sh
+
 rm -rf target/pct-work
 
 PCT_D_ARGS=
@@ -36,6 +38,7 @@ exec java \
 	--war "$(pwd)/target/megawar-$LINE.war" \
 	--include-plugins "${PLUGINS}" \
 	--working-dir "$(pwd)/target/pct-work" \
+	"--maven-args=${INCREMENTALS_PROFILE}" \
 	$PCT_D_ARGS \
 	${PCT_OPTS-} \
 	-Dsurefire.excludesFile="${EXCLUDES_FILE}"
