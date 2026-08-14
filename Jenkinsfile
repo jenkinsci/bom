@@ -1,7 +1,7 @@
 // Do not trigger build regularly on change requests as it costs a lot
 String cronTrigger = ''
 if(env.BRANCH_NAME == "master") {
-  cronTrigger = '10 0 * * 5'
+  cronTrigger = '10 0 * * 4'
 }
 
 env.MAVEN_NTP = true
@@ -66,7 +66,7 @@ boolean fullTest = false
 boolean weeklyTest = false
 boolean consumeIncrementals = false
 def splits = [:]
-def durations = [:]
+def results = [:]
 
 mavenEnv(jdk: 21) {
   stage('prep') {
@@ -148,35 +148,40 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
             def repository = parts[0]
             def plugins = parts[1]
             def combination = "${repository}:${line}"
-            stage("${combination} (${idx + 1}/${combinations.size()})") {
-              withChecks(name: "PCT / ${combination}") {
-                withEnv([
-                  "PLUGINS=${plugins}",
-                  "LINE=$line",
-                  "CONSUME_INCREMENTALS=${consumeIncrementals}",
-                  'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
-                ]) {
-                  def start = System.currentTimeMillis()
-                  try {
-                    sh '''
-                    mvn -v
-                    bash pct.sh
-                    '''
-                  } catch (e) {
-                    if (!(e instanceof InterruptedException) && !(e instanceof org.jenkinsci.plugins.workflow.support.steps.AgentOfflineException)) {
-                      publishChecks status: 'COMPLETED', conclusion: 'FAILURE', title: 'Tests could not be executed'
-                      unstable('PCT failed in ' + repository + ' - line ' + line)
-                    } else {
-                      throw e
-                    }
-                  } finally {
-                    def elapsed = System.currentTimeMillis() - start
-                    durations["pct-$repository-$line"] = (elapsed / 1000.0)
+            // if the tests ran with success in a previous attempt, skip the combination (ex: in case of reclaimed spot agent)
+            def previousResult = results[combination] ?: [totalCount: 0, failCount: 0]
+            if (previousResult.totalCount > 0 && previousResult.failCount == 0) {
+              echo "${combination} has already ran ${previousResult.totalCount} test(s) with success in a previous attempt, skipping"
+            } else {
+              stage("${combination} (${idx + 1}/${combinations.size()})") {
+                withChecks(name: "PCT / ${combination}") {
+                  withEnv([
+                    "PLUGINS=${plugins}",
+                    "LINE=$line",
+                    "CONSUME_INCREMENTALS=${consumeIncrementals}",
+                    'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
+                  ]) {
+                    def start = System.currentTimeMillis()
                     try {
+                      sh '''
+                      mvn -v
+                      bash pct.sh
+                      '''
+                    } catch (e) {
+                      if (!(e instanceof InterruptedException) && !(e instanceof org.jenkinsci.plugins.workflow.support.steps.AgentOfflineException)) {
+                        publishChecks status: 'COMPLETED', conclusion: 'FAILURE', title: 'Tests could not be executed'
+                        unstable('PCT failed in ' + repository + ' - line ' + line)
+                      } else {
+                        throw e
+                      }
+                    } finally {
                       // record test results (can be missing if the plugin couldn't be built)
-                      junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml')
-                    } catch(je) {
-                      unstable "error junitResult: ${je}"
+                      def junitResults = junit allowEmptyResults: true, testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml'
+                      results[combination] = [
+                        'elapsed': (System.currentTimeMillis() - start) / 1000.0,
+                        'totalCount': junitResults ? junitResults.totalCount : 0,
+                        'failCount': junitResults ? junitResults.failCount : 0,
+                      ]
                     }
                   }
                 }
@@ -192,9 +197,10 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
     node('maven-bom') {
       Double totalTime = 0
       def reportLines = ''
-      durations.each { branch, time ->
-        totalTime += time as Double
-        reportLines += '<testcase name="' + branch + '" classname="pct-duration.' + branch + '" time="' + time + '"/>\n'
+      results.each { combination, result ->
+        totalTime += result.elapsed as Double
+        def normalizedCombination = combination.replace(':', '-')
+        reportLines += '<testcase name="' + normalizedCombination + '" classname="pct-report.' + normalizedCombination + '" time="' + result.elapsed + '"/>\n'
       }
       if (reportLines) {
         def content = """<?xml version="1.0" encoding="UTF-8"?>
