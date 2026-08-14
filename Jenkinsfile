@@ -1,16 +1,15 @@
 // Do not trigger build regularly on change requests as it costs a lot
 String cronTrigger = ''
 if(env.BRANCH_NAME == "master") {
-  cronTrigger = '10 0 * * 5'
+  cronTrigger = '10 0 * * 4'
 }
 
 env.MAVEN_NTP = true
 def maxSplitsPerLine = 20
 
 // Run pct tests on a limited set of repositories and their plugin(s) if not empty
-// Expected list item format: jenkinsci/<repo-name>, tab, <coma separated plugin(s)>
-// Ex: 'jenkinsci/pipeline-stage-view-plugin\tpipeline-rest-api,pipeline-stage-view'
-final String[] limitedPluginSet = []
+// Ex: ['jenkinsci/badge-plugin\tbadge', 'jenkinsci/cron_column-plugin\tcron_column']
+def limitedPluginSet = []
 
 properties([
   disableConcurrentBuilds(abortPrevious: true),
@@ -62,16 +61,23 @@ def pluginsByRepository
 def lines
 def fullTestMarkerFile
 def weeklyTestMarkerFile
+def consumeIncrementalsMarkerFile
 boolean fullTest = false
 boolean weeklyTest = false
+boolean consumeIncrementals = false
 def splits = [:]
 def durations = [:]
 
 mavenEnv(jdk: 21) {
   stage('prep') {
     checkout scm
+    consumeIncrementalsMarkerFile = fileExists 'consume-incrementals'
+    consumeIncrementals = consumeIncrementalsMarkerFile || (env.CHANGE_ID && pullRequest.labels.contains('consume-incrementals'))
+    if (!consumeIncrementals) {
+      echo 'Forbidding use of incremental dependencies. If you need to consume incrementals, add the `consume-incrementals` label, or add a file named `consume-incrementals` to the repository root if you lack triage permission. Then keep this PR in draft until the dependencies have been switched to release versions.'
+    }
     withChecks(name: 'Tests', includeStage: true) {
-      withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist']) {
+      withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist', "CONSUME_INCREMENTALS=${consumeIncrementals}"]) {
         sh '''
         mvn -v
         bash prep.sh
@@ -92,7 +98,7 @@ mavenEnv(jdk: 21) {
     if (limitedPluginSet) {
       plugins = limitedPluginSet
       maxSplitsPerLine = 3
-      unstable "Running on a limited plugin set (maxSplitsPerLine reduced to ${maxSplitsPerLine})"
+      echo "INFO: running on a limited plugin set (maxSplitsPerLine reduced to ${maxSplitsPerLine})"
     }
     pluginsByRepository = parsePlugins(plugins)
 
@@ -121,7 +127,7 @@ mavenEnv(jdk: 21) {
   }
   stage('stash line(s)') {
     lines.each { line ->
-      stash name: line, includes: "pct.sh,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-${line}.war"
+      stash name: line, includes: "pct.sh,incrementals.sh,consume-incrementals,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-${line}.war"
     }
   }
 }
@@ -147,6 +153,7 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
                 withEnv([
                   "PLUGINS=${plugins}",
                   "LINE=$line",
+                  "CONSUME_INCREMENTALS=${consumeIncrementals}",
                   'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
                 ]) {
                   def start = System.currentTimeMillis()
@@ -208,6 +215,12 @@ stage('checks') {
   }
   if (weeklyTestMarkerFile) {
     unstable 'Remember to `git rm weekly-test` before taking out of draft'
+  }
+  if (consumeIncrementalsMarkerFile) {
+    unstable 'Remember to `git rm consume-incrementals` before taking out of draft'
+  }
+  if (limitedPluginSet) {
+    unstable 'Remember to empty `limitedPluginSet` in Jenkinsfile before taking out of draft'
   }
 }
 
