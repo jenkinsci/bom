@@ -11,6 +11,9 @@ def maxSplitsPerLine = 20
 // Ex: ['jenkinsci/badge-plugin\tbadge', 'jenkinsci/cron_column-plugin\tcron_column']
 def limitedPluginSet = []
 
+// Seed junit results from stored reports instead of the ones from the current buid
+def seedJunitFromStoredReports = false
+
 properties([
   // disableConcurrentBuilds(abortPrevious: true),
   buildDiscarder(logRotator(numToKeepStr: '7')),
@@ -192,7 +195,9 @@ mavenEnv(jdk: 21) {
   stage('stash line(s)') {
     lines.each { line ->
       stash name: line, includes: "pct.sh,incrementals.sh,consume-incrementals,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-${line}.war"
-      stash name: "reports ${line}", includes: "reports/**"
+      if (seedJunitFromStoredReports) {
+        stash name: "bom-report_${line}", includes: "reports/**"
+      }
     }
   }
 }
@@ -292,6 +297,12 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
             </testsuite>
           """
           writeFile file: "${testSuiteName}.xml", text: content
+          if (seedJunitFromStoredReports) {
+            unstash testSuiteName
+            testSuiteName = "reports/bom-report_${line}"
+            echo "INFO: seeding junit bom results from ${testSuiteName}.xml instead of the current results"
+            sh "cat ${testSuiteName}.xml || true"
+          }
           junit testResults: "${testSuiteName}.xml"
           // archiveArtifacts artifacts: "${testSuiteName}.xml"
           sh "cat ${testSuiteName}.xml || true"
