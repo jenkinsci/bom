@@ -26,6 +26,7 @@ def mavenEnv(Map params = [:], Closure body) {
   def attempt = 0
   def attempts = 6
   retry(count: attempts, conditions: [kubernetesAgent(handleNonKubernetes: true), nonresumable()]) {
+    def provisioningStart = System.currentTimeMillis()
     echo 'Attempt ' + ++attempt + ' of ' + attempts
     // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
     node('maven-bom') {
@@ -36,6 +37,8 @@ def mavenEnv(Map params = [:], Closure body) {
             'PATH+JDK=/opt/jdk-' + params['jdk'] + '/bin',
             "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B ${env.MAVEN_NTP != null ? '-ntp' : ''} -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo",
             "MVN_LOCAL_REPO=${WORKSPACE_TMP}/m2repo",
+            "PROVISONING_START=${provisioningStart}",
+            "CURRENT_ATTEMPT=${attempt}",
           ]) {
             infra.loadMavenLocalCacheIfAny(env.MVN_LOCAL_REPO)
 
@@ -62,15 +65,17 @@ def lines
 def fullTestMarkerFile
 def weeklyTestMarkerFile
 def consumeIncrementalsMarkerFile
-boolean fullTest = false
-boolean weeklyTest = false
-boolean consumeIncrementals = false
+def fullTest = false
+def weeklyTest = false
+def consumeIncrementals = false
 def splits = [:]
 def results = [:]
+def commit
+def pctDuration
 
 mavenEnv(jdk: 21) {
   stage('prep') {
-    checkout scm
+    commit = checkout(scm).GIT_COMMIT.take(7)
     consumeIncrementalsMarkerFile = fileExists 'consume-incrementals'
     consumeIncrementals = consumeIncrementalsMarkerFile || (env.CHANGE_ID && pullRequest.labels.contains('consume-incrementals'))
     if (!consumeIncrementals) {
@@ -109,21 +114,19 @@ mavenEnv(jdk: 21) {
       lines = ['weekly']
     }
     echo "${pluginsByRepository.size()} repositories:\n${plugins.join('\n')}"
-    echo "${lines.size()} lines: ${lines.join(' ')} "
+    echo "${lines.size()} lines: ${lines.join(' ')}"
 
     // Fixed splits, each split using only one line
     lines.each { line ->
       pluginsByRepository.eachWithIndex { repository, repoPlugins, idx ->
         def index = (idx % maxSplitsPerLine) + 1 // to get split1 to split<maxSplitsPerLine>
         def name = "split-${index}:${line}"
-        def repositoryAndPlugins = "${repository} ${repoPlugins}"
-
         splits[name] = splits[name] ?: []
-        splits[name] << repositoryAndPlugins
+        splits[name] << repository
       }
     }
-    echo "${splits.size()} splits"
-    echo splits.collect { split, combinations -> "${split} ${combinations}" }.join('\n')
+    echo "${splits.size()} split(s)"
+    echo splits.collect { split, repositories -> "${split} (${repositories.size()}) ${repositories}" }.join('\n')
   }
   stage('stash line(s)') {
     lines.each { line ->
@@ -134,29 +137,31 @@ mavenEnv(jdk: 21) {
 
 if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
   stage('run pct') {
+    def pctStart = System.currentTimeMillis()
     def branches = [failFast: false]
-    splits.each { split, combinations ->
+    splits.each { split, repositories ->
       def line = split.split(':')[1]
       def jdk = line == 'weekly' || line == '2.555.x' ? 21 : 17
-      branches[split] = {
+      branches["${split} [${repositories.size()}]"] = {
+        echo "In this split: ${repositories.join(',')}"
         mavenEnv(jdk: jdk) {
+          def provisionStart = env.PROVISONING_START.toLong()
+          def readyIn = (System.currentTimeMillis() - provisionStart) / 1000.0
+          echo "INFO: agent ready to run pct in ${readyIn}s"
           stage('unstash line') {
             unstash line
           }
-          combinations.eachWithIndex { repositoryAndPlugins, idx ->
-            def parts = repositoryAndPlugins.split(' ')
-            def repository = parts[0]
-            def plugins = parts[1]
+          repositories.eachWithIndex { repository, idx ->
             def combination = "${repository}:${line}"
             // if the tests ran with success in a previous attempt, skip the combination (ex: in case of reclaimed spot agent)
             def previousResult = results[combination] ?: [totalCount: 0, failCount: 0]
             if (previousResult.totalCount > 0 && previousResult.failCount == 0) {
               echo "${combination} has already ran ${previousResult.totalCount} test(s) with success in a previous attempt, skipping"
             } else {
-              stage("${combination} (${idx + 1}/${combinations.size()})") {
+              stage("${combination} (${idx + 1}/${repositories.size()})") {
                 withChecks(name: "PCT / ${combination}") {
                   withEnv([
-                    "PLUGINS=${plugins}",
+                    "PLUGINS=${pluginsByRepository[repository]}",
                     "LINE=$line",
                     "CONSUME_INCREMENTALS=${consumeIncrementals}",
                     'EXTRA_MAVEN_PROPERTIES=maven.test.failure.ignore=true:surefire.rerunFailingTestsCount=1'
@@ -181,37 +186,55 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
                         'elapsed': (System.currentTimeMillis() - start) / 1000.0,
                         'totalCount': junitResults ? junitResults.totalCount : 0,
                         'failCount': junitResults ? junitResults.failCount : 0,
+                        'split': split,
+                        'readyIn': readyIn,
+                        'attempt': env.CURRENT_ATTEMPT,
                       ]
                     }
                   }
                 }
               }
+              echo "${combination}: ${results[combination]['totalCount']} tests executed in ${results[combination]['elapsed']}s"
             }
           }
+          def totalTime = (System.currentTimeMillis() - provisionStart) / 1000.0
+          def runningTime = totalTime - readyIn
+          echo "INFO: pct tests of ${split} took ${runningTime}s"
         }
       }
     }
     parallel branches
+    pctDuration = (System.currentTimeMillis() - pctStart) / 1000.0
+    echo "INFO: pct tests took ${pctDuration}s in total"
   }
-  stage('duration report') {
-    node('maven-bom') {
-      Double totalTime = 0
-      def reportLines = ''
-      results.each { combination, result ->
-        totalTime += result.elapsed as Double
-        def normalizedCombination = combination.replace(':', '-')
-        reportLines += '<testcase name="' + normalizedCombination + '" classname="pct-report.' + normalizedCombination + '" time="' + result.elapsed + '"/>\n'
+  node('maven-bom') {
+    stage('reports') {
+      def branches = [:]
+      lines.each { line ->
+        def testSuiteName = "bom-report_${line}"
+        // We need junit records in distinct stages later on for splitTests
+        // Otherwise it would try to balance all repositories across all lines
+        // While we want one line per split (agent)
+        branches[testSuiteName] = {
+          def testCases = []
+          results.each { combination, result ->
+            def repository = combination.split(':')[0]
+            def resultLine = combination.split(':')[1]
+            if (line == resultLine) {
+              testCases << '<testcase split="' + result['split'] + '" name="' + repository + '" classname="pct-report.' + repository + '" time="' + result['elapsed'] + '" readyin="' + result['readyIn'] + '" attempt="' + result['attempt'] + '"/>\n'
+            }
+          }
+          def content = """<?xml version="1.0" encoding="UTF-8"?>
+            <testsuite name="${testSuiteName}" line="${line}" pctduration="${pctDuration}" commit="${commit}" build="${env.BUILD_URL}">
+            ${testCases.sort().join('\n')}
+            </testsuite>
+          """
+          writeFile file: "${testSuiteName}.xml", text: content
+          junit testResults: "${testSuiteName}.xml"
+          archiveArtifacts artifacts: "${testSuiteName}.xml"
+        }
       }
-      if (reportLines) {
-        def content = """<?xml version="1.0" encoding="UTF-8"?>
-          <testsuite name="bom" time="${totalTime}">
-          ${reportLines}
-          </testsuite>
-        """
-        writeFile file: 'bom-report.xml', text: content
-        archiveArtifacts artifacts: 'bom-report.xml'
-        junit allowEmptyResults: true, testResults: 'bom-report.xml'
-      }
+      parallel branches
     }
   }
 }
