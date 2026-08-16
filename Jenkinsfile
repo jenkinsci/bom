@@ -142,7 +142,7 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
     splits.each { split, repositories ->
       def line = split.split(':')[1]
       def jdk = line == 'weekly' || line == '2.555.x' ? 21 : 17
-      branches["${split} (${repositories.size()})"] = {
+      branches["${split} [${repositories.size()}]"] = {
         echo "In this split: ${repositories.join(',')}"
         mavenEnv(jdk: jdk) {
           def provisionStart = env.PROVISONING_START.toLong()
@@ -211,29 +211,27 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
     stage('reports') {
       def branches = [:]
       lines.each { line ->
-        branches[line] = {
-          // We need junit records in distinct stages later on for splitTests
-          // Otherwise it would try to balance all repositories across all lines
-          // While we want one line per split (agent)
-          stage("report ${line}") {
-            def testSuiteName = "bom-report_${line}"
-            def testCases = []
-            results.each { combination, result ->
-              def repository = combination.split(':')[0]
-              def resultLine = combination.split(':')[1]
-              if (line == resultLine) {
-                testCases << '<testcase split="' + result['split'] + '" name="' + repository + '" classname="pct-report.' + repository + '" time="' + result['elapsed'] + '" readyin="' + result['readyIn'] + '" attempt="' + result['attempt'] + '"/>\n'
-              }
+        def testSuiteName = "bom-report_${line}"
+        // We need junit records in distinct stages later on for splitTests
+        // Otherwise it would try to balance all repositories across all lines
+        // While we want one line per split (agent)
+        branches[testSuiteName] = {
+          def testCases = []
+          results.each { combination, result ->
+            def repository = combination.split(':')[0]
+            def resultLine = combination.split(':')[1]
+            if (line == resultLine) {
+              testCases << '<testcase split="' + result['split'] + '" name="' + repository + '" classname="pct-report.' + repository + '" time="' + result['elapsed'] + '" readyin="' + result['readyIn'] + '" attempt="' + result['attempt'] + '"/>\n'
             }
-            def content = """<?xml version="1.0" encoding="UTF-8"?>
-              <testsuite name="${testSuiteName}" line="${line}" pctduration="${pctDuration}" commit="${commit}" build="${env.BUILD_URL}">
-              ${testCases.sort().join('\n')}
-              </testsuite>
-            """
-            writeFile file: "${testSuiteName}.xml", text: content
-            junit testResults: "${testSuiteName}.xml"
-            archiveArtifacts artifacts: "${testSuiteName}.xml"
           }
+          def content = """<?xml version="1.0" encoding="UTF-8"?>
+            <testsuite name="${testSuiteName}" line="${line}" pctduration="${pctDuration}" commit="${commit}" build="${env.BUILD_URL}">
+            ${testCases.sort().join('\n')}
+            </testsuite>
+          """
+          writeFile file: "${testSuiteName}.xml", text: content
+          junit testResults: "${testSuiteName}.xml"
+          archiveArtifacts artifacts: "${testSuiteName}.xml"
         }
       }
       parallel branches
