@@ -154,6 +154,17 @@ mavenEnv(jdk: 21) {
       echo "INFO: ${previousRepositories.size()} repositories returned by splitTests from junit records for '${line}' line"
       echo "INFO: ${newCount} new repositor${newCount <= 1 ? 'y' : 'ies' } not returned by splitTests for '${line}' line"
 
+
+      // Debug
+      echo "splitsFromJunitRecords.size(): ${splitsFromJunitRecords.size()}"
+      echo "previousRepositories.size(): ${previousRepositories.size()}"
+      echo "currentRepositories.size(): ${currentRepositories.size()}"
+      echo "newCount: ${newCount}"
+      println splitsFromJunitRecords
+      println previousRepositories
+      println currentRepositories
+      println newRepositories
+
       // Fallbacks in case splitTests output is unusable (ex: no junit records, or in unexpected stages)
       if (newCount == currentRepositories.size()) {
         echo "INFO: splitTests did not return any of the current repositories for '${line}'"
