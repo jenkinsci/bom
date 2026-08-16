@@ -9,7 +9,7 @@ def maxSplitsPerLine = 20
 
 // Run pct tests on a limited set of repositories and their plugin(s) if not empty
 // Ex: ['jenkinsci/badge-plugin\tbadge', 'jenkinsci/cron_column-plugin\tcron_column']
-def limitedPluginSet = []
+def limitedPluginSet = ['jenkinsci/badge-plugin\tbadge', 'jenkinsci/cron_column-plugin\tcron_column']
 
 // Seed junit results from stored reports instead of the ones from the current buid
 def seedJunitFromStoredReports = false
