@@ -75,6 +75,8 @@ def splits = [:]
 def results = [:]
 def commit
 def pctDuration
+def buildStart = System.currentTimeMillis()
+def newRepositories = []
 
 mavenEnv(jdk: 21) {
   stage('prep') {
@@ -149,7 +151,7 @@ mavenEnv(jdk: 21) {
       def balancedSplits = splitsFromJunitRecords.collect { exclusions ->
         previousRepositories - exclusions
       }
-      def newRepositories = currentRepositories - previousRepositories
+      newRepositories = currentRepositories - previousRepositories
       def newCount = newRepositories.size()
       echo "INFO: ${previousRepositories.size()} repositories returned by splitTests from junit records for '${line}' line"
       echo "INFO: ${newCount} new repositor${newCount <= 1 ? 'y' : 'ies' } not returned by splitTests for '${line}' line"
@@ -320,6 +322,17 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
         }
       }
       parallel branches
+
+      // Update build description
+      def totalBuildDuration = (System.currentTimeMillis() - buildStart) / 1000.0
+      def type = '<b>' + (weeklyTest ? 'weekly-test' : (fullTest ? 'full-test' : '')) + '</b>: '
+      def buildInfo = "${type}${splits.size()} split${ (splits.size() > 0 ? 's' : '') }"
+      buildInfo += ", ${pluginsByRepository.size()} repos"
+      buildInfo += newRepositories.size() > 0 ? " (${newRepositories.size()} new)" : ''
+      buildInfo += ", pct tests in ${formatDuration(pctDuration)}, total: ${formatDuration(totalBuildDuration)}"
+      buildInfo += seedJunitFromStoredReports ? ', seed build!' : ''
+      def currentDesc = currentBuild.description
+      currentBuild.description = currentDesc ? currentDesc + '<br><i>' + buildInfo + '</i>' : '<i>' + buildInfo + '</i>'
     }
   }
 }
@@ -365,4 +378,22 @@ def getBalancedSplitsFromStoredReports(def reportPath = 'reports/bom-report_week
     echo "WARNING: could not retrieve splits from ${reportPath}"
   }
   return splits.values().toList()
+}
+
+def formatDuration(def seconds) {
+  def parts = []
+  long totalSeconds = Math.round(seconds as Double)
+  long hours = totalSeconds.intdiv(3600)
+  long mins = (totalSeconds % 3600).intdiv(60)
+  long secs = totalSeconds % 60
+  if (hours) {
+    parts << "${hours}h"
+  }
+  if (mins) {
+    parts << ((hours) ? "${mins.toString().padLeft(2, '0')}m" : "${mins}m")
+  }
+  if (secs) {
+    parts << ((mins || hours) ? "${secs.toString().padLeft(2, '0')}s" : "${secs}s")
+  }
+  parts.join('')
 }
