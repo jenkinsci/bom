@@ -1,7 +1,11 @@
 def managedDeps = project.dependencyManagement.dependencies*.managementKey
 println "Managed dependencies of $project: $managedDeps"
 // Cannot use project.artifactMap since this ignores classifiers so has entries like org.jenkins-ci.plugins.workflow:workflow-step-api → org.jenkins-ci.plugins.workflow:workflow-step-api:jar:tests:2.20:test
-def artifactMap = project.artifacts.grep {!it.hasClassifier()}.collectEntries {art -> ["$art.groupId:$art.artifactId".toString(), art]}
+def artifactMap = project.artifacts.grep {
+  !it.hasClassifier()
+}.collectEntries {art ->
+  ["$art.groupId:$art.artifactId".toString(), art]
+}
 assert artifactMap['junit:junit'] == project.artifactMap['junit:junit']
 
 def managedPluginDeps = managedDeps.collect {stripAllButGA(it)}.grep { ga ->
@@ -45,7 +49,9 @@ project.artifacts.each { art ->
   if (plugin == null) {
     return
   }
-  for (String intermediate : art.dependencyTrail.drop(1).dropRight(1).collect {stripAllButGA(it)}) {
+  for (String intermediate : art.dependencyTrail.drop(1).dropRight(1).collect {
+        stripAllButGA(it)
+      }) {
     def intermediateArt = artifactMap[intermediate]
     if (intermediateArt == null) {
       println "Cannot find intermediate artifact $intermediate to check among ${artifactMap.keySet()}"
