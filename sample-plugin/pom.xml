@@ -1730,7 +1730,7 @@
       <id>2.568.x</id>
       <properties>
         <bom>2.568.x</bom>
-        <jenkins.version>2.568.1</jenkins.version>
+        <jenkins.version>2.568.3-rc38357.5b_36a_1888fb_4</jenkins.version>
       </properties>
     </profile>
     <profile>
