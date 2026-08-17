@@ -88,7 +88,7 @@ mavenEnv(jdk: 21) {
         bash prep.sh
         '''
       }
-      if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount > 0) {
+      if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount> 0) {
         error 'Some test failures during prep.sh, not going to continue'
       }
     }
@@ -126,7 +126,9 @@ mavenEnv(jdk: 21) {
       }
     }
     echo "${splits.size()} split(s)"
-    echo splits.collect { split, repositories -> "${split} (${repositories.size()}) ${repositories}" }.join('\n')
+    echo splits.collect { split, repositories ->
+      "${split} (${repositories.size()}) ${repositories}"
+    }.join('\n')
   }
   stage('stash line(s)') {
     lines.each { line ->
@@ -155,7 +157,7 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
             def combination = "${repository}:${line}"
             // if the tests ran with success in a previous attempt, skip the combination (ex: in case of reclaimed spot agent)
             def previousResult = results[combination] ?: [totalCount: 0, failCount: 0]
-            if (previousResult.totalCount > 0 && previousResult.failCount == 0) {
+            if (previousResult.totalCount> 0 && previousResult.failCount == 0) {
               echo "${combination} has already ran ${previousResult.totalCount} test(s) with success in a previous attempt, skipping"
             } else {
               stage("${combination} (${idx + 1}/${repositories.size()})") {
