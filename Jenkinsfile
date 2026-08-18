@@ -300,40 +300,38 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
     echo "INFO: pct tests took ${pctDuration}s in total"
   }
   node('maven-bom') {
-    stage('reports') {
-      lines.each { line ->
-        def testSuiteName = "bom-report_${line}"
-        // We need junit records in distinct stages later on for splitTests
-        // Otherwise it would try to balance all repositories across all lines
-        // While we want one line per split (agent)
-        stage(testSuiteName) {
-          def testCases = []
-          results.each { combination, result ->
-            def repository = combination.split(':')[0]
-            def resultLine = combination.split(':')[1]
-            if (line == resultLine) {
-              // TODO: test combination as name/classname to get proper splitTests output? (not taking stage in account right now)
-              // Or: keep it so splitTests always finds results even if not the same line?
-              // testCases << '<testcase split="' + result['split'] + '" name="' + repository + '" classname="pct-report.' + repository + '" time="' + result['elapsed'] + '" readyin="' + result['readyIn'] + '" attempt="' + result['attempt'] + '"/>\n'
-              testCases << '<testcase split="' + result['split'] + '" name="' + repository + '" classname="pct-report.' + repository + '" time="' + result['elapsed'] + '" readyin="' + result['readyIn'] + '" attempt="' + result['attempt'] + '"/>\n'
-            }
+    lines.each { line ->
+      def testSuiteName = "bom-report_${line}"
+      // We need junit records in distinct stages later on for splitTests
+      // Otherwise it would try to balance all repositories across all lines
+      // While we want one line per split (agent)
+      stage(testSuiteName) {
+        def testCases = []
+        results.each { combination, result ->
+          def repository = combination.split(':')[0]
+          def resultLine = combination.split(':')[1]
+          if (line == resultLine) {
+            // TODO: test combination as name/classname to get proper splitTests output? (not taking stage in account right now)
+            // Or: keep it so splitTests always finds results even if not the same line?
+            // testCases << '<testcase split="' + result['split'] + '" name="' + repository + '" classname="pct-report.' + repository + '" time="' + result['elapsed'] + '" readyin="' + result['readyIn'] + '" attempt="' + result['attempt'] + '"/>\n'
+            testCases << '<testcase split="' + result['split'] + '" name="' + repository + '" classname="pct-report.' + repository + '" time="' + result['elapsed'] + '" readyin="' + result['readyIn'] + '" attempt="' + result['attempt'] + '"/>\n'
           }
-          def content = """<?xml version="1.0" encoding="UTF-8"?>
-            <testsuite name="${testSuiteName}" line="${line}" pctduration="${pctDuration}" commit="${commit}" build="${env.BUILD_URL}">
-            ${testCases.sort().join('\n')}
-            </testsuite>
-          """
-          writeFile file: "${testSuiteName}.xml", text: content
-          if (seedJunitFromStoredReports) {
-            unstash testSuiteName
-            testSuiteName = "reports/bom-report_${line}"
-            echo "INFO: seeding junit bom results from ${testSuiteName}.xml instead of the current results"
-            sh "cat ${testSuiteName}.xml || true"
-          }
-          junit testResults: "${testSuiteName}.xml"
-          // archiveArtifacts artifacts: "${testSuiteName}.xml"
+        }
+        def content = """<?xml version="1.0" encoding="UTF-8"?>
+          <testsuite name="${testSuiteName}" line="${line}" pctduration="${pctDuration}" commit="${commit}" build="${env.BUILD_URL}">
+          ${testCases.sort().join('\n')}
+          </testsuite>
+        """
+        writeFile file: "${testSuiteName}.xml", text: content
+        if (seedJunitFromStoredReports) {
+          unstash testSuiteName
+          testSuiteName = "reports/bom-report_${line}"
+          echo "INFO: seeding junit bom results from ${testSuiteName}.xml instead of the current results"
           sh "cat ${testSuiteName}.xml || true"
         }
+        junit testResults: "${testSuiteName}.xml"
+        // archiveArtifacts artifacts: "${testSuiteName}.xml"
+        sh "cat ${testSuiteName}.xml || true"
       }
 
       // Update build description
