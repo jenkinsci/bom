@@ -301,13 +301,12 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
   }
   node('maven-bom') {
     stage('reports') {
-      def branches = [:]
       lines.each { line ->
         def testSuiteName = "bom-report_${line}"
         // We need junit records in distinct stages later on for splitTests
         // Otherwise it would try to balance all repositories across all lines
         // While we want one line per split (agent)
-        branches[testSuiteName] = {
+        stage(testSuiteName) {
           def testCases = []
           results.each { combination, result ->
             def repository = combination.split(':')[0]
@@ -336,7 +335,6 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
           sh "cat ${testSuiteName}.xml || true"
         }
       }
-      parallel branches
 
       // Update build description
       def totalBuildDuration = (System.currentTimeMillis() - buildStart) / 1000.0
