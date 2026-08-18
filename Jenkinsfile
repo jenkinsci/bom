@@ -313,6 +313,8 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
             def repository = combination.split(':')[0]
             def resultLine = combination.split(':')[1]
             if (line == resultLine) {
+              // TODO: test combination as name/classname to get proper splitTests output? (not taking stage in account right now)
+              // Or: keep it so splitTests always finds results even if not the same line?
               testCases << '<testcase split="' + result['split'] + '" name="' + repository + '" classname="pct-report.' + repository + '" time="' + result['elapsed'] + '" readyin="' + result['readyIn'] + '" attempt="' + result['attempt'] + '"/>\n'
             }
           }
