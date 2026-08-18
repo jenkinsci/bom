@@ -315,7 +315,8 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
             if (line == resultLine) {
               // TODO: test combination as name/classname to get proper splitTests output? (not taking stage in account right now)
               // Or: keep it so splitTests always finds results even if not the same line?
-              testCases << '<testcase split="' + result['split'] + '" name="' + repository + '" classname="pct-report.' + repository + '" time="' + result['elapsed'] + '" readyin="' + result['readyIn'] + '" attempt="' + result['attempt'] + '"/>\n'
+              // testCases << '<testcase split="' + result['split'] + '" name="' + repository + '" classname="pct-report.' + repository + '" time="' + result['elapsed'] + '" readyin="' + result['readyIn'] + '" attempt="' + result['attempt'] + '"/>\n'
+              testCases << '<testcase split="' + result['split'] + '" name="' + combination.replace(':', '-') + '" classname="pct-report.' + combination.replace(':', '-') + '" time="' + result['elapsed'] + '" readyin="' + result['readyIn'] + '" attempt="' + result['attempt'] + '"/>\n'
             }
           }
           def content = """<?xml version="1.0" encoding="UTF-8"?>
