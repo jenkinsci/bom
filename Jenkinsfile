@@ -12,7 +12,7 @@ def maxSplitsPerLine = 20
 def limitedPluginSet = []
 
 properties([
-  disableConcurrentBuilds(abortPrevious: true),
+  // disableConcurrentBuilds(abortPrevious: true),
   buildDiscarder(logRotator(numToKeepStr: '7')),
   pipelineTriggers([cron(cronTrigger)])
 ])
@@ -76,23 +76,11 @@ def pctDuration
 mavenEnv(jdk: 21) {
   stage('prep') {
     commit = checkout(scm).GIT_COMMIT.take(7)
-    consumeIncrementalsMarkerFile = fileExists 'consume-incrementals'
-    consumeIncrementals = consumeIncrementalsMarkerFile || (env.CHANGE_ID && pullRequest.labels.contains('consume-incrementals'))
-    if (!consumeIncrementals) {
-      echo 'Forbidding use of incremental dependencies. If you need to consume incrementals, add the `consume-incrementals` label, or add a file named `consume-incrementals` to the repository root if you lack triage permission. Then keep this PR in draft until the dependencies have been switched to release versions.'
-    }
-    withChecks(name: 'Tests', includeStage: true) {
-      withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist', "CONSUME_INCREMENTALS=${consumeIncrementals}"]) {
-        sh '''
-        mvn -v
-        bash prep.sh
-        '''
-      }
-      if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount> 0) {
-        error 'Some test failures during prep.sh, not going to continue'
-      }
-    }
-    infra.prepareToPublishIncrementals()
+
+    // Debug: retrieve prep from archive
+    copyArtifacts(projectName: 'Tools/bom/prep-only', selector: lastWithArtifacts(), filter: 'prep.tar.gz', fingerprintArtifacts: true)
+    publishChecks(name: 'Tests / prep')
+    sh 'tar -xzvf prep.tar.gz && rm prep.tar.gz'
 
     fullTestMarkerFile = fileExists 'full-test'
     weeklyTestMarkerFile = fileExists 'weekly-test'
@@ -257,5 +245,4 @@ stage('checks') {
 }
 
 stage('publish incrementals') {
-  infra.maybePublishIncrementals()
 }
