@@ -146,7 +146,6 @@ mavenEnv(jdk: 21) {
   }
   stage('split') {
     def currentRepositories = pluginsByRepository.keySet().sort()
-    def firstLine = lines[0]
     // Balanced splits, each split using only one line
     lines.each { line ->
       // Retrieve splits from last completed build's junit records from bom report stages
@@ -182,18 +181,10 @@ mavenEnv(jdk: 21) {
       // Fallbacks in case splitTests output is unusable (ex: no junit records, or in unexpected stages)
       if (newCount == currentRepositories.size()) {
         echo "INFO: splitTests did not return any of the current repositories for '${line}'"
-        if (line == firstLine) {
-          def storedReportsPath = "reports/bom-report_${line}.xml"
-          echo "INFO: fallback to extracting splits from stored ${storedReportsPath}"
-          splitType = 'stored'
-          balancedSplits = getBalancedSplitsFromStoredReports(storedReportsPath, currentRepositories)
-        } else {
-          echo "INFO: fallback to extracting splits from first line '${firstLine}'"
-          splitType = firstLine
-          balancedSplits = splits.findAll { splitName, repositories ->
-            splitName.endsWith(":${firstLine}")
-          }
-        }
+        def storedReportsPath = "reports/bom-report_${line}.xml"
+        echo "INFO: fallback to extracting splits from stored ${storedReportsPath}"
+        splitType = 'stored'
+        balancedSplits = getBalancedSplitsFromStoredReports(storedReportsPath, currentRepositories)
         newRepositories = currentRepositories - balancedSplits.flatten().toSet()
       }
 
