@@ -20,6 +20,7 @@ def limitedPluginSet = [
   'jenkinsci/basic-branch-build-strategies-plugin	basic-branch-build-strategies',
   'jenkinsci/coverage-plugin	coverage',
   'jenkinsci/cron_column-plugin	cron_column',
+  'jenkinsci/throttle-concurrent-builds-plugin	throttle-concurrents'
 ]
 
 // Seed junit results from stored reports instead of the ones from the current buid
