@@ -390,7 +390,7 @@ def getBalancedSplitsFromStoredReports(def reportPath = 'reports/bom-report_week
   } catch (e) {
     echo "WARNING: could not retrieve splits from ${reportPath}"
   }
-  return splits.values().toList()
+  return splits.values().findAll { it }.toList()
 }
 
 def formatDuration(def seconds) {
