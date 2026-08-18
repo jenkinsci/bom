@@ -9,25 +9,10 @@ def maxSplitsPerLine = 20
 
 // Run pct tests on a limited set of repositories and their plugin(s) if not empty
 // Ex: ['jenkinsci/badge-plugin\tbadge', 'jenkinsci/cron_column-plugin\tcron_column']
-def limitedPluginSet = [
-  'jenkinsci/aws-credentials-plugin	aws-credentials',
-  'jenkinsci/aws-global-configuration-plugin	aws-global-configuration',
-  'jenkinsci/azure-credentials-plugin	azure-credentials',
-  'jenkinsci/azure-keyvault-plugin	azure-keyvault',
-  'jenkinsci/azure-sdk-plugin	azure-sdk',
-  'jenkinsci/azure-storage-plugin	windows-azure-storage',
-  'jenkinsci/badge-plugin	badge',
-  'jenkinsci/basic-branch-build-strategies-plugin	basic-branch-build-strategies',
-  'jenkinsci/coverage-plugin	coverage',
-  'jenkinsci/cron_column-plugin	cron_column',
-  'jenkinsci/throttle-concurrent-builds-plugin	throttle-concurrents'
-]
-
-// Seed junit results from stored reports instead of the ones from the current buid
-def seedJunitFromStoredReports = false
+def limitedPluginSet = []
 
 properties([
-  // disableConcurrentBuilds(abortPrevious: true),
+  disableConcurrentBuilds(abortPrevious: true),
   buildDiscarder(logRotator(numToKeepStr: '7')),
   pipelineTriggers([cron(cronTrigger)])
 ])
@@ -87,40 +72,27 @@ def splits = [:]
 def results = [:]
 def commit
 def pctDuration
-def buildStart = System.currentTimeMillis()
-def newRepositories = []
 
 mavenEnv(jdk: 21) {
   stage('prep') {
     commit = checkout(scm).GIT_COMMIT.take(7)
-    try {
-      copyArtifacts(projectName: env.JOB_NAME, selector: lastWithArtifacts(), filter: 'prep.tar.gz', fingerprintArtifacts: true)
-      publishChecks(name: 'Tests / prep')
-      sh 'tar -xzvf prep.tar.gz && rm prep.tar.gz'
-    } catch(e) {
-      consumeIncrementalsMarkerFile = fileExists 'consume-incrementals'
-      consumeIncrementals = consumeIncrementalsMarkerFile || (env.CHANGE_ID && pullRequest.labels.contains('consume-incrementals'))
-      if (!consumeIncrementals) {
-        echo 'Forbidding use of incremental dependencies. If you need to consume incrementals, add the `consume-incrementals` label, or add a file named `consume-incrementals` to the repository root if you lack triage permission. Then keep this PR in draft until the dependencies have been switched to release versions.'
-      }
-      withChecks(name: 'Tests', includeStage: true) {
-        withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist', "CONSUME_INCREMENTALS=${consumeIncrementals}"]) {
-          sh '''
-          mvn -v
-          bash prep.sh
-          '''
-        }
-        if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount> 0) {
-          error 'Some test failures during prep.sh, not going to continue'
-        }
-        // infra.prepareToPublishIncrementals()
-      }
-      // archive tar of all files produced by prep.sh used after the "prep" stage of the main bom job
-      writeFile file: "target/commit-${commit}.txt", text: env.BUILD_URL
-      sh "tar -czvf prep.tar.gz pct.sh incrementals.sh ${consumeIncrementalsMarkerFile ? 'consume-incrementals' : ''} excludes.txt bom-*/excludes.txt target/pct.jar target/megawar-* target/*.txt **/pom.xml sample-plugin/target/surefire-reports/TEST-*.xml"
-      archiveArtifacts artifacts: 'prep.tar.gz,target/*.txt', fingerprint: true
-      sh 'rm prep.tar.gz'
+    consumeIncrementalsMarkerFile = fileExists 'consume-incrementals'
+    consumeIncrementals = consumeIncrementalsMarkerFile || (env.CHANGE_ID && pullRequest.labels.contains('consume-incrementals'))
+    if (!consumeIncrementals) {
+      echo 'Forbidding use of incremental dependencies. If you need to consume incrementals, add the `consume-incrementals` label, or add a file named `consume-incrementals` to the repository root if you lack triage permission. Then keep this PR in draft until the dependencies have been switched to release versions.'
     }
+    withChecks(name: 'Tests', includeStage: true) {
+      withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist', "CONSUME_INCREMENTALS=${consumeIncrementals}"]) {
+        sh '''
+        mvn -v
+        bash prep.sh
+        '''
+      }
+      if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount> 0) {
+        error 'Some test failures during prep.sh, not going to continue'
+      }
+    }
+    infra.prepareToPublishIncrementals()
 
     fullTestMarkerFile = fileExists 'full-test'
     weeklyTestMarkerFile = fileExists 'weekly-test'
@@ -143,77 +115,24 @@ mavenEnv(jdk: 21) {
     }
     echo "${pluginsByRepository.size()} repositories:\n${plugins.join('\n')}"
     echo "${lines.size()} lines: ${lines.join(' ')}"
-  }
-  stage('split') {
-    def currentRepositories = pluginsByRepository.keySet().sort()
-    // Balanced splits, each split using only one line
+
+    // Fixed splits, each split using only one line
     lines.each { line ->
-      // Retrieve splits from last completed build's junit records from bom report stages
-      def splitType = 'split'
-      def splitsFromJunitRecords = splitTests(parallelism: count(maxSplitsPerLine), testMode: testCase(), stage: "bom-report_${line}")
-      // As splitTests returns exclusion lists, we need to list first all its test cases (repositories)
-      def previousRepositories = [] as Set
-      splitsFromJunitRecords.each { exclusions ->
-        exclusions.each { repository ->
-          // Keep one of each exclusion list items that are in current repositories
-          if (!previousRepositories.contains(repository) && currentRepositories.contains(repository)) previousRepositories << repository
-        }
-      }
-      def balancedSplits = splitsFromJunitRecords.collect { exclusions ->
-        previousRepositories - exclusions
-      }
-      newRepositories = currentRepositories - previousRepositories
-      def newCount = newRepositories.size()
-      echo "INFO: ${previousRepositories.size()} repositories returned by splitTests from junit records for '${line}' line"
-      echo "INFO: ${newCount} new repositor${newCount <= 1 ? 'y' : 'ies' } not returned by splitTests for '${line}' line"
-
-
-      // Debug
-      echo "splitsFromJunitRecords.size(): ${splitsFromJunitRecords.size()}"
-      echo "previousRepositories.size(): ${previousRepositories.size()}"
-      echo "currentRepositories.size(): ${currentRepositories.size()}"
-      echo "newCount: ${newCount}"
-      println splitsFromJunitRecords
-      println previousRepositories
-      println currentRepositories
-      println newRepositories
-
-      // Fallbacks in case splitTests output is unusable (ex: no junit records, or in unexpected stages)
-      if (newCount == currentRepositories.size()) {
-        echo "INFO: splitTests did not return any of the current repositories for '${line}'"
-        def storedReportsPath = "reports/bom-report_${line}.xml"
-        echo "INFO: fallback to extracting splits from stored ${storedReportsPath}"
-        splitType = 'stored'
-        balancedSplits = getBalancedSplitsFromStoredReports(storedReportsPath, currentRepositories)
-        newRepositories = currentRepositories - balancedSplits.flatten().toSet()
-      }
-
-      // Generate current line's splits
-      balancedSplits.eachWithIndex { repositories, i ->
-        splits["${splitType}-${(i + 1).toString().padLeft(2, '0')}:${line}"] = repositories
-      }
-      if (newRepositories) {
-        splitType = 'new'
-        // Fixed splits by default for the remaining new repositories
-        newRepositories.eachWithIndex { repository, idx ->
-          def index = ((idx % maxSplitsPerLine) + 1).toString().padLeft(2, '0') // to get split01 to split<maxSplitsPerLine>
-          def name = "${splitType}-${index}:${line}"
-          splits[name] = splits[name] ?: []
-          splits[name] << repository
-        }
+      pluginsByRepository.eachWithIndex { repository, repoPlugins, idx ->
+        def index = (idx % maxSplitsPerLine) + 1 // to get split1 to split<maxSplitsPerLine>
+        def name = "split-${index}:${line}"
+        splits[name] = splits[name] ?: []
+        splits[name] << repository
       }
     }
     echo "${splits.size()} split(s)"
     echo splits.collect { split, repositories ->
-      "${split} [${repositories.size()}]:\n - ${repositories.join('\n - ')}"
+      "${split} (${repositories.size()}) ${repositories}"
     }.join('\n')
   }
   stage('stash line(s)') {
     lines.each { line ->
       stash name: line, includes: "pct.sh,incrementals.sh,consume-incrementals,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-${line}.war"
-      if (seedJunitFromStoredReports) {
-        stash name: "bom-report_${line}", includes: "reports/**"
-      }
     }
   }
 }
@@ -291,50 +210,33 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
     echo "INFO: pct tests took ${pctDuration}s in total"
   }
   node('maven-bom') {
-    lines.each { line ->
-      def testSuiteName = "bom-report_${line}"
-      // We need junit records in distinct stages later on for splitTests
-      // Otherwise it would try to balance all repositories across all lines
-      // While we want one line per split (agent)
-      stage(testSuiteName) {
-        def testCases = []
-        results.each { combination, result ->
-          def repository = combination.split(':')[0]
-          def resultLine = combination.split(':')[1]
-          if (line == resultLine) {
-            // TODO: test combination as name/classname to get proper splitTests output? (not taking stage in account right now)
-            // Or: keep it so splitTests always finds results even if not the same line?
-            // testCases << '<testcase split="' + result['split'] + '" name="' + repository + '" classname="pct-report.' + repository + '" time="' + result['elapsed'] + '" readyin="' + result['readyIn'] + '" attempt="' + result['attempt'] + '"/>\n'
-            testCases << '<testcase split="' + result['split'] + '" name="' + repository + '" classname="pct-report.' + repository + '" time="' + result['elapsed'] + '" readyin="' + result['readyIn'] + '" attempt="' + result['attempt'] + '"/>\n'
+    stage('reports') {
+      def branches = [:]
+      lines.each { line ->
+        def testSuiteName = "bom-report_${line}"
+        // We need junit records in distinct stages later on for splitTests
+        // Otherwise it would try to balance all repositories across all lines
+        // While we want one line per split (agent)
+        branches[testSuiteName] = {
+          def testCases = []
+          results.each { combination, result ->
+            def repository = combination.split(':')[0]
+            def resultLine = combination.split(':')[1]
+            if (line == resultLine) {
+              testCases << '<testcase split="' + result['split'] + '" name="' + repository + '" classname="pct-report.' + repository + '" time="' + result['elapsed'] + '" readyin="' + result['readyIn'] + '" attempt="' + result['attempt'] + '"/>\n'
+            }
           }
+          def content = """<?xml version="1.0" encoding="UTF-8"?>
+            <testsuite name="${testSuiteName}" line="${line}" pctduration="${pctDuration}" commit="${commit}" build="${env.BUILD_URL}">
+            ${testCases.sort().join('\n')}
+            </testsuite>
+          """
+          writeFile file: "${testSuiteName}.xml", text: content
+          junit testResults: "${testSuiteName}.xml"
+          archiveArtifacts artifacts: "${testSuiteName}.xml"
         }
-        def content = """<?xml version="1.0" encoding="UTF-8"?>
-          <testsuite name="${testSuiteName}" line="${line}" pctduration="${pctDuration}" commit="${commit}" build="${env.BUILD_URL}">
-          ${testCases.sort().join('\n')}
-          </testsuite>
-        """
-        writeFile file: "${testSuiteName}.xml", text: content
-        if (seedJunitFromStoredReports) {
-          unstash testSuiteName
-          testSuiteName = "reports/bom-report_${line}"
-          echo "INFO: seeding junit bom results from ${testSuiteName}.xml instead of the current results"
-          sh "cat ${testSuiteName}.xml || true"
-        }
-        junit testResults: "${testSuiteName}.xml"
-        // archiveArtifacts artifacts: "${testSuiteName}.xml"
-        sh "cat ${testSuiteName}.xml || true"
       }
-
-      // Update build description
-      def totalBuildDuration = (System.currentTimeMillis() - buildStart) / 1000.0
-      def type = '<b>' + (weeklyTest ? 'weekly-test' : (fullTest ? 'full-test' : '')) + '</b>: '
-      def buildInfo = "${type}${splits.size()} split${ (splits.size() > 0 ? 's' : '') }"
-      buildInfo += ", ${pluginsByRepository.size()} repos"
-      buildInfo += newRepositories.size() > 0 ? " (${newRepositories.size()} new)" : ''
-      buildInfo += ", pct tests in ${formatDuration(pctDuration)}, total: ${formatDuration(totalBuildDuration)}"
-      buildInfo += seedJunitFromStoredReports ? ', seed build!' : ''
-      def currentDesc = currentBuild.description
-      currentBuild.description = currentDesc ? currentDesc + '<br><i>' + buildInfo + '</i>' : '<i>' + buildInfo + '</i>'
+      parallel branches
     }
   }
 }
@@ -355,47 +257,5 @@ stage('checks') {
 }
 
 stage('publish incrementals') {
-  // infra.maybePublishIncrementals()
-}
-
-def getBalancedSplitsFromStoredReports(def reportPath = 'reports/bom-report_weekly.xml', def repositoriesUnderTest) {
-  def splits = [:]
-  try {
-    readFile(reportPath).split('\n').findAll {
-      it.contains('<testcase ')
-    }.each { line ->
-      def nameMatch = line =~ /\bname="([^"]+)"/
-      def splitMatch = line =~ /\bsplit="([^"]+)"/
-      if (nameMatch.find() && splitMatch.find()) {
-        def repository = nameMatch[0][1]
-        def split = splitMatch[0][1]
-        // Keep only repositories under test
-        if (repositoriesUnderTest.contains(repository)) {
-          splits[split] = splits[split] ?: []
-          splits[split] << repository
-        }
-      }
-    }
-  } catch (e) {
-    echo "WARNING: could not retrieve splits from ${reportPath}"
-  }
-  return splits.values().findAll { it }.toList()
-}
-
-def formatDuration(def seconds) {
-  def parts = []
-  long totalSeconds = Math.round(seconds as Double)
-  long hours = totalSeconds.intdiv(3600)
-  long mins = (totalSeconds % 3600).intdiv(60)
-  long secs = totalSeconds % 60
-  if (hours) {
-    parts << "${hours}h"
-  }
-  if (mins) {
-    parts << ((hours) ? "${mins.toString().padLeft(2, '0')}m" : "${mins}m")
-  }
-  if (secs) {
-    parts << ((mins || hours) ? "${secs.toString().padLeft(2, '0')}s" : "${secs}s")
-  }
-  parts.join('')
+  infra.maybePublishIncrementals()
 }
