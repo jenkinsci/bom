@@ -4,13 +4,15 @@ cd "$(dirname "${0}")"
 
 # expects: $LINE
 
+source incrementals.sh
+
 if [[ ! -d sample-plugin/target/test-classes/test-dependencies || ! -d sample-plugin/target/jenkins-for-test ]]; then
 	if [[ $LINE == weekly ]]; then
 		PROFILE=
 	else
 		PROFILE=-P$LINE
 	fi
-	mvn -pl sample-plugin -Djenkins.test.timeout=360 clean test -Dtest=InjectedTest $PROFILE
+	mvn -pl sample-plugin -Djenkins.test.timeout=360 clean test -Dtest=InjectedTest $PROFILE "${INCREMENTALS_PROFILE}"
 fi
 
 cd sample-plugin/target

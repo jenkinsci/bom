@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.jenkins-ci.plugins</groupId>
     <artifactId>plugin</artifactId>
-    <version>6.2189.v695a_c41f5249</version>
+    <version>6.2221.va_045130417c9</version>
     <relativePath />
   </parent>
   <groupId>io.jenkins.tools.bom</groupId>
@@ -14,7 +14,7 @@
   <properties>
     <changelist>999999-SNAPSHOT</changelist>
     <bom>weekly</bom>
-    <jenkins.version>2.567-rc38339.855903b_10039</jenkins.version>
+    <jenkins.version>2.579-rc38601.7d0b_26cdb_3b_5</jenkins.version>
     <spotless.check.skip>false</spotless.check.skip>
   </properties>
   <dependencyManagement>
@@ -438,6 +438,11 @@
     </dependency>
     <dependency>
       <groupId>io.jenkins.plugins</groupId>
+      <artifactId>nimbus-jose-jwt-api</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.jenkins.plugins</groupId>
       <artifactId>oidc-provider</artifactId>
       <scope>test</scope>
     </dependency>
@@ -678,6 +683,12 @@
       <scope>test</scope>
     </dependency>
     <dependency>
+      <groupId>org.awaitility</groupId>
+      <artifactId>awaitility</artifactId>
+      <version>4.3.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <groupId>org.csanchez.jenkins.plugins</groupId>
       <artifactId>kubernetes</artifactId>
       <scope>test</scope>
@@ -786,6 +797,11 @@
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>build-timestamp</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>build-token-root</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -1362,6 +1378,12 @@
     </dependency>
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>ssh-slaves</artifactId>
+      <classifier>tests</classifier>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>ssh-steps</artifactId>
       <scope>test</scope>
     </dependency>
@@ -1705,10 +1727,17 @@
   <profiles>
     <!-- Use .1 of most recent active line, and .3 (or later) of previous lines: https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/#choosing-a-version -->
     <profile>
+      <id>2.568.x</id>
+      <properties>
+        <bom>2.568.x</bom>
+        <jenkins.version>2.568.1</jenkins.version>
+      </properties>
+    </profile>
+    <profile>
       <id>2.555.x</id>
       <properties>
         <bom>2.555.x</bom>
-        <jenkins.version>2.555.1</jenkins.version>
+        <jenkins.version>2.555.3</jenkins.version>
       </properties>
     </profile>
     <profile>
@@ -1716,13 +1745,6 @@
       <properties>
         <bom>2.541.x</bom>
         <jenkins.version>2.541.3</jenkins.version>
-      </properties>
-    </profile>
-    <profile>
-      <id>2.528.x</id>
-      <properties>
-        <bom>2.528.x</bom>
-        <jenkins.version>2.528.3</jenkins.version>
       </properties>
     </profile>
   </profiles>
