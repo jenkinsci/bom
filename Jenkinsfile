@@ -73,6 +73,8 @@ def results = [:]
 def commit
 def pctDuration
 def reportNamePrefix = 'bom-report_'
+def incrementalDoneInPreviousBuild = false
+def stashGlob = 'pct.sh,incrementals.sh,consume-incrementals,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-REPLACEME_LINE.war'
 
 mavenEnv(jdk: 21) {
   stage('prep') {
@@ -82,18 +84,35 @@ mavenEnv(jdk: 21) {
     if (!consumeIncrementals) {
       echo 'Forbidding use of incremental dependencies. If you need to consume incrementals, add the `consume-incrementals` label, or add a file named `consume-incrementals` to the repository root if you lack triage permission. Then keep this PR in draft until the dependencies have been switched to release versions.'
     }
-    withChecks(name: 'Tests', includeStage: true) {
-      withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist', "CONSUME_INCREMENTALS=${consumeIncrementals}"]) {
-        sh '''
-        mvn -v
-        bash prep.sh
-        '''
-      }
-      if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount> 0) {
-        error 'Some test failures during prep.sh, not going to continue'
+    def prepArchive = "prep-${commit}.tar.gz"
+    withEnv["PREP_ARCHIVE=${prepArchive}"] {
+      // Try to retrieve prep archive from a previous build on the same revision
+      try {
+        copyArtifacts(projectName: env.JOB_NAME, selector: lastWithArtifacts(), filter: prepArchive, fingerprintArtifacts: true)
+        publishChecks(name: 'Tests / prep')
+        sh 'tar -xzvf "${PREP_ARCHIVE}" && rm -v "${PREP_ARCHIVE}"'
+        incrementalDoneInPreviousBuild = true
+      } catch(e) {
+        // If no corresponding prep archive found (first build or new commit), run prep.sh and prepare incrementals
+        withChecks(name: 'Tests', includeStage: true) {
+          withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist', "CONSUME_INCREMENTALS=${consumeIncrementals}"]) {
+            sh '''
+            mvn -v
+            bash prep.sh
+            '''
+          }
+          if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount > 0) {
+            error 'Some test failures during prep.sh, not going to continue'
+          }
+        }
+        infra.prepareToPublishIncrementals()
+
+        // Archive prep.sh generated files used for all lines after the "prep" stage
+        sh 'tar -czvf "${PREP_ARCHIVE}" ' + stashGlob.replace('REPLACEME_LINE', '*') + (consumeIncrementalsMarkerFile ? ' consume-incrementals' : '')
+        archiveArtifacts artifacts: prepArchive, fingerprint: true
+        sh 'rm -v "${PREP_ARCHIVE}"'
       }
     }
-    infra.prepareToPublishIncrementals()
 
     fullTestMarkerFile = fileExists 'full-test'
     weeklyTestMarkerFile = fileExists 'weekly-test'
@@ -158,7 +177,7 @@ mavenEnv(jdk: 21) {
   }
   stage('stash line(s)') {
     lines.each { line ->
-      stash name: line, includes: "pct.sh,incrementals.sh,consume-incrementals,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-${line}.war"
+      stash name: line, includes: stashGlob.replace('REPLACEME_LINE', line)
     }
   }
 }
@@ -287,5 +306,9 @@ stage('checks') {
 }
 
 stage('publish incrementals') {
-  infra.maybePublishIncrementals()
+  if (incrementalDoneInPreviousBuild) {
+    echo 'INFO: incrementals have been taken care of in a previous build'
+  } else {
+    infra.maybePublishIncrementals()
+  }
 }
