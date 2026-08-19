@@ -235,6 +235,7 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
            commit: commit,
            build: env.BUILD_URL,
         ].collect { key, value -> "${key}=\"${value}\"" }.join(' ')
+        def defaultContent = '<?xml version="1.0" encoding="UTF-8"?>\n<testsuite ' + testSuite + '>\nTESTCASES\n</testsuite>\n'
         // We need junit records in distinct stages later on for splitTests
         // Otherwise it would try to balance all repositories across all lines
         // While we want one line per split (agent)
@@ -260,11 +261,7 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
           }
         }
         stage(testSuiteName) {
-          def content = '<?xml version="1.0" encoding="UTF-8"?>\n'
-          content += '<testsuite ' + testSuite + '>\n'
-          content += testCases['all'].sort().join('\n')
-          content += '</testsuite>'
-          writeFile file: "${testSuiteName}.xml", text: content
+          writeFile file: "${testSuiteName}.xml", text: defaultContent.replace('TESTCASES', testCases['all'].sort().join('\n'))
           junit testResults: "${testSuiteName}.xml"
           archiveArtifacts artifacts: "${testSuiteName}.xml"
           sh "cat ${testSuiteName}.xml"
@@ -272,11 +269,7 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
         if (testCases['failed'].size() > 0) {
           def failedTestSuiteName = "failed-${commit}-${testSuiteName}"
           stage(failedTestSuiteName) {
-            def content = '<?xml version="1.0" encoding="UTF-8"?>\n'
-            content += '<testsuite ' + testSuite.replace(testSuiteName, failedTestSuiteName) + '>\n'
-            content += testCases['failed'].sort().join('\n')
-            content += '</testsuite>'
-            writeFile file: "${failedTestSuiteName}.xml", text: content
+            writeFile file: "${failedTestSuiteName}.xml", text: defaultContent.replace('TESTCASES', testCases['failed'].sort().join('\n'))
             junit testResults: "${failedTestSuiteName}.xml"
             archiveArtifacts artifacts: "${failedTestSuiteName}.xml"
             sh "cat ${failedTestSuiteName}.xml"
