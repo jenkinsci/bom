@@ -226,7 +226,7 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
   node('maven-bom') {
     stage('reports') {
       lines.each { line ->
-        def testCases = [all: [], failed: [], error: []]
+        def testCases = [all: [], failed: []]
         def testSuiteName = "${reportNamePrefix}${line}"
         def testSuite = [
            name: testSuiteName,
@@ -249,14 +249,12 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
               time: result['elapsed'],
               readyin: result['readyIn'],
               attempt: result['attempt'],
+              tests: result['totalCount'],
+              failures: result['failCount'],
             ].collect { key, value -> "${key}=\"${value}\"" }.join(' ')
             testCases['all'] << '<testcase ' + testCase + '/>'
-            // If tests haven't been executed
-            if (result['totalCount'] == 0) {
-              testCases['error'] << '<testcase ' + testCase + '/>'
-            }
-            // If tests have been executed but some failed
-            if (result['totalCount'] > 0 && result['failCount'] > 0) {
+            // If tests haven't been executed or some failed
+            if (result['totalCount'] == 0 || (result['totalCount'] > 0 && result['failCount'] > 0)) {
               testCases['failed'] << '<testcase ' + testCase + '/>'
             }
           }
@@ -282,19 +280,6 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
             junit testResults: "${failedTestSuiteName}.xml"
             archiveArtifacts artifacts: "${failedTestSuiteName}.xml"
             sh "cat ${failedTestSuiteName}.xml"
-          }
-        }
-        if (testCases['error'].size() > 0) {
-          def errorTestSuiteName = "error-${commit}-${testSuiteName}"
-          stage(errorTestSuiteName) {
-            def content = '<?xml version="1.0" encoding="UTF-8"?>\n'
-            content += '<testsuite ' + testSuite.replace(testSuiteName, errorTestSuiteName) + '>\n'
-            content += testCases['error'].sort().join('\n')
-            content += '</testsuite>'
-            writeFile file: "${errorTestSuiteName}.xml", text: content
-            junit testResults: "${errorTestSuiteName}.xml"
-            archiveArtifacts artifacts: "${errorTestSuiteName}.xml"
-            sh "cat ${errorTestSuiteName}.xml"
           }
         }
       }
