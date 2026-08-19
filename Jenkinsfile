@@ -244,21 +244,27 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
         // While we want one line per split (agent)
         stage(testSuiteName) {
           def testCases = []
+          def testSuiteAttributes = [
+            name: testSuiteName, line: line, time: pctDuration, commit: commit, build: env.BUILD_URL
+          ].collect { key, value -> "${key}=\"${value}\"" }.join(' ')
           results.each { combination, result ->
             def repository = combination.split(':')[0]
             def resultLine = combination.split(':')[1]
             if (line == resultLine) {
-              testCases << '<testcase split="' + result['split'] + '" name="' + repository + '" classname="pct-report.' + repository + '" time="' + result['elapsed'] + '" readyin="' + result['readyIn'] + '" attempt="' + result['attempt'] + '"/>\n'
+              def testCaseAttributes = [
+                split: result['split'],
+                name: repository,
+                classname: "pct-report.${repository}",
+                time: result['elapsed'],
+                readyin: result['readyIn'],
+                attempt: result['attempt'],
+              ].collect { key, value -> "${key}=\"${value}\"" }.join(' ')
+              testCases << '  <testcase ' + testCaseAttributes + '/>'
             }
           }
-          def content = """<?xml version="1.0" encoding="UTF-8"?>
-            <testsuite name="${testSuiteName}" line="${line}" pctduration="${pctDuration}" commit="${commit}" build="${env.BUILD_URL}">
-            ${testCases.sort().join('\n')}
-            </testsuite>
-          """
+          def content = '<?xml version="1.0" encoding="UTF-8"?>\n<testsuite ' + testSuiteAttributes + '>\n' + testCases.sort().join('\n') + '\n</testsuite>\n'
           writeFile file: "${testSuiteName}.xml", text: content
           junit testResults: "${testSuiteName}.xml"
-          archiveArtifacts artifacts: "${testSuiteName}.xml"
         }
       }
     }
