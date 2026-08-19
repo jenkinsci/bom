@@ -227,23 +227,37 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
     stage('reports') {
       lines.each { line ->
         def testSuiteName = "${reportNamePrefix}${line}"
+        def testSuite = [
+           name: testSuiteName,
+           line: line,
+           pctduration: pctDuration,
+           commit: commit,
+           build: env.BUILD_URL,
+        ]
         // We need junit records in distinct stages later on for splitTests
         // Otherwise it would try to balance all repositories across all lines
         // While we want one line per split (agent)
-        stage(testSuiteName) {
-          def testCases = []
-          results.each { combination, result ->
-            def repository = combination.split(':')[0]
-            def resultLine = combination.split(':')[1]
-            if (line == resultLine) {
-              testCases << '<testcase split="' + result['split'] + '" name="' + repository + '" classname="pct-report.' + repository + '" time="' + result['elapsed'] + '" readyin="' + result['readyIn'] + '" attempt="' + result['attempt'] + '"/>\n'
-            }
+        def testCases = []
+        results.each { combination, result ->
+          def repository = combination.split(':')[0]
+          def resultLine = combination.split(':')[1]
+          if (line == resultLine) {
+            def testCase = [
+              split: result['split'],
+              name: repository,
+              classname: "pct-report.${repository}",
+              time: result['elapsed'],
+              readyin: result['readyIn'],
+              attempt: result['attempt'],
+            ]
+            testCases << '<testcase ' + testCase.collect { key, value -> "${key}=\"${value}\"" }.join(' ') + '/>\n'
           }
-          def content = """<?xml version="1.0" encoding="UTF-8"?>
-            <testsuite name="${testSuiteName}" line="${line}" pctduration="${pctDuration}" commit="${commit}" build="${env.BUILD_URL}">
-            ${testCases.sort().join('\n')}
-            </testsuite>
-          """
+        }
+        stage(testSuiteName) {
+          def content = '<?xml version="1.0" encoding="UTF-8"?>\n'
+            + '<testsuite ' + testSuite.collect { key, value -> "${key}=\"${value}\"" }.join(' ') + '>\n'
+            + testCases.sort().join('\n')
+            + '</testsuite>'
           writeFile file: "${testSuiteName}.xml", text: content
           junit testResults: "${testSuiteName}.xml"
           archiveArtifacts artifacts: "${testSuiteName}.xml"
