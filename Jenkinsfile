@@ -120,7 +120,7 @@ mavenEnv(jdk: 21) {
       }
       def balancedSplits = splitsFromJunitRecords.collect { exclusions ->
         previousRepositories - exclusions
-      }
+      }.findAll { it }
       def newRepositories = currentRepositories - previousRepositories
       echo "INFO: ${previousRepositories.size()} repositories returned by splitTests from junit records for '${line}' line"
       echo "INFO: ${newRepositories.size()} new repositor${newRepositories.size() <= 1 ? 'y' : 'ies' } not returned by splitTests for '${line}' line"
