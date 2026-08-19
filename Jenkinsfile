@@ -11,15 +11,7 @@ def maxSplitsPerLine = 20
 // Ex: ['jenkinsci/badge-plugin\tbadge', 'jenkinsci/cron_column-plugin\tcron_column']
 def limitedPluginSet = ['jenkinsci/badge-plugin\tbadge', 'jenkinsci/cron_column-plugin\tcron_column']
 
-def simulateBadgeTestFailure = false
-def simulatedBadgePluginFailedJunit = '''
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.jenkins_ci.plugins.badge.InjectedTest" time="5" tests="1" errors="0" skipped="0" failures="1" flakes="0">
-  <testcase name="testPluginActive" classname="org.jenkins_ci.plugins.badge.InjectedTest" time="5">
-    <failure message="Test failed">Simulated test failure</failure>
-  </testcase>
-</testsuite>
-'''
+def simulateTestFailureRepository = ''
 
 properties([
   // disableConcurrentBuilds(abortPrevious: true),
@@ -194,8 +186,8 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
                   ]) {
                     def start = System.currentTimeMillis()
                     try {
-                      if (simulateBadgeTestFailure && repository == 'badge-plugin') {
-                        writeFile file: 'target/TEST-org.jenkins_ci.plugins.badge.InjectedTest.xml', text: simulatedBadgePluginFailedJunit
+                      if (repository == simulateTestFailureRepository) {
+                        unstable "Simulating test failure on ${simulateTestFailureRepository}"
                       } else {
                         sh '''
                         mvn -v
