@@ -9,12 +9,10 @@ def maxSplitsPerLine = 20
 
 // Run pct tests on a limited set of repositories and their plugin(s) if not empty
 // Ex: ['jenkinsci/badge-plugin\tbadge', 'jenkinsci/cron_column-plugin\tcron_column']
-def limitedPluginSet = ['jenkinsci/badge-plugin\tbadge', 'jenkinsci/cron_column-plugin\tcron_column']
-
-def simulateTestFailureRepository = ''
+def limitedPluginSet = []
 
 properties([
-  // disableConcurrentBuilds(abortPrevious: true),
+  disableConcurrentBuilds(abortPrevious: true),
   buildDiscarder(logRotator(numToKeepStr: '7')),
   pipelineTriggers([cron(cronTrigger)])
 ])
@@ -79,11 +77,23 @@ def reportNamePrefix = 'bom-report_'
 mavenEnv(jdk: 21) {
   stage('prep') {
     commit = checkout(scm).GIT_COMMIT.take(7)
-
-    // Debug: retrieve prep from archive
-    copyArtifacts(projectName: 'Tools/bom/prep-only', selector: lastWithArtifacts(), filter: 'prep.tar.gz', fingerprintArtifacts: true)
-    publishChecks(name: 'Tests / prep')
-    sh 'tar -xzvf prep.tar.gz && rm prep.tar.gz'
+    consumeIncrementalsMarkerFile = fileExists 'consume-incrementals'
+    consumeIncrementals = consumeIncrementalsMarkerFile || (env.CHANGE_ID && pullRequest.labels.contains('consume-incrementals'))
+    if (!consumeIncrementals) {
+      echo 'Forbidding use of incremental dependencies. If you need to consume incrementals, add the `consume-incrementals` label, or add a file named `consume-incrementals` to the repository root if you lack triage permission. Then keep this PR in draft until the dependencies have been switched to release versions.'
+    }
+    withChecks(name: 'Tests', includeStage: true) {
+      withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist', "CONSUME_INCREMENTALS=${consumeIncrementals}"]) {
+        sh '''
+        mvn -v
+        bash prep.sh
+        '''
+      }
+      if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount> 0) {
+        error 'Some test failures during prep.sh, not going to continue'
+      }
+    }
+    infra.prepareToPublishIncrementals()
 
     fullTestMarkerFile = fileExists 'full-test'
     weeklyTestMarkerFile = fileExists 'weekly-test'
@@ -122,7 +132,7 @@ mavenEnv(jdk: 21) {
       }
       def balancedSplits = splitsFromJunitRecords.collect { exclusions ->
         previousRepositories - exclusions
-      }.findAll { it }
+      }
       def newRepositories = currentRepositories - previousRepositories
       echo "INFO: ${previousRepositories.size()} repositories returned by splitTests from junit records for '${line}' line"
       echo "INFO: ${newRepositories.size()} new repositor${newRepositories.size() <= 1 ? 'y' : 'ies' } not returned by splitTests for '${line}' line"
@@ -186,14 +196,10 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
                   ]) {
                     def start = System.currentTimeMillis()
                     try {
-                      if (repository == simulateTestFailureRepository) {
-                        unstable "Simulating test failure on ${simulateTestFailureRepository}"
-                      } else {
-                        sh '''
-                        mvn -v
-                        bash pct.sh
-                        '''
-                      }
+                      sh '''
+                      mvn -v
+                      bash pct.sh
+                      '''
                     } catch (e) {
                       if (!(e instanceof InterruptedException) && !(e instanceof org.jenkinsci.plugins.workflow.support.steps.AgentOfflineException)) {
                         publishChecks status: 'COMPLETED', conclusion: 'FAILURE', title: 'Tests could not be executed'
@@ -232,54 +238,33 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
   node('maven-bom') {
     stage('reports') {
       lines.each { line ->
-        def testCases = [all: [], failed: []]
         def testSuiteName = "${reportNamePrefix}${line}"
-        def testSuite = [
-           name: testSuiteName,
-           line: line,
-           time: pctDuration,
-           commit: commit,
-           build: env.BUILD_URL,
-        ].collect { key, value -> "${key}=\"${value}\"" }.join(' ')
-        def defaultContent = '<?xml version="1.0" encoding="UTF-8"?>\n<testsuite ' + testSuite + '>\nTESTCASES\n</testsuite>\n'
         // We need junit records in distinct stages later on for splitTests
         // Otherwise it would try to balance all repositories across all lines
         // While we want one line per split (agent)
-        results.each { combination, result ->
-          def repository = combination.split(':')[0]
-          def resultLine = combination.split(':')[1]
-          if (line == resultLine) {
-            def testCase = [
-              split: result['split'],
-              name: repository,
-              classname: "pct-report.${repository}",
-              time: result['elapsed'],
-              readyin: result['readyIn'],
-              attempt: result['attempt'],
-              tests: result['totalCount'],
-              failures: result['failCount'],
-            ].collect { key, value -> "${key}=\"${value}\"" }.join(' ')
-            testCases['all'] << '  <testcase ' + testCase + '/>'
-            // If tests haven't been executed or some failed
-            if (result['totalCount'] == 0 || (result['totalCount'] > 0 && result['failCount'] > 0)) {
-              testCases['failed'] << '  <testcase ' + testCase + '/>'
+        stage(testSuiteName) {
+          def testCases = []
+          def testSuiteAttributes = [
+            name: testSuiteName, line: line, time: pctDuration, commit: commit, build: env.BUILD_URL
+          ].collect { key, value -> "${key}=\"${value}\"" }.join(' ')
+          results.each { combination, result ->
+            def repository = combination.split(':')[0]
+            def resultLine = combination.split(':')[1]
+            if (line == resultLine) {
+              def testCaseAttributes = [
+                split: result['split'],
+                name: repository,
+                classname: "pct-report.${repository}",
+                time: result['elapsed'],
+                readyin: result['readyIn'],
+                attempt: result['attempt'],
+              ].collect { key, value -> "${key}=\"${value}\"" }.join(' ')
+              testCases << '  <testcase ' + testCaseAttributes + '/>'
             }
           }
-        }
-        stage(testSuiteName) {
-          writeFile file: "${testSuiteName}.xml", text: defaultContent.replace('TESTCASES', testCases['all'].sort().join('\n'))
+          def content = '<?xml version="1.0" encoding="UTF-8"?>\n<testsuite ' + testSuiteAttributes + '>\n' + testCases.sort().join('\n') + '\n</testsuite>\n'
+          writeFile file: "${testSuiteName}.xml", text: content
           junit testResults: "${testSuiteName}.xml"
-          archiveArtifacts artifacts: "${testSuiteName}.xml"
-          sh "cat ${testSuiteName}.xml"
-        }
-        if (testCases['failed'].size() > 0) {
-          def failedTestSuiteName = "failed-${commit}-${testSuiteName}"
-          stage(failedTestSuiteName) {
-            writeFile file: "${failedTestSuiteName}.xml", text: defaultContent.replace('TESTCASES', testCases['failed'].sort().join('\n'))
-            junit testResults: "${failedTestSuiteName}.xml"
-            archiveArtifacts artifacts: "${failedTestSuiteName}.xml"
-            sh "cat ${failedTestSuiteName}.xml"
-          }
         }
       }
     }
@@ -302,4 +287,5 @@ stage('checks') {
 }
 
 stage('publish incrementals') {
+  infra.maybePublishIncrementals()
 }
