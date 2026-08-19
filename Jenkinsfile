@@ -73,6 +73,7 @@ def results = [:]
 def commit
 def pctDuration
 def reportNamePrefix = 'bom-report_'
+def glob = 'pct.sh incrementals.sh consume-incrementals excludes.txt bom-*/excludes.txt target/pct.jar target/megawar-LINE_TO_ARCHIVE.war'
 
 mavenEnv(jdk: 21) {
   stage('prep') {
@@ -82,17 +83,39 @@ mavenEnv(jdk: 21) {
     if (!consumeIncrementals) {
       echo 'Forbidding use of incremental dependencies. If you need to consume incrementals, add the `consume-incrementals` label, or add a file named `consume-incrementals` to the repository root if you lack triage permission. Then keep this PR in draft until the dependencies have been switched to release versions.'
     }
-    withChecks(name: 'Tests', includeStage: true) {
-      withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist', "CONSUME_INCREMENTALS=${consumeIncrementals}"]) {
-        sh '''
-        mvn -v
-        bash prep.sh
-        '''
+    def prepArchive = "prep-${commit}.tar.gz"
+    // Try to retrieve prep archive from a previous build on the same revision
+    try {
+      copyArtifacts(projectName: env.JOB_NAME, selector: lastWithArtifacts(), filter: prepArchive, fingerprintArtifacts: true)
+      sh('tar -xzvf ' + prepArchive)
+      sh 'mkdir -p "${MVN_LOCAL_REPO}/io/jenkins/tools/bom/" && cp -a mvn-local-repo-bom/. "${MVN_LOCAL_REPO}/io/jenkins/tools/bom/"'
+    } catch(e) {
+      withChecks(name: 'Tests', includeStage: true) {
+        withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist', "CONSUME_INCREMENTALS=${consumeIncrementals}"]) {
+          sh '''
+          mvn -v
+          bash prep.sh
+          '''
+        }
+        if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount> 0) {
+          error 'Some test failures during prep.sh, not going to continue'
+        }
       }
-      if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount> 0) {
-        error 'Some test failures during prep.sh, not going to continue'
-      }
+      // Find the last line from sample-plugin/pom.xml to avoid archiving all (heavy) megawars
+      def lastLine = readFile('sample-plugin/pom.xml').readLines().findAll {
+        it.contains('<bom>')
+      }.last().replaceAll(/.*<bom>|<\/bom>.*/, '')
+      // Keep only the first (weekly) and last megawars, and consume-incrementals marker file if it exists
+      def tarGlob = glob.replace('target/megawar-LINE_TO_ARCHIVE.war', "target/megawar-weekly.war target/megawar-${lastLine}.war")
+      if (!consumeIncrementalsMarkerFile) tarGlob = tarGlob.replace(' consume-incrementals', '')
+      // Copy bom pom in a temporary folder
+      sh 'mkdir -p mvn-local-repo-bom && cp -a "${MVN_LOCAL_REPO}/io/jenkins/tools/bom/." mvn-local-repo-bom/'
+      tarGlob += ' mvn-local-repo-bom'
+      // Compress glob files + plugins.txt & lines.txt
+      sh('tar -czvf ' + prepArchive + ' ' + tarGlob + ' target/*.txt')
     }
+    archiveArtifacts artifacts: prepArchive, fingerprint: true
+    sh('rm -rfv mvn-local-repo-bom ' + prepArchive) // Incrementals preparation requires clean stage
     infra.prepareToPublishIncrementals()
 
     fullTestMarkerFile = fileExists 'full-test'
@@ -158,7 +181,7 @@ mavenEnv(jdk: 21) {
   }
   stage('stash line(s)') {
     lines.each { line ->
-      stash name: line, includes: "pct.sh,incrementals.sh,consume-incrementals,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-${line}.war"
+      stash name: line, includes: glob.replace(' ', ',').replace('LINE_TO_ARCHIVE', line)
     }
   }
 }
