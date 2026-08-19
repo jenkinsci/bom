@@ -226,18 +226,19 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
   node('maven-bom') {
     stage('reports') {
       lines.each { line ->
+        def testCases = []
+        def failedTestCases = []
         def testSuiteName = "${reportNamePrefix}${line}"
         def testSuite = [
            name: testSuiteName,
            line: line,
-           pctduration: pctDuration,
+           time: pctDuration,
            commit: commit,
            build: env.BUILD_URL,
-        ]
+        ].collect { key, value -> "${key}=\"${value}\"" }.join(' ')
         // We need junit records in distinct stages later on for splitTests
         // Otherwise it would try to balance all repositories across all lines
         // While we want one line per split (agent)
-        def testCases = []
         results.each { combination, result ->
           def repository = combination.split(':')[0]
           def resultLine = combination.split(':')[1]
@@ -249,18 +250,33 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
               time: result['elapsed'],
               readyin: result['readyIn'],
               attempt: result['attempt'],
-            ]
-            testCases << '<testcase ' + testCase.collect { key, value -> "${key}=\"${value}\"" }.join(' ') + '/>\n'
+            ].collect { key, value -> "${key}=\"${value}\"" }.join(' ')
+            testCases << '<testcase ' + testCase + '/>\n'
+            // If tests have been executed but some failed, or if no test were executed
+            if ((result['totalCount'] > 0 && result['failCount'] > 0) || result['totalCount']) {
+              failedTestCases << '<testcase ' + testCase + '/>\n'
+            }
           }
         }
         stage(testSuiteName) {
           def content = '<?xml version="1.0" encoding="UTF-8"?>\n'
-            + '<testsuite ' + testSuite.collect { key, value -> "${key}=\"${value}\"" }.join(' ') + '>\n'
-            + testCases.sort().join('\n')
-            + '</testsuite>'
+          content += '<testsuite ' + testSuite + '>\n'
+          content += testCases.sort().join('\n')
+          content += '</testsuite>'
           writeFile file: "${testSuiteName}.xml", text: content
           junit testResults: "${testSuiteName}.xml"
           archiveArtifacts artifacts: "${testSuiteName}.xml"
+        }
+        if (failedTestCases.size() > 0) {
+          def failedTestSuiteName = "failed-${testSuiteName}"
+          stage(failedTestSuiteName) {
+            content += '<testsuite ' + testSuite.replace(testSuiteName, failedTestSuiteName) + '>\n'
+            content += testCases.sort().join('\n')
+            content += '</testsuite>'
+            writeFile file: "${failedTestSuiteName}.xml", text: content
+            junit testResults: "${failedTestSuiteName}.xml"
+            archiveArtifacts artifacts: "${failedTestSuiteName}.xml"
+          }
         }
       }
     }
