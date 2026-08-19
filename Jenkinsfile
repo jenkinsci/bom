@@ -252,10 +252,10 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
               tests: result['totalCount'],
               failures: result['failCount'],
             ].collect { key, value -> "${key}=\"${value}\"" }.join(' ')
-            testCases['all'] << '<testcase ' + testCase + '/>'
+            testCases['all'] << '  <testcase ' + testCase + '/>'
             // If tests haven't been executed or some failed
             if (result['totalCount'] == 0 || (result['totalCount'] > 0 && result['failCount'] > 0)) {
-              testCases['failed'] << '<testcase ' + testCase + '/>'
+              testCases['failed'] << '  <testcase ' + testCase + '/>'
             }
           }
         }
