@@ -58,9 +58,9 @@ mavenEnv(jdk: 21) {
       changeFork = parts[2]
       def remote = "https://github.com/${changeFork}/bom.git"
       echo "INFO: setting remote change-fork to ${remote}"
-      sh 'git remote -v'
       sh('git remote add change-fork ' + remote)
       sh 'git fetch --no-tags change-fork "+refs/heads/*:refs/remotes/origin/*"'
+      sh 'git remote -v'
       sh('git checkout ' + commit)
       if (parts.size() > 3 && parts[3] == 'consume-incrementals') {
         consumeIncrementals = true
