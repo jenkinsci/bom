@@ -3,15 +3,18 @@ env.MAVEN_NTP = true
 properties([
   parameters([
     string(
-        name: 'COMMIT',
-        defaultValue: '',
-        description: 'Git commit to build. If empty, use the current SCM revision',
+        name: 'ARCHIVE_NAME',
+        defaultValue: 'prep.tar.gz',
+        description: 'Name of the archive to build. Expected format to build the archive from a specific commit: prep-<commit>.tar.gz (add "-consume-incrementals" after the commit if needed)',
         )
   ]),
-  parameters([booleanParam(
-        name: 'CONSUME_INCREMENTALS',
-        defaultValue: false,
-        )]),
+  parameters([
+    string(
+        name: 'STASH_GLOB',
+        defaultValue: 'pct.sh,incrementals.sh,consume-incrementals,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-REPLACEME_LINE.war',
+        description: 'Glob of files to archive (comma separated)',
+        )
+  ]),
   buildDiscarder(logRotator(numToKeepStr: '10'))
 ])
 
@@ -43,25 +46,20 @@ def mavenEnv(Map params = [:], Closure body) {
   }
 }
 
-def stashGlob = 'pct.sh,incrementals.sh,consume-incrementals,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-REPLACEME_LINE.war'
-
 mavenEnv(jdk: 21) {
-  // No commit by default in the archive name (allowing to retrieve it from any revision in the upstream build)
-  def archiveName = 'prep'
-  def consumeIncrementals = false
   def scmVars = checkout(scm)
-  def gitCommit = params.COMMIT ?: scmVars.GIT_COMMIT
-  if (params.COMMIT) {
-    sh "git checkout ${params.COMMIT}"
-    archiveName += "-${gitCommit}"
+  def gitCommit = scmVars.GIT_COMMIT
+  def consumeIncrementals = false
+  // No commit by default in the archive name (allowing to retrieve it from any revision in the upstream build)
+  def archiveName = params.ARCHIVE_NAME
+  def parts = archiveName.split('-')
+  if (parts.size() > 1) {
+    gitCommit = parts[1]
+    sh 'git checkout ' + gitCommit
+    if (parts.size() > 2 && parts[2] == 'consume-incrementals') {
+      consumeIncrementals = true
+    }
   }
-  if (params.CONSUME_INCREMENTALS) {
-    sh "git checkout ${params.COMMIT}"
-    archiveName += '-consume-incrementals'
-    consumeIncrementals = true
-  }
-  archiveName += '.tar.gz'
-
   stage(archiveName) {
     // Try to retrieve prep archive from a previous build on the same revision
     try {
@@ -82,7 +80,9 @@ mavenEnv(jdk: 21) {
         // Add a reference file
         writeFile file: "target/build-url-prep-only-commit-${gitCommit}.txt", text: env.BUILD_URL
         // Archive files stashed for all lines after the "prep" stage + plugins.txt & lines.txt
-        def tarGlob = stashGlob.replace(',', ' ').replace('REPLACEME_LINE', '*') + ' target/*.txt'
+        def tarGlob = param.STASH_GLOB.replace(',', ' ').replace('REPLACEME_LINE', '*') + ' target/*.txt'
+        // Don't try to archive consume-incrementals file if it doesn't exist
+        if (!consumeIncrementalsMarkerFile) tarGlob = tarGlob.replace(' consume-incrementals', '')
         // Also include prep.sh test results
         tarGlob += '**/target/surefire-reports/TEST-*.xml **/target/failsafe-reports/TEST-*.xml'
         sh 'tar -czvf ' archiveName + ' ' + tarGlob
@@ -109,7 +109,7 @@ def formatDuration(def seconds) {
     parts << "${hours}h"
   }
   if (mins) {
-    parts << (hour) ? "${mins.toString().padLeft(2, '0')}m" : "${mins}m"
+    parts << (hours) ? "${mins.toString().padLeft(2, '0')}m" : "${mins}m"
   }
   if (secs) {
     parts << (mins || hours) ? "${secs.toString().padLeft(2, '0')}s" : "${secs}s"
