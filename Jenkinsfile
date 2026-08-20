@@ -83,8 +83,6 @@ mavenEnv(jdk: 21) {
         writeFile file: "target/build-url-prep-only-commit-${gitCommit}.txt", text: env.BUILD_URL
         // Archive files stashed for all lines after the "prep" stage + plugins.txt & lines.txt
         def tarGlob = stashGlob.replace(',', ' ').replace('REPLACEME_LINE', '*') + ' target/*.txt'
-        // Don't try to archive consume-incrementals file if it doesn't exist
-        if (!consumeIncrementalsMarkerFile) tarGlob = tarGlob.replace(' consume-incrementals', '')
         // Also include prep.sh test results
         tarGlob += '**/target/surefire-reports/TEST-*.xml **/target/failsafe-reports/TEST-*.xml'
         sh 'tar -czvf ' archiveName + ' ' + tarGlob
