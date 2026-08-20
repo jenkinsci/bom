@@ -56,10 +56,10 @@ mavenEnv(jdk: 21) {
     if (params.BOM_URL != defaultBomUrl) {
       echo "INFO: setting remote bom to ${params.BOM_URL}"
       sh 'git remote -v'
-      sh 'git remote add bom-fork ' + params.BOM_URL
+      sh ('git remote add bom-fork ' + params.BOM_URL)
     }
     sh 'git fetch --no-tags bom-fork "+refs/heads/*:refs/remotes/origin/*"'
-    sh 'git checkout ' + gitCommit
+    sh ('git checkout ' + gitCommit)
     if (parts.size() > 2 && parts[2] == 'consume-incrementals') {
       consumeIncrementals = true
     }
@@ -87,7 +87,7 @@ mavenEnv(jdk: 21) {
         def tarGlob = stashGlob.replace(',', ' ').replace('REPLACEME_LINE', '*') + ' target/*.txt'
         // Also include prep.sh test results
         tarGlob += '**/target/surefire-reports/TEST-*.xml **/target/failsafe-reports/TEST-*.xml'
-        sh 'tar -czvf ' archiveName + ' ' + tarGlob
+        sh ('tar -czvf ' + archiveName + ' ' + tarGlob)
         // Archive the prep archive + ref file & plugins.txt & lines.txt themselves for future references
         archiveArtifacts artifacts: "${archiveName},target/*.txt", fingerprint: true
       }
