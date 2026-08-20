@@ -1,6 +1,6 @@
 // Do not trigger build regularly on change requests as it costs a lot
 String cronTrigger = ''
-if(env.BRANCH_NAME == "master") {
+if (env.BRANCH_IS_PRIMARY) {
   cronTrigger = '10 0 * * 4'
 }
 
@@ -17,7 +17,7 @@ properties([
   pipelineTriggers([cron(cronTrigger)])
 ])
 
-if (env.BRANCH_NAME == 'master' && currentBuild.buildCauses*._class == ['jenkins.branch.BranchEventCause']) {
+if (env.BRANCH_IS_PRIMARY && currentBuild.buildCauses*._class == ['jenkins.branch.BranchEventCause']) {
   currentBuild.result = 'NOT_BUILT'
   error 'No longer running builds on response to master branch pushes. If you wish to cut a release, use “Re-run checks” from this failing check in https://github.com/jenkinsci/bom/commits/master'
 }
@@ -176,14 +176,16 @@ mavenEnv(jdk: 21) {
       "${split} [${repositories.size()}]:\n - ${repositories.join('\n - ')}"
     }.join('\n')
   }
-  stage('stash line(s)') {
-    lines.each { line ->
-      stash name: line, includes: stashGlob.replace('REPLACEME_LINE', line)
+  if (env.BRANCH_IS_PRIMARY || fullTest || weeklyTest) {
+    stage('stash line(s)') {
+      lines.each { line ->
+        stash name: line, includes: stashGlob.replace('REPLACEME_LINE', line)
+      }
     }
   }
 }
 
-if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
+if (env.BRANCH_IS_PRIMARY || fullTest || weeklyTest) {
   stage('run pct') {
     def pctStart = System.currentTimeMillis()
     def branches = [failFast: false]
