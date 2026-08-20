@@ -85,15 +85,17 @@ mavenEnv(jdk: 21) {
     }
     try {
       def archiveName = "prep-${commit}${consumeIncrementals ? '-consume-incrementals' : ''}.tar.gz"
+      def bomRepository = env.CHANGE_FORK ?: 'jenkinsci/bom'
+      def bomUrl = "https://github.com/${bomRepository}.git"
       try {
         echo "INFO: trying to copy ${archiveName} from last successful 'Tools/bom/prep-only' with the same archive name"
-        copyArtifacts(projectName: 'Tools/bom/prep-only', parameters: "ARCHIVE_NAME=${archiveName}", selector: lastCompleted(), filter: archiveName, fingerprintArtifacts: true)
+        copyArtifacts(projectName: 'Tools/bom/prep-only', parameters: "ARCHIVE_NAME=${archiveName},BOM_URL=${bomUrl}", selector: lastCompleted(), filter: archiveName, fingerprintArtifacts: true)
       } catch (copyError) {
         echo "WARNING: copyArtifacts error: ${copyError}"
         echo "INFO: starting downstream job to prepare ${archiveName} from 'Tools/bom/prep-only'"
-        def archiveBuild = build(job: 'Tools/bom/prep-only', parameters: [string(name: 'ARCHIVE_NAME', value: archiveName)], wait: true, propagate: true)
+        def archiveBuild = build(job: 'Tools/bom/prep-only', parameters: [string(name: 'ARCHIVE_NAME', value: archiveName), string(name: 'BOM_URL', value: bomUrl)], wait: true, propagate: true)
         echo "INFO: copying ${archiveName} from 'Tools/bom/prep-only' build n°${archiveBuild.number}"
-        copyArtifacts(projectName: 'Tools/bom/prep-only', parameters: "ARCHIVE_NAME=${archiveName}", selector: specific("${archiveBuild.number}"), filter: archiveName, fingerprintArtifacts: true)
+        copyArtifacts(projectName: 'Tools/bom/prep-only', parameters: "ARCHIVE_NAME=${archiveName},BOM_URL=${bomUrl}", selector: specific("${archiveBuild.number}"), filter: archiveName, fingerprintArtifacts: true)
       }
       sh 'tar -xzvf ' + archiveName + ' && rm -v ' + archiveName
       // incrementalsDoneInPreviousBuild = true
