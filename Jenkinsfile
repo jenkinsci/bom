@@ -7,7 +7,7 @@ properties([
     string(
         name: 'ARCHIVE_NAME',
         defaultValue: 'prep.tar.gz',
-        description: 'Name of the archive to build. Expected format to build the archive from a specific commit: prep-<commit>-<CHANGE_FORK ?: jenkinsci>.tar.gz (add "-consume-incrementals" before .tar.gz)',
+        description: 'Name of the archive to build. Expected format to build the archive from a specific commit: prep_<commit>_<CHANGE_FORK ?: jenkinsci>.tar.gz (add "_consume-incrementals" before .tar.gz)',
         ),
   ]),
   buildDiscarder(logRotator(numToKeepStr: '10'))
@@ -51,7 +51,7 @@ mavenEnv(jdk: 21) {
     commit = scmVars.GIT_COMMIT
     // No commit by default in the archive name (allowing to retrieve it from any revision in the upstream build)
     // If there is a commit, there must be a CHANGE_FORK or 'jenkinsci' as third part
-    def parts = archiveName.replace('.tar.gz', '').split('-')
+    def parts = archiveName.replace('.tar.gz', '').split('_')
     echo "DEBUG: archiveName: ${archiveName}, parts: ${parts}"
     if (parts.size() > 2) {
       commit = parts[1]
