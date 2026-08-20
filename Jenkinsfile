@@ -97,7 +97,7 @@ mavenEnv(jdk: 21) {
         echo "INFO: copying ${archiveName} from 'Tools/bom/prep-only' build n°${archiveBuild.number}"
         copyArtifacts(projectName: 'Tools/bom/prep-only', parameters: "ARCHIVE_NAME=${archiveName},BOM_URL=${bomUrl}", selector: specific("${archiveBuild.number}"), filter: archiveName, fingerprintArtifacts: true)
       }
-      sh 'tar -xzvf ' + archiveName + ' && rm -v ' + archiveName
+      sh(script: 'tar -xzvf ' + archiveName + ' && rm -v ' + archiveName)
       // incrementalsDoneInPreviousBuild = true
     } catch (e) {
       echo "WARNING: could not retrieve prep archive from prep-only job: ${e}"
