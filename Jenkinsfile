@@ -309,7 +309,7 @@ stage('checks') {
     unstable 'Remember to `git rm consume-incrementals` before taking out of draft'
   }
   if (limitedPluginSet) {
-    // unstable 'Remember to empty `limitedPluginSet` in Jenkinsfile before taking out of draft'
+    unstable 'Remember to empty `limitedPluginSet` in Jenkinsfile before taking out of draft'
   }
 }
 
