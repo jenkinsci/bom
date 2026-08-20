@@ -91,12 +91,15 @@ mavenEnv(jdk: 21) {
         // Archive files stashed for all lines after the "prep" stage + plugins.txt & lines.txt
         def tarGlob = stashGlob.replace(',', ' ').replace('REPLACEME_LINE', '*') + ' target/*.txt'
         // Also include prep.sh test results
-        tarGlob += '**/target/surefire-reports/TEST-*.xml **/target/failsafe-reports/TEST-*.xml'
+        tarGlob += ' **/target/surefire-reports/TEST-*.xml **/target/failsafe-reports/TEST-*.xml'
+        sh 'ls **/target/surefire-reports/TEST-*.xml **/target/failsafe-reports/TEST-*.xml || true'
+        tarGlob += " ${env.MVN_LOCAL_REPO}/**/target/surefire-reports/TEST-*.xml ${env.MVN_LOCAL_REPO}/**/target/failsafe-reports/TEST-*.xml"
+        sh " ${env.MVN_LOCAL_REPO}/**/target/surefire-reports/TEST-*.xml ${env.MVN_LOCAL_REPO}/**/target/failsafe-reports/TEST-*.xml || true"
         // Include m2 where the bom pom is built
         tarGlob += " ${env.MVN_LOCAL_REPO}/io/jenkins/tools/bom/**"
         withEnv(["ARCHIVE_NAME=${archiveName}", "TAR_GLOB=${tarGlob}"]) {
           sh 'ls ${TAR_GLOB} || true'
-          // Archive only files that are actually there
+          // Tar only files that actually exist
           sh 'tar -czvf ${ARCHIVE_NAME} $(ls ${TAR_GLOB} 2>/dev/null || true)'
         }
         // Archive the prep archive + ref file & plugins.txt & lines.txt themselves for future references
