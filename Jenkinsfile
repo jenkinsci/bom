@@ -83,13 +83,12 @@ mavenEnv(jdk: 21) {
     if (!consumeIncrementals) {
       echo 'Forbidding use of incremental dependencies. If you need to consume incrementals, add the `consume-incrementals` label, or add a file named `consume-incrementals` to the repository root if you lack triage permission. Then keep this PR in draft until the dependencies have been switched to release versions.'
     }
+    def archiveName = "prep_${commit}_${env.CHANGE_FORK ?: 'jenkinsci'}${consumeIncrementals ? '_consume-incrementals' : ''}.tar.gz"
     try {
-      def archiveName = "prep_${commit}_${env.CHANGE_FORK ?: 'jenkinsci'}${consumeIncrementals ? '_consume-incrementals' : ''}.tar.gz"
       try {
         echo "INFO: trying to copy ${archiveName} from last successful 'Tools/bom/prep-only' with the same archive name"
         copyArtifacts(projectName: 'Tools/bom/prep-only', parameters: "ARCHIVE_NAME=${archiveName}", selector: lastCompleted(), filter: archiveName, fingerprintArtifacts: true)
       } catch (copyError) {
-        echo "WARNING: copyArtifacts error: ${copyError}"
         echo "INFO: starting downstream job to prepare ${archiveName} from 'Tools/bom/prep-only'"
         def archiveBuild = build(job: 'Tools/bom/prep-only', parameters: [string(name: 'ARCHIVE_NAME', value: archiveName)], wait: true, propagate: true)
         echo "INFO: copying ${archiveName} from 'Tools/bom/prep-only' build n°${archiveBuild.number}"
@@ -98,7 +97,7 @@ mavenEnv(jdk: 21) {
       sh(script: 'tar -xzvf ' + archiveName + ' && rm -v ' + archiveName)
       // incrementalsDoneInPreviousBuild = true
     } catch (e) {
-      echo "WARNING: could not retrieve prep archive from prep-only job: ${e}"
+      echo "WARNING: could not retrieve ${archiveName} from 'Tools/bom/prep-only'"
       withChecks(name: 'Tests', includeStage: true) {
         withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist', "CONSUME_INCREMENTALS=${consumeIncrementals}"]) {
           sh '''
