@@ -92,9 +92,12 @@ mavenEnv(jdk: 21) {
       sh('ls ' + env.MVN_LOCAL_REPO + '/io/jenkins/tools/bom/* || true')
       // Add a reference file
       writeFile file: "target/build-url-prep-only-commit-${commit}.txt", text: env.BUILD_URL
-      // TODO: archive only first and last lines
-      // Archive files stashed for all lines after the "prep" stage + plugins.txt & lines.txt
-      def tarGlob = stashGlob.replace(',', ' ').replace('REPLACEME_LINE', '*') + ' target/*.txt'
+      // Find the last line from sample-plugin/pom.xml to avoid archiving all (heavy) megawars
+      def lastLine = readFile('sample-plugin/pom.xml').readLines().findAll {
+        it.contains('<bom>')
+      }.last().replaceAll(/.*<bom>|<\/bom>.*/, '')
+      // Replace stash glob separator by tar one then keep only the first (weekly) and last megawars
+      def tarGlob = stashGlob.replace(',', ' ').replace('target/megawar-REPLACEME_LINE.war', "target/megawar-weekly.war target/megawar-${lastLine}.war")
       // Include m2 where the bom pom is built
       tarGlob += " ${env.MVN_LOCAL_REPO}/io/jenkins/tools/bom"
       // Remove consume-incrementals from glob if it doesn't exist
