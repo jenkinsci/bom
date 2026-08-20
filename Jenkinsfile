@@ -14,7 +14,7 @@ def maxSplitsPerLine = 20
 def limitedPluginSet = ['jenkinsci/badge-plugin\tbadge', 'jenkinsci/cron_column-plugin\tcron_column']
 
 properties([
-  disableConcurrentBuilds(abortPrevious: true),
+  // disableConcurrentBuilds(abortPrevious: true),
   buildDiscarder(logRotator(numToKeepStr: '7')),
   pipelineTriggers([cron(cronTrigger)])
 ])
