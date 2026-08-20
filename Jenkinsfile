@@ -51,6 +51,7 @@ mavenEnv(jdk: 21) {
   echo "DEBUG: archiveName: ${archiveName}, parts: ${parts}"
   if (parts.size() > 1) {
     gitCommit = parts[1]
+    sh 'git fetch --all'
     sh 'git checkout ' + gitCommit
     if (parts.size() > 2 && parts[2] == 'consume-incrementals') {
       consumeIncrementals = true
