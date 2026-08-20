@@ -98,8 +98,6 @@ mavenEnv(jdk: 21) {
       }.last().replaceAll(/.*<bom>|<\/bom>.*/, '')
       // Replace stash glob separator by tar one then keep only the first (weekly) and last megawars
       def tarGlob = stashGlob.replace(',', ' ').replace('target/megawar-REPLACEME_LINE.war', "target/megawar-weekly.war target/megawar-${lastLine}.war")
-      // Include m2 where the bom pom is built
-      tarGlob += " ${env.MVN_LOCAL_REPO}/io/jenkins/tools/bom"
       // Remove consume-incrementals from glob if it doesn't exist
       consumeIncrementalsMarkerFile = fileExists 'consume-incrementals'
       if (!consumeIncrementalsMarkerFile) tarGlob = tarGlob.replace(' consume-incrementals', '')
