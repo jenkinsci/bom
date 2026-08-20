@@ -9,7 +9,7 @@ properties([
         defaultValue: 'prep.tar.gz',
         description: 'Name of the archive to build. Expected format to build the archive from a specific commit: prep-<commit>.tar.gz (add "-consume-incrementals" after the commit if needed)',
         ),
-    string(name: 'REPOSITORY_URL', defaultValue: 'https://github.com/jenkinsci/bom.git'),
+    string(name: 'BOM_URL', defaultValue: 'https://github.com/jenkinsci/bom.git'),
   ]),
   buildDiscarder(logRotator(numToKeepStr: '10'))
 ])
@@ -52,7 +52,11 @@ mavenEnv(jdk: 21) {
   echo "DEBUG: archiveName: ${archiveName}, parts: ${parts}"
   if (parts.size() > 1) {
     gitCommit = parts[1]
-    sh 'git fetch --all'
+    if (param.BOM_URL != env.CHANGE_URL) {
+      echo "INFO: setting remote origin to ${param.BOM_URL}"
+      sh 'git remote set-url origin ' + params.BOM_URL
+    }
+    sh 'git fetch --no-tags origin ' + gitCommit
     sh 'git checkout ' + gitCommit
     if (parts.size() > 2 && parts[2] == 'consume-incrementals') {
       consumeIncrementals = true
