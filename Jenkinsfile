@@ -117,8 +117,7 @@ mavenEnv(jdk: 21) {
       // Don't try to archive consume-incrementals file if it doesn't exist
       if (!consumeIncrementalsMarkerFile) tarGlob = tarGlob.replace(' consume-incrementals', '')
       // Add plugins.txt, lines.txt & build-id-for-incrementals.txt
-      def tarGlob += ' target/*.txt'
-      sh('tar -czvf ' + prepArchive + ' ' + tarGlob)
+      sh('tar -czvf ' + prepArchive + ' ' + tarGlob + ' target/*.txt')
       archiveArtifacts artifacts: prepArchive, fingerprint: true
       sh('rm -v ' + prepArchive)
     }
