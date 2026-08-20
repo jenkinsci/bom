@@ -86,9 +86,12 @@ mavenEnv(jdk: 21) {
     try {
       def archiveName = "prep-${commit}${consumeIncrementals ? '-consume-incrementals' : ''}.tar.gz"
       try {
+        echo "INFO: trying to copy ${archiveName} from 'Tools/bom/prep-only'"
         copyArtifacts(projectName: 'Tools/bom/prep-only', parameters: "ARCHIVE_NAME=${archiveName}", selector: specific("${archiveBuild.number}"), filter: archiveName, fingerprintArtifacts: true)
       } catch (copyError) {
+        echo "INFO: starting downstream job to prepare ${archiveName} from 'Tools/bom/prep-only'"
         def archiveBuild = build(job: 'Tools/bom/prep-only', parameters: [string(name: 'ARCHIVE_NAME', value: archiveName)], wait: true, propagate: true)
+        echo "INFO: copying ${archiveName} from 'Tools/bom/prep-only'"
         copyArtifacts(projectName: 'Tools/bom/prep-only', parameters: "ARCHIVE_NAME=${archiveName}", selector: specific("${archiveBuild.number}"), filter: archiveName, fingerprintArtifacts: true)
       }
       sh 'tar -xzvf ' + archiveName + ' && rm -v ' + archiveName
