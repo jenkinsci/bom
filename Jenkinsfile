@@ -110,10 +110,14 @@ mavenEnv(jdk: 21) {
       // Add a reference file to pass infra.maybePublishIncrementals the id of the build containing the infra.prepareToPublishIncrementals() archives
       writeFile file: 'target/build-id-for-incrementals.txt', text: env.BUILD_ID
 
-      // Archive files stashed for all lines after the "prep" stage + plugins.txt, lines.txt & build-id-for-incrementals.txt
-      def tarGlob = stashGlob.replace(',', ' ').replace('REPLACEME_LINE', '*') + ' target/*.txt'
+      // Find the last line from sample-plugin/pom.xml to avoid archiving all (heavy) megawars
+      def lastLine = readFile('sample-plugin/pom.xml').findAll(/<bom>([^<]+)<\/bom>/) { key, value -> value }.last()
+      // Replace stash glob separator by tar one then keep only the first (weekly) and last megawars
+      def tarGlob = stashGlob.replace(',', ' ').replace('target/megawar-REPLACEME_LINE.war', "target/megawar-weekly.war target/megawar-${lastLine}.war")
       // Don't try to archive consume-incrementals file if it doesn't exist
       if (!consumeIncrementalsMarkerFile) tarGlob = tarGlob.replace(' consume-incrementals', '')
+      // Add plugins.txt, lines.txt & build-id-for-incrementals.txt
+      def tarGlob += ' target/*.txt'
       sh('tar -czvf ' + prepArchive + ' ' + tarGlob)
       archiveArtifacts artifacts: prepArchive, fingerprint: true
       sh('rm -v ' + prepArchive)
