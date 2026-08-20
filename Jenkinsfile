@@ -24,7 +24,7 @@ if (env.BRANCH_NAME == 'master' && currentBuild.buildCauses*._class == ['jenkins
   error 'No longer running builds on response to master branch pushes. If you wish to cut a release, use “Re-run checks” from this failing check in https://github.com/jenkinsci/bom/commits/master'
 }
 
-def mavenEnv(Map params = [:], Closure body) {
+def mavenEnv(Map params = [: ], Closure body) {
   def attempt = 0
   def attempts = 6
   retry(count: attempts, conditions: [kubernetesAgent(handleNonKubernetes: true), nonresumable()]) {
@@ -54,7 +54,7 @@ def mavenEnv(Map params = [:], Closure body) {
 
 @NonCPS
 def parsePlugins(plugins) {
-  def pluginsByRepository = [:]
+  def pluginsByRepository = [: ]
   plugins.each { plugin ->
     def splits = plugin.split('\t')
     pluginsByRepository[splits[0].split('/')[1]] = splits[1]
@@ -70,8 +70,8 @@ def consumeIncrementalsMarkerFile
 def fullTest = false
 def weeklyTest = false
 def consumeIncrementals = false
-def splits = [:]
-def results = [:]
+def splits = [: ]
+def results = [: ]
 def commit
 def pctDuration
 def reportNamePrefix = 'bom-report_'
@@ -111,7 +111,9 @@ mavenEnv(jdk: 21) {
       writeFile file: 'target/build-id-for-incrementals.txt', text: env.BUILD_ID
 
       // Find the last line from sample-plugin/pom.xml to avoid archiving all (heavy) megawars
-      def lastLine = readFile('sample-plugin/pom.xml').findAll(/<bom>([^<]+)<\/bom>/) { key, value -> value }.last()
+      def lastLine = readFile('sample-plugin/pom.xml').findAll(/<bom>([^<]+)<\/bom>/) { key, value ->
+        value
+      }.last()
       // Replace stash glob separator by tar one then keep only the first (weekly) and last megawars
       def tarGlob = stashGlob.replace(',', ' ').replace('target/megawar-REPLACEME_LINE.war', "target/megawar-weekly.war target/megawar-${lastLine}.war")
       // Don't try to archive consume-incrementals file if it doesn't exist
