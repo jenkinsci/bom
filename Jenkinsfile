@@ -85,7 +85,7 @@ mavenEnv(jdk: 21) {
     }
     try {
       def archiveName = "prep-${commit}${consumeIncrementals ? '-consume-incrementals' : ''}.tar.gz"
-      def bomRepository = env.CHANGE_FORK ?: 'jenkinsci/bom'
+      def bomRepository = env.CHANGE_FORK ? "${env.CHANGE_FORK}/${env.CHANGE_BRANCH}" : 'jenkinsci/bom'
       def bomUrl = "https://github.com/${bomRepository}.git"
       try {
         echo "INFO: trying to copy ${archiveName} from last successful 'Tools/bom/prep-only' with the same archive name"
