@@ -96,6 +96,10 @@ mavenEnv(jdk: 21) {
       // Remove consume-incrementals from glob if it doesn't exist
       consumeIncrementalsMarkerFile = fileExists 'consume-incrementals'
       if (!consumeIncrementalsMarkerFile) tarGlob = tarGlob.replace(' consume-incrementals', '')
+      // Copy bom pom in a temporary folder
+      sh 'mkdir -p mvn-local-repo-bom'
+      sh 'cp -a "${MVN_LOCAL_REPO}/io/jenkins/tools/bom/." mvn-local-repo-bom/'
+      tarGlob += ' mvn-local-repo-bom'
       echo "INFO: tar glob=${tarGlob}"
       withEnv(["ARCHIVE_NAME=${archiveName}", "TAR_GLOB=${tarGlob}"]) {
         // List files not found
