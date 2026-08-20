@@ -48,6 +48,9 @@ def commit
 mavenEnv(jdk: 21) {
   stage('init') {
     def scmVars = checkout(scm)
+    sh 'ls *'
+    sh('ls ' + env.MVN_LOCAL_REPO + '* || true')
+
     commit = scmVars.GIT_COMMIT
     // No commit by default in the archive name (allowing to retrieve it from any revision in the upstream build)
     // If there is a commit, there must be a CHANGE_FORK or 'jenkinsci' as third part
