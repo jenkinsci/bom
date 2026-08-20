@@ -98,7 +98,7 @@ mavenEnv(jdk: 21) {
       sh 'tar -xzvf ' + archiveName + ' && rm -v ' + archiveName
       // incrementalsDoneInPreviousBuild = true
     } catch (e) {
-      echo 'WARNING: could not retrieve prep archive from prep-only job'
+      echo "WARNING: could not retrieve prep archive from prep-only job: ${e}"
       withChecks(name: 'Tests', includeStage: true) {
         withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist', "CONSUME_INCREMENTALS=${consumeIncrementals}"]) {
           sh '''
