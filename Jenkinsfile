@@ -52,8 +52,8 @@ mavenEnv(jdk: 21) {
   echo "DEBUG: archiveName: ${archiveName}, parts: ${parts}"
   if (parts.size() > 1) {
     gitCommit = parts[1]
-    if (param.BOM_URL != env.CHANGE_URL) {
-      echo "INFO: setting remote origin to ${param.BOM_URL}"
+    if (params.BOM_URL != env.CHANGE_URL) {
+      echo "INFO: setting remote origin to ${params.BOM_URL}"
       sh 'git remote set-url origin ' + params.BOM_URL
     }
     sh 'git fetch --no-tags origin ' + gitCommit
