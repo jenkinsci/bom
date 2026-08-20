@@ -111,9 +111,7 @@ mavenEnv(jdk: 21) {
       writeFile file: 'target/build-id-for-incrementals.txt', text: env.BUILD_ID
 
       // Find the last line from sample-plugin/pom.xml to avoid archiving all (heavy) megawars
-      def lastLine = readFile('sample-plugin/pom.xml').findAll(/<bom>([^<]+)<\/bom>/) { key, value ->
-        value
-      }.last()
+      def lastLine = readFile('sample-plugin/pom.xml').readLines().findAll { it.contains('<bom>') }.last().replaceAll(/.*<bom>|<\/bom>.*/, '')
       // Replace stash glob separator by tar one then keep only the first (weekly) and last megawars
       def tarGlob = stashGlob.replace(',', ' ').replace('target/megawar-REPLACEME_LINE.war', "target/megawar-weekly.war target/megawar-${lastLine}.war")
       // Don't try to archive consume-incrementals file if it doesn't exist
