@@ -2,6 +2,7 @@ env.MAVEN_NTP = true
 // Should be the same as in the primary Jenkinsfile
 def stashGlob = 'pct.sh,incrementals.sh,consume-incrementals,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-REPLACEME_LINE.war'
 
+def defaultBomUrl = 'https://github.com/jenkinsci/bom.git'
 properties([
   parameters([
     string(
@@ -9,7 +10,7 @@ properties([
         defaultValue: 'prep.tar.gz',
         description: 'Name of the archive to build. Expected format to build the archive from a specific commit: prep-<commit>.tar.gz (add "-consume-incrementals" after the commit if needed)',
         ),
-    string(name: 'BOM_URL', defaultValue: 'https://github.com/jenkinsci/bom.git'),
+    string(name: 'BOM_URL', defaultValue: defaultBomUrl),
   ]),
   buildDiscarder(logRotator(numToKeepStr: '10'))
 ])
@@ -52,7 +53,7 @@ mavenEnv(jdk: 21) {
   echo "DEBUG: archiveName: ${archiveName}, parts: ${parts}"
   if (parts.size() > 1) {
     gitCommit = parts[1]
-    if (params.BOM_URL != env.CHANGE_URL) {
+    if (params.BOM_URL != defaultBomUrl) {
       echo "INFO: setting remote bom to ${params.BOM_URL}"
       sh 'git remote -v'
       sh 'git remote add bom-fork ' + params.BOM_URL
