@@ -99,7 +99,7 @@ mavenEnv(jdk: 21) {
       echo "INFO: tar glob=${tarGlob}"
       withEnv(["ARCHIVE_NAME=${archiveName}", "TAR_GLOB=${tarGlob}"]) {
         sh 'ls ${TAR_GLOB} || true'
-        sh 'tar -czvf ${ARCHIVE_NAME} ${TAR_GLOB} || true)'
+        sh 'tar -czvf ${ARCHIVE_NAME} $(ls ${TAR_GLOB} 2>/dev/null | grep -v ':' | sort -u)'
       }
       // Archive the prep archive + ref file & plugins.txt & lines.txt themselves for future references
       archiveArtifacts artifacts: "${archiveName},target/*.txt", fingerprint: true
