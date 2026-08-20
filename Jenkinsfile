@@ -95,7 +95,7 @@ mavenEnv(jdk: 21) {
         copyArtifacts(projectName: 'Tools/bom/prep-only', parameters: "ARCHIVE_NAME=${archiveName}", selector: specific("${archiveBuild.number}"), filter: archiveName, fingerprintArtifacts: true)
       }
       sh('tar -xzvf ' + archiveName + ' && rm -v ' + archiveName)
-      sh 'cp -a mvn-local-repo-bom/. "${MVN_LOCAL_REPO}/io/jenkins/tools/bom/"'
+      sh 'mkdir -p "${MVN_LOCAL_REPO}/io/jenkins/tools/bom/" && cp -a mvn-local-repo-bom/. "${MVN_LOCAL_REPO}/io/jenkins/tools/bom/"'
       sh 'rm -rfv mvn-local-repo-bom'
 
       sh 'git status'
