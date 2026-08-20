@@ -9,7 +9,7 @@ properties([
     string(
         name: 'ARCHIVE_NAME',
         defaultValue: 'prep.tar.gz',
-        description: 'Name of the archive to build. Expected format to build the archive from a specific commit: prep-<commit>.tar.gz (add "-consume-incrementals" after the commit if needed)',
+        description: 'Name of the archive to build. Expected format to build the archive from a specific commit: prep-<commit>-<CHANGE_FORK ?: jenkinsci>.tar.gz (add "-consume-incrementals" before .tar.gz)',
         ),
     string(name: 'BOM_URL', defaultValue: defaultBomUrl),
   ]),
@@ -53,18 +53,18 @@ mavenEnv(jdk: 21) {
     def scmVars = checkout(scm)
     commit = scmVars.GIT_COMMIT
     // No commit by default in the archive name (allowing to retrieve it from any revision in the upstream build)
+    // If there is a commit, there must be a CHANGE_FORK or 'jenkinsci' as third part
     def parts = archiveName.replace('.tar.gz', '').split('-')
     echo "DEBUG: archiveName: ${archiveName}, parts: ${parts}"
-    if (parts.size() > 1) {
+    if (parts.size() > 2) {
       commit = parts[1]
-      if (params.BOM_URL != defaultBomUrl) {
-        echo "INFO: setting remote bom to ${params.BOM_URL}"
-        sh 'git remote -v'
-        sh('git remote add bom-fork ' + params.BOM_URL)
-      }
-      sh 'git fetch --no-tags bom-fork "+refs/heads/*:refs/remotes/origin/*"'
+      changeFork = parts[2]
+      echo "INFO: setting remote change-fork to ${changeFork}"
+      sh 'git remote -v'
+      sh('git remote add change-fork ' + changeFork)
+      sh 'git fetch --no-tags change-fork "+refs/heads/*:refs/remotes/origin/*"'
       sh('git checkout ' + commit)
-      if (parts.size() > 2 && parts[2] == 'consume-incrementals') {
+      if (parts.size() > 3 && parts[3] == 'consume-incrementals') {
         consumeIncrementals = true
         echo 'INFO: setting consume-incrementals'
       }
