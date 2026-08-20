@@ -84,16 +84,13 @@ mavenEnv(jdk: 21) {
       echo 'Forbidding use of incremental dependencies. If you need to consume incrementals, add the `consume-incrementals` label, or add a file named `consume-incrementals` to the repository root if you lack triage permission. Then keep this PR in draft until the dependencies have been switched to release versions.'
     }
     try {
-      def prepArchive = "prep-${commit}"
-      if (consumeIncrementals) prepArchive += '-consume-incrementals'
-      prepArchive += '.tar.gz'
-      prepArchive = 'prep.tar.gz'
+      def prepArchive = "prep-${commit}${ consumeIncrementals ? '-consume-incrementals' : ''}.tar.gz"
       def prep = build(
           job: 'Tools/bom/prep-only',
-          // parameters: [
-          //   string(name: 'ARCHIVE_NAME', value: prepArchive),
-          //   string(name: 'STASH_GLOB', value: stashGlob),
-          // ],
+          parameters: [
+            string(name: 'ARCHIVE_NAME', value: prepArchive),
+            string(name: 'STASH_GLOB', value: stashGlob),
+          ],
           wait: true,
           propagate: true
           )
