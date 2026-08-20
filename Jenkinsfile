@@ -87,37 +87,36 @@ mavenEnv(jdk: 21) {
       echo 'Forbidding use of incremental dependencies. If you need to consume incrementals, add the `consume-incrementals` label, or add a file named `consume-incrementals` to the repository root if you lack triage permission. Then keep this PR in draft until the dependencies have been switched to release versions.'
     }
     def prepArchive = "prep-${commit}.tar.gz"
-    withEnv(["PREP_ARCHIVE=${prepArchive}"]) {
-      // Try to retrieve prep archive from a previous build on the same revision
-      try {
-        copyArtifacts(projectName: env.JOB_NAME, selector: lastWithArtifacts(), filter: prepArchive, fingerprintArtifacts: true)
-        sh 'tar -xzvf "${PREP_ARCHIVE}" && rm -v "${PREP_ARCHIVE}"'
-        incrementalBuildId = readFile('target/build-id-for-incrementals.txt')
-      } catch(e) {
-        // If no corresponding prep archive found (first build or new commit), run prep.sh and prepare incrementals
-        withChecks(name: 'Tests', includeStage: true) {
-          withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist', "CONSUME_INCREMENTALS=${consumeIncrementals}"]) {
-            sh '''
-            mvn -v
-            bash prep.sh
-            '''
-          }
-          if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount> 0) {
-            error 'Some test failures during prep.sh, not going to continue'
-          }
+    // Try to retrieve prep archive from a previous build on the same revision
+    try {
+      copyArtifacts(projectName: env.JOB_NAME, selector: lastWithArtifacts(), filter: prepArchive, fingerprintArtifacts: true)
+      sh('tar -xzvf ' + prepArchive + ' && rm -v ' + prepArchive)
+      incrementalBuildId = readFile('target/build-id-for-incrementals.txt')
+    } catch(e) {
+      // If no corresponding prep archive found (first build or new commit), run prep.sh and prepare incrementals
+      withChecks(name: 'Tests', includeStage: true) {
+        withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist', "CONSUME_INCREMENTALS=${consumeIncrementals}"]) {
+          sh '''
+          mvn -v
+          bash prep.sh
+          '''
         }
-        infra.prepareToPublishIncrementals()
-
-        // Add a reference file to pass infra.maybePublishIncrementals the id of the build containing the infra.prepareToPublishIncrementals() archives
-        writeFile file: 'target/build-id-for-incrementals.txt', text: env.BUILD_ID
-
-        // Archive files stashed for all lines after the "prep" stage + plugins.txt, lines.txt & build-id-for-incrementals.txt
-        def tarGlob = stashGlob.replace(',', ' ').replace('REPLACEME_LINE', '*') + ' target/*.txt'
-        // Don't try to archive consume-incrementals file if it doesn't exist
-        if (!consumeIncrementalsMarkerFile) tarGlob = tarGlob.replace(' consume-incrementals', '')
-        archiveArtifacts artifacts: prepArchive, fingerprint: true
-        sh 'rm -v "${PREP_ARCHIVE}"'
+        if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount> 0) {
+          error 'Some test failures during prep.sh, not going to continue'
+        }
       }
+      infra.prepareToPublishIncrementals()
+
+      // Add a reference file to pass infra.maybePublishIncrementals the id of the build containing the infra.prepareToPublishIncrementals() archives
+      writeFile file: 'target/build-id-for-incrementals.txt', text: env.BUILD_ID
+
+      // Archive files stashed for all lines after the "prep" stage + plugins.txt, lines.txt & build-id-for-incrementals.txt
+      def tarGlob = stashGlob.replace(',', ' ').replace('REPLACEME_LINE', '*') + ' target/*.txt'
+      // Don't try to archive consume-incrementals file if it doesn't exist
+      if (!consumeIncrementalsMarkerFile) tarGlob = tarGlob.replace(' consume-incrementals', '')
+      sh('tar -czvf ' + prepArchive + ' ' + tarGlob)
+      archiveArtifacts artifacts: prepArchive, fingerprint: true
+      sh('rm -v ' + prepArchive)
     }
 
     fullTestMarkerFile = fileExists 'full-test'
