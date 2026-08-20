@@ -8,7 +8,8 @@ properties([
         name: 'ARCHIVE_NAME',
         defaultValue: 'prep.tar.gz',
         description: 'Name of the archive to build. Expected format to build the archive from a specific commit: prep-<commit>.tar.gz (add "-consume-incrementals" after the commit if needed)',
-        )
+        ),
+    string(name: 'REPOSITORY_URL', defaultValue: 'https://github.com/jenkinsci/bom.git'),
   ]),
   buildDiscarder(logRotator(numToKeepStr: '10'))
 ])
