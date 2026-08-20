@@ -76,7 +76,7 @@ def commit
 def pctDuration
 def reportNamePrefix = 'bom-report_'
 def stashGlob = 'pct.sh,incrementals.sh,consume-incrementals,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-REPLACEME_LINE.war'
-def incrementalBuildId = env.BUILD_ID
+def incrementalsBuildId = env.BUILD_ID
 
 mavenEnv(jdk: 21) {
   stage('prep') {
@@ -91,7 +91,7 @@ mavenEnv(jdk: 21) {
     try {
       copyArtifacts(projectName: env.JOB_NAME, selector: lastWithArtifacts(), filter: prepArchive, fingerprintArtifacts: true)
       sh('tar -xzvf ' + prepArchive + ' && rm -v ' + prepArchive)
-      incrementalBuildId = readFile('target/build-id-for-incrementals.txt')
+      incrementalsBuildId = readFile('target/build-id-for-incrementals.txt')
     } catch(e) {
       // If no corresponding prep archive found (first build or new commit), run prep.sh and prepare incrementals
       withChecks(name: 'Tests', includeStage: true) {
@@ -315,5 +315,5 @@ stage('checks') {
 }
 
 stage('publish incrementals') {
-  infra.maybePublishIncrementals(incrementalBuildId)
+  infra.maybePublishIncrementals(incrementalsBuildId.toInteger())
 }
