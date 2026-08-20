@@ -1,4 +1,6 @@
 env.MAVEN_NTP = true
+// Should be the same as in the primary Jenkinsfile
+def stashGlob = 'pct.sh,incrementals.sh,consume-incrementals,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-REPLACEME_LINE.war'
 
 properties([
   parameters([
@@ -6,13 +8,6 @@ properties([
         name: 'ARCHIVE_NAME',
         defaultValue: 'prep.tar.gz',
         description: 'Name of the archive to build. Expected format to build the archive from a specific commit: prep-<commit>.tar.gz (add "-consume-incrementals" after the commit if needed)',
-        )
-  ]),
-  parameters([
-    string(
-        name: 'STASH_GLOB',
-        defaultValue: 'pct.sh,incrementals.sh,consume-incrementals,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-REPLACEME_LINE.war',
-        description: 'Glob of files to archive (comma separated)',
         )
   ]),
   buildDiscarder(logRotator(numToKeepStr: '10'))
@@ -63,7 +58,7 @@ mavenEnv(jdk: 21) {
   stage(archiveName) {
     // Try to retrieve prep archive from a previous build on the same revision
     try {
-      copyArtifacts(projectName: env.JOB_NAME, selector: lastWithArtifacts(), filter: archiveName, fingerprintArtifacts: true)
+      copyArtifacts(projectName: env.JOB_NAME, parameters: "ARCHIVE_NAME=${archiveName}", selector: lastWithArtifacts(), filter: archiveName, fingerprintArtifacts: true)
       archiveArtifacts artifacts: archiveName, fingerprint: true
     } catch(e) {
       // If no corresponding prep archive found (first build or new commit), run prep.sh
@@ -80,7 +75,7 @@ mavenEnv(jdk: 21) {
         // Add a reference file
         writeFile file: "target/build-url-prep-only-commit-${gitCommit}.txt", text: env.BUILD_URL
         // Archive files stashed for all lines after the "prep" stage + plugins.txt & lines.txt
-        def tarGlob = param.STASH_GLOB.replace(',', ' ').replace('REPLACEME_LINE', '*') + ' target/*.txt'
+        def tarGlob = stashGlob.replace(',', ' ').replace('REPLACEME_LINE', '*') + ' target/*.txt'
         // Don't try to archive consume-incrementals file if it doesn't exist
         if (!consumeIncrementalsMarkerFile) tarGlob = tarGlob.replace(' consume-incrementals', '')
         // Also include prep.sh test results
