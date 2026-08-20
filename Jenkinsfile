@@ -121,19 +121,11 @@ mavenEnv(jdk: 21) {
 }
 
 def formatDuration(def seconds) {
-  def parts = []
   long totalSeconds = Math.round(seconds as Double)
   long hours = totalSeconds.intdiv(3600)
   long mins = (totalSeconds % 3600).intdiv(60)
   long secs = totalSeconds % 60
-  if (hours) {
-    parts << "${hours}h"
-  }
-  if (mins) {
-    parts << (hours) ? "${mins.toString().padLeft(2, '0')}m" : "${mins}m"
-  }
-  if (secs) {
-    parts << (mins || hours) ? "${secs.toString().padLeft(2, '0')}s" : "${secs}s"
-  }
-  parts.join('')
+  if (hours > 0) return "${hours}h${mins.toString().padLeft(2, '0')}m${secs.toString().padLeft(2, '0')}s"
+  if (mins > 0) return "${mins}m${secs.toString().padLeft(2, '0')}s"
+  return "${secs}s"
 }
