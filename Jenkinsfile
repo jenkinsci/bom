@@ -3,6 +3,7 @@ env.MAVEN_NTP = true
 def stashGlob = 'pct.sh,incrementals.sh,consume-incrementals,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-REPLACEME_LINE.war'
 
 def defaultBomUrl = 'https://github.com/jenkinsci/bom.git'
+
 properties([
   parameters([
     string(
@@ -43,25 +44,29 @@ def mavenEnv(Map params = [:], Closure body) {
   }
 }
 
+def consumeIncrementals = false
+
 mavenEnv(jdk: 21) {
-  def scmVars = checkout(scm)
-  def gitCommit = scmVars.GIT_COMMIT
-  def consumeIncrementals = false
-  // No commit by default in the archive name (allowing to retrieve it from any revision in the upstream build)
-  def archiveName = params.ARCHIVE_NAME
-  def parts = archiveName.replace('.tar.gz', '').split('-')
-  echo "DEBUG: archiveName: ${archiveName}, parts: ${parts}"
-  if (parts.size() > 1) {
-    gitCommit = parts[1]
-    if (params.BOM_URL != defaultBomUrl) {
-      echo "INFO: setting remote bom to ${params.BOM_URL}"
-      sh 'git remote -v'
-      sh ('git remote add bom-fork ' + params.BOM_URL)
-    }
-    sh 'git fetch --no-tags bom-fork "+refs/heads/*:refs/remotes/origin/*"'
-    sh ('git checkout ' + gitCommit)
-    if (parts.size() > 2 && parts[2] == 'consume-incrementals') {
-      consumeIncrementals = true
+  stage('init') {
+    def scmVars = checkout(scm)
+    def gitCommit = scmVars.GIT_COMMIT
+    // No commit by default in the archive name (allowing to retrieve it from any revision in the upstream build)
+    def archiveName = params.ARCHIVE_NAME
+    def parts = archiveName.replace('.tar.gz', '').split('-')
+    echo "DEBUG: archiveName: ${archiveName}, parts: ${parts}"
+    if (parts.size() > 1) {
+      gitCommit = parts[1]
+      if (params.BOM_URL != defaultBomUrl) {
+        echo "INFO: setting remote bom to ${params.BOM_URL}"
+        sh 'git remote -v'
+        sh ('git remote add bom-fork ' + params.BOM_URL)
+      }
+      sh 'git fetch --no-tags bom-fork "+refs/heads/*:refs/remotes/origin/*"'
+      sh ('git checkout ' + gitCommit)
+      if (parts.size() > 2 && parts[2] == 'consume-incrementals') {
+        consumeIncrementals = true
+        echo 'INFO: setting consume-incrementals'
+      }
     }
   }
   stage(archiveName) {
