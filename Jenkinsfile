@@ -105,6 +105,8 @@ mavenEnv(jdk: 21) {
           mvn -v
           bash prep.sh
           '''
+          sh 'ls *'
+          sh "ls ${env.MVN_LOCAL_REPO}/* || true"
         }
         if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount> 0) {
           error 'Some test failures during prep.sh, not going to continue'
