@@ -74,6 +74,7 @@ def commit
 def pctDuration
 def reportNamePrefix = 'bom-report_'
 def stashGlob = 'pct.sh,incrementals.sh,consume-incrementals,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-REPLACEME_LINE.war'
+def incrementalBuildUrl = env.BUILD_URL
 
 mavenEnv(jdk: 21) {
   stage('prep') {
@@ -89,6 +90,7 @@ mavenEnv(jdk: 21) {
       try {
         copyArtifacts(projectName: env.JOB_NAME, selector: lastWithArtifacts(), filter: prepArchive, fingerprintArtifacts: true)
         sh 'tar -xzvf "${PREP_ARCHIVE}" && rm -v "${PREP_ARCHIVE}"'
+        incrementalBuildUrl = readFile('target/build-url-for-incrementals.txt')
       } catch(e) {
         // If no corresponding prep archive found (first build or new commit), run prep.sh and prepare incrementals
         withChecks(name: 'Tests', includeStage: true) {
@@ -104,7 +106,10 @@ mavenEnv(jdk: 21) {
         }
         infra.prepareToPublishIncrementals()
 
-        // Archive files stashed for all lines after the "prep" stage + plugins.txt & lines.txt
+        // Add a reference file to pass infra.maybePublishIncrementals the URL of the build containing the infra.prepareToPublishIncrementals() archives
+        writeFile file: 'target/build-url-for-incrementals.txt', text: env.BUILD_URL
+
+        // Archive files stashed for all lines after the "prep" stage + plugins.txt, lines.txt & build-url-for-incrementals.txt
         def tarGlob = stashGlob.replace(',', ' ').replace('REPLACEME_LINE', '*') + ' target/*.txt'
         // Don't try to archive consume-incrementals file if it doesn't exist
         if (!consumeIncrementalsMarkerFile) tarGlob = tarGlob.replace(' consume-incrementals', '')
@@ -305,5 +310,5 @@ stage('checks') {
 }
 
 stage('publish incrementals') {
-  infra.maybePublishIncrementals()
+  infra.maybePublishIncrementals(incrementalBuildUrl)
 }
