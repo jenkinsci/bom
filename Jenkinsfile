@@ -47,7 +47,8 @@ mavenEnv(jdk: 21) {
   def consumeIncrementals = false
   // No commit by default in the archive name (allowing to retrieve it from any revision in the upstream build)
   def archiveName = params.ARCHIVE_NAME
-  def parts = archiveName.split('-')
+  def parts = archiveName.replace('.tar.gz', '').split('-')
+  echo "DEBUG: archiveName: ${archiveName}, parts: ${parts}"
   if (parts.size() > 1) {
     gitCommit = parts[1]
     sh 'git checkout ' + gitCommit
