@@ -93,8 +93,12 @@ mavenEnv(jdk: 21) {
         // Also include prep.sh test results
         tarGlob += '**/target/surefire-reports/TEST-*.xml **/target/failsafe-reports/TEST-*.xml'
         // Include m2 where the bom pom is built
-        tarGlob += "${env.MVN_LOCAL_REPO}/io/jenkins/tools/bom/**"
-        sh('tar -czvf ' + archiveName + ' ' + tarGlob)
+        tarGlob += " ${env.MVN_LOCAL_REPO}/io/jenkins/tools/bom/**"
+        withEnv(["ARCHIVE_NAME=${archiveName}", "TAR_GLOB=${tarGlob}"]) {
+          sh 'ls ${TAR_GLOB} || true'
+          // Archive only files that are actually there
+          sh 'tar -czvf ${ARCHIVE_NAME} $(ls ${TAR_GLOB} 2>/dev/null || true)'
+        }
         // Archive the prep archive + ref file & plugins.txt & lines.txt themselves for future references
         archiveArtifacts artifacts: "${archiveName},target/*.txt", fingerprint: true
       }
