@@ -98,8 +98,10 @@ mavenEnv(jdk: 21) {
       if (!consumeIncrementalsMarkerFile) tarGlob = tarGlob.replace(' consume-incrementals', '')
       echo "INFO: tar glob=${tarGlob}"
       withEnv(["ARCHIVE_NAME=${archiveName}", "TAR_GLOB=${tarGlob}"]) {
-        sh 'ls ${TAR_GLOB} || true'
-        sh 'tar -czvf ${ARCHIVE_NAME} $(ls ${TAR_GLOB} 2>/dev/null | grep -v ':' | sort -u)'
+        // List files not found
+        sh 'find ${TAR_GLOB} -type f 1>/dev/null || true'
+        // Archive only files that exist, excluding the folders from ls output
+        sh 'tar -czvf ${ARCHIVE_NAME} $(find ${TAR_GLOB} -type f 2>/dev/null)'
       }
       // Archive the prep archive + ref file & plugins.txt & lines.txt themselves for future references
       archiveArtifacts artifacts: "${archiveName},target/*.txt", fingerprint: true
