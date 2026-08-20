@@ -54,9 +54,10 @@ mavenEnv(jdk: 21) {
     gitCommit = parts[1]
     if (params.BOM_URL != env.CHANGE_URL) {
       echo "INFO: setting remote origin to ${params.BOM_URL}"
+      sh 'git remote -v'
       sh 'git remote set-url origin ' + params.BOM_URL
     }
-    sh 'git fetch --all'
+    sh 'git fetch --no-tags origin "+refs/heads/*:refs/remotes/origin/*"'
     sh 'git checkout ' + gitCommit
     if (parts.size() > 2 && parts[2] == 'consume-incrementals') {
       consumeIncrementals = true
