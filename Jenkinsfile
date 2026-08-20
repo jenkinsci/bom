@@ -2,8 +2,6 @@ env.MAVEN_NTP = true
 // Should be the same as in the primary Jenkinsfile
 def stashGlob = 'pct.sh,incrementals.sh,consume-incrementals,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-REPLACEME_LINE.war'
 
-def defaultBomUrl = 'https://github.com/jenkinsci/bom.git'
-
 properties([
   parameters([
     string(
@@ -11,7 +9,6 @@ properties([
         defaultValue: 'prep.tar.gz',
         description: 'Name of the archive to build. Expected format to build the archive from a specific commit: prep-<commit>-<CHANGE_FORK ?: jenkinsci>.tar.gz (add "-consume-incrementals" before .tar.gz)',
         ),
-    string(name: 'BOM_URL', defaultValue: defaultBomUrl),
   ]),
   buildDiscarder(logRotator(numToKeepStr: '10'))
 ])
@@ -59,9 +56,10 @@ mavenEnv(jdk: 21) {
     if (parts.size() > 2) {
       commit = parts[1]
       changeFork = parts[2]
-      echo "INFO: setting remote change-fork to ${changeFork}"
+      def remote = "https://github.com/${changeFork}/bom.git"
+      echo "INFO: setting remote change-fork to ${remote}"
       sh 'git remote -v'
-      sh('git remote add change-fork ' + changeFork)
+      sh('git remote add change-fork ' + remote)
       sh 'git fetch --no-tags change-fork "+refs/heads/*:refs/remotes/origin/*"'
       sh('git checkout ' + commit)
       if (parts.size() > 3 && parts[3] == 'consume-incrementals') {
