@@ -87,12 +87,15 @@ mavenEnv(jdk: 21) {
       }
       stage('archive') {
         sh 'ls *'
+        sh('ls ' + env.MVN_LOCAL_REPO + '/io/jenkins/tools/bom/* || true')
         // Add a reference file
         writeFile file: "target/build-url-prep-only-commit-${commit}.txt", text: env.BUILD_URL
         // Archive files stashed for all lines after the "prep" stage + plugins.txt & lines.txt
         def tarGlob = stashGlob.replace(',', ' ').replace('REPLACEME_LINE', '*') + ' target/*.txt'
         // Also include prep.sh test results
         tarGlob += '**/target/surefire-reports/TEST-*.xml **/target/failsafe-reports/TEST-*.xml'
+        // Include m2 where the bom pom is built
+        tarGlob += "${env.MVN_LOCAL_REPO}/io/jenkins/tools/bom/**"
         sh('tar -czvf ' + archiveName + ' ' + tarGlob)
         // Archive the prep archive + ref file & plugins.txt & lines.txt themselves for future references
         archiveArtifacts artifacts: "${archiveName},target/*.txt", fingerprint: true
