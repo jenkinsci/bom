@@ -87,25 +87,18 @@ mavenEnv(jdk: 21) {
       def prepArchive = "prep-${commit}"
       if (consumeIncrementals) prepArchive += '-consume-incrementals'
       prepArchive += '.tar.gz'
+      prepArchive = 'prep.tar.gz'
       def prep = build(
-        job: 'Tools/bom/prep-only',
-        parameters: [
-          string(name: 'COMMIT', value: commit),
-          booleanParam(name: 'CONSUME_INCREMENTALS', value: consumeIncrementals),
-          string(name: 'STASH_GLOB', value: stashGlob),
-        ],
-        wait: true,
-        propagate: true
-      )
+          job: 'Tools/bom/prep-only',
+          // parameters: [
+          //   string(name: 'ARCHIVE_NAME', value: prepArchive),
+          //   string(name: 'STASH_GLOB', value: stashGlob),
+          // ],
+          wait: true,
+          propagate: true
+          )
       echo "INFO: ${prepArchive} ready in prep-only: ${prep.absoluteUrl} #${prep.number}"
-
-      copyArtifacts(
-        projectName: 'Tools/bom/prep-only',
-        selector: specific("${prep.number}"),
-        filter: prepArchive,
-        fingerprintArtifacts: true
-      )
-
+      copyArtifacts(projectName: 'Tools/bom/prep-only', selector: specific("${prep.number}"), filter: prepArchive, fingerprintArtifacts: true)
       sh 'tar -xzvf ' + prepArchive + ' && rm -v ' + prepArchive
       // incrementalsDoneInPreviousBuild = true
     } catch (e) {
