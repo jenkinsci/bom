@@ -45,24 +45,25 @@ def mavenEnv(Map params = [:], Closure body) {
 }
 
 def consumeIncrementals = false
+def archiveName = params.ARCHIVE_NAME
+def commit
 
 mavenEnv(jdk: 21) {
   stage('init') {
     def scmVars = checkout(scm)
-    def gitCommit = scmVars.GIT_COMMIT
+    commit = scmVars.GIT_COMMIT
     // No commit by default in the archive name (allowing to retrieve it from any revision in the upstream build)
-    def archiveName = params.ARCHIVE_NAME
     def parts = archiveName.replace('.tar.gz', '').split('-')
     echo "DEBUG: archiveName: ${archiveName}, parts: ${parts}"
     if (parts.size() > 1) {
-      gitCommit = parts[1]
+      commit = parts[1]
       if (params.BOM_URL != defaultBomUrl) {
         echo "INFO: setting remote bom to ${params.BOM_URL}"
         sh 'git remote -v'
         sh ('git remote add bom-fork ' + params.BOM_URL)
       }
       sh 'git fetch --no-tags bom-fork "+refs/heads/*:refs/remotes/origin/*"'
-      sh ('git checkout ' + gitCommit)
+      sh ('git checkout ' + commit)
       if (parts.size() > 2 && parts[2] == 'consume-incrementals') {
         consumeIncrementals = true
         echo 'INFO: setting consume-incrementals'
@@ -87,7 +88,7 @@ mavenEnv(jdk: 21) {
       stage('archive') {
         sh 'ls *'
         // Add a reference file
-        writeFile file: "target/build-url-prep-only-commit-${gitCommit}.txt", text: env.BUILD_URL
+        writeFile file: "target/build-url-prep-only-commit-${commit}.txt", text: env.BUILD_URL
         // Archive files stashed for all lines after the "prep" stage + plugins.txt & lines.txt
         def tarGlob = stashGlob.replace(',', ' ').replace('REPLACEME_LINE', '*') + ' target/*.txt'
         // Also include prep.sh test results
