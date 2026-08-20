@@ -1,5 +1,3 @@
-@Library('pipeline-library@pull/1039/head') _
-
 // Do not trigger build regularly on change requests as it costs a lot
 String cronTrigger = ''
 if(env.BRANCH_NAME == "master") {
@@ -76,7 +74,6 @@ def commit
 def pctDuration
 def reportNamePrefix = 'bom-report_'
 def stashGlob = 'pct.sh,incrementals.sh,consume-incrementals,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-REPLACEME_LINE.war'
-def incrementalsBuildId = env.BUILD_ID
 
 mavenEnv(jdk: 21) {
   stage('prep') {
@@ -91,7 +88,8 @@ mavenEnv(jdk: 21) {
     try {
       copyArtifacts(projectName: env.JOB_NAME, selector: lastWithArtifacts(), filter: prepArchive, fingerprintArtifacts: true)
       sh('tar -xzvf ' + prepArchive + ' && rm -v ' + prepArchive)
-      incrementalsBuildId = readFile('target/build-id-for-incrementals.txt')
+      sh 'mkdir -p "${MVN_LOCAL_REPO}/io/jenkins/tools/bom/" && cp -a mvn-local-repo-bom/. "${MVN_LOCAL_REPO}/io/jenkins/tools/bom/"'
+      sh 'rm -rfv mvn-local-repo-bom'
     } catch(e) {
       // If no corresponding prep archive found (first build or new commit), run prep.sh and prepare incrementals
       withChecks(name: 'Tests', includeStage: true) {
@@ -105,11 +103,6 @@ mavenEnv(jdk: 21) {
           error 'Some test failures during prep.sh, not going to continue'
         }
       }
-      infra.prepareToPublishIncrementals()
-
-      // Add a reference file to pass infra.maybePublishIncrementals the id of the build containing the infra.prepareToPublishIncrementals() archives
-      writeFile file: 'target/build-id-for-incrementals.txt', text: env.BUILD_ID
-
       // Find the last line from sample-plugin/pom.xml to avoid archiving all (heavy) megawars
       def lastLine = readFile('sample-plugin/pom.xml').readLines().findAll {
         it.contains('<bom>')
@@ -118,11 +111,16 @@ mavenEnv(jdk: 21) {
       def tarGlob = stashGlob.replace(',', ' ').replace('target/megawar-REPLACEME_LINE.war', "target/megawar-weekly.war target/megawar-${lastLine}.war")
       // Don't try to archive consume-incrementals file if it doesn't exist
       if (!consumeIncrementalsMarkerFile) tarGlob = tarGlob.replace(' consume-incrementals', '')
+      // Copy bom pom in a temporary folder
+      sh 'mkdir -p mvn-local-repo-bom'
+      sh 'cp -a "${MVN_LOCAL_REPO}/io/jenkins/tools/bom/." mvn-local-repo-bom/'
+      tarGlob += ' mvn-local-repo-bom'
       // Add plugins.txt, lines.txt & build-id-for-incrementals.txt
       sh('tar -czvf ' + prepArchive + ' ' + tarGlob + ' target/*.txt')
-      archiveArtifacts artifacts: prepArchive, fingerprint: true
-      sh('rm -v ' + prepArchive)
     }
+    archiveArtifacts artifacts: prepArchive, fingerprint: true
+    sh('rm -v ' + prepArchive)
+    infra.prepareToPublishIncrementals()
 
     fullTestMarkerFile = fileExists 'full-test'
     weeklyTestMarkerFile = fileExists 'weekly-test'
@@ -316,5 +314,5 @@ stage('checks') {
 }
 
 stage('publish incrementals') {
-  infra.maybePublishIncrementals(incrementalsBuildId.toInteger())
+  infra.maybePublishIncrementals()
 }
