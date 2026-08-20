@@ -94,7 +94,10 @@ mavenEnv(jdk: 21) {
         echo "INFO: copying ${archiveName} from 'Tools/bom/prep-only' build n°${archiveBuild.number}"
         copyArtifacts(projectName: 'Tools/bom/prep-only', parameters: "ARCHIVE_NAME=${archiveName}", selector: specific("${archiveBuild.number}"), filter: archiveName, fingerprintArtifacts: true)
       }
-      sh(script: 'tar -xzvf ' + archiveName + ' && rm -v ' + archiveName)
+      sh('tar -xzvf ' + archiveName + ' && rm -v ' + archiveName)
+      sh 'mv home/jenkins/agent/workspace/Tools_bom_prep-only@tmp/m2repo/io/jenkins/tools/bom/* "${MVN_LOCAL_REPO}/io/jenkins/tools/bom/"'
+      sh 'git status'
+      sh 'git --no-pager diff'
       // incrementalsDoneInPreviousBuild = true
     } catch (e) {
       echo "WARNING: could not retrieve ${archiveName} from 'Tools/bom/prep-only'"
