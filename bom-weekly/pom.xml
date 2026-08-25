@@ -1597,7 +1597,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>support-core</artifactId>
-        <version>1840.v08d78d1b_4db_c</version>
+        <version>1858.vd36229d021b_8</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
