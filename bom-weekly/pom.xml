@@ -188,7 +188,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>commons-compress-api</artifactId>
-        <version>1.28.0-87.v48a_8104cb_b_25</version>
+        <version>1.28.0-89.v706d5e672f99</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -487,7 +487,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>micrometer-core-api</artifactId>
-        <version>1.17.0-15.va_d34e0e84955</version>
+        <version>1.17.1-20.v6981459953d8</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1555,7 +1555,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ssh-agent</artifactId>
-        <version>424.vfc0ff25503b_4</version>
+        <version>427.v5818150c4b_c6</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
