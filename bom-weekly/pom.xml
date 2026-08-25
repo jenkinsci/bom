@@ -487,7 +487,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>micrometer-core-api</artifactId>
-        <version>1.17.0-15.va_d34e0e84955</version>
+        <version>1.17.1-20.v6981459953d8</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
