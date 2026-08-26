@@ -1,6 +1,6 @@
 // Do not trigger build regularly on change requests as it costs a lot
 String cronTrigger = ''
-if(env.BRANCH_NAME == "master") {
+if (env.BRANCH_IS_PRIMARY) {
   cronTrigger = '10 0 * * 4'
 }
 
@@ -9,15 +9,15 @@ def maxSplitsPerLine = 20
 
 // Run pct tests on a limited set of repositories and their plugin(s) if not empty
 // Ex: ['jenkinsci/badge-plugin\tbadge', 'jenkinsci/cron_column-plugin\tcron_column']
-def limitedPluginSet = []
+def limitedPluginSet = ['jenkinsci/badge-plugin\tbadge', 'jenkinsci/cron_column-plugin\tcron_column']
 
 properties([
-  disableConcurrentBuilds(abortPrevious: true),
+  // disableConcurrentBuilds(abortPrevious: true),
   buildDiscarder(logRotator(numToKeepStr: '7')),
   pipelineTriggers([cron(cronTrigger)])
 ])
 
-if (env.BRANCH_NAME == 'master' && currentBuild.buildCauses*._class == ['jenkins.branch.BranchEventCause']) {
+if (env.BRANCH_IS_PRIMARY && currentBuild.buildCauses*._class == ['jenkins.branch.BranchEventCause']) {
   currentBuild.result = 'NOT_BUILT'
   error 'No longer running builds on response to master branch pushes. If you wish to cut a release, use “Re-run checks” from this failing check in https://github.com/jenkinsci/bom/commits/master'
 }
@@ -73,6 +73,7 @@ def results = [:]
 def commit
 def pctDuration
 def reportNamePrefix = 'bom-report_'
+def stashGlob = 'pct.sh,incrementals.sh,consume-incrementals,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-REPLACEME_LINE.war'
 
 mavenEnv(jdk: 21) {
   stage('prep') {
@@ -82,15 +83,38 @@ mavenEnv(jdk: 21) {
     if (!consumeIncrementals) {
       echo 'Forbidding use of incremental dependencies. If you need to consume incrementals, add the `consume-incrementals` label, or add a file named `consume-incrementals` to the repository root if you lack triage permission. Then keep this PR in draft until the dependencies have been switched to release versions.'
     }
-    withChecks(name: 'Tests', includeStage: true) {
-      withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist', "CONSUME_INCREMENTALS=${consumeIncrementals}"]) {
-        sh '''
-        mvn -v
-        bash prep.sh
-        '''
+    def archiveName = "prep_${commit}_${env.CHANGE_FORK ?: 'jenkinsci'}${consumeIncrementals ? '_consume-incrementals' : ''}.tar.gz"
+    try {
+      try {
+        echo "INFO: trying to copy ${archiveName} from last successful 'Tools/bom/prep-only' with the same archive name"
+        copyArtifacts(projectName: 'Tools/bom/prep-only', parameters: "ARCHIVE_NAME=${archiveName}", selector: lastCompleted(), filter: archiveName, fingerprintArtifacts: true)
+      } catch (copyError) {
+        echo "INFO: starting downstream job to prepare ${archiveName} from 'Tools/bom/prep-only'"
+        def archiveBuild = build(job: 'Tools/bom/prep-only', parameters: [string(name: 'ARCHIVE_NAME', value: archiveName)], wait: true, propagate: true)
+        echo "INFO: copying ${archiveName} from 'Tools/bom/prep-only' build n°${archiveBuild.number}"
+        copyArtifacts(projectName: 'Tools/bom/prep-only', parameters: "ARCHIVE_NAME=${archiveName}", selector: specific("${archiveBuild.number}"), filter: archiveName, fingerprintArtifacts: true)
       }
-      if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount> 0) {
-        error 'Some test failures during prep.sh, not going to continue'
+      sh('tar -xzvf ' + archiveName + ' && rm -v ' + archiveName)
+      sh 'mkdir -p "${MVN_LOCAL_REPO}/io/jenkins/tools/bom/" && cp -a mvn-local-repo-bom/. "${MVN_LOCAL_REPO}/io/jenkins/tools/bom/"'
+      sh 'rm -rfv mvn-local-repo-bom'
+
+      sh 'git status'
+      sh 'git --no-pager diff'
+      // incrementalsDoneInPreviousBuild = true
+    } catch (e) {
+      echo "WARNING: could not retrieve ${archiveName} from 'Tools/bom/prep-only'"
+      withChecks(name: 'Tests', includeStage: true) {
+        withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist', "CONSUME_INCREMENTALS=${consumeIncrementals}"]) {
+          sh '''
+          mvn -v
+          bash prep.sh
+          '''
+          sh 'ls *'
+          sh "ls ${env.MVN_LOCAL_REPO}/* || true"
+        }
+        if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount> 0) {
+          error 'Some test failures during prep.sh, not going to continue'
+        }
       }
     }
     infra.prepareToPublishIncrementals()
@@ -156,14 +180,16 @@ mavenEnv(jdk: 21) {
       "${split} [${repositories.size()}]:\n - ${repositories.join('\n - ')}"
     }.join('\n')
   }
-  stage('stash line(s)') {
-    lines.each { line ->
-      stash name: line, includes: "pct.sh,incrementals.sh,consume-incrementals,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-${line}.war"
+  if (env.BRANCH_IS_PRIMARY || fullTest || weeklyTest) {
+    stage('stash line(s)') {
+      lines.each { line ->
+        stash name: line, includes: stashGlob.replace('REPLACEME_LINE', line)
+      }
     }
   }
 }
 
-if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
+if (env.BRANCH_IS_PRIMARY || fullTest || weeklyTest) {
   stage('run pct') {
     def pctStart = System.currentTimeMillis()
     def branches = [failFast: false]
