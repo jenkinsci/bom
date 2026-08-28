@@ -1,7 +1,7 @@
 // Do not trigger build regularly on change requests as it costs a lot
 String cronTrigger = ''
 if(env.BRANCH_NAME == "master") {
-  cronTrigger = '5 10 * * 5'
+  cronTrigger = '50 16 * * 5'
 }
 
 env.MAVEN_NTP = true
