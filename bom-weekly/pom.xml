@@ -1243,7 +1243,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>jobConfigHistory</artifactId>
-        <version>1367.vc8fa_b_15101dc</version>
+        <version>1380.v762185b_9a_793</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
