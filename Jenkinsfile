@@ -34,7 +34,7 @@ def mavenEnv(Map params = [:], Closure body) {
     def provisioningStart = System.currentTimeMillis()
     echo 'Attempt ' + ++attempt + ' of ' + attempts
     // no Dockerized tests; https://github.com/jenkins-infra/documentation/blob/master/ci.adoc#container-agents
-    node('maven-bom') {
+    node('maven-bom-older') {
       timeout(120) {
         infra.withArtifactCachingProxy {
           withEnv([
