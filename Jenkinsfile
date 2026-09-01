@@ -9,7 +9,12 @@ def maxSplitsPerLine = 20
 
 // Run pct tests on a limited set of repositories and their plugin(s) if not empty
 // Ex: ['jenkinsci/badge-plugin\tbadge', 'jenkinsci/cron_column-plugin\tcron_column']
-def limitedPluginSet = []
+def limitedPluginSet = [
+  'jenkinsci/git-plugin	git',
+  'jenkinsci/workflow-scm-step-plugin	workflow-scm-step',
+  'jenkinsci/ignore-committer-strategy-plugin	ignore-committer-strategy',
+  'jenkinsci/warnings-ng-plugin	warnings-ng'
+]
 
 properties([
   disableConcurrentBuilds(abortPrevious: true),
