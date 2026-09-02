@@ -105,6 +105,8 @@ mavenEnv(jdk: 21) {
       sh 'mkdir -p mvn-local-repo-bom'
       sh 'cp -a "${MVN_LOCAL_REPO}/io/jenkins/tools/bom/." mvn-local-repo-bom/'
       tarGlob += ' mvn-local-repo-bom'
+      // Add plugins.txt, lines.txt & reference file
+      tarGlob += ' target/*.txt'
       echo "INFO: tar glob=${tarGlob}"
       withEnv(["ARCHIVE_NAME=${archiveName}", "TAR_GLOB=${tarGlob}"]) {
         // List files not found
