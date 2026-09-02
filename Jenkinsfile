@@ -87,43 +87,43 @@ mavenEnv(jdk: 21) {
         }
       }
     }
-    stage('archive') {
-      sh 'ls *'
-      sh('ls ' + env.MVN_LOCAL_REPO + '/io/jenkins/tools/bom/* || true')
-      // Add a reference file
-      writeFile file: "target/build-url-prep-only-commit-${commit}.txt", text: env.BUILD_URL
-      // Find the last line from sample-plugin/pom.xml to avoid archiving all (heavy) megawars
-      def lastLine = readFile('sample-plugin/pom.xml').readLines().findAll {
-        it.contains('<bom>')
-      }.last().replaceAll(/.*<bom>|<\/bom>.*/, '')
-      // Replace stash glob separator by tar one then keep only the first (weekly) and last megawars
-      def tarGlob = stashGlob.replace(',', ' ').replace('target/megawar-REPLACEME_LINE.war', "target/megawar-weekly.war target/megawar-${lastLine}.war")
-      // Remove consume-incrementals from glob if it doesn't exist
-      consumeIncrementalsMarkerFile = fileExists 'consume-incrementals'
-      if (!consumeIncrementalsMarkerFile) tarGlob = tarGlob.replace(' consume-incrementals', '')
-      // Copy bom pom in a temporary folder
-      sh 'mkdir -p mvn-local-repo-bom'
-      sh 'cp -a "${MVN_LOCAL_REPO}/io/jenkins/tools/bom/." mvn-local-repo-bom/'
-      tarGlob += ' mvn-local-repo-bom'
-      // Add plugins.txt, lines.txt & reference file
-      tarGlob += ' target/*.txt'
-      echo "INFO: tar glob=${tarGlob}"
-      withEnv(["ARCHIVE_NAME=${archiveName}", "TAR_GLOB=${tarGlob}"]) {
-        // List files not found
-        sh 'find ${TAR_GLOB} -type f 1>/dev/null || true'
-        // Archive only files that exist, excluding the folders from ls output
-        sh 'tar -czvf ${ARCHIVE_NAME} $(find ${TAR_GLOB} -type f 2>/dev/null)'
-      }
-      // Archive the prep archive + ref file & plugins.txt & lines.txt themselves for future references
-      archiveArtifacts artifacts: "${archiveName},target/*.txt", fingerprint: true
+  }
+  stage('archive') {
+    sh 'ls *'
+    sh('ls ' + env.MVN_LOCAL_REPO + '/io/jenkins/tools/bom/* || true')
+    // Add a reference file
+    writeFile file: "target/build-url-prep-only-commit-${commit}.txt", text: env.BUILD_URL
+    // Find the last line from sample-plugin/pom.xml to avoid archiving all (heavy) megawars
+    def lastLine = readFile('sample-plugin/pom.xml').readLines().findAll {
+      it.contains('<bom>')
+    }.last().replaceAll(/.*<bom>|<\/bom>.*/, '')
+    // Replace stash glob separator by tar one then keep only the first (weekly) and last megawars
+    def tarGlob = stashGlob.replace(',', ' ').replace('target/megawar-REPLACEME_LINE.war', "target/megawar-weekly.war target/megawar-${lastLine}.war")
+    // Remove consume-incrementals from glob if it doesn't exist
+    consumeIncrementalsMarkerFile = fileExists 'consume-incrementals'
+    if (!consumeIncrementalsMarkerFile) tarGlob = tarGlob.replace(' consume-incrementals', '')
+    // Copy bom pom in a temporary folder
+    sh 'mkdir -p mvn-local-repo-bom'
+    sh 'cp -a "${MVN_LOCAL_REPO}/io/jenkins/tools/bom/." mvn-local-repo-bom/'
+    tarGlob += ' mvn-local-repo-bom'
+    // Add plugins.txt, lines.txt & reference file
+    tarGlob += ' target/*.txt'
+    echo "INFO: tar glob=${tarGlob}"
+    withEnv(["ARCHIVE_NAME=${archiveName}", "TAR_GLOB=${tarGlob}"]) {
+      // List files not found
+      sh 'find ${TAR_GLOB} -type f 1>/dev/null || true'
+      // Archive only files that exist, excluding the folders from ls output
+      sh 'tar -czvf ${ARCHIVE_NAME} $(find ${TAR_GLOB} -type f 2>/dev/null)'
     }
-    stage('update build desc') {
-      // Update build description
-      def duration = formatDuration((System.currentTimeMillis() - env.PROVISONING_START.toLong()) / 1000.0)
-      def buildInfo = "<i>${archiveName}, duration: ${duration}</i>"
-      def currentDesc = currentBuild.description
-      currentBuild.description = currentDesc ? currentDesc + '<br>' + buildInfo : buildInfo
-    }
+    // Archive the prep archive + ref file & plugins.txt & lines.txt themselves for future references
+    archiveArtifacts artifacts: "${archiveName},target/*.txt", fingerprint: true
+  }
+  stage('update build desc') {
+    // Update build description
+    def duration = formatDuration((System.currentTimeMillis() - env.PROVISONING_START.toLong()) / 1000.0)
+    def buildInfo = "<i>${archiveName}, duration: ${duration}</i>"
+    def currentDesc = currentBuild.description
+    currentBuild.description = currentDesc ? currentDesc + '<br>' + buildInfo : buildInfo
   }
 }
 
