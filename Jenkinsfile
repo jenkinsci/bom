@@ -48,14 +48,10 @@ def commit
 mavenEnv(jdk: 21) {
   stage('init') {
     def scmVars = checkout(scm)
-    sh 'ls *'
-    sh('ls ' + env.MVN_LOCAL_REPO + '* || true')
-
     commit = scmVars.GIT_COMMIT
     // No commit by default in the archive name (allowing to retrieve it from any revision in the upstream build)
     // If there is a commit, there must be a CHANGE_FORK or 'jenkinsci' as third part
     def parts = archiveName.replace('.tar.gz', '').split('_')
-    echo "DEBUG: archiveName: ${archiveName}, parts: ${parts}"
     if (parts.size() > 2) {
       commit = parts[1]
       changeFork = parts[2]
@@ -89,25 +85,30 @@ mavenEnv(jdk: 21) {
     }
   }
   stage('archive') {
-    sh 'ls *'
-    sh('ls ' + env.MVN_LOCAL_REPO + '/io/jenkins/tools/bom/* || true')
-    // Add a reference file
-    writeFile file: "target/build-url-prep-only-commit-${commit}.txt", text: env.BUILD_URL
+    // Replace stash glob separator by tar one then keep only the first (weekly) and last megawars
+    def tarGlob = stashGlob.replace(',', ' ').replace('target/megawar-REPLACEME_LINE.war', "target/megawar-weekly.war target/megawar-${lastLine}.war")
+
     // Find the last line from sample-plugin/pom.xml to avoid archiving all (heavy) megawars
     def lastLine = readFile('sample-plugin/pom.xml').readLines().findAll {
       it.contains('<bom>')
     }.last().replaceAll(/.*<bom>|<\/bom>.*/, '')
-    // Replace stash glob separator by tar one then keep only the first (weekly) and last megawars
-    def tarGlob = stashGlob.replace(',', ' ').replace('target/megawar-REPLACEME_LINE.war', "target/megawar-weekly.war target/megawar-${lastLine}.war")
+    // Keep only the first (weekly) and last megawars
+    tarGlob = tarGlob.replace('target/megawar-REPLACEME_LINE.war', "target/megawar-weekly.war target/megawar-${lastLine}.war")
+
     // Remove consume-incrementals from glob if it doesn't exist
     consumeIncrementalsMarkerFile = fileExists 'consume-incrementals'
     if (!consumeIncrementalsMarkerFile) tarGlob = tarGlob.replace(' consume-incrementals', '')
+
     // Copy bom pom in a temporary folder
     sh 'mkdir -p mvn-local-repo-bom'
     sh 'cp -a "${MVN_LOCAL_REPO}/io/jenkins/tools/bom/." mvn-local-repo-bom/'
     tarGlob += ' mvn-local-repo-bom'
+
+    // Add a reference file
+    writeFile file: "target/build-url-prep-only-commit-${commit}.txt", text: env.BUILD_URL
     // Add plugins.txt, lines.txt & reference file
     tarGlob += ' target/*.txt'
+
     echo "INFO: tar glob=${tarGlob}"
     withEnv(["ARCHIVE_NAME=${archiveName}", "TAR_GLOB=${tarGlob}"]) {
       // List files not found
@@ -115,7 +116,7 @@ mavenEnv(jdk: 21) {
       // Archive only files that exist, excluding the folders from ls output
       sh 'tar -czvf ${ARCHIVE_NAME} $(find ${TAR_GLOB} -type f 2>/dev/null)'
     }
-    // Archive the prep archive + ref file & plugins.txt & lines.txt themselves for future references
+    // Archive the prep archive + reference file & plugins.txt & lines.txt themselves for future references
     archiveArtifacts artifacts: "${archiveName},target/*.txt", fingerprint: true
   }
   stage('update build desc') {
