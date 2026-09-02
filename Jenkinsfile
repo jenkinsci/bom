@@ -7,7 +7,7 @@ properties([
     string(
         name: 'ARCHIVE_NAME',
         defaultValue: 'prep.tar.gz',
-        description: 'Name of the archive to build. Expected format to build the archive from a specific commit: prep_<commit>_<CHANGE_FORK ?: jenkinsci>.tar.gz (add "_consume-incrementals" before .tar.gz)',
+        description: 'Name of the archive to build. Expected format to build the archive from a specific commit: prep_[commit]_[CHANGE_FORK ?: jenkinsci].tar.gz (add "_consume-incrementals" before .tar.gz)',
         ),
   ]),
   buildDiscarder(logRotator(numToKeepStr: '10'))
