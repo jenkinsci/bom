@@ -1117,7 +1117,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>gitea</artifactId>
-        <version>282.v31f586d2cb_30</version>
+        <version>283.v14b_179495971</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
