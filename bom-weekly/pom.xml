@@ -157,7 +157,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>byte-buddy-api</artifactId>
-        <version>1.18.12-254.vb_933fb_ce06b_4</version>
+        <version>1.18.13-258.vb_0a_1833e80e8</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1284,7 +1284,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ldap</artifactId>
-        <version>807.809.vd3a_4e5e4ec98</version>
+        <version>825.v2fca_37dd5b_cb_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1399,7 +1399,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pipeline-build-step</artifactId>
-        <version>599.v4b_67ea_11b_152</version>
+        <version>601.v6d4c6d1a_9dc7</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1525,7 +1525,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>script-security</artifactId>
-        <version>1412.v7737b_3405f86</version>
+        <version>1415.v9a_f9b_3a_c253d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1555,7 +1555,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ssh-agent</artifactId>
-        <version>427.v5818150c4b_c6</version>
+        <version>430.v8c9869373423</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
