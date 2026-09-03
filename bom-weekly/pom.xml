@@ -147,7 +147,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>azure-sdk</artifactId>
-        <version>290.vf82a_b_3911a_c0</version>
+        <version>292.v2db_0b_b_b_50d35</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
