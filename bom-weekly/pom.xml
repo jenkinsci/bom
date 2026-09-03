@@ -1555,7 +1555,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ssh-agent</artifactId>
-        <version>427.v5818150c4b_c6</version>
+        <version>430.v8c9869373423</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
