@@ -1,0 +1,23 @@
+commit 49e923de85d9f20e6d50ea497ca358f506ba9f45
+Author: Mark Waite <mark.earl.waite@gmail.com>
+Date:   Thu Sep 3 16:37:45 2026 -0600
+
+    Test several pull requests
+    
+    From core pull request:
+    
+    * https://github.com/jenkinsci/jenkins/pull/27339
+    
+    Includes pull requests:
+    
+    * https://github.com/jenkinsci/jenkins/pull/27338
+    * https://github.com/jenkinsci/jenkins/pull/27317
+    * https://github.com/jenkinsci/jenkins/pull/27316
+    * https://github.com/jenkinsci/jenkins/pull/27282
+    * https://github.com/jenkinsci/jenkins/pull/27276
+    * https://github.com/jenkinsci/jenkins/pull/27258
+    * https://github.com/jenkinsci/jenkins/pull/27252
+    * https://github.com/jenkinsci/jenkins/pull/27248
+    * https://github.com/jenkinsci/jenkins/pull/27047
+    * https://github.com/jenkinsci/jenkins/pull/26587
+    * https://github.com/jenkinsci/jenkins/pull/10432
