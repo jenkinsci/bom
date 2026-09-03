@@ -85,8 +85,8 @@ mavenEnv(jdk: 21) {
     }
   }
   stage('archive') {
-    // Replace stash glob separator by tar one then keep only the first (weekly) and last megawars
-    def tarGlob = stashGlob.replace(',', ' ').replace('target/megawar-REPLACEME_LINE.war', "target/megawar-weekly.war target/megawar-${lastLine}.war")
+    // Replace stash glob separator by tar one
+    def tarGlob = stashGlob.replace(',', ' ')
 
     // Find the last line from sample-plugin/pom.xml to avoid archiving all (heavy) megawars
     def lastLine = readFile('sample-plugin/pom.xml').readLines().findAll {
