@@ -1399,7 +1399,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pipeline-build-step</artifactId>
-        <version>599.v4b_67ea_11b_152</version>
+        <version>601.v6d4c6d1a_9dc7</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
