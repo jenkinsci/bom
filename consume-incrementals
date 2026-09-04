@@ -3,13 +3,13 @@ Author: Mark Waite <mark.earl.waite@gmail.com>
 Date:   Thu Sep 3 16:37:45 2026 -0600
 
     Test several pull requests
-    
+
     From core pull request:
-    
+
     * https://github.com/jenkinsci/jenkins/pull/27339
-    
+
     Includes pull requests:
-    
+
     * https://github.com/jenkinsci/jenkins/pull/27338
     * https://github.com/jenkinsci/jenkins/pull/27317
     * https://github.com/jenkinsci/jenkins/pull/27316
