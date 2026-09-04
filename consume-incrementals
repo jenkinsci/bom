@@ -1,3 +1,13 @@
+commit 50d192cf805e544933056442e51c1e080ba47f7d
+Author: Mark Waite <mark.earl.waite@gmail.com>
+Date:   Thu Sep 3 19:35:25 2026 -0600
+
+    Remove one pull request from the tested set
+
+    Pull request removed:
+
+    * https://github.com/jenkinsci/jenkins/pull/10432
+
 commit 49e923de85d9f20e6d50ea497ca358f506ba9f45
 Author: Mark Waite <mark.earl.waite@gmail.com>
 Date:   Thu Sep 3 16:37:45 2026 -0600
