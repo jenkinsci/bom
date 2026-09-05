@@ -34,7 +34,7 @@
     <plugin-util-api.version>7.1341.v039f146993d9</plugin-util-api.version>
     <scm-api-plugin.version>728.vc30dcf7a_0df5</scm-api-plugin.version>
     <ssh-slaves-plugin.version>3.1097.v868116049892</ssh-slaves-plugin.version>
-    <subversion-plugin.version>1303.vcfd9679fb_c12</subversion-plugin.version>
+    <subversion-plugin.version>1327.vc36e0019a_653</subversion-plugin.version>
     <workflow-api-plugin.version>1413.v2ff1a_5e720fa_</workflow-api-plugin.version>
     <workflow-cps-plugin.version>4376.v30c8c00684a_3</workflow-cps-plugin.version>
     <workflow-job-plugin.version>1600.v6f36ed83529d</workflow-job-plugin.version>
