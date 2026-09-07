@@ -52,7 +52,8 @@
       <dependency>
         <groupId>com.cloudbees.jenkins.plugins</groupId>
         <artifactId>file-leak-detector</artifactId>
-        <version>1.14</version>
+        <!-- TODO: https://github.com/jenkinsci/file-leak-detector-plugin/pull/174 -->
+        <version>1.15-rc206.b_1dfb_d2d9f4f</version>
       </dependency>
       <dependency>
         <groupId>com.cloudbees.jenkins.plugins</groupId>
