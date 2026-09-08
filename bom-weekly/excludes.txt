@@ -27,3 +27,6 @@ hudson.plugins.sonar.utils.LoggerTest
 hudson.plugins.sonar.utils.SonarMavenTest
 hudson.plugins.sonar.utils.SonarUtilsTest
 org.sonarsource.scanner.jenkins.pipeline.WaitForQualityGateStepDescriptorImplTest
+
+# https://github.com/jenkinsci/file-leak-detector-plugin/pull/174
+com.cloudbees.jenkins.plugins.file_leak_detector.FileHandleDumpTest
