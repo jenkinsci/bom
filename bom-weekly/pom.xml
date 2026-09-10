@@ -1934,7 +1934,7 @@
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
         <artifactId>groovy-postbuild</artifactId>
-        <version>303.v5fe3da_6233f0</version>
+        <version>309.vb_6c6100a_d854</version>
       </dependency>
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
