@@ -829,7 +829,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>authorize-project</artifactId>
-        <version>531.vf8761dfd75d2</version>
+        <version>534.v2f208c45e11c</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
