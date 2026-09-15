@@ -880,7 +880,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>build-monitor-plugin</artifactId>
-        <version>1116.v4d2f13e3a_a_a_6</version>
+        <version>1131.va_2d8e68fc912</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
