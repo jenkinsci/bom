@@ -36,7 +36,7 @@
     <ssh-slaves-plugin.version>3.1097.v868116049892</ssh-slaves-plugin.version>
     <subversion-plugin.version>1327.vc36e0019a_653</subversion-plugin.version>
     <workflow-api-plugin.version>1413.v2ff1a_5e720fa_</workflow-api-plugin.version>
-    <workflow-cps-plugin.version>4378.v7a_08f1b_b_f8f4</workflow-cps-plugin.version>
+    <workflow-cps-plugin.version>4380.v6eb_8378b_9647</workflow-cps-plugin.version>
     <workflow-job-plugin.version>1600.v6f36ed83529d</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>841.vec5b_9e1806ec</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>724.v538c2362b_dfb_</workflow-step-api-plugin.version>
@@ -157,7 +157,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>byte-buddy-api</artifactId>
-        <version>1.18.13-258.vb_0a_1833e80e8</version>
+        <version>1.18.14-261.v38b_e96525265</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -880,7 +880,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>build-monitor-plugin</artifactId>
-        <version>1116.v4d2f13e3a_a_a_6</version>
+        <version>1131.va_2d8e68fc912</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1051,7 +1051,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ec2</artifactId>
-        <version>2061.v9ec2584f3b_38</version>
+        <version>2063.ve202101143b_6</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1555,7 +1555,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ssh-agent</artifactId>
-        <version>432.v122f1207432b_</version>
+        <version>433.v9e73d67c3f74</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
