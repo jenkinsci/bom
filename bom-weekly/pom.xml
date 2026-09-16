@@ -36,9 +36,9 @@
     <ssh-slaves-plugin.version>3.1097.v868116049892</ssh-slaves-plugin.version>
     <subversion-plugin.version>1327.vc36e0019a_653</subversion-plugin.version>
     <workflow-api-plugin.version>1413.v2ff1a_5e720fa_</workflow-api-plugin.version>
-    <workflow-cps-plugin.version>4380.v6eb_8378b_9647</workflow-cps-plugin.version>
+    <workflow-cps-plugin.version>4383.v04fa_a_3d67b_d9</workflow-cps-plugin.version>
     <workflow-job-plugin.version>1600.v6f36ed83529d</workflow-job-plugin.version>
-    <workflow-multibranch-plugin.version>841.vec5b_9e1806ec</workflow-multibranch-plugin.version>
+    <workflow-multibranch-plugin.version>842.v3a_b_59b_57b_e6e</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>724.v538c2362b_dfb_</workflow-step-api-plugin.version>
     <workflow-support-plugin.version>1015.v785e5a_b_b_8b_22</workflow-support-plugin.version>
   </properties>
@@ -208,7 +208,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>coverage</artifactId>
-        <version>3.3358.v9487dde48783</version>
+        <version>3.3361.v0626103a_67e6</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -548,7 +548,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-groovy-lib</artifactId>
-        <version>805.va_fc79344957d</version>
+        <version>806.v408277b_33d1d</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -599,7 +599,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>warnings-ng</artifactId>
-        <version>13.10258.va_17d49a_78c3b_</version>
+        <version>13.10259.v80f407cb_03a_e</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1158,7 +1158,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>gitlab-plugin</artifactId>
-        <version>1.2149.vcfc32c82b_f7f</version>
+        <version>1.2152.veec0897048b_0</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1525,7 +1525,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>script-security</artifactId>
-        <version>1415.v9a_f9b_3a_c253d</version>
+        <version>1422.v06869826dd9b_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
