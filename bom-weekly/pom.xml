@@ -507,7 +507,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>oidc-provider</artifactId>
-        <version>232.v87437460ff89</version>
+        <version>234.vca_b_26b_f4b_dda_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
