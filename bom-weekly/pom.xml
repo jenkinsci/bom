@@ -12,7 +12,7 @@
     <aws-java-sdk-plugin.version>1.12.780-480.v4a_0819121a_9e</aws-java-sdk-plugin.version>
     <aws-java-sdk2-plugin.version>2.42.33-70.vd69c0763fa_60</aws-java-sdk2-plugin.version>
     <gcp-java-sdk-plugin.version>26.23.0-31.va_efec42c4f8c</gcp-java-sdk-plugin.version>
-    <branch-api-plugin.version>2.1280.v0d4e5b_b_460ef</branch-api-plugin.version>
+    <branch-api-plugin.version>2.1303.v9f3b_95dc329d</branch-api-plugin.version>
     <checks-api.version>422.vc7e8b_51488c6</checks-api.version>
     <cloudbees-folder-plugin.version>6.1106.v3a_d9a_6d2465e</cloudbees-folder-plugin.version>
     <configuration-as-code-plugin.version>2121.v86fe99d4b_b_a_b_</configuration-as-code-plugin.version>
