@@ -30,3 +30,6 @@ org.sonarsource.scanner.jenkins.pipeline.WaitForQualityGateStepDescriptorImplTes
 
 # https://github.com/jenkinsci/file-leak-detector-plugin/pull/174
 com.cloudbees.jenkins.plugins.file_leak_detector.FileHandleDumpTest
+
+# https://github.com/jenkinsci/badge-plugin/issues/379
+com.jenkinsci.plugins.badge.dsl.UITest$Experimental
