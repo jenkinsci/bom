@@ -523,7 +523,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>opentelemetry</artifactId>
-        <version>3.1599.v6f67e4a_b_1d15</version>
+        <version>3.1603.ve3fa_cc8a_b_f5e</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1158,7 +1158,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>gitlab-plugin</artifactId>
-        <version>1.2152.veec0897048b_0</version>
+        <version>1.2154.v00193eff6f9a_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
