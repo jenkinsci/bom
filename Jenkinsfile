@@ -1,7 +1,7 @@
 // Do not trigger build regularly on change requests as it costs a lot
 String cronTrigger = ''
 if(env.BRANCH_NAME == "master") {
-  cronTrigger = '10 0 * * 4'
+  cronTrigger = '0 13 * * 5'
 }
 
 env.MAVEN_NTP = true
@@ -196,7 +196,7 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
     def branches = [failFast: false]
     splits.each { split, repositories ->
       def line = split.split(':')[1]
-      def jdk = line == 'weekly' || line == '2.555.x' ? 21 : 17
+      def jdk = line == 'weekly' ? 25 : 21
       branches["${split} [${repositories.size()}]"] = {
         echo "In this split: ${repositories.join(',')}"
         mavenEnv(jdk: jdk) {
