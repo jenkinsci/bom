@@ -854,7 +854,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>badge</artifactId>
-        <version>3.605.v7a_3387b_97a_b_6</version>
+        <version>3.615.vb_ed967ca_b_e93</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
