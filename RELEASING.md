@@ -9,14 +9,14 @@ Details are described in [a week in the life of a BOM release manager](#a-week-i
 
 | Release Date | Lead                 |
 |--------------| -------------------- |
-| 2026-08-28   | Adrien Lecharpentier |
-| 2026-09-04   | Adrien Lecharpentier |
-| 2026-09-11   | Kris Stern           |
-| 2026-09-18   | Kris Stern           |
 | 2026-09-25   | Darin Pope           |
 | 2026-10-02   | Darin Pope           |
 | 2026-10-09   | Mark Waite           |
 | 2026-10-16   | Mark Waite           |
+| 2026-10-23   | Adrien Lecharpentier |
+| 2026-10-30   | Adrien Lecharpentier |
+| 2026-11-06   | Kris Stern           |
+| 2026-11-13   | Kris Stern           |
 
 ## Releasing the BOM
 
@@ -224,7 +224,7 @@ Sometimes a plugin update introduces a test failure but the test failure does no
 In that case, individual test failures can be ignored by adding entries to the `excludes.txt` file.
 The `excludes.txt` file format is described in the [Maven surefire plugin documentation](https://maven.apache.org/components/surefire/maven-surefire-plugin/test-mojo.html#excludesFile).
 
-If a test only fails on a specific line of the BOM, it can be listed in an exclusion file that is specific to the line, as in `bom-2.541.x/excludes.txt`.
+If a test only fails on a specific line of the BOM, it can be listed in an exclusion file that is specific to the line, as in `bom-2.555.x/excludes.txt`.
 If an exclusions file exists for a specific line of the plugin BOM it is merged with the general `excludes.txt` file.
 
 #### Manually created PRs

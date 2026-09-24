@@ -1,3 +1,32 @@
 # TODO https://github.com/jenkinsci/authorize-project-plugin/issues/464
 org.jenkinsci.plugins.authorizeproject.strategy.TriggeringUsersAuthorizationStrategyTest#testAuthenticate
 org.jenkinsci.plugins.authorizeproject.strategy.TriggeringUsersAuthorizationStrategyTest#testAuthenticateDownstream
+
+# https://issues.jenkins.io/browse/JENKINS-76538
+hudson.plugins.sonar.BaseTest
+hudson.plugins.sonar.MsBuildSQRunnerBeginTest
+hudson.plugins.sonar.MsBuildSQRunnerEndTest
+hudson.plugins.sonar.SonarBuildWrapperDescriptorImplTest
+hudson.plugins.sonar.SonarBuildWrapperTest
+hudson.plugins.sonar.SonarGlobalConfigurationTest
+hudson.plugins.sonar.SonarInstallationTest
+hudson.plugins.sonar.SonarPublisherDescriptorImplTest
+hudson.plugins.sonar.SonarRunnerBuilderTest
+hudson.plugins.sonar.action.SonarBuildBadgeActionFactoryTest
+hudson.plugins.sonar.action.SonarCacheActionTest
+hudson.plugins.sonar.action.SonarProjectActionFactoryTest
+hudson.plugins.sonar.action.SonarProjectIconActionTest
+hudson.plugins.sonar.action.SonarProjectPageActionTest
+hudson.plugins.sonar.client.HttpClientTest
+hudson.plugins.sonar.client.SQProjectResolverTest
+hudson.plugins.sonar.client.WsClientTest
+hudson.plugins.sonar.model.TriggersConfigTest
+hudson.plugins.sonar.utils.BuilderUtilsTest
+hudson.plugins.sonar.utils.JenkinsRouterAfterV2Test
+hudson.plugins.sonar.utils.LoggerTest
+hudson.plugins.sonar.utils.SonarMavenTest
+hudson.plugins.sonar.utils.SonarUtilsTest
+org.sonarsource.scanner.jenkins.pipeline.WaitForQualityGateStepDescriptorImplTest
+
+# https://github.com/jenkinsci/file-leak-detector-plugin/pull/174
+com.cloudbees.jenkins.plugins.file_leak_detector.FileHandleDumpTest
