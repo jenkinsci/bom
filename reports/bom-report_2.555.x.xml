@@ -173,7 +173,6 @@
     <testcase split="split-12:2.555.x" name="powershell-plugin" classname="pct-report.powershell-plugin" time="45.98" readyin="211.798" attempt="1"/>
     <testcase split="split-12:2.555.x" name="prometheus-plugin" classname="pct-report.prometheus-plugin" time="93.146" readyin="211.798" attempt="1"/>
     <testcase split="split-12:2.555.x" name="rebuild-plugin" classname="pct-report.rebuild-plugin" time="363.574" readyin="211.798" attempt="1"/>
-    <testcase split="split-12:2.555.x" name="sonarqube-plugin" classname="pct-report.sonarqube-plugin" time="301.809" readyin="211.798" attempt="1"/>
     <testcase split="split-12:2.555.x" name="sshd-plugin" classname="pct-report.sshd-plugin" time="199.306" readyin="248.648" attempt="1"/>
     <testcase split="split-12:2.555.x" name="workflow-basic-steps-plugin" classname="pct-report.workflow-basic-steps-plugin" time="308.11" readyin="211.798" attempt="1"/>
     <testcase split="split-13:2.555.x" name="artifactory-client-api-plugin" classname="pct-report.artifactory-client-api-plugin" time="43.902" readyin="246.177" attempt="1"/>
