@@ -1549,11 +1549,6 @@
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
-        <artifactId>sonar</artifactId>
-        <version>2.19.0</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>ssh-agent</artifactId>
         <version>433.v9e73d67c3f74</version>
       </dependency>
