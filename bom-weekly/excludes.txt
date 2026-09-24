@@ -33,7 +33,3 @@ com.cloudbees.jenkins.plugins.file_leak_detector.FileHandleDumpTest
 
 # https://github.com/jenkinsci/badge-plugin/issues/379
 com.jenkinsci.plugins.badge.dsl.UITest$Experimental
-
-# https://github.com/jenkinsci/pipeline-graph-view-plugin/pull/1464
-io.jenkins.plugins.pipelinegraphview.PipelineGraphViewNestedTest
-io.jenkins.plugins.pipelinegraphview.PipelineGraphViewTest
