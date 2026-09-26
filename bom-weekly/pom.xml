@@ -1929,7 +1929,7 @@
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
         <artifactId>groovy-postbuild</artifactId>
-        <version>328.vc9e2f9db_00d9</version>
+        <version>330.vc7750b_31fea_a_</version>
       </dependency>
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
