@@ -21,11 +21,11 @@
     <forensics-api.version>4.1923.v445c56df9b_2e</forensics-api.version>
     <github-api-plugin.version>1.330-492.v3941a_032db_2a_</github-api-plugin.version>
     <git-plugin.version>5.10.1</git-plugin.version>
-    <junit-plugin.version>1428.vef95b_fa_89508</junit-plugin.version>
+    <junit-plugin.version>1431.vc0d98912a_756</junit-plugin.version>
     <matrix-project-plugin.version>870.v9db_fcfc2f45b_</matrix-project-plugin.version>
     <!-- TODO 0.191 excludes jackson2-api from pipeline-model-definition, breaking InjectedTest;
          see https://github.com/jenkinsci/mcp-server-plugin/issues/217-->
-    <mcp-server.version>0.207.vb_612eb_d9d2f0</mcp-server.version>
+    <mcp-server.version>0.209.vfb_421518fe89</mcp-server.version>
     <mina-sshd-api.version>2.19.0-192.v2b_a_7b_2c1dc71</mina-sshd-api.version>
     <okhttp-api-plugin.version>5.3.2-200.vedb_720a_cf1f8</okhttp-api-plugin.version>
     <pipeline-maven-plugin.version>1760.v9a_a_e6dcb_0444</pipeline-maven-plugin.version>
@@ -122,7 +122,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>artifact-manager-s3</artifactId>
-        <version>998.v95a_357538dfa_</version>
+        <version>1002.v005e958510dd</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -208,7 +208,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>coverage</artifactId>
-        <version>3.3391.v88066155957d</version>
+        <version>3.3393.v529418274711</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -294,7 +294,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>flyway-api</artifactId>
-        <version>13.7.0-482.v72ed95ce725a_</version>
+        <version>13.8.0-484.vffa_70431c08e</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -533,7 +533,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>oras-java-api</artifactId>
-        <version>0.8.4-218.v4cf3238cf515</version>
+        <version>0.8.5-223.v0063a_f9a_8424</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -543,7 +543,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
-        <version>1013.v9f83fd83c063</version>
+        <version>1038.v5b_b_dfc9553cf</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -599,7 +599,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>warnings-ng</artifactId>
-        <version>13.10275.vb_61ff8f4c340</version>
+        <version>13.10289.vdb_4e605fb_c80</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -854,7 +854,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>badge</artifactId>
-        <version>3.605.v7a_3387b_97a_b_6</version>
+        <version>3.615.vb_ed967ca_b_e93</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1223,7 +1223,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>JiraTestResultReporter</artifactId>
-        <version>415.v19f445a_98e24</version>
+        <version>417.v9a_5060dcb_080</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1309,7 +1309,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>matrix-project</artifactId>
-        <version>917.v22eda_817646e</version>
+        <version>928.v1effc3f3a_236</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1546,11 +1546,6 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>slack</artifactId>
         <version>795.v4b_9705b_e6d47</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jenkins-ci.plugins</groupId>
-        <artifactId>sonar</artifactId>
-        <version>2.19.0</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
