@@ -9,7 +9,7 @@ def maxSplitsPerLine = 20
 
 // Run pct tests on a limited set of repositories and their plugin(s) if not empty
 // Ex: ['jenkinsci/badge-plugin\tbadge', 'jenkinsci/cron_column-plugin\tcron_column']
-def limitedPluginSet = []
+def limitedPluginSet = ['jenkinsci/badge-plugin\tbadge', 'jenkinsci/cron_column-plugin\tcron_column']
 
 properties([
   disableConcurrentBuilds(abortPrevious: true),
@@ -73,6 +73,7 @@ def results = [:]
 def commit
 def pctDuration
 def reportNamePrefix = 'bom-report_'
+def stashGlob = 'pct.sh,incrementals.sh,consume-incrementals,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-REPLACEME_LINE.war'
 
 mavenEnv(jdk: 21) {
   stage('prep') {
@@ -82,17 +83,43 @@ mavenEnv(jdk: 21) {
     if (!consumeIncrementals) {
       echo 'Forbidding use of incremental dependencies. If you need to consume incrementals, add the `consume-incrementals` label, or add a file named `consume-incrementals` to the repository root if you lack triage permission. Then keep this PR in draft until the dependencies have been switched to release versions.'
     }
-    withChecks(name: 'Tests', includeStage: true) {
-      withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist', "CONSUME_INCREMENTALS=${consumeIncrementals}"]) {
-        sh '''
-        mvn -v
-        bash prep.sh
-        '''
+    def prepArchive = "prep-${commit}.tar.gz"
+    // Try to retrieve prep archive from a previous build on the same revision
+    try {
+      copyArtifacts(projectName: env.JOB_NAME, selector: lastWithArtifacts(), filter: prepArchive, fingerprintArtifacts: true)
+      sh('tar -xzvf ' + prepArchive + ' && rm -v ' + prepArchive)
+      sh 'mkdir -p "${MVN_LOCAL_REPO}/io/jenkins/tools/bom/" && cp -a mvn-local-repo-bom/. "${MVN_LOCAL_REPO}/io/jenkins/tools/bom/"'
+      sh 'rm -rfv mvn-local-repo-bom'
+    } catch(e) {
+      // If no corresponding prep archive found (first build or new commit), run prep.sh and prepare incrementals
+      withChecks(name: 'Tests', includeStage: true) {
+        withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist', "CONSUME_INCREMENTALS=${consumeIncrementals}"]) {
+          sh '''
+          mvn -v
+          bash prep.sh
+          '''
+        }
+        if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount> 0) {
+          error 'Some test failures during prep.sh, not going to continue'
+        }
       }
-      if (junit(testResults: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml').failCount> 0) {
-        error 'Some test failures during prep.sh, not going to continue'
-      }
+      // Find the last line from sample-plugin/pom.xml to avoid archiving all (heavy) megawars
+      def lastLine = readFile('sample-plugin/pom.xml').readLines().findAll {
+        it.contains('<bom>')
+      }.last().replaceAll(/.*<bom>|<\/bom>.*/, '')
+      // Replace stash glob separator by tar one then keep only the first (weekly) and last megawars
+      def tarGlob = stashGlob.replace(',', ' ').replace('target/megawar-REPLACEME_LINE.war', "target/megawar-weekly.war target/megawar-${lastLine}.war")
+      // Don't try to archive consume-incrementals file if it doesn't exist
+      if (!consumeIncrementalsMarkerFile) tarGlob = tarGlob.replace(' consume-incrementals', '')
+      // Copy bom pom in a temporary folder
+      sh 'mkdir -p mvn-local-repo-bom'
+      sh 'cp -a "${MVN_LOCAL_REPO}/io/jenkins/tools/bom/." mvn-local-repo-bom/'
+      tarGlob += ' mvn-local-repo-bom'
+      // Add plugins.txt, lines.txt & build-id-for-incrementals.txt
+      sh('tar -czvf ' + prepArchive + ' ' + tarGlob + ' target/*.txt')
     }
+    archiveArtifacts artifacts: prepArchive, fingerprint: true
+    sh('rm -v ' + prepArchive)
     infra.prepareToPublishIncrementals()
 
     fullTestMarkerFile = fileExists 'full-test'
@@ -132,7 +159,7 @@ mavenEnv(jdk: 21) {
       }
       def balancedSplits = splitsFromJunitRecords.collect { exclusions ->
         previousRepositories - exclusions
-      }
+      }.findAll { it }
       def newRepositories = currentRepositories - previousRepositories
       echo "INFO: ${previousRepositories.size()} repositories returned by splitTests from junit records for '${line}' line"
       echo "INFO: ${newRepositories.size()} new repositor${newRepositories.size() <= 1 ? 'y' : 'ies' } not returned by splitTests for '${line}' line"
@@ -158,7 +185,7 @@ mavenEnv(jdk: 21) {
   }
   stage('stash line(s)') {
     lines.each { line ->
-      stash name: line, includes: "pct.sh,incrementals.sh,consume-incrementals,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-${line}.war"
+      stash name: line, includes: stashGlob.replace('REPLACEME_LINE', line)
     }
   }
 }
