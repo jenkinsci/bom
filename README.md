@@ -14,7 +14,7 @@ If you are interested in a Bill of Materials for Jenkins core components, see [t
 After [selecting your plugin’s LTS baseline](https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/):
 
 ```xml
-<jenkins.baseline>2.541</jenkins.baseline>
+<jenkins.baseline>2.555</jenkins.baseline>
 <jenkins.version>${jenkins.baseline}.3</jenkins.version>
 ```
 
@@ -107,6 +107,7 @@ When an older Jenkins version is used, then the matching older version of the pl
 | bom-2.504.x | 5983.v443959746f1f    |                              |
 | bom-2.516.x | 6210.v69ea_fd8a_f010  |                              |
 | bom-2.528.x | 6607.v3ed3d8ddfed8    |                              |
+| bom-2.541.x | 7002.v028a_3607ddc8   | Last LTS to support Java 17  |
 
 The latest versions of all BOM lines are available from the [Jenkins artifact repository](https://repo.jenkins-ci.org/public/io/jenkins/tools/bom).
 

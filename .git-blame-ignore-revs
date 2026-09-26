@@ -1,0 +1,21 @@
+## Ignore mass rollback of PRs
+# feat(pipeline): retrieve prep from archive if it exists (#7079)
+# hotfix: pullRequest not available on master (fixup of #7079)
+# feat(pipeline): allow to run on a limited plugin set (#7077)
+# chore(pipeline): collect more info from test executions (#7078)
+# chore(pipeline): cleanup before splits introduction (#7085)
+# chore(pipeline): rollback prep archive (#7089)
+# chore(pipeline): rollback limited plugin set (#7090)
+# chore(pipeline): rollback collect more info (#7091)
+# chore(pipeline): remaining changes to rollback (#7094)
+4062d3a7b607f17fee60a297f68293d803277ba4
+84e4da84587301ff051cae574ebc0f036f8fd1c4
+e32a4ff6ed49af622ad2393fae948c44e6e8b425
+55a01f18917fa17935a2e3b6204438731b5e79ad
+771a33d03e1d6df06f7603727e91977100342144
+23e60e139d151ed7bc0bf05ef41801a69ecb9366
+c83ee7d69bde2d19dfe76eaacd506a27fe4527d7
+c70385dffb871aec42926129ff75b99259db0b61
+4f9428e9441d4161e326106f4a237d1e419db9c1
+# chore(pipeline): revert to last complete release revision f1cd358b7 (#7095)
+52bc00222d1e6604ddf50f0ced631101d2a221dc

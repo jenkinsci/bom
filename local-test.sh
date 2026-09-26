@@ -36,6 +36,7 @@ if [[ ${DOCKERIZED-} == "true" ]]; then
 		-e "PLUGINS=${PLUGINS}" \
 		-e "LINE=${LINE}" \
 		-e "EXTRA_MAVEN_PROPERTIES=${EXTRA_MAVEN_PROPERTIES}" \
+		-e "CONSUME_INCREMENTALS=${CONSUME_INCREMENTALS-}" \
 		--entrypoint bash \
 		maven \
 		-c "trap 'chown -R $(id -u):$(id -g) /pct /var/maven/.m2/repository' EXIT; bash /pct/pct.sh"

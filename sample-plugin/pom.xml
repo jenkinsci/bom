@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.jenkins-ci.plugins</groupId>
     <artifactId>plugin</artifactId>
-    <version>6.2211.v27f680c93c53</version>
+    <version>6.2236.v12dd4c483242</version>
     <relativePath />
   </parent>
   <groupId>io.jenkins.tools.bom</groupId>
@@ -1363,11 +1363,6 @@
     </dependency>
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
-      <artifactId>sonar</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>ssh-agent</artifactId>
       <scope>test</scope>
     </dependency>
@@ -1727,6 +1722,14 @@
   <profiles>
     <!-- Use .1 of most recent active line, and .3 (or later) of previous lines: https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/#choosing-a-version -->
     <profile>
+      <id>2.580.x</id>
+      <properties>
+        <bom>2.580.x</bom>
+        <!-- TODO: Update to 2.580.1 once it is released -->
+        <jenkins.version>2.580</jenkins.version>
+      </properties>
+    </profile>
+    <profile>
       <id>2.568.x</id>
       <properties>
         <bom>2.568.x</bom>
@@ -1738,13 +1741,6 @@
       <properties>
         <bom>2.555.x</bom>
         <jenkins.version>2.555.3</jenkins.version>
-      </properties>
-    </profile>
-    <profile>
-      <id>2.541.x</id>
-      <properties>
-        <bom>2.541.x</bom>
-        <jenkins.version>2.541.3</jenkins.version>
       </properties>
     </profile>
   </profiles>

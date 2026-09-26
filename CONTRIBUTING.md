@@ -84,7 +84,7 @@ PLUGINS=structs,mailer TEST=InjectedTest bash local-test.sh
 optionally also passing either
 
 ```
-LINE=2.541.x
+LINE=2.555.x
 ```
 
 or
@@ -105,6 +105,30 @@ to check a local patch without waiting for incrementals deployment,
 if you have switched the version in `bom-weekly/pom.xml` to a `*-SNAPSHOT`.
 
 To minimize cloud resources, PCT is not run at all by default on pull requests, only some basic sanity checks.
+
+### Consuming incrementals
+
+By default the builds run with `-P-consume-incrementals`, so [incremental](https://jenkins.io/jep/305)
+versions of plugins cannot be resolved.
+To test an incremental version of Jenkins or a plugin, add the label `consume-incrementals` to the PR,
+which makes the builds run with `-Pconsume-incrementals` instead.
+
+If you lack triage permission and so cannot add this label, then you may instead:
+
+```bash
+echo 'TODO delete me' > consume-incrementals
+git add consume-incrementals
+git commit -m 'Consume incrementals'
+```
+
+Keep the PR in draft until the incremental versions have been switched to release versions
+and the label or file can be removed.
+
+Locally, run with `CONSUME_INCREMENTALS=true` (or create the marker file) to get the same effect:
+
+```sh
+CONSUME_INCREMENTALS=true PLUGINS=structs TEST=InjectedTest bash local-test.sh
+```
 
 ### Running weekly tests
 
@@ -140,23 +164,28 @@ Keep the PR in draft until tests pass and this file can be deleted.
 To further minimize build time, tests are run only on Linux, against Java 11, and without Docker support.
 It is unusual but possible for cross-component incompatibilities to only be visible in more specialized environments (such as Windows).
 
-### Replay any specific case
+### Running a limited plugin set
 
-If you want to test specific cases without ever changing labels or marker files, you can update the `flags` map on top of the pipeline in replays.
-
-Ex, to simulate a `full-test` marker with a `weekly-test` label, update this at the top of the pipeline:
-
-```diff
-// Test flags depending on the presence of corresponding labels or marker files
-// Can be modified to test specific cases independently of the current PR labels or markers
-// Possible value(s): 'label', 'marker'
-Map flags = [
-    -  'weekly-test': [] as Set,
-+  'weekly-test': ['label'] as Set,
--  'full-test': [] as Set,
-+  'full-test': ['marker'] as Set,
+To run a build against a specific set of repositories and their plugin(s), you can alter the Jenkinsfile via a commit or a replay (if you have permission to do so):
+```groovy
+def limitedPluginSet = [
+  'jenkinsci/aws-credentials-plugin	aws-credentials',
+  'jenkinsci/aws-global-configuration-plugin	aws-global-configuration',
+  'jenkinsci/azure-credentials-plugin	azure-credentials',
+  'jenkinsci/azure-keyvault-plugin	azure-keyvault',
+  'jenkinsci/azure-sdk-plugin	azure-sdk',
+  'jenkinsci/azure-storage-plugin	windows-azure-storage',
+  'jenkinsci/badge-plugin	badge',
+  'jenkinsci/basic-branch-build-strategies-plugin	basic-branch-build-strategies',
+  'jenkinsci/coverage-plugin	coverage',
+  'jenkinsci/cron_column-plugin	cron_column',
+  'jenkinsci/pipeline-maven-plugin	pipeline-maven,pipeline-maven-api,pipeline-maven-database',
 ]
 ```
+
+Expected line format: jenkinsci/<repo-name>, tab, <coma separated plugin(s)>
+
+Keep the PR in draft until tests pass and this change can be reverted.
 
 ## LTS lines
 
