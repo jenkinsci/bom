@@ -777,11 +777,6 @@
         <version>4557.ve746270f672f</version>
       </dependency>
       <dependency>
-        <groupId>org.jenkins-ci.main</groupId>
-        <artifactId>maven-plugin</artifactId>
-        <version>3.27</version>
-      </dependency>
-      <dependency>
         <groupId>org.jenkins-ci.modules</groupId>
         <artifactId>instance-identity</artifactId>
         <version>203.v15e81a_1b_7a_38</version>

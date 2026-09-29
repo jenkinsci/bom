@@ -111,7 +111,6 @@
     <testcase split="split-08:2.555.x" name="jdk-tool-plugin" classname="pct-report.jdk-tool-plugin" time="51.088" readyin="246.199" attempt="1"/>
     <testcase split="split-08:2.555.x" name="joda-time-api-plugin" classname="pct-report.joda-time-api-plugin" time="29.322" readyin="246.199" attempt="1"/>
     <testcase split="split-08:2.555.x" name="matrix-project-plugin" classname="pct-report.matrix-project-plugin" time="178.244" readyin="40.4" attempt="1"/>
-    <testcase split="split-08:2.555.x" name="maven-plugin" classname="pct-report.maven-plugin" time="725.463" readyin="246.199" attempt="1"/>
     <testcase split="split-08:2.555.x" name="nodejs-plugin" classname="pct-report.nodejs-plugin" time="92.065" readyin="246.199" attempt="1"/>
     <testcase split="split-08:2.555.x" name="plugin-util-api-plugin" classname="pct-report.plugin-util-api-plugin" time="81.69" readyin="40.4" attempt="1"/>
     <testcase split="split-08:2.555.x" name="script-security-plugin" classname="pct-report.script-security-plugin" time="163.778" readyin="246.199" attempt="1"/>
