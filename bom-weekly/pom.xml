@@ -102,7 +102,7 @@
       <dependency>
         <groupId>io.jenkins.docker</groupId>
         <artifactId>docker-plugin</artifactId>
-        <version>1330.vb_437fd1834f8</version>
+        <version>1331.v2c036a_dc63fc</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -961,8 +961,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>copyartifact</artifactId>
-        <!-- https://github.com/jenkinsci/copyartifact-plugin/pull/577 -->
-        <version>806.vd38d2b_767407</version>
+        <version>805.v9d1393350780</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
