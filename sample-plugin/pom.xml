@@ -1725,8 +1725,7 @@
       <id>2.580.x</id>
       <properties>
         <bom>2.580.x</bom>
-        <!-- TODO: Update to 2.580.1 once it is released -->
-        <jenkins.version>2.580</jenkins.version>
+        <jenkins.version>2.580.1</jenkins.version>
       </properties>
     </profile>
     <profile>
