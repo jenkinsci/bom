@@ -15,17 +15,17 @@
     <branch-api-plugin.version>2.1303.v9f3b_95dc329d</branch-api-plugin.version>
     <checks-api.version>422.vc7e8b_51488c6</checks-api.version>
     <cloudbees-folder-plugin.version>6.1106.v3a_d9a_6d2465e</cloudbees-folder-plugin.version>
-    <configuration-as-code-plugin.version>2121.v86fe99d4b_b_a_b_</configuration-as-code-plugin.version>
+    <configuration-as-code-plugin.version>2130.v3ef02f16a_34b_</configuration-as-code-plugin.version>
     <data-tables-api.version>2.3.8-1570.v1cb_1cd2a_0fb_c</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.8</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>4.1923.v445c56df9b_2e</forensics-api.version>
     <github-api-plugin.version>1.330-492.v3941a_032db_2a_</github-api-plugin.version>
     <git-plugin.version>5.10.1</git-plugin.version>
-    <junit-plugin.version>1428.vef95b_fa_89508</junit-plugin.version>
+    <junit-plugin.version>1431.vc0d98912a_756</junit-plugin.version>
     <matrix-project-plugin.version>870.v9db_fcfc2f45b_</matrix-project-plugin.version>
     <!-- TODO 0.191 excludes jackson2-api from pipeline-model-definition, breaking InjectedTest;
          see https://github.com/jenkinsci/mcp-server-plugin/issues/217-->
-    <mcp-server.version>0.209.vfb_421518fe89</mcp-server.version>
+    <mcp-server.version>0.211.v5d12e5b_b_437e</mcp-server.version>
     <mina-sshd-api.version>2.19.0-192.v2b_a_7b_2c1dc71</mina-sshd-api.version>
     <okhttp-api-plugin.version>5.3.2-200.vedb_720a_cf1f8</okhttp-api-plugin.version>
     <pipeline-maven-plugin.version>1760.v9a_a_e6dcb_0444</pipeline-maven-plugin.version>
@@ -102,7 +102,7 @@
       <dependency>
         <groupId>io.jenkins.docker</groupId>
         <artifactId>docker-plugin</artifactId>
-        <version>1327.v9524f1ee134e</version>
+        <version>1331.v2c036a_dc63fc</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -188,7 +188,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>commons-compress-api</artifactId>
-        <version>1.28.0-93.v26f0a_316f7d4</version>
+        <version>1.28.0-94.v77d096a_42df3</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -208,7 +208,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>coverage</artifactId>
-        <version>3.3393.v529418274711</version>
+        <version>3.3394.v60e914558d29</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -294,7 +294,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>flyway-api</artifactId>
-        <version>13.8.0-484.vffa_70431c08e</version>
+        <version>13.8.1-486.v0b_5682a_59e49</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -533,7 +533,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>oras-java-api</artifactId>
-        <version>0.8.4-218.v4cf3238cf515</version>
+        <version>0.8.5-223.v0063a_f9a_8424</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -543,7 +543,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
-        <version>1038.v5b_b_dfc9553cf</version>
+        <version>1041.v107d70db_b_1a_f</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -599,7 +599,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>warnings-ng</artifactId>
-        <version>13.10289.vdb_4e605fb_c80</version>
+        <version>13.10294.v3c81839da_a_e7</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -849,7 +849,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>azure-vm-agents</artifactId>
-        <version>1105.vb_8a_2393410b_7</version>
+        <version>1115.v63f3a_1ec4864</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -966,7 +966,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>copyartifact</artifactId>
-        <version>795.ve8e151429b_27</version>
+        <version>805.v9d1393350780</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -986,7 +986,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>dashboard-view</artifactId>
-        <version>2.558.v96b_901978e47</version>
+        <version>2.567.vb_2a_384a_da_34e</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1223,7 +1223,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>JiraTestResultReporter</artifactId>
-        <version>417.v9a_5060dcb_080</version>
+        <version>419.v21b_cb_d2da_51c</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1929,7 +1929,7 @@
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
         <artifactId>groovy-postbuild</artifactId>
-        <version>328.vc9e2f9db_00d9</version>
+        <version>331.v86318ca_2e44d</version>
       </dependency>
       <dependency>
         <groupId>org.jvnet.hudson.plugins</groupId>
