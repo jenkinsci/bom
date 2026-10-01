@@ -246,8 +246,6 @@ Alternatively, you can call them from wherever you want, just know that they are
 * run `./bom-release-issue-create.sh <yyyy-MM-dd>`
   * Example: `./bom-release-issue-create.sh 2024-10-14`
   * use the desired date of the release, not the date when you create the ticket
-* on the newly created issue, manually set `Type` to `Task`
-  * at the time of writing (2024-10-14), there is no `gh` option to set the Type
 * check the CRON expression to see if the pre-release build will be executed at a time suited for you
   * this can also be used to change when the release happened if you prefer the release to be made on Thursday
   * run `./bom-release-issue-complete-task.sh 1`
