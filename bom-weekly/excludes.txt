@@ -1,2 +1,5 @@
 # https://github.com/jenkinsci/file-leak-detector-plugin/pull/174
 com.cloudbees.jenkins.plugins.file_leak_detector.FileHandleDumpTest
+
+# https://github.com/jenkinsci/script-security-plugin/pull/931
+org.jenkinsci.plugins.scriptsecurity.scripts.ScriptApprovalTest#dangerousApprovedWarnings
