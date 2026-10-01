@@ -436,7 +436,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>joda-time-api</artifactId>
-        <version>2.14.4-206.vc0945a_7c5f95</version>
+        <version>2.15.0-208.v6b_084e7a_d9f0</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
