@@ -777,11 +777,6 @@
         <version>4557.ve746270f672f</version>
       </dependency>
       <dependency>
-        <groupId>org.jenkins-ci.main</groupId>
-        <artifactId>maven-plugin</artifactId>
-        <version>3.27</version>
-      </dependency>
-      <dependency>
         <groupId>org.jenkins-ci.modules</groupId>
         <artifactId>instance-identity</artifactId>
         <version>203.v15e81a_1b_7a_38</version>
@@ -794,7 +789,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>active-directory</artifactId>
-        <version>2.967.vf4e254546a_b_3</version>
+        <version>2.971.v653d8b_6e5548</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1494,7 +1489,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>s3</artifactId>
-        <version>521.ve80885ef9718</version>
+        <version>522.vc73d01440c29</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
