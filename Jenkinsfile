@@ -87,7 +87,7 @@ mavenEnv(jdk: 21) {
     // Try to retrieve prep archive from a previous build on the same revision
     try {
       copyArtifacts(projectName: env.JOB_NAME, selector: lastWithArtifacts(), filter: prepArchive, fingerprintArtifacts: true)
-      sh('tar -xzvf ' + prepArchive + ' && rm -v ' + prepArchive)
+      sh('tar -xzvf ' + prepArchive)
       sh 'mkdir -p "${MVN_LOCAL_REPO}/io/jenkins/tools/bom/" && cp -a mvn-local-repo-bom/. "${MVN_LOCAL_REPO}/io/jenkins/tools/bom/"'
       sh 'rm -rfv mvn-local-repo-bom'
     } catch(e) {
@@ -120,6 +120,8 @@ mavenEnv(jdk: 21) {
     }
     archiveArtifacts artifacts: prepArchive, fingerprint: true
     sh('rm -v ' + prepArchive)
+    sh 'git status'
+    sh 'git status -s'
     infra.prepareToPublishIncrementals()
 
     fullTestMarkerFile = fileExists 'full-test'
