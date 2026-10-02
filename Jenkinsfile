@@ -120,8 +120,6 @@ mavenEnv(jdk: 21) {
     }
     archiveArtifacts artifacts: prepArchive, fingerprint: true
     sh('rm -v ' + prepArchive)
-    sh 'git status'
-    sh 'git status -s'
     infra.prepareToPublishIncrementals()
 
     fullTestMarkerFile = fileExists 'full-test'

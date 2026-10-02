@@ -8,3 +8,4 @@ pct.jar
 plugin-manager.jar
 .env
 .envrc
+mvn-local-repo-bom/
