@@ -14,7 +14,7 @@
   <properties>
     <changelist>999999-SNAPSHOT</changelist>
     <bom>weekly</bom>
-    <jenkins.version>2.583</jenkins.version>
+    <jenkins.version>2.584</jenkins.version>
     <spotless.check.skip>false</spotless.check.skip>
   </properties>
   <dependencyManagement>
@@ -694,11 +694,6 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>org.jenkins-ci.main</groupId>
-      <artifactId>maven-plugin</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>active-directory</artifactId>
       <scope>test</scope>
@@ -1363,11 +1358,6 @@
     </dependency>
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
-      <artifactId>sonar</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>ssh-agent</artifactId>
       <scope>test</scope>
     </dependency>
@@ -1730,8 +1720,7 @@
       <id>2.580.x</id>
       <properties>
         <bom>2.580.x</bom>
-        <!-- TODO: Update to 2.580.1 once it is released -->
-        <jenkins.version>2.580</jenkins.version>
+        <jenkins.version>2.580.1</jenkins.version>
       </properties>
     </profile>
     <profile>
