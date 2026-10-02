@@ -981,7 +981,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>dashboard-view</artifactId>
-        <version>2.567.vb_2a_384a_da_34e</version>
+        <version>2.569.v5ddb_c9b_a_7264</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
