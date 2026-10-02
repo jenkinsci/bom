@@ -117,6 +117,7 @@ mavenEnv(jdk: 21) {
       tarGlob += ' mvn-local-repo-bom'
       // Add plugins.txt, lines.txt & build-id-for-incrementals.txt
       sh('tar -czvf ' + prepArchive + ' ' + tarGlob + ' target/*.txt')
+      sh 'rm -rfv mvn-local-repo-bom'
     }
     archiveArtifacts artifacts: prepArchive, fingerprint: true
     sh('rm -v ' + prepArchive)
