@@ -73,7 +73,7 @@ def results = [:]
 def commit
 def pctDuration
 def reportNamePrefix = 'bom-report_'
-def stashGlob = 'pct.sh,incrementals.sh,consume-incrementals,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-REPLACEME_LINE.war'
+def stashGlob = 'pct.sh,incrementals.sh,consume-incrementals,excludes.txt,bom-*/excludes.txt,target/pct.jar,target/megawar-LINE_TO_ARCHIVE.war'
 
 mavenEnv(jdk: 21) {
   stage('prep') {
@@ -108,14 +108,14 @@ mavenEnv(jdk: 21) {
         it.contains('<bom>')
       }.last().replaceAll(/.*<bom>|<\/bom>.*/, '')
       // Replace stash glob separator by tar one then keep only the first (weekly) and last megawars
-      def tarGlob = stashGlob.replace(',', ' ').replace('target/megawar-REPLACEME_LINE.war', "target/megawar-weekly.war target/megawar-${lastLine}.war")
+      def tarGlob = stashGlob.replace(',', ' ').replace('target/megawar-LINE_TO_ARCHIVE.war', "target/megawar-weekly.war target/megawar-${lastLine}.war")
       // Don't try to archive consume-incrementals file if it doesn't exist
       if (!consumeIncrementalsMarkerFile) tarGlob = tarGlob.replace(' consume-incrementals', '')
       // Copy bom pom in a temporary folder
       sh 'mkdir -p mvn-local-repo-bom'
       sh 'cp -a "${MVN_LOCAL_REPO}/io/jenkins/tools/bom/." mvn-local-repo-bom/'
       tarGlob += ' mvn-local-repo-bom'
-      // Add plugins.txt, lines.txt & build-id-for-incrementals.txt
+      // Compress glob files + plugins.txt & lines.txt
       sh('tar -czvf ' + prepArchive + ' ' + tarGlob + ' target/*.txt')
       sh 'rm -rfv mvn-local-repo-bom'
     }
@@ -160,7 +160,7 @@ mavenEnv(jdk: 21) {
       }
       def balancedSplits = splitsFromJunitRecords.collect { exclusions ->
         previousRepositories - exclusions
-      }.findAll { it }
+      }
       def newRepositories = currentRepositories - previousRepositories
       echo "INFO: ${previousRepositories.size()} repositories returned by splitTests from junit records for '${line}' line"
       echo "INFO: ${newRepositories.size()} new repositor${newRepositories.size() <= 1 ? 'y' : 'ies' } not returned by splitTests for '${line}' line"
@@ -186,7 +186,7 @@ mavenEnv(jdk: 21) {
   }
   stage('stash line(s)') {
     lines.each { line ->
-      stash name: line, includes: stashGlob.replace('REPLACEME_LINE', line)
+      stash name: line, includes: stashGlob.replace('LINE_TO_ARCHIVE', line)
     }
   }
 }
