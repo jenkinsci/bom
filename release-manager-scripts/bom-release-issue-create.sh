@@ -47,6 +47,7 @@ issueNumber=$(gh api \
 	-f "body=$bodyValue" \
 	-f "assignees[]=$releaseManager" \
 	-f "labels[]=release" \
+	-f "type=Task" \
 	--jq ".number")
 echo $issueNumber
 gh issue pin $issueNumber --repo jenkinsci/bom
