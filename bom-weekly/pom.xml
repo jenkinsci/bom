@@ -1479,7 +1479,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>role-strategy</artifactId>
-        <version>918.v91e5468d8db_2</version>
+        <version>927.v9cf5527c4085</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
