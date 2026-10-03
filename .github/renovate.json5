@@ -92,6 +92,15 @@
     },
     {
       "matchDepNames": [
+        "io.jenkins.plugins:gitlab-branch-source"
+      ],
+      // skip 744.x, which fails GitLabJobDslTest with NoClassDefFoundError for
+      // com.fasterxml.jackson.annotation.JsonSerializeAs, see https://github.com/jenkinsci/bom/pull/7525
+      // but allow 745.x and later so we pick up a fix when one ships
+      "allowedVersions": "!/^744\\./"
+    },
+    {
+      "matchDepNames": [
         "org.jenkins-ci.tests:plugins-compat-tester-cli"
       ],
       "labels": [
