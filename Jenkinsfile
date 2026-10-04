@@ -142,26 +142,56 @@ mavenEnv(jdk: 21) {
     echo "${pluginsByRepository.size()} repositories:\n${plugins.join('\n')}"
     echo "${lines.size()} lines: ${lines.join(' ')}"
 
-    def currentRepositories = pluginsByRepository.keySet().sort()
+    def candidates = pluginsByRepository.keySet().sort()
     // Balanced splits, each split using only one line
     lines.each { line ->
-      // Retrieve splits from last completed build's junit records from bom report stages
+      def passedInPreviousBuild = []
+      // Retrieve previous results if they exist
+      try {
+        def previousResultFile = "pct-results-${commit}-${consumeIncrementals}-${line}.txt"
+        copyArtifacts(projectName: env.JOB_NAME, selector: lastWithArtifacts(), filter: previousResultFile, fingerprintArtifacts: true)
+        readFile(previousResultFile).readLines().each { entry ->
+          def parsedEntry = [:]
+          entry.split('\t').each { keyValue ->
+            def keyValueParts = keyValue.split('=')
+            parsedEntry[keyValueParts[0]] = keyValueParts[1]
+          }
+          results[parsedEntry['combination']] = [
+            buildId: parsedEntry['buildId'].toInteger(),
+            attempt: parsedEntry['attempt'].toInteger(),
+            totalCount: parsedEntry['totalCount'].toInteger(),
+            failCount: parsedEntry['failCount'].toInteger(),
+            elapsed: parsedEntry['elapsed'].toDouble(),
+          ]
+        }
+        results.each { combination, result ->
+          if (result.totalCount> 0 && result.failCount == 0) {
+            passedInPreviousBuild << combination.split(':')[0]
+          }
+        }
+        echo "${results.size()} results retrieved from ${previousResultFile} of previous build for ${line} line, ${passedInPreviousBuild.size()} succeeded:"
+        echo passedInPreviousBuild.join('\n')
+        candidates = candidates - passedInPreviousBuild
+      } catch (e) {
+        echo "No reusable results found in previous build for ${line} line: ${e.message}"
+      }
+      // Retrieve splits from last completed build's junit records from bom report stages (from master on first build)
       def splitsFromJunitRecords = splitTests(parallelism: count(maxSplitsPerLine), testMode: testCase(), stage: "${reportNamePrefix}${line}")
       // As splitTests returns exclusion lists, we need to list first all its test cases (repositories)
-      def previousRepositories = [] as Set
+      def previouslyTested = [] as Set
       splitsFromJunitRecords.each { exclusions ->
         exclusions.each { repository ->
-          // Keep one of each exclusion list items that are in current repositories
-          if (!previousRepositories.contains(repository) && currentRepositories.contains(repository)) previousRepositories << repository
+          // Keep one of each exclusion list items that are in repositories to test
+          if (!previouslyTested.contains(repository) && candidates.contains(repository)) previouslyTested << repository
         }
       }
-      def newRepositories = currentRepositories - previousRepositories
-      echo "INFO: ${previousRepositories.size()} repositories returned by splitTests from junit records for '${line}' line"
+      def newRepositories = candidates - previouslyTested
+      echo "INFO: ${previouslyTested.size()} repositories returned by splitTests from junit records for '${line}' line"
       echo "INFO: ${newRepositories.size()} new repositor${newRepositories.size() <= 1 ? 'y' : 'ies' } not returned by splitTests for '${line}' line"
 
       // Generate current line's splits
       def balancedSplits = splitsFromJunitRecords.collect { exclusions ->
-        previousRepositories - exclusions
+        previouslyTested - exclusions
       }.findAll { it }
       balancedSplits.eachWithIndex { repositories, i ->
         splits["split-${(i + 1).toString().padLeft(2, '0')}:${line}"] = repositories
@@ -244,6 +274,7 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
                         'split': split,
                         'readyIn': readyIn,
                         'attempt': env.CURRENT_ATTEMPT,
+                        'buildId': env.BUILD_ID.toInteger(),
                       ]
                     }
                   }
@@ -296,6 +327,14 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
           def content = '<?xml version="1.0" encoding="UTF-8"?>\n<testsuite ' + testSuiteAttributes + '>\n' + testCases.sort().join('\n') + '\n</testsuite>\n'
           writeFile file: "${testSuiteName}.xml", text: content
           junit testResults: "${testSuiteName}.xml"
+
+          // For the results, in addition to the line we need the commit and if it's a build consuming incrementals or not as discriminant
+          def resultsArchive = "pct-results-${commit}-${consumeIncrementals}-${line}.txt"
+          def resultsArchiveContent = results.collect { combination, result ->
+            "buildId=${result['buildId']}\tattempt=${result['attempt']}\ttotalCount=${result['totalCount']}\tfailCount=${result['failCount']}\telapsed=${result['elapsed']}\tcombination=${combination}"
+          }.join('\n')
+          writeFile file: resultsArchive, text: resultsArchiveContent
+          archiveArtifacts artifacts: resultsArchive, fingerprint: true
         }
       }
       if (testsFailure) {
