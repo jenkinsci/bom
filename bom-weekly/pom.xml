@@ -1324,7 +1324,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>msbuild</artifactId>
-        <version>1.43</version>
+        <version>1.44</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
