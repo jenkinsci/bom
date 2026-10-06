@@ -36,7 +36,7 @@
     <ssh-slaves-plugin.version>3.1097.v868116049892</ssh-slaves-plugin.version>
     <subversion-plugin.version>1327.vc36e0019a_653</subversion-plugin.version>
     <workflow-api-plugin.version>1413.v2ff1a_5e720fa_</workflow-api-plugin.version>
-    <workflow-cps-plugin.version>4383.v04fa_a_3d67b_d9</workflow-cps-plugin.version>
+    <workflow-cps-plugin.version>4390.va_61c07eb_2f72</workflow-cps-plugin.version>
     <workflow-job-plugin.version>1602.v2a_70b_80a_2396</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>842.v3a_b_59b_57b_e6e</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>724.v538c2362b_dfb_</workflow-step-api-plugin.version>
@@ -579,7 +579,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>snakeyaml-api</artifactId>
-        <version>2.5-149.v72471e9c6371</version>
+        <version>2.7-152.vc672728cf536</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
