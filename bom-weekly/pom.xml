@@ -1153,7 +1153,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>gitlab-plugin</artifactId>
-        <version>1.2154.v00193eff6f9a_</version>
+        <version>1.2155.v172271b_de71a_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
