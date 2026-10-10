@@ -73,7 +73,7 @@ mavenEnv(jdk: 21) {
     try {
       copyArtifacts(projectName: env.JOB_NAME, parameters: "ARCHIVE_NAME=${archiveName}", selector: lastWithArtifacts(), filter: archiveName, fingerprintArtifacts: true)
       archiveArtifacts artifacts: archiveName, fingerprint: true
-      existingArchive = false
+      existingArchive = true
     } catch(e) {
       // If no corresponding prep archive found (first build or new commit), run prep.sh
       withChecks(name: 'Tests', includeStage: true) {
@@ -88,7 +88,9 @@ mavenEnv(jdk: 21) {
   }
   stage('archive') {
     if (existingArchive) {
-      echo 'INFO: archive already existing'
+      catchError(buildResult: 'SUCCESS', stageResult: 'NOT_BUILT') {
+        error 'Skipping, archive already exists'
+      }
       return
     }
     // Replace stash glob separator by tar one
