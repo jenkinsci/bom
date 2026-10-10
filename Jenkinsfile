@@ -44,6 +44,7 @@ def mavenEnv(Map params = [:], Closure body) {
 def consumeIncrementals = false
 def archiveName = params.ARCHIVE_NAME
 def commit
+def existingArchive = false
 
 mavenEnv(jdk: 21) {
   stage('init') {
@@ -72,6 +73,7 @@ mavenEnv(jdk: 21) {
     try {
       copyArtifacts(projectName: env.JOB_NAME, parameters: "ARCHIVE_NAME=${archiveName}", selector: lastWithArtifacts(), filter: archiveName, fingerprintArtifacts: true)
       archiveArtifacts artifacts: archiveName, fingerprint: true
+      existingArchive = false
     } catch(e) {
       // If no corresponding prep archive found (first build or new commit), run prep.sh
       withChecks(name: 'Tests', includeStage: true) {
@@ -85,6 +87,10 @@ mavenEnv(jdk: 21) {
     }
   }
   stage('archive') {
+    if (existingArchive) {
+      echo 'INFO: archive already existing'
+      return
+    }
     // Replace stash glob separator by tar one
     def tarGlob = stashGlob.replace(',', ' ')
 
