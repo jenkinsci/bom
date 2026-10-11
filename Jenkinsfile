@@ -105,14 +105,15 @@ mavenEnv(jdk: 21) {
       def lastLine = readFile('sample-plugin/pom.xml').readLines().findAll {
         it.contains('<bom>')
       }.last().replaceAll(/.*<bom>|<\/bom>.*/, '')
-      // Keep only the first (weekly) and last megawars, and consume-incrementals marker file if it exists
+      // Keep only the first (weekly) and last megawars
       def tarGlob = glob.replace('target/megawar-LINE_TO_ARCHIVE.war', "target/megawar-weekly.war target/megawar-${lastLine}.war")
-      if (!consumeIncrementalsMarkerFile) tarGlob = tarGlob.replace(' consume-incrementals', '')
-      // Copy bom pom in a temporary folder
+      // Copy prepared BOM POMs to a temporary folder then include them + plugins.txt and lines.txt in the archive
       sh 'mkdir -p mvn-local-repo-bom && cp -a "${MVN_LOCAL_REPO}/io/jenkins/tools/bom/." mvn-local-repo-bom/'
-      tarGlob += ' mvn-local-repo-bom'
-      // Compress glob files + plugins.txt & lines.txt
-      sh('tar -czvf ' + prepArchive + ' ' + tarGlob + ' target/*.txt')
+      tarGlob += ' mvn-local-repo-bom target/*.txt'
+      // Compress only existing files
+      sh('tar -czvf ' + prepArchive + ' $(find ' + tarGlob + ' -type f 2>/dev/null)')
+      // List missing files as sanity check (expected: consume-incrementals, bom-*/excludes.txt)
+      sh('find ' + tarGlob + ' -type f 1>/dev/null || true')
     }
     stash name: prepArchive, includes: prepArchive
     sh('rm -rfv mvn-local-repo-bom ' + prepArchive) // Incrementals preparation requires clean stage
