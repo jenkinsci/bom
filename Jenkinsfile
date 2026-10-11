@@ -181,12 +181,14 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
           }
           repositories.eachWithIndex { repository, idx ->
             def combination = "${repository}:${line}"
-            // if the tests ran with success in a previous attempt, skip the combination (ex: in case of reclaimed spot agent)
-            def previousResult = results[combination] ?: [totalCount: 0, failCount: 0]
-            if (previousResult.totalCount> 0 && previousResult.failCount == 0) {
-              echo "${combination} has already ran ${previousResult.totalCount} test(s) with success in a previous attempt, skipping"
-            } else {
-              stage("${combination} (${idx + 1}/${repositories.size()})") {
+            def previously
+            stage("${combination} (${idx + 1}/${repositories.size()})") {
+              // if a result already exists for this combination, it means its tests ran with success
+              // in a previous attempt (for ex reclaimed spot agent): skip the combination
+              if (results[combination] && results[combination].totalCount> 0 && results[combination].failCount == 0) {
+                previously = "attempt #${results[combination].attempt}: ${results[combination].elapsed}s"
+                echo "Skipping, ${combination} has already ran ${results[combination].totalCount} test(s) with success in ${previously}"
+              } else {
                 withChecks(name: "PCT / ${combination}") {
                   withEnv([
                     "PLUGINS=${pluginsByRepository[repository]}",
@@ -222,8 +224,8 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
                   }
                 }
               }
-              echo "${combination}: ${results[combination]['totalCount']} tests executed in ${results[combination]['elapsed']}s"
             }
+            echo "${combination}: ${results[combination]['totalCount']} tests executed in ${previously ?: results[combination]['elapsed'] + 's'}"
           }
           def totalTime = (System.currentTimeMillis() - provisionStart) / 1000.0
           def runningTime = totalTime - readyIn
