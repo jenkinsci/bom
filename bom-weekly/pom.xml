@@ -52,7 +52,7 @@
       <dependency>
         <groupId>com.cloudbees.jenkins.plugins</groupId>
         <artifactId>file-leak-detector</artifactId>
-        <version>1.14</version>
+        <version>208.veeb_75437d7db_</version>
       </dependency>
       <dependency>
         <groupId>com.cloudbees.jenkins.plugins</groupId>
