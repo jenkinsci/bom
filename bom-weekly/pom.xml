@@ -21,7 +21,7 @@
     <forensics-api.version>4.1923.v445c56df9b_2e</forensics-api.version>
     <github-api-plugin.version>1.330-492.v3941a_032db_2a_</github-api-plugin.version>
     <git-plugin.version>5.10.1</git-plugin.version>
-    <junit-plugin.version>1436.v04461a_d56ca_f</junit-plugin.version>
+    <junit-plugin.version>1437.v12280a_c49b_50</junit-plugin.version>
     <matrix-project-plugin.version>870.v9db_fcfc2f45b_</matrix-project-plugin.version>
     <!-- TODO 0.191 excludes jackson2-api from pipeline-model-definition, breaking InjectedTest;
          see https://github.com/jenkinsci/mcp-server-plugin/issues/217-->
@@ -52,7 +52,7 @@
       <dependency>
         <groupId>com.cloudbees.jenkins.plugins</groupId>
         <artifactId>file-leak-detector</artifactId>
-        <version>1.14</version>
+        <version>208.veeb_75437d7db_</version>
       </dependency>
       <dependency>
         <groupId>com.cloudbees.jenkins.plugins</groupId>
@@ -208,7 +208,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>coverage</artifactId>
-        <version>3.3395.vcc183b_4a_0d7b_</version>
+        <version>3.3436.v3f0591159a_dd</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1354,7 +1354,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>oauth-credentials</artifactId>
-        <version>0.666.v3e42c3561266</version>
+        <version>0.668.vb_431feb_d8a_4e</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
