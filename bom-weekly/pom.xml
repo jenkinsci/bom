@@ -102,7 +102,8 @@
       <dependency>
         <groupId>io.jenkins.docker</groupId>
         <artifactId>docker-plugin</artifactId>
-        <version>1335.vfc7e88a_14461</version>
+        <!-- TODO: https://github.com/jenkinsci/docker-plugin/pull/1374 -->
+        <version>1337.vef13fa_12a_e8c</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
