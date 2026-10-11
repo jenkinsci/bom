@@ -1,2 +1,0 @@
-# https://github.com/jenkinsci/script-security-plugin/pull/931
-org.jenkinsci.plugins.scriptsecurity.scripts.ScriptApprovalTest#dangerousApprovedWarnings
