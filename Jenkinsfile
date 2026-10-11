@@ -114,7 +114,7 @@ mavenEnv(jdk: 21) {
       // Compress glob files + plugins.txt & lines.txt
       sh('tar -czvf ' + prepArchive + ' ' + tarGlob + ' target/*.txt')
     }
-    archiveArtifacts artifacts: prepArchive, fingerprint: true
+    stash name: prepArchive, includes: prepArchive
     sh('rm -rfv mvn-local-repo-bom ' + prepArchive) // Incrementals preparation requires clean stage
     infra.prepareToPublishIncrementals()
 
@@ -260,6 +260,7 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
   }
   node('maven-bom') {
     stage('reports') {
+      def testsFailure = false
       lines.each { line ->
         def testSuiteName = "${reportNamePrefix}${line}"
         // We need junit records in distinct stages later on for splitTests
@@ -284,11 +285,18 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
               ].collect { key, value -> "${key}=\"${value}\"" }.join(' ')
               testCases << '  <testcase ' + testCaseAttributes + '/>'
             }
+            if (result['totalCount'] > 0 && result['failCount'] > 0) {
+              testsFailure = true
+            }
           }
           def content = '<?xml version="1.0" encoding="UTF-8"?>\n<testsuite ' + testSuiteAttributes + '>\n' + testCases.sort().join('\n') + '\n</testsuite>\n'
           writeFile file: "${testSuiteName}.xml", text: content
           junit testResults: "${testSuiteName}.xml"
         }
+      }
+      if (testsFailure) {
+        unstash prepArchive
+        archiveArtifacts artifacts: prepArchive, fingerprint: true
       }
     }
   }
