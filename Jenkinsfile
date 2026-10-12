@@ -73,6 +73,7 @@ def results = [:]
 def commit
 def pctDuration
 def reportNamePrefix = 'bom-report_'
+def prepArchive
 def glob = 'pct.sh incrementals.sh consume-incrementals excludes.txt bom-*/excludes.txt target/pct.jar target/megawar-LINE_TO_ARCHIVE.war'
 
 mavenEnv(jdk: 21) {
@@ -83,7 +84,7 @@ mavenEnv(jdk: 21) {
     if (!consumeIncrementals) {
       echo 'Forbidding use of incremental dependencies. If you need to consume incrementals, add the `consume-incrementals` label, or add a file named `consume-incrementals` to the repository root if you lack triage permission. Then keep this PR in draft until the dependencies have been switched to release versions.'
     }
-    def prepArchive = "prep-${commit}.tar.gz"
+    prepArchive = "prep-${commit}.tar.gz"
     // Try to retrieve prep archive from a previous build on the same revision
     try {
       copyArtifacts(projectName: env.JOB_NAME, selector: lastWithArtifacts(), filter: prepArchive, fingerprintArtifacts: true)
