@@ -17,3 +17,9 @@ com.cloudbees.workflow.ui.view.WorkflowStageViewActionTest#testTimezoneRespected
 
 # TODO coverage plugin chart.json predates echarts-api zeroBasedYAxis (https://github.com/jenkinsci/echarts-api-plugin/issues/465)
 io.jenkins.plugins.coverage.metrics.charts.CoverageSeriesBuilderTest#shouldHaveTwoValuesForTwoBuilds
+
+# TODO https://github.com/jenkinsci/gitea-plugin/pull/164
+org.jenkinsci.plugin.gitea.credentials.PersonalAccessTokenBindingTest#withCredentials_success
+
+# TODO https://github.com/jenkinsci/gitlab-plugin/pull/1952
+com.dabsquared.gitlabjenkins.connection.GitLabApiTokenBindingTest#withCredentials_success
