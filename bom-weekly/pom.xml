@@ -20,7 +20,7 @@
     <declarative-pipeline-migration-assistant-plugin.version>1.6.8</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>4.1923.v445c56df9b_2e</forensics-api.version>
     <github-api-plugin.version>1.330-492.v3941a_032db_2a_</github-api-plugin.version>
-    <git-plugin.version>5.10.1</git-plugin.version>
+    <git-plugin.version>5.11.0</git-plugin.version>
     <junit-plugin.version>1437.v12280a_c49b_50</junit-plugin.version>
     <matrix-project-plugin.version>870.v9db_fcfc2f45b_</matrix-project-plugin.version>
     <!-- TODO 0.191 excludes jackson2-api from pipeline-model-definition, breaking InjectedTest;
@@ -36,7 +36,7 @@
     <ssh-slaves-plugin.version>3.1097.v868116049892</ssh-slaves-plugin.version>
     <subversion-plugin.version>1327.vc36e0019a_653</subversion-plugin.version>
     <workflow-api-plugin.version>1413.v2ff1a_5e720fa_</workflow-api-plugin.version>
-    <workflow-cps-plugin.version>4391.v652b_b_b_1b_7c00</workflow-cps-plugin.version>
+    <workflow-cps-plugin.version>4393.v95a_64f3074e0</workflow-cps-plugin.version>
     <workflow-job-plugin.version>1609.v8926e7962024</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>842.v3a_b_59b_57b_e6e</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>724.v538c2362b_dfb_</workflow-step-api-plugin.version>
@@ -102,7 +102,7 @@
       <dependency>
         <groupId>io.jenkins.docker</groupId>
         <artifactId>docker-plugin</artifactId>
-        <version>1335.vfc7e88a_14461</version>
+        <version>1336.v3711dec712de</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -147,7 +147,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>azure-sdk</artifactId>
-        <version>298.v2f93816d88a_2</version>
+        <version>299.v3996878fe83a_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1128,7 +1128,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>github-branch-source</artifactId>
-        <version>1983.vfa_27ed961853</version>
+        <version>1986.v801e40614d00</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
