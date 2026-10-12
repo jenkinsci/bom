@@ -187,6 +187,12 @@ Expected line format: jenkinsci/<repo-name>, tab, <coma separated plugin(s)>
 
 Keep the PR in draft until tests pass and this change can be reverted.
 
+### Rerunning a build after a flakes
+
+In case of flake(s) or test failure(s) unrelated to the plugin(s), don't push a new commit to trigger a new build but instead use "re-run" from GitHub status checks or via a new build/a replay on ci.jenkins.io if you have the permissions to do so.
+
+That way, the CI will skip the prep stage (20~35min) and run pct tests against the combinations that failed in the previous build only, using less agents and finishing sooner.
+
 ## LTS lines
 
 A separate BOM artifact is available for the latest weekly, current LTS line and a few historical lines.
