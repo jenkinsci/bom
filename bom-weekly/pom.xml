@@ -27,7 +27,7 @@
          see https://github.com/jenkinsci/mcp-server-plugin/issues/217-->
     <mcp-server.version>0.211.v5d12e5b_b_437e</mcp-server.version>
     <mina-sshd-api.version>2.19.0-192.v2b_a_7b_2c1dc71</mina-sshd-api.version>
-    <okhttp-api-plugin.version>5.3.2-200.vedb_720a_cf1f8</okhttp-api-plugin.version>
+    <okhttp-api-plugin.version>5.3.2-223.v0f4017f8d05a_</okhttp-api-plugin.version>
     <pipeline-maven-plugin.version>1760.v9a_a_e6dcb_0444</pipeline-maven-plugin.version>
     <pipeline-model-definition-plugin.version>2.2293.v6e7193cec599</pipeline-model-definition-plugin.version>
     <pipeline-stage-view-plugin.version>2.41</pipeline-stage-view-plugin.version>
@@ -769,7 +769,7 @@
       <dependency>
         <groupId>org.6wind.jenkins</groupId>
         <artifactId>lockable-resources</artifactId>
-        <version>1560.va_b_cd589f23eb_</version>
+        <version>1568.v7e0709075b_b_0</version>
       </dependency>
       <dependency>
         <groupId>org.csanchez.jenkins.plugins</groupId>
@@ -1264,7 +1264,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>junit-attachments</artifactId>
-        <version>393.ve613f22cb_cb_0</version>
+        <version>394.v3a_b_e63a_469c3</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1520,7 +1520,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>script-security</artifactId>
-        <version>1433.v17c58a_e45cc1</version>
+        <version>1436.v1082791135e4</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
