@@ -14,6 +14,3 @@ org.jenkinsci.plugins.pipeline.modeldefinition.TriggersTest
 
 # TODO https://issues.jenkins.io/browse/JENKINS-71793
 com.cloudbees.workflow.ui.view.WorkflowStageViewActionTest#testTimezoneRespectedInStageStartTime
-
-# TODO https://github.com/jenkinsci/gitlab-plugin/pull/1952
-com.dabsquared.gitlabjenkins.connection.GitLabApiTokenBindingTest#withCredentials_success
