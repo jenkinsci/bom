@@ -1,0 +1,14 @@
+diff --git a/sample-plugin/pom.xml b/sample-plugin/pom.xml
+index 78ab8d94..f64b9fa9 100644
+--- a/sample-plugin/pom.xml
++++ b/sample-plugin/pom.xml
+@@ -14,7 +14,8 @@
+   <properties>
+     <changelist>999999-SNAPSHOT</changelist>
+     <bom>weekly</bom>
+-    <jenkins.version>2.586</jenkins.version>
++    <!-- TODO: https://github.com/jenkinsci/jenkins/pull/27553 -->
++    <jenkins.version>2.587-rc38977.a_312f5f38786</jenkins.version>
+     <spotless.check.skip>false</spotless.check.skip>
+   </properties>
+   <dependencyManagement>
