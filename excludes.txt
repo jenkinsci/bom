@@ -14,3 +14,10 @@ org.jenkinsci.plugins.pipeline.modeldefinition.TriggersTest
 
 # TODO https://issues.jenkins.io/browse/JENKINS-71793
 com.cloudbees.workflow.ui.view.WorkflowStageViewActionTest#testTimezoneRespectedInStageStartTime
+
+# TODO copyartifact hangs beginning 2026-10-17
+hudson.plugins.copyartifact.TriggeredBuildSelectorTest
+hudson.plugins.copyartifact.monitor.LegacyJobConfigMigrationMonitorMigrationTest
+hudson.plugins.copyartifact.monitor.LegacyJobConfigMigrationMonitorTest
+hudson.plugins.copyartifact.monitor.LegacyMonitorDataTest
+org.jenkins_ci.plugins.copyartifact.InjectedTest
