@@ -380,7 +380,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>jackson3-api</artifactId>
-        <version>3.2.3-101.v69fc84453a_8e</version>
+        <version>3.2.4-103.vf5a_b_3f4ea_cec</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
