@@ -137,7 +137,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>asm-api</artifactId>
-        <version>9.11-224.v369c884f7a_a_b_</version>
+        <version>9.11.1-226.vff833a_e4c58e</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
