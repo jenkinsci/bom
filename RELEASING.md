@@ -31,7 +31,7 @@ In one case where that happened, we were able to replay the Pipeline on the `mas
 The Pipeline replay was:
 
 ```
-publishChecks(name: 'pct-git-plugin-weekly')
+publishChecks(name: 'PCT / copyartifact-plugin:weekly')
 echo 'OK'
 ```
 
