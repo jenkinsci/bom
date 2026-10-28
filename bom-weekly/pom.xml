@@ -14,7 +14,7 @@
     <gcp-java-sdk-plugin.version>26.23.0-31.va_efec42c4f8c</gcp-java-sdk-plugin.version>
     <branch-api-plugin.version>2.1303.v9f3b_95dc329d</branch-api-plugin.version>
     <checks-api.version>422.vc7e8b_51488c6</checks-api.version>
-    <cloudbees-folder-plugin.version>6.1106.v3a_d9a_6d2465e</cloudbees-folder-plugin.version>
+    <cloudbees-folder-plugin.version>TBD</cloudbees-folder-plugin.version>
     <configuration-as-code-plugin.version>2136.veb_3a_554550b_f</configuration-as-code-plugin.version>
     <data-tables-api.version>2.3.8-1570.v1cb_1cd2a_0fb_c</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.8</declarative-pipeline-migration-assistant-plugin.version>
@@ -77,7 +77,7 @@
       <dependency>
         <groupId>com.sonyericsson.jenkins.plugins.bfa</groupId>
         <artifactId>build-failure-analyzer</artifactId>
-        <version>3.889.vda_d3b_30435fc</version>
+        <version>TBD</version>
       </dependency>
       <dependency>
         <groupId>com.synopsys.arc.jenkinsci.plugins</groupId>
@@ -951,7 +951,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>command-launcher</artifactId>
-        <version>141.v9578cf36b_311</version>
+        <version>TBD</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
