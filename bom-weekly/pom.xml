@@ -951,7 +951,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>command-launcher</artifactId>
-        <version>TBD</version>
+        <version>144.vb_6cb_566c6c04</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
