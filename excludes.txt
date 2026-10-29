@@ -22,3 +22,6 @@ hudson.plugins.copyartifact.monitor.LegacyJobConfigMigrationMonitorMigrationTest
 hudson.plugins.copyartifact.monitor.LegacyJobConfigMigrationMonitorTest
 hudson.plugins.copyartifact.monitor.LegacyMonitorDataTest
 org.jenkins_ci.plugins.copyartifact.InjectedTest
+
+# TODO https://github.com/jenkinsci/build-failure-analyzer-plugin/pull/420
+com.sonyericsson.jenkins.plugins.bfa.BackwardsCompatibilityTest#testMatrix120
