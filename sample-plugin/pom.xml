@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.jenkins-ci.plugins</groupId>
     <artifactId>plugin</artifactId>
-    <version>6.2236.v12dd4c483242</version>
+    <version>6.2250.va_d01d559a_209</version>
     <relativePath />
   </parent>
   <groupId>io.jenkins.tools.bom</groupId>
@@ -1726,7 +1726,7 @@
       <id>2.568.x</id>
       <properties>
         <bom>2.568.x</bom>
-        <jenkins.version>2.568.1</jenkins.version>
+        <jenkins.version>2.568.3</jenkins.version>
       </properties>
     </profile>
     <profile>
