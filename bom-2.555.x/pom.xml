@@ -51,6 +51,11 @@
         <version>${workflow-job-plugin.version}</version>
         <classifier>tests</classifier>
       </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins.workflow</groupId>
+        <artifactId>workflow-basic-steps</artifactId>
+        <version>1098.v808b_fd7f8cf4</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 </project>
