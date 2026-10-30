@@ -25,3 +25,7 @@ org.jenkins_ci.plugins.copyartifact.InjectedTest
 
 # TODO https://github.com/jenkinsci/build-failure-analyzer-plugin/pull/420
 com.sonyericsson.jenkins.plugins.bfa.BackwardsCompatibilityTest#testMatrix120
+
+#TODO https://github.com/jenkinsci/lockable-resources-plugin/pull/1117
+org.jenkins.plugins.lockableresources.LockStepHardKillTest#hardKillNewBuildClearsLock
+org.jenkins.plugins.lockableresources.LockStepTimeoutQueueTest#hardKillWhileWaitingForLockClearsQueueViaIsValid
