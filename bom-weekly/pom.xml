@@ -15,7 +15,7 @@
     <branch-api-plugin.version>2.1303.v9f3b_95dc329d</branch-api-plugin.version>
     <checks-api.version>434.va_a_3dd79d7723</checks-api.version>
     <cloudbees-folder-plugin.version>6.1107.v31f8955765c8</cloudbees-folder-plugin.version>
-    <configuration-as-code-plugin.version>2141.v3c81c53ddb_f3</configuration-as-code-plugin.version>
+    <configuration-as-code-plugin.version>2144.ve8c697101488</configuration-as-code-plugin.version>
     <data-tables-api.version>2.3.8-1570.v1cb_1cd2a_0fb_c</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.8</declarative-pipeline-migration-assistant-plugin.version>
     <forensics-api.version>4.1923.v445c56df9b_2e</forensics-api.version>
@@ -193,7 +193,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>commons-compress-api</artifactId>
-        <version>1.28.0-96.v8da_8cfa_57e2b_</version>
+        <version>1.28.0-97.v0d8a_548e7f24</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -213,7 +213,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>coverage</artifactId>
-        <version>3.3497.v3fee733ca_b_35</version>
+        <version>3.3499.v910e11c96847</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -355,7 +355,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>gitlab-branch-source</artifactId>
-        <version>743.ve0c8154a_8da_b_</version>
+        <version>749.v63a_c68676751</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -538,7 +538,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>oras-java-api</artifactId>
-        <version>0.8.5-223.v0063a_f9a_8424</version>
+        <version>0.9.0-226.vc7ffc1655087</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -604,7 +604,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>warnings-ng</artifactId>
-        <version>13.10333.v259db_dd5b_b_02</version>
+        <version>13.10345.v6642ea_283a_ef</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
