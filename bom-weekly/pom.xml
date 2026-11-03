@@ -117,7 +117,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>apache-httpcomponents-client-5-api</artifactId>
-        <version>5.6.4-207.vd5b_a_c15e4de5</version>
+        <version>5.6.5-209.vd1010d57ee17</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -162,7 +162,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>byte-buddy-api</artifactId>
-        <version>1.18.16-265.v1f5b_fc755319</version>
+        <version>1.18.17-268.v26c7391a_12b_2</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -213,7 +213,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>coverage</artifactId>
-        <version>3.3499.v910e11c96847</version>
+        <version>4.3515.v7615e06e7a_c4</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -335,7 +335,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>git-forensics</artifactId>
-        <version>4.2554.v178e1e0c0a_62</version>
+        <version>4.2557.v2c7f200dfc72</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -436,7 +436,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>jnr-posix-api</artifactId>
-        <version>3.2.4-223.v4f0cfd7fa_006</version>
+        <version>3.2.6-226.vb_c2388d1273f</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -471,7 +471,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>mariadb-api</artifactId>
-        <version>3.5.10-202.v20418813713a_</version>
+        <version>3.5.11-209.vc83d76e63f6b_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
