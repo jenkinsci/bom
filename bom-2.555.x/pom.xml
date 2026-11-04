@@ -22,6 +22,11 @@
         <scope>import</scope>
       </dependency>
       <dependency>
+        <groupId>org.6wind.jenkins</groupId>
+        <artifactId>lockable-resources</artifactId>
+        <version>1579.vf54f8418ffb_2</version>
+      </dependency>
+      <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>design-library</artifactId>
         <version>417.vce0571393f5b_</version>
