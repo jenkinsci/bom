@@ -11,6 +11,7 @@
   <properties>
     <workflow-job-plugin.version>1571.1580.v18e46842c125</workflow-job-plugin.version>
     <workflow-support-plugin.version>1015.v785e5a_b_b_8b_22</workflow-support-plugin.version>
+    <workflow-cps-plugin.version>4395.v738456a_5da_6b_</workflow-cps-plugin.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -72,6 +73,17 @@
         <groupId>org.jenkins-ci.plugins.workflow</groupId>
         <artifactId>workflow-basic-steps</artifactId>
         <version>1098.v808b_fd7f8cf4</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins.workflow</groupId>
+        <artifactId>workflow-cps</artifactId>
+        <version>${workflow-cps-plugin.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins.workflow</groupId>
+        <artifactId>workflow-cps</artifactId>
+        <version>${workflow-cps-plugin.version}</version>
+        <classifier>test</classifier>
       </dependency>
     </dependencies>
   </dependencyManagement>
