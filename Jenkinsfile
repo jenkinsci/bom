@@ -120,7 +120,9 @@ mavenEnv(jdk: 21) {
       // List missing files as sanity check (expected: consume-incrementals, bom-*/excludes.txt)
       sh('find ' + tarGlob + ' -type f 1>/dev/null || true')
     }
-    stash name: prepArchive, includes: prepArchive
+    // debug: always archive prep
+    archiveArtifacts artifacts: prepArchive, fingerprint: true
+    // stash name: prepArchive, includes: prepArchive
     sh('rm -rfv mvn-local-repo-bom ' + prepArchive) // Incrementals preparation requires clean stage
     infra.prepareToPublishIncrementals()
 
@@ -341,10 +343,10 @@ if (BRANCH_NAME == 'master' || fullTest || weeklyTest) {
           archiveArtifacts artifacts: resultsArchive, fingerprint: true
         }
       }
-      if (testsFailure) {
-        unstash prepArchive
-        archiveArtifacts artifacts: prepArchive, fingerprint: true
-      }
+      // if (testsFailure) {
+      //   unstash prepArchive
+      //   archiveArtifacts artifacts: prepArchive, fingerprint: true
+      // }
     }
   }
 }
