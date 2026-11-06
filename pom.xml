@@ -59,9 +59,11 @@
               <include>Jenkinsfile</include>
               <include>**/*.groovy</include>
             </includes>
+            <!--
             <greclipse>
               <file>config/greclipse.properties</file>
             </greclipse>
+            -->
           </groovy>
         </configuration>
         <dependencies>
