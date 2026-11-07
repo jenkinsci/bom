@@ -1,0 +1,26 @@
+diff --git a/bom-weekly/pom.xml b/bom-weekly/pom.xml
+index 309d1f40..19db9327 100644
+--- a/bom-weekly/pom.xml
++++ b/bom-weekly/pom.xml
+@@ -355,7 +355,7 @@
+       <dependency>
+         <groupId>io.jenkins.plugins</groupId>
+         <artifactId>gitlab-branch-source</artifactId>
+-        <version>749.v63a_c68676751</version>
++        <version>743.ve0c8154a_8da_b_</version>
+       </dependency>
+       <dependency>
+         <groupId>io.jenkins.plugins</groupId>
+diff --git a/sample-plugin/pom.xml b/sample-plugin/pom.xml
+index ff267e2e..3ae5709a 100644
+--- a/sample-plugin/pom.xml
++++ b/sample-plugin/pom.xml
+@@ -14,7 +14,7 @@
+   <properties>
+     <changelist>999999-SNAPSHOT</changelist>
+     <bom>weekly</bom>
+-    <jenkins.version>2.588</jenkins.version>
++    <jenkins.version>2.590-rc38890.fc808a_7f1813</jenkins.version>
+     <spotless.check.skip>false</spotless.check.skip>
+   </properties>
+   <dependencyManagement>
