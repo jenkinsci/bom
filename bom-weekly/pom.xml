@@ -350,12 +350,12 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>gitlab-api</artifactId>
-        <version>6.3.0-126.vd066b_d896159</version>
+        <version>6.3.0-133.v302f2e9feb_85</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>gitlab-branch-source</artifactId>
-        <version>743.ve0c8154a_8da_b_</version>
+        <version>750.v73c84b_04428f</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
