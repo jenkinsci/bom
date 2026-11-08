@@ -213,7 +213,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>coverage</artifactId>
-        <version>4.3553.v6d4299598d31</version>
+        <version>4.3567.v34a_294650f39</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
