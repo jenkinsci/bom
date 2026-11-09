@@ -13,7 +13,7 @@
     <aws-java-sdk2-plugin.version>2.56.0-80.v7a_7cdf2f4dc8</aws-java-sdk2-plugin.version>
     <gcp-java-sdk-plugin.version>26.23.0-31.va_efec42c4f8c</gcp-java-sdk-plugin.version>
     <branch-api-plugin.version>2.1303.v9f3b_95dc329d</branch-api-plugin.version>
-    <checks-api.version>434.va_a_3dd79d7723</checks-api.version>
+    <checks-api.version>438.v9fcc0f0e2013</checks-api.version>
     <cloudbees-folder-plugin.version>6.1107.v31f8955765c8</cloudbees-folder-plugin.version>
     <configuration-as-code-plugin.version>2147.v8a_8d38668c72</configuration-as-code-plugin.version>
     <data-tables-api.version>2.3.8-1647.vb_492e141cc87</data-tables-api.version>
@@ -25,8 +25,8 @@
     <matrix-project-plugin.version>870.v9db_fcfc2f45b_</matrix-project-plugin.version>
     <!-- TODO 0.191 excludes jackson2-api from pipeline-model-definition, breaking InjectedTest;
          see https://github.com/jenkinsci/mcp-server-plugin/issues/217-->
-    <mcp-server.version>0.222.v9d40a_8d624e4</mcp-server.version>
-    <mina-sshd-api.version>2.19.0-192.v2b_a_7b_2c1dc71</mina-sshd-api.version>
+    <mcp-server.version>0.225.vea_39b_6ff2a_16</mcp-server.version>
+    <mina-sshd-api.version>2.20.1-199.v8ce76b_c93542</mina-sshd-api.version>
     <okhttp-api-plugin.version>5.5.0-242.v1482d48d3ea_3</okhttp-api-plugin.version>
     <pipeline-maven-plugin.version>1760.v9a_a_e6dcb_0444</pipeline-maven-plugin.version>
     <pipeline-model-definition-plugin.version>2.2293.v6e7193cec599</pipeline-model-definition-plugin.version>
@@ -213,7 +213,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>coverage</artifactId>
-        <version>4.3515.v7615e06e7a_c4</version>
+        <version>4.3567.v34a_294650f39</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -259,7 +259,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>design-library</artifactId>
-        <version>483.v401c307fdd1b_</version>
+        <version>496.v2b_52d8396f0c</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -299,7 +299,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>flyway-api</artifactId>
-        <version>13.12.0-497.v305dfe093db_c</version>
+        <version>13.12.1-499.v4df1b_889e845</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -350,12 +350,12 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>gitlab-api</artifactId>
-        <version>6.3.0-126.vd066b_d896159</version>
+        <version>6.3.0-133.v302f2e9feb_85</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>gitlab-branch-source</artifactId>
-        <version>749.v63a_c68676751</version>
+        <version>750.v73c84b_04428f</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -1153,12 +1153,12 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>gitlab-oauth</artifactId>
-        <version>1.30</version>
+        <version>1.31</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>gitlab-plugin</artifactId>
-        <version>1.2158.v49db_f64b_fc28</version>
+        <version>1.2162.ve2e85250a_db_a_</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
