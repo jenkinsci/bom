@@ -436,7 +436,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>jnr-posix-api</artifactId>
-        <version>3.2.7-228.v3591c105b_6b_d</version>
+        <version>3.2.8-230.v137a_18d87c13</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
