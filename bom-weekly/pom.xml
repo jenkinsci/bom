@@ -380,7 +380,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>jackson-annotations2-api</artifactId>
-        <version>2.22-19.v10a_a_582ea_26e</version>
+        <version>2.23-28.v3db_d0f5f2387</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
