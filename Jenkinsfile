@@ -16,7 +16,7 @@ def limitedPluginSet = [
 ]
 
 properties([
-  disableConcurrentBuilds(abortPrevious: true),
+  // disableConcurrentBuilds(abortPrevious: true),
   buildDiscarder(logRotator(numToKeepStr: '7')),
   pipelineTriggers([cron(cronTrigger)])
 ])
