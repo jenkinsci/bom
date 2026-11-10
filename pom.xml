@@ -61,6 +61,7 @@
             </includes>
             <greclipse>
               <file>config/greclipse.properties</file>
+              <cacheDirectory>${env.SPOTLESS_GRECLIPSE_CACHE_DIRECTORY}</cacheDirectory>
             </greclipse>
           </groovy>
         </configuration>

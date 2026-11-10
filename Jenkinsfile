@@ -96,7 +96,11 @@ mavenEnv(jdk: 21) {
       sh 'mkdir -p "${MVN_LOCAL_REPO}/io/jenkins/tools/bom/" && cp -a mvn-local-repo-bom/. "${MVN_LOCAL_REPO}/io/jenkins/tools/bom/"'
     } catch(e) {
       withChecks(name: 'Tests', includeStage: true) {
-        withEnv(['SAMPLE_PLUGIN_OPTS=-Dset.changelist', "CONSUME_INCREMENTALS=${consumeIncrementals}"]) {
+        withEnv([
+          'SAMPLE_PLUGIN_OPTS=-Dset.changelist',
+          "CONSUME_INCREMENTALS=${consumeIncrementals}",
+          "SPOTLESS_GRECLIPSE_CACHE_DIRECTORY=${env.MVN_LOCAL_REPO}/dev/equo/p2-data",
+        ]) {
           sh '''
           mvn -v
           bash prep.sh
