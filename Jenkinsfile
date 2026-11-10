@@ -101,6 +101,14 @@ mavenEnv(jdk: 21) {
           "CONSUME_INCREMENTALS=${consumeIncrementals}",
           "SPOTLESS_GRECLIPSE_CACHE_DIRECTORY=${env.MVN_LOCAL_REPO}/dev/equo/p2-data",
         ]) {
+          // Debug
+          sh '''
+          mvn -N help:evaluate -Dexpression=env.SPOTLESS_GRECLIPSE_CACHE_DIRECTORY -q -DforceStdout
+          mvn help:effective-pom -Doutput=target/effective-pom.xml
+          grep -A10 -B3 '<greclipse>' target/effective-pom.xml
+          '''
+          sh 'mvn -X spotless:check || true'
+
           sh '''
           mvn -v
           bash prep.sh
