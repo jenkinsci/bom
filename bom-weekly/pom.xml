@@ -37,7 +37,7 @@
     <subversion-plugin.version>1327.vc36e0019a_653</subversion-plugin.version>
     <workflow-api-plugin.version>1429.v7a_1b_efb_a_f7c5</workflow-api-plugin.version>
     <workflow-cps-plugin.version>4403.v471713a_cea_19</workflow-cps-plugin.version>
-    <workflow-job-plugin.version>1622.vc41c189cb_e5f</workflow-job-plugin.version>
+    <workflow-job-plugin.version>1624.ve973eb_34e031</workflow-job-plugin.version>
     <workflow-multibranch-plugin.version>842.v3a_b_59b_57b_e6e</workflow-multibranch-plugin.version>
     <workflow-step-api-plugin.version>724.v538c2362b_dfb_</workflow-step-api-plugin.version>
     <workflow-support-plugin.version>1028.vc22910142650</workflow-support-plugin.version>
@@ -476,7 +476,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>markdown-formatter</artifactId>
-        <version>355.vecb_9dd21d0fe</version>
+        <version>357.v400640142b_28</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -548,7 +548,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
-        <version>1097.vc7d4100b_3c3f</version>
+        <version>1125.va_cc0898000b_0</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -774,7 +774,7 @@
       <dependency>
         <groupId>org.6wind.jenkins</groupId>
         <artifactId>lockable-resources</artifactId>
-        <version>1582.v54e3b_a_8eda_3a_</version>
+        <version>1588.v7b_b_614f4202e</version>
       </dependency>
       <dependency>
         <groupId>org.csanchez.jenkins.plugins</groupId>
@@ -1419,7 +1419,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pipeline-input-step</artifactId>
-        <version>560.v56198a_642157</version>
+        <version>568.v0c9db_2652741</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
