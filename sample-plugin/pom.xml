@@ -1719,7 +1719,7 @@
       <id>2.580.x</id>
       <properties>
         <bom>2.580.x</bom>
-        <jenkins.version>2.580.3-rc38646.081e76812929</jenkins.version>
+        <jenkins.version>2.580.3-rc38647.34b_353396c4e</jenkins.version>
       </properties>
     </profile>
     <profile>
