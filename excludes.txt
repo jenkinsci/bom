@@ -15,9 +15,6 @@ org.jenkinsci.plugins.pipeline.modeldefinition.TriggersTest
 # TODO https://issues.jenkins.io/browse/JENKINS-71793
 com.cloudbees.workflow.ui.view.WorkflowStageViewActionTest#testTimezoneRespectedInStageStartTime
 
-# TODO copyartifact hangs beginning 2026-10-17
-# https://github.com/jenkinsci/bom/issues/7620
-
 # TODO https://github.com/jenkinsci/build-failure-analyzer-plugin/pull/420
 com.sonyericsson.jenkins.plugins.bfa.BackwardsCompatibilityTest#testMatrix120
 
