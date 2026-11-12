@@ -1464,7 +1464,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>prometheus</artifactId>
-        <version>868.v6d6068d136cc</version>
+        <version>873.v054598e6e84d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
