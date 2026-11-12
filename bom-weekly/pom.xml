@@ -21,7 +21,7 @@
     <forensics-api.version>4.1923.v445c56df9b_2e</forensics-api.version>
     <github-api-plugin.version>1.330-492.v3941a_032db_2a_</github-api-plugin.version>
     <git-plugin.version>5.11.0</git-plugin.version>
-    <junit-plugin.version>1461.v899501b_82971</junit-plugin.version>
+    <junit-plugin.version>1462.va_b_2a_899ea_b_97</junit-plugin.version>
     <matrix-project-plugin.version>870.v9db_fcfc2f45b_</matrix-project-plugin.version>
     <!-- TODO 0.191 excludes jackson2-api from pipeline-model-definition, breaking InjectedTest;
          see https://github.com/jenkinsci/mcp-server-plugin/issues/217-->
@@ -259,7 +259,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>design-library</artifactId>
-        <version>496.v2b_52d8396f0c</version>
+        <version>497.v273d9d8c28fe</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -345,7 +345,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>github-checks</artifactId>
-        <version>710.v756946918b_dd</version>
+        <version>716.v4e342cf2a_03c</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -528,7 +528,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>opentelemetry</artifactId>
-        <version>3.1603.ve3fa_cc8a_b_f5e</version>
+        <version>3.1604.vff94ecdc8a_57</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -548,7 +548,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>pipeline-graph-view</artifactId>
-        <version>1125.va_cc0898000b_0</version>
+        <version>1128.ve30e2d3c8b_f1</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -599,7 +599,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>theme-manager</artifactId>
-        <version>346.v06cca_64c6a_37</version>
+        <version>368.v587224fde1f6</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -915,7 +915,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>claim</artifactId>
-        <version>626.v38c8f5b_89750</version>
+        <version>632.vb_89766b_5b_ec4</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1107,7 +1107,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>git-client</artifactId>
-        <version>6.7.0</version>
+        <version>6.7.1</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1399,7 +1399,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>pipeline-build-step</artifactId>
-        <version>601.v6d4c6d1a_9dc7</version>
+        <version>605.v00486e8f4b_3e</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1464,7 +1464,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>prometheus</artifactId>
-        <version>868.v6d6068d136cc</version>
+        <version>873.v054598e6e84d</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
@@ -1592,7 +1592,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>support-core</artifactId>
-        <version>1865.v45d40b_778b_cb_</version>
+        <version>1876.va_195a_b_645f3f</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
