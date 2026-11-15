@@ -101,6 +101,15 @@
     },
     {
       "matchDepNames": [
+        "io.jenkins.plugins:checks-api"
+      ],
+      // skip 440.x, which fails FlowExecutionAnalyzerTest.shouldReadOnlyTheEndOfAVeryLargeLog
+      // See https://github.com/jenkinsci/checks-api-plugin/issues/360
+      // See also https://github.com/jenkinsci/bom/pull/7772
+      "allowedVersions": "!/^440\\./"
+    },
+    {
+      "matchDepNames": [
         "org.jenkins-ci.tests:plugins-compat-tester-cli"
       ],
       "labels": [
