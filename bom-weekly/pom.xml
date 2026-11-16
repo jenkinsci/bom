@@ -191,7 +191,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>commons-compress-api</artifactId>
-        <version>1.28.0-97.v0d8a_548e7f24</version>
+        <version>1.28.0-99.v1d5fc7f025cd</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
