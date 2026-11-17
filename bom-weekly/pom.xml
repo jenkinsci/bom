@@ -1226,7 +1226,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>job-dsl</artifactId>
-        <version>3732.v9a_c49a_61a_313</version>
+        <version>3752.vb_199526b_20c3</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
