@@ -9,7 +9,7 @@ def maxSplitsPerLine = 20
 
 // Run pct tests on a limited set of repositories and their plugin(s) if not empty
 // Ex: ['jenkinsci/badge-plugin\tbadge', 'jenkinsci/cron_column-plugin\tcron_column']
-def limitedPluginSet = []
+def limitedPluginSet = ['jenkinsci/pipeline-groovy-lib-plugin']
 
 properties([
   disableConcurrentBuilds(abortPrevious: true),
@@ -35,11 +35,13 @@ def mavenEnv(Map params = [:], Closure body) {
           withEnv([
             'JAVA_HOME=/opt/jdk-' + params['jdk'],
             'PATH+JDK=/opt/jdk-' + params['jdk'] + '/bin',
-            "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B ${env.MAVEN_NTP != null ? '-ntp' : ''} -Dmaven.repo.local=${env.HOME}/.m2/repository",
-            "MVN_LOCAL_REPO=${env.HOME}/.m2/repository",
+            "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B ${env.MAVEN_NTP != null ? '-ntp' : ''} -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo",
+            "MVN_LOCAL_REPO=${WORKSPACE_TMP}/m2repo",
             "PROVISONING_START=${provisioningStart}",
             "CURRENT_ATTEMPT=${attempt}",
           ]) {
+            // Debug: check that there is no prepopulated cache in MVN_LOCAL_REPO
+            sh 'ls -al "${MVN_LOCAL_REPO}" && df -h "${MVN_LOCAL_REPO}"'
             body()
           }
         }
