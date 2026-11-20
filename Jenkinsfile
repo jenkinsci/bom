@@ -1,3 +1,5 @@
+@Library('pipeline-library@helpdesk5365-cache-already-decompressed') _
+
 // Do not trigger build regularly on change requests as it costs a lot
 String cronTrigger = ''
 if(env.BRANCH_NAME == "master") {
@@ -76,6 +78,7 @@ def glob = 'pct.sh incrementals.sh consume-incrementals excludes.txt bom-*/exclu
 
 mavenEnv(jdk: 21) {
   stage('prep') {
+    sh 'ls -al "${MVN_LOCAL_REPO}" && df -h "${MVN_LOCAL_REPO}"'
     commit = checkout(scm).GIT_COMMIT.take(7)
     consumeIncrementalsMarkerFile = fileExists 'consume-incrementals'
     consumeIncrementals = consumeIncrementalsMarkerFile || (env.CHANGE_ID && pullRequest.labels.contains('consume-incrementals'))
