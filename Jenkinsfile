@@ -41,7 +41,7 @@ def mavenEnv(Map params = [:], Closure body) {
             "CURRENT_ATTEMPT=${attempt}",
           ]) {
             // Debug: check that there is no prepopulated cache in MVN_LOCAL_REPO
-            sh 'ls -al "${MVN_LOCAL_REPO}" && df -h "${MVN_LOCAL_REPO}"'
+            sh 'ls -al "${MVN_LOCAL_REPO}" || true'
             body()
           }
         }
