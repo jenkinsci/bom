@@ -211,7 +211,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>coverage</artifactId>
-        <version>4.3608.v32367223c4dc</version>
+        <version>4.3620.v407ef5b_88f0d</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -297,7 +297,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>flyway-api</artifactId>
-        <version>13.12.2-501.v32e3b_34c139c</version>
+        <version>13.13.0-505.v1a_6d142821a_8</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
@@ -772,7 +772,7 @@
       <dependency>
         <groupId>org.6wind.jenkins</groupId>
         <artifactId>lockable-resources</artifactId>
-        <version>1593.v81b_70c9dfccb_</version>
+        <version>1601.vb_b_863eec56b_e</version>
       </dependency>
       <dependency>
         <groupId>org.csanchez.jenkins.plugins</groupId>
@@ -1640,7 +1640,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>versioncolumn</artifactId>
-        <version>400.v3c5c3004f31d</version>
+        <version>425.v523d71e209ff</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
