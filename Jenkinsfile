@@ -35,7 +35,7 @@ def mavenEnv(Map params = [:], Closure body) {
           withEnv([
             'JAVA_HOME=/opt/jdk-' + params['jdk'],
             'PATH+JDK=/opt/jdk-' + params['jdk'] + '/bin',
-            "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B ${env.MAVEN_NTP != null ? '-ntp' : ''} -Dmaven.repo.local=${WORKSPACE_TMP}/m2repo",
+            "MAVEN_ARGS=${env.MAVEN_ARGS != null ? MAVEN_ARGS : ''} -B ${env.MAVEN_NTP != null ? '-ntp' : ''} -Dmaven.repo.local=${env.HOME}/.m2/repository",
             "MVN_LOCAL_REPO=${env.HOME}/.m2/repository",
             "PROVISONING_START=${provisioningStart}",
             "CURRENT_ATTEMPT=${attempt}",
