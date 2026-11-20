@@ -772,7 +772,7 @@
       <dependency>
         <groupId>org.6wind.jenkins</groupId>
         <artifactId>lockable-resources</artifactId>
-        <version>1593.v81b_70c9dfccb_</version>
+        <version>1601.vb_b_863eec56b_e</version>
       </dependency>
       <dependency>
         <groupId>org.csanchez.jenkins.plugins</groupId>
@@ -1640,7 +1640,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>versioncolumn</artifactId>
-        <version>400.v3c5c3004f31d</version>
+        <version>425.v523d71e209ff</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
