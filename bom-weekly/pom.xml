@@ -343,7 +343,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>github-checks</artifactId>
-        <version>716.v4e342cf2a_03c</version>
+        <version>717.v107022b_fe5fb_</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
