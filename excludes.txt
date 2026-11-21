@@ -21,3 +21,6 @@ com.sonyericsson.jenkins.plugins.bfa.BackwardsCompatibilityTest#testMatrix120
 #TODO https://github.com/jenkinsci/lockable-resources-plugin/pull/1117
 org.jenkins.plugins.lockableresources.LockStepHardKillTest#hardKillNewBuildClearsLock
 org.jenkins.plugins.lockableresources.LockStepTimeoutQueueTest#hardKillWhileWaitingForLockClearsQueueViaIsValid
+
+# TODO @Grab of http-builder fails to download transitive deps (commons-collections/commons-logging) in PCT
+org.jenkinsci.plugins.workflow.libs.LibraryMemoryTest#loaderReleasedWithGrab
