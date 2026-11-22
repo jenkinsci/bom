@@ -18,7 +18,7 @@
     <configuration-as-code-plugin.version>2147.v8a_8d38668c72</configuration-as-code-plugin.version>
     <data-tables-api.version>2.3.8-1647.vb_492e141cc87</data-tables-api.version>
     <declarative-pipeline-migration-assistant-plugin.version>1.6.8</declarative-pipeline-migration-assistant-plugin.version>
-    <forensics-api.version>4.1923.v445c56df9b_2e</forensics-api.version>
+    <forensics-api.version>4.1977.v0f55b_7ee93a_4</forensics-api.version>
     <github-api-plugin.version>1.330-492.v3941a_032db_2a_</github-api-plugin.version>
     <git-plugin.version>5.11.0</git-plugin.version>
     <junit-plugin.version>1465.v025001ca_dc18</junit-plugin.version>
