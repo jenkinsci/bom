@@ -1886,7 +1886,7 @@
       <dependency>
         <groupId>org.jenkinsci.plugins</groupId>
         <artifactId>emailext-template</artifactId>
-        <version>249.v81d6ea_f33f2e</version>
+        <version>263.v2fe056038c08</version>
       </dependency>
       <dependency>
         <groupId>org.jenkinsci.plugins</groupId>
