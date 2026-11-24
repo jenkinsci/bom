@@ -1497,7 +1497,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>saferestart</artifactId>
-        <version>125.vdb_73765c38a_e</version>
+        <version>129.va_2a_5f714a_f05</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
