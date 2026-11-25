@@ -24,3 +24,6 @@ org.jenkins.plugins.lockableresources.LockStepTimeoutQueueTest#hardKillWhileWait
 
 # TODO @Grab of http-builder fails to download transitive deps (commons-collections/commons-logging) in PCT
 org.jenkinsci.plugins.workflow.libs.LibraryMemoryTest#loaderReleasedWithGrab
+
+# TODO https://github.com/jenkinsci/saferestart-plugin/issues/85 (header overflow menu links are in a <template>, invisible to HtmlUnit on 2.591+)
+org.jenkins.ci.plugins.saferestart.RestartDrainActionTest#drainLinkResolvesFromSecondaryView
