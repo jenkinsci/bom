@@ -23,7 +23,7 @@
     <git-plugin.version>5.11.0</git-plugin.version>
     <junit-plugin.version>1466.v0643b_53583d2</junit-plugin.version>
     <matrix-project-plugin.version>870.v9db_fcfc2f45b_</matrix-project-plugin.version>
-    <mcp-server.version>0.228.vfa_37b_2127d97</mcp-server.version>
+    <mcp-server.version>0.231.v79b_26fb_c8182</mcp-server.version>
     <mina-sshd-api.version>2.20.1-199.v8ce76b_c93542</mina-sshd-api.version>
     <okhttp-api-plugin.version>5.5.0-242.v1482d48d3ea_3</okhttp-api-plugin.version>
     <pipeline-maven-plugin.version>1760.v9a_a_e6dcb_0444</pipeline-maven-plugin.version>
