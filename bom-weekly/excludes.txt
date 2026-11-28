@@ -1,3 +1,8 @@
 # TODO HtmlUnit fails to compile Jenkins core builds-card-new.js (ScriptException: 186).
 # Remove when the experimental job page works with the test JavaScript engine.
 com.jenkinsci.plugins.badge.dsl.UITest$Experimental#badge
+
+# TODO https://github.com/jenkinsci/matrix-auth-plugin/pull/194
+# matrix auth plugin Security2180Test#testEscapeHatch fails on Jenkins
+# 2.593 due to a bug fix in the anonymous user build cause message
+org.jenkinsci.plugins.matrixauth.Security2180Test#testEscapeHatch
