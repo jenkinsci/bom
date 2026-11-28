@@ -602,7 +602,7 @@
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>warnings-ng</artifactId>
-        <version>13.10429.v557de62a_a_844</version>
+        <version>13.10451.v799b_ed31b_14e</version>
       </dependency>
       <dependency>
         <groupId>io.jenkins.plugins</groupId>
