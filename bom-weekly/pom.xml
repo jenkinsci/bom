@@ -913,7 +913,7 @@
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>claim</artifactId>
-        <version>632.vb_89766b_5b_ec4</version>
+        <version>634.v08a_854950898</version>
       </dependency>
       <dependency>
         <groupId>org.jenkins-ci.plugins</groupId>
